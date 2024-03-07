@@ -559,3 +559,19 @@ code {
   clear: both;
   display: table;
 }
+
+.item img {
+  height: 600px;
+  display: block;
+  float: left;
+  padding-right: 20px;
+}
+
+@media only screen and (min-device-width: 480px) {
+  .item img {
+    height: 300px;
+    display: block;
+    float: left;
+    padding-right: 20px;
+  }
+}
