@@ -16,7 +16,7 @@ import {
   defaults as defaultControls,
 } from "ol/control.js";
 
-import("ol/ol.css");
+// import("ol/ol.css");
 
 const animationDuration = 500;
 

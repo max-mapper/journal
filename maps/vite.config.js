@@ -24,11 +24,28 @@ export default defineConfig({
       },
     },
     viteStaticCopy({
+      targets: [
+        {
+          src: "node_modules/coi-serviceworker/coi-serviceworker.min.js",
+          dest: "",
+        },
+      ],
+    }),
+    viteStaticCopy({
       silent: true,
       targets: [
         {
           src: "node_modules/qgis-js/dist/assets/wasm/**",
           dest: "assets/wasm",
+        },
+      ],
+    }),
+    viteStaticCopy({
+      silent: true,
+      targets: [
+        {
+          src: "projects/**",
+          dest: "projects",
         },
       ],
     }),
