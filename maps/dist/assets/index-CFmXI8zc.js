@@ -437,19 +437,17 @@ const Yr = async (i, e, t = i.name, n) => {
         d = `${t}/${u.name}`;
       u.kind === "file"
         ? s.push(
-            u
-              .getFile()
-              .then(
-                (f) => (
-                  (f.directoryHandle = i),
-                  (f.handle = u),
-                  Object.defineProperty(f, "webkitRelativePath", {
-                    configurable: !0,
-                    enumerable: !0,
-                    get: () => d,
-                  })
-                )
+            u.getFile().then(
+              (f) => (
+                (f.directoryHandle = i),
+                (f.handle = u),
+                Object.defineProperty(f, "webkitRelativePath", {
+                  configurable: !0,
+                  enumerable: !0,
+                  get: () => d,
+                })
               )
+            )
           )
         : u.kind !== "directory" || !e || (n && n(u)) || r.push(Yr(u, e, d, n));
     }
@@ -13033,7 +13031,7 @@ async function Zc() {
     };
   try {
     const { api: o, fs: a } = await po({
-      prefix: "/assets/wasm",
+      prefix: "/journal/maps/dist/assets/wasm",
       onStatus: (y) => n(y),
     });
     n("Loading projects...");
