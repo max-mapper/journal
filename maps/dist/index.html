@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>qgis-js</title>
+    <meta charset="UTF-8" />
+    <!-- <script>
+      if (window["SharedArrayBuffer"] === undefined) {
+        console.log("Installing COOP/COEP service worker");
+
+        window.coi = {
+          shouldRegister: () => true,
+          shouldDeregister: () => true,
+          coepCredentialless: () => !(window.chrome || window.netscape),
+          quiet: true,
+        };
+
+        const coiServiceworker = document.createElement("script");
+        coiServiceworker.setAttribute("src", "coi-serviceworker.min.js");
+        document.head.appendChild(coiServiceworker);
+      }
+    </script> -->
+    <script type="module" crossorigin src="/assets/index-DV4sd5it.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CFuFxnQH.css">
+  </head>
+
+  <body>
+    <h1>qgis-js</h1>
+    <h3>QGIS core ported to WebAssembly to run it on the web platform</h3>
+    <br />
+    <div class="tabset">
+      <input
+        type="radio"
+        name="tabset"
+        id="tab1"
+        aria-controls="openlayers_canvas"
+        checked
+      />
+      <label for="tab1">ol: Canvas Tile</label>
+      <input
+        type="radio"
+        name="tabset"
+        id="tab2"
+        aria-controls="openlayers_xyz"
+      />
+      <label for="tab2">ol: XYZ Tiles </label>
+      <input type="radio" name="tabset" id="tab3" aria-controls="javascript" />
+      <label for="tab3">JavaScript</label>
+
+      <div id="status">
+        <div id="status-message">Initializing...</div>
+        <div id="status-progress">
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="project" style="visibility: hidden">
+        <div>
+          <label for="projects">Project:</label>
+
+          <select name="projects" id="projects"></select>
+        </div>
+        <div>
+          <button id="local-project">Add local project</button>
+        </div>
+      </div>
+
+      <div class="tab-panels">
+        <section id="openlayers_canvas" class="tab-panel">
+          <h2>OpenLayers: Canvas Tile</h2>
+          <div id="ol-demo-canvas" class="demo"></div>
+          <p>
+            <a href="https://github.com/qgis/qgis-js" target="_blank"
+              >qgis-js</a
+            >
+            provides a custom &laquo;<strong>Canvas Tile</strong>&raquo;
+            <a href="https://openlayers.org/" target="_blank">OpenLayers</a>
+            source for rendering a single tile with the size and pixel ratio of
+            the ol map canvas. This is useful for rendering in the projection of
+            the QGIS project, both in the OpenLayers view and in the qgis-js
+            runtime.
+          </p>
+          <p>
+            See
+            <a
+              href="https://github.com/qgis/qgis-js/blob/main/packages/qgis-js-ol/src/QgisCanvasDataSource.ts"
+              target="_blank"
+              class="source"
+              >QgisCanvasDataSource.ts</a
+            >
+            for the implementation and the
+            <a
+              href="https://github.com/qgis/qgis-js/blob/main/sites/dev/src/ol.ts#L130"
+              target="_blank"
+              class="source"
+              >olDemoCanvas-function</a
+            >
+            for the demo setup used on this page.
+          </p>
+        </section>
+
+        <section id="openlayers_xyz" class="tab-panel">
+          <h2>OpenLayers: XYZ Tiles</h2>
+          <div id="ol-demo-xyz" class="demo"></div>
+          <div class="canvas-options">
+            <label
+              title="Factor will be multiploed with the tiles width in map units."
+              for="extentBufferFactor"
+              >Extent Buffer Factor:</label
+            >
+            <input
+              title="Factor will be multiploed with the tiles width in map units."
+              type="range"
+              min="0"
+              max="2"
+              step="0.01"
+              value="0.5"
+              name="extentBufferFactor"
+              id="extentBufferFactor"
+              oninput="this.nextElementSibling.value = (Math.round(this.value * 100) / 100).toFixed(2)"
+            />
+            <output>0.50</output>
+
+            <div class="seperator">&nbsp;</div>
+
+            <label for="xyzBaseMap">OSM Basemap:</label>
+            <input
+              type="checkbox"
+              checked="checked"
+              name="xyzBaseMap"
+              id="xyzBaseMap"
+            />
+          </div>
+          <p>
+            With the
+            <a href="https://github.com/qgis/qgis-js" target="_blank"
+              >qgis-js</a
+            >
+            custom <strong>XYZ Tiles</strong> source for
+            <a href="https://openlayers.org/" target="_blank">OpenLayers</a>,
+            the QGIS project is rendered in the common Web Mercator projection
+            (EPSG:3857) addressed with the xyz tile scheme. This makes it
+            convenient to mix the QGIS layer with other layer sources provided
+            by OpenLayers.
+          </p>
+          <p>
+            See
+            <a
+              href="https://github.com/qgis/qgis-js/blob/main/packages/qgis-js-ol/src/QgisXYZDataSource.ts"
+              target="_blank"
+              class="source"
+              >QgisXYZDataSource.ts</a
+            >
+            for the implementation and the
+            <a
+              href="https://github.com/qgis/qgis-js/blob/main/sites/dev/src/ol.ts#L28"
+              target="_blank"
+              class="source"
+              >olDemoXYZ-function</a
+            >
+            for the demo setup used on this page.
+          </p>
+        </section>
+
+        <section id="javascript" class="tab-panel">
+          <h2>JavaScript</h2>
+          <div id="js-demo" class="demo">
+            <canvas id="js-demo-canvas"></canvas>
+
+            <div id="js-demo-controls">
+              <button id="zoomin">zoom in</button>
+              <button id="zoomout">zoom out</button>
+              <button id="panleft">left</button>
+              <button id="panright">right</button>
+              <button id="panup">up</button>
+              <button id="pandown">down</button>
+            </div>
+          </div>
+          <p>
+            <strong>qgis-js</strong> can be used with plain JavaScript and can
+            therefore be integrated into any web application. The library
+            provides also type information and integrates nicely with
+            TypeScript.
+          </p>
+          <p>
+            The example above shows how to use qgis-js with a simple canvas
+            element and some rudimentary controls. The source code can be found
+            in
+            <a
+              href="https://github.com/qgis/qgis-js/blob/main/sites/dev/src/js.ts"
+              target="_blank"
+              class="source"
+              >sites/dev/src/js.ts</a
+            >
+          </p>
+          <p>
+            The qgis-js API exposes also some QGIS core internals which can be
+            used to build web GIS applications:
+          </p>
+
+          <div class="code">
+            <pre
+              style="margin: 0; line-height: 125%"
+            ><span style="color: #589632; font-weight: bold">const</span> rectangle <span style="color: #666666">=</span> <span style="color: #589632; font-weight: bold">new</span> api.Rectangle(<span style="color: #666666">100</span>, <span style="color: #666666">200</span>, <span style="color: #666666">150</span>, <span style="color: #666666">250</span>);
+console.dir(rectangle);
+
+rectangle.scale(<span style="color: #666666">5</span>);
+console.dir(rectangle);
+
+<span style="color: #589632; font-weight: bold">const</span> center <span style="color: #666666">=</span> rectangle.center();
+console.dir(center);
+</pre>
+          </div>
+
+          <p>
+            <i
+              >Please note that the API surface is fairly minimal at the moment
+              and will be extended in the future.</i
+            >
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <div id="layers-control"></div>
+
+    <a
+      class="github-fork-ribbon"
+      href="https://github.com/qgis/qgis-js"
+      data-ribbon="Fork me on GitHub"
+      title="Fork me on GitHub"
+      >Fork me on GitHub</a
+    >
+
+  </body>
+</html>
