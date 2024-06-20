@@ -69,7 +69,7 @@ async function initDemo() {
     if (timer) console.time("boot");
     const { api, fs } = await qgis({
       // use assets form QgisRuntimePlugin
-      prefix: "dist/assets/wasm",
+      prefix: "assets/wasm",
       onStatus: (status) => onStatus(status),
     });
     if (timer) console.timeEnd("boot");
