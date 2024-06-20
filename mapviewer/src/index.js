@@ -12,14 +12,14 @@ const apiTest = false;
 const timer = false;
 
 const qgisJsDemoProjects = (path) => ({
-  owner: "boardend",
-  repo: "qgis-js-projects",
+  owner: "max-mapper",
+  repo: "journal",
   path: "/" + path,
   branch: "main",
   prefix: `${path[0].toUpperCase()}${path.slice(1)}: `,
 });
 
-const GITHUB_REPOS = [qgisJsDemoProjects("demo")];
+const GITHUB_REPOS = [qgisJsDemoProjects("mapdata")];
 
 function testApi(api) {
   const p1 = new api.PointXY();
@@ -129,6 +129,7 @@ async function initDemo() {
 
     // - github projects
     if (timer) console.time("github projects");
+    console.log(GITHUB_REPOS);
     for (const repo of GITHUB_REPOS) {
       try {
         const githubProjects = await loadGithubProjects(
