@@ -1,4 +1,4 @@
-export function layersControl(target, api) {
+export function layersControl(target, api, redraw = () => {}) {
   const update = () => {
     target.innerHTML = "";
 

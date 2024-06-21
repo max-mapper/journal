@@ -82,7 +82,7 @@ async function initDemo() {
     const {
       openProject,
       loadLocalProject,
-      loadRemoteProjects,
+      // loadRemoteProjects,
       loadGithubProjects,
     } = useProjects(fs, (project) => {
       if (timer) console.time("project");
@@ -119,20 +119,21 @@ async function initDemo() {
     };
     document.getElementById("local-project").onclick = openLocalProject;
 
-    // load remote projects
-    if (timer) console.time("remote projects");
-    const remoteProjects = await loadRemoteProjects();
-    remoteProjects.forEach((project) =>
-      listProject(project.name, () => project)
-    );
-    if (timer) console.timeEnd("remote projects");
+    // // load remote projects
+    // if (timer) console.time("remote projects");
+    // const remoteProjects = await loadRemoteProjects();
+    // remoteProjects.forEach((project) =>
+    //   listProject(project.name, () => project)
+    // );
+    // if (timer) console.timeEnd("remote projects");
 
     // - github projects
+    let githubProjects;
     if (timer) console.time("github projects");
     console.log(GITHUB_REPOS);
     for (const repo of GITHUB_REPOS) {
       try {
-        const githubProjects = await loadGithubProjects(
+        githubProjects = await loadGithubProjects(
           repo.owner,
           repo.repo,
           repo.path,
@@ -152,7 +153,7 @@ async function initDemo() {
 
     // open first project
     onStatus("Opening first project...");
-    await openProject(remoteProjects[0]);
+    await openProject(Object.entries(githubProjects)[0][1]());
 
     // API tests
     // if (apiTest) testApi(api);

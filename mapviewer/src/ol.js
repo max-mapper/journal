@@ -49,8 +49,7 @@ export function olDemoXYZ(target, api) {
     source = new QgisXYZDataSource(api, {
       debug: false,
       extentBufferFactor: () => {
-        const input = document.getElementById("extentBufferFactor");
-        return input.valueAsNumber;
+        return 4.0;
       },
     });
 
