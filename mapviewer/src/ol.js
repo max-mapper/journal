@@ -87,6 +87,7 @@ export function olDemoXYZ(target, api) {
     const bbox = getBbox();
     view.fit([bbox.xMinimum, bbox.yMinimum, bbox.xMaximum, bbox.yMaximum], {
       duration: animationDuration,
+      padding: [10, 10, 10, 10],
     });
     setTimeout(() => {
       render();
