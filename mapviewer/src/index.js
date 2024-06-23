@@ -11,15 +11,25 @@ const printVersion = true;
 const apiTest = false;
 const timer = false;
 
-const qgisJsDemoProjects = (path) => ({
-  owner: "max-mapper",
-  repo: "journal",
+var qs = new URLSearchParams(window.location.search);
+var repo = qs.get("repo").split("/");
+var owner = repo[0];
+var repository = repo[1];
+var path = repo[2];
+var target = repo[3];
+
+if (!owner || !repo || !path || !target)
+  onStatus("Missing ?repo=owner/repo/path/target...");
+
+const qgisJsDemoProjects = () => ({
+  owner: owner,
+  repo: repository,
   path: "/" + path,
   branch: "main",
   prefix: `${path[0].toUpperCase()}${path.slice(1)}: `,
 });
 
-const GITHUB_REPOS = [qgisJsDemoProjects("mapdata")];
+const GITHUB_REPOS = [qgisJsDemoProjects()];
 
 function testApi(api) {
   const p1 = new api.PointXY();
@@ -61,7 +71,7 @@ async function initDemo() {
   };
   const onReady = () => {
     statusControl.style.display = "none";
-    projectControl.style.visibility = "visible";
+    // projectControl.style.visibility = "visible";
   };
 
   try {
@@ -81,7 +91,7 @@ async function initDemo() {
 
     const {
       openProject,
-      loadLocalProject,
+      // loadLocalProject,
       // loadRemoteProjects,
       loadGithubProjects,
     } = useProjects(fs, (project) => {
@@ -95,29 +105,29 @@ async function initDemo() {
       }, 0);
     });
 
-    const openLocalProject = async function () {
-      const localProject = await loadLocalProject();
-      await openProject(localProject);
-      listProject(localProject.name, () => localProject);
-      projectSelect.value = localProject.name;
-    };
+    // const openLocalProject = async function () {
+    //   const localProject = await loadLocalProject();
+    //   await openProject(localProject);
+    //   listProject(localProject.name, () => localProject);
+    //   projectSelect.value = localProject.name;
+    // };
 
     const projects = new Map();
-    const projectSelect = document.getElementById("projects");
-    projectSelect.addEventListener("change", () => {
-      const project = projects.get(projectSelect.value);
-      if (project) {
-        openProject(project());
-      }
-    });
+    // const projectSelect = document.getElementById("projects");
+    // projectSelect.addEventListener("change", () => {
+    //   const project = projects.get(projectSelect.value);
+    //   if (project) {
+    //     openProject(project());
+    //   }
+    // });
     const listProject = (name, projectLoadFunciton) => {
       projects.set(name, projectLoadFunciton);
-      const option = document.createElement("option");
-      option.value = name;
-      option.text = name;
-      projectSelect.add(option, null);
+      // const option = document.createElement("option");
+      // option.value = name;
+      // option.text = name;
+      // projectSelect.add(option, null);
     };
-    document.getElementById("local-project").onclick = openLocalProject;
+    // document.getElementById("local-project").onclick = openLocalProject;
 
     // // load remote projects
     // if (timer) console.time("remote projects");
@@ -130,7 +140,6 @@ async function initDemo() {
     // - github projects
     let githubProjects;
     if (timer) console.time("github projects");
-    console.log(GITHUB_REPOS);
     for (const repo of GITHUB_REPOS) {
       try {
         githubProjects = await loadGithubProjects(
@@ -152,8 +161,11 @@ async function initDemo() {
     if (timer) console.timeEnd("github projects");
 
     // open first project
-    onStatus("Opening first project...");
-    await openProject(Object.entries(githubProjects)[0][1]());
+    onStatus("Loading project from GitHub...");
+    var project = Object.entries(githubProjects).find((e) => {
+      return e[0] === target;
+    });
+    await openProject(project[1]());
 
     // API tests
     // if (apiTest) testApi(api);

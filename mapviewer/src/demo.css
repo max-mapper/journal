@@ -10,7 +10,7 @@ body {
 }
 
 .full {
-  height: calc(100vh - 150px);
+  height: 100vh;
 }
 
 h1 {
@@ -174,10 +174,6 @@ input:focus-visible + label {
 *:before,
 *:after {
   box-sizing: border-box;
-}
-
-body {
-  padding: 30px;
 }
 
 #project {
