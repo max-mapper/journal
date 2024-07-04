@@ -95,9 +95,9 @@ export function olDemoXYZ(target, api) {
   };
 
   const render = () => {
-    source?.clear();
-    layer?.getRenderer()?.clearCache();
-    layer?.changed();
+    source.clear();
+    layer.getRenderer().clearCache();
+    layer.changed();
   };
 
   const xyzBaseMapCheckbox = document.getElementById("xyzBaseMap");
@@ -183,7 +183,7 @@ export function olDemoCanvas(target, api) {
           units: "m",
         }),
       });
-      layer?.setSource(source);
+      layer.setSource(source);
     }, 0);
   };
 

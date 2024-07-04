@@ -184,24 +184,25 @@ async function initDemo() {
         layersControl(layersControlDiv, api, () => {
           // update all demos
           setTimeout(() => {
+            console.log(renderCallbacks);
             renderCallbacks.forEach((render) => render());
           }, 0);
         })
       );
     }
 
-    // js demo
-    const jsDemoCanvas = document.getElementById("js-demo-canvas");
-    if (jsDemoCanvas) {
-      const { update, render } = jsDemo(jsDemoCanvas, api);
-      updateCallbacks.push(update);
-      renderCallbacks.push(render);
-      // ensure js demo gets refreshed when the section gets visible
-      const jsButton = document.getElementById("tab1");
-      jsButton.addEventListener("change", () => {
-        if (jsButton.checked) update();
-      });
-    }
+    // // js demo
+    // const jsDemoCanvas = document.getElementById("js-demo-canvas");
+    // if (jsDemoCanvas) {
+    //   const { update, render } = jsDemo(jsDemoCanvas, api);
+    //   updateCallbacks.push(update);
+    //   renderCallbacks.push(render);
+    //   // ensure js demo gets refreshed when the section gets visible
+    //   const jsButton = document.getElementById("tab1");
+    //   jsButton.addEventListener("change", () => {
+    //     if (jsButton.checked) update();
+    //   });
+    // }
 
     // ol demo
     const olDemoXYZDiv = document.getElementById("ol-demo-xyz");
@@ -211,12 +212,12 @@ async function initDemo() {
       renderCallbacks.push(render);
     }
 
-    const olDemoCanvasDiv = document.getElementById("ol-demo-canvas");
-    if (olDemoCanvasDiv) {
-      const { update, render } = olDemoCanvas(olDemoCanvasDiv, api);
-      updateCallbacks.push(update);
-      renderCallbacks.push(render);
-    }
+    // const olDemoCanvasDiv = document.getElementById("ol-demo-canvas");
+    // if (olDemoCanvasDiv) {
+    //   const { update, render } = olDemoCanvas(olDemoCanvasDiv, api);
+    //   updateCallbacks.push(update);
+    //   renderCallbacks.push(render);
+    // }
   } catch (error) {
     onError(error);
   }
