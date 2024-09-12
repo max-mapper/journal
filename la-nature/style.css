@@ -2,6 +2,19 @@
   width: 400px;
 }
 
+#header {
+  margin-top: 25px;
+}
+
+#header h1,
+#header h3 {
+  margin: 0;
+}
+
+.banner {
+  margin: 20px 0;
+}
+
 /*
  Helpers
 ----------------------
