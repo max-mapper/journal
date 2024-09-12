@@ -484,10 +484,10 @@ blockquote {
   margin-bottom: 10px;
 }
 #document h2 {
-  font-size: 20px;
+  font-size: 24px;
 }
 #document h3 {
-  font-size: 16px;
+  font-size: 22px;
 }
 .content-node.selected.text > .operations {
   background: #459fc9;
