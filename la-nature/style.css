@@ -15,6 +15,20 @@
   margin: 20px 0;
 }
 
+.banner em {
+  display: block;
+}
+
+#content > em {
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  clear: both;
+}
+
 /*
  Helpers
 ----------------------
@@ -529,7 +543,6 @@ code {
 }
 #document p {
   margin-bottom: 20px;
-  min-height: 22px;
 }
 #document ol {
   padding-left: 20px;
@@ -583,16 +596,30 @@ code {
 
 .item img {
   height: 600px;
-  display: block;
-  float: left;
   padding-right: 20px;
 }
 
 @media only screen and (min-device-width: 480px) {
   .item img {
     height: 300px;
-    display: block;
-    float: left;
     padding-right: 20px;
   }
+}
+
+#document .images p {
+  display: block;
+  float: left;
+  min-height: 591px;
+  margin-bottom: 0;
+}
+
+.images img {
+  margin-bottom: 0 !important;
+  margin-top: 10px;
+}
+
+.images em {
+  display: block;
+  text-decoration: none;
+  border-bottom: none;
 }
