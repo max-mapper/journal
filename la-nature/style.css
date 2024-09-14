@@ -321,6 +321,7 @@ div {
 }
 
 #document h2,
+.byline,
 h3,
 h4 {
   font-family: "Helvetica Neue";
@@ -501,7 +502,8 @@ blockquote {
 #document h2,
 #document h3,
 #document h4,
-#document h5 {
+#document h5,
+.byline {
   font-weight: normal;
   padding: 0;
   line-height: 1.6em;
@@ -518,7 +520,8 @@ blockquote {
   font-size: 24px;
   padding-top: 40px;
 }
-#document h3 {
+#document h3,
+.byline {
   font-size: 22px;
 }
 .content-node.selected.text > .operations {
