@@ -1,7 +1,3 @@
-#content img {
-  width: 400px;
-}
-
 #header {
   margin-top: 25px;
 }
@@ -9,18 +5,6 @@
 #header h1,
 #header h3 {
   margin: 0;
-}
-
-.banner {
-  margin: 20px 0;
-}
-
-.banner em {
-  display: block;
-}
-
-#content > em {
-  display: block;
 }
 
 h1,
@@ -84,7 +68,7 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-img {
+.images img {
   border: none;
   margin: 10px 0px;
 }
@@ -101,8 +85,8 @@ body {
 
 a {
   text-decoration: none;
-  color: #51483d;
-  border-bottom: 1px solid #ccc;
+  color: #435b27;
+  font-weight: bold;
   padding: 0 0 1px 0;
 }
 
@@ -146,10 +130,10 @@ h1 {
   font-size: 35px;
   line-height: 40px;
 }
+
 h2 {
   font-size: 120%;
   padding-bottom: 15px;
-  padding-top: 20px;
 }
 
 svg {
@@ -493,9 +477,11 @@ blockquote {
 }
 #document h1 {
   counter-reset: sub-section;
-  font-size: 30px;
+  font-size: 34px;
+  margin-bottom: 12px;
 }
 #document h2 {
+  font-size: 24px;
   counter-reset: composite;
 }
 
@@ -507,7 +493,6 @@ blockquote {
 .byline {
   font-weight: normal;
   padding: 0;
-  line-height: 1.6em;
 }
 #document .edit h1,
 #document .edit h2,
@@ -516,10 +501,6 @@ blockquote {
   margin-top: 0px;
   padding-bottom: 10px;
   margin-bottom: 10px;
-}
-#document h2 {
-  font-size: 24px;
-  padding-top: 40px;
 }
 #document h3,
 .byline {
@@ -616,19 +597,38 @@ code {
 }
 
 #document .images p {
-  display: block;
-  float: left;
   min-height: 591px;
   margin-bottom: 0;
+  padding-right: 10px;
+}
+
+.images {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .images img {
   margin-bottom: 0 !important;
   margin-top: 10px;
+  height: 533px;
 }
 
-.images em {
+.images em,
+.images a {
   display: block;
   text-decoration: none;
-  border-bottom: none;
+}
+
+#content {
+  margin-top: 20px;
+}
+
+.banner em {
+  display: block;
+}
+
+#content > em {
+  display: block;
 }
