@@ -106,6 +106,10 @@ a {
   padding: 0 0 1px 0;
 }
 
+a:has(img) {
+  margin-right: 15px;
+}
+
 a:hover {
   color: #000;
   border-bottom: 1px solid #999;
@@ -512,6 +516,7 @@ blockquote {
 }
 #document h2 {
   font-size: 24px;
+  padding-top: 40px;
 }
 #document h3 {
   font-size: 22px;
