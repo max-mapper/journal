@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Mapping LA Plant Diversity</title>
+
+    <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <html>
+    <body>
+      <div id="document">
+        <div id="header">
+          <h1 class="subtitle">Mapping LA Plant Diversity</h1>
+          <p class="byline">Max Yasuda, 2024</p>
+        </div>
+
+        <!-- prettier-ignore -->
+        <div id="content">
+I was asked by some members of the California Native Plant Society (CNPS) San Gabriel Mountains chapter (of which I am a member) to create some maps showing potential areas to go on hikes or field trips to see interesting plants in LA County and came up with two approaches.
+
+### Observation Density
+
+The first aproach is a heatmap of all research grade CA native plant taxa observations for LA County from iNaturalist. 
+
+[View the interactive map here.](https://jumear.github.io/stirfry/iNat_map.html?view=heatmap&place_id=962&project_id=calflora-native-plants-of-california&quality_grade=research&subview=map)
+
+<div class="images">
+
+![An image from a map showing that Altadena is surrounded by native plant observations](../altadena.jpg)
+*Example of above map showing that Altadena is surrounded by native plant observations*
+
+</div>
+
+The mapping tool is created by a member of the iNaturalist forums. You can take any search from the iNaturalist Explore page (in this case https://www.inaturalist.org/observations?place_id=962&project_id=calflora-native-plants-of-california&quality_grade=research&subview=map) and take everything after the ? and paste it into the url of the below link and it will show it as a heat map rather than points. You can change the URL of the above map with any iNaturalist parameters like e.g. showing a different Genus or Project ID on the fly, which lets you you do more targeted searches for whatever you're looking for.
+
+The project I am using to filter native plants on iNaturalist is one I created last year with a lot of work. You can read about it here: https://www.inaturalist.org/journal/maxo/79403-california-native-invasive-endangered-and-special-species-on-inaturalist. As you can see, you can change to e.g. only [CRPR](https://rareplants.cnps.org/) listed observations (non obscured of course) by switching to a different project from my list.
+
+There are two big caveats to using iNaturalist in this way, one is observer bias (observations are weighted heavily towards popular areas where humans visit with cameras) and the other is the obscuring of rare taxa.
+
+### Species Density
+
+The above map shows observation density, but another way to look at biodiversity is species density. To play around with this, I just whipped up a map using [QGIS](https://qgis.org/) and [this tutorial](https://www.youtube.com/watch?v=ETk1pbGTen0) showing [Kingdom: Plantae observations from GBIF](https://www.gbif.org/occurrence/download/0020325-240906103802322) (which includes most of iNat plus more) from LA County, around ~350,000 observations (I don't have an easy way right now to filter native plants out of GBIF). The map shows the number of unique species in each hex tile.
+
+Species density maps are a cool idea, but the data in LA county is weighted heavily towards trails and roads due to steep, rugged terrain so as you can see most of the San Gabriel Mountains have very low species counts despite having a high biodiversity (hence the need for a comprehensive vegetation mapping initiative here).
+
+[*Download LA County PDF here*](../la-county-plant-species-density-small.pdf)
+
+<div class="images">
+
+![An image from a map showing Plant species per hex grid on Catalina island](../catalina.jpg)
+*Plant species per hex grid on Catalina island*
+
+![An image from a map showing Plant species per hex grid on Catalina island](../la-density.jpg)
+*Plant species per hex grid on Catalina island*
+
+</div>
+
+```
+GBIF.org (17 September 2024) GBIF Occurrence Download https://doi.org/10.15468/dl.yrmbgg
+```
+
+<p xmlns:cc="http://creativecommons.org/ns#" >This work by <span property="cc:attributionName">Max Yasuda</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC 4.0&nbsp;<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>*
+
+</div>
+      </div>
+      <script src="../js/marked.min.js"></script>
+      <script src="../js/medium-zoom.min.js"></script>
+      <script>
+        var content = document.getElementById("content");
+        content.innerHTML = marked.parse(content.innerHTML);
+
+        // copy 'alt' to 'title'
+        var images = document.getElementsByTagName("img");
+        var numImages = images.length;
+        for (i = 0; i < numImages; i++) {
+          images[i].title = images[i].alt;
+        }
+
+        // set target blank on links
+        var as = document.getElementsByTagName("a");
+        var numAs = as.length;
+        for (i = 0; i < numAs; i++) {
+          as[i].target = "_blank;";
+        }
+
+        // click to zoom images
+        mediumZoom(document.querySelectorAll(".images img"));
+        mediumZoom(document.querySelectorAll(".banner img"));
+      </script>
+    </body>
+  </html>
+</html>
