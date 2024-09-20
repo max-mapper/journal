@@ -24,12 +24,12 @@ As part of a project I'm working on to map native plant species, I needed a list
 
 The first authority I'll mention is iNaturalist, who runs their own taxonomy system. They actually track which species are native under the ["Establishment Means"](https://www.inaturalist.org/taxa/51089-Quercus-wislizeni) section for a species, but unfortunately they do not provide a way to search or filter observations by where they are native to.
 
-To figure out how many plants in California are marked as Native, one has to export all [`Plantae` observations from GBIF](https://www.gbif.org/occurrence/download/0020325-240906103802322) and filter through the massive dataset. I happened to have a copy of Plantae for LA County already downloaded, so I analyzed the ~350,000 observations in that to produce this chart of how many plant taxa have Establishment Means.
+To figure out how many plants in California are marked as Native, one has to export all `Plantae` observations from GBIF and filter through the massive dataset. I happened to have a copy of [Plantae for LA County](https://www.gbif.org/occurrence/download/0020325-240906103802322) already downloaded, so I analyzed the ~350,000 observations in that to produce this chart of how many plant taxa have Establishment Means. Since this data comes from GBIF, some of these observations with establishment means come from herbariums etc and not iNaturalist, but 80% of observations come from iNaturalist.
 
 <div class="images">
 
-![A pie chart of LA native plant proportions on iNat](../inat-la.jpg)
-*iNaturalist LA County Establishment Means (Taxa)*
+![A pie chart of LA plant proportions on GBIF](../inat-la.jpg)
+*GBIF (mostly iNaturalist data) LA County Establishment Means (Counted By Unique Taxa)*
 
 </div>
 
