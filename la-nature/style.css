@@ -1,5 +1,5 @@
 #header {
-  margin-top: 25px;
+  margin-top: 0px;
 }
 
 #header h1,
@@ -631,4 +631,8 @@ code {
 
 #content > em {
   display: block;
+}
+
+.pagetitle {
+  margin: 20px 0;
 }
