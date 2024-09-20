@@ -22,13 +22,24 @@ As part of a project I'm working on to map native plant species, I needed a list
 
 ### iNaturalist/POWO
 
-The first authority I'll mention is iNaturalist, who runs their own taxonomy system. They actually track which species are native under the ["Establishment Means"](https://www.inaturalist.org/taxa/51089-Quercus-wislizeni) section for a species, but unfortunately they do not provide a way to search or filter observations by where they are native to. I am not sure how many plants iNaturalist has marked as Native in this way, I would have to find a way to download all Establishment Means for all species to calculate that.
+The first authority I'll mention is iNaturalist, who runs their own taxonomy system. They actually track which species are native under the ["Establishment Means"](https://www.inaturalist.org/taxa/51089-Quercus-wislizeni) section for a species, but unfortunately they do not provide a way to search or filter observations by where they are native to.
+
+To figure out how many plants in California are marked as Native, one has to export all [`Plantae` observations from GBIF](https://www.gbif.org/occurrence/download/0020325-240906103802322) and filter through the massive dataset. I happened to have a copy of Plantae for LA County already downloaded, so I analyzed the ~350,000 observations in that to produce this chart of how many plant taxa have Establishment Means.
+
+<div class="images">
+
+![A pie chart of LA native plant proportions on iNat](../inat-la.jpg)
+*iNaturalist LA County Establishment Means (Taxa)*
+
+</div>
+
+For LA County, iNaturalist only has 1036 plant taxa marked as native, whereas Calflora for example has 3058 taxa. Even though this is only LA County, we can expect the statewide iNaturalist data to be similarly missing.So in summary iNaturalist's taxonomy system itself is not suitable for determining if a plant is native (At least in California), so we need to use another authority.
 
 The nice thing about iNaturalist's taxonomy system is they have a machine readable TaxonID for each taxon, and they also track name changes and synonyms for each taxon. This makes it great to work with as a software developer. 
 
 Even though iNaturalist doesn't have the ability to filter by native plants, a workaround is to create a Project, add your taxa to the project, and then use the project as a filter in your searches. You can read more about that [here](https://www.inaturalist.org/journal/maxo/79403-california-native-invasive-endangered-and-special-species-on-inaturalist).
 
-When talking about vascular plants on iNaturalist, they are based on [Kew Garden's POWO](https://powo.science.kew.org/) (Plants Of The World). This means if POWO doesn't recognize something as a species, then neither will iNaturalist.
+When talking about vascular plants on iNaturalist, they are based on [Kew Garden's POWO](https://powo.science.kew.org/) (Plants Of The World). This means if POWO doesn't recognize something as a species, then neither should iNaturalist.
 
 ### Calflora
 
