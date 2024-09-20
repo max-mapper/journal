@@ -20,6 +20,12 @@
         <div id="content">
 As part of a project I'm working on to map native plant species, I needed a list of California native plant species/taxa names. After going down the rabbit hole, it turns out there are multiple authorities on the topic, and each one has a different final count.
 
+### tl;dr
+
+The takeaway of this post is, depending on which list of California native plants you use, there are currently an upper bound of around 350 native plant taxa missing from iNaturalist. I’m not sure how many POWO treats as accepted taxa outright, but I imagine most are accepted synonyms that should at least get added into the Names table on iNaturalist. There are however a bunch of cases where POWO considers something a synonym, Calflora, Jepson etc consider it a distinct ssp. or var., and lumping it in as a synonym under the Name table on iNat may hurt the conservation outcome.
+
+Unfortunately coverage of the “Establishment Means” tag on taxa in California is quite low, only around (estimated) 1/3 of species are marked native. And these are using PlaceID 14 which is the state of California, not the California Floristic Province.
+
 ### iNaturalist/POWO
 
 The first authority I'll mention is iNaturalist, who runs their own taxonomy system. They actually track which species are native under the ["Establishment Means"](https://www.inaturalist.org/taxa/51089-Quercus-wislizeni) section for a species, but unfortunately they do not provide a way to search or filter observations by where they are native to.
