@@ -21,11 +21,11 @@
 
         <!-- prettier-ignore -->
         <div id="content">
-As part of a project I'm working on to map native plant species, I needed a list of California native plant species/taxa names. After going down the rabbit hole, it turns out there are multiple authorities on the topic, and each one has a different final count.
+As part of a project I'm working on to map native plant species, I needed a list of California native plant species/taxa names. After going down the rabbit hole, it turns out there are multiple authorities on the topic, and each one has a different final count. Note, for this post, only vascular plants are included.
 
 ### tl;dr
 
-The takeaway of this post is, depending on which list of California native plants you use, there are currently an upper bound of around 350 native plant taxa missing from iNaturalist. I’m not sure how many POWO treats as accepted taxa outright, but I imagine most are accepted synonyms that should at least get added into the Names table on iNaturalist. There are however a bunch of cases where POWO considers something a synonym, Calflora, Jepson etc consider it a distinct ssp. or var., and lumping it in as a synonym under the Name table on iNat may hurt the conservation outcome.
+The takeaway of this post is, depending on which list of California native plants you use, there are currently an upper bound of around 100 native vascular plant taxa missing from iNaturalist. I’m not sure how many POWO treats as accepted taxa outright, but I imagine most are accepted synonyms that should at least get added into the Names table on iNaturalist. There are however a bunch of cases where POWO considers something a synonym, Calflora, Jepson etc consider it a distinct ssp. or var., and lumping it in as a synonym under the Name table on iNat may hurt the conservation outcome.
 
 Unfortunately coverage of the “Establishment Means” tag on taxa in California is quite low, only around (estimated) 1/3 of species are marked native. And these are using PlaceID 14 which is the state of California, not the California Floristic Province.
 
@@ -52,7 +52,7 @@ When talking about vascular plants on iNaturalist, they are based on [Kew Garden
 
 ### Calflora
 
-The next authority is Calflora, who recognizes (as of this blog post) [9124](https://www.calflora.org/entry/advanced.html#active=1&nstatus=2&cols=0,10,1,2,4&srch=t) native plant species in California. 9124 makes it the largest list of California Native Plant taxa.
+The next authority is Calflora, who recognizes (as of this blog post) [8195](https://www.calflora.org/entry/advanced.html#active=1&nstatus=2&cat=ov&cols=0,10,1,2,4&srch=t) native vascular plant species in California. 8195 makes it the largest list of California Native Plant taxa.
 
 <div class="images">
 
@@ -74,7 +74,7 @@ Jepson also publishes [a list of plant taxa Native to California](https://ucjeps
 
 ### Burge et al. 2016
 
-Finally, in the 2016 paper ["Plant Diversity and Endemism in the California Floristic Province"](https://www.researchgate.net/publication/302633705_PLANT_DIVERSITY_AND_ENDEMISM_IN_THE_CALIFORNIA_FLORISTIC_PROVINCE), Burge and the other authors made the "first attempt at a comprehensive list of the native and endemic plants of the CFP", but that "it is by no means a final or perfect list". [Their list](https://datadryad.org/stash/dataset/doi:10.5061/dryad.d4g4n) comes in at 7880 taxa.
+Finally, in the 2016 paper ["Plant Diversity and Endemism in the California Floristic Province"](https://www.researchgate.net/publication/302633705_PLANT_DIVERSITY_AND_ENDEMISM_IN_THE_CALIFORNIA_FLORISTIC_PROVINCE), Burge and the other authors made the "first attempt at a comprehensive list of the native and endemic plants of the CFP", but that "it is by no means a final or perfect list". [Their list](https://datadryad.org/stash/dataset/doi:10.5061/dryad.d4g4n) comes in at 6514 vascular plant taxa (although the paper mentions 6,143 vascular minimum rank taxa, so I'm not sure why there's a discrepancy).
 
 ### Comparing to iNaturalist
 
@@ -90,316 +90,31 @@ I also included the [California Rare Plant Rankings (CRPR)](https://rareplants.c
 
 The last tab in the spreadsheet, `MissingFromiNat`, has a list of all species that iNaturalist does not recognize. I'll include them here for sake of completeness.
 
-### Species in Burge et al. 2016 missing from iNaturalist
+### Species missing from iNaturalist
+
+For a breakdown by data source see the above linked spreadsheet.
 
 ```
-Agoseris ×dasycarpa
-Allium lacunosum var. kernense
-Antirrhinum pusillum
-Aristida schiedeana var. orcuttiana
-Barbula commutata
-Bazzania denundata
-Brachytheciastrum fendleri
-Brickellia subsessilis
-Bucklandiella lawtonae
-Calypogeia mulleriana
-Calypogeia nessiana
-Castilleja applegatei subsp. martinii
-Chylismia cardiophylla subsp. cedrosensis
-Cimicifuga elata var. alpestris
-Codonoblepharon minutum
-Codriophorus norrisii
-Coscinodon arctolimnius subsp. higuchii
-Descurainia incisa subsp. viscosa
-Drepanocladus polycarpos
-Eleocharis acicularis var. gracilescens
-Eleocharis acicularis var. occidentalis
-Eleocharis engelmannii var. detonsa
-Eriastrum brandegeeae
-Erigeron foliosus var. mendocinus
-Eriogonum elongatum var. vollmeri
-Eriogonum inerme var. hispidulum
-Eriogonum microthecum var. corymbosoides
-Eriogonum microthecum var. johnstonii
-Eriogonum microthecum var. lacus-ursi
-Eriogonum wrightii var. taxifolium
-Eucephalus glabratus
-Euphorbia benedicta
-Ferocactus fordii var. grandiflorus
-Fontinalis chrysophylla
-Funaria convexa
-Gemmabryum gemmiferum
-Gemmabryum tenuisetum
-Gilia achilleifolia subsp. abrotanifolia
-Githopsis pulchella var. glabra
-Grimmia shastae
-Harfordia macroptera var. fruticosa
-Harfordia macroptera var. galioides
-Heterotheca brandegeei
-Heterotheca oregona var. rudis
-Homalothecium californicum
-Horkelia californica var. frondosa
-Ivesia argyrocoma var. moranii
-Kurtzia sylvatica
-Lophocolea hetereophylla
-Malacothrix insularis
-Mammillaria goodridgii var. rectispina
-Mesoptychia polymorpha
-Mielichhoferia mielichoferiana
-Myosurus apetalus var. borealis
-Nama densa var. parviflora
-Noccaea fendleri subsp. siskiyouense
-Orthotrichum columbianum
-Pellia nessiana
-Phacelia malvifolia var. loasifolia
-Phacelia umbrosa
-Reboulia hemispherica
-Rosulabryum elegans
-Rosulabryum flaccidum
-Scapania parvifolia var. grandiretis
-Sciurohypnum hylotapetum
-Sciurohypnum oedipodium
-Sciurohypnum plumosum
-Sciurohypnum populeum
-Sciurohypnum starkii
-Scouleria siskiyouensis
-Sedum obtusatum subsp. boreale
-Sedum obtusatum subsp. retusum
-```
-
-### Species in the CRPR (CNPS Rare Plants) missing from iNaturalist
-
-```
-Acer glabrum ssp. siskiyouense
-Acnatherum scribneri
-Aconogonon davisiae var. glabrum
-Aconogonon phytolaccifolium var. glabrum
-Agrostis clivicola var. clivicola
-Agrostis clivicola var. punta-reyesensis
-Allium monticola var. keckii
-Aquilegia formosa var. hypolasia
-Arabis breweri var. austinae
-Arabis davidsonii var. parva
-Arabis serpentinicola
-Arctostaphylos bowermaniae
-Arctostaphylos glandulosa ssp. zacaensis
-Arctostaphylos intricata var. intricata
-Arctostaphylos intricata var. oblongifolia
-Arctostaphylos pseudopungens
-Arctostaphylos pungens ssp. chaloneorum
-Arctostaphylos serpenticola
-Arctostaphylos sp. nov. 1
-Arctostaphylos uva-ursi ssp. monoensis
-Arctostaphylos uva-ursi var. marinensis
-Arenaria kingii ssp. compacta
-Aster siskiyouensis
-Atriplex gypsophila
-Atriplex natrophila
-Boerhavia annulata
-Brickellia arguta var. odontolepis
-Cakile edentula ssp. californica
-Calochortus coeruleus var. nanus
-Calochortus elegans var. oreophyllus
-Calochortus nudus var. shastensis
-Calochortus venustus var. sanguineus
-Calycadenia truncata ssp. microcephala
-Camissonia tanacetifolia ssp. quadriperforata
-Cardamine "marmorata"
-Carex paucifructus
-Castilleja arachnoidea ssp. shastensis
-Castilleja culbertsonii
-Castilleja payneae
-Castilleja pilosa ssp. jusselii
-Castilleja psittacina
-Caulanthus heterophyllus var. pseudosimulans
-Ceanothus arboreus var. glaber
-Ceanothus cuneatus var. decumbens
-Ceanothus griseus var. horizontalis
-Ceanothus megacarpus var. pendulus
-Ceanothus prostratus var. laxus
-Cerastium beeringianum var. capillare
-Chamaesyce ocellata var. kirbyi
-Cheilanthes clokeyi
-Cheilanthes fibrillosa
-Chorizanthe staticoides ssp. chrysacantha
-Chorizanthe staticoides var. compacta
-Chrysothamnus parryi ssp. bolanderi
-Cirsium walkerianum
-Clarkia mosquinii ssp. xerophila
-Clarkia rubicunda ssp. blasdalei
-Clarkia temblorensis ssp. longistyla
-Clarkia tembloriensis ssp. longistyla
-Claytonia spathulata var. rosulata
-Cordylanthus ferrisianus
-Coscinodon arctolimnius ssp. higuchii
-Cuscuta brachycalyx var. apodanthera
-Cuscuta suksdorfii var. subpedicellata
-Cylindropuntia xtetracantha
-Deinandra increscens ssp. foliosa
-Dendriscocaulon intriculatum
-Draba crassifolia var. nevadensis
-Draba douglasii var. crockeri
-Draba nivalis var. elongata
-Draba stenoloba var. ramosa
-Drosera xhybrida
-Dudleya cymosa ssp. gigantea
-Eleocharis obtusa var. engelmannii
-Elodea brandegeae
-Engellaria obtusa
-Eriastrum brandegeeae
-Erigeron flexuosus
-Erigeron inornatus var. reductus
-Eriogonum deflexum var. rectum
-Eriogonum inerme var. hispidulum
-Eriogonum kearneyi var. kearneyi
-Eriogonum microthecum var. corymbosoides
-Eriogonum microthecum var. johnstonii
-Eriogonum microthecum var. lacus-ursi
-Eriogonum parvifolium var. lucidum
-Eriogonum parvifolium var. paynei
-Eriophyllum lanatum var. aphanactis
-Erysimum capitatum var. bealianum
-Erythronium cliftonii
-Festuca californica ssp. hitchcockiana
-Forsellesia stipulifera
-Fraxinus trifoliata
-Fremontodendron californicum ssp. napensis
-Fremontodendron californicum ssp. obispoense
-Gentiana affinis var. parvidentata
-Gilia tetrabreccia
-Githopsis latifolia
-Gnaphalium zayantense
-Grindelia camporum var. parviflora
-Grindelia stricta ssp. blakei
-Habenaria elegans var. maritima
-Hackelia longituba
-Haplopappus parishii
-Haplopappus propinquus
-Hemizonia multicaulis ssp. multicaulis
-Hemizonia multicaulis ssp. vernalis
-Hesperolinon serpentinum
-Heterotheca sessiliflora var. bolanderoides
-Heterotheca sessiliflora var. sanjacintensis
-Heuchera pringlei
-Holocarpha obconica ssp. autumnalis
-Juncus bufonius var. congdonii
-Laphamia inyoensis
-Lasthenia minor ssp. maritima
-Layia chrysanthemoides ssp. maritima
-Layia ziegleri
-Lepidium fremontii var. stipitatum
-Lepidium montanum var. canescens
-Lepidium nitidum var. howellii
-Lepidospartum squamatum var. palmeri
-Leptodactylon californicum ssp. brevitrichomum
-Leptodactylon californicum ssp. glandulosum 
-Lessingia lemmonii var. peirsonii
-Lewisia cotyledon var. fimbriata
-Lewisia sierrae
-Linanthus floribundus ssp. glaber
-Linanthus harknessii ssp. condensatus
-Lithophragma rupicola
-Lotus neo-incanus
-Lotus procumbens var. jepsonii
-Ludwigia repens var. stipitata
-Machaeranthera ammophila
-Mahonia nervosa var. mendocinensis
-Marah macrocarpa var. major
-Mentzelia involucrata var. megalantha
-Mimulus guttatus ssp. arenicola
-Monardella diaboli
-Monardella scelerata
-Nemophila humifusa
-Nolina parryi ssp. wolfii
-Opuntia bigelovii var. hoffmannii
-Opuntia phaeacantha var. mojavensis
-Orobanche californica var. claremontensis
-Orobanche ludoviciana var. arenosa
-Orthocarpus purpurascens var. pallidus
-Oryzopsis kingii
-Panicum huachucae
-Panicum shastense
-Penstemon confusus ssp. patens
-Perityle megalocephala var. intricata
-Phacelia eisenii var. brandeegeeana
-Phlox azurea
-Plagiobothrys bracteatus var. aculeolatus
-Platanthera hyperborea var. purpurascens
-Plectritis eichleriana
-Plectritis jepsonii
-Pogogyne douglasii ssp. ramosa
-Pogogyne serpylloides ssp. intermedia
-Polygonum fusiforme
-Polygonum montereyense
-Potentilla hickmanii var. uliginosa
-Puccinellia californica
-Quercus dumosa var. kinselae
-Ranunculus alveolatus
-Ribes malvaceum var. clementinum
-Ribes viscosissimum var. hallii
-Rumex fueginus var. ovato-cordatus
-Salix parksiana
-Salvia columbariae var. ziegleri
-Schoenolirion bracteosum
-Senecio clevelandii var. heterophyllus
-Sidalcea malvaeflora ssp. elegans
-Silene hookeri ssp. pulverulenta
-Silene occidentalis ssp. longistipitata
-Stephanomeria pauciflora var. parishii
-Streptanthus morrisonii ssp. hirtiflorus
-Streptanthus morrisonii ssp. kruckebergii
-Streptanthus tortuosus var. flavescens 
-Streptanthus tortuosus var. suffrutescens
-Trifolium minutissimum
-Triphysaria versicolor ssp. faucibarbara
-Umbellularia californica var. fresnensis
-Viola adunca var. kirkii
-Zigadenus fremontii var. inezianus
-```
-
-### Species in Calflora missing from iNaturalist
-
-```
-Achnatherum Xbloomeri
 Acmispon tomentosus var. glabriusculus
-Adiantum Xtracyi
-Agoseris Xdasycarpa
-Agoseris Xelata
-Allium lacunosum var. kernense
-Ambrosia Xplatyspina
 Amsinckiopsis kingii var. harknessii
-Archidium crassicostatum
-Arctostaphylos Xbenitoensis
-Arctostaphylos Xcampbelliae
-Arctostaphylos Xcinerea
-Arctostaphylos Xlaxiflora
-Atractylocarpus flagellaceus
-Aulocomnium androgynum
-Aulocomnium palustre
-Balsamorhiza Xterebinthacea
-Barbula commutata
-Brachytheciastrum fendleri
+Antirrhinum pusillum
+Arctostaphylos campbelliae
+Aristida schiedeana var. orcuttiana
+Atriplex gypsophila
 Brickellia californica var. jepsonii
+Brickellia subsessilis
 Bromus sitchensis var. maritimus
 Bromus sitchensis var. polyanthus
-Bucklandiella lawtonae
-Calliergonellopsis dieckii
-Camplyostelium laegerae
 Carex norvegica ssp. inferalpina
 Castilleja applegatei ssp. martinii
-Cheilanthes Xfibrillosa
-Cheilanthes Xparishii
+Cheilanthes fibrillosa
+Cheilanthes parishii
 Chenopodium album var. stevensii
+Chylismia cardiophylla subsp. cedrosensis
+Cimicifuga elata var. alpestris
 Cleomella oxystyloides
-Codonoblepharon minutum
-Codriophorus norrisii
 Collinsia sparsiflora var. bruceae
-Coscinodon arctolimnius ssp. higuchii
-Cosinodon arctolimnius ssp. higuchii
-Dannorrisia bigelovii
 Descurainia pinnata ssp. intermedia
-Dichelostemma Xvenustum
-Donrichardsia pringlei
 Downingia ornatissima var. mirabilis
 Drepanocladus polycarpos
 Eleocharis acicularis var. gracilescens
@@ -408,30 +123,29 @@ Eleocharis engelmannii var. detonsa
 Elymus elymoides ssp. hordeoides
 Elymus elymoides var. hordeoides
 Engellaria obtusa
-Equisetum Xferrissii
 Eriastrum brandegeeae
 Eriastrum sapphirinum ssp. ambiguum
 Erigeron foliosus var. mendocinus
+Eriogonum blissianum
+Eriogonum elongatum var. vollmeri
 Eriogonum inerme var. hispidulum
 Eriogonum microthecum var. corymbosoides
 Eriogonum microthecum var. johnstonii
 Eriogonum microthecum var. lacus-ursi
-Eriogonum Xblissianum
+Eriogonum wrightii var. taxifolium
 Eriophyllum lanatum var. aphanactis
 Eucephalus glabratus
-Fontinalis chrysophylla
-Gemmabryum demartianum
-Gemmabryum gemmiferum
-Gemmabryum tenuisetum
+Ferocactus fordii var. grandiflorus
 Gentiana affinis var. parvidentata
-Gertrudiella nevadensis
+Gilia achilleifolia subsp. abrotanifolia
 Githopsis pulchella var. glabra
-Gracilariopsis chorda
+Harfordia macroptera var. fruticosa
+Harfordia macroptera var. galioides
+Heterotheca brandegeei
 Heterotheca oregona var. rudis
 Hierochloe hirta ssp. arctica
-Homalothecium californicum
 Horkelia californica var. frondosa
-Koponeniella bolanderi
+Ivesia argyrocoma var. moranii
 Laphamia intricata
 Laphamia inyoensis
 Laphamia megalocephala
@@ -443,49 +157,30 @@ Lipocarpha aristulata
 Lupinus holmgrenianus
 Lupinus littoralis var. variicolor
 Lupinus odoratus var. pilosellus
-Lupinus Xcymba-egressus
-Lupinus Xinyoensis
+Malacothrix insularis
+Mammillaria goodridgii var. rectispina
 Mesoptychia polymorpha
 Mirabilis laevis var. cedrosensis
 Myosurus apetalus var. borealis
 Nama densa var. parviflora
-Nardia unispiralis
+Noccaea fendleri subsp. siskiyouense
 Orobanche ludoviciana var. arenosa
 Panicum alatum var. longiflorum
-Pellaea Xglaciogena
-Penstemon Xdubius
-Penstemon Xparishii
-Penstemon Xpeirsonii
+Pellaea glaciogena
 Phacelia malvifolia var. loasifolia
 Phacelia umbrosa
-Philonotis brevifolia
 Pityopus californica
 Planodes virginica
-Platyhypnum bestii
 Polycarpon tetraphyllum ssp. depressum
 Potentilla millefolia var. klamathensis
 Potentilla norrelmukana
 Prunus subcordata var. kelloggii
-Pseudo-calliergon angustifolium
-Ptychostomum nitidulum
-Quercus Xewanii
-Quercus Xganderi
-Quercus Xjolonensis
-Quercus Xmacdonaldii
-Quercus Xmorehus
-Rectithecium piliferum
 Rhododendron occidentale var. paludosum
-Rosulabryum elegans
-Rosulabryum flaccidum
-Salvia Xbernardina
-Salvia Xpalmeri
-Sciuro-hypnum starkii
-Scouleria siskiyouensis
+Sedum obtusatum subsp. boreale
+Sedum obtusatum subsp. retusum
 Senecio clevelandii var. heterophyllus
 Silene occidentalis ssp. longistipitata
-Solenostoma orientale
-Spiranthes Xsierrae
-Spiranthes Xstellata
+Spergularia macrotheca var. talinum
 Streptanthus glandulosus ssp. arkii
 Streptanthus glandulosus ssp. raichei
 Streptanthus morrisonii ssp. hirtiflorus
@@ -494,58 +189,14 @@ Streptanthus tortuosus var. foliosus
 Streptanthus tortuosus var. oblongus
 Streptanthus tortuosus var. optatus
 Streptanthus tortuosus var. pallidus
+Thalictrum fendleri var. quadrinervatum
 Thysanocarpus curvipes ssp. longistylus
-Torrentaria aquatica
-Torrentaria riparioides
-Torreyostellaria jamesiana
-Trichostomopsis revoluta
-Trifolium appendiculatum
-Trochophyllohypnum circinale
-Ulva clathratioides
-```
-
-### Species in Jepson missing from iNaturalist
-
-```
-Acmispon tomentosus var. glabriusculus
-Allium lacunosum var. kernense
-Amsinckiopsis kingii var. harknessii
-Bromus sitchensis var. maritimus
-Bromus sitchensis var. polyanthus
-Castilleja applegatei subsp. martinii
-Cleomella oxystyloides
-Downingia ornatissima var. mirabilis
-Eleocharis acicularis var. gracilescens
-Eleocharis acicularis var. occidentalis
-Eleocharis engelmannii var. detonsa
-Engellaria obtusa
-Eriastrum sapphirinum subsp. ambiguum
-Erigeron foliosus var. mendocinus
-Eriogonum inerme var. hispidulum
-Githopsis pulchella var. glabra
-Heterotheca oregona var. rudis
-Horkelia californica var. frondosa
-Laphamia intricata
-Laphamia inyoensis
-Laphamia megalocephala
-Laphamia megalocephala var. megalocephala
-Laphamia megalocephala var. oligophylla
-Lipocarpha aristulata
-Lupinus littoralis var. variicolor
-Myosurus apetalus var. borealis
-Nama densa var. parviflora
-Phacelia malvifolia var. loasifolia
-Phacelia umbrosa
-Polycarpon tetraphyllum subsp. depressum
-Streptanthus glandulosus subsp. arkii
-Streptanthus glandulosus subsp. raichei
-Streptanthus tortuosus var. foliosus
-Streptanthus tortuosus var. oblongus
-Streptanthus tortuosus var. optatus
-Streptanthus tortuosus var. pallidus
+Thysanocarpus curvipes subsp. amplectans
 Thysanocarpus curvipes subsp. longistylus
 Torreyostellaria jamesiana
+Tragia nepetifolia var. dissecta
 Trifolium appendiculatum
+Xylonagra arborea subsp. wigginsii
 ```
 
 <p xmlns:cc="http://creativecommons.org/ns#" >This work by <span property="cc:attributionName">Max Yasuda</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC 4.0&nbsp;<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>*
