@@ -79,7 +79,7 @@
       .sidebar {
         transition: transform 1s;
         z-index: 1;
-        width: 600px;
+        width: 400px;
         height: 100%;
       }
 
@@ -169,7 +169,7 @@
 
       @media (min-width: 480px) {
         .sidebar {
-          width: 600px;
+          width: 400px;
           height: 100%;
         }
       }
@@ -218,7 +218,7 @@ The observations are split into a grid. Click on a grid square to learn more abo
           // Remove the 'collapsed' class from the class list of the element, this sets it back to the expanded state.
           classes.splice(classes.indexOf("collapsed"), 1);
 
-          padding[id] = 600; // In px, matches the width of the sidebars set in .sidebar CSS class
+          padding[id] = 400; // In px, matches the width of the sidebars set in .sidebar CSS class
           map.easeTo({
             padding,
             duration: 1000, // In ms, CSS transition duration property for the sidebar matches this value
@@ -257,7 +257,7 @@ The observations are split into a grid. Click on a grid square to learn more abo
         map.addSource("inat", {
           type: "raster",
           tiles: [
-            "https://tiles.inaturalist.org/v1/grid/{z}/{x}/{y}.png?verifiable=true&place_id=962&project_id=calflora-native-plants-of-california&style=geotilegrid&tile_size=256",
+            "https://tiles.inaturalist.org/v1/grid/{z}/{x}/{y}.png?verifiable=true&place_id=962&project_id=calflora-native-plants-of-california&geoprivacy=open&style=geotilegrid&tile_size=256",
           ],
         });
 
@@ -415,7 +415,7 @@ The observations are split into a grid. Click on a grid square to learn more abo
           });
           var rect = e.features[0].geometry.coordinates[0];
           var species = await getSpecies(rect);
-          var iNatExplore = `https://www.inaturalist.org/observations?verifiable=true&spam=false&project_id=calflora-native-plants-of-california&quality_grade=research&swlng=${rect[3][0]}&swlat=${rect[3][1]}&nelng=${rect[1][0]}&nelat=${rect[1][1]}&locale=en&preferred_place_id=14`;
+          var iNatExplore = `https://www.inaturalist.org/observations?verifiable=true&spam=false&project_id=calflora-native-plants-of-california&geoprivacy=open&quality_grade=research&swlng=${rect[3][0]}&swlat=${rect[3][1]}&nelng=${rect[1][0]}&nelat=${rect[1][1]}&locale=en&preferred_place_id=14`;
 
           var content = document.querySelector(".content");
           var tmp = "";
