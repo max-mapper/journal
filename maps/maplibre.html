@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add a GeoJSON polygon</title>
+    <meta
+      property="og:description"
+      content="Style a polygon with the fill layer type."
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@4.7.0/dist/maplibre-gl.css"
+    />
+    <script src="https://unpkg.com/maplibre-gl@4.7.0/dist/maplibre-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body,
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      const map = new maplibregl.Map({
+        container: "map",
+        style:
+          "https://api.maptiler.com/maps/outdoor/style.json?key=VK9en7fqcN8VTzfv5LVe",
+        center: [-118.2094, 34.2303],
+        zoom: 9,
+        hash: true,
+      });
+
+      map.on("load", async () => {
+        map.addSource("inat", {
+          type: "raster",
+          tiles: [
+            "https://tiles.inaturalist.org/v1/grid/{z}/{x}/{y}.png?verifiable=true&place_id=962&project_id=calflora-native-plants-of-california&style=geotilegrid&tile_size=256",
+          ],
+        });
+
+        map.addLayer({
+          id: "inat-raster",
+          type: "raster",
+          source: "inat",
+          paint: {
+            "raster-opacity": 0.7,
+          },
+        });
+      });
+
+      map.on("load", async () => {
+        const url = "./lagrid.json";
+        var json;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          json = await response.json();
+        } catch (error) {
+          console.error(error.message);
+        }
+
+        map.addSource("grid", {
+          type: "geojson",
+          data: json,
+        });
+
+        map.addLayer({
+          id: "outline",
+          type: "line",
+          source: "grid",
+          layout: {},
+          paint: {
+            "line-color": "#828282",
+            "line-width": 2,
+          },
+        });
+
+        map.addLayer({
+          id: "poi-labels",
+          type: "symbol",
+          source: "grid",
+          layout: {
+            "text-field": ["get", "gridID"],
+            "text-size": 14,
+          },
+          paint: {
+            "text-halo-color": "#fff",
+            "text-halo-width": 2,
+          },
+        });
+      });
+
+      map.on("load", async () => {
+        const url = "./lacountyboundary.json";
+        var json;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          json = await response.json();
+        } catch (error) {
+          console.error(error.message);
+        }
+        map.addSource("county", {
+          type: "geojson",
+          data: json,
+        });
+        map.addLayer({
+          id: "countyborder",
+          type: "line",
+          source: "county",
+          layout: {},
+          paint: {
+            "line-color": "#80a868",
+            "line-width": 3,
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
