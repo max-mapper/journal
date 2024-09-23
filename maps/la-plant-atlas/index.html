@@ -83,6 +83,10 @@
         height: 100%;
       }
 
+      .sidebar-content {
+        overflow: scroll;
+      }
+
       .content {
         padding: 20px;
       }
@@ -111,6 +115,50 @@
       .left.collapsed {
         transform: translateX(-595px);
       }
+
+      .loader {
+        width: 175px;
+        height: 80px;
+        display: block;
+        margin: auto;
+        background-image: radial-gradient(
+            circle 25px at 25px 25px,
+            #ededed 100%,
+            transparent 0
+          ),
+          radial-gradient(circle 50px at 50px 50px, #ededed 100%, transparent 0),
+          radial-gradient(circle 25px at 25px 25px, #ededed 100%, transparent 0),
+          linear-gradient(#ededed 50px, transparent 0);
+        background-size: 50px 50px, 100px 76px, 50px 50px, 120px 40px;
+        background-position: 0px 30px, 37px 0px, 122px 30px, 25px 40px;
+        background-repeat: no-repeat;
+        position: relative;
+        box-sizing: border-box;
+      }
+      .loader::after {
+        content: "";
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: 20px;
+        position: absolute;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 5px solid transparent;
+        border-color: #ff3d00 transparent;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -124,6 +172,9 @@
 This is a map of observations from iNaturalist from within Los Angeles county of vascular plant species native to California.
 
 The observations are split into a grid. Click on a grid square to learn more about that grid.
+
+<p xmlns:cc="http://creativecommons.org/ns#" >This work by <span property="cc:attributionName">Max Yasuda</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC 4.0&nbsp;<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>*
+
 </div>
         </div>
       </div>
@@ -301,7 +352,7 @@ The observations are split into a grid. Click on a grid square to learn more abo
         map.getCanvas().style.cursor = "pointer";
         if (e.features.length > 0) {
           var content = document.querySelector(".content");
-          content.innerHTML = marked.parse(content.innerHTML);
+          content.innerHTML = marked.parse('<span class="loader"></span>');
 
           if (polygonID) {
             map.removeFeatureState({
@@ -336,8 +387,10 @@ The observations are split into a grid. Click on a grid square to learn more abo
             zoom: 12.5,
             //respect to prefers-reduced-motion
           });
+          var rect = e.features[0].geometry.coordinates[0];
+          var species = await getSpecies(rect);
+          var iNatExplore = `https://www.inaturalist.org/observations?verifiable=true&spam=false&project_id=calflora-native-plants-of-california&quality_grade=research&swlng=${rect[3][0]}&swlat=${rect[3][1]}&nelng=${rect[1][0]}&nelat=${rect[1][1]}&locale=en&preferred_place_id=14`;
 
-          var species = await getSpecies(e.features[0].geometry.coordinates[0]);
           console.log(species);
           var content = document.querySelector(".content");
           var tmp = "";
@@ -345,7 +398,7 @@ The observations are split into a grid. Click on a grid square to learn more abo
           tmp += `
 #### Grid #${polygonID}
 
-Species count: ${species.total_results}
+Species count: ${species.total_results} (<a href="${iNatExplore}" target="_blank">View on iNaturalist</a>)
 
 `
           var list = species.results;
@@ -355,7 +408,7 @@ Species count: ${species.total_results}
           list.forEach((s) => {
             // prettier-ignore
             tmp += `
-- ![](${s.taxon.default_photo.square_url}) ${s.taxon.preferred_common_name} (*${s.taxon.name}*)
+- ${s.taxon.preferred_common_name} (*${s.taxon.name}*)
 `
           });
           content.innerHTML = marked.parse(tmp);
@@ -393,6 +446,7 @@ Species count: ${species.total_results}
 
       var getSpecies = async function (rect) {
         var url = `https://api.inaturalist.org/v1/observations/species_counts?verifiable=true&spam=false&project_id=calflora-native-plants-of-california&quality_grade=research&swlng=${rect[3][0]}&swlat=${rect[3][1]}&nelng=${rect[1][0]}&nelat=${rect[1][1]}&locale=en&preferred_place_id=14&per_page=500`;
+
         var json;
         try {
           const response = await fetch(url);
