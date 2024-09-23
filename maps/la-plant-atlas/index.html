@@ -197,11 +197,13 @@ The observations are split into a grid. Click on a grid square to learn more abo
       const map = new maplibregl.Map({
         container: "map",
         style:
-          "https://api.maptiler.com/maps/outdoor/style.json?key=VK9en7fqcN8VTzfv5LVe",
+          "https://api.maptiler.com/maps/hybrid/style.json?key=VK9en7fqcN8VTzfv5LVe",
         center: [-118.2094, 34.2303],
         zoom: 9,
         hash: true,
       });
+
+      map.addControl(new maplibregl.FullscreenControl());
 
       let hoveredGridID = null;
 
@@ -237,6 +239,16 @@ The observations are split into a grid. Click on a grid square to learn more abo
       }
 
       map.on("load", async () => {
+        map.addSource("terrain", {
+          type: "raster-dem",
+          url: "https://api.maptiler.com/tiles/terrain-rgb-v2/tiles.json?key=VK9en7fqcN8VTzfv5LVe",
+        });
+
+        map.setTerrain({
+          source: "terrain",
+          exagerration: 2.5,
+        });
+
         var content = document.querySelector(".content");
         content.innerHTML = marked.parse(content.innerHTML);
 
@@ -405,7 +417,6 @@ The observations are split into a grid. Click on a grid square to learn more abo
           var species = await getSpecies(rect);
           var iNatExplore = `https://www.inaturalist.org/observations?verifiable=true&spam=false&project_id=calflora-native-plants-of-california&quality_grade=research&swlng=${rect[3][0]}&swlat=${rect[3][1]}&nelng=${rect[1][0]}&nelat=${rect[1][1]}&locale=en&preferred_place_id=14`;
 
-          console.log(species);
           var content = document.querySelector(".content");
           var tmp = "";
           // prettier-ignore
