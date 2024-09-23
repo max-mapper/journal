@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LA County Native Plant Atlas</title>
+    <meta
+      property="og:description"
+      content="Style a polygon with the fill layer type."
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@4.7.0/dist/maplibre-gl.css"
+    />
+    <script src="https://unpkg.com/maplibre-gl@4.7.0/dist/maplibre-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body,
+      #map {
+        height: 100%;
+      }
+
+      .rounded-rect {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 50px -25px black;
+      }
+
+      .flex-center {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .flex-center.left {
+        left: 0px;
+      }
+
+      .flex-center.right {
+        right: 0px;
+      }
+
+      .sidebar-content {
+        position: absolute;
+        width: 95%;
+        height: 95%;
+        font-family: Arial, Helvetica, sans-serif;
+        color: gray;
+      }
+
+      .sidebar-toggle {
+        position: absolute;
+        width: 1.3em;
+        height: 1.3em;
+        overflow: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .sidebar-toggle.left {
+        right: -1.5em;
+      }
+
+      .sidebar-toggle.right {
+        left: -1.5em;
+      }
+
+      .sidebar-toggle:hover {
+        color: #0aa1cf;
+        cursor: pointer;
+      }
+
+      .sidebar {
+        transition: transform 1s;
+        z-index: 1;
+        width: 600px;
+        height: 100%;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      h4 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+
+      li p {
+        margin: 5px;
+      }
+
+      /*
+  The sidebar styling has them "expanded" by default, we use CSS transforms to push them offscreen
+  The toggleSidebar() function removes this class from the element in order to expand it.
+*/
+      .left.collapsed {
+        transform: translateX(-595px);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map">
+      <div id="left" class="sidebar flex-center left collapsed">
+        <div class="sidebar-content rounded-rect">
+          <!-- prettier-ignore -->
+          <div class="content">
+#### LA County Native Plant Atlas (BETA)
+
+This is a map of observations from iNaturalist from within Los Angeles county of vascular plant species native to California.
+
+The observations are split into a grid. Click on a grid square to learn more about that grid.
+</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const map = new maplibregl.Map({
+        container: "map",
+        style:
+          "https://api.maptiler.com/maps/outdoor/style.json?key=VK9en7fqcN8VTzfv5LVe",
+        center: [-118.2094, 34.2303],
+        zoom: 9,
+        hash: true,
+      });
+
+      let hoveredGridID = null;
+
+      function toggleSidebar(id) {
+        const elem = document.getElementById(id);
+        const classes = elem.className.split(" ");
+        const collapsed = classes.indexOf("collapsed") !== -1;
+
+        const padding = {};
+
+        if (collapsed) {
+          // Remove the 'collapsed' class from the class list of the element, this sets it back to the expanded state.
+          classes.splice(classes.indexOf("collapsed"), 1);
+
+          padding[id] = 600; // In px, matches the width of the sidebars set in .sidebar CSS class
+          map.easeTo({
+            padding,
+            duration: 1000, // In ms, CSS transition duration property for the sidebar matches this value
+          });
+        } else {
+          padding[id] = 0;
+          // Add the 'collapsed' class to the class list of the element
+          classes.push("collapsed");
+
+          map.easeTo({
+            padding,
+            duration: 1000,
+          });
+        }
+
+        // Update the class list on the element
+        elem.className = classes.join(" ");
+      }
+
+      map.on("load", async () => {
+        var content = document.querySelector(".content");
+        content.innerHTML = marked.parse(content.innerHTML);
+
+        toggleSidebar("left");
+
+        map.addSource("inat", {
+          type: "raster",
+          tiles: [
+            "https://tiles.inaturalist.org/v1/grid/{z}/{x}/{y}.png?verifiable=true&place_id=962&project_id=calflora-native-plants-of-california&style=geotilegrid&tile_size=256",
+          ],
+        });
+
+        map.addLayer({
+          id: "inat-raster",
+          type: "raster",
+          source: "inat",
+          paint: {
+            "raster-opacity": 0.7,
+          },
+        });
+      });
+
+      map.on("load", async () => {
+        const url = "./lagrid.json";
+        var json;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          json = await response.json();
+        } catch (error) {
+          console.error(error.message);
+        }
+
+        map.addSource("grid", {
+          type: "geojson",
+          data: json,
+        });
+
+        map.addLayer({
+          id: "grid-hover",
+          type: "fill",
+          source: "grid",
+          layout: {},
+          paint: {
+            "fill-color": "#627BC1",
+            "fill-opacity": [
+              "case",
+              ["boolean", ["feature-state", "hover"], false],
+              0.3,
+              0,
+            ],
+          },
+        });
+
+        map.addLayer({
+          id: "outline",
+          type: "line",
+          source: "grid",
+          layout: {},
+          paint: {
+            "line-color": [
+              "case",
+              ["boolean", ["feature-state", "clicked"], false],
+              "#000000",
+              "#929292",
+            ],
+            "line-width": 2,
+            "line-offset": 1,
+          },
+        });
+
+        map.addLayer({
+          id: "poi-labels",
+          type: "symbol",
+          source: "grid",
+          layout: {
+            "text-field": ["get", "gridID"],
+            "text-size": 14,
+          },
+          paint: {
+            "text-halo-color": "#fff",
+            "text-halo-width": 2,
+          },
+        });
+      });
+
+      // When the user moves their mouse over the state-fill layer, we'll update the
+      // feature state for the feature under the mouse.
+      map.on("mousemove", "grid-hover", (e) => {
+        if (e.features.length > 0) {
+          if (hoveredGridID) {
+            map.setFeatureState(
+              { source: "grid", id: hoveredGridID },
+              { hover: false }
+            );
+          }
+          hoveredGridID = e.features[0].id;
+          if (hoveredGridID === polygonID) return;
+
+          map.setFeatureState(
+            { source: "grid", id: hoveredGridID },
+            { hover: true }
+          );
+        }
+      });
+
+      var clearHover = () => {
+        if (hoveredGridID) {
+          map.setFeatureState(
+            { source: "grid", id: hoveredGridID },
+            { hover: false }
+          );
+        }
+        hoveredGridID = null;
+      };
+
+      // When the mouse leaves the state-fill layer, update the feature state of the
+      // previously hovered feature.
+      map.on("mouseleave", "grid-hover", clearHover);
+
+      var polygonID;
+
+      map.on("click", "grid-hover", async (e) => {
+        map.getCanvas().style.cursor = "pointer";
+        if (e.features.length > 0) {
+          var content = document.querySelector(".content");
+          content.innerHTML = marked.parse(content.innerHTML);
+
+          if (polygonID) {
+            map.removeFeatureState({
+              source: "grid",
+              id: polygonID,
+            });
+          }
+
+          clearHover();
+
+          polygonID = e.features[0].id;
+
+          map.setFeatureState(
+            {
+              source: "grid",
+              id: polygonID,
+            },
+            {
+              clicked: true,
+            }
+          );
+          var ul = e.features[0].geometry.coordinates[0][0];
+          var lr = e.features[0].geometry.coordinates[0][2];
+          var center = [
+            ul[0] + (lr[0] - ul[0]) / 2,
+            ul[1] + (lr[1] - ul[1]) / 2,
+          ];
+
+          map.flyTo({
+            center: center, // Fly to the selected target
+            essential: true, // This animation is considered essential with
+            zoom: 12.5,
+            //respect to prefers-reduced-motion
+          });
+
+          var species = await getSpecies(e.features[0].geometry.coordinates[0]);
+          console.log(species);
+          var content = document.querySelector(".content");
+          var tmp = "";
+          // prettier-ignore
+          tmp += `
+#### Grid #${polygonID}
+
+Species count: ${species.total_results}
+
+`
+          var list = species.results;
+          list = list.sort((a, b) => {
+            return a.taxon.name.localeCompare(b.taxon.name);
+          });
+          list.forEach((s) => {
+            // prettier-ignore
+            tmp += `
+- ![](${s.taxon.default_photo.square_url}) ${s.taxon.preferred_common_name} (*${s.taxon.name}*)
+`
+          });
+          content.innerHTML = marked.parse(tmp);
+        }
+      });
+
+      map.on("load", async () => {
+        const url = "./lacountyboundary.json";
+        var json;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          json = await response.json();
+        } catch (error) {
+          console.error(error.message);
+        }
+        map.addSource("county", {
+          type: "geojson",
+          data: json,
+        });
+        map.addLayer({
+          id: "countyborder",
+          type: "line",
+          source: "county",
+          layout: {},
+          paint: {
+            "line-color": "#80a868",
+            "line-width": 3,
+          },
+        });
+      });
+
+      var getSpecies = async function (rect) {
+        var url = `https://api.inaturalist.org/v1/observations/species_counts?verifiable=true&spam=false&project_id=calflora-native-plants-of-california&quality_grade=research&swlng=${rect[3][0]}&swlat=${rect[3][1]}&nelng=${rect[1][0]}&nelat=${rect[1][1]}&locale=en&preferred_place_id=14&per_page=500`;
+        var json;
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          json = await response.json();
+        } catch (error) {
+          console.error(error.message);
+        }
+        return json;
+      };
+    </script>
+    <script src="../../la-nature/js/marked.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.7/underscore-umd-min.js"></script> -->
+  </body>
+</html>
