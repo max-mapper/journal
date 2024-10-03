@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>How Many Plant Species Are Native To California?</title>
+
+    <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <html>
+    <body>
+      <div id="document">
+        <div class="pagetitle">
+          <a href="../" rel="me">Journal Of Los Angeles Nature</a>
+        </div>
+        <div id="header">
+          <h1 class="subtitle">Native Oaks Of Los Angeles County</h1>
+          <p class="byline">Max Yasuda, October 2024</p>
+        </div>
+
+        <!-- prettier-ignore -->
+        <div id="content">
+
+If you attended the February 2024 program of the CNPS San Gabriel Mountains chapter, you would have heard Fred Roberts present his research on the native Oaks of Los Angeles County. [In his talk, which is available on YouTube](https://www.youtube.com/watch?v=KfJXNRSDJ4o), he shared that LA County is home to 17 of California's 19 native oak species, making it the county with the highest diversity of Oak species in the United States.
+
+I have [previously written about](https://max-mapper.github.io/journal/la-nature/altadena-oaks) how to identify the 8 species of Oak you are likely to encounter around Altadena/Northeast LA/the western San Gabriel Valley, but wanted to use this post to talk more about the county wide distributions.
+
+<div class="images">
+
+![A map showing Oak species overlap in LA County](../la-oak-taxon-richness.jpg)
+*[Oak Species Richness Map](../la-oak-taxon-richness.jpg)
+[View High-res PDF](../la-oak-taxon-richness.pdf)
+
+</div>
+
+I created this map that shows the overlapping ranges of the terrestrial extant native oak species in Los Angeles county. Please note the estimated ranges include a 1 mile buffer for easier visualization, but are based on the individual Oak observations included in the map.
+
+The map was created using research grade data from [GBIF](https://www.gbif.org/occurrence/download/0020325-240906103802322) using the open source program [QGIS](https://qgis.org/), using observations since the year 2000, with location coordinates, from all sources, and then filtered to show only native Oak taxa. 
+
+The map includes overlapping ranges for each species, as well as over 7000 individual observations across the county, and shows unincorporated boundaries for reference. Using the map you can for example quickly see that there are up to 6 native oaks with ranges that overlap the unincorporated area of Altadena and La Crescenta. 
+
+### List of Oak Species native to Los Angeles County
+
+| White Oaks                                                                                                                                                                                                                             | Hybrids             | Red Oaks                     | Hybrids         | Intermediate Oaks   |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ---------------------------- | --------------- | ------------------- |
+| Quercus engelmannii                                                                                                                                                                                                                    |                     | Quercus agrifolia agrifolia  |                 | Quercus chrysolepis |
+| Quercus durata gabrielensis                                                                                                                                                                                                            | Quercus ewanii      | Quercus agrifolia oxyadenia  |                 | Quercus tomentella  |
+| Quercus douglasii                                                                                                                                                                                                                      |                     | Quercus kelloggii            |                 | Quercus palmeri     |
+| Quercus john-tuckeri                                                                                                                                                                                                                   | Quercus alvordiana  | Quercus wislizeni frutescens | Quercus morehus |                     |
+| Quercus lobata                                                                                                                                                                                                                         | Quercus jolonensis  | Quercus wislizeni wislizeni  |                 |                     |
+| Quercus pacifica                                                                                                                                                                                                                       | Quercus macdonaldii |                              |                 |                     |
+| Quercus dumosa                                                                                                                                                                                                                         |                     |                              |                 |                     |
+| Quercus berberidifolia                                                                                                                                                                                                                 |                     |                              |                 |                     |
+| Quercus garryana semota                                                                                                                                                                                                                | Quercus howellii    |                              |                 |                     |
+|                                                                                                                                                                                                                                        |                     |                              |                 |                     |
+| 
+
+
+**Notes:**
+
+- Quercus garryana breweri assumed to all be semota, although Fred Roberts says the opposite. Jepson: [https://ucjeps.berkeley.edu/eflora/eflora_display.php?tid=64729](https://ucjeps.berkeley.edu/eflora/eflora_display.php?tid=64729)
+- Quercus durata presumed to not exist in the county
+- Only one observation of Quercus dumosa in the county                                                                                                                     
+- Only one observation of Quercus palmeri in the county                                                                                                                     
+- Quercus cornelius-mulleri in CCH2 as of 1955 in one location in San Gabriels - presumed not present because Fred Roberts did not include it
+- Quercus acutidens has one site in Puente Hills, not included here    
+
+          
+
+<p xmlns:cc="http://creativecommons.org/ns#" >This work by <span property="cc:attributionName">Max Yasuda</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC 4.0&nbsp;<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a></p>*
+
+</div>
+      </div>
+      <script src="../js/marked.min.js"></script>
+      <script src="../js/medium-zoom.min.js"></script>
+      <script>
+        var content = document.getElementById("content");
+        content.innerHTML = marked.parse(content.innerHTML);
+
+        // copy 'alt' to 'title'
+        var images = document.getElementsByTagName("img");
+        var numImages = images.length;
+        for (i = 0; i < numImages; i++) {
+          images[i].title = images[i].alt;
+        }
+
+        // set target blank on links
+        var as = document.getElementsByTagName("a");
+        var numAs = as.length;
+        for (i = 0; i < numAs; i++) {
+          as[i].target = "_blank;";
+        }
+
+        // click to zoom images
+        mediumZoom(document.querySelectorAll(".images img"));
+        mediumZoom(document.querySelectorAll(".banner img"));
+      </script>
+    </body>
+  </html>
+</html>
