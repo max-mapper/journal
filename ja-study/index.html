@@ -28,6 +28,7 @@
       #sentence-display,
       #user-input,
       #diff-output,
+      #history-output,
       #success-message {
         width: 97%;
         padding: 10px;
@@ -72,6 +73,7 @@
         <h2>Congratulations!</h2>
         <p>You have completed all the sentences for this lesson.</p>
       </div>
+      <div id="history-output"></div>
     </div>
 
     <script>
@@ -1349,6 +1351,7 @@
       const sentenceDisplay = document.getElementById("sentence-display");
       const userInput = document.getElementById("user-input");
       const diffOutput = document.getElementById("diff-output");
+      const historyOutput = document.getElementById("history-output");
       const successMessage = document.getElementById("success-message");
 
       let currentLessonSentences = [];
@@ -1439,6 +1442,7 @@
       userInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           if (showingDiff) {
+            historyOutput.innerHTML += `<div>${userInput.value}</div><div>${currentSentence.japanese}</div>`;
             nextSentence();
           } else {
             checkAnswer();
