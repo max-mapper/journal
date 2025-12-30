@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level-Based Kanji Tracker + Dictionary</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        line-height: 1.6;
+        max-width: 100%;
+        margin: 0 auto;
+        background: #f0f2f5;
+        color: #333;
+      }
+      h2 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+      /* Global Stats Bar */
+      .stats-bar {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        border-left: 5px solid #2c3e50;
+      }
+      .stat-number {
+        font-weight: bold;
+        color: #28a745;
+        font-size: 1.2rem;
+      }
+
+      .container {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .input-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      textarea {
+        height: 180px;
+        padding: 12px;
+        border: 1px solid #ccd0d5;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-family: monospace;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+        background: #e1e4e8;
+        padding: 10px;
+        border-radius: 6px;
+      }
+
+      .toggles-group {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .toggle-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: normal;
+        user-select: none;
+      }
+      .toggle-label input {
+        margin-right: 8px;
+        transform: scale(1.2);
+      }
+
+      .btn-export {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: bold;
+        transition: background-color 0.2s;
+      }
+      .btn-export:hover {
+        background-color: #0056b3;
+      }
+
+      #output {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* Level Group Styling */
+      .level-section {
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        overflow: hidden;
+      }
+
+      .level-header {
+        background: #e9ecef;
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .level-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #495057;
+      }
+      .level-stats {
+        font-size: 0.9rem;
+        color: #666;
+        font-family: monospace;
+      }
+      .level-stats strong {
+        color: #28a745;
+      }
+
+      .word-container {
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .word {
+        position: relative;
+        padding: 6px 12px;
+        border-radius: 20px;
+        background: #f8f9fa;
+        color: #95a5a6;
+        border: 1px solid #e9ecef;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .word:hover {
+        background-color: #e2e6ea;
+      }
+
+      /* Highlight known words */
+      .highlight {
+        background: #e8f5e9;
+        color: #2e7d32;
+        border-color: #c8e6c9;
+      }
+      .highlight:hover {
+        background-color: #dceddd;
+      }
+
+      /* Hover Tooltip (Original) */
+      .word .tooltip {
+        visibility: hidden;
+        width: 180px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px;
+        position: absolute;
+        z-index: 10;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -90px;
+        opacity: 0;
+        transition: opacity 0.2s;
+        font-size: 0.8rem;
+        pointer-events: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+      .word:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+      .reading-sub {
+        display: block;
+        color: #aaa;
+        font-size: 1rem;
+        margin-bottom: 2px;
+      }
+
+      /* Dictionary Modal Styles */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        animation: fadeIn 0.3s;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f8f9fa;
+      }
+      .modal-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+      .close-modal {
+        font-size: 1.8rem;
+        color: #aaa;
+        cursor: pointer;
+        line-height: 1;
+      }
+      .close-modal:hover {
+        color: #333;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .dict-section {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+      }
+      .dict-section:last-child {
+        border-bottom: none;
+      }
+
+      .dict-pos {
+        color: #666;
+        font-size: 0.6rem;
+        font-family: monospace;
+      }
+      .dict-glosses {
+        margin-top: 5px;
+        padding-left: 0;
+        list-style-type: none;
+        margin-left: 0px;
+        margin-bottom: 10px;
+        color: #2c3e50;
+        font-weight: 500;
+      }
+
+      /* Example Sentence Styling */
+      .dict-example {
+        background: #f1f8ff;
+        padding: 10px;
+        border-radius: 4px;
+        border-left: 3px solid #007bff;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .dict-example:hover {
+        background: #e6f2ff;
+      }
+
+      /* Japanese line with Ruby */
+      .dict-ex-jp {
+        display: block;
+        margin-bottom: 0; /* No margin when English is hidden */
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      /* Hide furigana (rt tags) by default */
+      .dict-ex-jp rt {
+        display: none;
+      }
+
+      /* English line hidden by default */
+      .dict-ex-en {
+        display: none;
+        color: #555;
+        font-size: 0.95rem;
+        margin-top: 6px;
+        border-top: 1px dashed #cce5ff;
+        padding-top: 4px;
+      }
+
+      /* Reveal State (Hover or Active class) */
+      .dict-example:hover .dict-ex-jp rt,
+      .dict-example.active .dict-ex-jp rt {
+        display: revert; /* or block/ruby-text */
+      }
+
+      .dict-example:hover .dict-ex-en,
+      .dict-example.active .dict-ex-en {
+        display: block;
+      }
+
+      .loading-spinner {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        padding: 20px;
+      }
+      .error-msg {
+        color: #dc3545;
+        text-align: center;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Level-Based Kanji Tracker</h2>
+
+    <!-- This container will be used for Export -->
+    <div id="export-area">
+      <!-- Global Stats -->
+      <div class="stats-bar">
+        <div class="stat-item"><strong>Global Stats (Visible):</strong></div>
+        <div class="stat-item">
+          Matched: <span id="totalMatchCount" class="stat-number">0</span>
+        </div>
+        <div class="stat-item">Total: <span id="totalWordCount">0</span></div>
+        <div class="stat-item">Progress: <span id="totalPercent">0%</span></div>
+      </div>
+
+      <div id="output"></div>
+    </div>
+
+    <!-- Controls / Inputs -->
+    <div class="container">
+      <div class="input-group">
+        <label for="set1">Set 1: Target Words (Level JSON)</label>
+        <textarea id="set1">
+{"level": 5, "data":["時間","じかん","time","じかん"]}
+{"level": 5, "data":["国","くに","country","くに"]}
+{"level": 4, "data":["見つかる","みつかる","to be found","みつかる"]}
+{"level": 4, "data":["祭り","まつ","festival","まつり"]}
+{"level": 3, "data":["一つ","ひと","one (object)","ひとつ"]}
+{"level": 1, "data":["ここ","ここ","here","ここ"]}
+</textarea
+        >
+      </div>
+      <div class="input-group">
+        <label for="set2">Set 2: Known Kanji (Determines Highlighting)</label>
+        <textarea id="set2">一 右 雨 祭 見</textarea>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="toggles-group">
+        <strong>Filters:</strong>
+        <label class="toggle-label">
+          <input type="checkbox" id="hideUnmatched" /> Hide non-matched
+        </label>
+        <label class="toggle-label">
+          <input type="checkbox" id="hideNoKanji" /> Hide words without Kanji
+        </label>
+      </div>
+      <button class="btn-export" id="exportBtn">Export Results to HTML</button>
+    </div>
+
+    <!-- DICTIONARY MODAL -->
+    <div id="dictModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title" id="modalTitle">...</div>
+          <span class="close-modal" id="closeModal">&times;</span>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- Content injected here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const set1Input = document.getElementById("set1");
+      const set2Input = document.getElementById("set2");
+      const hideUnmatchedInput = document.getElementById("hideUnmatched");
+      const hideNoKanjiInput = document.getElementById("hideNoKanji");
+      const output = document.getElementById("output");
+      const exportBtn = document.getElementById("exportBtn");
+
+      const modal = document.getElementById("dictModal");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalBody = document.getElementById("modalBody");
+      const closeModal = document.getElementById("closeModal");
+
+      // Storage Keys
+      const STORAGE_KEY_SET1 = "kanjiTracker_data";
+      const STORAGE_KEY_SET2 = "kanjiTracker_known";
+      const STORAGE_KEY_HIDE_MATCH = "kanjiTracker_hideUnmatched";
+      const STORAGE_KEY_HIDE_KANA = "kanjiTracker_hideNoKanji";
+
+      // 1. Load from LocalStorage
+      if (localStorage.getItem(STORAGE_KEY_SET1))
+        set1Input.value = localStorage.getItem(STORAGE_KEY_SET1);
+      if (localStorage.getItem(STORAGE_KEY_SET2))
+        set2Input.value = localStorage.getItem(STORAGE_KEY_SET2);
+      if (localStorage.getItem(STORAGE_KEY_HIDE_MATCH) === "true")
+        hideUnmatchedInput.checked = true;
+      if (localStorage.getItem(STORAGE_KEY_HIDE_KANA) === "true")
+        hideNoKanjiInput.checked = true;
+
+      function updateDisplay() {
+        localStorage.setItem(STORAGE_KEY_SET1, set1Input.value);
+        localStorage.setItem(STORAGE_KEY_SET2, set2Input.value);
+        localStorage.setItem(
+          STORAGE_KEY_HIDE_MATCH,
+          hideUnmatchedInput.checked
+        );
+        localStorage.setItem(STORAGE_KEY_HIDE_KANA, hideNoKanjiInput.checked);
+
+        const rawLines = set1Input.value.split("\n").filter((l) => l.trim());
+        const hideUnmatched = hideUnmatchedInput.checked;
+        const hideNoKanji = hideNoKanjiInput.checked;
+
+        const knownKanjiArr = set2Input.value.match(/[\u4e00-\u9faf]/g) || [];
+        const knownSet = new Set(knownKanjiArr);
+
+        let parsedItems = [];
+        rawLines.forEach((line) => {
+          try {
+            const parsed = JSON.parse(line);
+            if (parsed.data && Array.isArray(parsed.data)) {
+              const word = parsed.data[0];
+              const meaning = parsed.data[2];
+              const reading = parsed.data[3];
+              const level = parsed.level || 0;
+
+              const kanjiInWord = word.match(/[\u4e00-\u9faf]/g) || [];
+              const hasKanji = kanjiInWord.length > 0;
+              const allKnown =
+                !hasKanji || kanjiInWord.every((k) => knownSet.has(k));
+
+              parsedItems.push({
+                word,
+                meaning,
+                reading,
+                level,
+                allKnown,
+                hasKanji,
+              });
+            }
+          } catch (e) {}
+        });
+
+        const groups = {};
+        parsedItems.forEach((item) => {
+          if (!groups[item.level]) groups[item.level] = [];
+          groups[item.level].push(item);
+        });
+
+        output.innerHTML = "";
+
+        let globalMatch = 0;
+        let globalTotal = 0;
+
+        const sortedLevels = Object.keys(groups).sort(
+          (a, b) => Number(a) - Number(b)
+        );
+
+        sortedLevels.forEach((lvl) => {
+          const items = groups[lvl];
+
+          const visibleItems = items.filter((item) => {
+            if (hideUnmatched && !item.allKnown) return false;
+            if (hideNoKanji && !item.hasKanji) return false;
+            return true;
+          });
+
+          const levelTotal = visibleItems.length;
+          const levelMatch = visibleItems.filter((i) => i.allKnown).length;
+          const levelPct = levelTotal
+            ? Math.round((levelMatch / levelTotal) * 100)
+            : 0;
+
+          globalTotal += levelTotal;
+          globalMatch += levelMatch;
+
+          if (levelTotal === 0) return;
+
+          const section = document.createElement("div");
+          section.className = "level-section";
+
+          const header = document.createElement("div");
+          header.className = "level-header";
+          header.innerHTML = `
+            <div class="level-title">Level ${lvl}</div>
+            <div class="level-stats">
+              Match: <strong>${levelMatch}</strong> / ${levelTotal} (${levelPct}%)
+            </div>
+          `;
+          section.appendChild(header);
+
+          const wordBox = document.createElement("div");
+          wordBox.className = "word-container";
+
+          visibleItems.forEach((item) => {
+            const span = document.createElement("span");
+            span.className = "word" + (item.allKnown ? " highlight" : "");
+            span.textContent = item.word;
+            span.dataset.word = item.word;
+
+            if (item.meaning || item.reading) {
+              const tip = document.createElement("div");
+              tip.className = "tooltip";
+              tip.innerHTML = `<span class="reading-sub">${
+                item.reading || ""
+              }</span>${item.meaning || ""}`;
+              span.appendChild(tip);
+            }
+            wordBox.appendChild(span);
+          });
+
+          section.appendChild(wordBox);
+          output.appendChild(section);
+        });
+
+        document.getElementById("totalMatchCount").textContent = globalMatch;
+        document.getElementById("totalWordCount").textContent = globalTotal;
+        const totalPct = globalTotal
+          ? Math.round((globalMatch / globalTotal) * 100)
+          : 0;
+        document.getElementById("totalPercent").textContent = totalPct + "%";
+      }
+
+      // --- API / Dictionary Logic ---
+
+      function cleanJotobaReading(str) {
+        return str
+          .replace(/\[([^|\]]+)\|[^\]]+\]/g, "$1")
+          .replace(/[\[\]]/g, "");
+      }
+
+      // Parses [Kanji|Read|ing] into <ruby>Kanji<rt>Reading</rt></ruby>
+      function parseJotobaFurigana(str) {
+        // Regex looks for [Surface|Reading...]
+        return str.replace(
+          /\[([^|\]]+)\|([^\]]+)\]/g,
+          (match, surface, readings) => {
+            // 'readings' might be "a|b" or just "a". We strip pipes for the main reading block.
+            const cleanReading = readings.replace(/\|/g, "");
+            return `<ruby>${surface}<rt>${cleanReading}</rt></ruby>`;
+          }
+        );
+      }
+
+      function renderValue(val) {
+        if (typeof val === "string") return val;
+        if (typeof val === "object" && val !== null) {
+          return Object.entries(val)
+            .map(([k, v]) => `${k}: ${renderValue(v)}`)
+            .join(", ");
+        }
+        return val;
+      }
+
+      function formatPOS(posData) {
+        if (!posData) return "";
+        if (typeof posData === "string") return posData;
+
+        if (Array.isArray(posData)) {
+          return posData
+            .map((item) => {
+              if (typeof item === "string") return item;
+              if (typeof item === "object" && item !== null) {
+                return Object.entries(item)
+                  .map(([k, v]) => `${k}: ${renderValue(v)}`)
+                  .join(", ");
+              }
+              return "";
+            })
+            .join("; ");
+        }
+
+        if (typeof posData === "object" && posData !== null) {
+          return Object.entries(posData)
+            .map(([k, v]) => `${k}: ${renderValue(v)}`)
+            .join(", ");
+        }
+        return "";
+      }
+
+      async function fetchWordDetails(word) {
+        modalTitle.textContent = word;
+        modalBody.innerHTML = `<div class="loading-spinner">Searching Jotoba...</div>`;
+        modal.classList.add("active");
+
+        try {
+          const response = await fetch("https://jotoba.de/api/app/words", {
+            headers: {
+              accept: "application/json",
+              "accept-language":
+                "en-JP,en;q=0.9,ja-JP;q=0.8,ja;q=0.7,en-GB;q=0.6,en-US;q=0.5",
+              "cache-control": "no-cache",
+              "content-type": "application/json",
+              pragma: "no-cache",
+              priority: "u=1, i",
+              "sec-ch-ua":
+                '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
+              "sec-ch-ua-mobile": "?0",
+              "sec-ch-ua-platform": '"Linux"',
+              "sec-fetch-dest": "empty",
+              "sec-fetch-mode": "cors",
+              "sec-fetch-site": "same-origin",
+              "sec-gpc": "1",
+            },
+            referrer: "https://jotoba.de/search/0/%E5%AD%A6?l=en-US",
+            body: JSON.stringify({
+              query_str: word,
+              settings: {
+                jlpt: 5,
+                user_lang: "en-US",
+                show_english: true,
+                english_on_top: false,
+                page_size: 10,
+                show_example_sentences: true,
+                sentence_furigana: true,
+              },
+              page: 1,
+              word_index: 0,
+            }),
+            method: "POST",
+            mode: "cors",
+            credentials: "omit",
+          });
+
+          if (!response.ok) throw new Error("API Request Failed");
+
+          const data = await response.json();
+          const words =
+            data.content && data.content.words ? data.content.words : [];
+          const matchedWord = words.find(
+            (w) => cleanJotobaReading(w.reading) === word
+          );
+
+          if (matchedWord) {
+            renderWordDetails(matchedWord);
+          } else {
+            modalBody.innerHTML = `<div class="error-msg">No exact match found for "${word}".</div>`;
+          }
+        } catch (error) {
+          console.error(error);
+          modalBody.innerHTML = `<div class="error-msg">Error fetching data. Check console.</div>`;
+        }
+      }
+
+      function renderWordDetails(entry) {
+        modalBody.innerHTML = "";
+
+        if (!entry.senses || entry.senses.length === 0) {
+          modalBody.innerHTML = "No definitions available.";
+          return;
+        }
+
+        entry.senses.forEach((sense, index) => {
+          const glosses = sense.glosses ? sense.glosses.join(", ") : "";
+          const pos = formatPOS(sense.part_of_speech);
+
+          const div = document.createElement("div");
+          div.className = "dict-section";
+
+          let html = `<div class="dict-pos">${pos}</div>`;
+          html += `<ul class="dict-glosses"><li>${glosses}</li></ul>`;
+
+          if (sense.example_sentence && Array.isArray(sense.example_sentence)) {
+            const jpRaw = sense.example_sentence[0] || "";
+            const en = sense.example_sentence[1] || "";
+
+            // Convert Jotoba syntax to HTML ruby tags
+            const jpHtml = parseJotobaFurigana(jpRaw);
+
+            html += `
+              <div class="dict-example" onclick="this.classList.toggle('active')">
+                <span class="dict-ex-jp">${jpHtml}</span>
+                <span class="dict-ex-en">${en}</span>
+              </div>
+            `;
+          }
+
+          div.innerHTML = html;
+          modalBody.appendChild(div);
+        });
+      }
+
+      output.addEventListener("click", function (e) {
+        let target = e.target;
+        while (target && target !== output) {
+          if (target.classList.contains("word")) {
+            const word = target.dataset.word || target.textContent;
+            fetchWordDetails(word);
+            return;
+          }
+          target = target.parentNode;
+        }
+      });
+
+      closeModal.addEventListener("click", () => {
+        modal.classList.remove("active");
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
+
+      function exportToHTML() {
+        const statsHtml = document.querySelector(".stats-bar").outerHTML;
+        const resultsHtml = document.getElementById("output").innerHTML;
+        const styles = document.querySelector("style").innerHTML;
+        const modalHtml = document.getElementById("dictModal").outerHTML;
+
+        // We construct a script that includes the necessary functions and listeners for the viewer
+        // We use .toString() to inject the function code directly.
+        const scriptContent = `<script>
+            const output = document.getElementById("output");
+            const modal = document.getElementById("dictModal");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalBody = document.getElementById("modalBody");
+            const closeModal = document.getElementById("closeModal");
+
+            ${cleanJotobaReading.toString()}
+            ${parseJotobaFurigana.toString()}
+            ${renderValue.toString()}
+            ${formatPOS.toString()}
+            ${fetchWordDetails.toString()}
+            ${renderWordDetails.toString()}
+
+            output.addEventListener("click", function(e) {
+                let target = e.target;
+                while (target && target !== output) {
+                  if (target.classList.contains("word")) {
+                    const word = target.dataset.word || target.textContent;
+                    fetchWordDetails(word);
+                    return;
+                  }
+                  target = target.parentNode;
+                }
+            });
+
+            closeModal.addEventListener("click", () => {
+                modal.classList.remove("active");
+            });
+
+            window.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                  modal.classList.remove("active");
+                }
+            });
+          </script`;
+        +">";
+
+        const fileContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kanji Tracker Export</title>
+  <style>
+    ${styles}
+    body { background: #fff; max-width: 900px; }
+  </style>
+</head>
+<body>
+  <h2>Kanji Compatibility Report</h2>
+  ${statsHtml}
+  <div id="output">
+    ${resultsHtml}
+  </div>
+  ${modalHtml}
+  ${scriptContent}
+</body>
+</html>`;
+
+        const blob = new Blob([fileContent], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `kanji_tracker_export_${new Date()
+          .toISOString()
+          .slice(0, 10)}.html`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+      [set1Input, set2Input, hideUnmatchedInput, hideNoKanjiInput].forEach(
+        (el) => el.addEventListener("input", updateDisplay)
+      );
+      hideUnmatchedInput.addEventListener("change", updateDisplay);
+      hideNoKanjiInput.addEventListener("change", updateDisplay);
+      exportBtn.addEventListener("click", exportToHTML);
+
+      updateDisplay();
+    </script>
+  </body>
+</html>
