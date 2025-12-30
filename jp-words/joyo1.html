@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kanji Tracker Export</title>
+  <style>
+    
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        line-height: 1.6;
+        max-width: 100%;
+        margin: 0 auto;
+        background: #f0f2f5;
+        color: #333;
+      }
+      h2 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+      /* Global Stats Bar */
+      .stats-bar {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        border-left: 5px solid #2c3e50;
+      }
+      .stat-number {
+        font-weight: bold;
+        color: #28a745;
+        font-size: 1.2rem;
+      }
+
+      .container {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .input-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      textarea {
+        height: 180px;
+        padding: 12px;
+        border: 1px solid #ccd0d5;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-family: monospace;
+      }
+      label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+        background: #e1e4e8;
+        padding: 10px;
+        border-radius: 6px;
+      }
+
+      .toggles-group {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .toggle-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: normal;
+        user-select: none;
+      }
+      .toggle-label input {
+        margin-right: 8px;
+        transform: scale(1.2);
+      }
+
+      .btn-export {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: bold;
+        transition: background-color 0.2s;
+      }
+      .btn-export:hover {
+        background-color: #0056b3;
+      }
+
+      #output {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* Level Group Styling */
+      .level-section {
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        overflow: hidden;
+      }
+
+      .level-header {
+        background: #e9ecef;
+        padding: 10px 20px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .level-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #495057;
+      }
+      .level-stats {
+        font-size: 0.9rem;
+        color: #666;
+        font-family: monospace;
+      }
+      .level-stats strong {
+        color: #28a745;
+      }
+
+      .word-container {
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .word {
+        position: relative;
+        padding: 6px 12px;
+        border-radius: 20px;
+        background: #f8f9fa;
+        color: #95a5a6;
+        border: 1px solid #e9ecef;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .word:hover {
+        background-color: #e2e6ea;
+      }
+
+      /* Highlight known words */
+      .highlight {
+        background: #e8f5e9;
+        color: #2e7d32;
+        border-color: #c8e6c9;
+      }
+      .highlight:hover {
+        background-color: #dceddd;
+      }
+
+      /* Hover Tooltip (Original) */
+      .word .tooltip {
+        visibility: hidden;
+        width: 180px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px;
+        position: absolute;
+        z-index: 10;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -90px;
+        opacity: 0;
+        transition: opacity 0.2s;
+        font-size: 0.8rem;
+        pointer-events: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+      .word:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+      .reading-sub {
+        display: block;
+        color: #aaa;
+        font-size: 1rem;
+        margin-bottom: 2px;
+      }
+
+      /* Dictionary Modal Styles */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        animation: fadeIn 0.3s;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f8f9fa;
+      }
+      .modal-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+      .close-modal {
+        font-size: 1.8rem;
+        color: #aaa;
+        cursor: pointer;
+        line-height: 1;
+      }
+      .close-modal:hover {
+        color: #333;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .dict-section {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+      }
+      .dict-section:last-child {
+        border-bottom: none;
+      }
+
+      .dict-pos {
+        color: #666;
+        font-size: 0.6rem;
+        font-family: monospace;
+      }
+      .dict-glosses {
+        margin-top: 5px;
+        padding-left: 0;
+        list-style-type: none;
+        margin-left: 0px;
+        margin-bottom: 10px;
+        color: #2c3e50;
+        font-weight: 500;
+      }
+
+      /* Example Sentence Styling */
+      .dict-example {
+        background: #f1f8ff;
+        padding: 10px;
+        border-radius: 4px;
+        border-left: 3px solid #007bff;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .dict-example:hover {
+        background: #e6f2ff;
+      }
+
+      /* Japanese line with Ruby */
+      .dict-ex-jp {
+        display: block;
+        margin-bottom: 0; /* No margin when English is hidden */
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      /* Hide furigana (rt tags) by default */
+      .dict-ex-jp rt {
+        display: none;
+      }
+
+      /* English line hidden by default */
+      .dict-ex-en {
+        display: none;
+        color: #555;
+        font-size: 0.95rem;
+        margin-top: 6px;
+        border-top: 1px dashed #cce5ff;
+        padding-top: 4px;
+      }
+
+      /* Reveal State (Hover or Active class) */
+      .dict-example:hover .dict-ex-jp rt,
+      .dict-example.active .dict-ex-jp rt {
+        display: revert; /* or block/ruby-text */
+      }
+
+      .dict-example:hover .dict-ex-en,
+      .dict-example.active .dict-ex-en {
+        display: block;
+      }
+
+      .loading-spinner {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        padding: 20px;
+      }
+      .error-msg {
+        color: #dc3545;
+        text-align: center;
+        padding: 10px;
+      }
+    
+    body { background: #fff; max-width: 900px; }
+  </style>
+</head>
+<body>
+  <h2>Kanji Compatibility Report</h2>
+  <div class="stats-bar">
+        <div class="stat-item"><strong>Global Stats (Visible):</strong></div>
+        <div class="stat-item">
+          Matched: <span id="totalMatchCount" class="stat-number">234</span>
+        </div>
+        <div class="stat-item">Total: <span id="totalWordCount">234</span></div>
+        <div class="stat-item">Progress: <span id="totalPercent">100%</span></div>
+      </div>
+  <div id="output">
+    <div class="level-section"><div class="level-header">
+            <div class="level-title">Level 1</div>
+            <div class="level-stats">
+              Match: <strong>87</strong> / 87 (100%)
+            </div>
+          </div><div class="word-container"><span class="word highlight" data-word="一つ">一つ<div class="tooltip"><span class="reading-sub">ひとつ</span>one (object)</div></span><span class="word highlight" data-word="出す">出す<div class="tooltip"><span class="reading-sub">だす</span>to take out / to submit</div></span><span class="word highlight" data-word="大人">大人<div class="tooltip"><span class="reading-sub">おとな</span>adult</div></span><span class="word highlight" data-word="二つ">二つ<div class="tooltip"><span class="reading-sub">ふたつ</span>two (objects)</div></span><span class="word highlight" data-word="見える">見える<div class="tooltip"><span class="reading-sub">みえる</span>to be visible</div></span><span class="word highlight" data-word="出る">出る<div class="tooltip"><span class="reading-sub">でる</span>to go out / to exit</div></span><span class="word highlight" data-word="小学校">小学校<div class="tooltip"><span class="reading-sub">しょうがっこう</span>elementary school</div></span><span class="word highlight" data-word="三つ">三つ<div class="tooltip"><span class="reading-sub">みっつ</span>three (objects)</div></span><span class="word highlight" data-word="天気">天気<div class="tooltip"><span class="reading-sub">てんき</span>weather</div></span><span class="word highlight" data-word="白い">白い<div class="tooltip"><span class="reading-sub">しろい</span>white</div></span><span class="word highlight" data-word="川">川<div class="tooltip"><span class="reading-sub">かわ</span>river</div></span><span class="word highlight" data-word="男の子">男の子<div class="tooltip"><span class="reading-sub">おとこのこ</span>boy</div></span><span class="word highlight" data-word="口">口<div class="tooltip"><span class="reading-sub">くち</span>mouth</div></span><span class="word highlight" data-word="四つ">四つ<div class="tooltip"><span class="reading-sub">よっつ</span>four (objects)</div></span><span class="word highlight" data-word="見つかる">見つかる<div class="tooltip"><span class="reading-sub">みつかる</span>to be found</div></span><span class="word highlight" data-word="学校">学校<div class="tooltip"><span class="reading-sub">がっこう</span>school</div></span><span class="word highlight" data-word="大学">大学<div class="tooltip"><span class="reading-sub">だいがく</span>university</div></span><span class="word highlight" data-word="六">六<div class="tooltip"><span class="reading-sub">ろく</span>six</div></span><span class="word highlight" data-word="音">音<div class="tooltip"><span class="reading-sub">おと</span>sound</div></span><span class="word highlight" data-word="見せる">見せる<div class="tooltip"><span class="reading-sub">みせる</span>to show</div></span><span class="word highlight" data-word="左">左<div class="tooltip"><span class="reading-sub">ひだり</span>left</div></span><span class="word highlight" data-word="大きい">大きい<div class="tooltip"><span class="reading-sub">おおきい</span>big</div></span><span class="word highlight" data-word="木">木<div class="tooltip"><span class="reading-sub">き</span>tree</div></span><span class="word highlight" data-word="一人">一人<div class="tooltip"><span class="reading-sub">ひとり</span>one person / alone</div></span><span class="word highlight" data-word="二人">二人<div class="tooltip"><span class="reading-sub">ふたり</span>two people</div></span><span class="word highlight" data-word="百">百<div class="tooltip"><span class="reading-sub">ひゃく</span>hundred</div></span><span class="word highlight" data-word="山">山<div class="tooltip"><span class="reading-sub">やま</span>mountain</div></span><span class="word highlight" data-word="五つ">五つ<div class="tooltip"><span class="reading-sub">いつつ</span>five (objects)</div></span><span class="word highlight" data-word="気">気<div class="tooltip"><span class="reading-sub">き</span>spirit / mood</div></span><span class="word highlight" data-word="女の子">女の子<div class="tooltip"><span class="reading-sub">おんなのこ</span>girl</div></span><span class="word highlight" data-word="二">二<div class="tooltip"><span class="reading-sub">に</span>two</div></span><span class="word highlight" data-word="五">五<div class="tooltip"><span class="reading-sub">ご</span>five</div></span><span class="word highlight" data-word="三">三<div class="tooltip"><span class="reading-sub">さん</span>three</div></span><span class="word highlight" data-word="本">本<div class="tooltip"><span class="reading-sub">ほん</span>book</div></span><span class="word highlight" data-word="右">右<div class="tooltip"><span class="reading-sub">みぎ</span>right</div></span><span class="word highlight" data-word="小さい">小さい<div class="tooltip"><span class="reading-sub">ちいさい</span>small</div></span><span class="word highlight" data-word="見る">見る<div class="tooltip"><span class="reading-sub">みる</span>to see</div></span><span class="word highlight" data-word="雨">雨<div class="tooltip"><span class="reading-sub">あめ</span>rain</div></span><span class="word highlight" data-word="休み">休み<div class="tooltip"><span class="reading-sub">やすみ</span>rest / holiday</div></span><span class="word highlight" data-word="お金">お金<div class="tooltip"><span class="reading-sub">おかね</span>money</div></span><span class="word highlight" data-word="入れる">入れる<div class="tooltip"><span class="reading-sub">いれる</span>to put in</div></span><span class="word highlight" data-word="犬">犬<div class="tooltip"><span class="reading-sub">いぬ</span>dog</div></span><span class="word highlight" data-word="七つ">七つ<div class="tooltip"><span class="reading-sub">ななつ</span>seven (objects)</div></span><span class="word highlight" data-word="中学生">中学生<div class="tooltip"><span class="reading-sub">ちゅうがくせい</span>junior high student</div></span><span class="word highlight" data-word="七">七<div class="tooltip"><span class="reading-sub">しち</span>seven</div></span><span class="word highlight" data-word="生まれる">生まれる<div class="tooltip"><span class="reading-sub">うまれる</span>to be born</div></span><span class="word highlight" data-word="左右">左右<div class="tooltip"><span class="reading-sub">さゆう</span>left and right</div></span><span class="word highlight" data-word="先月">先月<div class="tooltip"><span class="reading-sub">せんげつ</span>last month</div></span><span class="word highlight" data-word="入学">入学<div class="tooltip"><span class="reading-sub">にゅうがく</span>school entrance</div></span><span class="word highlight" data-word="男">男<div class="tooltip"><span class="reading-sub">おとこ</span>man</div></span><span class="word highlight" data-word="虫">虫<div class="tooltip"><span class="reading-sub">むし</span>insect</div></span><span class="word highlight" data-word="土">土<div class="tooltip"><span class="reading-sub">つち</span>soil / earth</div></span><span class="word highlight" data-word="千">千<div class="tooltip"><span class="reading-sub">せん</span>thousand</div></span><span class="word highlight" data-word="学生">学生<div class="tooltip"><span class="reading-sub">がくせい</span>student</div></span><span class="word highlight" data-word="中学">中学<div class="tooltip"><span class="reading-sub">ちゅうがく</span>junior high school</div></span><span class="word highlight" data-word="女">女<div class="tooltip"><span class="reading-sub">おんな</span>woman</div></span><span class="word highlight" data-word="空気">空気<div class="tooltip"><span class="reading-sub">くうき</span>air / atmosphere</div></span><span class="word highlight" data-word="早い">早い<div class="tooltip"><span class="reading-sub">はやい</span>early / fast</div></span><span class="word highlight" data-word="見つける">見つける<div class="tooltip"><span class="reading-sub">みつける</span>to find</div></span><span class="word highlight" data-word="町">町<div class="tooltip"><span class="reading-sub">まち</span>town</div></span><span class="word highlight" data-word="手">手<div class="tooltip"><span class="reading-sub">て</span>hand</div></span><span class="word highlight" data-word="人生">人生<div class="tooltip"><span class="reading-sub">じんせい</span>life</div></span><span class="word highlight" data-word="花">花<div class="tooltip"><span class="reading-sub">はな</span>flower</div></span><span class="word highlight" data-word="上下">上下<div class="tooltip"><span class="reading-sub">じょうげ</span>up and down</div></span><span class="word highlight" data-word="休む">休む<div class="tooltip"><span class="reading-sub">やすむ</span>to rest</div></span><span class="word highlight" data-word="男子">男子<div class="tooltip"><span class="reading-sub">だんし</span>boy / male</div></span><span class="word highlight" data-word="赤ちゃん">赤ちゃん<div class="tooltip"><span class="reading-sub">あかちゃん</span>baby</div></span><span class="word highlight" data-word="文学">文学<div class="tooltip"><span class="reading-sub">ぶんがく</span>literature</div></span><span class="word highlight" data-word="中">中<div class="tooltip"><span class="reading-sub">なか</span>inside / middle</div></span><span class="word highlight" data-word="上手">上手<div class="tooltip"><span class="reading-sub">じょうず</span>skillful</div></span><span class="word highlight" data-word="先生">先生<div class="tooltip"><span class="reading-sub">せんせい</span>teacher</div></span><span class="word highlight" data-word="四">四<div class="tooltip"><span class="reading-sub">よん</span>four</div></span><span class="word highlight" data-word="人口">人口<div class="tooltip"><span class="reading-sub">じんこう</span>population</div></span><span class="word highlight" data-word="年">年<div class="tooltip"><span class="reading-sub">とし</span>year / age</div></span><span class="word highlight" data-word="十">十<div class="tooltip"><span class="reading-sub">じゅう</span>ten</div></span><span class="word highlight" data-word="大学生">大学生<div class="tooltip"><span class="reading-sub">だいがくせい</span>university student</div></span><span class="word highlight" data-word="八">八<div class="tooltip"><span class="reading-sub">はち</span>eight</div></span><span class="word highlight" data-word="車">車<div class="tooltip"><span class="reading-sub">くるま</span>car</div></span><span class="word highlight" data-word="赤い">赤い<div class="tooltip"><span class="reading-sub">あかい</span>red</div></span><span class="word highlight" data-word="青">青<div class="tooltip"><span class="reading-sub">あお</span>blue</div></span><span class="word highlight" data-word="立つ">立つ<div class="tooltip"><span class="reading-sub">たつ</span>to stand</div></span><span class="word highlight" data-word="九">九<div class="tooltip"><span class="reading-sub">きゅう</span>nine</div></span><span class="word highlight" data-word="文字">文字<div class="tooltip"><span class="reading-sub">もじ</span>character / letter</div></span><span class="word highlight" data-word="足">足<div class="tooltip"><span class="reading-sub">あし</span>leg / foot</div></span><span class="word highlight" data-word="日本">日本<div class="tooltip"><span class="reading-sub">にほん</span>Japan</div></span><span class="word highlight" data-word="下さる">下さる<div class="tooltip"><span class="reading-sub">くださる</span>to give (polite)</div></span><span class="word highlight" data-word="上がる">上がる<div class="tooltip"><span class="reading-sub">あがる</span>to go up</div></span></div></div><div class="level-section"><div class="level-header">
+            <div class="level-title">Level 2</div>
+            <div class="level-stats">
+              Match: <strong>66</strong> / 66 (100%)
+            </div>
+          </div><div class="word-container"><span class="word highlight" data-word="中学校">中学校<div class="tooltip"><span class="reading-sub">ちゅうがっこう</span>junior high school</div></span><span class="word highlight" data-word="耳">耳<div class="tooltip"><span class="reading-sub">みみ</span>ear</div></span><span class="word highlight" data-word="気に入る">気に入る<div class="tooltip"><span class="reading-sub">きにいる</span>to like/be pleased with</div></span><span class="word highlight" data-word="学ぶ">学ぶ<div class="tooltip"><span class="reading-sub">まなぶ</span>to learn</div></span><span class="word highlight" data-word="子">子<div class="tooltip"><span class="reading-sub">こ</span>child</div></span><span class="word highlight" data-word="足りる">足りる<div class="tooltip"><span class="reading-sub">たりる</span>to be sufficient</div></span><span class="word highlight" data-word="日">日<div class="tooltip"><span class="reading-sub">ひ</span>day/sun</div></span><span class="word highlight" data-word="女子">女子<div class="tooltip"><span class="reading-sub">じょし</span>woman/girl</div></span><span class="word highlight" data-word="火">火<div class="tooltip"><span class="reading-sub">ひ</span>fire</div></span><span class="word highlight" data-word="下り">下り<div class="tooltip"><span class="reading-sub">くだり</span>down-train/descent</div></span><span class="word highlight" data-word="人気">人気<div class="tooltip"><span class="reading-sub">にんき</span>popularity</div></span><span class="word highlight" data-word="村">村<div class="tooltip"><span class="reading-sub">むら</span>village</div></span><span class="word highlight" data-word="見学">見学<div class="tooltip"><span class="reading-sub">けんがく</span>tour/inspection</div></span><span class="word highlight" data-word="青い">青い<div class="tooltip"><span class="reading-sub">あおい</span>blue</div></span><span class="word highlight" data-word="名">名<div class="tooltip"><span class="reading-sub">な</span>name</div></span><span class="word highlight" data-word="出かける">出かける<div class="tooltip"><span class="reading-sub">でかける</span>to go out</div></span><span class="word highlight" data-word="二日">二日<div class="tooltip"><span class="reading-sub">ふつか</span>two days/2nd day</div></span><span class="word highlight" data-word="森">森<div class="tooltip"><span class="reading-sub">もり</span>forest</div></span><span class="word highlight" data-word="三日">三日<div class="tooltip"><span class="reading-sub">みっか</span>three days/3rd day</div></span><span class="word highlight" data-word="天">天<div class="tooltip"><span class="reading-sub">てん</span>sky/heaven</div></span><span class="word highlight" data-word="一生">一生<div class="tooltip"><span class="reading-sub">いっしょう</span>whole life</div></span><span class="word highlight" data-word="青年">青年<div class="tooltip"><span class="reading-sub">せいねん</span>youth</div></span><span class="word highlight" data-word="生じる">生じる<div class="tooltip"><span class="reading-sub">しょうじる</span>to produce/occur</div></span><span class="word highlight" data-word="入る">入る<div class="tooltip"><span class="reading-sub">はいる</span>to enter</div></span><span class="word highlight" data-word="本人">本人<div class="tooltip"><span class="reading-sub">ほんにん</span>the person himself</div></span><span class="word highlight" data-word="生きる">生きる<div class="tooltip"><span class="reading-sub">いきる</span>to live</div></span><span class="word highlight" data-word="九つ">九つ<div class="tooltip"><span class="reading-sub">ここのつ</span>nine items</div></span><span class="word highlight" data-word="学年">学年<div class="tooltip"><span class="reading-sub">がくねん</span>school year/grade</div></span><span class="word highlight" data-word="名人">名人<div class="tooltip"><span class="reading-sub">めいじん</span>master/expert</div></span><span class="word highlight" data-word="大いに">大いに<div class="tooltip"><span class="reading-sub">おおいに</span>very/much</div></span><span class="word highlight" data-word="五日">五日<div class="tooltip"><span class="reading-sub">いつか</span>five days/5th day</div></span><span class="word highlight" data-word="四日">四日<div class="tooltip"><span class="reading-sub">よっか</span>four days/4th day</div></span><span class="word highlight" data-word="出口">出口<div class="tooltip"><span class="reading-sub">でぐち</span>exit</div></span><span class="word highlight" data-word="人">人<div class="tooltip"><span class="reading-sub">ひと</span>person</div></span><span class="word highlight" data-word="正しい">正しい<div class="tooltip"><span class="reading-sub">ただしい</span>correct</div></span><span class="word highlight" data-word="六日">六日<div class="tooltip"><span class="reading-sub">むいか</span>six days/6th day</div></span><span class="word highlight" data-word="水">水<div class="tooltip"><span class="reading-sub">みず</span>water</div></span><span class="word highlight" data-word="一千">一千<div class="tooltip"><span class="reading-sub">いっせん</span>one thousand</div></span><span class="word highlight" data-word="九日">九日<div class="tooltip"><span class="reading-sub">ここのか</span>nine days/9th day</div></span><span class="word highlight" data-word="下車">下車<div class="tooltip"><span class="reading-sub">げしゃ</span>getting off</div></span><span class="word highlight" data-word="上り">上り<div class="tooltip"><span class="reading-sub">のぼり</span>ascent/up-train</div></span><span class="word highlight" data-word="本気">本気<div class="tooltip"><span class="reading-sub">ほんき</span>seriousness</div></span><span class="word highlight" data-word="三千">三千<div class="tooltip"><span class="reading-sub">さんぜん</span>three thousand</div></span><span class="word highlight" data-word="林">林<div class="tooltip"><span class="reading-sub">はやし</span>woods</div></span><span class="word highlight" data-word="火山">火山<div class="tooltip"><span class="reading-sub">かざん</span>volcano</div></span><span class="word highlight" data-word="休日">休日<div class="tooltip"><span class="reading-sub">きゅうじつ</span>holiday</div></span><span class="word highlight" data-word="一">一<div class="tooltip"><span class="reading-sub">いち</span>one</div></span><span class="word highlight" data-word="生かす">生かす<div class="tooltip"><span class="reading-sub">いかす</span>to make use of</div></span><span class="word highlight" data-word="月">月<div class="tooltip"><span class="reading-sub">つき</span>moon/month</div></span><span class="word highlight" data-word="先日">先日<div class="tooltip"><span class="reading-sub">せんじつ</span>the other day</div></span><span class="word highlight" data-word="六つ">六つ<div class="tooltip"><span class="reading-sub">むっつ</span>six items</div></span><span class="word highlight" data-word="円">円<div class="tooltip"><span class="reading-sub">えん</span>yen/circle</div></span><span class="word highlight" data-word="下がる">下がる<div class="tooltip"><span class="reading-sub">さがる</span>to go down</div></span><span class="word highlight" data-word="金">金<div class="tooltip"><span class="reading-sub">かね</span>money</div></span><span class="word highlight" data-word="見出し">見出し<div class="tooltip"><span class="reading-sub">みだし</span>headline</div></span><span class="word highlight" data-word="年中">年中<div class="tooltip"><span class="reading-sub">ねんじゅう</span>all year round</div></span><span class="word highlight" data-word="一日">一日<div class="tooltip"><span class="reading-sub">ついたち</span>1st day of month</div></span><span class="word highlight" data-word="大気">大気<div class="tooltip"><span class="reading-sub">たいき</span>atmosphere</div></span><span class="word highlight" data-word="年月">年月<div class="tooltip"><span class="reading-sub">としつき</span>months and years</div></span><span class="word highlight" data-word="日中">日中<div class="tooltip"><span class="reading-sub">にっちゅう</span>daytime</div></span><span class="word highlight" data-word="下げる">下げる<div class="tooltip"><span class="reading-sub">さげる</span>to lower</div></span><span class="word highlight" data-word="七日">七日<div class="tooltip"><span class="reading-sub">なのか</span>seven days/7th day</div></span><span class="word highlight" data-word="八日">八日<div class="tooltip"><span class="reading-sub">ようか</span>eight days/8th day</div></span><span class="word highlight" data-word="八つ">八つ<div class="tooltip"><span class="reading-sub">やっつ</span>eight items</div></span><span class="word highlight" data-word="下ろす">下ろす<div class="tooltip"><span class="reading-sub">おろす</span>to lower/withdraw</div></span><span class="word highlight" data-word="花火">花火<div class="tooltip"><span class="reading-sub">はなび</span>fireworks</div></span></div></div><div class="level-section"><div class="level-header">
+            <div class="level-title">Level 3</div>
+            <div class="level-stats">
+              Match: <strong>81</strong> / 81 (100%)
+            </div>
+          </div><div class="word-container"><span class="word highlight" data-word="本名">本名<div class="tooltip"><span class="reading-sub">ほんみょう</span>real name</div></span><span class="word highlight" data-word="中年">中年<div class="tooltip"><span class="reading-sub">ちゅうねん</span>middle-aged</div></span><span class="word highlight" data-word="下手">下手<div class="tooltip"><span class="reading-sub">へた</span>unskillful</div></span><span class="word highlight" data-word="出生">出生<div class="tooltip"><span class="reading-sub">しゅっしょう</span>birth</div></span><span class="word highlight" data-word="上">上<div class="tooltip"><span class="reading-sub">うえ</span>above; up</div></span><span class="word highlight" data-word="休み中">休み中<div class="tooltip"><span class="reading-sub">やすみちゅう</span>during the holiday; closed</div></span><span class="word highlight" data-word="五百円">五百円<div class="tooltip"><span class="reading-sub">ごひゃくえん</span>500 yen</div></span><span class="word highlight" data-word="男の人">男の人<div class="tooltip"><span class="reading-sub">おとこのひと</span>man</div></span><span class="word highlight" data-word="一見">一見<div class="tooltip"><span class="reading-sub">いっけん</span>glance; look</div></span><span class="word highlight" data-word="小学生">小学生<div class="tooltip"><span class="reading-sub">しょうがくせい</span>elementary school student</div></span><span class="word highlight" data-word="五百">五百<div class="tooltip"><span class="reading-sub">ごひゃく</span>five hundred</div></span><span class="word highlight" data-word="大小">大小<div class="tooltip"><span class="reading-sub">だいしょう</span>size; large and small</div></span><span class="word highlight" data-word="大きな">大きな<div class="tooltip"><span class="reading-sub">おおきな</span>big</div></span><span class="word highlight" data-word="火がつく">火がつく<div class="tooltip"><span class="reading-sub">ひがつく</span>to catch fire</div></span><span class="word highlight" data-word="赤字">赤字<div class="tooltip"><span class="reading-sub">あかじ</span>deficit</div></span><span class="word highlight" data-word="人">人<div class="tooltip"><span class="reading-sub">にん</span>counter for people</div></span><span class="word highlight" data-word="日">日<div class="tooltip"><span class="reading-sub">にち</span>day; sun</div></span><span class="word highlight" data-word="正月">正月<div class="tooltip"><span class="reading-sub">しょうがつ</span>New Year</div></span><span class="word highlight" data-word="学">学<div class="tooltip"><span class="reading-sub">がく</span>learning; scholarship</div></span><span class="word highlight" data-word="森林">森林<div class="tooltip"><span class="reading-sub">しんりん</span>forest</div></span><span class="word highlight" data-word="下">下<div class="tooltip"><span class="reading-sub">もと</span>under (supervision etc.)</div></span><span class="word highlight" data-word="空中">空中<div class="tooltip"><span class="reading-sub">くうちゅう</span>sky; mid-air</div></span><span class="word highlight" data-word="力">力<div class="tooltip"><span class="reading-sub">ちから</span>power</div></span><span class="word highlight" data-word="十七">十七<div class="tooltip"><span class="reading-sub">じゅうしち</span>seventeen</div></span><span class="word highlight" data-word="年上">年上<div class="tooltip"><span class="reading-sub">としうえ</span>older</div></span><span class="word highlight" data-word="女の人">女の人<div class="tooltip"><span class="reading-sub">おんなのひと</span>woman</div></span><span class="word highlight" data-word="下る">下る<div class="tooltip"><span class="reading-sub">くだる</span>to go down</div></span><span class="word highlight" data-word="生み出す">生み出す<div class="tooltip"><span class="reading-sub">うみだす</span>to create; to produce</div></span><span class="word highlight" data-word="もう一つ">もう一つ<div class="tooltip"><span class="reading-sub">もうひとつ</span>another one</div></span><span class="word highlight" data-word="目立つ">目立つ<div class="tooltip"><span class="reading-sub">めだつ</span>to stand out</div></span><span class="word highlight" data-word="白">白<div class="tooltip"><span class="reading-sub">しろ</span>white</div></span><span class="word highlight" data-word="年生">年生<div class="tooltip"><span class="reading-sub">ねんせい</span>grader; year student</div></span><span class="word highlight" data-word="八月">八月<div class="tooltip"><span class="reading-sub">はちがつ</span>August</div></span><span class="word highlight" data-word="白人">白人<div class="tooltip"><span class="reading-sub">はくじん</span>white person</div></span><span class="word highlight" data-word="竹">竹<div class="tooltip"><span class="reading-sub">たけ</span>bamboo</div></span><span class="word highlight" data-word="花見">花見<div class="tooltip"><span class="reading-sub">はなみ</span>cherry blossom viewing</div></span><span class="word highlight" data-word="石">石<div class="tooltip"><span class="reading-sub">いし</span>stone</div></span><span class="word highlight" data-word="月日">月日<div class="tooltip"><span class="reading-sub">つきひ</span>time; days</div></span><span class="word highlight" data-word="右手">右手<div class="tooltip"><span class="reading-sub">みぎて</span>right hand</div></span><span class="word highlight" data-word="入力">入力<div class="tooltip"><span class="reading-sub">にゅうりょく</span>input</div></span><span class="word highlight" data-word="本日">本日<div class="tooltip"><span class="reading-sub">ほんじつ</span>today</div></span><span class="word highlight" data-word="下町">下町<div class="tooltip"><span class="reading-sub">したまち</span>downtown</div></span><span class="word highlight" data-word="生まれ">生まれ<div class="tooltip"><span class="reading-sub">うまれ</span>birth</div></span><span class="word highlight" data-word="日の出">日の出<div class="tooltip"><span class="reading-sub">ひので</span>sunrise</div></span><span class="word highlight" data-word="人々">人々<div class="tooltip"><span class="reading-sub">ひとびと</span>people</div></span><span class="word highlight" data-word="年金">年金<div class="tooltip"><span class="reading-sub">ねんきん</span>pension</div></span><span class="word highlight" data-word="天下">天下<div class="tooltip"><span class="reading-sub">てんか</span>the world; ruling power</div></span><span class="word highlight" data-word="草">草<div class="tooltip"><span class="reading-sub">くさ</span>grass</div></span><span class="word highlight" data-word="入手">入手<div class="tooltip"><span class="reading-sub">にゅうしゅ</span>acquisition</div></span><span class="word highlight" data-word="文">文<div class="tooltip"><span class="reading-sub">ぶん</span>sentence</div></span><span class="word highlight" data-word="先に">先に<div class="tooltip"><span class="reading-sub">さきに</span>before; ahead</div></span><span class="word highlight" data-word="日々">日々<div class="tooltip"><span class="reading-sub">ひび</span>days; daily</div></span><span class="word highlight" data-word="先">先<div class="tooltip"><span class="reading-sub">さき</span>ahead; previous</div></span><span class="word highlight" data-word="大きさ">大きさ<div class="tooltip"><span class="reading-sub">おおきさ</span>size</div></span><span class="word highlight" data-word="女王">女王<div class="tooltip"><span class="reading-sub">じょおう</span>queen</div></span><span class="word highlight" data-word="上がり">上がり<div class="tooltip"><span class="reading-sub">あがり</span>rise; finish</div></span><span class="word highlight" data-word="水中">水中<div class="tooltip"><span class="reading-sub">すいちゅう</span>underwater</div></span><span class="word highlight" data-word="土木">土木<div class="tooltip"><span class="reading-sub">どぼく</span>civil engineering</div></span><span class="word highlight" data-word="王子">王子<div class="tooltip"><span class="reading-sub">おうじ</span>prince</div></span><span class="word highlight" data-word="大正">大正<div class="tooltip"><span class="reading-sub">たいしょう</span>Taisho era</div></span><span class="word highlight" data-word="生る">生る<div class="tooltip"><span class="reading-sub">なる</span>to bear fruit</div></span><span class="word highlight" data-word="男女">男女<div class="tooltip"><span class="reading-sub">だんじょ</span>men and women</div></span><span class="word highlight" data-word="手入れ">手入れ<div class="tooltip"><span class="reading-sub">ていれ</span>care; maintenance</div></span><span class="word highlight" data-word="赤">赤<div class="tooltip"><span class="reading-sub">あか</span>red</div></span><span class="word highlight" data-word="本文">本文<div class="tooltip"><span class="reading-sub">ほんぶん</span>text; body</div></span><span class="word highlight" data-word="十日">十日<div class="tooltip"><span class="reading-sub">とおか</span>10th day</div></span><span class="word highlight" data-word="九月">九月<div class="tooltip"><span class="reading-sub">くがつ</span>September</div></span><span class="word highlight" data-word="年下">年下<div class="tooltip"><span class="reading-sub">としした</span>younger</div></span><span class="word highlight" data-word="空き">空き<div class="tooltip"><span class="reading-sub">あき</span>vacancy</div></span><span class="word highlight" data-word="入り">入り<div class="tooltip"><span class="reading-sub">いり</span>entering</div></span><span class="word highlight" data-word="大げさ">大げさ<div class="tooltip"><span class="reading-sub">おおげさ</span>exaggerated</div></span><span class="word highlight" data-word="大雨">大雨<div class="tooltip"><span class="reading-sub">おおあめ</span>heavy rain</div></span><span class="word highlight" data-word="十月">十月<div class="tooltip"><span class="reading-sub">じゅうがつ</span>October</div></span><span class="word highlight" data-word="糸">糸<div class="tooltip"><span class="reading-sub">いと</span>thread</div></span><span class="word highlight" data-word="見つめる">見つめる<div class="tooltip"><span class="reading-sub">みつめる</span>to stare at</div></span><span class="word highlight" data-word="空">空<div class="tooltip"><span class="reading-sub">から</span>empty</div></span><span class="word highlight" data-word="名字">名字<div class="tooltip"><span class="reading-sub">みょうじ</span>surname</div></span><span class="word highlight" data-word="六月">六月<div class="tooltip"><span class="reading-sub">ろくがつ</span>June</div></span><span class="word highlight" data-word="四月">四月<div class="tooltip"><span class="reading-sub">しがつ</span>April</div></span><span class="word highlight" data-word="小川">小川<div class="tooltip"><span class="reading-sub">おがわ</span>brook</div></span><span class="word highlight" data-word="一ヶ月">一ヶ月<div class="tooltip"><span class="reading-sub">いっかげつ</span>one month</div></span></div></div>
+  </div>
+  <div id="dictModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title" id="modalTitle">...</div>
+          <span class="close-modal" id="closeModal">×</span>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- Content injected here -->
+        </div>
+      </div>
+    </div>
+  <script>
+            const output = document.getElementById("output");
+            const modal = document.getElementById("dictModal");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalBody = document.getElementById("modalBody");
+            const closeModal = document.getElementById("closeModal");
+
+            function cleanJotobaReading(str) {
+        return str
+          .replace(/\[([^|\]]+)\|[^\]]+\]/g, "$1")
+          .replace(/[\[\]]/g, "");
+      }
+            function parseJotobaFurigana(str) {
+        // Regex looks for [Surface|Reading...]
+        return str.replace(
+          /\[([^|\]]+)\|([^\]]+)\]/g,
+          (match, surface, readings) => {
+            // 'readings' might be "a|b" or just "a". We strip pipes for the main reading block.
+            const cleanReading = readings.replace(/\|/g, "");
+            return `<ruby>${surface}<rt>${cleanReading}</rt></ruby>`;
+          }
+        );
+      }
+            function renderValue(val) {
+        if (typeof val === "string") return val;
+        if (typeof val === "object" && val !== null) {
+          return Object.entries(val)
+            .map(([k, v]) => `${k}: ${renderValue(v)}`)
+            .join(", ");
+        }
+        return val;
+      }
+            function formatPOS(posData) {
+        if (!posData) return "";
+        if (typeof posData === "string") return posData;
+
+        if (Array.isArray(posData)) {
+          return posData
+            .map((item) => {
+              if (typeof item === "string") return item;
+              if (typeof item === "object" && item !== null) {
+                return Object.entries(item)
+                  .map(([k, v]) => `${k}: ${renderValue(v)}`)
+                  .join(", ");
+              }
+              return "";
+            })
+            .join("; ");
+        }
+
+        if (typeof posData === "object" && posData !== null) {
+          return Object.entries(posData)
+            .map(([k, v]) => `${k}: ${renderValue(v)}`)
+            .join(", ");
+        }
+        return "";
+      }
+            async function fetchWordDetails(word) {
+        modalTitle.textContent = word;
+        modalBody.innerHTML = `<div class="loading-spinner">Searching Jotoba...</div>`;
+        modal.classList.add("active");
+
+        try {
+          const response = await fetch("https://jotoba.de/api/app/words", {
+            headers: {
+              accept: "application/json",
+              "accept-language":
+                "en-JP,en;q=0.9,ja-JP;q=0.8,ja;q=0.7,en-GB;q=0.6,en-US;q=0.5",
+              "cache-control": "no-cache",
+              "content-type": "application/json",
+              pragma: "no-cache",
+              priority: "u=1, i",
+              "sec-ch-ua":
+                '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
+              "sec-ch-ua-mobile": "?0",
+              "sec-ch-ua-platform": '"Linux"',
+              "sec-fetch-dest": "empty",
+              "sec-fetch-mode": "cors",
+              "sec-fetch-site": "same-origin",
+              "sec-gpc": "1",
+            },
+            referrer: "https://jotoba.de/search/0/%E5%AD%A6?l=en-US",
+            body: JSON.stringify({
+              query_str: word,
+              settings: {
+                jlpt: 5,
+                user_lang: "en-US",
+                show_english: true,
+                english_on_top: false,
+                page_size: 10,
+                show_example_sentences: true,
+                sentence_furigana: true,
+              },
+              page: 1,
+              word_index: 0,
+            }),
+            method: "POST",
+            mode: "cors",
+            credentials: "omit",
+          });
+
+          if (!response.ok) throw new Error("API Request Failed");
+
+          const data = await response.json();
+          const words =
+            data.content && data.content.words ? data.content.words : [];
+          const matchedWord = words.find(
+            (w) => cleanJotobaReading(w.reading) === word
+          );
+
+          if (matchedWord) {
+            renderWordDetails(matchedWord);
+          } else {
+            modalBody.innerHTML = `<div class="error-msg">No exact match found for "${word}".</div>`;
+          }
+        } catch (error) {
+          console.error(error);
+          modalBody.innerHTML = `<div class="error-msg">Error fetching data. Check console.</div>`;
+        }
+      }
+            function renderWordDetails(entry) {
+        modalBody.innerHTML = "";
+
+        if (!entry.senses || entry.senses.length === 0) {
+          modalBody.innerHTML = "No definitions available.";
+          return;
+        }
+
+        entry.senses.forEach((sense, index) => {
+          const glosses = sense.glosses ? sense.glosses.join(", ") : "";
+          const pos = formatPOS(sense.part_of_speech);
+
+          const div = document.createElement("div");
+          div.className = "dict-section";
+
+          let html = `<div class="dict-pos">${pos}</div>`;
+          html += `<ul class="dict-glosses"><li>${glosses}</li></ul>`;
+
+          if (sense.example_sentence && Array.isArray(sense.example_sentence)) {
+            const jpRaw = sense.example_sentence[0] || "";
+            const en = sense.example_sentence[1] || "";
+
+            // Convert Jotoba syntax to HTML ruby tags
+            const jpHtml = parseJotobaFurigana(jpRaw);
+
+            html += `
+              <div class="dict-example" onclick="this.classList.toggle('active')">
+                <span class="dict-ex-jp">${jpHtml}</span>
+                <span class="dict-ex-en">${en}</span>
+              </div>
+            `;
+          }
+
+          div.innerHTML = html;
+          modalBody.appendChild(div);
+        });
+      }
+
+            output.addEventListener("click", function(e) {
+                let target = e.target;
+                while (target && target !== output) {
+                  if (target.classList.contains("word")) {
+                    const word = target.dataset.word || target.textContent;
+                    fetchWordDetails(word);
+                    return;
+                  }
+                  target = target.parentNode;
+                }
+            });
+
+            closeModal.addEventListener("click", () => {
+                modal.classList.remove("active");
+            });
+
+            window.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                  modal.classList.remove("active");
+                }
+            });
+          </script
+</body>
+</html>
