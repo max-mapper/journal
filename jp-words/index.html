@@ -364,7 +364,7 @@
     <div id="export-area">
       <!-- Global Stats -->
       <div class="stats-bar">
-        <div class="stat-item"><strong>Global Stats (Visible):</strong></div>
+        <div class="stat-item"><strong>Global Stats:</strong></div>
         <div class="stat-item">
           Matched: <span id="totalMatchCount" class="stat-number">0</span>
         </div>
@@ -762,7 +762,7 @@
 
         // We construct a script that includes the necessary functions and listeners for the viewer
         // We use .toString() to inject the function code directly.
-        const scriptContent = `<script>
+        let scriptContent = `<script>
             const output = document.getElementById("output");
             const modal = document.getElementById("dictModal");
             const modalTitle = document.getElementById("modalTitle");
@@ -798,21 +798,22 @@
                 }
             });
           </script`;
-        +">";
+        scriptContent += ">";
 
         const fileContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kanji Tracker Export</title>
   <style>
     ${styles}
-    body { background: #fff; max-width: 900px; }
+    body { background: #fff; }
   </style>
 </head>
 <body>
-  <h2>Kanji Compatibility Report</h2>
+  <h2>Kanji Study Set</h2>
   ${statsHtml}
   <div id="output">
     ${resultsHtml}

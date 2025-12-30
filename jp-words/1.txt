@@ -1,0 +1,499 @@
+{"level": 1, "data":["時間","じかん","time","じかん"]}
+{"level": 1, "data":["一つ","ひと","one (object)","ひとつ"]}
+{"level": 1, "data":["国","くに","country","くに"]}
+{"level": 1, "data":["出す","だ","to take out / to submit","だす"]}
+{"level": 1, "data":["外国","がいこく","foreign country","がいこく"]}
+{"level": 1, "data":["大人","おとな","adult","おとな"]}
+{"level": 1, "data":["二つ","ふた","two (objects)","ふたつ"]}
+{"level": 1, "data":["見える","み","to be visible","みえる"]}
+{"level": 1, "data":["出る","で","to go out / to exit","でる"]}
+{"level": 1, "data":["から","","from / because","から"]}
+{"level": 1, "data":["小学校","しょうがっこう","elementary school","しょうがっこう"]}
+{"level": 1, "data":["後ろ","うし","behind / back","うしろ"]}
+{"level": 1, "data":["三つ","みっ","three (objects)","みっつ"]}
+{"level": 1, "data":["天気","てんき","weather","てんき"]}
+{"level": 1, "data":["白い","しろ","white","しろい"]}
+{"level": 1, "data":["みんな","","everyone","みんな"]}
+{"level": 1, "data":["言う","い","to say","いう"]}
+{"level": 1, "data":["川","かわ","river","かわ"]}
+{"level": 1, "data":["ちょっと","","a little","ちょっと"]}
+{"level": 1, "data":["男の子","おとここ","boy","おとこのこ"]}
+{"level": 1, "data":["自分","じぶん","myself","じぶん"]}
+{"level": 1, "data":["会社","かいしゃ","company","かいしゃ"]}
+{"level": 1, "data":["仕事","しごと","work / job","しごと"]}
+{"level": 1, "data":["作る","つく","to make","つくる"]}
+{"level": 1, "data":["少し","すこ","a little / few","すこし"]}
+{"level": 1, "data":["口","くち","mouth","くち"]}
+{"level": 1, "data":["いつ","","when","いつ"]}
+{"level": 1, "data":["四つ","よっ","four (objects)","よっつ"]}
+{"level": 1, "data":["見つかる","み","to be found","みつかる"]}
+{"level": 1, "data":["歌","うた","song","うた"]}
+{"level": 1, "data":["広い","ひろ","wide / spacious","ひろい"]}
+{"level": 1, "data":["学校","がっこう","school","がっこう"]}
+{"level": 1, "data":["大学","だいがく","university","だいがく"]}
+{"level": 1, "data":["思う","おも","to think","おもう"]}
+{"level": 1, "data":["あまり","","not very","あまり"]}
+{"level": 1, "data":["名前","なまえ","name","なまえ"]}
+{"level": 1, "data":["社会","しゃかい","society","しゃかい"]}
+{"level": 1, "data":["電話","でんわ","telephone","でんわ"]}
+{"level": 1, "data":["お母さん","かあ","mother (polite)","おかあさん"]}
+{"level": 1, "data":["六","ろく","six","ろく"]}
+{"level": 1, "data":["走る","はし","to run","はしる"]}
+{"level": 1, "data":["言葉","ことば","word / language","ことば"]}
+{"level": 1, "data":["この","","this","この"]}
+{"level": 1, "data":["午後","ごご","afternoon / PM","ごご"]}
+{"level": 1, "data":["音","おと","sound","おと"]}
+{"level": 1, "data":["元気","げんき","healthy / energetic","げんき"]}
+{"level": 1, "data":["売る","う","to sell","うる"]}
+{"level": 1, "data":["見せる","み","to show","みせる"]}
+{"level": 1, "data":["電車","でんしゃ","train","でんしゃ"]}
+{"level": 1, "data":["毎日","まいにち","every day","まいにち"]}
+{"level": 1, "data":["研究","けんきゅう","research","けんきゅう"]}
+{"level": 1, "data":["呼ぶ","よ","to call","よぶ"]}
+{"level": 1, "data":["左","ひだり","left","ひだり"]}
+{"level": 1, "data":["地図","ちず","map","ちず"]}
+{"level": 1, "data":["大きい","おお","big","おおきい"]}
+{"level": 1, "data":["お父さん","とう","father (polite)","おとうさん"]}
+{"level": 1, "data":["送る","おく","to send","おくる"]}
+{"level": 1, "data":["少ない","すく","few / scarce","すくない"]}
+{"level": 1, "data":["木","き","tree","き"]}
+{"level": 1, "data":["一人","ひとり","one person / alone","ひとり"]}
+{"level": 1, "data":["どこ","","where","どこ"]}
+{"level": 1, "data":["考える","かんが","to think / to consider","かんがえる"]}
+{"level": 1, "data":["社長","しゃちょう","company president","しゃちょう"]}
+{"level": 1, "data":["二人","ふたり","two people","ふたり"]}
+{"level": 1, "data":["百","ひゃく","hundred","ひゃく"]}
+{"level": 1, "data":["の","","of (possessive particle)","の"]}
+{"level": 1, "data":["外","そと","outside","そと"]}
+{"level": 1, "data":["半分","はんぶん","half","はんぶん"]}
+{"level": 1, "data":["に","","to / at (particle)","に"]}
+{"level": 1, "data":["は","","topic marker (particle)","は"]}
+{"level": 1, "data":["山","やま","mountain","やま"]}
+{"level": 1, "data":["工場","こうじょう","factory","こうじょう"]}
+{"level": 1, "data":["五つ","いつ","five (objects)","いつつ"]}
+{"level": 1, "data":["集める","あつ","to collect","あつめる"]}
+{"level": 1, "data":["近い","ちか","near","ちかい"]}
+{"level": 1, "data":["場所","ばしょ","place","ばしょ"]}
+{"level": 1, "data":["気","き","spirit / mood","き"]}
+{"level": 1, "data":["女の子","おんなこ","girl","おんなのこ"]}
+{"level": 1, "data":["全部","ぜんぶ","all","ぜんぶ"]}
+{"level": 1, "data":["両親","りょうしん","parents","りょうしん"]}
+{"level": 1, "data":["雪","ゆき","snow","ゆき"]}
+{"level": 1, "data":["予定","よてい","plan / schedule","よてい"]}
+{"level": 1, "data":["選ぶ","えら","to choose","えらぶ"]}
+{"level": 1, "data":["文化","ぶんか","culture","ぶんか"]}
+{"level": 1, "data":["二","に","two","に"]}
+{"level": 1, "data":["外国人","がいこくじん","foreigner","がいこくじん"]}
+{"level": 1, "data":["最近","さいきん","recently","さいきん"]}
+{"level": 1, "data":["自由","じゆう","freedom","じゆう"]}
+{"level": 1, "data":["おもちゃ","","toy","おもちゃ"]}
+{"level": 1, "data":["警察","けいさつ","police","けいさつ"]}
+{"level": 1, "data":["運ぶ","はこ","to carry","はこぶ"]}
+{"level": 1, "data":["安全","あんぜん","safety","あんぜん"]}
+{"level": 1, "data":["番組","ばんぐみ","program (TV/radio)","ばんぐみ"]}
+{"level": 1, "data":["例えば","たと","for example","たとえば"]}
+{"level": 1, "data":["五","ご","five","ご"]}
+{"level": 1, "data":["何","なに","what","なに"]}
+{"level": 1, "data":["三","さん","three","さん"]}
+{"level": 1, "data":["また","","again / also","また"]}
+{"level": 1, "data":["聞こえる","き","to be heard","きこえる"]}
+{"level": 1, "data":["母","はは","mother (humble)","はは"]}
+{"level": 1, "data":["今日","きょう","today","きょう"]}
+{"level": 1, "data":["父","ちち","father (humble)","ちち"]}
+{"level": 1, "data":["台風","たいふう","typhoon","たいふう"]}
+{"level": 1, "data":["きれい","","beautiful / clean","きれい"]}
+{"level": 1, "data":["小説","しょうせつ","novel","しょうせつ"]}
+{"level": 1, "data":["これ","","this","これ"]}
+{"level": 1, "data":["空港","くうこう","airport","くうこう"]}
+{"level": 1, "data":["庭","にわ","garden","にわ"]}
+{"level": 1, "data":["毎月","まいつき","every month","まいつき"]}
+{"level": 1, "data":["相手","あいて","partner / opponent","あいて"]}
+{"level": 1, "data":["出身","しゅっしん","place of origin","しゅっしん"]}
+{"level": 1, "data":["押す","お","to push","おす"]}
+{"level": 1, "data":["高い","たか","high / expensive","たかい"]}
+{"level": 1, "data":["本","ほん","book","ほん"]}
+{"level": 1, "data":["アメリカ","","America","あめりか"]}
+{"level": 1, "data":["午前","ごぜん","morning / AM","ごぜん"]}
+{"level": 1, "data":["時々","ときどき","sometimes","ときどき"]}
+{"level": 1, "data":["同じ","おな","same","おなじ"]}
+{"level": 1, "data":["ここ","","here","ここ"]}
+{"level": 1, "data":["電気","でんき","electricity / light","でんき"]}
+{"level": 1, "data":["使う","つか","to use","つかう"]}
+{"level": 1, "data":["経験","けいけん","experience","けいけん"]}
+{"level": 1, "data":["右","みぎ","right","みぎ"]}
+{"level": 1, "data":["まだ","","yet / still","まだ"]}
+{"level": 1, "data":["聞く","き","to hear / to ask","きく"]}
+{"level": 1, "data":["金曜日","きんようび","Friday","きんようび"]}
+{"level": 1, "data":["話","はなし","story / talk","はなし"]}
+{"level": 1, "data":["作家","さっか","author","さっか"]}
+{"level": 1, "data":["地震","じしん","earthquake","じしん"]}
+{"level": 1, "data":["重い","おも","heavy","おもい"]}
+{"level": 1, "data":["毎年","まいとし","every year","まいとし"]}
+{"level": 1, "data":["病院","びょういん","hospital","びょういん"]}
+{"level": 1, "data":["昔","むかし","old times","むかし"]}
+{"level": 1, "data":["食べる","た","to eat","たべる"]}
+{"level": 1, "data":["南","みなみ","south","みなみ"]}
+{"level": 1, "data":["高校","こうこう","high school","こうこう"]}
+{"level": 1, "data":["頼む","たの","to request","たのむ"]}
+{"level": 1, "data":["小さい","ちい","small","ちいさい"]}
+{"level": 1, "data":["音楽","おんがく","music","おんがく"]}
+{"level": 1, "data":["新聞","しんぶん","newspaper","しんぶん"]}
+{"level": 1, "data":["こちら","","this way","こちら"]}
+{"level": 1, "data":["北","きた","north","きた"]}
+{"level": 1, "data":["月曜日","げつようび","Monday","げつようび"]}
+{"level": 1, "data":["見る","み","to see","みる"]}
+{"level": 1, "data":["種類","しゅるい","type / kind","しゅるい"]}
+{"level": 1, "data":["英語","えいご","English language","えいご"]}
+{"level": 1, "data":["約束","やくそく","promise","やくそく"]}
+{"level": 1, "data":["雨","あめ","rain","あめ"]}
+{"level": 1, "data":["どちら","","which (of two)","どちら"]}
+{"level": 1, "data":["思い出","おもで","memory","おもいで"]}
+{"level": 1, "data":["落ちる","お","to fall","おちる"]}
+{"level": 1, "data":["発表","はっぴょう","announcement","はっぴょう"]}
+{"level": 1, "data":["夕方","ゆうがた","evening","ゆうがた"]}
+{"level": 1, "data":["読む","よ","to read","よむ"]}
+{"level": 1, "data":["絵","え","picture","え"]}
+{"level": 1, "data":["歌手","かしゅ","singer","かしゅ"]}
+{"level": 1, "data":["なぜ","","why","なぜ"]}
+{"level": 1, "data":["休み","やす","rest / holiday","やすみ"]}
+{"level": 1, "data":["でも","","but","でも"]}
+{"level": 1, "data":["日記","にっき","diary","にっき"]}
+{"level": 1, "data":["とても","","very","とても"]}
+{"level": 1, "data":["いくら","","how much","いくら"]}
+{"level": 1, "data":["違い","ちが","difference","ちがい"]}
+{"level": 1, "data":["旅行","りょこう","travel","りょこう"]}
+{"level": 1, "data":["お金","かね","money","おかね"]}
+{"level": 1, "data":["長い","なが","long","ながい"]}
+{"level": 1, "data":["受ける","う","to receive / to take (a test)","うける"]}
+{"level": 1, "data":["自転車","じてんしゃ","bicycle","じてんしゃ"]}
+{"level": 1, "data":["新しい","あたら","new","あたらしい"]}
+{"level": 1, "data":["探す","さが","to look for","さがす"]}
+{"level": 1, "data":["病気","びょうき","illness","びょうき"]}
+{"level": 1, "data":["冬","ふゆ","winter","ふゆ"]}
+{"level": 1, "data":["入れる","い","to put in","いれる"]}
+{"level": 1, "data":["趣味","しゅみ","hobby","しゅみ"]}
+{"level": 1, "data":["世界","せかい","world","せかい"]}
+{"level": 1, "data":["犬","いぬ","dog","いぬ"]}
+{"level": 1, "data":["七つ","なな","seven (objects)","ななつ"]}
+{"level": 1, "data":["違う","ちが","to be different","ちがう"]}
+{"level": 1, "data":["準備","じゅんび","preparation","じゅんび"]}
+{"level": 1, "data":["政府","せいふ","government","せいふ"]}
+{"level": 1, "data":["ページ","","page","ぺーじ"]}
+{"level": 1, "data":["どれ","","which (of three+)","どれ"]}
+{"level": 1, "data":["中学生","ちゅうがくせい","junior high student","ちゅうがくせい"]}
+{"level": 1, "data":["夫婦","ふうふ","married couple","ふうふ"]}
+{"level": 1, "data":["七","しち","seven","しち"]}
+{"level": 1, "data":["性格","せいかく","personality","せいかく"]}
+{"level": 1, "data":["旅館","りょかん","Japanese inn","りょかん"]}
+{"level": 1, "data":["いくつ","","how many","いくつ"]}
+{"level": 1, "data":["今年","ことし","this year","ことし"]}
+{"level": 1, "data":["大切","たいせつ","important","たいせつ"]}
+{"level": 1, "data":["今月","こんげつ","this month","こんげつ"]}
+{"level": 1, "data":["生まれる","う","to be born","うまれる"]}
+{"level": 1, "data":["手紙","てがみ","letter","てがみ"]}
+{"level": 1, "data":["心配","しんぱい","worry","しんぱい"]}
+{"level": 1, "data":["左右","さゆう","left and right","さゆう"]}
+{"level": 1, "data":["終わる","お","to end","おわる"]}
+{"level": 1, "data":["図書館","としょかん","library","としょかん"]}
+{"level": 1, "data":["弟","おとうと","younger brother","おとうと"]}
+{"level": 1, "data":["実は","じつ","to tell the truth","じつは"]}
+{"level": 1, "data":["先月","せんげつ","last month","せんげつ"]}
+{"level": 1, "data":["明日","あした","tomorrow","あした"]}
+{"level": 1, "data":["楽","らく","comfort / ease","らく"]}
+{"level": 1, "data":["部長","ぶちょう","department manager","ぶちょう"]}
+{"level": 1, "data":["コーヒー","","coffee","こーひー"]}
+{"level": 1, "data":["あの","","that (over there)","あの"]}
+{"level": 1, "data":["環境","かんきょう","environment","かんきょう"]}
+{"level": 1, "data":["さん","","Mr./Ms.","さん"]}
+{"level": 1, "data":["習慣","しゅうかん","custom / habit","しゅうかん"]}
+{"level": 1, "data":["先輩","せんぱい","senior","せんぱい"]}
+{"level": 1, "data":["あげる","","to give","あげる"]}
+{"level": 1, "data":["着物","きもの","kimono","きもの"]}
+{"level": 1, "data":["部屋","へや","room","へや"]}
+{"level": 1, "data":["入学","にゅうがく","school entrance","にゅうがく"]}
+{"level": 1, "data":["広告","こうこく","advertisement","こうこく"]}
+{"level": 1, "data":["紙","かみ","paper","かみ"]}
+{"level": 1, "data":["木曜日","もくようび","Thursday","もくようび"]}
+{"level": 1, "data":["水曜日","すいようび","Wednesday","すいようび"]}
+{"level": 1, "data":["テレビ","","television","てれび"]}
+{"level": 1, "data":["男","おとこ","man","おとこ"]}
+{"level": 1, "data":["もう","","already / anymore","もう"]}
+{"level": 1, "data":["問題","もんだい","problem","もんだい"]}
+{"level": 1, "data":["いい","","good","いい"]}
+{"level": 1, "data":["砂糖","さとう","sugar","さとう"]}
+{"level": 1, "data":["虫","むし","insect","むし"]}
+{"level": 1, "data":["火曜日","かようび","Tuesday","かようび"]}
+{"level": 1, "data":["話す","はな","to speak","はなす"]}
+{"level": 1, "data":["幸せ","しあわ","happiness","しあわせ"]}
+{"level": 1, "data":["知る","し","to know","しる"]}
+{"level": 1, "data":["土","つち","soil / earth","つち"]}
+{"level": 1, "data":["起こす","お","to wake someone / to cause","おこす"]}
+{"level": 1, "data":["意味","いみ","meaning","いみ"]}
+{"level": 1, "data":["千","せん","thousand","せん"]}
+{"level": 1, "data":["学生","がくせい","student","がくせい"]}
+{"level": 1, "data":["たくさん","","many / a lot","たくさん"]}
+{"level": 1, "data":["写真","しゃしん","photograph","しゃしん"]}
+{"level": 1, "data":["信号","しんごう","traffic light","しんごう"]}
+{"level": 1, "data":["バス","","bus","ばす"]}
+{"level": 1, "data":["家族","かぞく","family","かぞく"]}
+{"level": 1, "data":["笑う","わら","to laugh","わらう"]}
+{"level": 1, "data":["映画","えいが","movie","えいが"]}
+{"level": 1, "data":["年間","ねんかん","period of a year","ねんかん"]}
+{"level": 1, "data":["答える","こた","to answer","こたえる"]}
+{"level": 1, "data":["公園","こうえん","park","こうえん"]}
+{"level": 1, "data":["中学","ちゅうがく","junior high school","ちゅうがく"]}
+{"level": 1, "data":["女","おんな","woman","おんな"]}
+{"level": 1, "data":["兄","あに","older brother","あに"]}
+{"level": 1, "data":["空気","くうき","air / atmosphere","くうき"]}
+{"level": 1, "data":["早い","はや","early / fast","はやい"]}
+{"level": 1, "data":["明るい","あか","bright","あかるい"]}
+{"level": 1, "data":["歌う","うた","to sing","うたう"]}
+{"level": 1, "data":["秘密","ひみつ","secret","ひみつ"]}
+{"level": 1, "data":["見つける","み","to find","みつける"]}
+{"level": 1, "data":["スポーツ","","sports","すぽーつ"]}
+{"level": 1, "data":["毎週","まいしゅう","every week","まいしゅう"]}
+{"level": 1, "data":["ニュース","","news","にゅーす"]}
+{"level": 1, "data":["町","まち","town","まち"]}
+{"level": 1, "data":["首相","しゅしょう","Prime Minister","しゅしょう"]}
+{"level": 1, "data":["手","て","hand","て"]}
+{"level": 1, "data":["ホテル","","hotel","ほてる"]}
+{"level": 1, "data":["する","","to do","する"]}
+{"level": 1, "data":["クラス","","class","くらす"]}
+{"level": 1, "data":["人生","じんせい","life","じんせい"]}
+{"level": 1, "data":["銀行","ぎんこう","bank","ぎんこう"]}
+{"level": 1, "data":["厳しい","きび","strict","きびしい"]}
+{"level": 1, "data":["友人","ゆうじん","friend","ゆうじん"]}
+{"level": 1, "data":["花","はな","flower","はな"]}
+{"level": 1, "data":["食べ物","たもの","food","たべもの"]}
+{"level": 1, "data":["動物","どうぶつ","animal","どうぶつ"]}
+{"level": 1, "data":["今後","こんご","from now on","こんご"]}
+{"level": 1, "data":["歩く","ある","to walk","あるく"]}
+{"level": 1, "data":["彼女","かのじょ","she / girlfriend","かのじょ"]}
+{"level": 1, "data":["もっと","","more","もっと"]}
+{"level": 1, "data":["遠い","とお","far","とおい"]}
+{"level": 1, "data":["別れる","わか","to separate / break up","わかれる"]}
+{"level": 1, "data":["友達","ともだち","friend","ともだち"]}
+{"level": 1, "data":["最後","さいご","last / end","さいご"]}
+{"level": 1, "data":["包む","つつ","to wrap","つつむ"]}
+{"level": 1, "data":["料理","りょうり","cooking / cuisine","りょうり"]}
+{"level": 1, "data":["です","","is / to be","です"]}
+{"level": 1, "data":["持つ","も","to hold / to have","もつ"]}
+{"level": 1, "data":["今度","こんど","next time","こんど"]}
+{"level": 1, "data":["そして","","and then","そして"]}
+{"level": 1, "data":["雑誌","ざっし","magazine","ざっし"]}
+{"level": 1, "data":["ラジオ","","radio","らじお"]}
+{"level": 1, "data":["間違い","まちが","mistake","まちがい"]}
+{"level": 1, "data":["上下","じょうげ","up and down","じょうげ"]}
+{"level": 1, "data":["質問","しつもん","question","しつもん"]}
+{"level": 1, "data":["有名","ゆうめい","famous","ゆうめい"]}
+{"level": 1, "data":["来年","らいねん","next year","らいねん"]}
+{"level": 1, "data":["答え","こた","answer","こたえ"]}
+{"level": 1, "data":["休む","やす","to rest","やすむ"]}
+{"level": 1, "data":["カラオケ","","karaoke","からおけ"]}
+{"level": 1, "data":["難しい","むずか","difficult","むずかしい"]}
+{"level": 1, "data":["怒る","おこ","to get angry","おこる"]}
+{"level": 1, "data":["春","はる","spring","はる"]}
+{"level": 1, "data":["魚","さかな","fish","さかな"]}
+{"level": 1, "data":["カメラ","","camera","かめら"]}
+{"level": 1, "data":["海","うみ","sea","うみ"]}
+{"level": 1, "data":["犯人","はんにん","criminal","はんにん"]}
+{"level": 1, "data":["大学院","だいがくいん","graduate school","だいがくいん"]}
+{"level": 1, "data":["建物","たてもの","building","たてもの"]}
+{"level": 1, "data":["助ける","たす","to help","たすける"]}
+{"level": 1, "data":["パン","","bread","ぱん"]}
+{"level": 1, "data":["少々","しょうしょう","a little","しょうしょう"]}
+{"level": 1, "data":["楽しい","たの","fun","たのしい"]}
+{"level": 1, "data":["書類","しょるい","document","しょるい"]}
+{"level": 1, "data":["気分","きぶん","feeling / mood","きぶん"]}
+{"level": 1, "data":["理想","りそう","ideal","りそう"]}
+{"level": 1, "data":["盗む","ぬす","to steal","ぬすむ"]}
+{"level": 1, "data":["勉強","べんきょう","study","べんきょう"]}
+{"level": 1, "data":["最低","さいてい","least / worst","さいてい"]}
+{"level": 1, "data":["息子","むすこ","son","むすこ"]}
+{"level": 1, "data":["強い","つよ","strong","つよい"]}
+{"level": 1, "data":["始める","はじ","to start (something)","はじめる"]}
+{"level": 1, "data":["火事","かじ","fire","かじ"]}
+{"level": 1, "data":["特に","とく","especially","とくに"]}
+{"level": 1, "data":["飛行機","ひこうき","airplane","ひこうき"]}
+{"level": 1, "data":["番号","ばんごう","number","ばんごう"]}
+{"level": 1, "data":["時代","じだい","era","じだい"]}
+{"level": 1, "data":["窓","まど","window","まど"]}
+{"level": 1, "data":["黒い","くろ","black","くろい"]}
+{"level": 1, "data":["困る","こま","to be troubled","こまる"]}
+{"level": 1, "data":["いつも","","always","いつも"]}
+{"level": 1, "data":["ギター","","guitar","ぎたー"]}
+{"level": 1, "data":["駅","えき","station","えき"]}
+{"level": 1, "data":["借りる","か","to borrow","かりる"]}
+{"level": 1, "data":["なお","","still / furthermore","なお"]}
+{"level": 1, "data":["を","","object marker (particle)","を"]}
+{"level": 1, "data":["買い物","かもの","shopping","かいもの"]}
+{"level": 1, "data":["土曜日","どようび","Saturday","どようび"]}
+{"level": 1, "data":["トイレ","","toilet","といれ"]}
+{"level": 1, "data":["何か","なに","something","なにか"]}
+{"level": 1, "data":["誰","だれ","who","だれ"]}
+{"level": 1, "data":["男子","だんし","boy / male","だんし"]}
+{"level": 1, "data":["どうして","","why","どうして"]}
+{"level": 1, "data":["家事","かじ","housework","かじ"]}
+{"level": 1, "data":["子供","こども","child","こども"]}
+{"level": 1, "data":["レストラン","","restaurant","れすとらん"]}
+{"level": 1, "data":["教室","きょうしつ","classroom","きょうしつ"]}
+{"level": 1, "data":["授業","じゅぎょう","class / lesson","じゅぎょう"]}
+{"level": 1, "data":["長男","ちょうなん","eldest son","ちょうなん"]}
+{"level": 1, "data":["兄弟","きょうだい","siblings","きょうだい"]}
+{"level": 1, "data":["買う","か","to buy","かう"]}
+{"level": 1, "data":["漫画","まんが","manga / comic","まんが"]}
+{"level": 1, "data":["消える","き","to disappear","きえる"]}
+{"level": 1, "data":["大好き","だいす","love / like very much","だいすき"]}
+{"level": 1, "data":["皆さん","みな","everyone","みなさん"]}
+{"level": 1, "data":["負ける","ま","to lose","まける"]}
+{"level": 1, "data":["意見","いけん","opinion","いけん"]}
+{"level": 1, "data":["ひどい","","terrible","ひどい"]}
+{"level": 1, "data":["欲しい","ほ","to want","ほしい"]}
+{"level": 1, "data":["募集","ぼしゅう","recruitment","ぼしゅう"]}
+{"level": 1, "data":["もらう","","to receive","もらう"]}
+{"level": 1, "data":["始まる","はじ","to begin","はじまる"]}
+{"level": 1, "data":["赤ちゃん","あか","baby","あかちゃん"]}
+{"level": 1, "data":["黒","くろ","black","くろ"]}
+{"level": 1, "data":["特別","とくべつ","special","とくべつ"]}
+{"level": 1, "data":["冷蔵庫","れいぞうこ","refrigerator","れいぞうこ"]}
+{"level": 1, "data":["パソコン","","PC / computer","ぱそこん"]}
+{"level": 1, "data":["映画館","えいがかん","movie theater","えいがかん"]}
+{"level": 1, "data":["気持ち","きも","feeling","きもち"]}
+{"level": 1, "data":["文学","ぶんがく","literature","ぶんがく"]}
+{"level": 1, "data":["ピアノ","","piano","ぴあの"]}
+{"level": 1, "data":["試合","しあい","match / game","しあい"]}
+{"level": 1, "data":["紅茶","こうちゃ","black tea","こうちゃ"]}
+{"level": 1, "data":["中","なか","inside / middle","なか"]}
+{"level": 1, "data":["上手","じょうず","skillful","じょうず"]}
+{"level": 1, "data":["野菜","やさい","vegetable","やさい"]}
+{"level": 1, "data":["先生","せんせい","teacher","せんせい"]}
+{"level": 1, "data":["プール","","pool","ぷーる"]}
+{"level": 1, "data":["本来","ほんらい","originally","ほんらい"]}
+{"level": 1, "data":["かわいい","","cute","かわいい"]}
+{"level": 1, "data":["靴","くつ","shoes","くつ"]}
+{"level": 1, "data":["ソフト","","software","そふと"]}
+{"level": 1, "data":["給料","きゅうりょう","salary","きゅうりょう"]}
+{"level": 1, "data":["試験","しけん","exam","しけん"]}
+{"level": 1, "data":["四","よん","four","よん"]}
+{"level": 1, "data":["戻る","もど","to return","もどる"]}
+{"level": 1, "data":["家庭","かてい","household","かてい"]}
+{"level": 1, "data":["変","へん","strange","へん"]}
+{"level": 1, "data":["注意","ちゅうい","caution","ちゅうい"]}
+{"level": 1, "data":["アパート","","apartment","あぱーと"]}
+{"level": 1, "data":["切る","き","to cut","きる"]}
+{"level": 1, "data":["分かる","わ","to understand","わかる"]}
+{"level": 1, "data":["一緒","いっしょ","together","いっしょ"]}
+{"level": 1, "data":["声","こえ","voice","こえ"]}
+{"level": 1, "data":["支店","してん","branch office","してん"]}
+{"level": 1, "data":["ノート","","notebook","のーと"]}
+{"level": 1, "data":["以下","いか","less than / below","いか"]}
+{"level": 1, "data":["地下鉄","ちかてつ","subway","ちかてつ"]}
+{"level": 1, "data":["人口","じんこう","population","じんこう"]}
+{"level": 1, "data":["取る","と","to take","とる"]}
+{"level": 1, "data":["ゲーム","","game","げーむ"]}
+{"level": 1, "data":["年","とし","year / age","とし"]}
+{"level": 1, "data":["時計","とけい","clock / watch","とけい"]}
+{"level": 1, "data":["漢字","かんじ","kanji","かんじ"]}
+{"level": 1, "data":["十","じゅう","ten","じゅう"]}
+{"level": 1, "data":["静か","しず","quiet","しずか"]}
+{"level": 1, "data":["鳥","とり","bird","とり"]}
+{"level": 1, "data":["生徒","せいと","pupil","せいと"]}
+{"level": 1, "data":["大学生","だいがくせい","university student","だいがくせい"]}
+{"level": 1, "data":["ゆっくり","","slowly","ゆっくり"]}
+{"level": 1, "data":["八","はち","eight","はち"]}
+{"level": 1, "data":["肉","にく","meat","にく"]}
+{"level": 1, "data":["車","くるま","car","くるま"]}
+{"level": 1, "data":["以上","いじょう","more than","いじょう"]}
+{"level": 1, "data":["着る","き","to wear","きる"]}
+{"level": 1, "data":["パーティー","","party","ぱーてぃー"]}
+{"level": 1, "data":["テニス","","tennis","てにす"]}
+{"level": 1, "data":["運動","うんどう","exercise","うんどう"]}
+{"level": 1, "data":["作品","さくひん","work of art","さくひん"]}
+{"level": 1, "data":["必要","ひつよう","necessary","ひつよう"]}
+{"level": 1, "data":["神社","じんじゃ","shrine","じんじゃ"]}
+{"level": 1, "data":["用意","ようい","preparation","ようい"]}
+{"level": 1, "data":["古い","ふる","old","ふるい"]}
+{"level": 1, "data":["生活","せいかつ","life / living","せいかつ"]}
+{"level": 1, "data":["毎朝","まいあさ","every morning","まいあさ"]}
+{"level": 1, "data":["海外","かいがい","overseas","かいがい"]}
+{"level": 1, "data":["医者","いしゃ","doctor","いしゃ"]}
+{"level": 1, "data":["楽器","がっき","musical instrument","がっき"]}
+{"level": 1, "data":["赤い","あか","red","あかい"]}
+{"level": 1, "data":["少年","しょうねん","boy","しょうねん"]}
+{"level": 1, "data":["校長","こうちょう","principal","こうちょう"]}
+{"level": 1, "data":["でしょう","","probably","でしょう"]}
+{"level": 1, "data":["最初","さいしょ","first / beginning","さいしょ"]}
+{"level": 1, "data":["最も","もっと","most","もっとも"]}
+{"level": 1, "data":["青","あお","blue","あお"]}
+{"level": 1, "data":["女性","じょせい","female","じょせい"]}
+{"level": 1, "data":["結婚","けっこん","marriage","けっこん"]}
+{"level": 1, "data":["計画","けいかく","plan","けいかく"]}
+{"level": 1, "data":["踏む","ふ","to step on","ふむ"]}
+{"level": 1, "data":["家具","かぐ","furniture","かぐ"]}
+{"level": 1, "data":["不足","ふそく","shortage","ふそく"]}
+{"level": 1, "data":["目的","もくてき","purpose","もくてき"]}
+{"level": 1, "data":["説明","せつめい","explanation","せつめい"]}
+{"level": 1, "data":["昼","ひる","noon / daytime","ひる"]}
+{"level": 1, "data":["間に合う","まあ","to be in time","まにあう"]}
+{"level": 1, "data":["遅い","おそ","slow / late","おそい"]}
+{"level": 1, "data":["晴れる","は","to clear up","はれる"]}
+{"level": 1, "data":["落とす","お","to drop","おとす"]}
+{"level": 1, "data":["壊す","こわ","to break","こわス"]}
+{"level": 1, "data":["離れる","はな","to separate from","はなれる"]}
+{"level": 1, "data":["関係","かんけい","relationship","かんけい"]}
+{"level": 1, "data":["理由","りゆう","reason","りゆう"]}
+{"level": 1, "data":["立つ","た","to stand","たつ"]}
+{"level": 1, "data":["インターネット","","internet","いんたーねっと"]}
+{"level": 1, "data":["九","きゅう","nine","きゅう"]}
+{"level": 1, "data":["夏休み","なつやす","summer vacation","なつやすみ"]}
+{"level": 1, "data":["今","いま","now","いま"]}
+{"level": 1, "data":["美術館","びじゅつかん","art museum","びじゅつかん"]}
+{"level": 1, "data":["練習","れんしゅう","practice","れんしゅう"]}
+{"level": 1, "data":["明らか","あき","clear / obvious","あきらか"]}
+{"level": 1, "data":["文字","もじ","character / letter","もじ"]}
+{"level": 1, "data":["待つ","ま","to wait","まつ"]}
+{"level": 1, "data":["きっかけ","","trigger / start","きっかけ"]}
+{"level": 1, "data":["利用","りよう","usage","りよう"]}
+{"level": 1, "data":["変わる","か","to change","かわる"]}
+{"level": 1, "data":["読書","どくしょ","reading books","どくしょ"]}
+{"level": 1, "data":["別に","べつ","separately / not particularly","べつに"]}
+{"level": 1, "data":["神様","かみさま","god","かみさま"]}
+{"level": 1, "data":["使用","しよう","use","しよう"]}
+{"level": 1, "data":["悲しい","かな","sad","かなしい"]}
+{"level": 1, "data":["勝つ","か","to win","かつ"]}
+{"level": 1, "data":["足","あし","leg / foot","あし"]}
+{"level": 1, "data":["土地","とち","land","とち"]}
+{"level": 1, "data":["船","ふね","ship","ふね"]}
+{"level": 1, "data":["教える","おし","to teach","おしえる"]}
+{"level": 1, "data":["完全","かんぜん","perfect / complete","かんぜん"]}
+{"level": 1, "data":["じゃ","","well then","じゃ"]}
+{"level": 1, "data":["母親","ははおや","mother","ははおや"]}
+{"level": 1, "data":["荷物","にもつ","luggage","にもつ"]}
+{"level": 1, "data":["予約","よやく","reservation","よやく"]}
+{"level": 1, "data":["十分","じゅうぶん","enough","じゅうぶん"]}
+{"level": 1, "data":["猫","ねこ","cat","ねこ"]}
+{"level": 1, "data":["ずっと","","the whole time / much more","ずっと"]}
+{"level": 1, "data":["直す","なお","to fix / correct","なおす"]}
+{"level": 1, "data":["恥ずかしい","は","embarrassed","はずかしい"]}
+{"level": 1, "data":["来月","らいげつ","next month","らいげつ"]}
+{"level": 1, "data":["日本","にほん","Japan","にほん"]}
+{"level": 1, "data":["戦い","たたか","battle","たたかい"]}
+{"level": 1, "data":["増える","ふ","to increase","ふえる"]}
+{"level": 1, "data":["通る","とお","to pass through","とおる"]}
+{"level": 1, "data":["決める","き","to decide","きめる"]}
+{"level": 1, "data":["ことができる","","can do","ことができる"]}
+{"level": 1, "data":["緑","みどり","green","みどり"]}
+{"level": 1, "data":["少女","しょうじょ","girl","しょうじょ"]}
+{"level": 1, "data":["来る","く","to come","くる"]}
+{"level": 1, "data":["いろいろ","","various","いろいろ"]}
+{"level": 1, "data":["下さる","くだ","to give (polite)","くださる"]}
+{"level": 1, "data":["会う","あ","to meet","あう"]}
+{"level": 1, "data":["ビール","","beer","びーる"]}
+{"level": 1, "data":["上がる","あ","to go up","あがる"]}
+{"level": 1, "data":["たばこ","","tobacco","たばこ"]}
+{"level": 1, "data":["始め","はじ","beginning","はじめ"]}
+{"level": 1, "data":["あちら","","over there","あちら"]}
+{"level": 1, "data":["いいえ","","no","いいえ"]}
+{"level": 1, "data":["行く","い","to go","いく"]}
+{"level": 1, "data":["一度","いちど","once","いちど"]}
+{"level": 1, "data":["ふるさと","","hometown","ふるさと"]}
