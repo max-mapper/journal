@@ -7,13 +7,26 @@
   <title>Kanji Tracker Export</title>
   <style>
     
+      :root {
+        --bg-color: #f0f2f5;
+        --card-bg: #ffffff;
+        --border-color: #ddd;
+        --kanji-color: #ce3b3b;
+        --header-bg: #f8f9fa;
+        --text-main: #222;
+        --text-sub: #555;
+        --highlight-bg: #e8f5e9;
+        --highlight-border: #c8e6c9;
+        --highlight-text: #2e7d32;
+      }
+
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         padding: 20px;
         line-height: 1.6;
         max-width: 100%;
         margin: 0 auto;
-        background: #f0f2f5;
+        background: var(--bg-color);
         color: #333;
       }
       h2 {
@@ -50,7 +63,7 @@
         flex-direction: column;
       }
       textarea {
-        height: 180px;
+        height: 150px;
         padding: 12px;
         border: 1px solid #ccd0d5;
         border-radius: 6px;
@@ -93,6 +106,34 @@
         transform: scale(1.2);
       }
 
+      /* View Mode Toggle Buttons */
+      .view-toggles {
+        display: flex;
+        background: white;
+        border-radius: 4px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+      }
+      .view-btn {
+        padding: 8px 16px;
+        border: none;
+        background: white;
+        cursor: pointer;
+        font-size: 0.9rem;
+        border-right: 1px solid #ccc;
+        transition: background 0.2s;
+      }
+      .view-btn:last-child {
+        border-right: none;
+      }
+      .view-btn:hover {
+        background: #f0f0f0;
+      }
+      .view-btn.active {
+        background: #2c3e50;
+        color: white;
+      }
+
       .btn-export {
         background-color: #007bff;
         color: white;
@@ -108,18 +149,15 @@
         background-color: #0056b3;
       }
 
-      #output {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      /* Level Group Styling */
+      /* =========================================
+         LIST VIEW STYLES
+         ========================================= */
       .level-section {
         background: white;
         border-radius: 8px;
         border: 1px solid #ddd;
         overflow: hidden;
+        margin-bottom: 20px;
       }
 
       .level-header {
@@ -161,6 +199,7 @@
         border: 1px solid #e9ecef;
         cursor: pointer;
         transition: background-color 0.2s;
+        display: inline-block;
       }
       .word:hover {
         background-color: #e2e6ea;
@@ -168,15 +207,15 @@
 
       /* Highlight known words */
       .highlight {
-        background: #e8f5e9;
-        color: #2e7d32;
-        border-color: #c8e6c9;
+        background: var(--highlight-bg);
+        color: var(--highlight-text);
+        border-color: var(--highlight-border);
       }
       .highlight:hover {
         background-color: #dceddd;
       }
 
-      /* Hover Tooltip (Original) */
+      /* List View Tooltip */
       .word .tooltip {
         visibility: hidden;
         width: 180px;
@@ -207,7 +246,183 @@
         margin-bottom: 2px;
       }
 
-      /* Dictionary Modal Styles */
+      /* =========================================
+         GRID VIEW STYLES (Fixed)
+         ========================================= */
+      .kanji-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        width: 100%;
+        padding-bottom: 100px; /* Space for bottom tooltips */
+      }
+
+      .k-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        /* IMPORT FIX: Removed overflow:hidden to allow tooltips to pop out */
+        overflow: visible;
+        position: relative;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: transform 0.2s, box-shadow 0.2s;
+        z-index: 1;
+      }
+
+      /* Z-Index Trick: Bring the hovered card to the front so tooltips overlay neighbors */
+      .k-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        z-index: 100;
+        border-color: #bbb;
+      }
+
+      .k-header {
+        background-color: var(--header-bg);
+        padding: 8px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        /* Manually add radius since container isn't clipping */
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      .k-header.known {
+        background-color: #e3f2fd;
+      }
+
+      .k-char {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--kanji-color);
+        line-height: 1;
+      }
+
+      .k-core-mean {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #666;
+        text-align: right;
+        line-height: 1.2;
+      }
+
+      .k-vocab {
+        padding: 6px 6px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .v-item {
+        /* Design Change: Simple block for the word only */
+        text-align: center;
+        padding: 6px;
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative; /* Anchor for tooltip */
+        background: #f9f9f9;
+        font-weight: bold;
+        font-size: 1rem;
+        border: 1px solid transparent;
+      }
+
+      .v-item:hover {
+        background-color: #eee;
+        border-color: #ddd;
+      }
+
+      .v-item.highlight {
+        color: var(--highlight-text);
+        background-color: rgba(232, 245, 233, 0.4);
+      }
+      .v-item.highlight:hover {
+        background-color: #c8e6c9;
+      }
+
+      /* Grid Tooltip Styling */
+      .grid-tooltip {
+        visibility: hidden;
+        width: 160px;
+        background-color: #2c3e50;
+        color: #fff;
+        text-align: center;
+        border-radius: 4px;
+        padding: 8px;
+
+        /* Position */
+        position: absolute;
+        bottom: 100%; /* Show above the word */
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 8px; /* Arrow space */
+
+        z-index: 200;
+        opacity: 0;
+        transition: opacity 0.2s, visibility 0.2s;
+        pointer-events: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        font-size: 0.85rem;
+        line-height: 1.4;
+      }
+
+      /* Tooltip Arrow */
+      .grid-tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #2c3e50 transparent transparent transparent;
+      }
+
+      .v-item:hover .grid-tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .gt-level {
+        color: #4db6ac;
+        font-size: 0.7rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+      }
+      .gt-read {
+        font-size: 0.95rem;
+        margin-bottom: 2px;
+      }
+      .gt-def {
+        color: #ddd;
+        font-size: 0.8rem;
+        font-style: italic;
+      }
+
+      /* Responsive Grid */
+      @media (max-width: 1200px) {
+        .kanji-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      @media (max-width: 900px) {
+        .kanji-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .kanji-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* =========================================
+         DICTIONARY MODAL
+         ========================================= */
       .modal-overlay {
         display: none;
         position: fixed;
@@ -311,21 +526,15 @@
       .dict-example:hover {
         background: #e6f2ff;
       }
-
-      /* Japanese line with Ruby */
       .dict-ex-jp {
         display: block;
-        margin-bottom: 0; /* No margin when English is hidden */
+        margin-bottom: 0;
         font-size: 1.1rem;
         line-height: 1.8;
       }
-
-      /* Hide furigana (rt tags) by default */
       .dict-ex-jp rt {
         display: none;
       }
-
-      /* English line hidden by default */
       .dict-ex-en {
         display: none;
         color: #555;
@@ -334,13 +543,10 @@
         border-top: 1px dashed #cce5ff;
         padding-top: 4px;
       }
-
-      /* Reveal State (Hover or Active class) */
       .dict-example:hover .dict-ex-jp rt,
       .dict-example.active .dict-ex-jp rt {
-        display: revert; /* or block/ruby-text */
+        display: revert;
       }
-
       .dict-example:hover .dict-ex-en,
       .dict-example.active .dict-ex-en {
         display: block;
@@ -362,9 +568,9 @@
   </style>
 </head>
 <body>
-  <h2>Kanji Study Set</h2>
+  <h2>Kanji Study Set Export</h2>
   <div class="stats-bar">
-        <div class="stat-item"><strong>Global Stats (Visible):</strong></div>
+        <div class="stat-item"><strong>Global Stats:</strong></div>
         <div class="stat-item">
           Matched: <span id="totalMatchCount" class="stat-number">234</span>
         </div>
@@ -372,22 +578,1635 @@
         <div class="stat-item">Progress: <span id="totalPercent">100%</span></div>
       </div>
   <div id="output">
-    <div class="level-section"><div class="level-header">
-            <div class="level-title">Level 1</div>
-            <div class="level-stats">
-              Match: <strong>87</strong> / 87 (100%)
-            </div>
-          </div><div class="word-container"><span class="word highlight" data-word="一つ">一つ<div class="tooltip"><span class="reading-sub">ひとつ</span>one (object)</div></span><span class="word highlight" data-word="出す">出す<div class="tooltip"><span class="reading-sub">だす</span>to take out / to submit</div></span><span class="word highlight" data-word="大人">大人<div class="tooltip"><span class="reading-sub">おとな</span>adult</div></span><span class="word highlight" data-word="二つ">二つ<div class="tooltip"><span class="reading-sub">ふたつ</span>two (objects)</div></span><span class="word highlight" data-word="見える">見える<div class="tooltip"><span class="reading-sub">みえる</span>to be visible</div></span><span class="word highlight" data-word="出る">出る<div class="tooltip"><span class="reading-sub">でる</span>to go out / to exit</div></span><span class="word highlight" data-word="小学校">小学校<div class="tooltip"><span class="reading-sub">しょうがっこう</span>elementary school</div></span><span class="word highlight" data-word="三つ">三つ<div class="tooltip"><span class="reading-sub">みっつ</span>three (objects)</div></span><span class="word highlight" data-word="天気">天気<div class="tooltip"><span class="reading-sub">てんき</span>weather</div></span><span class="word highlight" data-word="白い">白い<div class="tooltip"><span class="reading-sub">しろい</span>white</div></span><span class="word highlight" data-word="川">川<div class="tooltip"><span class="reading-sub">かわ</span>river</div></span><span class="word highlight" data-word="男の子">男の子<div class="tooltip"><span class="reading-sub">おとこのこ</span>boy</div></span><span class="word highlight" data-word="口">口<div class="tooltip"><span class="reading-sub">くち</span>mouth</div></span><span class="word highlight" data-word="四つ">四つ<div class="tooltip"><span class="reading-sub">よっつ</span>four (objects)</div></span><span class="word highlight" data-word="見つかる">見つかる<div class="tooltip"><span class="reading-sub">みつかる</span>to be found</div></span><span class="word highlight" data-word="学校">学校<div class="tooltip"><span class="reading-sub">がっこう</span>school</div></span><span class="word highlight" data-word="大学">大学<div class="tooltip"><span class="reading-sub">だいがく</span>university</div></span><span class="word highlight" data-word="六">六<div class="tooltip"><span class="reading-sub">ろく</span>six</div></span><span class="word highlight" data-word="音">音<div class="tooltip"><span class="reading-sub">おと</span>sound</div></span><span class="word highlight" data-word="見せる">見せる<div class="tooltip"><span class="reading-sub">みせる</span>to show</div></span><span class="word highlight" data-word="左">左<div class="tooltip"><span class="reading-sub">ひだり</span>left</div></span><span class="word highlight" data-word="大きい">大きい<div class="tooltip"><span class="reading-sub">おおきい</span>big</div></span><span class="word highlight" data-word="木">木<div class="tooltip"><span class="reading-sub">き</span>tree</div></span><span class="word highlight" data-word="一人">一人<div class="tooltip"><span class="reading-sub">ひとり</span>one person / alone</div></span><span class="word highlight" data-word="二人">二人<div class="tooltip"><span class="reading-sub">ふたり</span>two people</div></span><span class="word highlight" data-word="百">百<div class="tooltip"><span class="reading-sub">ひゃく</span>hundred</div></span><span class="word highlight" data-word="山">山<div class="tooltip"><span class="reading-sub">やま</span>mountain</div></span><span class="word highlight" data-word="五つ">五つ<div class="tooltip"><span class="reading-sub">いつつ</span>five (objects)</div></span><span class="word highlight" data-word="気">気<div class="tooltip"><span class="reading-sub">き</span>spirit / mood</div></span><span class="word highlight" data-word="女の子">女の子<div class="tooltip"><span class="reading-sub">おんなのこ</span>girl</div></span><span class="word highlight" data-word="二">二<div class="tooltip"><span class="reading-sub">に</span>two</div></span><span class="word highlight" data-word="五">五<div class="tooltip"><span class="reading-sub">ご</span>five</div></span><span class="word highlight" data-word="三">三<div class="tooltip"><span class="reading-sub">さん</span>three</div></span><span class="word highlight" data-word="本">本<div class="tooltip"><span class="reading-sub">ほん</span>book</div></span><span class="word highlight" data-word="右">右<div class="tooltip"><span class="reading-sub">みぎ</span>right</div></span><span class="word highlight" data-word="小さい">小さい<div class="tooltip"><span class="reading-sub">ちいさい</span>small</div></span><span class="word highlight" data-word="見る">見る<div class="tooltip"><span class="reading-sub">みる</span>to see</div></span><span class="word highlight" data-word="雨">雨<div class="tooltip"><span class="reading-sub">あめ</span>rain</div></span><span class="word highlight" data-word="休み">休み<div class="tooltip"><span class="reading-sub">やすみ</span>rest / holiday</div></span><span class="word highlight" data-word="お金">お金<div class="tooltip"><span class="reading-sub">おかね</span>money</div></span><span class="word highlight" data-word="入れる">入れる<div class="tooltip"><span class="reading-sub">いれる</span>to put in</div></span><span class="word highlight" data-word="犬">犬<div class="tooltip"><span class="reading-sub">いぬ</span>dog</div></span><span class="word highlight" data-word="七つ">七つ<div class="tooltip"><span class="reading-sub">ななつ</span>seven (objects)</div></span><span class="word highlight" data-word="中学生">中学生<div class="tooltip"><span class="reading-sub">ちゅうがくせい</span>junior high student</div></span><span class="word highlight" data-word="七">七<div class="tooltip"><span class="reading-sub">しち</span>seven</div></span><span class="word highlight" data-word="生まれる">生まれる<div class="tooltip"><span class="reading-sub">うまれる</span>to be born</div></span><span class="word highlight" data-word="左右">左右<div class="tooltip"><span class="reading-sub">さゆう</span>left and right</div></span><span class="word highlight" data-word="先月">先月<div class="tooltip"><span class="reading-sub">せんげつ</span>last month</div></span><span class="word highlight" data-word="入学">入学<div class="tooltip"><span class="reading-sub">にゅうがく</span>school entrance</div></span><span class="word highlight" data-word="男">男<div class="tooltip"><span class="reading-sub">おとこ</span>man</div></span><span class="word highlight" data-word="虫">虫<div class="tooltip"><span class="reading-sub">むし</span>insect</div></span><span class="word highlight" data-word="土">土<div class="tooltip"><span class="reading-sub">つち</span>soil / earth</div></span><span class="word highlight" data-word="千">千<div class="tooltip"><span class="reading-sub">せん</span>thousand</div></span><span class="word highlight" data-word="学生">学生<div class="tooltip"><span class="reading-sub">がくせい</span>student</div></span><span class="word highlight" data-word="中学">中学<div class="tooltip"><span class="reading-sub">ちゅうがく</span>junior high school</div></span><span class="word highlight" data-word="女">女<div class="tooltip"><span class="reading-sub">おんな</span>woman</div></span><span class="word highlight" data-word="空気">空気<div class="tooltip"><span class="reading-sub">くうき</span>air / atmosphere</div></span><span class="word highlight" data-word="早い">早い<div class="tooltip"><span class="reading-sub">はやい</span>early / fast</div></span><span class="word highlight" data-word="見つける">見つける<div class="tooltip"><span class="reading-sub">みつける</span>to find</div></span><span class="word highlight" data-word="町">町<div class="tooltip"><span class="reading-sub">まち</span>town</div></span><span class="word highlight" data-word="手">手<div class="tooltip"><span class="reading-sub">て</span>hand</div></span><span class="word highlight" data-word="人生">人生<div class="tooltip"><span class="reading-sub">じんせい</span>life</div></span><span class="word highlight" data-word="花">花<div class="tooltip"><span class="reading-sub">はな</span>flower</div></span><span class="word highlight" data-word="上下">上下<div class="tooltip"><span class="reading-sub">じょうげ</span>up and down</div></span><span class="word highlight" data-word="休む">休む<div class="tooltip"><span class="reading-sub">やすむ</span>to rest</div></span><span class="word highlight" data-word="男子">男子<div class="tooltip"><span class="reading-sub">だんし</span>boy / male</div></span><span class="word highlight" data-word="赤ちゃん">赤ちゃん<div class="tooltip"><span class="reading-sub">あかちゃん</span>baby</div></span><span class="word highlight" data-word="文学">文学<div class="tooltip"><span class="reading-sub">ぶんがく</span>literature</div></span><span class="word highlight" data-word="中">中<div class="tooltip"><span class="reading-sub">なか</span>inside / middle</div></span><span class="word highlight" data-word="上手">上手<div class="tooltip"><span class="reading-sub">じょうず</span>skillful</div></span><span class="word highlight" data-word="先生">先生<div class="tooltip"><span class="reading-sub">せんせい</span>teacher</div></span><span class="word highlight" data-word="四">四<div class="tooltip"><span class="reading-sub">よん</span>four</div></span><span class="word highlight" data-word="人口">人口<div class="tooltip"><span class="reading-sub">じんこう</span>population</div></span><span class="word highlight" data-word="年">年<div class="tooltip"><span class="reading-sub">とし</span>year / age</div></span><span class="word highlight" data-word="十">十<div class="tooltip"><span class="reading-sub">じゅう</span>ten</div></span><span class="word highlight" data-word="大学生">大学生<div class="tooltip"><span class="reading-sub">だいがくせい</span>university student</div></span><span class="word highlight" data-word="八">八<div class="tooltip"><span class="reading-sub">はち</span>eight</div></span><span class="word highlight" data-word="車">車<div class="tooltip"><span class="reading-sub">くるま</span>car</div></span><span class="word highlight" data-word="赤い">赤い<div class="tooltip"><span class="reading-sub">あかい</span>red</div></span><span class="word highlight" data-word="青">青<div class="tooltip"><span class="reading-sub">あお</span>blue</div></span><span class="word highlight" data-word="立つ">立つ<div class="tooltip"><span class="reading-sub">たつ</span>to stand</div></span><span class="word highlight" data-word="九">九<div class="tooltip"><span class="reading-sub">きゅう</span>nine</div></span><span class="word highlight" data-word="文字">文字<div class="tooltip"><span class="reading-sub">もじ</span>character / letter</div></span><span class="word highlight" data-word="足">足<div class="tooltip"><span class="reading-sub">あし</span>leg / foot</div></span><span class="word highlight" data-word="日本">日本<div class="tooltip"><span class="reading-sub">にほん</span>Japan</div></span><span class="word highlight" data-word="下さる">下さる<div class="tooltip"><span class="reading-sub">くださる</span>to give (polite)</div></span><span class="word highlight" data-word="上がる">上がる<div class="tooltip"><span class="reading-sub">あがる</span>to go up</div></span></div></div><div class="level-section"><div class="level-header">
-            <div class="level-title">Level 2</div>
-            <div class="level-stats">
-              Match: <strong>66</strong> / 66 (100%)
-            </div>
-          </div><div class="word-container"><span class="word highlight" data-word="中学校">中学校<div class="tooltip"><span class="reading-sub">ちゅうがっこう</span>junior high school</div></span><span class="word highlight" data-word="耳">耳<div class="tooltip"><span class="reading-sub">みみ</span>ear</div></span><span class="word highlight" data-word="気に入る">気に入る<div class="tooltip"><span class="reading-sub">きにいる</span>to like/be pleased with</div></span><span class="word highlight" data-word="学ぶ">学ぶ<div class="tooltip"><span class="reading-sub">まなぶ</span>to learn</div></span><span class="word highlight" data-word="子">子<div class="tooltip"><span class="reading-sub">こ</span>child</div></span><span class="word highlight" data-word="足りる">足りる<div class="tooltip"><span class="reading-sub">たりる</span>to be sufficient</div></span><span class="word highlight" data-word="日">日<div class="tooltip"><span class="reading-sub">ひ</span>day/sun</div></span><span class="word highlight" data-word="女子">女子<div class="tooltip"><span class="reading-sub">じょし</span>woman/girl</div></span><span class="word highlight" data-word="火">火<div class="tooltip"><span class="reading-sub">ひ</span>fire</div></span><span class="word highlight" data-word="下り">下り<div class="tooltip"><span class="reading-sub">くだり</span>down-train/descent</div></span><span class="word highlight" data-word="人気">人気<div class="tooltip"><span class="reading-sub">にんき</span>popularity</div></span><span class="word highlight" data-word="村">村<div class="tooltip"><span class="reading-sub">むら</span>village</div></span><span class="word highlight" data-word="見学">見学<div class="tooltip"><span class="reading-sub">けんがく</span>tour/inspection</div></span><span class="word highlight" data-word="青い">青い<div class="tooltip"><span class="reading-sub">あおい</span>blue</div></span><span class="word highlight" data-word="名">名<div class="tooltip"><span class="reading-sub">な</span>name</div></span><span class="word highlight" data-word="出かける">出かける<div class="tooltip"><span class="reading-sub">でかける</span>to go out</div></span><span class="word highlight" data-word="二日">二日<div class="tooltip"><span class="reading-sub">ふつか</span>two days/2nd day</div></span><span class="word highlight" data-word="森">森<div class="tooltip"><span class="reading-sub">もり</span>forest</div></span><span class="word highlight" data-word="三日">三日<div class="tooltip"><span class="reading-sub">みっか</span>three days/3rd day</div></span><span class="word highlight" data-word="天">天<div class="tooltip"><span class="reading-sub">てん</span>sky/heaven</div></span><span class="word highlight" data-word="一生">一生<div class="tooltip"><span class="reading-sub">いっしょう</span>whole life</div></span><span class="word highlight" data-word="青年">青年<div class="tooltip"><span class="reading-sub">せいねん</span>youth</div></span><span class="word highlight" data-word="生じる">生じる<div class="tooltip"><span class="reading-sub">しょうじる</span>to produce/occur</div></span><span class="word highlight" data-word="入る">入る<div class="tooltip"><span class="reading-sub">はいる</span>to enter</div></span><span class="word highlight" data-word="本人">本人<div class="tooltip"><span class="reading-sub">ほんにん</span>the person himself</div></span><span class="word highlight" data-word="生きる">生きる<div class="tooltip"><span class="reading-sub">いきる</span>to live</div></span><span class="word highlight" data-word="九つ">九つ<div class="tooltip"><span class="reading-sub">ここのつ</span>nine items</div></span><span class="word highlight" data-word="学年">学年<div class="tooltip"><span class="reading-sub">がくねん</span>school year/grade</div></span><span class="word highlight" data-word="名人">名人<div class="tooltip"><span class="reading-sub">めいじん</span>master/expert</div></span><span class="word highlight" data-word="大いに">大いに<div class="tooltip"><span class="reading-sub">おおいに</span>very/much</div></span><span class="word highlight" data-word="五日">五日<div class="tooltip"><span class="reading-sub">いつか</span>five days/5th day</div></span><span class="word highlight" data-word="四日">四日<div class="tooltip"><span class="reading-sub">よっか</span>four days/4th day</div></span><span class="word highlight" data-word="出口">出口<div class="tooltip"><span class="reading-sub">でぐち</span>exit</div></span><span class="word highlight" data-word="人">人<div class="tooltip"><span class="reading-sub">ひと</span>person</div></span><span class="word highlight" data-word="正しい">正しい<div class="tooltip"><span class="reading-sub">ただしい</span>correct</div></span><span class="word highlight" data-word="六日">六日<div class="tooltip"><span class="reading-sub">むいか</span>six days/6th day</div></span><span class="word highlight" data-word="水">水<div class="tooltip"><span class="reading-sub">みず</span>water</div></span><span class="word highlight" data-word="一千">一千<div class="tooltip"><span class="reading-sub">いっせん</span>one thousand</div></span><span class="word highlight" data-word="九日">九日<div class="tooltip"><span class="reading-sub">ここのか</span>nine days/9th day</div></span><span class="word highlight" data-word="下車">下車<div class="tooltip"><span class="reading-sub">げしゃ</span>getting off</div></span><span class="word highlight" data-word="上り">上り<div class="tooltip"><span class="reading-sub">のぼり</span>ascent/up-train</div></span><span class="word highlight" data-word="本気">本気<div class="tooltip"><span class="reading-sub">ほんき</span>seriousness</div></span><span class="word highlight" data-word="三千">三千<div class="tooltip"><span class="reading-sub">さんぜん</span>three thousand</div></span><span class="word highlight" data-word="林">林<div class="tooltip"><span class="reading-sub">はやし</span>woods</div></span><span class="word highlight" data-word="火山">火山<div class="tooltip"><span class="reading-sub">かざん</span>volcano</div></span><span class="word highlight" data-word="休日">休日<div class="tooltip"><span class="reading-sub">きゅうじつ</span>holiday</div></span><span class="word highlight" data-word="一">一<div class="tooltip"><span class="reading-sub">いち</span>one</div></span><span class="word highlight" data-word="生かす">生かす<div class="tooltip"><span class="reading-sub">いかす</span>to make use of</div></span><span class="word highlight" data-word="月">月<div class="tooltip"><span class="reading-sub">つき</span>moon/month</div></span><span class="word highlight" data-word="先日">先日<div class="tooltip"><span class="reading-sub">せんじつ</span>the other day</div></span><span class="word highlight" data-word="六つ">六つ<div class="tooltip"><span class="reading-sub">むっつ</span>six items</div></span><span class="word highlight" data-word="円">円<div class="tooltip"><span class="reading-sub">えん</span>yen/circle</div></span><span class="word highlight" data-word="下がる">下がる<div class="tooltip"><span class="reading-sub">さがる</span>to go down</div></span><span class="word highlight" data-word="金">金<div class="tooltip"><span class="reading-sub">かね</span>money</div></span><span class="word highlight" data-word="見出し">見出し<div class="tooltip"><span class="reading-sub">みだし</span>headline</div></span><span class="word highlight" data-word="年中">年中<div class="tooltip"><span class="reading-sub">ねんじゅう</span>all year round</div></span><span class="word highlight" data-word="一日">一日<div class="tooltip"><span class="reading-sub">ついたち</span>1st day of month</div></span><span class="word highlight" data-word="大気">大気<div class="tooltip"><span class="reading-sub">たいき</span>atmosphere</div></span><span class="word highlight" data-word="年月">年月<div class="tooltip"><span class="reading-sub">としつき</span>months and years</div></span><span class="word highlight" data-word="日中">日中<div class="tooltip"><span class="reading-sub">にっちゅう</span>daytime</div></span><span class="word highlight" data-word="下げる">下げる<div class="tooltip"><span class="reading-sub">さげる</span>to lower</div></span><span class="word highlight" data-word="七日">七日<div class="tooltip"><span class="reading-sub">なのか</span>seven days/7th day</div></span><span class="word highlight" data-word="八日">八日<div class="tooltip"><span class="reading-sub">ようか</span>eight days/8th day</div></span><span class="word highlight" data-word="八つ">八つ<div class="tooltip"><span class="reading-sub">やっつ</span>eight items</div></span><span class="word highlight" data-word="下ろす">下ろす<div class="tooltip"><span class="reading-sub">おろす</span>to lower/withdraw</div></span><span class="word highlight" data-word="花火">花火<div class="tooltip"><span class="reading-sub">はなび</span>fireworks</div></span></div></div><div class="level-section"><div class="level-header">
-            <div class="level-title">Level 3</div>
-            <div class="level-stats">
-              Match: <strong>81</strong> / 81 (100%)
-            </div>
-          </div><div class="word-container"><span class="word highlight" data-word="本名">本名<div class="tooltip"><span class="reading-sub">ほんみょう</span>real name</div></span><span class="word highlight" data-word="中年">中年<div class="tooltip"><span class="reading-sub">ちゅうねん</span>middle-aged</div></span><span class="word highlight" data-word="下手">下手<div class="tooltip"><span class="reading-sub">へた</span>unskillful</div></span><span class="word highlight" data-word="出生">出生<div class="tooltip"><span class="reading-sub">しゅっしょう</span>birth</div></span><span class="word highlight" data-word="上">上<div class="tooltip"><span class="reading-sub">うえ</span>above; up</div></span><span class="word highlight" data-word="休み中">休み中<div class="tooltip"><span class="reading-sub">やすみちゅう</span>during the holiday; closed</div></span><span class="word highlight" data-word="五百円">五百円<div class="tooltip"><span class="reading-sub">ごひゃくえん</span>500 yen</div></span><span class="word highlight" data-word="男の人">男の人<div class="tooltip"><span class="reading-sub">おとこのひと</span>man</div></span><span class="word highlight" data-word="一見">一見<div class="tooltip"><span class="reading-sub">いっけん</span>glance; look</div></span><span class="word highlight" data-word="小学生">小学生<div class="tooltip"><span class="reading-sub">しょうがくせい</span>elementary school student</div></span><span class="word highlight" data-word="五百">五百<div class="tooltip"><span class="reading-sub">ごひゃく</span>five hundred</div></span><span class="word highlight" data-word="大小">大小<div class="tooltip"><span class="reading-sub">だいしょう</span>size; large and small</div></span><span class="word highlight" data-word="大きな">大きな<div class="tooltip"><span class="reading-sub">おおきな</span>big</div></span><span class="word highlight" data-word="火がつく">火がつく<div class="tooltip"><span class="reading-sub">ひがつく</span>to catch fire</div></span><span class="word highlight" data-word="赤字">赤字<div class="tooltip"><span class="reading-sub">あかじ</span>deficit</div></span><span class="word highlight" data-word="人">人<div class="tooltip"><span class="reading-sub">にん</span>counter for people</div></span><span class="word highlight" data-word="日">日<div class="tooltip"><span class="reading-sub">にち</span>day; sun</div></span><span class="word highlight" data-word="正月">正月<div class="tooltip"><span class="reading-sub">しょうがつ</span>New Year</div></span><span class="word highlight" data-word="学">学<div class="tooltip"><span class="reading-sub">がく</span>learning; scholarship</div></span><span class="word highlight" data-word="森林">森林<div class="tooltip"><span class="reading-sub">しんりん</span>forest</div></span><span class="word highlight" data-word="下">下<div class="tooltip"><span class="reading-sub">もと</span>under (supervision etc.)</div></span><span class="word highlight" data-word="空中">空中<div class="tooltip"><span class="reading-sub">くうちゅう</span>sky; mid-air</div></span><span class="word highlight" data-word="力">力<div class="tooltip"><span class="reading-sub">ちから</span>power</div></span><span class="word highlight" data-word="十七">十七<div class="tooltip"><span class="reading-sub">じゅうしち</span>seventeen</div></span><span class="word highlight" data-word="年上">年上<div class="tooltip"><span class="reading-sub">としうえ</span>older</div></span><span class="word highlight" data-word="女の人">女の人<div class="tooltip"><span class="reading-sub">おんなのひと</span>woman</div></span><span class="word highlight" data-word="下る">下る<div class="tooltip"><span class="reading-sub">くだる</span>to go down</div></span><span class="word highlight" data-word="生み出す">生み出す<div class="tooltip"><span class="reading-sub">うみだす</span>to create; to produce</div></span><span class="word highlight" data-word="もう一つ">もう一つ<div class="tooltip"><span class="reading-sub">もうひとつ</span>another one</div></span><span class="word highlight" data-word="目立つ">目立つ<div class="tooltip"><span class="reading-sub">めだつ</span>to stand out</div></span><span class="word highlight" data-word="白">白<div class="tooltip"><span class="reading-sub">しろ</span>white</div></span><span class="word highlight" data-word="年生">年生<div class="tooltip"><span class="reading-sub">ねんせい</span>grader; year student</div></span><span class="word highlight" data-word="八月">八月<div class="tooltip"><span class="reading-sub">はちがつ</span>August</div></span><span class="word highlight" data-word="白人">白人<div class="tooltip"><span class="reading-sub">はくじん</span>white person</div></span><span class="word highlight" data-word="竹">竹<div class="tooltip"><span class="reading-sub">たけ</span>bamboo</div></span><span class="word highlight" data-word="花見">花見<div class="tooltip"><span class="reading-sub">はなみ</span>cherry blossom viewing</div></span><span class="word highlight" data-word="石">石<div class="tooltip"><span class="reading-sub">いし</span>stone</div></span><span class="word highlight" data-word="月日">月日<div class="tooltip"><span class="reading-sub">つきひ</span>time; days</div></span><span class="word highlight" data-word="右手">右手<div class="tooltip"><span class="reading-sub">みぎて</span>right hand</div></span><span class="word highlight" data-word="入力">入力<div class="tooltip"><span class="reading-sub">にゅうりょく</span>input</div></span><span class="word highlight" data-word="本日">本日<div class="tooltip"><span class="reading-sub">ほんじつ</span>today</div></span><span class="word highlight" data-word="下町">下町<div class="tooltip"><span class="reading-sub">したまち</span>downtown</div></span><span class="word highlight" data-word="生まれ">生まれ<div class="tooltip"><span class="reading-sub">うまれ</span>birth</div></span><span class="word highlight" data-word="日の出">日の出<div class="tooltip"><span class="reading-sub">ひので</span>sunrise</div></span><span class="word highlight" data-word="人々">人々<div class="tooltip"><span class="reading-sub">ひとびと</span>people</div></span><span class="word highlight" data-word="年金">年金<div class="tooltip"><span class="reading-sub">ねんきん</span>pension</div></span><span class="word highlight" data-word="天下">天下<div class="tooltip"><span class="reading-sub">てんか</span>the world; ruling power</div></span><span class="word highlight" data-word="草">草<div class="tooltip"><span class="reading-sub">くさ</span>grass</div></span><span class="word highlight" data-word="入手">入手<div class="tooltip"><span class="reading-sub">にゅうしゅ</span>acquisition</div></span><span class="word highlight" data-word="文">文<div class="tooltip"><span class="reading-sub">ぶん</span>sentence</div></span><span class="word highlight" data-word="先に">先に<div class="tooltip"><span class="reading-sub">さきに</span>before; ahead</div></span><span class="word highlight" data-word="日々">日々<div class="tooltip"><span class="reading-sub">ひび</span>days; daily</div></span><span class="word highlight" data-word="先">先<div class="tooltip"><span class="reading-sub">さき</span>ahead; previous</div></span><span class="word highlight" data-word="大きさ">大きさ<div class="tooltip"><span class="reading-sub">おおきさ</span>size</div></span><span class="word highlight" data-word="女王">女王<div class="tooltip"><span class="reading-sub">じょおう</span>queen</div></span><span class="word highlight" data-word="上がり">上がり<div class="tooltip"><span class="reading-sub">あがり</span>rise; finish</div></span><span class="word highlight" data-word="水中">水中<div class="tooltip"><span class="reading-sub">すいちゅう</span>underwater</div></span><span class="word highlight" data-word="土木">土木<div class="tooltip"><span class="reading-sub">どぼく</span>civil engineering</div></span><span class="word highlight" data-word="王子">王子<div class="tooltip"><span class="reading-sub">おうじ</span>prince</div></span><span class="word highlight" data-word="大正">大正<div class="tooltip"><span class="reading-sub">たいしょう</span>Taisho era</div></span><span class="word highlight" data-word="生る">生る<div class="tooltip"><span class="reading-sub">なる</span>to bear fruit</div></span><span class="word highlight" data-word="男女">男女<div class="tooltip"><span class="reading-sub">だんじょ</span>men and women</div></span><span class="word highlight" data-word="手入れ">手入れ<div class="tooltip"><span class="reading-sub">ていれ</span>care; maintenance</div></span><span class="word highlight" data-word="赤">赤<div class="tooltip"><span class="reading-sub">あか</span>red</div></span><span class="word highlight" data-word="本文">本文<div class="tooltip"><span class="reading-sub">ほんぶん</span>text; body</div></span><span class="word highlight" data-word="十日">十日<div class="tooltip"><span class="reading-sub">とおか</span>10th day</div></span><span class="word highlight" data-word="九月">九月<div class="tooltip"><span class="reading-sub">くがつ</span>September</div></span><span class="word highlight" data-word="年下">年下<div class="tooltip"><span class="reading-sub">としした</span>younger</div></span><span class="word highlight" data-word="空き">空き<div class="tooltip"><span class="reading-sub">あき</span>vacancy</div></span><span class="word highlight" data-word="入り">入り<div class="tooltip"><span class="reading-sub">いり</span>entering</div></span><span class="word highlight" data-word="大げさ">大げさ<div class="tooltip"><span class="reading-sub">おおげさ</span>exaggerated</div></span><span class="word highlight" data-word="大雨">大雨<div class="tooltip"><span class="reading-sub">おおあめ</span>heavy rain</div></span><span class="word highlight" data-word="十月">十月<div class="tooltip"><span class="reading-sub">じゅうがつ</span>October</div></span><span class="word highlight" data-word="糸">糸<div class="tooltip"><span class="reading-sub">いと</span>thread</div></span><span class="word highlight" data-word="見つめる">見つめる<div class="tooltip"><span class="reading-sub">みつめる</span>to stare at</div></span><span class="word highlight" data-word="空">空<div class="tooltip"><span class="reading-sub">から</span>empty</div></span><span class="word highlight" data-word="名字">名字<div class="tooltip"><span class="reading-sub">みょうじ</span>surname</div></span><span class="word highlight" data-word="六月">六月<div class="tooltip"><span class="reading-sub">ろくがつ</span>June</div></span><span class="word highlight" data-word="四月">四月<div class="tooltip"><span class="reading-sub">しがつ</span>April</div></span><span class="word highlight" data-word="小川">小川<div class="tooltip"><span class="reading-sub">おがわ</span>brook</div></span><span class="word highlight" data-word="一ヶ月">一ヶ月<div class="tooltip"><span class="reading-sub">いっかげつ</span>one month</div></span></div></div>
+    <div class="kanji-grid"><div class="k-card"><div class="k-header known">
+                <span class="k-char">日</span>
+                <span class="k-core-mean">20 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="日本">日本<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">にほん</div>
+                    <div class="gt-def">Japan</div>
+                 </div></div><div class="v-item word highlight" data-word="日">日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ひ</div>
+                    <div class="gt-def">day/sun</div>
+                 </div></div><div class="v-item word highlight" data-word="二日">二日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ふつか</div>
+                    <div class="gt-def">two days/2nd day</div>
+                 </div></div><div class="v-item word highlight" data-word="三日">三日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">みっか</div>
+                    <div class="gt-def">three days/3rd day</div>
+                 </div></div><div class="v-item word highlight" data-word="五日">五日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">いつか</div>
+                    <div class="gt-def">five days/5th day</div>
+                 </div></div><div class="v-item word highlight" data-word="四日">四日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">よっか</div>
+                    <div class="gt-def">four days/4th day</div>
+                 </div></div><div class="v-item word highlight" data-word="六日">六日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">むいか</div>
+                    <div class="gt-def">six days/6th day</div>
+                 </div></div><div class="v-item word highlight" data-word="九日">九日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ここのか</div>
+                    <div class="gt-def">nine days/9th day</div>
+                 </div></div><div class="v-item word highlight" data-word="休日">休日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">きゅうじつ</div>
+                    <div class="gt-def">holiday</div>
+                 </div></div><div class="v-item word highlight" data-word="先日">先日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">せんじつ</div>
+                    <div class="gt-def">the other day</div>
+                 </div></div><div class="v-item word highlight" data-word="一日">一日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ついたち</div>
+                    <div class="gt-def">1st day of month</div>
+                 </div></div><div class="v-item word highlight" data-word="日中">日中<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">にっちゅう</div>
+                    <div class="gt-def">daytime</div>
+                 </div></div><div class="v-item word highlight" data-word="七日">七日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">なのか</div>
+                    <div class="gt-def">seven days/7th day</div>
+                 </div></div><div class="v-item word highlight" data-word="八日">八日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ようか</div>
+                    <div class="gt-def">eight days/8th day</div>
+                 </div></div><div class="v-item word highlight" data-word="日">日<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">にち</div>
+                    <div class="gt-def">day; sun</div>
+                 </div></div><div class="v-item word highlight" data-word="月日">月日<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">つきひ</div>
+                    <div class="gt-def">time; days</div>
+                 </div></div><div class="v-item word highlight" data-word="本日">本日<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ほんじつ</div>
+                    <div class="gt-def">today</div>
+                 </div></div><div class="v-item word highlight" data-word="日の出">日の出<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ひで</div>
+                    <div class="gt-def">sunrise</div>
+                 </div></div><div class="v-item word highlight" data-word="日々">日々<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ひび</div>
+                    <div class="gt-def">days; daily</div>
+                 </div></div><div class="v-item word highlight" data-word="十日">十日<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">とおか</div>
+                    <div class="gt-def">10th day</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">生</span>
+                <span class="k-core-mean">16 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="中学生">中学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ちゅうがくせい</div>
+                    <div class="gt-def">junior high student</div>
+                 </div></div><div class="v-item word highlight" data-word="生まれる">生まれる<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">う</div>
+                    <div class="gt-def">to be born</div>
+                 </div></div><div class="v-item word highlight" data-word="学生">学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">がくせい</div>
+                    <div class="gt-def">student</div>
+                 </div></div><div class="v-item word highlight" data-word="人生">人生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">じんせい</div>
+                    <div class="gt-def">life</div>
+                 </div></div><div class="v-item word highlight" data-word="先生">先生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">せんせい</div>
+                    <div class="gt-def">teacher</div>
+                 </div></div><div class="v-item word highlight" data-word="大学生">大学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">だいがくせい</div>
+                    <div class="gt-def">university student</div>
+                 </div></div><div class="v-item word highlight" data-word="一生">一生<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">いっしょう</div>
+                    <div class="gt-def">whole life</div>
+                 </div></div><div class="v-item word highlight" data-word="生じる">生じる<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">しょう</div>
+                    <div class="gt-def">to produce/occur</div>
+                 </div></div><div class="v-item word highlight" data-word="生きる">生きる<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">い</div>
+                    <div class="gt-def">to live</div>
+                 </div></div><div class="v-item word highlight" data-word="生かす">生かす<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">い</div>
+                    <div class="gt-def">to make use of</div>
+                 </div></div><div class="v-item word highlight" data-word="出生">出生<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しゅっしょう</div>
+                    <div class="gt-def">birth</div>
+                 </div></div><div class="v-item word highlight" data-word="小学生">小学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しょうがくせい</div>
+                    <div class="gt-def">elementary school student</div>
+                 </div></div><div class="v-item word highlight" data-word="生み出す">生み出す<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">うだ</div>
+                    <div class="gt-def">to create; to produce</div>
+                 </div></div><div class="v-item word highlight" data-word="年生">年生<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ねんせい</div>
+                    <div class="gt-def">grader; year student</div>
+                 </div></div><div class="v-item word highlight" data-word="生まれ">生まれ<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">う</div>
+                    <div class="gt-def">birth</div>
+                 </div></div><div class="v-item word highlight" data-word="生る">生る<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">な</div>
+                    <div class="gt-def">to bear fruit</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">学</span>
+                <span class="k-core-mean">15 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="小学校">小学校<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">しょうがっこう</div>
+                    <div class="gt-def">elementary school</div>
+                 </div></div><div class="v-item word highlight" data-word="学校">学校<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">がっこう</div>
+                    <div class="gt-def">school</div>
+                 </div></div><div class="v-item word highlight" data-word="大学">大学<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">だいがく</div>
+                    <div class="gt-def">university</div>
+                 </div></div><div class="v-item word highlight" data-word="中学生">中学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ちゅうがくせい</div>
+                    <div class="gt-def">junior high student</div>
+                 </div></div><div class="v-item word highlight" data-word="入学">入学<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">にゅうがく</div>
+                    <div class="gt-def">school entrance</div>
+                 </div></div><div class="v-item word highlight" data-word="学生">学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">がくせい</div>
+                    <div class="gt-def">student</div>
+                 </div></div><div class="v-item word highlight" data-word="中学">中学<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ちゅうがく</div>
+                    <div class="gt-def">junior high school</div>
+                 </div></div><div class="v-item word highlight" data-word="文学">文学<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ぶんがく</div>
+                    <div class="gt-def">literature</div>
+                 </div></div><div class="v-item word highlight" data-word="大学生">大学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">だいがくせい</div>
+                    <div class="gt-def">university student</div>
+                 </div></div><div class="v-item word highlight" data-word="中学校">中学校<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ちゅうがっこう</div>
+                    <div class="gt-def">junior high school</div>
+                 </div></div><div class="v-item word highlight" data-word="学ぶ">学ぶ<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">まな</div>
+                    <div class="gt-def">to learn</div>
+                 </div></div><div class="v-item word highlight" data-word="見学">見学<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">けんがく</div>
+                    <div class="gt-def">tour/inspection</div>
+                 </div></div><div class="v-item word highlight" data-word="学年">学年<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">がくねん</div>
+                    <div class="gt-def">school year/grade</div>
+                 </div></div><div class="v-item word highlight" data-word="小学生">小学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しょうがくせい</div>
+                    <div class="gt-def">elementary school student</div>
+                 </div></div><div class="v-item word highlight" data-word="学">学<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">がく</div>
+                    <div class="gt-def">learning; scholarship</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">人</span>
+                <span class="k-core-mean">14 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="大人">大人<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おとな</div>
+                    <div class="gt-def">adult</div>
+                 </div></div><div class="v-item word highlight" data-word="一人">一人<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ひとり</div>
+                    <div class="gt-def">one person / alone</div>
+                 </div></div><div class="v-item word highlight" data-word="二人">二人<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ふたり</div>
+                    <div class="gt-def">two people</div>
+                 </div></div><div class="v-item word highlight" data-word="人生">人生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">じんせい</div>
+                    <div class="gt-def">life</div>
+                 </div></div><div class="v-item word highlight" data-word="人口">人口<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">じんこう</div>
+                    <div class="gt-def">population</div>
+                 </div></div><div class="v-item word highlight" data-word="人気">人気<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">にんき</div>
+                    <div class="gt-def">popularity</div>
+                 </div></div><div class="v-item word highlight" data-word="本人">本人<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ほんにん</div>
+                    <div class="gt-def">the person himself</div>
+                 </div></div><div class="v-item word highlight" data-word="名人">名人<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">めいじん</div>
+                    <div class="gt-def">master/expert</div>
+                 </div></div><div class="v-item word highlight" data-word="人">人<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ひと</div>
+                    <div class="gt-def">person</div>
+                 </div></div><div class="v-item word highlight" data-word="男の人">男の人<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おとこひと</div>
+                    <div class="gt-def">man</div>
+                 </div></div><div class="v-item word highlight" data-word="人">人<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">にん</div>
+                    <div class="gt-def">counter for people</div>
+                 </div></div><div class="v-item word highlight" data-word="女の人">女の人<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おんなひと</div>
+                    <div class="gt-def">woman</div>
+                 </div></div><div class="v-item word highlight" data-word="白人">白人<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">はくじん</div>
+                    <div class="gt-def">white person</div>
+                 </div></div><div class="v-item word highlight" data-word="人々">人々<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ひとびと</div>
+                    <div class="gt-def">people</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">下</span>
+                <span class="k-core-mean">13 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="上下">上下<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">じょうげ</div>
+                    <div class="gt-def">up and down</div>
+                 </div></div><div class="v-item word highlight" data-word="下さる">下さる<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">くだ</div>
+                    <div class="gt-def">to give (polite)</div>
+                 </div></div><div class="v-item word highlight" data-word="下り">下り<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">くだ</div>
+                    <div class="gt-def">down-train/descent</div>
+                 </div></div><div class="v-item word highlight" data-word="下車">下車<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">げしゃ</div>
+                    <div class="gt-def">getting off</div>
+                 </div></div><div class="v-item word highlight" data-word="下がる">下がる<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">さ</div>
+                    <div class="gt-def">to go down</div>
+                 </div></div><div class="v-item word highlight" data-word="下げる">下げる<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">さ</div>
+                    <div class="gt-def">to lower</div>
+                 </div></div><div class="v-item word highlight" data-word="下ろす">下ろす<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">お</div>
+                    <div class="gt-def">to lower/withdraw</div>
+                 </div></div><div class="v-item word highlight" data-word="下手">下手<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">へた</div>
+                    <div class="gt-def">unskillful</div>
+                 </div></div><div class="v-item word highlight" data-word="下">下<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">もと</div>
+                    <div class="gt-def">under (supervision etc.)</div>
+                 </div></div><div class="v-item word highlight" data-word="下る">下る<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">くだ</div>
+                    <div class="gt-def">to go down</div>
+                 </div></div><div class="v-item word highlight" data-word="下町">下町<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">したまち</div>
+                    <div class="gt-def">downtown</div>
+                 </div></div><div class="v-item word highlight" data-word="天下">天下<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">てんか</div>
+                    <div class="gt-def">the world; ruling power</div>
+                 </div></div><div class="v-item word highlight" data-word="年下">年下<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">としした</div>
+                    <div class="gt-def">younger</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">大</span>
+                <span class="k-core-mean">12 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="大人">大人<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おとな</div>
+                    <div class="gt-def">adult</div>
+                 </div></div><div class="v-item word highlight" data-word="大学">大学<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">だいがく</div>
+                    <div class="gt-def">university</div>
+                 </div></div><div class="v-item word highlight" data-word="大きい">大きい<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おお</div>
+                    <div class="gt-def">big</div>
+                 </div></div><div class="v-item word highlight" data-word="大学生">大学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">だいがくせい</div>
+                    <div class="gt-def">university student</div>
+                 </div></div><div class="v-item word highlight" data-word="大いに">大いに<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">おお</div>
+                    <div class="gt-def">very/much</div>
+                 </div></div><div class="v-item word highlight" data-word="大気">大気<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">たいき</div>
+                    <div class="gt-def">atmosphere</div>
+                 </div></div><div class="v-item word highlight" data-word="大小">大小<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">だいしょう</div>
+                    <div class="gt-def">size; large and small</div>
+                 </div></div><div class="v-item word highlight" data-word="大きな">大きな<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おお</div>
+                    <div class="gt-def">big</div>
+                 </div></div><div class="v-item word highlight" data-word="大きさ">大きさ<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おお</div>
+                    <div class="gt-def">size</div>
+                 </div></div><div class="v-item word highlight" data-word="大正">大正<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">たいしょう</div>
+                    <div class="gt-def">Taisho era</div>
+                 </div></div><div class="v-item word highlight" data-word="大げさ">大げさ<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おお</div>
+                    <div class="gt-def">exaggerated</div>
+                 </div></div><div class="v-item word highlight" data-word="大雨">大雨<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おおあめ</div>
+                    <div class="gt-def">heavy rain</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">月</span>
+                <span class="k-core-mean">11 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="先月">先月<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">せんげつ</div>
+                    <div class="gt-def">last month</div>
+                 </div></div><div class="v-item word highlight" data-word="月">月<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">つき</div>
+                    <div class="gt-def">moon/month</div>
+                 </div></div><div class="v-item word highlight" data-word="年月">年月<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">としつき</div>
+                    <div class="gt-def">months and years</div>
+                 </div></div><div class="v-item word highlight" data-word="正月">正月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しょうがつ</div>
+                    <div class="gt-def">New Year</div>
+                 </div></div><div class="v-item word highlight" data-word="八月">八月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">はちがつ</div>
+                    <div class="gt-def">August</div>
+                 </div></div><div class="v-item word highlight" data-word="月日">月日<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">つきひ</div>
+                    <div class="gt-def">time; days</div>
+                 </div></div><div class="v-item word highlight" data-word="九月">九月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">くがつ</div>
+                    <div class="gt-def">September</div>
+                 </div></div><div class="v-item word highlight" data-word="十月">十月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">じゅうがつ</div>
+                    <div class="gt-def">October</div>
+                 </div></div><div class="v-item word highlight" data-word="六月">六月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ろくがつ</div>
+                    <div class="gt-def">June</div>
+                 </div></div><div class="v-item word highlight" data-word="四月">四月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しがつ</div>
+                    <div class="gt-def">April</div>
+                 </div></div><div class="v-item word highlight" data-word="一ヶ月">一ヶ月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">いっかげつ</div>
+                    <div class="gt-def">one month</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">見</span>
+                <span class="k-core-mean">10 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="見える">見える<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">み</div>
+                    <div class="gt-def">to be visible</div>
+                 </div></div><div class="v-item word highlight" data-word="見つかる">見つかる<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">み</div>
+                    <div class="gt-def">to be found</div>
+                 </div></div><div class="v-item word highlight" data-word="見せる">見せる<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">み</div>
+                    <div class="gt-def">to show</div>
+                 </div></div><div class="v-item word highlight" data-word="見る">見る<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">み</div>
+                    <div class="gt-def">to see</div>
+                 </div></div><div class="v-item word highlight" data-word="見つける">見つける<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">み</div>
+                    <div class="gt-def">to find</div>
+                 </div></div><div class="v-item word highlight" data-word="見学">見学<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">けんがく</div>
+                    <div class="gt-def">tour/inspection</div>
+                 </div></div><div class="v-item word highlight" data-word="見出し">見出し<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">みだ</div>
+                    <div class="gt-def">headline</div>
+                 </div></div><div class="v-item word highlight" data-word="一見">一見<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">いっけん</div>
+                    <div class="gt-def">glance; look</div>
+                 </div></div><div class="v-item word highlight" data-word="花見">花見<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">はなみ</div>
+                    <div class="gt-def">cherry blossom viewing</div>
+                 </div></div><div class="v-item word highlight" data-word="見つめる">見つめる<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">み</div>
+                    <div class="gt-def">to stare at</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">中</span>
+                <span class="k-core-mean">10 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="中学生">中学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ちゅうがくせい</div>
+                    <div class="gt-def">junior high student</div>
+                 </div></div><div class="v-item word highlight" data-word="中学">中学<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ちゅうがく</div>
+                    <div class="gt-def">junior high school</div>
+                 </div></div><div class="v-item word highlight" data-word="中">中<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">なか</div>
+                    <div class="gt-def">inside / middle</div>
+                 </div></div><div class="v-item word highlight" data-word="中学校">中学校<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ちゅうがっこう</div>
+                    <div class="gt-def">junior high school</div>
+                 </div></div><div class="v-item word highlight" data-word="年中">年中<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ねんじゅう</div>
+                    <div class="gt-def">all year round</div>
+                 </div></div><div class="v-item word highlight" data-word="日中">日中<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">にっちゅう</div>
+                    <div class="gt-def">daytime</div>
+                 </div></div><div class="v-item word highlight" data-word="中年">中年<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ちゅうねん</div>
+                    <div class="gt-def">middle-aged</div>
+                 </div></div><div class="v-item word highlight" data-word="休み中">休み中<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">やすちゅう</div>
+                    <div class="gt-def">during the holiday; closed</div>
+                 </div></div><div class="v-item word highlight" data-word="空中">空中<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">くうちゅう</div>
+                    <div class="gt-def">sky; mid-air</div>
+                 </div></div><div class="v-item word highlight" data-word="水中">水中<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">すいちゅう</div>
+                    <div class="gt-def">underwater</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">年</span>
+                <span class="k-core-mean">10 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="年">年<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">とし</div>
+                    <div class="gt-def">year / age</div>
+                 </div></div><div class="v-item word highlight" data-word="青年">青年<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">せいねん</div>
+                    <div class="gt-def">youth</div>
+                 </div></div><div class="v-item word highlight" data-word="学年">学年<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">がくねん</div>
+                    <div class="gt-def">school year/grade</div>
+                 </div></div><div class="v-item word highlight" data-word="年中">年中<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ねんじゅう</div>
+                    <div class="gt-def">all year round</div>
+                 </div></div><div class="v-item word highlight" data-word="年月">年月<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">としつき</div>
+                    <div class="gt-def">months and years</div>
+                 </div></div><div class="v-item word highlight" data-word="中年">中年<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ちゅうねん</div>
+                    <div class="gt-def">middle-aged</div>
+                 </div></div><div class="v-item word highlight" data-word="年上">年上<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">としうえ</div>
+                    <div class="gt-def">older</div>
+                 </div></div><div class="v-item word highlight" data-word="年生">年生<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ねんせい</div>
+                    <div class="gt-def">grader; year student</div>
+                 </div></div><div class="v-item word highlight" data-word="年金">年金<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ねんきん</div>
+                    <div class="gt-def">pension</div>
+                 </div></div><div class="v-item word highlight" data-word="年下">年下<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">としした</div>
+                    <div class="gt-def">younger</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">一</span>
+                <span class="k-core-mean">9 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="一つ">一つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ひと</div>
+                    <div class="gt-def">one (object)</div>
+                 </div></div><div class="v-item word highlight" data-word="一人">一人<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ひとり</div>
+                    <div class="gt-def">one person / alone</div>
+                 </div></div><div class="v-item word highlight" data-word="一生">一生<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">いっしょう</div>
+                    <div class="gt-def">whole life</div>
+                 </div></div><div class="v-item word highlight" data-word="一千">一千<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">いっせん</div>
+                    <div class="gt-def">one thousand</div>
+                 </div></div><div class="v-item word highlight" data-word="一">一<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">いち</div>
+                    <div class="gt-def">one</div>
+                 </div></div><div class="v-item word highlight" data-word="一日">一日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ついたち</div>
+                    <div class="gt-def">1st day of month</div>
+                 </div></div><div class="v-item word highlight" data-word="一見">一見<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">いっけん</div>
+                    <div class="gt-def">glance; look</div>
+                 </div></div><div class="v-item word highlight" data-word="もう一つ">もう一つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ひと</div>
+                    <div class="gt-def">another one</div>
+                 </div></div><div class="v-item word highlight" data-word="一ヶ月">一ヶ月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">いっかげつ</div>
+                    <div class="gt-def">one month</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">出</span>
+                <span class="k-core-mean">8 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="出す">出す<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">だ</div>
+                    <div class="gt-def">to take out / to submit</div>
+                 </div></div><div class="v-item word highlight" data-word="出る">出る<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">で</div>
+                    <div class="gt-def">to go out / to exit</div>
+                 </div></div><div class="v-item word highlight" data-word="出かける">出かける<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">で</div>
+                    <div class="gt-def">to go out</div>
+                 </div></div><div class="v-item word highlight" data-word="出口">出口<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">でぐち</div>
+                    <div class="gt-def">exit</div>
+                 </div></div><div class="v-item word highlight" data-word="見出し">見出し<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">みだ</div>
+                    <div class="gt-def">headline</div>
+                 </div></div><div class="v-item word highlight" data-word="出生">出生<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しゅっしょう</div>
+                    <div class="gt-def">birth</div>
+                 </div></div><div class="v-item word highlight" data-word="生み出す">生み出す<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">うだ</div>
+                    <div class="gt-def">to create; to produce</div>
+                 </div></div><div class="v-item word highlight" data-word="日の出">日の出<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ひで</div>
+                    <div class="gt-def">sunrise</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">入</span>
+                <span class="k-core-mean">8 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="入れる">入れる<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">い</div>
+                    <div class="gt-def">to put in</div>
+                 </div></div><div class="v-item word highlight" data-word="入学">入学<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">にゅうがく</div>
+                    <div class="gt-def">school entrance</div>
+                 </div></div><div class="v-item word highlight" data-word="気に入る">気に入る<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">きい</div>
+                    <div class="gt-def">to like/be pleased with</div>
+                 </div></div><div class="v-item word highlight" data-word="入る">入る<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">はい</div>
+                    <div class="gt-def">to enter</div>
+                 </div></div><div class="v-item word highlight" data-word="入力">入力<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">にゅうりょく</div>
+                    <div class="gt-def">input</div>
+                 </div></div><div class="v-item word highlight" data-word="入手">入手<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">にゅうしゅ</div>
+                    <div class="gt-def">acquisition</div>
+                 </div></div><div class="v-item word highlight" data-word="手入れ">手入れ<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">てい</div>
+                    <div class="gt-def">care; maintenance</div>
+                 </div></div><div class="v-item word highlight" data-word="入り">入り<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">い</div>
+                    <div class="gt-def">entering</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">気</span>
+                <span class="k-core-mean">7 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="天気">天気<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">てんき</div>
+                    <div class="gt-def">weather</div>
+                 </div></div><div class="v-item word highlight" data-word="気">気<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">き</div>
+                    <div class="gt-def">spirit / mood</div>
+                 </div></div><div class="v-item word highlight" data-word="空気">空気<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">くうき</div>
+                    <div class="gt-def">air / atmosphere</div>
+                 </div></div><div class="v-item word highlight" data-word="気に入る">気に入る<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">きい</div>
+                    <div class="gt-def">to like/be pleased with</div>
+                 </div></div><div class="v-item word highlight" data-word="人気">人気<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">にんき</div>
+                    <div class="gt-def">popularity</div>
+                 </div></div><div class="v-item word highlight" data-word="本気">本気<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ほんき</div>
+                    <div class="gt-def">seriousness</div>
+                 </div></div><div class="v-item word highlight" data-word="大気">大気<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">たいき</div>
+                    <div class="gt-def">atmosphere</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">本</span>
+                <span class="k-core-mean">7 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="本">本<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ほん</div>
+                    <div class="gt-def">book</div>
+                 </div></div><div class="v-item word highlight" data-word="日本">日本<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">にほん</div>
+                    <div class="gt-def">Japan</div>
+                 </div></div><div class="v-item word highlight" data-word="本人">本人<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ほんにん</div>
+                    <div class="gt-def">the person himself</div>
+                 </div></div><div class="v-item word highlight" data-word="本気">本気<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ほんき</div>
+                    <div class="gt-def">seriousness</div>
+                 </div></div><div class="v-item word highlight" data-word="本名">本名<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ほんみょう</div>
+                    <div class="gt-def">real name</div>
+                 </div></div><div class="v-item word highlight" data-word="本日">本日<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ほんじつ</div>
+                    <div class="gt-def">today</div>
+                 </div></div><div class="v-item word highlight" data-word="本文">本文<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ほんぶん</div>
+                    <div class="gt-def">text; body</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">上</span>
+                <span class="k-core-mean">7 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="上下">上下<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">じょうげ</div>
+                    <div class="gt-def">up and down</div>
+                 </div></div><div class="v-item word highlight" data-word="上手">上手<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">じょうず</div>
+                    <div class="gt-def">skillful</div>
+                 </div></div><div class="v-item word highlight" data-word="上がる">上がる<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">あ</div>
+                    <div class="gt-def">to go up</div>
+                 </div></div><div class="v-item word highlight" data-word="上り">上り<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">のぼ</div>
+                    <div class="gt-def">ascent/up-train</div>
+                 </div></div><div class="v-item word highlight" data-word="上">上<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">うえ</div>
+                    <div class="gt-def">above; up</div>
+                 </div></div><div class="v-item word highlight" data-word="年上">年上<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">としうえ</div>
+                    <div class="gt-def">older</div>
+                 </div></div><div class="v-item word highlight" data-word="上がり">上がり<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">あ</div>
+                    <div class="gt-def">rise; finish</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">子</span>
+                <span class="k-core-mean">6 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="男の子">男の子<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おとここ</div>
+                    <div class="gt-def">boy</div>
+                 </div></div><div class="v-item word highlight" data-word="女の子">女の子<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おんなこ</div>
+                    <div class="gt-def">girl</div>
+                 </div></div><div class="v-item word highlight" data-word="男子">男子<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">だんし</div>
+                    <div class="gt-def">boy / male</div>
+                 </div></div><div class="v-item word highlight" data-word="子">子<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">こ</div>
+                    <div class="gt-def">child</div>
+                 </div></div><div class="v-item word highlight" data-word="女子">女子<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">じょし</div>
+                    <div class="gt-def">woman/girl</div>
+                 </div></div><div class="v-item word highlight" data-word="王子">王子<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おうじ</div>
+                    <div class="gt-def">prince</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">女</span>
+                <span class="k-core-mean">6 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="女の子">女の子<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おんなこ</div>
+                    <div class="gt-def">girl</div>
+                 </div></div><div class="v-item word highlight" data-word="女">女<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おんな</div>
+                    <div class="gt-def">woman</div>
+                 </div></div><div class="v-item word highlight" data-word="女子">女子<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">じょし</div>
+                    <div class="gt-def">woman/girl</div>
+                 </div></div><div class="v-item word highlight" data-word="女の人">女の人<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おんなひと</div>
+                    <div class="gt-def">woman</div>
+                 </div></div><div class="v-item word highlight" data-word="女王">女王<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">じょおう</div>
+                    <div class="gt-def">queen</div>
+                 </div></div><div class="v-item word highlight" data-word="男女">男女<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">だんじょ</div>
+                    <div class="gt-def">men and women</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">手</span>
+                <span class="k-core-mean">6 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="手">手<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">て</div>
+                    <div class="gt-def">hand</div>
+                 </div></div><div class="v-item word highlight" data-word="上手">上手<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">じょうず</div>
+                    <div class="gt-def">skillful</div>
+                 </div></div><div class="v-item word highlight" data-word="下手">下手<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">へた</div>
+                    <div class="gt-def">unskillful</div>
+                 </div></div><div class="v-item word highlight" data-word="右手">右手<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">みぎて</div>
+                    <div class="gt-def">right hand</div>
+                 </div></div><div class="v-item word highlight" data-word="入手">入手<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">にゅうしゅ</div>
+                    <div class="gt-def">acquisition</div>
+                 </div></div><div class="v-item word highlight" data-word="手入れ">手入れ<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">てい</div>
+                    <div class="gt-def">care; maintenance</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">小</span>
+                <span class="k-core-mean">5 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="小学校">小学校<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">しょうがっこう</div>
+                    <div class="gt-def">elementary school</div>
+                 </div></div><div class="v-item word highlight" data-word="小さい">小さい<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ちい</div>
+                    <div class="gt-def">small</div>
+                 </div></div><div class="v-item word highlight" data-word="小学生">小学生<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しょうがくせい</div>
+                    <div class="gt-def">elementary school student</div>
+                 </div></div><div class="v-item word highlight" data-word="大小">大小<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">だいしょう</div>
+                    <div class="gt-def">size; large and small</div>
+                 </div></div><div class="v-item word highlight" data-word="小川">小川<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おがわ</div>
+                    <div class="gt-def">brook</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">男</span>
+                <span class="k-core-mean">5 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="男の子">男の子<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おとここ</div>
+                    <div class="gt-def">boy</div>
+                 </div></div><div class="v-item word highlight" data-word="男">男<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おとこ</div>
+                    <div class="gt-def">man</div>
+                 </div></div><div class="v-item word highlight" data-word="男子">男子<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">だんし</div>
+                    <div class="gt-def">boy / male</div>
+                 </div></div><div class="v-item word highlight" data-word="男の人">男の人<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おとこひと</div>
+                    <div class="gt-def">man</div>
+                 </div></div><div class="v-item word highlight" data-word="男女">男女<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">だんじょ</div>
+                    <div class="gt-def">men and women</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">五</span>
+                <span class="k-core-mean">5 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="五つ">五つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">いつ</div>
+                    <div class="gt-def">five (objects)</div>
+                 </div></div><div class="v-item word highlight" data-word="五">五<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ご</div>
+                    <div class="gt-def">five</div>
+                 </div></div><div class="v-item word highlight" data-word="五日">五日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">いつか</div>
+                    <div class="gt-def">five days/5th day</div>
+                 </div></div><div class="v-item word highlight" data-word="五百円">五百円<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ごひゃくえん</div>
+                    <div class="gt-def">500 yen</div>
+                 </div></div><div class="v-item word highlight" data-word="五百">五百<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ごひゃく</div>
+                    <div class="gt-def">five hundred</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">先</span>
+                <span class="k-core-mean">5 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="先月">先月<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">せんげつ</div>
+                    <div class="gt-def">last month</div>
+                 </div></div><div class="v-item word highlight" data-word="先生">先生<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">せんせい</div>
+                    <div class="gt-def">teacher</div>
+                 </div></div><div class="v-item word highlight" data-word="先日">先日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">せんじつ</div>
+                    <div class="gt-def">the other day</div>
+                 </div></div><div class="v-item word highlight" data-word="先に">先に<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">さき</div>
+                    <div class="gt-def">before; ahead</div>
+                 </div></div><div class="v-item word highlight" data-word="先">先<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">さき</div>
+                    <div class="gt-def">ahead; previous</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">二</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="二つ">二つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ふた</div>
+                    <div class="gt-def">two (objects)</div>
+                 </div></div><div class="v-item word highlight" data-word="二人">二人<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ふたり</div>
+                    <div class="gt-def">two people</div>
+                 </div></div><div class="v-item word highlight" data-word="二">二<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">に</div>
+                    <div class="gt-def">two</div>
+                 </div></div><div class="v-item word highlight" data-word="二日">二日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ふつか</div>
+                    <div class="gt-def">two days/2nd day</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">三</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="三つ">三つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">みっ</div>
+                    <div class="gt-def">three (objects)</div>
+                 </div></div><div class="v-item word highlight" data-word="三">三<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">さん</div>
+                    <div class="gt-def">three</div>
+                 </div></div><div class="v-item word highlight" data-word="三日">三日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">みっか</div>
+                    <div class="gt-def">three days/3rd day</div>
+                 </div></div><div class="v-item word highlight" data-word="三千">三千<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">さんぜん</div>
+                    <div class="gt-def">three thousand</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">四</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="四つ">四つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">よっ</div>
+                    <div class="gt-def">four (objects)</div>
+                 </div></div><div class="v-item word highlight" data-word="四">四<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">よん</div>
+                    <div class="gt-def">four</div>
+                 </div></div><div class="v-item word highlight" data-word="四日">四日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">よっか</div>
+                    <div class="gt-def">four days/4th day</div>
+                 </div></div><div class="v-item word highlight" data-word="四月">四月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しがつ</div>
+                    <div class="gt-def">April</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">六</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="六">六<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ろく</div>
+                    <div class="gt-def">six</div>
+                 </div></div><div class="v-item word highlight" data-word="六日">六日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">むいか</div>
+                    <div class="gt-def">six days/6th day</div>
+                 </div></div><div class="v-item word highlight" data-word="六つ">六つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">むっ</div>
+                    <div class="gt-def">six items</div>
+                 </div></div><div class="v-item word highlight" data-word="六月">六月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ろくがつ</div>
+                    <div class="gt-def">June</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">休</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="休み">休み<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">やす</div>
+                    <div class="gt-def">rest / holiday</div>
+                 </div></div><div class="v-item word highlight" data-word="休む">休む<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">やす</div>
+                    <div class="gt-def">to rest</div>
+                 </div></div><div class="v-item word highlight" data-word="休日">休日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">きゅうじつ</div>
+                    <div class="gt-def">holiday</div>
+                 </div></div><div class="v-item word highlight" data-word="休み中">休み中<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">やすちゅう</div>
+                    <div class="gt-def">during the holiday; closed</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">七</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="七つ">七つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">なな</div>
+                    <div class="gt-def">seven (objects)</div>
+                 </div></div><div class="v-item word highlight" data-word="七">七<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">しち</div>
+                    <div class="gt-def">seven</div>
+                 </div></div><div class="v-item word highlight" data-word="七日">七日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">なのか</div>
+                    <div class="gt-def">seven days/7th day</div>
+                 </div></div><div class="v-item word highlight" data-word="十七">十七<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">じゅうしち</div>
+                    <div class="gt-def">seventeen</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">空</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="空気">空気<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">くうき</div>
+                    <div class="gt-def">air / atmosphere</div>
+                 </div></div><div class="v-item word highlight" data-word="空中">空中<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">くうちゅう</div>
+                    <div class="gt-def">sky; mid-air</div>
+                 </div></div><div class="v-item word highlight" data-word="空き">空き<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">あ</div>
+                    <div class="gt-def">vacancy</div>
+                 </div></div><div class="v-item word highlight" data-word="空">空<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">から</div>
+                    <div class="gt-def">empty</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">赤</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="赤ちゃん">赤ちゃん<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">あか</div>
+                    <div class="gt-def">baby</div>
+                 </div></div><div class="v-item word highlight" data-word="赤い">赤い<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">あか</div>
+                    <div class="gt-def">red</div>
+                 </div></div><div class="v-item word highlight" data-word="赤字">赤字<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">あかじ</div>
+                    <div class="gt-def">deficit</div>
+                 </div></div><div class="v-item word highlight" data-word="赤">赤<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">あか</div>
+                    <div class="gt-def">red</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">文</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="文学">文学<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ぶんがく</div>
+                    <div class="gt-def">literature</div>
+                 </div></div><div class="v-item word highlight" data-word="文字">文字<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">もじ</div>
+                    <div class="gt-def">character / letter</div>
+                 </div></div><div class="v-item word highlight" data-word="文">文<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ぶん</div>
+                    <div class="gt-def">sentence</div>
+                 </div></div><div class="v-item word highlight" data-word="本文">本文<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ほんぶん</div>
+                    <div class="gt-def">text; body</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">十</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="十">十<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">じゅう</div>
+                    <div class="gt-def">ten</div>
+                 </div></div><div class="v-item word highlight" data-word="十七">十七<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">じゅうしち</div>
+                    <div class="gt-def">seventeen</div>
+                 </div></div><div class="v-item word highlight" data-word="十日">十日<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">とおか</div>
+                    <div class="gt-def">10th day</div>
+                 </div></div><div class="v-item word highlight" data-word="十月">十月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">じゅうがつ</div>
+                    <div class="gt-def">October</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">八</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="八">八<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">はち</div>
+                    <div class="gt-def">eight</div>
+                 </div></div><div class="v-item word highlight" data-word="八日">八日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ようか</div>
+                    <div class="gt-def">eight days/8th day</div>
+                 </div></div><div class="v-item word highlight" data-word="八つ">八つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">やっ</div>
+                    <div class="gt-def">eight items</div>
+                 </div></div><div class="v-item word highlight" data-word="八月">八月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">はちがつ</div>
+                    <div class="gt-def">August</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">九</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="九">九<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">きゅう</div>
+                    <div class="gt-def">nine</div>
+                 </div></div><div class="v-item word highlight" data-word="九つ">九つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ここの</div>
+                    <div class="gt-def">nine items</div>
+                 </div></div><div class="v-item word highlight" data-word="九日">九日<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ここのか</div>
+                    <div class="gt-def">nine days/9th day</div>
+                 </div></div><div class="v-item word highlight" data-word="九月">九月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">くがつ</div>
+                    <div class="gt-def">September</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">火</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="火">火<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ひ</div>
+                    <div class="gt-def">fire</div>
+                 </div></div><div class="v-item word highlight" data-word="火山">火山<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">かざん</div>
+                    <div class="gt-def">volcano</div>
+                 </div></div><div class="v-item word highlight" data-word="花火">花火<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">はなび</div>
+                    <div class="gt-def">fireworks</div>
+                 </div></div><div class="v-item word highlight" data-word="火がつく">火がつく<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ひ</div>
+                    <div class="gt-def">to catch fire</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">名</span>
+                <span class="k-core-mean">4 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="名">名<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">な</div>
+                    <div class="gt-def">name</div>
+                 </div></div><div class="v-item word highlight" data-word="名人">名人<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">めいじん</div>
+                    <div class="gt-def">master/expert</div>
+                 </div></div><div class="v-item word highlight" data-word="本名">本名<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ほんみょう</div>
+                    <div class="gt-def">real name</div>
+                 </div></div><div class="v-item word highlight" data-word="名字">名字<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">みょうじ</div>
+                    <div class="gt-def">surname</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">校</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="小学校">小学校<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">しょうがっこう</div>
+                    <div class="gt-def">elementary school</div>
+                 </div></div><div class="v-item word highlight" data-word="学校">学校<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">がっこう</div>
+                    <div class="gt-def">school</div>
+                 </div></div><div class="v-item word highlight" data-word="中学校">中学校<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ちゅうがっこう</div>
+                    <div class="gt-def">junior high school</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">天</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="天気">天気<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">てんき</div>
+                    <div class="gt-def">weather</div>
+                 </div></div><div class="v-item word highlight" data-word="天">天<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">てん</div>
+                    <div class="gt-def">sky/heaven</div>
+                 </div></div><div class="v-item word highlight" data-word="天下">天下<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">てんか</div>
+                    <div class="gt-def">the world; ruling power</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">白</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="白い">白い<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">しろ</div>
+                    <div class="gt-def">white</div>
+                 </div></div><div class="v-item word highlight" data-word="白">白<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しろ</div>
+                    <div class="gt-def">white</div>
+                 </div></div><div class="v-item word highlight" data-word="白人">白人<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">はくじん</div>
+                    <div class="gt-def">white person</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">口</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="口">口<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">くち</div>
+                    <div class="gt-def">mouth</div>
+                 </div></div><div class="v-item word highlight" data-word="人口">人口<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">じんこう</div>
+                    <div class="gt-def">population</div>
+                 </div></div><div class="v-item word highlight" data-word="出口">出口<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">でぐち</div>
+                    <div class="gt-def">exit</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">百</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="百">百<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ひゃく</div>
+                    <div class="gt-def">hundred</div>
+                 </div></div><div class="v-item word highlight" data-word="五百円">五百円<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ごひゃくえん</div>
+                    <div class="gt-def">500 yen</div>
+                 </div></div><div class="v-item word highlight" data-word="五百">五百<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ごひゃく</div>
+                    <div class="gt-def">five hundred</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">右</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="右">右<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">みぎ</div>
+                    <div class="gt-def">right</div>
+                 </div></div><div class="v-item word highlight" data-word="左右">左右<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">さゆう</div>
+                    <div class="gt-def">left and right</div>
+                 </div></div><div class="v-item word highlight" data-word="右手">右手<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">みぎて</div>
+                    <div class="gt-def">right hand</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">金</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="お金">お金<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">かね</div>
+                    <div class="gt-def">money</div>
+                 </div></div><div class="v-item word highlight" data-word="金">金<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">かね</div>
+                    <div class="gt-def">money</div>
+                 </div></div><div class="v-item word highlight" data-word="年金">年金<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ねんきん</div>
+                    <div class="gt-def">pension</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">千</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="千">千<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">せん</div>
+                    <div class="gt-def">thousand</div>
+                 </div></div><div class="v-item word highlight" data-word="一千">一千<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">いっせん</div>
+                    <div class="gt-def">one thousand</div>
+                 </div></div><div class="v-item word highlight" data-word="三千">三千<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">さんぜん</div>
+                    <div class="gt-def">three thousand</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">花</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="花">花<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">はな</div>
+                    <div class="gt-def">flower</div>
+                 </div></div><div class="v-item word highlight" data-word="花火">花火<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">はなび</div>
+                    <div class="gt-def">fireworks</div>
+                 </div></div><div class="v-item word highlight" data-word="花見">花見<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">はなみ</div>
+                    <div class="gt-def">cherry blossom viewing</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">青</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="青">青<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">あお</div>
+                    <div class="gt-def">blue</div>
+                 </div></div><div class="v-item word highlight" data-word="青い">青い<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">あお</div>
+                    <div class="gt-def">blue</div>
+                 </div></div><div class="v-item word highlight" data-word="青年">青年<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">せいねん</div>
+                    <div class="gt-def">youth</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">字</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="文字">文字<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">もじ</div>
+                    <div class="gt-def">character / letter</div>
+                 </div></div><div class="v-item word highlight" data-word="赤字">赤字<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">あかじ</div>
+                    <div class="gt-def">deficit</div>
+                 </div></div><div class="v-item word highlight" data-word="名字">名字<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">みょうじ</div>
+                    <div class="gt-def">surname</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">正</span>
+                <span class="k-core-mean">3 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="正しい">正しい<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">ただ</div>
+                    <div class="gt-def">correct</div>
+                 </div></div><div class="v-item word highlight" data-word="正月">正月<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しょうがつ</div>
+                    <div class="gt-def">New Year</div>
+                 </div></div><div class="v-item word highlight" data-word="大正">大正<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">たいしょう</div>
+                    <div class="gt-def">Taisho era</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">川</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="川">川<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">かわ</div>
+                    <div class="gt-def">river</div>
+                 </div></div><div class="v-item word highlight" data-word="小川">小川<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おがわ</div>
+                    <div class="gt-def">brook</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">左</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="左">左<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">ひだり</div>
+                    <div class="gt-def">left</div>
+                 </div></div><div class="v-item word highlight" data-word="左右">左右<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">さゆう</div>
+                    <div class="gt-def">left and right</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">木</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="木">木<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">き</div>
+                    <div class="gt-def">tree</div>
+                 </div></div><div class="v-item word highlight" data-word="土木">土木<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">どぼく</div>
+                    <div class="gt-def">civil engineering</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">山</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="山">山<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">やま</div>
+                    <div class="gt-def">mountain</div>
+                 </div></div><div class="v-item word highlight" data-word="火山">火山<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">かざん</div>
+                    <div class="gt-def">volcano</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">雨</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="雨">雨<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">あめ</div>
+                    <div class="gt-def">rain</div>
+                 </div></div><div class="v-item word highlight" data-word="大雨">大雨<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おおあめ</div>
+                    <div class="gt-def">heavy rain</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">土</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="土">土<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">つち</div>
+                    <div class="gt-def">soil / earth</div>
+                 </div></div><div class="v-item word highlight" data-word="土木">土木<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">どぼく</div>
+                    <div class="gt-def">civil engineering</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">町</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="町">町<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">まち</div>
+                    <div class="gt-def">town</div>
+                 </div></div><div class="v-item word highlight" data-word="下町">下町<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">したまち</div>
+                    <div class="gt-def">downtown</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">車</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="車">車<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">くるま</div>
+                    <div class="gt-def">car</div>
+                 </div></div><div class="v-item word highlight" data-word="下車">下車<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">げしゃ</div>
+                    <div class="gt-def">getting off</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">立</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="立つ">立つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">た</div>
+                    <div class="gt-def">to stand</div>
+                 </div></div><div class="v-item word highlight" data-word="目立つ">目立つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">めだ</div>
+                    <div class="gt-def">to stand out</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">足</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="足">足<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">あし</div>
+                    <div class="gt-def">leg / foot</div>
+                 </div></div><div class="v-item word highlight" data-word="足りる">足りる<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">た</div>
+                    <div class="gt-def">to be sufficient</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">森</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="森">森<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">もり</div>
+                    <div class="gt-def">forest</div>
+                 </div></div><div class="v-item word highlight" data-word="森林">森林<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しんりん</div>
+                    <div class="gt-def">forest</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">水</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="水">水<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">みず</div>
+                    <div class="gt-def">water</div>
+                 </div></div><div class="v-item word highlight" data-word="水中">水中<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">すいちゅう</div>
+                    <div class="gt-def">underwater</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">林</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="林">林<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">はやし</div>
+                    <div class="gt-def">woods</div>
+                 </div></div><div class="v-item word highlight" data-word="森林">森林<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">しんりん</div>
+                    <div class="gt-def">forest</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">円</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="円">円<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">えん</div>
+                    <div class="gt-def">yen/circle</div>
+                 </div></div><div class="v-item word highlight" data-word="五百円">五百円<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ごひゃくえん</div>
+                    <div class="gt-def">500 yen</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">力</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="力">力<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">ちから</div>
+                    <div class="gt-def">power</div>
+                 </div></div><div class="v-item word highlight" data-word="入力">入力<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">にゅうりょく</div>
+                    <div class="gt-def">input</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">王</span>
+                <span class="k-core-mean">2 words</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="女王">女王<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">じょおう</div>
+                    <div class="gt-def">queen</div>
+                 </div></div><div class="v-item word highlight" data-word="王子">王子<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">おうじ</div>
+                    <div class="gt-def">prince</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">音</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="音">音<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">おと</div>
+                    <div class="gt-def">sound</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">犬</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="犬">犬<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">いぬ</div>
+                    <div class="gt-def">dog</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">虫</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="虫">虫<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">むし</div>
+                    <div class="gt-def">insect</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">早</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="早い">早い<div class="grid-tooltip">
+                    <div class="gt-level">Level 1</div>
+                    <div class="gt-read">はや</div>
+                    <div class="gt-def">early / fast</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">耳</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="耳">耳<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">みみ</div>
+                    <div class="gt-def">ear</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">村</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="村">村<div class="grid-tooltip">
+                    <div class="gt-level">Level 2</div>
+                    <div class="gt-read">むら</div>
+                    <div class="gt-def">village</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">目</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="目立つ">目立つ<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">めだ</div>
+                    <div class="gt-def">to stand out</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">竹</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="竹">竹<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">たけ</div>
+                    <div class="gt-def">bamboo</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">石</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="石">石<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">いし</div>
+                    <div class="gt-def">stone</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">草</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="草">草<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">くさ</div>
+                    <div class="gt-def">grass</div>
+                 </div></div></div></div><div class="k-card"><div class="k-header known">
+                <span class="k-char">糸</span>
+                <span class="k-core-mean">1 word</span>
+             </div><div class="k-vocab"><div class="v-item word highlight" data-word="糸">糸<div class="grid-tooltip">
+                    <div class="gt-level">Level 3</div>
+                    <div class="gt-read">いと</div>
+                    <div class="gt-def">thread</div>
+                 </div></div></div></div></div>
   </div>
   <div id="dictModal" class="modal-overlay">
       <div class="modal-content">
@@ -413,11 +2232,9 @@
           .replace(/[\[\]]/g, "");
       }
             function parseJotobaFurigana(str) {
-        // Regex looks for [Surface|Reading...]
         return str.replace(
           /\[([^|\]]+)\|([^\]]+)\]/g,
           (match, surface, readings) => {
-            // 'readings' might be "a|b" or just "a". We strip pipes for the main reading block.
             const cleanReading = readings.replace(/\|/g, "");
             return `<ruby>${surface}<rt>${cleanReading}</rt></ruby>`;
           }
@@ -435,7 +2252,6 @@
             function formatPOS(posData) {
         if (!posData) return "";
         if (typeof posData === "string") return posData;
-
         if (Array.isArray(posData)) {
           return posData
             .map((item) => {
@@ -449,7 +2265,6 @@
             })
             .join("; ");
         }
-
         if (typeof posData === "object" && posData !== null) {
           return Object.entries(posData)
             .map(([k, v]) => `${k}: ${renderValue(v)}`)
@@ -464,41 +2279,20 @@
 
         try {
           const response = await fetch("https://jotoba.de/api/app/words", {
-            headers: {
-              accept: "application/json",
-              "accept-language":
-                "en-JP,en;q=0.9,ja-JP;q=0.8,ja;q=0.7,en-GB;q=0.6,en-US;q=0.5",
-              "cache-control": "no-cache",
-              "content-type": "application/json",
-              pragma: "no-cache",
-              priority: "u=1, i",
-              "sec-ch-ua":
-                '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
-              "sec-ch-ua-mobile": "?0",
-              "sec-ch-ua-platform": '"Linux"',
-              "sec-fetch-dest": "empty",
-              "sec-fetch-mode": "cors",
-              "sec-fetch-site": "same-origin",
-              "sec-gpc": "1",
-            },
-            referrer: "https://jotoba.de/search/0/%E5%AD%A6?l=en-US",
+            headers: { "content-type": "application/json" },
             body: JSON.stringify({
               query_str: word,
               settings: {
                 jlpt: 5,
                 user_lang: "en-US",
                 show_english: true,
-                english_on_top: false,
                 page_size: 10,
                 show_example_sentences: true,
                 sentence_furigana: true,
               },
               page: 1,
-              word_index: 0,
             }),
             method: "POST",
-            mode: "cors",
-            credentials: "omit",
           });
 
           if (!response.ok) throw new Error("API Request Failed");
@@ -506,14 +2300,15 @@
           const data = await response.json();
           const words =
             data.content && data.content.words ? data.content.words : [];
-          const matchedWord = words.find(
+          let matchedWord = words.find(
             (w) => cleanJotobaReading(w.reading) === word
           );
+          if (!matchedWord && words.length > 0) matchedWord = words[0];
 
           if (matchedWord) {
             renderWordDetails(matchedWord);
           } else {
-            modalBody.innerHTML = `<div class="error-msg">No exact match found for "${word}".</div>`;
+            modalBody.innerHTML = `<div class="error-msg">No dictionary match found for "${word}".</div>`;
           }
         } catch (error) {
           console.error(error);
@@ -522,29 +2317,23 @@
       }
             function renderWordDetails(entry) {
         modalBody.innerHTML = "";
-
         if (!entry.senses || entry.senses.length === 0) {
           modalBody.innerHTML = "No definitions available.";
           return;
         }
 
-        entry.senses.forEach((sense, index) => {
+        entry.senses.forEach((sense) => {
           const glosses = sense.glosses ? sense.glosses.join(", ") : "";
           const pos = formatPOS(sense.part_of_speech);
-
           const div = document.createElement("div");
           div.className = "dict-section";
-
           let html = `<div class="dict-pos">${pos}</div>`;
           html += `<ul class="dict-glosses"><li>${glosses}</li></ul>`;
 
           if (sense.example_sentence && Array.isArray(sense.example_sentence)) {
             const jpRaw = sense.example_sentence[0] || "";
             const en = sense.example_sentence[1] || "";
-
-            // Convert Jotoba syntax to HTML ruby tags
             const jpHtml = parseJotobaFurigana(jpRaw);
-
             html += `
               <div class="dict-example" onclick="this.classList.toggle('active')">
                 <span class="dict-ex-jp">${jpHtml}</span>
@@ -552,7 +2341,6 @@
               </div>
             `;
           }
-
           div.innerHTML = html;
           modalBody.appendChild(div);
         });
@@ -562,8 +2350,8 @@
                 let target = e.target;
                 while (target && target !== output) {
                   if (target.classList.contains("word")) {
-                    const word = target.dataset.word || target.textContent;
-                    fetchWordDetails(word);
+                    const word = target.dataset.word;
+                    if(word) fetchWordDetails(word);
                     return;
                   }
                   target = target.parentNode;

@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grade 2 Kanji List (Hiragana & English)</title>
+    <style>
+      :root {
+        --bg-color: #f4f4f4;
+        --card-bg: #ffffff;
+        --border-color: #ddd;
+        --kanji-color: #ce3b3b; /* Distinct Red */
+        --header-bg: #f8f9fa;
+        --text-main: #222;
+        --text-sub: #555;
+        --text-def: #666;
+      }
+
+      body {
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo,
+          sans-serif;
+        background-color: var(--bg-color);
+        margin: 20px;
+        color: var(--text-main);
+        font-size: 14px;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        color: #333;
+      }
+
+      /* 5 Column Grid */
+      .kanji-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+
+      /* Card Container */
+      .k-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        transition: transform 0.2s;
+      }
+
+      .k-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Header: Kanji and Core Meaning */
+      .k-header {
+        background-color: var(--header-bg);
+        padding: 8px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+      }
+
+      .k-char {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--kanji-color);
+        line-height: 1;
+      }
+
+      .k-core-mean {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #444;
+        text-align: right;
+        max-width: 65%;
+        line-height: 1.2;
+      }
+
+      /* Vocabulary List */
+      .k-vocab {
+        padding: 8px 10px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .v-item {
+        margin-bottom: 6px;
+        border-bottom: 1px dotted #eee;
+        padding-bottom: 4px;
+      }
+
+      .v-item:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      /* Top line: Word + Reading */
+      .v-top {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .v-word {
+        font-weight: bold;
+        font-size: 0.95rem;
+        color: #000;
+      }
+
+      .v-read {
+        font-size: 0.8rem;
+        color: var(--text-sub);
+      }
+
+      /* Bottom line: Definition */
+      .v-def {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--text-def);
+        font-style: italic;
+        margin-top: 1px;
+        line-height: 1.2;
+      }
+
+      /* Responsive Breakpoints */
+      @media (max-width: 1200px) {
+        .kanji-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      @media (max-width: 900px) {
+        .kanji-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .kanji-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .k-char {
+          font-size: 1.8rem;
+        }
+      }
+
+      /* Print Styles */
+      @media print {
+        body {
+          background: white;
+          margin: 0;
+        }
+        .kanji-grid {
+          display: block;
+          column-count: 4;
+          gap: 10px;
+        }
+        .k-card {
+          break-inside: avoid;
+          border: 1px solid #ccc;
+          box-shadow: none;
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Grade 2 Kanji Reference</h1>
+    <div id="grid" class="kanji-grid"></div>
+
+    <script>
+      // Format: [Kanji, Core Meaning, [[Word, Reading, Definition], ...]]
+      const kanjiData = [
+        [
+          "引",
+          "Pull",
+          [
+            ["引く", "ひく", "to pull"],
+            ["引き算", "ひきざん", "subtraction"],
+          ],
+        ],
+        [
+          "羽",
+          "Feather",
+          [
+            ["羽", "はね", "feather/wing"],
+            ["羽毛", "うもう", "down/feathers"],
+          ],
+        ],
+        [
+          "雲",
+          "Cloud",
+          [
+            ["雲", "くも", "cloud"],
+            ["雨雲", "あまぐも", "rain cloud"],
+          ],
+        ],
+        [
+          "園",
+          "Garden",
+          [
+            ["公園", "こうえん", "park"],
+            ["動物園", "どうぶつえん", "zoo"],
+          ],
+        ],
+        [
+          "遠",
+          "Far",
+          [
+            ["遠い", "とおい", "far/distant"],
+            ["遠足", "えんそく", "excursion"],
+          ],
+        ],
+        [
+          "何",
+          "What",
+          [
+            ["何", "なに", "what"],
+            ["何か", "なにか", "something"],
+          ],
+        ],
+        [
+          "科",
+          "Course",
+          [
+            ["科学", "かがく", "science"],
+            ["教科書", "きょうかしょ", "textbook"],
+          ],
+        ],
+        [
+          "夏",
+          "Summer",
+          [
+            ["夏", "なつ", "summer"],
+            ["夏休み", "なつやすみ", "summer vacation"],
+          ],
+        ],
+        [
+          "家",
+          "House",
+          [
+            ["家", "いえ", "house"],
+            ["家族", "かぞく", "family"],
+          ],
+        ],
+        [
+          "歌",
+          "Song",
+          [
+            ["歌", "うた", "song"],
+            ["歌手", "かしゅ", "singer"],
+          ],
+        ],
+        [
+          "画",
+          "Picture",
+          [
+            ["映画", "えいが", "movie"],
+            ["画家", "がか", "painter"],
+          ],
+        ],
+        [
+          "回",
+          "Turn/Times",
+          [
+            ["回る", "まわる", "to turn/spin"],
+            ["今回", "こんかい", "this time"],
+          ],
+        ],
+        [
+          "会",
+          "Meet",
+          [
+            ["会う", "あう", "to meet"],
+            ["会社", "かいしゃ", "company"],
+          ],
+        ],
+        [
+          "海",
+          "Sea",
+          [
+            ["海", "うみ", "sea/ocean"],
+            ["海外", "かいがい", "overseas"],
+          ],
+        ],
+        [
+          "絵",
+          "Picture",
+          [
+            ["絵", "え", "picture/drawing"],
+            ["絵本", "えほん", "picture book"],
+          ],
+        ],
+        [
+          "外",
+          "Outside",
+          [
+            ["外", "そと", "outside"],
+            ["外国", "がいこく", "foreign country"],
+          ],
+        ],
+        [
+          "角",
+          "Corner",
+          [
+            ["角", "かど", "corner"],
+            ["三角形", "さんかくけい", "triangle"],
+          ],
+        ],
+        [
+          "楽",
+          "Fun/Music",
+          [
+            ["楽しい", "たのしい", "fun/enjoyable"],
+            ["音楽", "おんがく", "music"],
+          ],
+        ],
+        [
+          "活",
+          "Active",
+          [
+            ["生活", "せいかつ", "daily life"],
+            ["活動", "かつどう", "activity"],
+          ],
+        ],
+        [
+          "間",
+          "Interval",
+          [
+            ["間", "あいだ", "space/gap"],
+            ["時間", "じかん", "time"],
+          ],
+        ],
+        [
+          "丸",
+          "Circle",
+          [
+            ["丸い", "まるい", "round"],
+            ["丸", "まる", "circle"],
+          ],
+        ],
+        [
+          "岩",
+          "Rock",
+          [
+            ["岩", "いわ", "rock/crag"],
+            ["岩石", "がんせき", "rock/stone"],
+          ],
+        ],
+        [
+          "顔",
+          "Face",
+          [
+            ["顔", "かお", "face"],
+            ["洗顔", "せんがん", "face washing"],
+          ],
+        ],
+        [
+          "汽",
+          "Steam",
+          [
+            ["汽車", "きしゃ", "steam train"],
+            ["汽船", "きせん", "steamship"],
+          ],
+        ],
+        [
+          "記",
+          "Record",
+          [
+            ["日記", "にっき", "diary"],
+            ["記事", "きじ", "article/news"],
+          ],
+        ],
+        [
+          "帰",
+          "Return",
+          [
+            ["帰る", "かえる", "to return home"],
+            ["帰国", "きこく", "return to country"],
+          ],
+        ],
+        [
+          "弓",
+          "Bow",
+          [
+            ["弓", "ゆみ", "bow (archery)"],
+            ["弓矢", "ゆみや", "bow and arrow"],
+          ],
+        ],
+        [
+          "牛",
+          "Cow",
+          [
+            ["牛", "うし", "cow/cattle"],
+            ["牛乳", "ぎゅうにゅう", "milk"],
+          ],
+        ],
+        [
+          "魚",
+          "Fish",
+          [
+            ["魚", "さかな", "fish"],
+            ["金魚", "きんぎょ", "goldfish"],
+          ],
+        ],
+        [
+          "京",
+          "Capital",
+          [
+            ["東京", "とうきょう", "Tokyo"],
+            ["京都", "きょうと", "Kyoto"],
+          ],
+        ],
+        [
+          "強",
+          "Strong",
+          [
+            ["強い", "つよい", "strong"],
+            ["勉強", "べんきょう", "study"],
+          ],
+        ],
+        [
+          "教",
+          "Teach",
+          [
+            ["教える", "おしえる", "to teach"],
+            ["教室", "きょうしつ", "classroom"],
+          ],
+        ],
+        [
+          "近",
+          "Near",
+          [
+            ["近い", "ちかい", "near/close"],
+            ["近所", "きんじょ", "neighborhood"],
+          ],
+        ],
+        [
+          "兄",
+          "Older Bro",
+          [
+            ["兄", "あに", "older brother"],
+            ["兄弟", "きょうだい", "siblings"],
+          ],
+        ],
+        [
+          "形",
+          "Shape",
+          [
+            ["形", "かたち", "shape"],
+            ["図形", "ずけい", "figure/shape"],
+          ],
+        ],
+        [
+          "計",
+          "Measure",
+          [
+            ["時計", "とけい", "clock/watch"],
+            ["計画", "けいかく", "plan"],
+          ],
+        ],
+        [
+          "元",
+          "Origin",
+          [
+            ["元気", "げんき", "healthy/energetic"],
+            ["元日", "がんじつ", "New Year's Day"],
+          ],
+        ],
+        [
+          "言",
+          "Say",
+          [
+            ["言う", "いう", "to say"],
+            ["言葉", "ことば", "word/language"],
+          ],
+        ],
+        [
+          "原",
+          "Field",
+          [
+            ["原っぱ", "はらっぱ", "open field"],
+            ["原因", "げんいん", "cause/origin"],
+          ],
+        ],
+        [
+          "戸",
+          "Door",
+          [
+            ["戸", "と", "door (sliding)"],
+            ["雨戸", "あまど", "storm shutter"],
+          ],
+        ],
+        [
+          "古",
+          "Old",
+          [
+            ["古い", "ふるい", "old (thing)"],
+            ["中古", "ちゅうこ", "used/secondhand"],
+          ],
+        ],
+        [
+          "午",
+          "Noon",
+          [
+            ["午前", "ごぜん", "A.M./morning"],
+            ["正午", "しょうご", "noon"],
+          ],
+        ],
+        [
+          "後",
+          "After",
+          [
+            ["後ろ", "うしろ", "behind"],
+            ["午後", "ごご", "P.M./afternoon"],
+          ],
+        ],
+        [
+          "語",
+          "Language",
+          [
+            ["日本語", "にほんご", "Japanese"],
+            ["英語", "えいご", "English"],
+          ],
+        ],
+        [
+          "工",
+          "Craft",
+          [
+            ["工場", "こうじょう", "factory"],
+            ["工事", "こうじ", "construction"],
+          ],
+        ],
+        [
+          "公",
+          "Public",
+          [
+            ["公園", "こうえん", "park"],
+            ["公共", "こうきょう", "public"],
+          ],
+        ],
+        [
+          "広",
+          "Wide",
+          [
+            ["広い", "ひろい", "wide/spacious"],
+            ["広場", "ひろば", "plaza/square"],
+          ],
+        ],
+        [
+          "交",
+          "Mix",
+          [
+            ["交番", "こうばん", "police box"],
+            ["交通", "こうつう", "traffic"],
+          ],
+        ],
+        [
+          "光",
+          "Light",
+          [
+            ["光", "ひかり", "light"],
+            ["日光", "にっこう", "sunlight"],
+          ],
+        ],
+        [
+          "考",
+          "Think",
+          [
+            ["考える", "かんがえる", "to think"],
+            ["参考", "さんこう", "reference"],
+          ],
+        ],
+        [
+          "行",
+          "Go",
+          [
+            ["行く", "いく", "to go"],
+            ["旅行", "りょこう", "travel"],
+          ],
+        ],
+        [
+          "高",
+          "High",
+          [
+            ["高い", "たかい", "high/expensive"],
+            ["高校", "こうこう", "high school"],
+          ],
+        ],
+        [
+          "黄",
+          "Yellow",
+          [
+            ["黄色", "きいろ", "yellow"],
+            ["黄身", "きみ", "egg yolk"],
+          ],
+        ],
+        [
+          "合",
+          "Fit/Join",
+          [
+            ["合う", "あう", "to fit/match"],
+            ["試合", "しあい", "game/match"],
+          ],
+        ],
+        [
+          "谷",
+          "Valley",
+          [
+            ["谷", "たに", "valley"],
+            ["谷間", "たにま", "ravine"],
+          ],
+        ],
+        [
+          "国",
+          "Country",
+          [
+            ["国", "くに", "country"],
+            ["外国", "がいこく", "foreign country"],
+          ],
+        ],
+        [
+          "黒",
+          "Black",
+          [
+            ["黒", "くろ", "black"],
+            ["黒板", "こくばん", "blackboard"],
+          ],
+        ],
+        [
+          "今",
+          "Now",
+          [
+            ["今", "いま", "now"],
+            ["今日", "きょう", "today"],
+          ],
+        ],
+        [
+          "才",
+          "Age/Genius",
+          [
+            ["天才", "てんさい", "genius"],
+            ["七才", "ななさい", "7 years old"],
+          ],
+        ],
+        [
+          "細",
+          "Thin",
+          [
+            ["細い", "ほそい", "thin/slender"],
+            ["細かい", "こまかい", "detailed/small"],
+          ],
+        ],
+        [
+          "作",
+          "Make",
+          [
+            ["作る", "つくる", "to make"],
+            ["作文", "さくぶん", "composition"],
+          ],
+        ],
+        [
+          "算",
+          "Count",
+          [
+            ["算数", "さんすう", "arithmetic"],
+            ["計算", "けいさん", "calculation"],
+          ],
+        ],
+        [
+          "止",
+          "Stop",
+          [
+            ["止まる", "とまる", "to stop"],
+            ["中止", "ちゅうし", "cancellation"],
+          ],
+        ],
+        [
+          "市",
+          "City",
+          [
+            ["市民", "しみん", "citizen"],
+            ["市場", "いちば", "market"],
+          ],
+        ],
+        [
+          "矢",
+          "Arrow",
+          [
+            ["矢", "や", "arrow"],
+            ["弓矢", "ゆみや", "bow and arrow"],
+          ],
+        ],
+        [
+          "姉",
+          "Older Sis",
+          [
+            ["姉", "あね", "older sister"],
+            ["姉妹", "姉妹", "sisters"],
+          ],
+        ],
+        [
+          "思",
+          "Think",
+          [
+            ["思う", "おもう", "to think/feel"],
+            ["思い出", "おもいで", "memory"],
+          ],
+        ],
+        [
+          "紙",
+          "Paper",
+          [
+            ["紙", "かみ", "paper"],
+            ["手紙", "てがみ", "letter"],
+          ],
+        ],
+        [
+          "寺",
+          "Temple",
+          [
+            ["お寺", "おてら", "temple"],
+            ["寺院", "じいん", "temple"],
+          ],
+        ],
+        [
+          "自",
+          "Self",
+          [
+            ["自分", "じぶん", "oneself"],
+            ["自由", "じゆう", "freedom"],
+          ],
+        ],
+        [
+          "時",
+          "Time",
+          [
+            ["時計", "とけい", "clock"],
+            ["一時", "いちじ", "1 o'clock"],
+          ],
+        ],
+        [
+          "室",
+          "Room",
+          [
+            ["教室", "きょうしつ", "classroom"],
+            ["室内", "しつない", "indoor"],
+          ],
+        ],
+        [
+          "社",
+          "Company",
+          [
+            ["会社", "かいしゃ", "company"],
+            ["神社", "じんじゃ", "shrine"],
+          ],
+        ],
+        [
+          "弱",
+          "Weak",
+          [
+            ["弱い", "よわい", "weak"],
+            ["弱点", "じゃくてん", "weak point"],
+          ],
+        ],
+        [
+          "首",
+          "Neck",
+          [
+            ["首", "くび", "neck"],
+            ["手首", "てくび", "wrist"],
+          ],
+        ],
+        [
+          "秋",
+          "Autumn",
+          [
+            ["秋", "あき", "autumn"],
+            ["秋分", "しゅうぶん", "autumn equinox"],
+          ],
+        ],
+        [
+          "週",
+          "Week",
+          [
+            ["今週", "こんしゅう", "this week"],
+            ["毎週", "まいしゅう", "every week"],
+          ],
+        ],
+        [
+          "春",
+          "Spring",
+          [
+            ["春", "はる", "spring"],
+            ["青春", "せいしゅん", "youth"],
+          ],
+        ],
+        [
+          "書",
+          "Write",
+          [
+            ["書く", "かく", "to write"],
+            ["図書館", "としょかん", "library"],
+          ],
+        ],
+        [
+          "少",
+          "Few",
+          [
+            ["少し", "すこし", "a little"],
+            ["少年", "しょうねん", "boy"],
+          ],
+        ],
+        [
+          "場",
+          "Place",
+          [
+            ["場所", "ばしょ", "place"],
+            ["広場", "ひろば", "open square"],
+          ],
+        ],
+        [
+          "色",
+          "Color",
+          [
+            ["色", "いろ", "color"],
+            ["景色", "けしき", "scenery"],
+          ],
+        ],
+        [
+          "食",
+          "Eat",
+          [
+            ["食べる", "たべる", "to eat"],
+            ["食事", "しょくじ", "meal"],
+          ],
+        ],
+        [
+          "心",
+          "Heart",
+          [
+            ["心", "こころ", "heart/mind"],
+            ["安心", "あんしん", "relief"],
+          ],
+        ],
+        [
+          "新",
+          "New",
+          [
+            ["新しい", "あたらしい", "new"],
+            ["新聞", "しんぶん", "newspaper"],
+          ],
+        ],
+        [
+          "親",
+          "Parent",
+          [
+            ["親", "おや", "parent"],
+            ["親切", "しんせつ", "kindness"],
+          ],
+        ],
+        [
+          "図",
+          "Map/Chart",
+          [
+            ["地図", "ちず", "map"],
+            ["図書館", "としょかん", "library"],
+          ],
+        ],
+        [
+          "数",
+          "Number",
+          [
+            ["数", "かず", "number"],
+            ["算数", "さんすう", "math"],
+          ],
+        ],
+        [
+          "西",
+          "West",
+          [
+            ["西", "にし", "west"],
+            ["西洋", "せいよう", "the West"],
+          ],
+        ],
+        [
+          "声",
+          "Voice",
+          [
+            ["声", "こえ", "voice"],
+            ["大声", "おおごえ", "loud voice"],
+          ],
+        ],
+        [
+          "星",
+          "Star",
+          [
+            ["星", "ほし", "star"],
+            ["衛星", "えいせい", "satellite"],
+          ],
+        ],
+        [
+          "晴",
+          "Clear Sky",
+          [
+            ["晴れ", "はれ", "sunny weather"],
+            ["晴天", "せいてん", "fine weather"],
+          ],
+        ],
+        [
+          "切",
+          "Cut",
+          [
+            ["切る", "きる", "to cut"],
+            ["大切", "たいせつ", "important"],
+          ],
+        ],
+        [
+          "雪",
+          "Snow",
+          [
+            ["雪", "ゆき", "snow"],
+            ["大雪", "おおゆき", "heavy snow"],
+          ],
+        ],
+        [
+          "船",
+          "Ship",
+          [
+            ["船", "ふね", "ship/boat"],
+            ["風船", "ふうせん", "balloon"],
+          ],
+        ],
+        [
+          "線",
+          "Line",
+          [
+            ["線", "せん", "line"],
+            ["新幹線", "しんかんせん", "bullet train"],
+          ],
+        ],
+        [
+          "前",
+          "Before",
+          [
+            ["前", "まえ", "front/before"],
+            ["名前", "なまえ", "name"],
+          ],
+        ],
+        [
+          "組",
+          "Group",
+          [
+            ["組", "くみ", "class/group"],
+            ["番組", "ばんぐみ", "TV program"],
+          ],
+        ],
+        [
+          "走",
+          "Run",
+          [
+            ["走る", "はしる", "to run"],
+            ["競走", "きょうそう", "race"],
+          ],
+        ],
+        [
+          "多",
+          "Many",
+          [
+            ["多い", "おおい", "many"],
+            ["多分", "たぶん", "probably"],
+          ],
+        ],
+        [
+          "太",
+          "Thick/Fat",
+          [
+            ["太い", "ふとい", "thick"],
+            ["太陽", "たいよう", "sun"],
+          ],
+        ],
+        [
+          "体",
+          "Body",
+          [
+            ["体", "からだ", "body"],
+            ["体育", "たいいく", "PE (gym)"],
+          ],
+        ],
+        [
+          "台",
+          "Stand",
+          [
+            ["台風", "たいふう", "typhoon"],
+            ["台所", "だいどころ", "kitchen"],
+          ],
+        ],
+        [
+          "地",
+          "Ground",
+          [
+            ["地面", "じめん", "ground"],
+            ["地下", "ちか", "underground"],
+          ],
+        ],
+        [
+          "池",
+          "Pond",
+          [
+            ["池", "いけ", "pond"],
+            ["電池", "でんち", "battery"],
+          ],
+        ],
+        [
+          "知",
+          "Know",
+          [
+            ["知る", "しる", "to know"],
+            ["知識", "ちしき", "knowledge"],
+          ],
+        ],
+        [
+          "茶",
+          "Tea",
+          [
+            ["お茶", "おちゃ", "tea"],
+            ["茶色", "ちゃいろ", "brown"],
+          ],
+        ],
+        [
+          "昼",
+          "Noon",
+          [
+            ["昼", "ひる", "daytime/noon"],
+            ["昼寝", "ひるね", "nap"],
+          ],
+        ],
+        [
+          "長",
+          "Long",
+          [
+            ["長い", "ながい", "long"],
+            ["校長", "こうちょう", "principal"],
+          ],
+        ],
+        [
+          "鳥",
+          "Bird",
+          [
+            ["鳥", "とり", "bird"],
+            ["白鳥", "はくちょう", "swan"],
+          ],
+        ],
+        [
+          "朝",
+          "Morning",
+          [
+            ["朝", "あさ", "morning"],
+            ["朝食", "ちょうしょく", "breakfast"],
+          ],
+        ],
+        [
+          "直",
+          "Fix/Direct",
+          [
+            ["直す", "なおす", "to repair"],
+            ["正直", "しょうじき", "honest"],
+          ],
+        ],
+        [
+          "通",
+          "Pass",
+          [
+            ["通る", "とおる", "to pass"],
+            ["通う", "かよう", "to commute"],
+          ],
+        ],
+        [
+          "弟",
+          "Young Bro",
+          [
+            ["弟", "おとうと", "younger brother"],
+            ["兄弟", "きょうだい", "siblings"],
+          ],
+        ],
+        [
+          "店",
+          "Shop",
+          [
+            ["店", "みせ", "shop"],
+            ["売店", "ばいてん", "kiosk/stand"],
+          ],
+        ],
+        [
+          "点",
+          "Point",
+          [
+            ["点", "てん", "point/score"],
+            ["交差点", "こうさてん", "intersection"],
+          ],
+        ],
+        [
+          "電",
+          "Electric",
+          [
+            ["電気", "でんき", "electricity"],
+            ["電車", "でんしゃ", "train"],
+          ],
+        ],
+        [
+          "刀",
+          "Sword",
+          [
+            ["刀", "かたな", "sword"],
+            ["日本刀", "にほんとう", "Japanese sword"],
+          ],
+        ],
+        [
+          "冬",
+          "Winter",
+          [
+            ["冬", "ふゆ", "winter"],
+            ["冬休み", "ふゆやすみ", "winter break"],
+          ],
+        ],
+        [
+          "当",
+          "Hit",
+          [
+            ["当たる", "あたる", "to hit/win"],
+            ["本当", "ほんとう", "truth/really"],
+          ],
+        ],
+        [
+          "東",
+          "East",
+          [
+            ["東", "ひがし", "east"],
+            ["東京", "とうきょう", "Tokyo"],
+          ],
+        ],
+        [
+          "答",
+          "Answer",
+          [
+            ["答える", "こたえる", "to answer"],
+            ["答え", "こたえ", "answer"],
+          ],
+        ],
+        [
+          "頭",
+          "Head",
+          [
+            ["頭", "あたま", "head"],
+            ["頭痛", "ずつう", "headache"],
+          ],
+        ],
+        [
+          "同",
+          "Same",
+          [
+            ["同じ", "おなじ", "same"],
+            ["同時", "どうじ", "same time"],
+          ],
+        ],
+        [
+          "道",
+          "Road",
+          [
+            ["道", "みち", "road/path"],
+            ["歩道", "ほどう", "sidewalk"],
+          ],
+        ],
+        [
+          "読",
+          "Read",
+          [
+            ["読む", "よむ", "to read"],
+            ["読書", "どくしょ", "reading books"],
+          ],
+        ],
+        [
+          "内",
+          "Inside",
+          [
+            ["内", "うち", "inside"],
+            ["案内", "あんない", "guide"],
+          ],
+        ],
+        [
+          "南",
+          "South",
+          [
+            ["南", "みなみ", "south"],
+            ["南極", "なんきょく", "South Pole"],
+          ],
+        ],
+        [
+          "肉",
+          "Meat",
+          [
+            ["肉", "にく", "meat"],
+            ["牛肉", "ぎゅうにく", "beef"],
+          ],
+        ],
+        [
+          "馬",
+          "Horse",
+          [
+            ["馬", "うま", "horse"],
+            ["乗馬", "じょうば", "horse riding"],
+          ],
+        ],
+        [
+          "売",
+          "Sell",
+          [
+            ["売る", "うる", "to sell"],
+            ["売り場", "うりば", "sales counter"],
+          ],
+        ],
+        [
+          "買",
+          "Buy",
+          [
+            ["買う", "かう", "to buy"],
+            ["買い物", "かいもの", "shopping"],
+          ],
+        ],
+        [
+          "麦",
+          "Wheat",
+          [
+            ["麦", "むぎ", "wheat/barley"],
+            ["麦茶", "むぎちゃ", "barley tea"],
+          ],
+        ],
+        [
+          "半",
+          "Half",
+          [
+            ["半分", "はんぶん", "half"],
+            ["二時半", "にじはん", "2:30"],
+          ],
+        ],
+        [
+          "番",
+          "Number",
+          [
+            ["一番", "いちばん", "number one"],
+            ["番号", "ばんごう", "number"],
+          ],
+        ],
+        [
+          "父",
+          "Father",
+          [
+            ["父", "ちち", "father"],
+            ["お父さん", "おとうさん", "father (polite)"],
+          ],
+        ],
+        [
+          "風",
+          "Wind",
+          [
+            ["風", "かぜ", "wind"],
+            ["台風", "たいふう", "typhoon"],
+          ],
+        ],
+        [
+          "分",
+          "Part/Min",
+          [
+            ["分かる", "わかる", "to understand"],
+            ["十分", "じゅっぷん", "10 minutes"],
+          ],
+        ],
+        [
+          "聞",
+          "Hear",
+          [
+            ["聞く", "きく", "to hear/ask"],
+            ["新聞", "しんぶん", "newspaper"],
+          ],
+        ],
+        [
+          "米",
+          "Rice",
+          [
+            ["米", "こめ", "uncooked rice"],
+            ["米国", "べいこく", "USA"],
+          ],
+        ],
+        [
+          "歩",
+          "Walk",
+          [
+            ["歩く", "あるく", "to walk"],
+            ["散歩", "さんぽ", "stroll"],
+          ],
+        ],
+        [
+          "母",
+          "Mother",
+          [
+            ["母", "はは", "mother"],
+            ["お母さん", "おかあさん", "mother (polite)"],
+          ],
+        ],
+        [
+          "方",
+          "Way/Side",
+          [
+            ["方", "かた", "person/way"],
+            ["方法", "ほうほう", "method"],
+          ],
+        ],
+        [
+          "北",
+          "North",
+          [
+            ["北", "きた", "north"],
+            ["北海道", "ほっかいどう", "Hokkaido"],
+          ],
+        ],
+        [
+          "毎",
+          "Every",
+          [
+            ["毎日", "まいにち", "every day"],
+            ["毎週", "まいしゅう", "every week"],
+          ],
+        ],
+        [
+          "妹",
+          "Young Sis",
+          [
+            ["妹", "いもうと", "younger sister"],
+            ["姉妹", "姉妹", "sisters"],
+          ],
+        ],
+        [
+          "万",
+          "10,000",
+          [
+            ["一万", "いちまん", "ten thousand"],
+            ["万年筆", "まんねんひつ", "fountain pen"],
+          ],
+        ],
+        [
+          "明",
+          "Bright",
+          [
+            ["明るい", "あかるい", "bright"],
+            ["明日", "あした", "tomorrow"],
+          ],
+        ],
+        [
+          "鳴",
+          "Cry/Chirp",
+          [
+            ["鳴く", "なく", "to chirp/cry"],
+            ["鳴る", "なる", "to ring"],
+          ],
+        ],
+        [
+          "毛",
+          "Fur/Hair",
+          [
+            ["毛", "け", "hair/fur"],
+            ["毛布", "もうふ", "blanket"],
+          ],
+        ],
+        [
+          "門",
+          "Gate",
+          [
+            ["門", "もん", "gate"],
+            ["校門", "こうもん", "school gate"],
+          ],
+        ],
+        [
+          "夜",
+          "Night",
+          [
+            ["夜", "よる", "night"],
+            ["今夜", "こんや", "tonight"],
+          ],
+        ],
+        [
+          "野",
+          "Field",
+          [
+            ["野原", "のはら", "field"],
+            ["野球", "やきゅう", "baseball"],
+          ],
+        ],
+        [
+          "友",
+          "Friend",
+          [
+            ["友だち", "ともだち", "friend"],
+            ["友人", "ゆうじん", "friend"],
+          ],
+        ],
+        [
+          "用",
+          "Use/Task",
+          [
+            ["用事", "ようじ", "task/errand"],
+            ["用意", "ようい", "preparation"],
+          ],
+        ],
+        [
+          "曜",
+          "Weekday",
+          [
+            ["曜日", "ようび", "day of week"],
+            ["日曜日", "にちようび", "Sunday"],
+          ],
+        ],
+        [
+          "来",
+          "Come",
+          [
+            ["来る", "くる", "to come"],
+            ["来月", "らいげつ", "next month"],
+          ],
+        ],
+        [
+          "里",
+          "Village",
+          [
+            ["里", "さと", "village"],
+            ["里芋", "さといも", "taro"],
+          ],
+        ],
+        [
+          "理",
+          "Reason",
+          [
+            ["理由", "りゆう", "reason"],
+            ["料理", "りょうり", "cooking"],
+          ],
+        ],
+        [
+          "話",
+          "Talk",
+          [
+            ["話す", "はなす", "to speak"],
+            ["会話", "かいわ", "conversation"],
+          ],
+        ],
+      ];
+
+      const container = document.getElementById("grid");
+
+      kanjiData.forEach((item) => {
+        const [char, coreMean, vocab] = item;
+
+        const card = document.createElement("div");
+        card.className = "k-card";
+
+        // Header
+        const header = document.createElement("div");
+        header.className = "k-header";
+
+        const kanjiSpan = document.createElement("span");
+        kanjiSpan.className = "k-char";
+        kanjiSpan.textContent = char;
+
+        const meanSpan = document.createElement("span");
+        meanSpan.className = "k-core-mean";
+        meanSpan.textContent = coreMean;
+
+        header.appendChild(kanjiSpan);
+        header.appendChild(meanSpan);
+
+        // Vocab Body
+        const body = document.createElement("div");
+        body.className = "k-vocab";
+
+        vocab.forEach(([word, reading, def]) => {
+          const row = document.createElement("div");
+          row.className = "v-item";
+
+          const top = document.createElement("div");
+          top.className = "v-top";
+          top.innerHTML = `<span class="v-word">${word}</span> <span class="v-read">${reading}</span>`;
+
+          const bottom = document.createElement("span");
+          bottom.className = "v-def";
+          bottom.textContent = def;
+
+          row.appendChild(top);
+          row.appendChild(bottom);
+          body.appendChild(row);
+        });
+
+        card.appendChild(header);
+        card.appendChild(body);
+        container.appendChild(card);
+      });
+    </script>
+  </body>
+</html>
