@@ -6,7 +6,7 @@
     <title>Level-Based Kanji Tracker + Dictionary</title>
     <style>
       :root {
-        --bg-color: #f0f2f5;
+        --bg-color: #f9f9f9;
         --card-bg: #ffffff;
         --border-color: #ddd;
         --kanji-color: #ce3b3b;
@@ -245,14 +245,14 @@
       }
 
       /* =========================================
-         GRID VIEW STYLES (Fixed)
+         GRID VIEW STYLES
          ========================================= */
       .kanji-grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 12px;
         width: 100%;
-        padding-bottom: 100px; /* Space for bottom tooltips */
+        padding-bottom: 100px;
       }
 
       .k-card {
@@ -261,7 +261,6 @@
         border-radius: 6px;
         display: flex;
         flex-direction: column;
-        /* IMPORT FIX: Removed overflow:hidden to allow tooltips to pop out */
         overflow: visible;
         position: relative;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -269,7 +268,6 @@
         z-index: 1;
       }
 
-      /* Z-Index Trick: Bring the hovered card to the front so tooltips overlay neighbors */
       .k-card:hover {
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
@@ -284,18 +282,16 @@
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid #eee;
-        /* Manually add radius since container isn't clipping */
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
       }
       .k-header.known {
-        background-color: #e3f2fd;
+        /* background-color: #e3f2fd; */
       }
 
       .k-char {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--kanji-color);
+        font-size: 3rem;
+        color: black;
         line-height: 1;
       }
 
@@ -309,23 +305,18 @@
 
       .k-vocab {
         padding: 6px 6px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
       }
 
       .v-item {
-        /* Design Change: Simple block for the word only */
         text-align: center;
         padding: 6px;
         border-radius: 4px;
         cursor: pointer;
-        position: relative; /* Anchor for tooltip */
+        position: relative;
         background: #f9f9f9;
-        font-weight: bold;
-        font-size: 1rem;
-        border: 1px solid transparent;
+        font-size: 1.3rem;
+        margin-right: 10px;
+        margin-bottom: 10px;
       }
 
       .v-item:hover {
@@ -334,14 +325,13 @@
       }
 
       .v-item.highlight {
-        color: var(--highlight-text);
-        background-color: rgba(232, 245, 233, 0.4);
+        color: black;
+        border: 1px solid rgba(232, 245, 233, 1);
       }
       .v-item.highlight:hover {
         background-color: #c8e6c9;
       }
 
-      /* Grid Tooltip Styling */
       .grid-tooltip {
         visibility: hidden;
         width: 160px;
@@ -350,14 +340,11 @@
         text-align: center;
         border-radius: 4px;
         padding: 8px;
-
-        /* Position */
         position: absolute;
-        bottom: 100%; /* Show above the word */
+        bottom: 100%;
         left: 50%;
         transform: translateX(-50%);
-        margin-bottom: 8px; /* Arrow space */
-
+        margin-bottom: 8px;
         z-index: 200;
         opacity: 0;
         transition: opacity 0.2s, visibility 0.2s;
@@ -367,7 +354,6 @@
         line-height: 1.4;
       }
 
-      /* Tooltip Arrow */
       .grid-tooltip::after {
         content: "";
         position: absolute;
@@ -386,22 +372,21 @@
 
       .gt-level {
         color: #4db6ac;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         font-weight: bold;
         text-transform: uppercase;
         margin-bottom: 2px;
       }
       .gt-read {
-        font-size: 0.95rem;
+        font-size: 1.3rem;
         margin-bottom: 2px;
       }
       .gt-def {
         color: #ddd;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-style: italic;
       }
 
-      /* Responsive Grid */
       @media (max-width: 1200px) {
         .kanji-grid {
           grid-template-columns: repeat(4, 1fr);
@@ -511,7 +496,6 @@
         font-weight: 500;
       }
 
-      /* Example Sentence Styling */
       .dict-example {
         background: #f1f8ff;
         padding: 10px;
@@ -532,6 +516,7 @@
       }
       .dict-ex-jp rt {
         display: none;
+        font-size: 0.8rem;
       }
       .dict-ex-en {
         display: none;
@@ -566,7 +551,6 @@
   <body>
     <h2>Level-Based Kanji Tracker</h2>
 
-    <!-- This container will be used for Export -->
     <div id="export-area">
       <!-- Global Stats -->
       <div class="stats-bar">
@@ -585,15 +569,15 @@
     <!-- Controls / Inputs -->
     <div class="container">
       <div class="input-group">
-        <label for="set1">Set 1: Target Words (Level JSON)</label>
+        <label for="set1">Set 1: Target Words (CSV)</label>
         <textarea id="set1">
-{"level": 5, "data":["時間","じかん","time","じかん"]}
-{"level": 5, "data":["国","くに","country","くに"]}
-{"level": 4, "data":["見つかる","みつかる","to be found","みつかる"]}
-{"level": 4, "data":["祭り","まつ","festival","まつり"]}
-{"level": 3, "data":["一つ","ひと","one (object)","ひとつ"]}
-{"level": 1, "data":["ここ","ここ","here","ここ"]}
-</textarea
+level,kanji,furigana,definition,kana
+5,"時間","じかん","time","じかん"
+5,"国","くに","country","くに"
+4,"見つかる","みつかる","to be found","みつかる"
+4,"祭り","まつ","festival","まつり"
+3,"一つ","ひと","one (object)","ひとつ"
+1,"ここ","ここ","here","ここ"</textarea
         >
       </div>
       <div class="input-group">
@@ -653,7 +637,7 @@
       let currentView = "list"; // 'list' or 'grid'
 
       // Storage Keys
-      const STORAGE_KEY_SET1 = "kanjiTracker_data";
+      const STORAGE_KEY_SET1 = "kanjiTracker_data_csv";
       const STORAGE_KEY_SET2 = "kanjiTracker_known";
       const STORAGE_KEY_HIDE_MATCH = "kanjiTracker_hideUnmatched";
       const STORAGE_KEY_HIDE_KANA = "kanjiTracker_hideNoKanji";
@@ -693,7 +677,7 @@
         );
         localStorage.setItem(STORAGE_KEY_HIDE_KANA, hideNoKanjiInput.checked);
 
-        // --- Data Parsing ---
+        // --- Data Parsing (CSV) ---
         const rawLines = set1Input.value.split("\n").filter((l) => l.trim());
         const hideUnmatched = hideUnmatchedInput.checked;
         const hideNoKanji = hideNoKanjiInput.checked;
@@ -702,31 +686,49 @@
         const knownSet = new Set(knownKanjiArr);
 
         let parsedItems = [];
-        rawLines.forEach((line) => {
-          try {
-            const parsed = JSON.parse(line);
-            if (parsed.data && Array.isArray(parsed.data)) {
-              const word = parsed.data[0];
-              const reading = parsed.data[1];
-              const meaning = parsed.data[2];
-              const level = parsed.level || 0;
 
-              const kanjiInWord = word.match(/[\u4e00-\u9faf]/g) || [];
-              const hasKanji = kanjiInWord.length > 0;
-              const allKnown =
-                !hasKanji || kanjiInWord.every((k) => knownSet.has(k));
+        rawLines.forEach((line, index) => {
+          // Ignore Header
+          if (
+            line.toLowerCase().startsWith("level,") ||
+            (index === 0 && line.includes("level"))
+          ) {
+            return;
+          }
 
-              parsedItems.push({
-                word,
-                meaning,
-                reading,
-                level,
-                allKnown,
-                hasKanji,
-                kanjiChars: kanjiInWord,
-              });
-            }
-          } catch (e) {}
+          // CSV Split logic: Split by comma but ignore commas inside quotes
+          const regex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
+          const parts = line.split(regex);
+
+          // Need at least level and kanji
+          if (parts.length >= 2) {
+            // Clean quotes from the parts
+            const cleanParts = parts.map((p) =>
+              p.trim().replace(/^"|"$/g, "").replace(/""/g, '"')
+            );
+
+            // Mapping based on: level, kanji, furigana, definition, kana
+            const level = parseInt(cleanParts[0]) || 0;
+            const word = cleanParts[1];
+            // Prefer full kana (index 4) if available, else fallback to index 2 (furigana/partial)
+            const reading = cleanParts[4] || cleanParts[2] || "";
+            const meaning = cleanParts[3] || "";
+
+            const kanjiInWord = word.match(/[\u4e00-\u9faf]/g) || [];
+            const hasKanji = kanjiInWord.length > 0;
+            const allKnown =
+              !hasKanji || kanjiInWord.every((k) => knownSet.has(k));
+
+            parsedItems.push({
+              word,
+              meaning,
+              reading,
+              level,
+              allKnown,
+              hasKanji,
+              kanjiChars: kanjiInWord,
+            });
+          }
         });
 
         // Filter Logic

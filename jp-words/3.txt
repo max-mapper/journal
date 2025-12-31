@@ -1,1497 +1,1498 @@
-{"level": 3, "data":["祭り","まつ","festival","まつり"]}
-{"level": 3, "data":["項目","こうもく","item; entry","こうもく"]}
-{"level": 3, "data":["匹","ひき","counter for small animals","ひき"]}
-{"level": 3, "data":["マイナス","","minus","まいなす"]}
-{"level": 3, "data":["カレー","","curry","かれー"]}
-{"level": 3, "data":["タオル","","towel","たおる"]}
-{"level": 3, "data":["作曲","さっきょく","composition (music)","さっきょく"]}
-{"level": 3, "data":["感動","かんどう","being deeply moved","かんどう"]}
-{"level": 3, "data":["疑う","うたが","to doubt","うたがう"]}
-{"level": 3, "data":["離婚","りこん","divorce","りこん"]}
-{"level": 3, "data":["動作","どうさ","action; movement","どうさ"]}
-{"level": 3, "data":["見解","けんかい","opinion; point of view","けんかい"]}
-{"level": 3, "data":["主婦","しゅふ","housewife","しゅふ"]}
-{"level": 3, "data":["混乱","こんらん","confusion","こんらん"]}
-{"level": 3, "data":["瞬間","しゅんかん","moment","しゅんかん"]}
-{"level": 3, "data":["整理","せいり","sorting; arrangement","せいり"]}
-{"level": 3, "data":["体制","たいせい","system; structure","たいせい"]}
-{"level": 3, "data":["回答","かいとう","reply; answer","かいとう"]}
-{"level": 3, "data":["ゴルフ","","golf","ごるふ"]}
-{"level": 3, "data":["歓迎","かんげい","welcome","かんげい"]}
-{"level": 3, "data":["郊外","こうがい","suburbs","こうがい"]}
-{"level": 3, "data":["いわゆる","","so-called","いわゆる"]}
-{"level": 3, "data":["いらっしゃる","","to come/go/be (honorific)","いらっしゃる"]}
-{"level": 3, "data":["当日","とうじつ","appointed day; very day","とうじつ"]}
-{"level": 3, "data":["会計","かいけい","account; bill","かいけい"]}
-{"level": 3, "data":["好き","す","liking; fond of","すき"]}
-{"level": 3, "data":["観客","かんきゃく","audience","かんきゃく"]}
-{"level": 3, "data":["テスト","","test","てすと"]}
-{"level": 3, "data":["急行","きゅうこう","express train","きゅうこう"]}
-{"level": 3, "data":["風邪","かぜ","cold (illness)","かぜ"]}
-{"level": 3, "data":["援助","えんじょ","assistance; aid","えんじょ"]}
-{"level": 3, "data":["採用","さいよう","adoption; employment","さいよう"]}
-{"level": 3, "data":["最終","さいしゅう","last; final","さいしゅう"]}
-{"level": 3, "data":["豊富","ほうふ","abundance","ほうふ"]}
-{"level": 3, "data":["証明","しょうめい","proof","しょうめい"]}
-{"level": 3, "data":["中心","ちゅうしん","center","ちゅうしん"]}
-{"level": 3, "data":["汚れる","よご","to get dirty","よごれる"]}
-{"level": 3, "data":["吸収","きゅうしゅう","absorption","きゅうしゅう"]}
-{"level": 3, "data":["運用","うんよう","operation; application","うんよう"]}
-{"level": 3, "data":["夜中","よなか","middle of the night","よなか"]}
-{"level": 3, "data":["資格","しかく","qualification","しかく"]}
-{"level": 3, "data":["緊張","きんちょう","tension; nervousness","きんちょう"]}
-{"level": 3, "data":["正午","しょうご","noon","しょうご"]}
-{"level": 3, "data":["症状","しょうじょう","symptoms","しょうじょう"]}
-{"level": 3, "data":["結ぶ","むす","to tie; to connect","むすぶ"]}
-{"level": 3, "data":["入場","にゅうじょう","entrance; admission","にゅうじょう"]}
-{"level": 3, "data":["イタリア","","Italy","いたりあ"]}
-{"level": 3, "data":["本名","ほんみょう","real name","ほんみょう"]}
-{"level": 3, "data":["呼吸","こきゅう","breathing","こきゅう"]}
-{"level": 3, "data":["異常","いじょう","strangeness; abnormality","いじょう"]}
-{"level": 3, "data":["解放","かいほう","release; liberation","かいほう"]}
-{"level": 3, "data":["発達","はったつ","development","はったつ"]}
-{"level": 3, "data":["直前","ちょくぜん","just before","ちょくぜん"]}
-{"level": 3, "data":["爆発","ばくはつ","explosion","ばくはつ"]}
-{"level": 3, "data":["職員","しょくいん","staff member","しょくいん"]}
-{"level": 3, "data":["先週","せんしゅう","last week","せんしゅう"]}
-{"level": 3, "data":["活躍","かつやく","activity; great effort","かつやく"]}
-{"level": 3, "data":["方針","ほうしん","policy; course","ほうしん"]}
-{"level": 3, "data":["低下","ていか","decline","ていか"]}
-{"level": 3, "data":["発明","はつめい","invention","はつめい"]}
-{"level": 3, "data":["才能","さいのう","talent","さいのう"]}
-{"level": 3, "data":["当たり","あ","hit; success; per...","あたり"]}
-{"level": 3, "data":["想像","そうぞう","imagination","そうぞう"]}
-{"level": 3, "data":["直後","ちょくご","immediately after","ちょくご"]}
-{"level": 3, "data":["支払う","しはら","to pay","しはらう"]}
-{"level": 3, "data":["誤解","ごかい","misunderstanding","ごかい"]}
-{"level": 3, "data":["調子","ちょうし","condition; tone","ちょうし"]}
-{"level": 3, "data":["面積","めんせき","area (measurement)","めんせき"]}
-{"level": 3, "data":["施設","しせつ","institution; facility","しせつ"]}
-{"level": 3, "data":["装置","そうち","equipment; device","そうち"]}
-{"level": 3, "data":["解釈","かいしゃく","interpretation","かいしゃく"]}
-{"level": 3, "data":["形式","けいしき","form; formality","けいしき"]}
-{"level": 3, "data":["似る","に","to resemble","にる"]}
-{"level": 3, "data":["偶然","ぐうぜん","coincidence","ぐうぜん"]}
-{"level": 3, "data":["中年","ちゅうねん","middle-aged","ちゅうねん"]}
-{"level": 3, "data":["石油","せきゆ","oil; petroleum","せきゆ"]}
-{"level": 3, "data":["調整","ちょうせい","adjustment","ちょうせい"]}
-{"level": 3, "data":["対策","たいさく","measure; countermeasure","たいさく"]}
-{"level": 3, "data":["遊ぶ","あそ","to play","あそぶ"]}
-{"level": 3, "data":["加える","くわ","to add","くわえる"]}
-{"level": 3, "data":["修正","しゅうせい","amendment; modification","しゅうせい"]}
-{"level": 3, "data":["需要","じゅよう","demand","じゅよう"]}
-{"level": 3, "data":["信じる","しん","to believe","しんじる"]}
-{"level": 3, "data":["予想","よそう","expectation; prediction","よそう"]}
-{"level": 3, "data":["修理","しゅうり","repair","しゅうり"]}
-{"level": 3, "data":["殺人","さつじん","murder","さつじん"]}
-{"level": 3, "data":["下手","へた","unskillful","へた"]}
-{"level": 3, "data":["に関して","かん","regarding","にかんして"]}
-{"level": 3, "data":["倍","ばい","double; times","ばい"]}
-{"level": 3, "data":["屋上","おくじょう","rooftop","おくじょう"]}
-{"level": 3, "data":["心","こころ","heart; mind","こころ"]}
-{"level": 3, "data":["賛成","さんせい","approval; agreement","さんせい"]}
-{"level": 3, "data":["くれる","","to give (to me)","くれる"]}
-{"level": 3, "data":["登録","とうろく","registration","とうろく"]}
-{"level": 3, "data":["外部","がいぶ","outside; external","がいぶ"]}
-{"level": 3, "data":["不正","ふせい","injustice; unfairness","ふせい"]}
-{"level": 3, "data":["重視","じゅうし","importance; stress","じゅうし"]}
-{"level": 3, "data":["移す","うつ","to move; to transfer","うつす"]}
-{"level": 3, "data":["治療","ちりょう","medical treatment","ちりょう"]}
-{"level": 3, "data":["新幹線","しんかんせん","bullet train","しんかんせん"]}
-{"level": 3, "data":["はず","","expectation that something took place","はず"]}
-{"level": 3, "data":["内部","ないぶ","interior; internal","ないぶ"]}
-{"level": 3, "data":["正確","せいかく","accurate","せいかく"]}
-{"level": 3, "data":["育つ","そだ","to grow (up)","そだつ"]}
-{"level": 3, "data":["対立","たいりつ","confrontation; opposition","たいりつ"]}
-{"level": 3, "data":["印刷","いんさつ","printing","いんさつ"]}
-{"level": 3, "data":["解散","かいさん","breakup; dissolution","かいさん"]}
-{"level": 3, "data":["公共","こうきょう","public","こうきょう"]}
-{"level": 3, "data":["常識","じょうしき","common sense","じょうしき"]}
-{"level": 3, "data":["勢い","いきお","force; vigor","いきおい"]}
-{"level": 3, "data":["心臓","しんぞう","heart (organ)","しんぞう"]}
-{"level": 3, "data":["一方","いっぽう","one way; the other party","いっぽう"]}
-{"level": 3, "data":["提供","ていきょう","offer; provision","ていきょう"]}
-{"level": 3, "data":["出生","しゅっしょう","birth","しゅっしょう"]}
-{"level": 3, "data":["延長","えんちょう","extension","えんちょう"]}
-{"level": 3, "data":["バイク","","motorcycle","ばイク"]}
-{"level": 3, "data":["郵便","ゆうびん","mail; postal service","ゆうびん"]}
-{"level": 3, "data":["著者","ちょしゃ","author","ちょしゃ"]}
-{"level": 3, "data":["インド","","India","いんど"]}
-{"level": 3, "data":["歩道","ほどう","sidewalk","ほどう"]}
-{"level": 3, "data":["働く","はたら","to work","はたらく"]}
-{"level": 3, "data":["前後","ぜんご","front and back; about","ぜんご"]}
-{"level": 3, "data":["正直","しょうじき","honest","しょうじき"]}
-{"level": 3, "data":["美人","びじん","beautiful woman","びじん"]}
-{"level": 3, "data":["義務","ぎむ","duty; obligation","ぎむ"]}
-{"level": 3, "data":["こんばんは","","good evening","こんばんは"]}
-{"level": 3, "data":["描く","えが","to draw; to paint","えがく"]}
-{"level": 3, "data":["有利","ゆうり","advantageous","ゆうり"]}
-{"level": 3, "data":["迫る","せま","to approach; to press","せまる"]}
-{"level": 3, "data":["一致","いっち","coincidence; agreement","いっち"]}
-{"level": 3, "data":["恋人","こいびと","lover","こいびと"]}
-{"level": 3, "data":["甘い","あま","sweet; naive","あまい"]}
-{"level": 3, "data":["来週","らいしゅう","next week","らいしゅう"]}
-{"level": 3, "data":["前者","ぜんしゃ","the former","ぜんしゃ"]}
-{"level": 3, "data":["上","うえ","above; up","うえ"]}
-{"level": 3, "data":["防止","ぼうし","prevention","ぼうし"]}
-{"level": 3, "data":["実力","じつりょく","real ability","じつりょく"]}
-{"level": 3, "data":["とにかく","","anyhow; at any rate","とにかく"]}
-{"level": 3, "data":["警官","けいかん","police officer","けいかん"]}
-{"level": 3, "data":["だった","","was (copula)","だった"]}
-{"level": 3, "data":["イタリア語","ご","Italian language","いたりあご"]}
-{"level": 3, "data":["どうも","","thanks; somehow","どうも"]}
-{"level": 3, "data":["もしもし","","hello (on phone)","もしもし"]}
-{"level": 3, "data":["どうしたらいい","","what should I do","どうしたらいい"]}
-{"level": 3, "data":["休み中","やすちゅう","during the holiday; closed","やすみちゅう"]}
-{"level": 3, "data":["全体的","ぜんたいてき","overall","ぜんたいてき"]}
-{"level": 3, "data":["五百円","ごひゃくえん","500 yen","ごひゃくえん"]}
-{"level": 3, "data":["どうやって","","how; in what way","どうやって"]}
-{"level": 3, "data":["勝負","しょうぶ","victory or defeat; match","しょうぶ"]}
-{"level": 3, "data":["与える","あた","to give; to bestow","あたえる"]}
-{"level": 3, "data":["奪う","うば","to snatch away","うばう"]}
-{"level": 3, "data":["腹","はら","abdomen; belly","はら"]}
-{"level": 3, "data":["講師","こうし","lecturer","こうし"]}
-{"level": 3, "data":["扱う","あつか","to handle; to deal with","あつかう"]}
-{"level": 3, "data":["現実的","げんじつてき","realistic","げんじつてき"]}
-{"level": 3, "data":["地名","ちめい","place name","ちめい"]}
-{"level": 3, "data":["交番","こうばん","police box","こうばん"]}
-{"level": 3, "data":["不幸","ふこう","unhappiness; misfortune","ふこう"]}
-{"level": 3, "data":["天国","てんごく","paradise; heaven","てんごく"]}
-{"level": 3, "data":["門","もん","gate","もん"]}
-{"level": 3, "data":["訳す","やく","to translate","やくす"]}
-{"level": 3, "data":["応援","おうえん","support; cheering","おうえん"]}
-{"level": 3, "data":["達する","たっ","to reach","たっする"]}
-{"level": 3, "data":["下着","したぎ","underwear","したぎ"]}
-{"level": 3, "data":["講演","こうえん","lecture","こうえん"]}
-{"level": 3, "data":["減少","げんしょう","decrease","げんしょう"]}
-{"level": 3, "data":["大幅","おおはば","drastic; substantial","おおはば"]}
-{"level": 3, "data":["定員","ていいん","fixed number of people; capacity","ていいん"]}
-{"level": 3, "data":["板","いた","board; plank","いた"]}
-{"level": 3, "data":["俳優","はいゆう","actor","はいゆう"]}
-{"level": 3, "data":["いいとも","","sure; all right","いいとも"]}
-{"level": 3, "data":["ポケット","","pocket","ぽけっと"]}
-{"level": 3, "data":["男の人","おとこひと","man","おとこのひと"]}
-{"level": 3, "data":["刺激","しげき","stimulus","しげき"]}
-{"level": 3, "data":["返事","へんじ","reply","へんじ"]}
-{"level": 3, "data":["組む","く","to put together; to fold (arms)","くむ"]}
-{"level": 3, "data":["区別","くべつ","distinction","くべつ"]}
-{"level": 3, "data":["購入","こうにゅう","purchase","こうにゅう"]}
-{"level": 3, "data":["停止","ていし","suspension; stop","ていし"]}
-{"level": 3, "data":["電力","でんりょく","electric power","でんりょく"]}
-{"level": 3, "data":["区","く","ward; district","く"]}
-{"level": 3, "data":["通勤","つうきん","commuting to work","つうきん"]}
-{"level": 3, "data":["景気","けいき","business conditions","けいき"]}
-{"level": 3, "data":["貯金","ちょきん","savings","ちょきん"]}
-{"level": 3, "data":["働き","はたら","work; function","はたらき"]}
-{"level": 3, "data":["回す","まわ","to turn; to rotate","まわす"]}
-{"level": 3, "data":["書店","しょてん","bookstore","しょてん"]}
-{"level": 3, "data":["通知","つうち","notice; notification","つうち"]}
-{"level": 3, "data":["タイヤ","","tire","たいや"]}
-{"level": 3, "data":["課長","かちょう","section manager","かちょう"]}
-{"level": 3, "data":["規定","きてい","regulation","きてい"]}
-{"level": 3, "data":["肌","はだ","skin","はだ"]}
-{"level": 3, "data":["発電","はつでん","power generation","はつでん"]}
-{"level": 3, "data":["帰る","かえ","to return","かえる"]}
-{"level": 3, "data":["ボーナス","","bonus","ぼーなす"]}
-{"level": 3, "data":["故障","こしょう","breakdown; failure","こしょう"]}
-{"level": 3, "data":["一見","いっけん","glance; look","いっけん"]}
-{"level": 3, "data":["図る","はか","to plan; to attempt","はかる"]}
-{"level": 3, "data":["優秀","ゆうしゅう","superior; excellent","ゆうしゅう"]}
-{"level": 3, "data":["体重","たいじゅう","body weight","たいじゅう"]}
-{"level": 3, "data":["結論","けつろん","conclusion","けつろん"]}
-{"level": 3, "data":["互い","たが","mutual; reciprocal","たがい"]}
-{"level": 3, "data":["厚い","あつ","thick; kind","あつい"]}
-{"level": 3, "data":["透明","とうめい","transparent","とうめい"]}
-{"level": 3, "data":["導入","どうにゅう","introduction","どうにゅう"]}
-{"level": 3, "data":["図書","としょ","books","としょ"]}
-{"level": 3, "data":["資源","しげん","resources","しげん"]}
-{"level": 3, "data":["化粧","けしょう","makeup","けしょう"]}
-{"level": 3, "data":["特色","とくしょく","characteristic","とくしょく"]}
-{"level": 3, "data":["頑張る","がんば","to do one's best","がんばる"]}
-{"level": 3, "data":["資産","しさん","assets","しさん"]}
-{"level": 3, "data":["負担","ふたん","burden","ふたん"]}
-{"level": 3, "data":["宿題","しゅくだい","homework","しゅくだい"]}
-{"level": 3, "data":["成果","せいか","accomplishment; result","せいか"]}
-{"level": 3, "data":["資金","しきん","funds","しきん"]}
-{"level": 3, "data":["囲む","かこ","to surround","かこむ"]}
-{"level": 3, "data":["しばらく","","for a while","しばらく"]}
-{"level": 3, "data":["独特","どくとく","peculiarity; uniqueness","どくとく"]}
-{"level": 3, "data":["相互","そうご","mutual","そうご"]}
-{"level": 3, "data":["水準","すいじゅん","level; standard","すいじゅん"]}
-{"level": 3, "data":["までに","","by (time)","までに"]}
-{"level": 3, "data":["非常に","ひじょう","very; extremely","ひじょうに"]}
-{"level": 3, "data":["世紀","せいき","century","せいき"]}
-{"level": 3, "data":["成人","せいじん","adult","せいじん"]}
-{"level": 3, "data":["愛情","あいじょう","love; affection","あいじょう"]}
-{"level": 3, "data":["学部","がくぶ","department of a university","がくぶ"]}
-{"level": 3, "data":["滞在","たいざい","stay","たいざい"]}
-{"level": 3, "data":["外交","がいこう","diplomacy","がいこう"]}
-{"level": 3, "data":["回転","かいてん","rotation","かいてん"]}
-{"level": 3, "data":["血液","けつえき","blood","けつえき"]}
-{"level": 3, "data":["予防","よぼう","prevention","よぼう"]}
-{"level": 3, "data":["危機","きき","crisis","きき"]}
-{"level": 3, "data":["小学生","しょうがくせい","elementary school student","しょうがくせい"]}
-{"level": 3, "data":["回数","かいすう","number of times","かいすう"]}
-{"level": 3, "data":["氏名","しめい","full name","しめい"]}
-{"level": 3, "data":["熱心","ねっしん","enthusiastic","ねっしん"]}
-{"level": 3, "data":["進歩","しんぽ","progress","しんぽ"]}
-{"level": 3, "data":["社員","しゃいん","company employee","しゃいん"]}
-{"level": 3, "data":["可","か","passable; acceptable","か"]}
-{"level": 3, "data":["ビル","","building","びる"]}
-{"level": 3, "data":["順","じゅん","order; turn","じゅん"]}
-{"level": 3, "data":["定期","ていき","fixed period; season ticket","ていき"]}
-{"level": 3, "data":["通行","つうこう","passage; traffic","つうこう"]}
-{"level": 3, "data":["おやすみなさい","","good night","おやすみなさい"]}
-{"level": 3, "data":["いやになる","","to get sick of","いやになる"]}
-{"level": 3, "data":["主体","しゅたい","subject; main constituent","しゅたい"]}
-{"level": 3, "data":["天皇","てんのう","Emperor of Japan","てんのう"]}
-{"level": 3, "data":["損害","そんがい","damage; loss","そんがい"]}
-{"level": 3, "data":["特殊","とくしゅ","special; unique","とくしゅ"]}
-{"level": 3, "data":["変える","か","to change (something)","かえる"]}
-{"level": 3, "data":["都会","とかい","city","とかい"]}
-{"level": 3, "data":["哲学","てつがく","philosophy","てつがく"]}
-{"level": 3, "data":["近く","ちか","near; vicinity","ちかく"]}
-{"level": 3, "data":["減る","へ","to decrease","へる"]}
-{"level": 3, "data":["気候","きこう","climate","きこう"]}
-{"level": 3, "data":["冷静","れいせい","calmness; composure","れいせい"]}
-{"level": 3, "data":["帰国","きこく","return to one's country","きこく"]}
-{"level": 3, "data":["ごく","","quite; very","ごく"]}
-{"level": 3, "data":["狂う","くる","to go mad; to go out of order","くるう"]}
-{"level": 3, "data":["中世","ちゅうせい","Middle Ages","ちゅうせい"]}
-{"level": 3, "data":["五百","ごひゃく","five hundred","ごひゃく"]}
-{"level": 3, "data":["かわいそう","","poor; pitiable","かわいそう"]}
-{"level": 3, "data":["スピーチ","","speech","すぴーち"]}
-{"level": 3, "data":["女性的","じょせいてき","feminine","じょせいてき"]}
-{"level": 3, "data":["小屋","こや","hut; cabin","こや"]}
-{"level": 3, "data":["部品","ぶひん","parts; accessories","ぶひん"]}
-{"level": 3, "data":["化学","かがく","chemistry","かがく"]}
-{"level": 3, "data":["捨てる","す","to throw away","すてる"]}
-{"level": 3, "data":["真面目","まじめ","diligent; serious","まじめ"]}
-{"level": 3, "data":["金属","きんぞく","metal","きんぞく"]}
-{"level": 3, "data":["会長","かいちょう","president; chairman","かいちょう"]}
-{"level": 3, "data":["街道","かいどう","highway","かいどう"]}
-{"level": 3, "data":["読み終わる","よお","to finish reading","よみおわる"]}
-{"level": 3, "data":["中間","ちゅうかん","middle; midway","ちゅうかん"]}
-{"level": 3, "data":["継続","けいぞく","continuation","けいぞく"]}
-{"level": 3, "data":["高速","こうそく","high speed","こうそく"]}
-{"level": 3, "data":["個人的","こじんてき","personal","こじんてき"]}
-{"level": 3, "data":["分類","ぶんるい","classification","ぶんるい"]}
-{"level": 3, "data":["投資","とうし","investment","とうし"]}
-{"level": 3, "data":["農家","のうか","farmer; farm family","のうか"]}
-{"level": 3, "data":["女優","じょゆう","actress","じょゆう"]}
-{"level": 3, "data":["航空","こうくう","aviation","こうくう"]}
-{"level": 3, "data":["常に","つね","always; constantly","つねに"]}
-{"level": 3, "data":["大小","だいしょう","size; large and small","だいしょう"]}
-{"level": 3, "data":["平成","へいせい","Heisei era","へいせい"]}
-{"level": 3, "data":["知人","ちじん","acquaintance","ちじん"]}
-{"level": 3, "data":["刑事","けいじ","detective","けいじ"]}
-{"level": 3, "data":["帰ってくる","かえ","to come back","かえってくる"]}
-{"level": 3, "data":["方言","ほうげん","dialect","ほうげん"]}
-{"level": 3, "data":["列","れつ","line; row","れつ"]}
-{"level": 3, "data":["切符","きっぷ","ticket","きっぷ"]}
-{"level": 3, "data":["習う","なら","to learn","ならう"]}
-{"level": 3, "data":["児童","じどう","children; juvenile","じどう"]}
-{"level": 3, "data":["認識","にんしき","recognition","にんしき"]}
-{"level": 3, "data":["永遠","えいえん","eternity","えいえん"]}
-{"level": 3, "data":["行政","ぎょうせい","administration","ぎょうせい"]}
-{"level": 3, "data":["設置","せっち","establishment; installation","せっち"]}
-{"level": 3, "data":["亡くなる","な","to pass away","なくなる"]}
-{"level": 3, "data":["姓","せい","surname","せい"]}
-{"level": 3, "data":["大きな","おお","big","おおきな"]}
-{"level": 3, "data":["勇気","ゆうき","courage","ゆうき"]}
-{"level": 3, "data":["人種","じんしゅ","race (of people)","じんしゅ"]}
-{"level": 3, "data":["礼","れい","bow; thanks","れい"]}
-{"level": 3, "data":["劇場","げきじょう","theater","げきじょう"]}
-{"level": 3, "data":["柔道","じゅうどう","judo","じゅうどう"]}
-{"level": 3, "data":["企画","きかく","planning","きかく"]}
-{"level": 3, "data":["報道","ほうどう","news report","ほうどう"]}
-{"level": 3, "data":["移転","いてん","relocation","いてん"]}
-{"level": 3, "data":["タイプ","","type","たいぷ"]}
-{"level": 3, "data":["地方","ちほう","region; countryside","ちほう"]}
-{"level": 3, "data":["ナイフ","","knife","ないふ"]}
-{"level": 3, "data":["貴重","きちょう","precious; valuable","きちょう"]}
-{"level": 3, "data":["そば","","near; beside","そば"]}
-{"level": 3, "data":["数える","かぞ","to count","かぞえる"]}
-{"level": 3, "data":["統一","とういつ","unity; unification","とういつ"]}
-{"level": 3, "data":["カップ","","cup","かっぷ"]}
-{"level": 3, "data":["人類学","じんるいがく","anthropology","じんるいがく"]}
-{"level": 3, "data":["隠す","かく","to hide","かくす"]}
-{"level": 3, "data":["大戦","たいせん","great war","たいせん"]}
-{"level": 3, "data":["若い","わか","young","わかい"]}
-{"level": 3, "data":["注文","ちゅうもん","order (for item)","ちゅうもん"]}
-{"level": 3, "data":["迷惑","めいわく","nuisance; trouble","めいわく"]}
-{"level": 3, "data":["客","きゃく","guest; customer","きゃく"]}
-{"level": 3, "data":["性質","せいしつ","nature; property","せいしつ"]}
-{"level": 3, "data":["講義","こうぎ","lecture","こうぎ"]}
-{"level": 3, "data":["谷","たに","valley","たに"]}
-{"level": 3, "data":["気を失う","きうしな","to lose consciousness","きをうしなう"]}
-{"level": 3, "data":["申請","しんせい","application; request","しんせい"]}
-{"level": 3, "data":["何時間","なんじかん","how many hours","なんじかん"]}
-{"level": 3, "data":["録音","ろくおん","recording","ろくおん"]}
-{"level": 3, "data":["競技","きょうぎ","game; match; contest","きょうぎ"]}
-{"level": 3, "data":["戻す","もど","to return (something)","もどす"]}
-{"level": 3, "data":["東洋","とうよう","Orient","とうよう"]}
-{"level": 3, "data":["閉じる","と","to close (e.g. book/eyes)","とじる"]}
-{"level": 3, "data":["対応","たいおう","correspondence; response","たいおう"]}
-{"level": 3, "data":["ポスト","","post; mailbox","ぽすと"]}
-{"level": 3, "data":["作用","さよう","action; effect","さよう"]}
-{"level": 3, "data":["平日","へいじつ","weekday","へいじつ"]}
-{"level": 3, "data":["どの","","which","どの"]}
-{"level": 3, "data":["去る","さ","to leave; to pass","さる"]}
-{"level": 3, "data":["負け","ま","defeat; loss","まけ"]}
-{"level": 3, "data":["作成","さくせい","creation; production","さくせい"]}
-{"level": 3, "data":["向上","こうじょう","improvement","こうじょう"]}
-{"level": 3, "data":["普及","ふきゅう","diffusion; spread","ふきゅう"]}
-{"level": 3, "data":["ベッド","","bed","べっど"]}
-{"level": 3, "data":["余裕","よゆう","surplus; composure","よゆう"]}
-{"level": 3, "data":["火がつく","ひ","to catch fire","ひがつく"]}
-{"level": 3, "data":["娘","むすめ","daughter","むすめ"]}
-{"level": 3, "data":["賞","しょう","prize; award","しょう"]}
-{"level": 3, "data":["候補","こうほ","candidate","こうほ"]}
-{"level": 3, "data":["全身","ぜんしん","whole body","ぜんしん"]}
-{"level": 3, "data":["必死","ひっし","desperate","ひっし"]}
-{"level": 3, "data":["自信","じしん","confidence","じしん"]}
-{"level": 3, "data":["になる","","to become","になる"]}
-{"level": 3, "data":["バイオリン","","violin","ばいおりん"]}
-{"level": 3, "data":["珍しい","めずら","rare","めずらしい"]}
-{"level": 3, "data":["唯一","ゆいいつ","only; unique","ゆいいつ"]}
-{"level": 3, "data":["夫","おっと","husband","おっと"]}
-{"level": 3, "data":["博物館","はくぶつかん","museum","はくぶつかん"]}
-{"level": 3, "data":["はっきり","","clearly","はっきり"]}
-{"level": 3, "data":["栄養","えいよう","nutrition","えいよう"]}
-{"level": 3, "data":["窓口","まどぐち","service window","まどぐち"]}
-{"level": 3, "data":["ジャーナリスト","","journalist","じゃーなりすと"]}
-{"level": 3, "data":["赤字","あかじ","deficit","あかじ"]}
-{"level": 3, "data":["加工","かこう","processing","かこう"]}
-{"level": 3, "data":["首","くび","neck","くび"]}
-{"level": 3, "data":["海洋","かいよう","ocean","かいよう"]}
-{"level": 3, "data":["忘れる","わす","to forget","わすれる"]}
-{"level": 3, "data":["分子","ぶんし","molecule; numerator","ぶんし"]}
-{"level": 3, "data":["皮","かわ","skin; peel","かわ"]}
-{"level": 3, "data":["代理","だいり","representation; agency","だいり"]}
-{"level": 3, "data":["幸福","こうふく","happiness","こうふく"]}
-{"level": 3, "data":["業界","ぎょうかい","industry; business world","ぎょうかい"]}
-{"level": 3, "data":["アイスクリーム","","ice cream","あいすくりーむ"]}
-{"level": 3, "data":["出演","しゅつえん","performance; appearance","しゅつえん"]}
-{"level": 3, "data":["含む","ふく","to include","ふくむ"]}
-{"level": 3, "data":["激しい","はげ","violent; intense","はげしい"]}
-{"level": 3, "data":["土曜","どよう","Saturday","どよう"]}
-{"level": 3, "data":["実績","じっせき","achievements","じっせき"]}
-{"level": 3, "data":["改革","かいかく","reform","かいかく"]}
-{"level": 3, "data":["謝る","あやま","to apologize","あやまる"]}
-{"level": 3, "data":["さあ","","well...","さあ"]}
-{"level": 3, "data":["上昇","じょうしょう","rising; ascending","じょうしょう"]}
-{"level": 3, "data":["なかなか","","very; quite","なかなか"]}
-{"level": 3, "data":["商売","しょうばい","trade; business","しょうばい"]}
-{"level": 3, "data":["接続","せつぞく","connection","せつぞく"]}
-{"level": 3, "data":["こと","","thing; matter","こと"]}
-{"level": 3, "data":["夫人","ふじん","wife; madam","ふじん"]}
-{"level": 3, "data":["形成","けいせい","formation","けいせい"]}
-{"level": 3, "data":["バイト","","part-time job","ばいと"]}
-{"level": 3, "data":["転ぶ","ころ","to fall down","ころぶ"]}
-{"level": 3, "data":["資本","しほん","capital","しほん"]}
-{"level": 3, "data":["演劇","えんげき","drama; theater","えんげき"]}
-{"level": 3, "data":["規制","きせい","regulation","きせい"]}
-{"level": 3, "data":["丁寧","ていねい","polite","ていねい"]}
-{"level": 3, "data":["性能","せいのう","performance (of machine)","せいのう"]}
-{"level": 3, "data":["奥さん","おく","wife (polite)","おくさん"]}
-{"level": 3, "data":["曲がる","ま","to turn; to bend","まがる"]}
-{"level": 3, "data":["意図","いと","intention","いと"]}
-{"level": 3, "data":["かばん","","bag","かばん"]}
-{"level": 3, "data":["公式","こうしき","formal; official","こうしき"]}
-{"level": 3, "data":["考慮","こうりょ","consideration","こうりょ"]}
-{"level": 3, "data":["民族","みんぞく","ethnic group","みんぞく"]}
-{"level": 3, "data":["考え","かんが","idea; thought","かんがえ"]}
-{"level": 3, "data":["原理","げんり","principle; theory","げんり"]}
-{"level": 3, "data":["見送る","みおく","to see off","みおくる"]}
-{"level": 3, "data":["市場","いちば","market","いちば"]}
-{"level": 3, "data":["捕まる","つか","to be caught","つかまる"]}
-{"level": 3, "data":["今朝","けさ","this morning","けさ"]}
-{"level": 3, "data":["産業","さんぎょう","industry","さんぎょう"]}
-{"level": 3, "data":["半ば","なか","middle; halfway","なかば"]}
-{"level": 3, "data":["語る","かた","to talk; to narrate","かたる"]}
-{"level": 3, "data":["人","にん","counter for people","にん"]}
-{"level": 3, "data":["畑","はたけ","field","はたけ"]}
-{"level": 3, "data":["赤ん坊","あかぼう","baby","あかんぼう"]}
-{"level": 3, "data":["恐怖","きょうふ","fear","きょうふ"]}
-{"level": 3, "data":["ありがとう","","thank you","ありがとう"]}
-{"level": 3, "data":["物事","ものごと","things","ものごと"]}
-{"level": 3, "data":["金融","きんゆう","finance","きんゆう"]}
-{"level": 3, "data":["問う","と","to ask; to question","とう"]}
-{"level": 3, "data":["最大","さいだい","biggest; maximum","さいだい"]}
-{"level": 3, "data":["往復","おうふく","round trip","おうふく"]}
-{"level": 3, "data":["有力","ゆうりょく","powerful; influential","ゆうりょく"]}
-{"level": 3, "data":["日","にち","day; sun","にち"]}
-{"level": 3, "data":["衝突","しょうとつ","collision","しょうとつ"]}
-{"level": 3, "data":["議長","ぎちょう","chairman","ぎちょう"]}
-{"level": 3, "data":["廊下","ろうか","corridor","ろうか"]}
-{"level": 3, "data":["本社","ほんしゃ","head office","ほんしゃ"]}
-{"level": 3, "data":["思い","おも","thought; feeling","おもい"]}
-{"level": 3, "data":["信仰","しんこう","faith; belief","しんこう"]}
-{"level": 3, "data":["悩む","なや","to worry","なやむ"]}
-{"level": 3, "data":["絞る","しぼ","to wring; to squeeze","しぼる"]}
-{"level": 3, "data":["大勢","おおぜい","crowd of people","おおぜい"]}
-{"level": 3, "data":["方","ほう","direction; side","ほう"]}
-{"level": 3, "data":["形","かたち","shape","かたち"]}
-{"level": 3, "data":["ガス","","gas","がす"]}
-{"level": 3, "data":["いっぱい","","full","いっぱい"]}
-{"level": 3, "data":["評判","ひょうばん","reputation","ひょうばん"]}
-{"level": 3, "data":["すぐに","","immediately","すぐに"]}
-{"level": 3, "data":["手間","てま","time and effort","てま"]}
-{"level": 3, "data":["引退","いんたい","retirement","いんたい"]}
-{"level": 3, "data":["二度と","にど","never again","にどと"]}
-{"level": 3, "data":["日程","にってい","schedule","にってい"]}
-{"level": 3, "data":["主義","しゅぎ","doctrine; -ism","しゅぎ"]}
-{"level": 3, "data":["例外","れいがい","exception","れいがい"]}
-{"level": 3, "data":["吸う","す","to breathe in; to smoke","すう"]}
-{"level": 3, "data":["投票","とうひょう","voting","とうひょう"]}
-{"level": 3, "data":["周り","まわ","circumference; surroundings","まわり"]}
-{"level": 3, "data":["真ん中","まなか","center; middle","まんなか"]}
-{"level": 3, "data":["駅前","えきまえ","in front of the station","えきまえ"]}
-{"level": 3, "data":["たれる","","to hang; to drip","たれる"]}
-{"level": 3, "data":["磨く","みが","to polish; to brush","みがく"]}
-{"level": 3, "data":["しか","","only","しか"]}
-{"level": 3, "data":["違反","いはん","violation","いはん"]}
-{"level": 3, "data":["チケット","","ticket","ちけっと"]}
-{"level": 3, "data":["好む","この","to like; to prefer","このむ"]}
-{"level": 3, "data":["汚染","おせん","pollution","おせん"]}
-{"level": 3, "data":["都心","としん","city center","としん"]}
-{"level": 3, "data":["正月","しょうがつ","New Year","しょうがつ"]}
-{"level": 3, "data":["商業","しょうぎょう","commerce","しょうぎょう"]}
-{"level": 3, "data":["大体","だいたい","generally","だいたい"]}
-{"level": 3, "data":["規模","きぼ","scale","きぼ"]}
-{"level": 3, "data":["主に","おも","mainly","おもに"]}
-{"level": 3, "data":["直径","ちょっけい","diameter","ちょっけい"]}
-{"level": 3, "data":["別荘","べっそう","holiday house; villa","べっそう"]}
-{"level": 3, "data":["国内","こくない","domestic","こくない"]}
-{"level": 3, "data":["先頭","せんとう","head; lead","せんとう"]}
-{"level": 3, "data":["運営","うんえい","management","うんえい"]}
-{"level": 3, "data":["国籍","こくせき","nationality","こくせき"]}
-{"level": 3, "data":["学","がく","learning; scholarship","がく"]}
-{"level": 3, "data":["有料","ゆうりょう","fee-charging","ゆうりょう"]}
-{"level": 3, "data":["組合","くみあい","association; union","くみあい"]}
-{"level": 3, "data":["自宅","じたく","one's home","じたく"]}
-{"level": 3, "data":["やっぱり","","as expected","やっぱり"]}
-{"level": 3, "data":["一瞬","いっしゅん","moment; instant","いっしゅん"]}
-{"level": 3, "data":["直ちに","ただ","at once","ただちに"]}
-{"level": 3, "data":["おる","","to be (humble)","おる"]}
-{"level": 3, "data":["身","み","body; oneself","み"]}
-{"level": 3, "data":["意思","いし","intention","いし"]}
-{"level": 3, "data":["順番","じゅんばん","turn; order","じゅんばん"]}
-{"level": 3, "data":["生産","せいさん","production","せいさん"]}
-{"level": 3, "data":["捕虜","ほりょ","prisoner of war","ほりょ"]}
-{"level": 3, "data":["刺す","さ","to stab; to sting","さす"]}
-{"level": 3, "data":["ありがとうございます","","thank you","ありがとうございます"]}
-{"level": 3, "data":["本部","ほんぶ","headquarters","ほんぶ"]}
-{"level": 3, "data":["森林","しんりん","forest","しんりん"]}
-{"level": 3, "data":["経由","けいゆ","via","けいゆ"]}
-{"level": 3, "data":["政策","せいさく","policy","せいさく"]}
-{"level": 3, "data":["燃える","も","to burn","もえる"]}
-{"level": 3, "data":["棒","ぼう","pole; rod","ぼう"]}
-{"level": 3, "data":["打つ","う","to hit","うつ"]}
-{"level": 3, "data":["英文","えいぶん","sentence in English","えいぶん"]}
-{"level": 3, "data":["夜間","やかん","nighttime","やかん"]}
-{"level": 3, "data":["要素","ようそ","element; factor","ようそ"]}
-{"level": 3, "data":["期限","きげん","time limit","きげん"]}
-{"level": 3, "data":["寄る","よ","to stop by; to approach","よる"]}
-{"level": 3, "data":["貧しい","まず","poor","まずしい"]}
-{"level": 3, "data":["景色","けしき","scenery","けしき"]}
-{"level": 3, "data":["下","もと","under (supervision etc.)","もと"]}
-{"level": 3, "data":["立派","りっぱ","splendid","りっぱ"]}
-{"level": 3, "data":["製作","せいさく","manufacture; production","せいさく"]}
-{"level": 3, "data":["空中","くうちゅう","sky; mid-air","くうちゅう"]}
-{"level": 3, "data":["桜の木","さくらき","cherry tree","さくらのき"]}
-{"level": 3, "data":["寄せる","よ","to bring near","よせる"]}
-{"level": 3, "data":["一層","いっそう","much more","いっそう"]}
-{"level": 3, "data":["平等","びょうどう","equality","びょうどう"]}
-{"level": 3, "data":["湖","みずうみ","lake","みずうみ"]}
-{"level": 3, "data":["原則","げんそく","principle; general rule","げんそく"]}
-{"level": 3, "data":["力","ちから","power","ちから"]}
-{"level": 3, "data":["設定","せってい","setting","せってい"]}
-{"level": 3, "data":["欠席","けっせき","absence","けっせき"]}
-{"level": 3, "data":["設立","せつりつ","establishment","せつりつ"]}
-{"level": 3, "data":["十七","じゅうしち","seventeen","じゅうしち"]}
-{"level": 3, "data":["従来","じゅうらい","up to now; conventional","じゅうらい"]}
-{"level": 3, "data":["かじる","","to chew; to bite","かじる"]}
-{"level": 3, "data":["ガラス","","glass","がらす"]}
-{"level": 3, "data":["悪い","わる","bad","わるい"]}
-{"level": 3, "data":["助かる","たす","to be saved; to be helpful","たすかる"]}
-{"level": 3, "data":["制作","せいさく","production (art/film)","せいさく"]}
-{"level": 3, "data":["嫌い","きら","dislike","きらい"]}
-{"level": 3, "data":["売買","ばいばい","buying and selling","ばいばい"]}
-{"level": 3, "data":["引用","いんよう","quotation","いんよう"]}
-{"level": 3, "data":["死","し","death","し"]}
-{"level": 3, "data":["年上","としうえ","older","としうえ"]}
-{"level": 3, "data":["尊敬","そんけい","respect","そんけい"]}
-{"level": 3, "data":["同意","どうい","agreement; consent","どうい"]}
-{"level": 3, "data":["共に","とも","together","ともに"]}
-{"level": 3, "data":["女の人","おんなひと","woman","おんなのひと"]}
-{"level": 3, "data":["青春","せいしゅん","youth","せいしゅん"]}
-{"level": 3, "data":["主役","しゅやく","leading role","しゅやく"]}
-{"level": 3, "data":["いずれ","","sooner or later","いずれ"]}
-{"level": 3, "data":["分かれる","わ","to branch; to divide","わかれる"]}
-{"level": 3, "data":["地","ち","earth; ground","ち"]}
-{"level": 3, "data":["弁護士","べんごし","lawyer","べんごし"]}
-{"level": 3, "data":["飲み物","のもの","drink","のみもの"]}
-{"level": 3, "data":["単語","たんご","vocabulary; word","たんご"]}
-{"level": 3, "data":["順調","じゅんちょう","doing well; smooth","じゅんちょう"]}
-{"level": 3, "data":["推進","すいしん","propulsion; promotion","すいしん"]}
-{"level": 3, "data":["反映","はんえい","reflection","はんえい"]}
-{"level": 3, "data":["保護","ほご","protection","ほご"]}
-{"level": 3, "data":["軍隊","ぐんたい","army; troops","ぐんたい"]}
-{"level": 3, "data":["やはり","","as expected","やはり"]}
-{"level": 3, "data":["叫ぶ","さけ","to shout","さけぶ"]}
-{"level": 3, "data":["就任","しゅうにん","inauguration","しゅうにん"]}
-{"level": 3, "data":["測定","そくてい","measurement","そくてい"]}
-{"level": 3, "data":["達成","たっせい","achievement","たっせい"]}
-{"level": 3, "data":["狙う","ねら","to aim at","ねらう"]}
-{"level": 3, "data":["何とか","なん","somehow","なんとか"]}
-{"level": 3, "data":["歯","は","tooth","は"]}
-{"level": 3, "data":["天然","てんねん","nature; natural","てんねん"]}
-{"level": 3, "data":["服装","ふくそう","attire; clothes","ふくそう"]}
-{"level": 3, "data":["下る","くだ","to go down","くだる"]}
-{"level": 3, "data":["悲劇","ひげき","tragedy","ひげき"]}
-{"level": 3, "data":["駅員","えきいん","station attendant","えきいん"]}
-{"level": 3, "data":["助手","じょしゅ","assistant","じょしゅ"]}
-{"level": 3, "data":["せんばつ","","selection","せんばつ"]}
-{"level": 3, "data":["無視","むし","disregard; ignore","むし"]}
-{"level": 3, "data":["高さ","たか","height","たかさ"]}
-{"level": 3, "data":["合併","がっぺい","merger","がっぺい"]}
-{"level": 3, "data":["片付ける","かたづ","to tidy up","かたづける"]}
-{"level": 3, "data":["距離","きょり","distance","きょり"]}
-{"level": 3, "data":["数","かず","number","かず"]}
-{"level": 3, "data":["試す","ため","to attempt; to try","ためす"]}
-{"level": 3, "data":["幅","はば","width","はば"]}
-{"level": 3, "data":["努める","つと","to endeavor","つとめる"]}
-{"level": 3, "data":["加わる","くわ","to join in","くわわる"]}
-{"level": 3, "data":["中古","ちゅうこ","used; second-hand","ちゅうこ"]}
-{"level": 3, "data":["行為","こうい","act; conduct","こうい"]}
-{"level": 3, "data":["メール","","email; mail","めーる"]}
-{"level": 3, "data":["絵画","かいが","painting","かいが"]}
-{"level": 3, "data":["寄付","きふ","donation","きふ"]}
-{"level": 3, "data":["生み出す","うだ","to create; to produce","うみだす"]}
-{"level": 3, "data":["頃","ころ","time; about","ころ"]}
-{"level": 3, "data":["あきらめる","","to give up","あきらめる"]}
-{"level": 3, "data":["以内","いない","within","いない"]}
-{"level": 3, "data":["博士","はかせ","doctor; expert","はかせ"]}
-{"level": 3, "data":["しっかり","","firmly; steadily","しっかり"]}
-{"level": 3, "data":["貧乏","びんぼう","poverty","びんぼう"]}
-{"level": 3, "data":["章","しょう","chapter","しょう"]}
-{"level": 3, "data":["エレベーター","","elevator","えれべーたー"]}
-{"level": 3, "data":["かなう","","to come true","かなう"]}
-{"level": 3, "data":["減らす","へ","to reduce","へらす"]}
-{"level": 3, "data":["前提","ぜんてい","preamble; premise","ぜんてい"]}
-{"level": 3, "data":["診断","しんだん","diagnosis","しんだん"]}
-{"level": 3, "data":["大陸","たいりく","continent","たいりく"]}
-{"level": 3, "data":["偉大","いだい","great","いだい"]}
-{"level": 3, "data":["岩","いわ","rock","いわ"]}
-{"level": 3, "data":["用途","ようと","use; utility","ようと"]}
-{"level": 3, "data":["もう一つ","ひと","another one","もうひとつ"]}
-{"level": 3, "data":["詳細","しょうさい","details","しょうさい"]}
-{"level": 3, "data":["俺","おれ","I (male)","おれ"]}
-{"level": 3, "data":["勤務","きんむ","service; duty","きんむ"]}
-{"level": 3, "data":["覆う","おお","to cover","おおう"]}
-{"level": 3, "data":["おいしい","","delicious","おいしい"]}
-{"level": 3, "data":["付近","ふきん","neighbourhood","ふきん"]}
-{"level": 3, "data":["確保","かくほ","securing","かくほ"]}
-{"level": 3, "data":["外す","はず","to remove","はずす"]}
-{"level": 3, "data":["親切","しんせつ","kindness","しんせつ"]}
-{"level": 3, "data":["塔","とう","tower; pagoda","とう"]}
-{"level": 3, "data":["帰宅","きたく","returning home","きたく"]}
-{"level": 3, "data":["酸素","さんそ","oxygen","さんそ"]}
-{"level": 3, "data":["過ごす","す","to pass (time)","すごす"]}
-{"level": 3, "data":["有無","うむ","presence or absence","うむ"]}
-{"level": 3, "data":["目立つ","めだ","to stand out","めだつ"]}
-{"level": 3, "data":["時刻","じこく","time; instant","じこく"]}
-{"level": 3, "data":["夏","なつ","summer","なつ"]}
-{"level": 3, "data":["アルバム","","album","あるばむ"]}
-{"level": 3, "data":["そんなに","","so much","そんなに"]}
-{"level": 3, "data":["白","しろ","white","しろ"]}
-{"level": 3, "data":["新人","しんじん","new face; rookie","しんじん"]}
-{"level": 3, "data":["年生","ねんせい","grader; year student","ねんせい"]}
-{"level": 3, "data":["進出","しんしゅつ","advance","しんしゅつ"]}
-{"level": 3, "data":["辞典","じてん","dictionary","じてん"]}
-{"level": 3, "data":["金曜","きんよう","Friday","きんよう"]}
-{"level": 3, "data":["泣く","な","to cry","なく"]}
-{"level": 3, "data":["経過","けいか","passage (of time); progress","けいか"]}
-{"level": 3, "data":["確立","かくりつ","establishment","かくりつ"]}
-{"level": 3, "data":["休憩","きゅうけい","rest; break","きゅうけい"]}
-{"level": 3, "data":["すなわち","","that is; namely","すなわち"]}
-{"level": 3, "data":["要望","ようぼう","demand; request","ようぼう"]}
-{"level": 3, "data":["所得","しょとく","income","しょとく"]}
-{"level": 3, "data":["婦人","ふじん","woman","ふじん"]}
-{"level": 3, "data":["注射","ちゅうしゃ","injection","ちゅうしゃ"]}
-{"level": 3, "data":["お元気で","げんき","take care","おげんきで"]}
-{"level": 3, "data":["題名","だいめい","title","だいめい"]}
-{"level": 3, "data":["登山","とざん","mountain climbing","とざん"]}
-{"level": 3, "data":["枝","えだ","branch","えだ"]}
-{"level": 3, "data":["救う","すく","to save","すくう"]}
-{"level": 3, "data":["塗る","ぬ","to paint; to spread","ぬる"]}
-{"level": 3, "data":["チーム","","team","ちーむ"]}
-{"level": 3, "data":["交渉","こうしょう","negotiation","こうしょう"]}
-{"level": 3, "data":["昼食","ちゅうしょく","lunch","ちゅうしょく"]}
-{"level": 3, "data":["開く","ひら","to open (e.g. book)","ひらく"]}
-{"level": 3, "data":["ヨーロッパ","","Europe","よーろっぱ"]}
-{"level": 3, "data":["団地","だんち","housing complex","だんち"]}
-{"level": 3, "data":["請求","せいきゅう","billing; request","せいきゅう"]}
-{"level": 3, "data":["なんじ","","what time","なんじ"]}
-{"level": 3, "data":["増大","ぞうだい","enlargement; increase","ぞうだい"]}
-{"level": 3, "data":["親子","おやこ","parent and child","おやこ"]}
-{"level": 3, "data":["説得","せっとく","persuasion","せっとく"]}
-{"level": 3, "data":["個々","ここ","individual","ここ"]}
-{"level": 3, "data":["八月","はちがつ","August","はちがつ"]}
-{"level": 3, "data":["変化","へんか","change","へんか"]}
-{"level": 3, "data":["指","ゆび","finger","ゆび"]}
-{"level": 3, "data":["旅","たび","travel","たび"]}
-{"level": 3, "data":["貼る","は","to stick; to paste","はる"]}
-{"level": 3, "data":["留守番","るすばん","house-sitting","るすばん"]}
-{"level": 3, "data":["暴力","ぼうりょく","violence","ぼうりょく"]}
-{"level": 3, "data":["乗せる","の","to take on board","のせる"]}
-{"level": 3, "data":["国外","こくがい","abroad","こくがい"]}
-{"level": 3, "data":["公演","こうえん","public performance","こうえん"]}
-{"level": 3, "data":["進行","しんこう","moving forward","しんこう"]}
-{"level": 3, "data":["崩壊","ほうかい","collapse","ほうかい"]}
-{"level": 3, "data":["理論","りろん","theory","りろん"]}
-{"level": 3, "data":["点","てん","point; dot","てん"]}
-{"level": 3, "data":["プロ","","professional","ぷろ"]}
-{"level": 3, "data":["握る","にぎ","to grasp","にぎる"]}
-{"level": 3, "data":["晴れ","は","clear weather","はれ"]}
-{"level": 3, "data":["生物","せいぶつ","living thing","せいぶつ"]}
-{"level": 3, "data":["方面","ほうめん","direction","ほうめん"]}
-{"level": 3, "data":["寂しい","さび","lonely","さびしい"]}
-{"level": 3, "data":["反応","はんのう","reaction","はんのう"]}
-{"level": 3, "data":["飛び出す","とだ","to jump out","とびだす"]}
-{"level": 3, "data":["宣伝","せんでん","publicity","せんでん"]}
-{"level": 3, "data":["伝わる","つた","to be handed down; to be transmitted","つたわる"]}
-{"level": 3, "data":["知り合う","しあ","to get to know","しりあう"]}
-{"level": 3, "data":["白人","はくじん","white person","はくじん"]}
-{"level": 3, "data":["支出","ししゅつ","expenditure","ししゅつ"]}
-{"level": 3, "data":["墓","はか","grave","はか"]}
-{"level": 3, "data":["感想","かんそう","impression","かんそう"]}
-{"level": 3, "data":["作文","さくぶん","writing; composition","さくぶん"]}
-{"level": 3, "data":["平和","へいわ","peace","へいわ"]}
-{"level": 3, "data":["当然","とうぜん","natural; matter of course","とうぜん"]}
-{"level": 3, "data":["若者","わかもの","young people","わかもの"]}
-{"level": 3, "data":["強調","きょうちょう","emphasis","きょうちょう"]}
-{"level": 3, "data":["派遣","はけん","dispatch","はけん"]}
-{"level": 3, "data":["高等","こうとう","high class","こうとう"]}
-{"level": 3, "data":["苦しい","くる","painful; difficult","くるしい"]}
-{"level": 3, "data":["皮膚","ひふ","skin","ひふ"]}
-{"level": 3, "data":["ご飯","はん","cooked rice; meal","ごはん"]}
-{"level": 3, "data":["光る","ひか","to shine","ひかる"]}
-{"level": 3, "data":["週間","しゅうかん","week; weekly","しゅうかん"]}
-{"level": 3, "data":["恋愛","れんあい","love","れんあい"]}
-{"level": 3, "data":["竹","たけ","bamboo","たけ"]}
-{"level": 3, "data":["トラック","","truck; track","とらっく"]}
-{"level": 3, "data":["納得","なっとく","consent; understanding","なっとく"]}
-{"level": 3, "data":["消防","しょうぼう","fire fighting","しょうぼう"]}
-{"level": 3, "data":["花見","はなみ","cherry blossom viewing","はなみ"]}
-{"level": 3, "data":["撮る","と","to take (photo)","とる"]}
-{"level": 3, "data":["欠点","けってん","fault; defect","けってん"]}
-{"level": 3, "data":["願い","ねが","desire; wish","ねがい"]}
-{"level": 3, "data":["指摘","してき","pointing out","してき"]}
-{"level": 3, "data":["ケース","","case","けーす"]}
-{"level": 3, "data":["鋭い","するど","sharp","するどい"]}
-{"level": 3, "data":["石","いし","stone","いし"]}
-{"level": 3, "data":["肉体","にくたい","body; flesh","にくたい"]}
-{"level": 3, "data":["狭い","せま","narrow","せまい"]}
-{"level": 3, "data":["指示","しじ","instruction","しじ"]}
-{"level": 3, "data":["問い","と","question","とい"]}
-{"level": 3, "data":["発足","ほっそく","start; inauguration","ほっそく"]}
-{"level": 3, "data":["気付く","きづ","to notice","きづく"]}
-{"level": 3, "data":["敬語","けいご","honorific","けいご"]}
-{"level": 3, "data":["自己","じこ","self","じこ"]}
-{"level": 3, "data":["品物","しなもの","goods","しなもの"]}
-{"level": 3, "data":["エンジン","","engine","えんじん"]}
-{"level": 3, "data":["反省","はんせい","reflection; introspection","はんせい"]}
-{"level": 3, "data":["要因","よういん","main cause","よういん"]}
-{"level": 3, "data":["月曜","げつよう","Monday","げつよう"]}
-{"level": 3, "data":["復活","ふっかつ","revival","ふっかつ"]}
-{"level": 3, "data":["丸い","まる","round","まるい"]}
-{"level": 3, "data":["個性","こせい","individuality","こせい"]}
-{"level": 3, "data":["事務所","じむしょ","office","じむしょ"]}
-{"level": 3, "data":["正常","せいじょう","normalcy","せいじょう"]}
-{"level": 3, "data":["砂漠","さばく","desert","さばく"]}
-{"level": 3, "data":["お","","polite prefix","お"]}
-{"level": 3, "data":["能力","のうりょく","ability","のうりょく"]}
-{"level": 3, "data":["眠る","ねむ","to sleep","ねむる"]}
-{"level": 3, "data":["取材","しゅざい","news coverage","しゅざい"]}
-{"level": 3, "data":["島","しま","island","しま"]}
-{"level": 3, "data":["多分","たぶん","perhaps","たぶん"]}
-{"level": 3, "data":["月日","つきひ","time; days","つきひ"]}
-{"level": 3, "data":["充実","じゅうじつ","fullness; completion","じゅうじつ"]}
-{"level": 3, "data":["野","の","plain; field","の"]}
-{"level": 3, "data":["閉まる","し","to close","しまる"]}
-{"level": 3, "data":["判決","はんけつ","judgment","はんけつ"]}
-{"level": 3, "data":["かつて","","once; formerly","かつて"]}
-{"level": 3, "data":["証拠","しょうこ","evidence","しょうこ"]}
-{"level": 3, "data":["学科","がっか","subject; department","がっか"]}
-{"level": 3, "data":["台","だい","stand; counter for machines","だい"]}
-{"level": 3, "data":["詩人","しじん","poet","しじん"]}
-{"level": 3, "data":["接する","せっ","to touch; to contact","せっする"]}
-{"level": 3, "data":["挑戦","ちょうせん","challenge","ちょうせん"]}
-{"level": 3, "data":["革命","かくめい","revolution","かくめい"]}
-{"level": 3, "data":["演説","えんぜつ","speech","えんぜつ"]}
-{"level": 3, "data":["スイッチ","","switch","すいっち"]}
-{"level": 3, "data":["何で","なん","why; what for","なんで"]}
-{"level": 3, "data":["代金","だいきん","price; payment","だいきん"]}
-{"level": 3, "data":["棄権","きけん","abstention","きけん"]}
-{"level": 3, "data":["主催","しゅさい","sponsorship","しゅさい"]}
-{"level": 3, "data":["橋","はし","bridge","はし"]}
-{"level": 3, "data":["書物","しょもつ","books","しょもつ"]}
-{"level": 3, "data":["商店","しょうてん","shop","しょうてん"]}
-{"level": 3, "data":["その","","that","その"]}
-{"level": 3, "data":["座席","ざせき","seat","ざせき"]}
-{"level": 3, "data":["課","か","lesson; section","か"]}
-{"level": 3, "data":["ように","","in order to","ように"]}
-{"level": 3, "data":["卵","たまご","egg","たまご"]}
-{"level": 3, "data":["長さ","なが","length","ながさ"]}
-{"level": 3, "data":["ことがない","","never","ことがない"]}
-{"level": 3, "data":["原料","げんりょう","raw material","げんりょう"]}
-{"level": 3, "data":["怒り","いか","anger","いかり"]}
-{"level": 3, "data":["邪魔","じゃま","hindrance; intrusion","じゃま"]}
-{"level": 3, "data":["本質","ほんしつ","essence","ほんしつ"]}
-{"level": 3, "data":["思わず","おも","unintentionally","おもわず"]}
-{"level": 3, "data":["ファイル","","file","ふぁいる"]}
-{"level": 3, "data":["視点","してん","point of view","してん"]}
-{"level": 3, "data":["輸送","ゆそう","transport","ゆそう"]}
-{"level": 3, "data":["線路","せんろ","railway track","せんろ"]}
-{"level": 3, "data":["単なる","たん","mere; simple","たんなる"]}
-{"level": 3, "data":["南西","なんせい","southwest","なんせい"]}
-{"level": 3, "data":["席","せき","seat","せき"]}
-{"level": 3, "data":["財布","さいふ","wallet","さいふ"]}
-{"level": 3, "data":["急激","きゅうげき","sudden","きゅうげき"]}
-{"level": 3, "data":["バナナ","","banana","ばなな"]}
-{"level": 3, "data":["合意","ごうい","agreement","ごうい"]}
-{"level": 3, "data":["煙","けむり","smoke","けむり"]}
-{"level": 3, "data":["作戦","さくせん","tactics; strategy","さくせん"]}
-{"level": 3, "data":["付属","ふぞく","attached; affiliated","ふぞく"]}
-{"level": 3, "data":["乗客","じょうきゃく","passenger","じょうきゃく"]}
-{"level": 3, "data":["仕組み","しく","mechanism; structure","しくみ"]}
-{"level": 3, "data":["意志","いし","will; volition","いし"]}
-{"level": 3, "data":["破壊","はかい","destruction","はかい"]}
-{"level": 3, "data":["遺跡","いせき","ruins","いせき"]}
-{"level": 3, "data":["北東","ほくとう","northeast","ほくとう"]}
-{"level": 3, "data":["細い","ほそ","thin","ほそい"]}
-{"level": 3, "data":["蚊","か","mosquito","か"]}
-{"level": 3, "data":["ワイン","","wine","わいん"]}
-{"level": 3, "data":["格好いい","かっこ","cool; handsome","かっこいい"]}
-{"level": 3, "data":["慎重","しんちょう","careful","しんちょう"]}
-{"level": 3, "data":["予報","よほう","forecast","よほう"]}
-{"level": 3, "data":["能","のう","talent; Noh theatre","のう"]}
-{"level": 3, "data":["協議","きょうぎ","conference; consultation","きょうぎ"]}
-{"level": 3, "data":["右手","みぎて","right hand","みぎて"]}
-{"level": 3, "data":["所属","しょぞく","affiliation","しょぞく"]}
-{"level": 3, "data":["総合","そうごう","synthesis; comprehensive","そうごう"]}
-{"level": 3, "data":["かかる","","to hang; to take (time/money)","かかる"]}
-{"level": 3, "data":["エネルギー","","energy","えねるぎー"]}
-{"level": 3, "data":["着く","つ","to arrive","つく"]}
-{"level": 3, "data":["科目","かもく","subject (school)","かもく"]}
-{"level": 3, "data":["締める","し","to tie; to fasten","しめる"]}
-{"level": 3, "data":["決意","けつい","determination","けつい"]}
-{"level": 3, "data":["退職","たいしょく","retirement","たいしょく"]}
-{"level": 3, "data":["捜査","そうさ","criminal investigation","そうさ"]}
-{"level": 3, "data":["棚","たな","shelf","たな"]}
-{"level": 3, "data":["それに","","besides","それに"]}
-{"level": 3, "data":["入力","にゅうりょく","input","にゅうりょく"]}
-{"level": 3, "data":["乾燥","かんそう","drying","かんそう"]}
-{"level": 3, "data":["よ","","particle (emphasis)","よ"]}
-{"level": 3, "data":["手伝い","てつだ","help","てつだい"]}
-{"level": 3, "data":["開放","かいほう","opening","かいほう"]}
-{"level": 3, "data":["負う","お","to bear","おう"]}
-{"level": 3, "data":["側面","そくめん","side; flank","そくめん"]}
-{"level": 3, "data":["農民","のうみん","farmer","のうみん"]}
-{"level": 3, "data":["獲得","かくとく","acquisition","かくとく"]}
-{"level": 3, "data":["とりあえず","","for now","とりあえず"]}
-{"level": 3, "data":["看板","かんばん","signboard","かんばん"]}
-{"level": 3, "data":["恐ろしい","おそ","terrible","おそろしい"]}
-{"level": 3, "data":["専攻","せんこう","major subject","せんこう"]}
-{"level": 3, "data":["次第","しだい","dependent upon; soon","しだい"]}
-{"level": 3, "data":["電報","でんぽう","telegram","でんぽう"]}
-{"level": 3, "data":["出産","しゅっさん","childbirth","しゅっさん"]}
-{"level": 3, "data":["チョコレート","","chocolate","ちょこれーと"]}
-{"level": 3, "data":["針","はり","needle","はり"]}
-{"level": 3, "data":["無駄","むだ","futility; waste","むだ"]}
-{"level": 3, "data":["か","","question particle","か"]}
-{"level": 3, "data":["願う","ねが","to wish","ねがう"]}
-{"level": 3, "data":["区分","くぶん","division; section","くぶん"]}
-{"level": 3, "data":["覚悟","かくご","resolution; resignation","かくご"]}
-{"level": 3, "data":["合同","ごうどう","combination; joint","ごうどう"]}
-{"level": 3, "data":["勝利","しょうり","victory","しょうり"]}
-{"level": 3, "data":["来日","らいにち","visit to Japan","らいにち"]}
-{"level": 3, "data":["権力","けんりょく","power; authority","けんりょく"]}
-{"level": 3, "data":["出会い","であ","encounter","であい"]}
-{"level": 3, "data":["強力","きょうりょく","powerful","きょうりょく"]}
-{"level": 3, "data":["悪化","あっか","deterioration","あっか"]}
-{"level": 3, "data":["警告","けいこく","warning","けいこく"]}
-{"level": 3, "data":["頼る","たよ","to rely on","たよる"]}
-{"level": 3, "data":["演出","えんしゅつ","production; direction","えんしゅつ"]}
-{"level": 3, "data":["劇","げき","drama; play","げき"]}
-{"level": 3, "data":["せい","","consequence; fault","せい"]}
-{"level": 3, "data":["王様","おうさま","king","おうさま"]}
-{"level": 3, "data":["自慢","じまん","pride; boast","じまん"]}
-{"level": 3, "data":["冗談","じょうだん","joke","じょうだん"]}
-{"level": 3, "data":["自主","じしゅ","independence","じしゅ"]}
-{"level": 3, "data":["独身","どくしん","bachelorhood; single","どくしん"]}
-{"level": 3, "data":["防ぐ","ふせ","to prevent","ふせぐ"]}
-{"level": 3, "data":["地上","ちじょう","above ground","ちじょう"]}
-{"level": 3, "data":["地点","ちてん","site; point","ちてん"]}
-{"level": 3, "data":["本日","ほんじつ","today","ほんじつ"]}
-{"level": 3, "data":["公立","こうりつ","public (institution)","こうりつ"]}
-{"level": 3, "data":["つける","","to attach; to turn on","つける"]}
-{"level": 3, "data":["胃","い","stomach","い"]}
-{"level": 3, "data":["上級","じょうきゅう","advanced level","じょうきゅう"]}
-{"level": 3, "data":["下町","したまち","downtown","したまち"]}
-{"level": 3, "data":["体","たい","body; style","たい"]}
-{"level": 3, "data":["銀","ぎん","silver","ぎん"]}
-{"level": 3, "data":["投げる","な","to throw","なげる"]}
-{"level": 3, "data":["一応","いちおう","more or less; tentatively","いちおう"]}
-{"level": 3, "data":["移る","うつ","to move; to transfer","うつる"]}
-{"level": 3, "data":["動く","うご","to move","うごく"]}
-{"level": 3, "data":["トップ","","top","とっぷ"]}
-{"level": 3, "data":["街角","まちかど","street corner","まちかど"]}
-{"level": 3, "data":["再生","さいせい","regeneration; playback","さいせい"]}
-{"level": 3, "data":["禁煙","きんえん","no smoking","きんえん"]}
-{"level": 3, "data":["叔父","おじ","uncle","おじ"]}
-{"level": 3, "data":["身分","みぶん","social status","みぶん"]}
-{"level": 3, "data":["トマト","","tomato","とまと"]}
-{"level": 3, "data":["廃止","はいし","abolition","はいし"]}
-{"level": 3, "data":["食堂","しょくどう","cafeteria","しょくどう"]}
-{"level": 3, "data":["映像","えいぞう","image; video","えいぞう"]}
-{"level": 3, "data":["にくい","","hard to do","にくい"]}
-{"level": 3, "data":["素敵","すてき","lovely; nice","すてき"]}
-{"level": 3, "data":["境","さかい","border","さかい"]}
-{"level": 3, "data":["奨学金","しょうがくきん","scholarship","しょうがくきん"]}
-{"level": 3, "data":["何と","なん","how; what","なんと"]}
-{"level": 3, "data":["措置","そち","measure","そち"]}
-{"level": 3, "data":["政党","せいとう","political party","せいとう"]}
-{"level": 3, "data":["観測","かんそく","observation","かんそく"]}
-{"level": 3, "data":["木曜","もくよう","Thursday","もくよう"]}
-{"level": 3, "data":["定める","さだ","to decide","さだめる"]}
-{"level": 3, "data":["生まれ","う","birth","うまれ"]}
-{"level": 3, "data":["開く","あ","to open","あく"]}
-{"level": 3, "data":["高める","たか","to raise; to boost","たかめる"]}
-{"level": 3, "data":["予備","よび","preparation; reserve","よび"]}
-{"level": 3, "data":["退院","たいいん","discharge from hospital","たいいん"]}
-{"level": 3, "data":["株式","かぶしき","stock; share","かぶしき"]}
-{"level": 3, "data":["改造","かいぞう","remodeling","かいぞう"]}
-{"level": 3, "data":["天候","てんこう","weather","てんこう"]}
-{"level": 3, "data":["演技","えんぎ","acting","えんぎ"]}
-{"level": 3, "data":["効率","こうりつ","efficiency","こうりつ"]}
-{"level": 3, "data":["改める","あらた","to change; to reform","あらためる"]}
-{"level": 3, "data":["葉","は","leaf","は"]}
-{"level": 3, "data":["運命","うんめい","fate","うんめい"]}
-{"level": 3, "data":["暑い","あつ","hot (weather)","あつい"]}
-{"level": 3, "data":["それから","","and then","それから"]}
-{"level": 3, "data":["マフラー","","muffler; scarf","まふらー"]}
-{"level": 3, "data":["衛星","えいせい","satellite","えいせい"]}
-{"level": 3, "data":["収穫","しゅうかく","harvest","しゅうかく"]}
-{"level": 3, "data":["工学","こうがく","engineering","こうがく"]}
-{"level": 3, "data":["セット","","set","せっと"]}
-{"level": 3, "data":["っぱなし","","leaving something in a state","っぱなし"]}
-{"level": 3, "data":["大国","たいこく","major power","たいこく"]}
-{"level": 3, "data":["都","みやこ","capital","みやこ"]}
-{"level": 3, "data":["基地","きち","base","きち"]}
-{"level": 3, "data":["舌","した","tongue","した"]}
-{"level": 3, "data":["削減","さくげん","reduction","さくげん"]}
-{"level": 3, "data":["処分","しょぶん","disposal","しょぶん"]}
-{"level": 3, "data":["夜明け","よあ","dawn","よあけ"]}
-{"level": 3, "data":["復習","ふくしゅう","review","ふくしゅう"]}
-{"level": 3, "data":["腕","うで","arm","うで"]}
-{"level": 3, "data":["犠牲","ぎせい","sacrifice","ぎせい"]}
-{"level": 3, "data":["映る","うつ","to be reflected","うつる"]}
-{"level": 3, "data":["配達","はいたつ","delivery","はいたつ"]}
-{"level": 3, "data":["記述","きじゅつ","description","きじゅつ"]}
-{"level": 3, "data":["幼児","ようじ","infant","ようじ"]}
-{"level": 3, "data":["有する","ゆう","to own","ゆうする"]}
-{"level": 3, "data":["本当に","ほんとう","really","ほんとうに"]}
-{"level": 3, "data":["愛","あい","love","あい"]}
-{"level": 3, "data":["日の出","ひで","sunrise","ひので"]}
-{"level": 3, "data":["用語","ようご","term; terminology","ようご"]}
-{"level": 3, "data":["まあ","","well...","まあ"]}
-{"level": 3, "data":["財政","ざいせい","public finance","ざいせい"]}
-{"level": 3, "data":["名称","めいしょう","name; title","めいしょう"]}
-{"level": 3, "data":["角度","かくど","angle","かくど"]}
-{"level": 3, "data":["上司","じょうし","superior; boss","じょうし"]}
-{"level": 3, "data":["スタイル","","style","すたいる"]}
-{"level": 3, "data":["民主","みんしゅ","democracy","みんしゅ"]}
-{"level": 3, "data":["よかったら","","if you like","よかったら"]}
-{"level": 3, "data":["役所","やくしょ","government office","やくしょ"]}
-{"level": 3, "data":["四季","しき","four seasons","しき"]}
-{"level": 3, "data":["東北","とうほく","Tohoku region","とうほく"]}
-{"level": 3, "data":["謎","なぞ","mystery; puzzle","なぞ"]}
-{"level": 3, "data":["先行","せんこう","preceding","せんこう"]}
-{"level": 3, "data":["話し合う","はなあ","to discuss","はなしあう"]}
-{"level": 3, "data":["嫌う","きら","to hate","きらう"]}
-{"level": 3, "data":["手袋","てぶくろ","gloves","てぶくろ"]}
-{"level": 3, "data":["人々","ひとびと","people","ひとびと"]}
-{"level": 3, "data":["尋ねる","たず","to ask","たずねる"]}
-{"level": 3, "data":["書道","しょどう","calligraphy","しょどう"]}
-{"level": 3, "data":["流通","りゅうつう","distribution; circulation","りゅうつう"]}
-{"level": 3, "data":["雇用","こよう","employment","こよう"]}
-{"level": 3, "data":["心身","しんしん","mind and body","しんしん"]}
-{"level": 3, "data":["年金","ねんきん","pension","ねんきん"]}
-{"level": 3, "data":["真実","しんじつ","truth","しんじつ"]}
-{"level": 3, "data":["天井","てんじょう","ceiling","てんじょう"]}
-{"level": 3, "data":["前進","ぜんしん","advance","ぜんしん"]}
-{"level": 3, "data":["国連","こくれん","United Nations","こくれん"]}
-{"level": 3, "data":["辺り","あた","neighborhood; vicinity","あたり"]}
-{"level": 3, "data":["勢力","せいりょく","influence; power","せいりょく"]}
-{"level": 3, "data":["公表","こうひょう","official announcement","こうひょう"]}
-{"level": 3, "data":["反発","はんぱつ","repulsion; rebellion","はんぱつ"]}
-{"level": 3, "data":["さ","","ness (suffix)","さ"]}
-{"level": 3, "data":["集まり","あつ","gathering","あつまり"]}
-{"level": 3, "data":["冷房","れいぼう","air conditioning","れいぼう"]}
-{"level": 3, "data":["基づく","もと","to be based on","もとづく"]}
-{"level": 3, "data":["昼休み","ひるやす","lunch break","ひるやすみ"]}
-{"level": 3, "data":["北西","ほくせい","northwest","ほくせい"]}
-{"level": 3, "data":["行列","ぎょうれつ","line; queue","ぎょうれつ"]}
-{"level": 3, "data":["標準","ひょうじゅん","standard","ひょうじゅん"]}
-{"level": 3, "data":["うるさい","","noisy","うるさい"]}
-{"level": 3, "data":["以降","いこう","on and after","いこう"]}
-{"level": 3, "data":["学長","がくちょう","university president","がくちょう"]}
-{"level": 3, "data":["冒険","ぼうけん","adventure","ぼうけん"]}
-{"level": 3, "data":["残業","ざんぎょう","overtime work","ざんぎょう"]}
-{"level": 3, "data":["確定","かくてい","determination; settlement","かくてい"]}
-{"level": 3, "data":["濃い","こ","thick; dark","こい"]}
-{"level": 3, "data":["限定","げんてい","limitation","げんてい"]}
-{"level": 3, "data":["穏やか","おだ","calm; gentle","おだやか"]}
-{"level": 3, "data":["例","れい","example","れい"]}
-{"level": 3, "data":["南東","なんとう","southeast","なんとう"]}
-{"level": 3, "data":["意義","いぎ","meaning; significance","いぎ"]}
-{"level": 3, "data":["星","ほし","star","ほし"]}
-{"level": 3, "data":["駐車","ちゅうしゃ","parking","ちゅうしゃ"]}
-{"level": 3, "data":["風","かぜ","wind","かぜ"]}
-{"level": 3, "data":["集合","しゅうごう","gathering","しゅうごう"]}
-{"level": 3, "data":["固定","こてい","fixing","こてい"]}
-{"level": 3, "data":["予習","よしゅう","preparation for lesson","よしゅう"]}
-{"level": 3, "data":["天下","てんか","the world; ruling power","てんか"]}
-{"level": 3, "data":["上京","じょうきょう","proceeding to the capital","じょうきょう"]}
-{"level": 3, "data":["司会","しかい","master of ceremonies","しかい"]}
-{"level": 3, "data":["辺","へん","area; vicinity","へん"]}
-{"level": 3, "data":["加入","かにゅう","joining","かにゅう"]}
-{"level": 3, "data":["所有","しょゆう","possession","しょゆう"]}
-{"level": 3, "data":["丈夫","じょうぶ","strong; durable","じょうぶ"]}
-{"level": 3, "data":["友情","ゆうじょう","friendship","ゆうじょう"]}
-{"level": 3, "data":["区域","くいき","zone","くいき"]}
-{"level": 3, "data":["法則","ほうそく","law; rule","ほうそく"]}
-{"level": 3, "data":["ある","","to be; to exist","ある"]}
-{"level": 3, "data":["任務","にんむ","duty; task","にんむ"]}
-{"level": 3, "data":["焦点","しょうてん","focus","しょうてん"]}
-{"level": 3, "data":["見通し","みとお","prospect; outlook","みとおし"]}
-{"level": 3, "data":["福祉","ふくし","welfare","ふくし"]}
-{"level": 3, "data":["題","だい","title; subject","だい"]}
-{"level": 3, "data":["梅","うめ","plum","うめ"]}
-{"level": 3, "data":["縮小","しゅくしょう","reduction","しゅくしょう"]}
-{"level": 3, "data":["フォーク","","fork","ふぉーく"]}
-{"level": 3, "data":["草","くさ","grass","くさ"]}
-{"level": 3, "data":["なくす","","to lose","なくす"]}
-{"level": 3, "data":["確率","かくりつ","probability","かくりつ"]}
-{"level": 3, "data":["さんがつ","","March","さんがつ"]}
-{"level": 3, "data":["収集","しゅうしゅう","gathering","しゅうしゅう"]}
-{"level": 3, "data":["入手","にゅうしゅ","acquisition","にゅうしゅ"]}
-{"level": 3, "data":["徹底","てってい","thoroughness","てってい"]}
-{"level": 3, "data":["外科","げか","surgery","げか"]}
-{"level": 3, "data":["親戚","しんせき","relative","しんせき"]}
-{"level": 3, "data":["政権","せいけん","political power","せいけん"]}
-{"level": 3, "data":["要請","ようせい","request","ようせい"]}
-{"level": 3, "data":["教え","おし","teaching","おしえ"]}
-{"level": 3, "data":["横断","おうだん","crossing","おうだん"]}
-{"level": 3, "data":["集会","しゅうかい","meeting","しゅうかい"]}
-{"level": 3, "data":["専門","せんもん","specialty","せんもん"]}
-{"level": 3, "data":["僕","ぼく","I (male)","ぼく"]}
-{"level": 3, "data":["泉","いずみ","spring; fountain","いずみ"]}
-{"level": 3, "data":["文","ぶん","sentence","ぶん"]}
-{"level": 3, "data":["引く","ひ","to pull","ひく"]}
-{"level": 3, "data":["神","かみ","god","かみ"]}
-{"level": 3, "data":["応用","おうよう","application","おうよう"]}
-{"level": 3, "data":["伝説","でんせつ","legend","でんせつ"]}
-{"level": 3, "data":["統計","とうけい","statistics","とうけい"]}
-{"level": 3, "data":["積む","つ","to stack","つむ"]}
-{"level": 3, "data":["開会","かいかい","opening of a meeting","かいかい"]}
-{"level": 3, "data":["日光","にっこう","sunlight","にっこう"]}
-{"level": 3, "data":["実用","じつよう","practical use","じつよう"]}
-{"level": 3, "data":["恐れ","おそ","fear","おそれ"]}
-{"level": 3, "data":["情熱","じょうねつ","passion","じょうねつ"]}
-{"level": 3, "data":["地区","ちく","district","ちく"]}
-{"level": 3, "data":["署名","しょめい","signature","しょめい"]}
-{"level": 3, "data":["あの","","that","あの"]}
-{"level": 3, "data":["夫妻","ふさい","husband and wife","ふさい"]}
-{"level": 3, "data":["前日","ぜんじつ","previous day","ぜんじつ"]}
-{"level": 3, "data":["応じる","おう","to respond","おうじる"]}
-{"level": 3, "data":["筆","ふで","writing brush","ふで"]}
-{"level": 3, "data":["削除","さくじょ","deletion","さくじょ"]}
-{"level": 3, "data":["先に","さき","before; ahead","さきに"]}
-{"level": 3, "data":["失業","しつぎょう","unemployment","しつぎょう"]}
-{"level": 3, "data":["満たす","み","to satisfy; to fill","みたす"]}
-{"level": 3, "data":["飛ばす","と","to fly (something)","とばす"]}
-{"level": 3, "data":["寿命","じゅみょう","life span","じゅみょう"]}
-{"level": 3, "data":["国道","こくどう","national highway","こくどう"]}
-{"level": 3, "data":["日々","ひび","days; daily","ひび"]}
-{"level": 3, "data":["災害","さいがい","disaster","さいがい"]}
-{"level": 3, "data":["休業","きゅうぎょう","suspension of business","きゅうぎょう"]}
-{"level": 3, "data":["やがて","","before long","やがて"]}
-{"level": 3, "data":["純粋","じゅんすい","pure","じゅんすい"]}
-{"level": 3, "data":["学期","がっき","semester","がっき"]}
-{"level": 3, "data":["角","かど","corner","かど"]}
-{"level": 3, "data":["重量","じゅうりょう","weight","じゅうりょう"]}
-{"level": 3, "data":["火災","かさい","fire","かさい"]}
-{"level": 3, "data":["割る","わ","to divide; to break","わる"]}
-{"level": 3, "data":["動向","どうこう","trend","どうこう"]}
-{"level": 3, "data":["市内","しない","within the city","しない"]}
-{"level": 3, "data":["前回","ぜんかい","last time","ぜんかい"]}
-{"level": 3, "data":["先","さき","ahead; previous","さき"]}
-{"level": 3, "data":["分解","ぶんかい","disassembly","ぶんかい"]}
-{"level": 3, "data":["芝居","しばい","play; drama","しばい"]}
-{"level": 3, "data":["領域","りょういき","area; domain","りょういき"]}
-{"level": 3, "data":["刀","かたな","sword","かたな"]}
-{"level": 3, "data":["きっと","","surely","きっと"]}
-{"level": 3, "data":["先端","せんたん","tip; leading edge","せんたん"]}
-{"level": 3, "data":["布団","ふとん","futon","ふとん"]}
-{"level": 3, "data":["湾","わん","bay","わん"]}
-{"level": 3, "data":["真っ赤","まか","deep red","まっか"]}
-{"level": 3, "data":["プラス","","plus","ぷらす"]}
-{"level": 3, "data":["知り合い","しあ","acquaintance","しりあい"]}
-{"level": 3, "data":["質","しつ","quality","しつ"]}
-{"level": 3, "data":["鳴る","な","to ring","なる"]}
-{"level": 3, "data":["粉","こな","powder; flour","こな"]}
-{"level": 3, "data":["システム","","system","しすてむ"]}
-{"level": 3, "data":["アルコール","","alcohol","あるこーる"]}
-{"level": 3, "data":["誤り","あやま","mistake","あやまり"]}
-{"level": 3, "data":["たる","","to be worth; to be sufficient","たる"]}
-{"level": 3, "data":["臨時","りんじ","temporary","りんじ"]}
-{"level": 3, "data":["テキスト","","textbook","てきすと"]}
-{"level": 3, "data":["ダンス","","dance","だんす"]}
-{"level": 3, "data":["預ける","あず","to deposit","あずける"]}
-{"level": 3, "data":["我慢","がまん","patience","がまん"]}
-{"level": 3, "data":["世","よ","world; society","よ"]}
-{"level": 3, "data":["制定","せいてい","enactment","せいてい"]}
-{"level": 3, "data":["矛盾","むじゅん","contradiction","むじゅん"]}
-{"level": 3, "data":["建つ","た","to be built","たつ"]}
-{"level": 3, "data":["活発","かっぱつ","active; lively","かっぱつ"]}
-{"level": 3, "data":["いじめる","","to bully","いじめる"]}
-{"level": 3, "data":["暮らす","く","to live","くらす"]}
-{"level": 3, "data":["素直","すなお","honest; obedient","すなお"]}
-{"level": 3, "data":["一昨年","おととし","year before last","おととし"]}
-{"level": 3, "data":["燃料","ねんりょう","fuel","ねんりょう"]}
-{"level": 3, "data":["概念","がいねん","concept","がいねん"]}
-{"level": 3, "data":["まあまあ","","so-so","まあまあ"]}
-{"level": 3, "data":["医師","いし","doctor","いし"]}
-{"level": 3, "data":["港","みなと","harbor","みなと"]}
-{"level": 3, "data":["発車","はっしゃ","departure","はっしゃ"]}
-{"level": 3, "data":["酢","す","vinegar","す"]}
-{"level": 3, "data":["地獄","じごく","hell","じごく"]}
-{"level": 3, "data":["と","","particle (and)","と"]}
-{"level": 3, "data":["万一","まんいち","emergency; unlikely event","まんいち"]}
-{"level": 3, "data":["大きさ","おお","size","おおきさ"]}
-{"level": 3, "data":["写す","うつ","to copy; to photograph","うつす"]}
-{"level": 3, "data":["統合","とうごう","integration","とうごう"]}
-{"level": 3, "data":["試み","こころ","trial","こころみ"]}
-{"level": 3, "data":["女王","じょおう","queen","じょおう"]}
-{"level": 3, "data":["寺","てら","temple","てら"]}
-{"level": 3, "data":["子孫","しそん","descendant","しそん"]}
-{"level": 3, "data":["商人","しょうにん","merchant","しょうにん"]}
-{"level": 3, "data":["倉庫","そうこ","warehouse","そうこ"]}
-{"level": 3, "data":["争い","あらそ","dispute","あらそい"]}
-{"level": 3, "data":["毎晩","まいばん","every night","まいばん"]}
-{"level": 3, "data":["用","よう","business; task","よう"]}
-{"level": 3, "data":["延期","えんき","postponement","えんき"]}
-{"level": 3, "data":["人数","にんずう","number of people","にんずう"]}
-{"level": 3, "data":["暇","ひま","free time","ひま"]}
-{"level": 3, "data":["教員","きょういん","teacher","きょういん"]}
-{"level": 3, "data":["機構","きこう","mechanism; organization","きこう"]}
-{"level": 3, "data":["当初","とうしょ","beginning","とうしょ"]}
-{"level": 3, "data":["多様","たよう","diverse","たよう"]}
-{"level": 3, "data":["強盗","ごうとう","robbery","ごうとう"]}
-{"level": 3, "data":["松","まつ","pine tree","まつ"]}
-{"level": 3, "data":["上がり","あ","rise; finish","あがり"]}
-{"level": 3, "data":["結成","けっせい","formation","けっせい"]}
-{"level": 3, "data":["地帯","ちたい","zone; area","ちたい"]}
-{"level": 3, "data":["思考","しこう","thought","しこう"]}
-{"level": 3, "data":["戦後","せんご","postwar","せんご"]}
-{"level": 3, "data":["渋滞","じゅうたい","traffic jam","じゅうたい"]}
-{"level": 3, "data":["水中","すいちゅう","underwater","すいちゅう"]}
-{"level": 3, "data":["貨物","かもつ","cargo","かもつ"]}
-{"level": 3, "data":["実に","じつ","indeed","じつに"]}
-{"level": 3, "data":["管","かん","pipe","かん"]}
-{"level": 3, "data":["参る","まい","to go/come (humble)","まいる"]}
-{"level": 3, "data":["嫁","よめ","bride","よめ"]}
-{"level": 3, "data":["肯定","こうてい","affirmation","こうてい"]}
-{"level": 3, "data":["鍵","かぎ","key","かぎ"]}
-{"level": 3, "data":["配置","はいち","arrangement","はいち"]}
-{"level": 3, "data":["拒否","きょひ","refusal","きょひ"]}
-{"level": 3, "data":["婚約","こんやく","engagement","こんやく"]}
-{"level": 3, "data":["交際","こうさい","company; dating","こうさい"]}
-{"level": 3, "data":["高価","こうか","high price","こうか"]}
-{"level": 3, "data":["日付","ひづけ","date","ひづけ"]}
-{"level": 3, "data":["新鮮","しんせん","fresh","しんせん"]}
-{"level": 3, "data":["役目","やくめ","duty","やくめ"]}
-{"level": 3, "data":["異なる","こと","to differ","ことなる"]}
-{"level": 3, "data":["土木","どぼく","civil engineering","どぼく"]}
-{"level": 3, "data":["定年","ていねい","retirement age","ていねん"]}
-{"level": 3, "data":["出品","しゅっぴん","exhibit","しゅっぴん"]}
-{"level": 3, "data":["品質","ひんしつ","quality","ひんしつ"]}
-{"level": 3, "data":["仲間","なかま","comrade","なかま"]}
-{"level": 3, "data":["レベル","","level","れべる"]}
-{"level": 3, "data":["昭和","しょうわ","Showa era","しょうわ"]}
-{"level": 3, "data":["理科","りか","science","りか"]}
-{"level": 3, "data":["幹部","かんぶ","executive","かんぶ"]}
-{"level": 3, "data":["太る","ふと","to gain weight","ふとる"]}
-{"level": 3, "data":["降る","ふ","to precipitate","ふる"]}
-{"level": 3, "data":["頂上","ちょうじょう","top; summit","ちょうじょう"]}
-{"level": 3, "data":["続く","つづ","to continue","つづく"]}
-{"level": 3, "data":["サイン","","signature; sign","さいん"]}
-{"level": 3, "data":["腰","こし","waist","こし"]}
-{"level": 3, "data":["王子","おうじ","prince","おうじ"]}
-{"level": 3, "data":["旗","はた","flag","はた"]}
-{"level": 3, "data":["知的","ちてき","intellectual","ちてき"]}
-{"level": 3, "data":["指揮","しき","command","しき"]}
-{"level": 3, "data":["条約","じょうやく","treaty","じょうやく"]}
-{"level": 3, "data":["生存","せいぞん","survival","せいぞん"]}
-{"level": 3, "data":["ごめんなさい","","I am sorry","ごめんなさい"]}
-{"level": 3, "data":["顔","かお","face","かお"]}
-{"level": 3, "data":["硬い","かた","hard","かたい"]}
-{"level": 3, "data":["やっと","","at last","やっと"]}
-{"level": 3, "data":["モデル","","model","もでる"]}
-{"level": 3, "data":["隅","すみ","corner","すみ"]}
-{"level": 3, "data":["連合","れんごう","union","れんごう"]}
-{"level": 3, "data":["定義","ていぎ","definition","ていぎ"]}
-{"level": 3, "data":["上着","うわぎ","jacket","うわぎ"]}
-{"level": 3, "data":["美術","びじゅつ","art","びじゅつ"]}
-{"level": 3, "data":["大正","たいしょう","Taisho era","たいしょう"]}
-{"level": 3, "data":["得る","え","to obtain","える"]}
-{"level": 3, "data":["高級","こうきゅう","high class","こうきゅう"]}
-{"level": 3, "data":["田舎","いなか","countryside","いなか"]}
-{"level": 3, "data":["よく","","often; well","よく"]}
-{"level": 3, "data":["回","かい","times; counter for occurrences","かい"]}
-{"level": 3, "data":["膝","ひざ","knee","ひざ"]}
-{"level": 3, "data":["道徳","どうとく","morals","どうとく"]}
-{"level": 3, "data":["多数","たすう","majority","たすう"]}
-{"level": 3, "data":["収める","おさ","to pay; to store","おさめる"]}
-{"level": 3, "data":["大型","おおがた","large scale","おおがた"]}
-{"level": 3, "data":["生る","な","to bear fruit","なる"]}
-{"level": 3, "data":["役者","やくしゃ","actor","やくしゃ"]}
-{"level": 3, "data":["椅子","いす","chair","いす"]}
-{"level": 3, "data":["光景","こうけい","scene","こうけい"]}
-{"level": 3, "data":["不利","ふり","disadvantage","ふり"]}
-{"level": 3, "data":["優先","ゆうせん","priority","ゆうせん"]}
-{"level": 3, "data":["涼しい","すず","cool (weather)","すずしい"]}
-{"level": 3, "data":["男女","だんじょ","men and women","だんじょ"]}
-{"level": 3, "data":["本体","ほんたい","main body","ほんたい"]}
-{"level": 3, "data":["写る","うつ","to be photographed","うつる"]}
-{"level": 3, "data":["粒","つぶ","grain","つぶ"]}
-{"level": 3, "data":["保健","ほけん","health preservation","ほけん"]}
-{"level": 3, "data":["成分","せいぶん","ingredient","せいぶん"]}
-{"level": 3, "data":["売店","ばいてん","stand; shop","ばいてん"]}
-{"level": 3, "data":["手入れ","てい","care; maintenance","ていれ"]}
-{"level": 3, "data":["赤","あか","red","あか"]}
-{"level": 3, "data":["明治","めいじ","Meiji era","めいじ"]}
-{"level": 3, "data":["大工","だいく","carpenter","だいく"]}
-{"level": 3, "data":["向き","む","direction","むき"]}
-{"level": 3, "data":["睡眠","すいみん","sleep","すいみん"]}
-{"level": 3, "data":["及ぶ","およ","to reach","およぶ"]}
-{"level": 3, "data":["朝日","あさひ","morning sun","あさひ"]}
-{"level": 3, "data":["本国","ほんごく","home country","ほんごく"]}
-{"level": 3, "data":["非難","ひなん","criticism","ひなん"]}
-{"level": 3, "data":["圧力","あつりょく","pressure","あつりょく"]}
-{"level": 3, "data":["手前","てまえ","before; this side","てまえ"]}
-{"level": 3, "data":["進む","すす","to advance","すすむ"]}
-{"level": 3, "data":["要する","よう","to require","ようする"]}
-{"level": 3, "data":["蹴る","け","to kick","ける"]}
-{"level": 3, "data":["平野","へいや","plain","へいや"]}
-{"level": 3, "data":["お菓子","かし","sweets","おかし"]}
-{"level": 3, "data":["差","さ","difference","さ"]}
-{"level": 3, "data":["発想","はっそう","idea; conception","はっそう"]}
-{"level": 3, "data":["曇り","くも","cloudiness","くもり"]}
-{"level": 3, "data":["境界","きょうかい","boundary","きょうかい"]}
-{"level": 3, "data":["決勝","けっしょう","finals","けっしょう"]}
-{"level": 3, "data":["独自","どくじ","original; unique","どくじ"]}
-{"level": 3, "data":["携帯","けいたい","mobile phone","けいたい"]}
-{"level": 3, "data":["職場","しょくば","workplace","しょくば"]}
-{"level": 3, "data":["小鳥","ことり","small bird","ことり"]}
-{"level": 3, "data":["家屋","かおく","house","かおく"]}
-{"level": 3, "data":["配る","くば","to distribute","くばる"]}
-{"level": 3, "data":["広まる","ひろ","to spread","ひろまる"]}
-{"level": 3, "data":["組","くみ","class; group","くみ"]}
-{"level": 3, "data":["名物","めいぶつ","famous product","めいぶつ"]}
-{"level": 3, "data":["水曜","すいよう","Wednesday","すいよう"]}
-{"level": 3, "data":["経る","へ","to pass; to go through","へる"]}
-{"level": 3, "data":["参照","さんしょう","reference","さんしょう"]}
-{"level": 3, "data":["課程","かてい","course; curriculum","かてい"]}
-{"level": 3, "data":["短期","たんき","short term","たんき"]}
-{"level": 3, "data":["月末","げつまつ","end of the month","げつまつ"]}
-{"level": 3, "data":["測る","はか","to measure","はかる"]}
-{"level": 3, "data":["伺う","うかが","to visit; to ask (humble)","うかがう"]}
-{"level": 3, "data":["全然","ぜんぜん","not at all","ぜんぜん"]}
-{"level": 3, "data":["それで","","so; therefore","それで"]}
-{"level": 3, "data":["主題","しゅだい","subject","しゅだい"]}
-{"level": 3, "data":["嵐","あらし","storm","あらし"]}
-{"level": 3, "data":["見直す","みなお","to re-evaluate","みなおす"]}
-{"level": 3, "data":["論理","ろんり","logic","ろんり"]}
-{"level": 3, "data":["改良","かいりょう","improvement","かいりょう"]}
-{"level": 3, "data":["批評","ひひょう","criticism","ひひょう"]}
-{"level": 3, "data":["週末","しゅうまつ","weekend","しゅうまつ"]}
-{"level": 3, "data":["本文","ほんぶん","text; body","ほんぶん"]}
-{"level": 3, "data":["祝日","しゅくじつ","national holiday","しゅくじつ"]}
-{"level": 3, "data":["当選","とうせん","being elected","とうせん"]}
-{"level": 3, "data":["引っ張る","ひぱ","to pull","ひっぱる"]}
-{"level": 3, "data":["工作","こうさく","handicraft","こうさく"]}
-{"level": 3, "data":["特集","とくしゅう","special feature","とくしゅう"]}
-{"level": 3, "data":["あれ","","that","あれ"]}
-{"level": 3, "data":["火曜","かよう","Tuesday","かよう"]}
-{"level": 3, "data":["東京","とうきょう","Tokyo","とうきょう"]}
-{"level": 3, "data":["奇妙","きみょう","strange","きみょう"]}
-{"level": 3, "data":["比率","ひりつ","ratio","ひりつ"]}
-{"level": 3, "data":["機関","きかん","engine; organization","きかん"]}
-{"level": 3, "data":["応募","おうぼ","application","おうぼ"]}
-{"level": 3, "data":["毛","け","hair; fur","け"]}
-{"level": 3, "data":["かもしれない","","may; might","かもしれない"]}
-{"level": 3, "data":["実態","じったい","reality","じったい"]}
-{"level": 3, "data":["会見","かいけん","interview","かいけん"]}
-{"level": 3, "data":["根拠","こんきょ","basis","こんきょ"]}
-{"level": 3, "data":["眠い","ねむ","sleepy","ねむい"]}
-{"level": 3, "data":["制服","せいふく","uniform","せいふく"]}
-{"level": 3, "data":["苦痛","くつう","pain","くつう"]}
-{"level": 3, "data":["裸","はだか","naked","はだか"]}
-{"level": 3, "data":["目標","もくひょう","goal","もくひょう"]}
-{"level": 3, "data":["昨夜","ゆうべ","last night","ゆうべ"]}
-{"level": 3, "data":["表紙","ひょうし","cover (book)","ひょうし"]}
-{"level": 3, "data":["記入","きにゅう","entry; filling in","きにゅう"]}
-{"level": 3, "data":["典型","てんけい","type; pattern","てんけい"]}
-{"level": 3, "data":["支援","しえん","support","しえん"]}
-{"level": 3, "data":["業績","ぎょうせき","achievement","ぎょうせき"]}
-{"level": 3, "data":["部門","ぶもん","division","ぶもん"]}
-{"level": 3, "data":["飼う","か","to keep (pet)","かう"]}
-{"level": 3, "data":["事前","じぜん","prior","じぜん"]}
-{"level": 3, "data":["際","さい","occasion","さい"]}
-{"level": 3, "data":["貢献","こうけん","contribution","こうけん"]}
-{"level": 3, "data":["分離","ぶんり","separation","ぶんり"]}
-{"level": 3, "data":["不自由","ふじゆう","discomfort; disability","ふじゆう"]}
-{"level": 3, "data":["髪の毛","かみけ","hair","かみのけ"]}
-{"level": 3, "data":["店","みせ","shop","みせ"]}
-{"level": 3, "data":["熱帯","ねったい","tropics","ねったい"]}
-{"level": 3, "data":["半島","はんとう","peninsula","はんとう"]}
-{"level": 3, "data":["襲う","おそ","to attack","おそう"]}
-{"level": 3, "data":["鬼","おに","demon","おに"]}
-{"level": 3, "data":["死者","ししゃ","the dead","ししゃ"]}
-{"level": 3, "data":["娯楽","ごらく","entertainment","ごらく"]}
-{"level": 3, "data":["十日","とおか","10th day","とおか"]}
-{"level": 3, "data":["掲載","けいさい","publication","けいさい"]}
-{"level": 3, "data":["サービス","","service","さーびす"]}
-{"level": 3, "data":["育児","いくじ","childcare","いくじ"]}
-{"level": 3, "data":["大使館","たいしかん","embassy","たいしかん"]}
-{"level": 3, "data":["目指す","めざ","to aim at","めざす"]}
-{"level": 3, "data":["自治","じち","autonomy","じち"]}
-{"level": 3, "data":["不可","ふか","wrong; bad","ふか"]}
-{"level": 3, "data":["贈り物","おくもの","gift","おくりもの"]}
-{"level": 3, "data":["まさに","","exactly","まさに"]}
-{"level": 3, "data":["出来事","できごと","incident","できごと"]}
-{"level": 3, "data":["停車","ていしゃ","stopping (vehicle)","ていしゃ"]}
-{"level": 3, "data":["救助","きゅうじょ","relief; aid","きゅうじょ"]}
-{"level": 3, "data":["ぶつける","","to bump","ぶつける"]}
-{"level": 3, "data":["金銭","きんせん","money","きんせん"]}
-{"level": 3, "data":["関西","かんさい","Kansai region","かんさい"]}
-{"level": 3, "data":["全般","ぜんぱん","overall; general","ぜんぱん"]}
-{"level": 3, "data":["再会","さいかい","reunion","さいかい"]}
-{"level": 3, "data":["知恵","ちえ","wisdom","ちえ"]}
-{"level": 3, "data":["永久","えいきゅう","eternity","えいきゅう"]}
-{"level": 3, "data":["にもかかわらず","","in spite of","にもかかわらず"]}
-{"level": 3, "data":["広さ","ひろ","width; area","ひろさ"]}
-{"level": 3, "data":["悪魔","あくま","devil","あくま"]}
-{"level": 3, "data":["性別","せいべつ","gender","せいべつ"]}
-{"level": 3, "data":["ねずみ","","mouse","ねずみ"]}
-{"level": 3, "data":["済む","す","to finish","すむ"]}
-{"level": 3, "data":["九月","くがつ","September","くがつ"]}
-{"level": 3, "data":["審議","しんぎ","deliberation","しんぎ"]}
-{"level": 3, "data":["騒ぐ","さわ","to make noise","さわぐ"]}
-{"level": 3, "data":["年下","としした","younger","としした"]}
-{"level": 3, "data":["強制","きょうせい","compulsion","きょうせい"]}
-{"level": 3, "data":["回収","かいしゅう","collection","かいしゅう"]}
-{"level": 3, "data":["将棋","しょうぎ","shogi","しょうぎ"]}
-{"level": 3, "data":["感じる","かん","to feel","かんじる"]}
-{"level": 3, "data":["空き","あ","vacancy","あき"]}
-{"level": 3, "data":["双子","ふたご","twins","ふたご"]}
-{"level": 3, "data":["食","しょく","meal; food","しょく"]}
-{"level": 3, "data":["職人","しょくにん","craftsman","しょくにん"]}
-{"level": 3, "data":["段階","だんかい","stage","だんかい"]}
-{"level": 3, "data":["乗車","じょうしゃ","boarding a train","じょうしゃ"]}
-{"level": 3, "data":["改めて","あらた","another time; again","あらためて"]}
-{"level": 3, "data":["運送","うんそう","shipping","うんそう"]}
-{"level": 3, "data":["宝石","ほうせき","gem","ほうせき"]}
-{"level": 3, "data":["作","さく","work (of art)","さく"]}
-{"level": 3, "data":["ただし","","however","ただし"]}
-{"level": 3, "data":["判定","はんてい","judgement","はんてい"]}
-{"level": 3, "data":["該当","がいとう","corresponding","がいとう"]}
-{"level": 3, "data":["系統","けいとう","system; lineage","けいとう"]}
-{"level": 3, "data":["容器","ようき","container","ようき"]}
-{"level": 3, "data":["対話","たいわ","dialogue","たいわ"]}
-{"level": 3, "data":["妊娠","にんしん","pregnancy","にんしん"]}
-{"level": 3, "data":["体系","たいけい","system","たいけい"]}
-{"level": 3, "data":["語","ご","language; word","ご"]}
-{"level": 3, "data":["巣","す","nest","す"]}
-{"level": 3, "data":["儀式","ぎしき","ceremony","ぎしき"]}
-{"level": 3, "data":["竜","りゅう","dragon","りゅう"]}
-{"level": 3, "data":["どの","","which","どの"]}
-{"level": 3, "data":["豪華","ごうか","luxury","ごうか"]}
-{"level": 3, "data":["大抵","たいてい","usually","たいてい"]}
-{"level": 3, "data":["象徴","しょうちょう","symbol","しょうちょう"]}
-{"level": 3, "data":["内側","うちがわ","inside","うちがわ"]}
-{"level": 3, "data":["ちょうど","","exactly","ちょうど"]}
-{"level": 3, "data":["言い方","いかた","way of speaking","いいかた"]}
-{"level": 3, "data":["力強い","ちからづよ","powerful","ちからづよい"]}
-{"level": 3, "data":["推定","すいてい","presumption","すいてい"]}
-{"level": 3, "data":["温暖","おんだん","warm","おんだん"]}
-{"level": 3, "data":["接近","せっきん","approach","せっきん"]}
-{"level": 3, "data":["軍事","ぐんじ","military affairs","ぐんじ"]}
-{"level": 3, "data":["兵士","へいし","soldier","へいし"]}
-{"level": 3, "data":["入り","い","entering","いり"]}
-{"level": 3, "data":["宣言","せんげん","declaration","せんげん"]}
-{"level": 3, "data":["経つ","た","to pass (time)","たつ"]}
-{"level": 3, "data":["休暇","きゅうか","holiday","きゅうか"]}
-{"level": 3, "data":["経費","けいひ","expenses","けいひ"]}
-{"level": 3, "data":["照明","しょうめい","lighting","しょうめい"]}
-{"level": 3, "data":["都内","とない","within Tokyo","とない"]}
-{"level": 3, "data":["基盤","きばん","foundation","きばん"]}
-{"level": 3, "data":["ない","","non-existent","ない"]}
-{"level": 3, "data":["運賃","うんちん","fare","うんちん"]}
-{"level": 3, "data":["幸い","さいわ","happiness","さいわい"]}
-{"level": 3, "data":["権限","けんげん","authority","けんげん"]}
-{"level": 3, "data":["命","いのち","life","いのち"]}
-{"level": 3, "data":["専用","せんよう","exclusive use","せんよう"]}
-{"level": 3, "data":["何しろ","なに","at any rate","なにしろ"]}
-{"level": 3, "data":["相撲","すもう","sumo","すもう"]}
-{"level": 3, "data":["促進","そくしん","promotion","そくしん"]}
-{"level": 3, "data":["たま","","ball; sphere","たま"]}
-{"level": 3, "data":["夕刊","ゆうかん","evening paper","ゆうかん"]}
-{"level": 3, "data":["住居","すまい","dwelling","すまい"]}
-{"level": 3, "data":["ええっと","","let me see","ええっと"]}
-{"level": 3, "data":["栽培","さいばい","cultivation","さいばい"]}
-{"level": 3, "data":["枠","わく","frame","わく"]}
-{"level": 3, "data":["およそ","","about; roughly","およそ"]}
-{"level": 3, "data":["大げさ","おお","exaggerated","おおげさ"]}
-{"level": 3, "data":["一行","いちぎょう","one line","いちぎょう"]}
-{"level": 3, "data":["技師","ぎし","engineer","ぎし"]}
-{"level": 3, "data":["意欲","いよく","will; desire","いよく"]}
-{"level": 3, "data":["券","けん","ticket","けん"]}
-{"level": 3, "data":["若干","じゃっかん","somewhat","じゃっかん"]}
-{"level": 3, "data":["編む","あ","to knit","あむ"]}
-{"level": 3, "data":["支払い","しはら","payment","しはらい"]}
-{"level": 3, "data":["素材","そざい","material","そざい"]}
-{"level": 3, "data":["業務","ぎょうむ","business","ぎょうむ"]}
-{"level": 3, "data":["具体的","ぐたいてき","concrete","ぐたいてき"]}
-{"level": 3, "data":["別々","べつべつ","separately","べつべつ"]}
-{"level": 3, "data":["開ける","あ","to open","あける"]}
-{"level": 3, "data":["かける","","to hang; to put on","かける"]}
-{"level": 3, "data":["翌年","よくねん","following year","よくねん"]}
-{"level": 3, "data":["国名","こくめい","country name","こくめい"]}
-{"level": 3, "data":["穴","あな","hole","あな"]}
-{"level": 3, "data":["妻","つま","wife","つま"]}
-{"level": 3, "data":["石炭","せきたん","coal","せきたん"]}
-{"level": 3, "data":["汽車","きしゃ","train (steam)","きしゃ"]}
-{"level": 3, "data":["損","そん","loss","そん"]}
-{"level": 3, "data":["行","ぎょう","line (text)","ぎょう"]}
-{"level": 3, "data":["通訳","つうやく","interpretation","つうやく"]}
-{"level": 3, "data":["まず","","first of all","まず"]}
-{"level": 3, "data":["毒","どく","poison","どく"]}
-{"level": 3, "data":["はし","","chopsticks","はし"]}
-{"level": 3, "data":["たとえ","","even if","たとえ"]}
-{"level": 3, "data":["霧","きり","fog","きり"]}
-{"level": 3, "data":["飯","めし","meal; boiled rice","めし"]}
-{"level": 3, "data":["派手","はで","showy","はで"]}
-{"level": 3, "data":["補助","ほじょ","assistance","ほじょ"]}
-{"level": 3, "data":["岸","きし","bank; coast","きし"]}
-{"level": 3, "data":["芽","め","sprout","め"]}
-{"level": 3, "data":["相変わらず","あいか","as usual","あいかわらず"]}
-{"level": 3, "data":["真理","しんり","truth","しんり"]}
-{"level": 3, "data":["深夜","しんや","late at night","しんや"]}
-{"level": 3, "data":["展示","てんじ","exhibition","てんじ"]}
-{"level": 3, "data":["当たり前","あまえ","natural; reasonable","あたりまえ"]}
-{"level": 3, "data":["今晩","こんばん","tonight","こんばん"]}
-{"level": 3, "data":["申し上げる","もうあ","to say (humble)","もうしあげる"]}
-{"level": 3, "data":["消化","しょうか","digestion","しょうか"]}
-{"level": 3, "data":["宝","たから","treasure","たから"]}
-{"level": 3, "data":["続き","つづ","continuation","つづき"]}
-{"level": 3, "data":["目安","めやす","criterion; standard","めやす"]}
-{"level": 3, "data":["無限","むげん","infinite","むげん"]}
-{"level": 3, "data":["市役所","しやくしょ","city hall","しやくしょ"]}
-{"level": 3, "data":["大雨","おおあめ","heavy rain","おおあめ"]}
-{"level": 3, "data":["論争","ろんそう","controversy","ろんそう"]}
-{"level": 3, "data":["暖房","だんぼう","heating","だんぼう"]}
-{"level": 3, "data":["取引","とりひき","transaction","とりひき"]}
-{"level": 3, "data":["重力","じゅうりょく","gravity","じゅうりょく"]}
-{"level": 3, "data":["妙","みょう","strange","みょう"]}
-{"level": 3, "data":["紅葉","こうよう","autumn colors","こうよう"]}
-{"level": 3, "data":["一流","いちりゅう","first class","いちりゅう"]}
-{"level": 3, "data":["誇り","ほこ","pride","ほこり"]}
-{"level": 3, "data":["ビデオ","","video","びでお"]}
-{"level": 3, "data":["十月","じゅうがつ","October","じゅうがつ"]}
-{"level": 3, "data":["思い出す","おもだ","to recall","おもいだす"]}
-{"level": 3, "data":["汗","あせ","sweat","あせ"]}
-{"level": 3, "data":["人格","じんかく","personality","じんかく"]}
-{"level": 3, "data":["逆","ぎゃく","reverse","ぎゃく"]}
-{"level": 3, "data":["果たして","は","really; as expected","はたして"]}
-{"level": 3, "data":["明かり","あ","light","あかり"]}
-{"level": 3, "data":["戦う","たたか","to fight","たたかう"]}
-{"level": 3, "data":["塊","かたまり","lump","かたまり"]}
-{"level": 3, "data":["初期","しょき","initial stage","しょき"]}
-{"level": 3, "data":["役","やく","role","やく"]}
-{"level": 3, "data":["折る","お","to break; to fold","おる"]}
-{"level": 3, "data":["骨","ほね","bone","ほね"]}
-{"level": 3, "data":["何より","なに","more than anything","なにより"]}
-{"level": 3, "data":["奥様","おくさま","wife (polite)","おくさま"]}
-{"level": 3, "data":["糸","いと","thread","いと"]}
-{"level": 3, "data":["匂い","にお","scent; smell","におい"]}
-{"level": 3, "data":["体","からだ","body","からだ"]}
-{"level": 3, "data":["発","はつ","departure","はつ"]}
-{"level": 3, "data":["いる","","to be (living)","いる"]}
-{"level": 3, "data":["真剣","しんけん","serious","しんけん"]}
-{"level": 3, "data":["両手","りょうて","both hands","りょうて"]}
-{"level": 3, "data":["至る","いた","to reach","いたる"]}
-{"level": 3, "data":["防衛","ぼうえい","defense","ぼうえい"]}
-{"level": 3, "data":["くらい","","approximately","くらい"]}
-{"level": 3, "data":["筒","つつ","pipe; tube","つつ"]}
-{"level": 3, "data":["意向","いこう","intention","いこう"]}
-{"level": 3, "data":["今すぐ","いま","right now","いますぐ"]}
-{"level": 3, "data":["巡る","めぐ","to go around","めぐる"]}
-{"level": 3, "data":["見つめる","み","to stare at","みつめる"]}
-{"level": 3, "data":["釣る","つ","to fish","つる"]}
-{"level": 3, "data":["人材","じんざい","human resources","じんざい"]}
-{"level": 3, "data":["撃つ","う","to shoot","うつ"]}
-{"level": 3, "data":["生地","きじ","cloth; dough","きじ"]}
-{"level": 3, "data":["雌","めす","female (animal)","めす"]}
-{"level": 3, "data":["波","なみ","wave","なみ"]}
-{"level": 3, "data":["めちゃくちゃ","","messy; extreme","めちゃくちゃ"]}
-{"level": 3, "data":["空","から","empty","から"]}
-{"level": 3, "data":["名字","みょうじ","surname","みょうじ"]}
-{"level": 3, "data":["耐える","た","to endure","たえる"]}
-{"level": 3, "data":["真っ白","ましろ","pure white","まっしろ"]}
-{"level": 3, "data":["電波","でんぱ","radio wave","でんぱ"]}
-{"level": 3, "data":["様々","さまざま","various","さまざま"]}
-{"level": 3, "data":["遅れ","おく","delay","おくれ"]}
-{"level": 3, "data":["所","ところ","place","ところ"]}
-{"level": 3, "data":["ずいぶん","","very; extremely","ずいぶん"]}
-{"level": 3, "data":["産む","う","to give birth","うむ"]}
-{"level": 3, "data":["成り立つ","なた","to consist of","なりたつ"]}
-{"level": 3, "data":["引き出し","ひだ","drawer","ひきだし"]}
-{"level": 3, "data":["戸","と","door","と"]}
-{"level": 3, "data":["締め切り","しき","deadline","しめきり"]}
-{"level": 3, "data":["やめる","","to stop","やめる"]}
-{"level": 3, "data":["六月","ろくがつ","June","ろくがつ"]}
-{"level": 3, "data":["羽根","はね","feather","はね"]}
-{"level": 3, "data":["おかず","","side dish","おかず"]}
-{"level": 3, "data":["瓶","びん","bottle","びん"]}
-{"level": 3, "data":["車両","しゃりょう","vehicle","しゃりょう"]}
-{"level": 3, "data":["バラ","","rose","ばら"]}
-{"level": 3, "data":["缶詰","かんづめ","canned food","かんづめ"]}
-{"level": 3, "data":["しょうゆ","","soy sauce","しょうゆ"]}
-{"level": 3, "data":["足元","あしもと","at one's feet","あしもと"]}
-{"level": 3, "data":["もともと","","originally","もともと"]}
-{"level": 3, "data":["止まる","と","to stop","とまる"]}
-{"level": 3, "data":["四月","しがつ","April","しがつ"]}
-{"level": 3, "data":["受付","うけつけ","reception","うけつけ"]}
-{"level": 3, "data":["はがき","","postcard","はがき"]}
-{"level": 3, "data":["それでは","","well then","それでは"]}
-{"level": 3, "data":["あー","","ah","あー"]}
-{"level": 3, "data":["無駄遣い","むだづか","waste (of money)","むだづかい"]}
-{"level": 3, "data":["小川","おがわ","brook","おがわ"]}
-{"level": 3, "data":["一ヶ月","いっかげつ","one month","いっかげつ"]}
+level,kanji,furigana,definition,kana
+3,"祭り","まつ","festival","まつり"
+3,"項目","こうもく","item; entry","こうもく"
+3,"匹","ひき","counter for small animals","ひき"
+3,"マイナス","","minus","まいなす"
+3,"カレー","","curry","かれー"
+3,"タオル","","towel","たおる"
+3,"作曲","さっきょく","composition (music)","さっきょく"
+3,"感動","かんどう","being deeply moved","かんどう"
+3,"疑う","うたが","to doubt","うたがう"
+3,"離婚","りこん","divorce","りこん"
+3,"動作","どうさ","action; movement","どうさ"
+3,"見解","けんかい","opinion; point of view","けんかい"
+3,"主婦","しゅふ","housewife","しゅふ"
+3,"混乱","こんらん","confusion","こんらん"
+3,"瞬間","しゅんかん","moment","しゅんかん"
+3,"整理","せいり","sorting; arrangement","せいり"
+3,"体制","たいせい","system; structure","たいせい"
+3,"回答","かいとう","reply; answer","かいとう"
+3,"ゴルフ","","golf","ごるふ"
+3,"歓迎","かんげい","welcome","かんげい"
+3,"郊外","こうがい","suburbs","こうがい"
+3,"いわゆる","","so-called","いわゆる"
+3,"いらっしゃる","","to come/go/be (honorific)","いらっしゃる"
+3,"当日","とうじつ","appointed day; very day","とうじつ"
+3,"会計","かいけい","account; bill","かいけい"
+3,"好き","す","liking; fond of","すき"
+3,"観客","かんきゃく","audience","かんきゃく"
+3,"テスト","","test","てすと"
+3,"急行","きゅうこう","express train","きゅうこう"
+3,"風邪","かぜ","cold (illness)","かぜ"
+3,"援助","えんじょ","assistance; aid","えんじょ"
+3,"採用","さいよう","adoption; employment","さいよう"
+3,"最終","さいしゅう","last; final","さいしゅう"
+3,"豊富","ほうふ","abundance","ほうふ"
+3,"証明","しょうめい","proof","しょうめい"
+3,"中心","ちゅうしん","center","ちゅうしん"
+3,"汚れる","よご","to get dirty","よごれる"
+3,"吸収","きゅうしゅう","absorption","きゅうしゅう"
+3,"運用","うんよう","operation; application","うんよう"
+3,"夜中","よなか","middle of the night","よなか"
+3,"資格","しかく","qualification","しかく"
+3,"緊張","きんちょう","tension; nervousness","きんちょう"
+3,"正午","しょうご","noon","しょうご"
+3,"症状","しょうじょう","symptoms","しょうじょう"
+3,"結ぶ","むす","to tie; to connect","むすぶ"
+3,"入場","にゅうじょう","entrance; admission","にゅうじょう"
+3,"イタリア","","Italy","いたりあ"
+3,"本名","ほんみょう","real name","ほんみょう"
+3,"呼吸","こきゅう","breathing","こきゅう"
+3,"異常","いじょう","strangeness; abnormality","いじょう"
+3,"解放","かいほう","release; liberation","かいほう"
+3,"発達","はったつ","development","はったつ"
+3,"直前","ちょくぜん","just before","ちょくぜん"
+3,"爆発","ばくはつ","explosion","ばくはつ"
+3,"職員","しょくいん","staff member","しょくいん"
+3,"先週","せんしゅう","last week","せんしゅう"
+3,"活躍","かつやく","activity; great effort","かつやく"
+3,"方針","ほうしん","policy; course","ほうしん"
+3,"低下","ていか","decline","ていか"
+3,"発明","はつめい","invention","はつめい"
+3,"才能","さいのう","talent","さいのう"
+3,"当たり","あ","hit; success; per...","あたり"
+3,"想像","そうぞう","imagination","そうぞう"
+3,"直後","ちょくご","immediately after","ちょくご"
+3,"支払う","しはら","to pay","しはらう"
+3,"誤解","ごかい","misunderstanding","ごかい"
+3,"調子","ちょうし","condition; tone","ちょうし"
+3,"面積","めんせき","area (measurement)","めんせき"
+3,"施設","しせつ","institution; facility","しせつ"
+3,"装置","そうち","equipment; device","そうち"
+3,"解釈","かいしゃく","interpretation","かいしゃく"
+3,"形式","けいしき","form; formality","けいしき"
+3,"似る","に","to resemble","にる"
+3,"偶然","ぐうぜん","coincidence","ぐうぜん"
+3,"中年","ちゅうねん","middle-aged","ちゅうねん"
+3,"石油","せきゆ","oil; petroleum","せきゆ"
+3,"調整","ちょうせい","adjustment","ちょうせい"
+3,"対策","たいさく","measure; countermeasure","たいさく"
+3,"遊ぶ","あそ","to play","あそぶ"
+3,"加える","くわ","to add","くわえる"
+3,"修正","しゅうせい","amendment; modification","しゅうせい"
+3,"需要","じゅよう","demand","じゅよう"
+3,"信じる","しん","to believe","しんじる"
+3,"予想","よそう","expectation; prediction","よそう"
+3,"修理","しゅうり","repair","しゅうり"
+3,"殺人","さつじん","murder","さつじん"
+3,"下手","へた","unskillful","へた"
+3,"に関して","かん","regarding","にかんして"
+3,"倍","ばい","double; times","ばい"
+3,"屋上","おくじょう","rooftop","おくじょう"
+3,"心","こころ","heart; mind","こころ"
+3,"賛成","さんせい","approval; agreement","さんせい"
+3,"くれる","","to give (to me)","くれる"
+3,"登録","とうろく","registration","とうろく"
+3,"外部","がいぶ","outside; external","がいぶ"
+3,"不正","ふせい","injustice; unfairness","ふせい"
+3,"重視","じゅうし","importance; stress","じゅうし"
+3,"移す","うつ","to move; to transfer","うつす"
+3,"治療","ちりょう","medical treatment","ちりょう"
+3,"新幹線","しんかんせん","bullet train","しんかんせん"
+3,"はず","","expectation that something took place","はず"
+3,"内部","ないぶ","interior; internal","ないぶ"
+3,"正確","せいかく","accurate","せいかく"
+3,"育つ","そだ","to grow (up)","そだつ"
+3,"対立","たいりつ","confrontation; opposition","たいりつ"
+3,"印刷","いんさつ","printing","いんさつ"
+3,"解散","かいさん","breakup; dissolution","かいさん"
+3,"公共","こうきょう","public","こうきょう"
+3,"常識","じょうしき","common sense","じょうしき"
+3,"勢い","いきお","force; vigor","いきおい"
+3,"心臓","しんぞう","heart (organ)","しんぞう"
+3,"一方","いっぽう","one way; the other party","いっぽう"
+3,"提供","ていきょう","offer; provision","ていきょう"
+3,"出生","しゅっしょう","birth","しゅっしょう"
+3,"延長","えんちょう","extension","えんちょう"
+3,"バイク","","motorcycle","ばイク"
+3,"郵便","ゆうびん","mail; postal service","ゆうびん"
+3,"著者","ちょしゃ","author","ちょしゃ"
+3,"インド","","India","いんど"
+3,"歩道","ほどう","sidewalk","ほどう"
+3,"働く","はたら","to work","はたらく"
+3,"前後","ぜんご","front and back; about","ぜんご"
+3,"正直","しょうじき","honest","しょうじき"
+3,"美人","びじん","beautiful woman","びじん"
+3,"義務","ぎむ","duty; obligation","ぎむ"
+3,"こんばんは","","good evening","こんばんは"
+3,"描く","えが","to draw; to paint","えがく"
+3,"有利","ゆうり","advantageous","ゆうり"
+3,"迫る","せま","to approach; to press","せまる"
+3,"一致","いっち","coincidence; agreement","いっち"
+3,"恋人","こいびと","lover","こいびと"
+3,"甘い","あま","sweet; naive","あまい"
+3,"来週","らいしゅう","next week","らいしゅう"
+3,"前者","ぜんしゃ","the former","ぜんしゃ"
+3,"上","うえ","above; up","うえ"
+3,"防止","ぼうし","prevention","ぼうし"
+3,"実力","じつりょく","real ability","じつりょく"
+3,"とにかく","","anyhow; at any rate","とにかく"
+3,"警官","けいかん","police officer","けいかん"
+3,"だった","","was (copula)","だった"
+3,"イタリア語","ご","Italian language","いたりあご"
+3,"どうも","","thanks; somehow","どうも"
+3,"もしもし","","hello (on phone)","もしもし"
+3,"どうしたらいい","","what should I do","どうしたらいい"
+3,"休み中","やすちゅう","during the holiday; closed","やすみちゅう"
+3,"全体的","ぜんたいてき","overall","ぜんたいてき"
+3,"五百円","ごひゃくえん","500 yen","ごひゃくえん"
+3,"どうやって","","how; in what way","どうやって"
+3,"勝負","しょうぶ","victory or defeat; match","しょうぶ"
+3,"与える","あた","to give; to bestow","あたえる"
+3,"奪う","うば","to snatch away","うばう"
+3,"腹","はら","abdomen; belly","はら"
+3,"講師","こうし","lecturer","こうし"
+3,"扱う","あつか","to handle; to deal with","あつかう"
+3,"現実的","げんじつてき","realistic","げんじつてき"
+3,"地名","ちめい","place name","ちめい"
+3,"交番","こうばん","police box","こうばん"
+3,"不幸","ふこう","unhappiness; misfortune","ふこう"
+3,"天国","てんごく","paradise; heaven","てんごく"
+3,"門","もん","gate","もん"
+3,"訳す","やく","to translate","やくす"
+3,"応援","おうえん","support; cheering","おうえん"
+3,"達する","たっ","to reach","たっする"
+3,"下着","したぎ","underwear","したぎ"
+3,"講演","こうえん","lecture","こうえん"
+3,"減少","げんしょう","decrease","げんしょう"
+3,"大幅","おおはば","drastic; substantial","おおはば"
+3,"定員","ていいん","fixed number of people; capacity","ていいん"
+3,"板","いた","board; plank","いた"
+3,"俳優","はいゆう","actor","はいゆう"
+3,"いいとも","","sure; all right","いいとも"
+3,"ポケット","","pocket","ぽけっと"
+3,"男の人","おとこひと","man","おとこのひと"
+3,"刺激","しげき","stimulus","しげき"
+3,"返事","へんじ","reply","へんじ"
+3,"組む","く","to put together; to fold (arms)","くむ"
+3,"区別","くべつ","distinction","くべつ"
+3,"購入","こうにゅう","purchase","こうにゅう"
+3,"停止","ていし","suspension; stop","ていし"
+3,"電力","でんりょく","electric power","でんりょく"
+3,"区","く","ward; district","く"
+3,"通勤","つうきん","commuting to work","つうきん"
+3,"景気","けいき","business conditions","けいき"
+3,"貯金","ちょきん","savings","ちょきん"
+3,"働き","はたら","work; function","はたらき"
+3,"回す","まわ","to turn; to rotate","まわす"
+3,"書店","しょてん","bookstore","しょてん"
+3,"通知","つうち","notice; notification","つうち"
+3,"タイヤ","","tire","たいや"
+3,"課長","かちょう","section manager","かちょう"
+3,"規定","きてい","regulation","きてい"
+3,"肌","はだ","skin","はだ"
+3,"発電","はつでん","power generation","はつでん"
+3,"帰る","かえ","to return","かえる"
+3,"ボーナス","","bonus","ぼーなす"
+3,"故障","こしょう","breakdown; failure","こしょう"
+3,"一見","いっけん","glance; look","いっけん"
+3,"図る","はか","to plan; to attempt","はかる"
+3,"優秀","ゆうしゅう","superior; excellent","ゆうしゅう"
+3,"体重","たいじゅう","body weight","たいじゅう"
+3,"結論","けつろん","conclusion","けつろん"
+3,"互い","たが","mutual; reciprocal","たがい"
+3,"厚い","あつ","thick; kind","あつい"
+3,"透明","とうめい","transparent","とうめい"
+3,"導入","どうにゅう","introduction","どうにゅう"
+3,"図書","としょ","books","としょ"
+3,"資源","しげん","resources","しげん"
+3,"化粧","けしょう","makeup","けしょう"
+3,"特色","とくしょく","characteristic","とくしょく"
+3,"頑張る","がんば","to do one's best","がんばる"
+3,"資産","しさん","assets","しさん"
+3,"負担","ふたん","burden","ふたん"
+3,"宿題","しゅくだい","homework","しゅくだい"
+3,"成果","せいか","accomplishment; result","せいか"
+3,"資金","しきん","funds","しきん"
+3,"囲む","かこ","to surround","かこむ"
+3,"しばらく","","for a while","しばらく"
+3,"独特","どくとく","peculiarity; uniqueness","どくとく"
+3,"相互","そうご","mutual","そうご"
+3,"水準","すいじゅん","level; standard","すいじゅん"
+3,"までに","","by (time)","までに"
+3,"非常に","ひじょう","very; extremely","ひじょうに"
+3,"世紀","せいき","century","せいき"
+3,"成人","せいじん","adult","せいじん"
+3,"愛情","あいじょう","love; affection","あいじょう"
+3,"学部","がくぶ","department of a university","がくぶ"
+3,"滞在","たいざい","stay","たいざい"
+3,"外交","がいこう","diplomacy","がいこう"
+3,"回転","かいてん","rotation","かいてん"
+3,"血液","けつえき","blood","けつえき"
+3,"予防","よぼう","prevention","よぼう"
+3,"危機","きき","crisis","きき"
+3,"小学生","しょうがくせい","elementary school student","しょうがくせい"
+3,"回数","かいすう","number of times","かいすう"
+3,"氏名","しめい","full name","しめい"
+3,"熱心","ねっしん","enthusiastic","ねっしん"
+3,"進歩","しんぽ","progress","しんぽ"
+3,"社員","しゃいん","company employee","しゃいん"
+3,"可","か","passable; acceptable","か"
+3,"ビル","","building","びる"
+3,"順","じゅん","order; turn","じゅん"
+3,"定期","ていき","fixed period; season ticket","ていき"
+3,"通行","つうこう","passage; traffic","つうこう"
+3,"おやすみなさい","","good night","おやすみなさい"
+3,"いやになる","","to get sick of","いやになる"
+3,"主体","しゅたい","subject; main constituent","しゅたい"
+3,"天皇","てんのう","Emperor of Japan","てんのう"
+3,"損害","そんがい","damage; loss","そんがい"
+3,"特殊","とくしゅ","special; unique","とくしゅ"
+3,"変える","か","to change (something)","かえる"
+3,"都会","とかい","city","とかい"
+3,"哲学","てつがく","philosophy","てつがく"
+3,"近く","ちか","near; vicinity","ちかく"
+3,"減る","へ","to decrease","へる"
+3,"気候","きこう","climate","きこう"
+3,"冷静","れいせい","calmness; composure","れいせい"
+3,"帰国","きこく","return to one's country","きこく"
+3,"ごく","","quite; very","ごく"
+3,"狂う","くる","to go mad; to go out of order","くるう"
+3,"中世","ちゅうせい","Middle Ages","ちゅうせい"
+3,"五百","ごひゃく","five hundred","ごひゃく"
+3,"かわいそう","","poor; pitiable","かわいそう"
+3,"スピーチ","","speech","すぴーち"
+3,"女性的","じょせいてき","feminine","じょせいてき"
+3,"小屋","こや","hut; cabin","こや"
+3,"部品","ぶひん","parts; accessories","ぶひん"
+3,"化学","かがく","chemistry","かがく"
+3,"捨てる","す","to throw away","すてる"
+3,"真面目","まじめ","diligent; serious","まじめ"
+3,"金属","きんぞく","metal","きんぞく"
+3,"会長","かいちょう","president; chairman","かいちょう"
+3,"街道","かいどう","highway","かいどう"
+3,"読み終わる","よお","to finish reading","よみおわる"
+3,"中間","ちゅうかん","middle; midway","ちゅうかん"
+3,"継続","けいぞく","continuation","けいぞく"
+3,"高速","こうそく","high speed","こうそく"
+3,"個人的","こじんてき","personal","こじんてき"
+3,"分類","ぶんるい","classification","ぶんるい"
+3,"投資","とうし","investment","とうし"
+3,"農家","のうか","farmer; farm family","のうか"
+3,"女優","じょゆう","actress","じょゆう"
+3,"航空","こうくう","aviation","こうくう"
+3,"常に","つね","always; constantly","つねに"
+3,"大小","だいしょう","size; large and small","だいしょう"
+3,"平成","へいせい","Heisei era","へいせい"
+3,"知人","ちじん","acquaintance","ちじん"
+3,"刑事","けいじ","detective","けいじ"
+3,"帰ってくる","かえ","to come back","かえってくる"
+3,"方言","ほうげん","dialect","ほうげん"
+3,"列","れつ","line; row","れつ"
+3,"切符","きっぷ","ticket","きっぷ"
+3,"習う","なら","to learn","ならう"
+3,"児童","じどう","children; juvenile","じどう"
+3,"認識","にんしき","recognition","にんしき"
+3,"永遠","えいえん","eternity","えいえん"
+3,"行政","ぎょうせい","administration","ぎょうせい"
+3,"設置","せっち","establishment; installation","せっち"
+3,"亡くなる","な","to pass away","なくなる"
+3,"姓","せい","surname","せい"
+3,"大きな","おお","big","おおきな"
+3,"勇気","ゆうき","courage","ゆうき"
+3,"人種","じんしゅ","race (of people)","じんしゅ"
+3,"礼","れい","bow; thanks","れい"
+3,"劇場","げきじょう","theater","げきじょう"
+3,"柔道","じゅうどう","judo","じゅうどう"
+3,"企画","きかく","planning","きかく"
+3,"報道","ほうどう","news report","ほうどう"
+3,"移転","いてん","relocation","いてん"
+3,"タイプ","","type","たいぷ"
+3,"地方","ちほう","region; countryside","ちほう"
+3,"ナイフ","","knife","ないふ"
+3,"貴重","きちょう","precious; valuable","きちょう"
+3,"そば","","near; beside","そば"
+3,"数える","かぞ","to count","かぞえる"
+3,"統一","とういつ","unity; unification","とういつ"
+3,"カップ","","cup","かっぷ"
+3,"人類学","じんるいがく","anthropology","じんるいがく"
+3,"隠す","かく","to hide","かくす"
+3,"大戦","たいせん","great war","たいせん"
+3,"若い","わか","young","わかい"
+3,"注文","ちゅうもん","order (for item)","ちゅうもん"
+3,"迷惑","めいわく","nuisance; trouble","めいわく"
+3,"客","きゃく","guest; customer","きゃく"
+3,"性質","せいしつ","nature; property","せいしつ"
+3,"講義","こうぎ","lecture","こうぎ"
+3,"谷","たに","valley","たに"
+3,"気を失う","きうしな","to lose consciousness","きをうしなう"
+3,"申請","しんせい","application; request","しんせい"
+3,"何時間","なんじかん","how many hours","なんじかん"
+3,"録音","ろくおん","recording","ろくおん"
+3,"競技","きょうぎ","game; match; contest","きょうぎ"
+3,"戻す","もど","to return (something)","もどす"
+3,"東洋","とうよう","Orient","とうよう"
+3,"閉じる","と","to close (e.g. book/eyes)","とじる"
+3,"対応","たいおう","correspondence; response","たいおう"
+3,"ポスト","","post; mailbox","ぽすと"
+3,"作用","さよう","action; effect","さよう"
+3,"平日","へいじつ","weekday","へいじつ"
+3,"どの","","which","どの"
+3,"去る","さ","to leave; to pass","さる"
+3,"負け","ま","defeat; loss","まけ"
+3,"作成","さくせい","creation; production","さくせい"
+3,"向上","こうじょう","improvement","こうじょう"
+3,"普及","ふきゅう","diffusion; spread","ふきゅう"
+3,"ベッド","","bed","べっど"
+3,"余裕","よゆう","surplus; composure","よゆう"
+3,"火がつく","ひ","to catch fire","ひがつく"
+3,"娘","むすめ","daughter","むすめ"
+3,"賞","しょう","prize; award","しょう"
+3,"候補","こうほ","candidate","こうほ"
+3,"全身","ぜんしん","whole body","ぜんしん"
+3,"必死","ひっし","desperate","ひっし"
+3,"自信","じしん","confidence","じしん"
+3,"になる","","to become","になる"
+3,"バイオリン","","violin","ばいおりん"
+3,"珍しい","めずら","rare","めずらしい"
+3,"唯一","ゆいいつ","only; unique","ゆいいつ"
+3,"夫","おっと","husband","おっと"
+3,"博物館","はくぶつかん","museum","はくぶつかん"
+3,"はっきり","","clearly","はっきり"
+3,"栄養","えいよう","nutrition","えいよう"
+3,"窓口","まどぐち","service window","まどぐち"
+3,"ジャーナリスト","","journalist","じゃーなりすと"
+3,"赤字","あかじ","deficit","あかじ"
+3,"加工","かこう","processing","かこう"
+3,"首","くび","neck","くび"
+3,"海洋","かいよう","ocean","かいよう"
+3,"忘れる","わす","to forget","わすれる"
+3,"分子","ぶんし","molecule; numerator","ぶんし"
+3,"皮","かわ","skin; peel","かわ"
+3,"代理","だいり","representation; agency","だいり"
+3,"幸福","こうふく","happiness","こうふく"
+3,"業界","ぎょうかい","industry; business world","ぎょうかい"
+3,"アイスクリーム","","ice cream","あいすくりーむ"
+3,"出演","しゅつえん","performance; appearance","しゅつえん"
+3,"含む","ふく","to include","ふくむ"
+3,"激しい","はげ","violent; intense","はげしい"
+3,"土曜","どよう","Saturday","どよう"
+3,"実績","じっせき","achievements","じっせき"
+3,"改革","かいかく","reform","かいかく"
+3,"謝る","あやま","to apologize","あやまる"
+3,"さあ","","well...","さあ"
+3,"上昇","じょうしょう","rising; ascending","じょうしょう"
+3,"なかなか","","very; quite","なかなか"
+3,"商売","しょうばい","trade; business","しょうばい"
+3,"接続","せつぞく","connection","せつぞく"
+3,"こと","","thing; matter","こと"
+3,"夫人","ふじん","wife; madam","ふじん"
+3,"形成","けいせい","formation","けいせい"
+3,"バイト","","part-time job","ばいと"
+3,"転ぶ","ころ","to fall down","ころぶ"
+3,"資本","しほん","capital","しほん"
+3,"演劇","えんげき","drama; theater","えんげき"
+3,"規制","きせい","regulation","きせい"
+3,"丁寧","ていねい","polite","ていねい"
+3,"性能","せいのう","performance (of machine)","せいのう"
+3,"奥さん","おく","wife (polite)","おくさん"
+3,"曲がる","ま","to turn; to bend","まがる"
+3,"意図","いと","intention","いと"
+3,"かばん","","bag","かばん"
+3,"公式","こうしき","formal; official","こうしき"
+3,"考慮","こうりょ","consideration","こうりょ"
+3,"民族","みんぞく","ethnic group","みんぞく"
+3,"考え","かんが","idea; thought","かんがえ"
+3,"原理","げんり","principle; theory","げんり"
+3,"見送る","みおく","to see off","みおくる"
+3,"市場","いちば","market","いちば"
+3,"捕まる","つか","to be caught","つかまる"
+3,"今朝","けさ","this morning","けさ"
+3,"産業","さんぎょう","industry","さんぎょう"
+3,"半ば","なか","middle; halfway","なかば"
+3,"語る","かた","to talk; to narrate","かたる"
+3,"人","にん","counter for people","にん"
+3,"畑","はたけ","field","はたけ"
+3,"赤ん坊","あかぼう","baby","あかんぼう"
+3,"恐怖","きょうふ","fear","きょうふ"
+3,"ありがとう","","thank you","ありがとう"
+3,"物事","ものごと","things","ものごと"
+3,"金融","きんゆう","finance","きんゆう"
+3,"問う","と","to ask; to question","とう"
+3,"最大","さいだい","biggest; maximum","さいだい"
+3,"往復","おうふく","round trip","おうふく"
+3,"有力","ゆうりょく","powerful; influential","ゆうりょく"
+3,"日","にち","day; sun","にち"
+3,"衝突","しょうとつ","collision","しょうとつ"
+3,"議長","ぎちょう","chairman","ぎちょう"
+3,"廊下","ろうか","corridor","ろうか"
+3,"本社","ほんしゃ","head office","ほんしゃ"
+3,"思い","おも","thought; feeling","おもい"
+3,"信仰","しんこう","faith; belief","しんこう"
+3,"悩む","なや","to worry","なやむ"
+3,"絞る","しぼ","to wring; to squeeze","しぼる"
+3,"大勢","おおぜい","crowd of people","おおぜい"
+3,"方","ほう","direction; side","ほう"
+3,"形","かたち","shape","かたち"
+3,"ガス","","gas","がす"
+3,"いっぱい","","full","いっぱい"
+3,"評判","ひょうばん","reputation","ひょうばん"
+3,"すぐに","","immediately","すぐに"
+3,"手間","てま","time and effort","てま"
+3,"引退","いんたい","retirement","いんたい"
+3,"二度と","にど","never again","にどと"
+3,"日程","にってい","schedule","にってい"
+3,"主義","しゅぎ","doctrine; -ism","しゅぎ"
+3,"例外","れいがい","exception","れいがい"
+3,"吸う","す","to breathe in; to smoke","すう"
+3,"投票","とうひょう","voting","とうひょう"
+3,"周り","まわ","circumference; surroundings","まわり"
+3,"真ん中","まなか","center; middle","まんなか"
+3,"駅前","えきまえ","in front of the station","えきまえ"
+3,"たれる","","to hang; to drip","たれる"
+3,"磨く","みが","to polish; to brush","みがく"
+3,"しか","","only","しか"
+3,"違反","いはん","violation","いはん"
+3,"チケット","","ticket","ちけっと"
+3,"好む","この","to like; to prefer","このむ"
+3,"汚染","おせん","pollution","おせん"
+3,"都心","としん","city center","としん"
+3,"正月","しょうがつ","New Year","しょうがつ"
+3,"商業","しょうぎょう","commerce","しょうぎょう"
+3,"大体","だいたい","generally","だいたい"
+3,"規模","きぼ","scale","きぼ"
+3,"主に","おも","mainly","おもに"
+3,"直径","ちょっけい","diameter","ちょっけい"
+3,"別荘","べっそう","holiday house; villa","べっそう"
+3,"国内","こくない","domestic","こくない"
+3,"先頭","せんとう","head; lead","せんとう"
+3,"運営","うんえい","management","うんえい"
+3,"国籍","こくせき","nationality","こくせき"
+3,"学","がく","learning; scholarship","がく"
+3,"有料","ゆうりょう","fee-charging","ゆうりょう"
+3,"組合","くみあい","association; union","くみあい"
+3,"自宅","じたく","one's home","じたく"
+3,"やっぱり","","as expected","やっぱり"
+3,"一瞬","いっしゅん","moment; instant","いっしゅん"
+3,"直ちに","ただ","at once","ただちに"
+3,"おる","","to be (humble)","おる"
+3,"身","み","body; oneself","み"
+3,"意思","いし","intention","いし"
+3,"順番","じゅんばん","turn; order","じゅんばん"
+3,"生産","せいさん","production","せいさん"
+3,"捕虜","ほりょ","prisoner of war","ほりょ"
+3,"刺す","さ","to stab; to sting","さす"
+3,"ありがとうございます","","thank you","ありがとうございます"
+3,"本部","ほんぶ","headquarters","ほんぶ"
+3,"森林","しんりん","forest","しんりん"
+3,"経由","けいゆ","via","けいゆ"
+3,"政策","せいさく","policy","せいさく"
+3,"燃える","も","to burn","もえる"
+3,"棒","ぼう","pole; rod","ぼう"
+3,"打つ","う","to hit","うつ"
+3,"英文","えいぶん","sentence in English","えいぶん"
+3,"夜間","やかん","nighttime","やかん"
+3,"要素","ようそ","element; factor","ようそ"
+3,"期限","きげん","time limit","きげん"
+3,"寄る","よ","to stop by; to approach","よる"
+3,"貧しい","まず","poor","まずしい"
+3,"景色","けしき","scenery","けしき"
+3,"下","もと","under (supervision etc.)","もと"
+3,"立派","りっぱ","splendid","りっぱ"
+3,"製作","せいさく","manufacture; production","せいさく"
+3,"空中","くうちゅう","sky; mid-air","くうちゅう"
+3,"桜の木","さくらき","cherry tree","さくらのき"
+3,"寄せる","よ","to bring near","よせる"
+3,"一層","いっそう","much more","いっそう"
+3,"平等","びょうどう","equality","びょうどう"
+3,"湖","みずうみ","lake","みずうみ"
+3,"原則","げんそく","principle; general rule","げんそく"
+3,"力","ちから","power","ちから"
+3,"設定","せってい","setting","せってい"
+3,"欠席","けっせき","absence","けっせき"
+3,"設立","せつりつ","establishment","せつりつ"
+3,"十七","じゅうしち","seventeen","じゅうしち"
+3,"従来","じゅうらい","up to now; conventional","じゅうらい"
+3,"かじる","","to chew; to bite","かじる"
+3,"ガラス","","glass","がらす"
+3,"悪い","わる","bad","わるい"
+3,"助かる","たす","to be saved; to be helpful","たすかる"
+3,"制作","せいさく","production (art/film)","せいさく"
+3,"嫌い","きら","dislike","きらい"
+3,"売買","ばいばい","buying and selling","ばいばい"
+3,"引用","いんよう","quotation","いんよう"
+3,"死","し","death","し"
+3,"年上","としうえ","older","としうえ"
+3,"尊敬","そんけい","respect","そんけい"
+3,"同意","どうい","agreement; consent","どうい"
+3,"共に","とも","together","ともに"
+3,"女の人","おんなひと","woman","おんなのひと"
+3,"青春","せいしゅん","youth","せいしゅん"
+3,"主役","しゅやく","leading role","しゅやく"
+3,"いずれ","","sooner or later","いずれ"
+3,"分かれる","わ","to branch; to divide","わかれる"
+3,"地","ち","earth; ground","ち"
+3,"弁護士","べんごし","lawyer","べんごし"
+3,"飲み物","のもの","drink","のみもの"
+3,"単語","たんご","vocabulary; word","たんご"
+3,"順調","じゅんちょう","doing well; smooth","じゅんちょう"
+3,"推進","すいしん","propulsion; promotion","すいしん"
+3,"反映","はんえい","reflection","はんえい"
+3,"保護","ほご","protection","ほご"
+3,"軍隊","ぐんたい","army; troops","ぐんたい"
+3,"やはり","","as expected","やはり"
+3,"叫ぶ","さけ","to shout","さけぶ"
+3,"就任","しゅうにん","inauguration","しゅうにん"
+3,"測定","そくてい","measurement","そくてい"
+3,"達成","たっせい","achievement","たっせい"
+3,"狙う","ねら","to aim at","ねらう"
+3,"何とか","なん","somehow","なんとか"
+3,"歯","は","tooth","は"
+3,"天然","てんねん","nature; natural","てんねん"
+3,"服装","ふくそう","attire; clothes","ふくそう"
+3,"下る","くだ","to go down","くだる"
+3,"悲劇","ひげき","tragedy","ひげき"
+3,"駅員","えきいん","station attendant","えきいん"
+3,"助手","じょしゅ","assistant","じょしゅ"
+3,"せんばつ","","selection","せんばつ"
+3,"無視","むし","disregard; ignore","むし"
+3,"高さ","たか","height","たかさ"
+3,"合併","がっぺい","merger","がっぺい"
+3,"片付ける","かたづ","to tidy up","かたづける"
+3,"距離","きょり","distance","きょり"
+3,"数","かず","number","かず"
+3,"試す","ため","to attempt; to try","ためす"
+3,"幅","はば","width","はば"
+3,"努める","つと","to endeavor","つとめる"
+3,"加わる","くわ","to join in","くわわる"
+3,"中古","ちゅうこ","used; second-hand","ちゅうこ"
+3,"行為","こうい","act; conduct","こうい"
+3,"メール","","email; mail","めーる"
+3,"絵画","かいが","painting","かいが"
+3,"寄付","きふ","donation","きふ"
+3,"生み出す","うだ","to create; to produce","うみだす"
+3,"頃","ころ","time; about","ころ"
+3,"あきらめる","","to give up","あきらめる"
+3,"以内","いない","within","いない"
+3,"博士","はかせ","doctor; expert","はかせ"
+3,"しっかり","","firmly; steadily","しっかり"
+3,"貧乏","びんぼう","poverty","びんぼう"
+3,"章","しょう","chapter","しょう"
+3,"エレベーター","","elevator","えれべーたー"
+3,"かなう","","to come true","かなう"
+3,"減らす","へ","to reduce","へらす"
+3,"前提","ぜんてい","preamble; premise","ぜんてい"
+3,"診断","しんだん","diagnosis","しんだん"
+3,"大陸","たいりく","continent","たいりく"
+3,"偉大","いだい","great","いだい"
+3,"岩","いわ","rock","いわ"
+3,"用途","ようと","use; utility","ようと"
+3,"もう一つ","ひと","another one","もうひとつ"
+3,"詳細","しょうさい","details","しょうさい"
+3,"俺","おれ","I (male)","おれ"
+3,"勤務","きんむ","service; duty","きんむ"
+3,"覆う","おお","to cover","おおう"
+3,"おいしい","","delicious","おいしい"
+3,"付近","ふきん","neighbourhood","ふきん"
+3,"確保","かくほ","securing","かくほ"
+3,"外す","はず","to remove","はずす"
+3,"親切","しんせつ","kindness","しんせつ"
+3,"塔","とう","tower; pagoda","とう"
+3,"帰宅","きたく","returning home","きたく"
+3,"酸素","さんそ","oxygen","さんそ"
+3,"過ごす","す","to pass (time)","すごす"
+3,"有無","うむ","presence or absence","うむ"
+3,"目立つ","めだ","to stand out","めだつ"
+3,"時刻","じこく","time; instant","じこく"
+3,"夏","なつ","summer","なつ"
+3,"アルバム","","album","あるばむ"
+3,"そんなに","","so much","そんなに"
+3,"白","しろ","white","しろ"
+3,"新人","しんじん","new face; rookie","しんじん"
+3,"年生","ねんせい","grader; year student","ねんせい"
+3,"進出","しんしゅつ","advance","しんしゅつ"
+3,"辞典","じてん","dictionary","じてん"
+3,"金曜","きんよう","Friday","きんよう"
+3,"泣く","な","to cry","なく"
+3,"経過","けいか","passage (of time); progress","けいか"
+3,"確立","かくりつ","establishment","かくりつ"
+3,"休憩","きゅうけい","rest; break","きゅうけい"
+3,"すなわち","","that is; namely","すなわち"
+3,"要望","ようぼう","demand; request","ようぼう"
+3,"所得","しょとく","income","しょとく"
+3,"婦人","ふじん","woman","ふじん"
+3,"注射","ちゅうしゃ","injection","ちゅうしゃ"
+3,"お元気で","げんき","take care","おげんきで"
+3,"題名","だいめい","title","だいめい"
+3,"登山","とざん","mountain climbing","とざん"
+3,"枝","えだ","branch","えだ"
+3,"救う","すく","to save","すくう"
+3,"塗る","ぬ","to paint; to spread","ぬる"
+3,"チーム","","team","ちーむ"
+3,"交渉","こうしょう","negotiation","こうしょう"
+3,"昼食","ちゅうしょく","lunch","ちゅうしょく"
+3,"開く","ひら","to open (e.g. book)","ひらく"
+3,"ヨーロッパ","","Europe","よーろっぱ"
+3,"団地","だんち","housing complex","だんち"
+3,"請求","せいきゅう","billing; request","せいきゅう"
+3,"なんじ","","what time","なんじ"
+3,"増大","ぞうだい","enlargement; increase","ぞうだい"
+3,"親子","おやこ","parent and child","おやこ"
+3,"説得","せっとく","persuasion","せっとく"
+3,"個々","ここ","individual","ここ"
+3,"八月","はちがつ","August","はちがつ"
+3,"変化","へんか","change","へんか"
+3,"指","ゆび","finger","ゆび"
+3,"旅","たび","travel","たび"
+3,"貼る","は","to stick; to paste","はる"
+3,"留守番","るすばん","house-sitting","るすばん"
+3,"暴力","ぼうりょく","violence","ぼうりょく"
+3,"乗せる","の","to take on board","のせる"
+3,"国外","こくがい","abroad","こくがい"
+3,"公演","こうえん","public performance","こうえん"
+3,"進行","しんこう","moving forward","しんこう"
+3,"崩壊","ほうかい","collapse","ほうかい"
+3,"理論","りろん","theory","りろん"
+3,"点","てん","point; dot","てん"
+3,"プロ","","professional","ぷろ"
+3,"握る","にぎ","to grasp","にぎる"
+3,"晴れ","は","clear weather","はれ"
+3,"生物","せいぶつ","living thing","せいぶつ"
+3,"方面","ほうめん","direction","ほうめん"
+3,"寂しい","さび","lonely","さびしい"
+3,"反応","はんのう","reaction","はんのう"
+3,"飛び出す","とだ","to jump out","とびだす"
+3,"宣伝","せんでん","publicity","せんでん"
+3,"伝わる","つた","to be handed down; to be transmitted","つたわる"
+3,"知り合う","しあ","to get to know","しりあう"
+3,"白人","はくじん","white person","はくじん"
+3,"支出","ししゅつ","expenditure","ししゅつ"
+3,"墓","はか","grave","はか"
+3,"感想","かんそう","impression","かんそう"
+3,"作文","さくぶん","writing; composition","さくぶん"
+3,"平和","へいわ","peace","へいわ"
+3,"当然","とうぜん","natural; matter of course","とうぜん"
+3,"若者","わかもの","young people","わかもの"
+3,"強調","きょうちょう","emphasis","きょうちょう"
+3,"派遣","はけん","dispatch","はけん"
+3,"高等","こうとう","high class","こうとう"
+3,"苦しい","くる","painful; difficult","くるしい"
+3,"皮膚","ひふ","skin","ひふ"
+3,"ご飯","はん","cooked rice; meal","ごはん"
+3,"光る","ひか","to shine","ひかる"
+3,"週間","しゅうかん","week; weekly","しゅうかん"
+3,"恋愛","れんあい","love","れんあい"
+3,"竹","たけ","bamboo","たけ"
+3,"トラック","","truck; track","とらっく"
+3,"納得","なっとく","consent; understanding","なっとく"
+3,"消防","しょうぼう","fire fighting","しょうぼう"
+3,"花見","はなみ","cherry blossom viewing","はなみ"
+3,"撮る","と","to take (photo)","とる"
+3,"欠点","けってん","fault; defect","けってん"
+3,"願い","ねが","desire; wish","ねがい"
+3,"指摘","してき","pointing out","してき"
+3,"ケース","","case","けーす"
+3,"鋭い","するど","sharp","するどい"
+3,"石","いし","stone","いし"
+3,"肉体","にくたい","body; flesh","にくたい"
+3,"狭い","せま","narrow","せまい"
+3,"指示","しじ","instruction","しじ"
+3,"問い","と","question","とい"
+3,"発足","ほっそく","start; inauguration","ほっそく"
+3,"気付く","きづ","to notice","きづく"
+3,"敬語","けいご","honorific","けいご"
+3,"自己","じこ","self","じこ"
+3,"品物","しなもの","goods","しなもの"
+3,"エンジン","","engine","えんじん"
+3,"反省","はんせい","reflection; introspection","はんせい"
+3,"要因","よういん","main cause","よういん"
+3,"月曜","げつよう","Monday","げつよう"
+3,"復活","ふっかつ","revival","ふっかつ"
+3,"丸い","まる","round","まるい"
+3,"個性","こせい","individuality","こせい"
+3,"事務所","じむしょ","office","じむしょ"
+3,"正常","せいじょう","normalcy","せいじょう"
+3,"砂漠","さばく","desert","さばく"
+3,"お","","polite prefix","お"
+3,"能力","のうりょく","ability","のうりょく"
+3,"眠る","ねむ","to sleep","ねむる"
+3,"取材","しゅざい","news coverage","しゅざい"
+3,"島","しま","island","しま"
+3,"多分","たぶん","perhaps","たぶん"
+3,"月日","つきひ","time; days","つきひ"
+3,"充実","じゅうじつ","fullness; completion","じゅうじつ"
+3,"野","の","plain; field","の"
+3,"閉まる","し","to close","しまる"
+3,"判決","はんけつ","judgment","はんけつ"
+3,"かつて","","once; formerly","かつて"
+3,"証拠","しょうこ","evidence","しょうこ"
+3,"学科","がっか","subject; department","がっか"
+3,"台","だい","stand; counter for machines","だい"
+3,"詩人","しじん","poet","しじん"
+3,"接する","せっ","to touch; to contact","せっする"
+3,"挑戦","ちょうせん","challenge","ちょうせん"
+3,"革命","かくめい","revolution","かくめい"
+3,"演説","えんぜつ","speech","えんぜつ"
+3,"スイッチ","","switch","すいっち"
+3,"何で","なん","why; what for","なんで"
+3,"代金","だいきん","price; payment","だいきん"
+3,"棄権","きけん","abstention","きけん"
+3,"主催","しゅさい","sponsorship","しゅさい"
+3,"橋","はし","bridge","はし"
+3,"書物","しょもつ","books","しょもつ"
+3,"商店","しょうてん","shop","しょうてん"
+3,"その","","that","その"
+3,"座席","ざせき","seat","ざせき"
+3,"課","か","lesson; section","か"
+3,"ように","","in order to","ように"
+3,"卵","たまご","egg","たまご"
+3,"長さ","なが","length","ながさ"
+3,"ことがない","","never","ことがない"
+3,"原料","げんりょう","raw material","げんりょう"
+3,"怒り","いか","anger","いかり"
+3,"邪魔","じゃま","hindrance; intrusion","じゃま"
+3,"本質","ほんしつ","essence","ほんしつ"
+3,"思わず","おも","unintentionally","おもわず"
+3,"ファイル","","file","ふぁいる"
+3,"視点","してん","point of view","してん"
+3,"輸送","ゆそう","transport","ゆそう"
+3,"線路","せんろ","railway track","せんろ"
+3,"単なる","たん","mere; simple","たんなる"
+3,"南西","なんせい","southwest","なんせい"
+3,"席","せき","seat","せき"
+3,"財布","さいふ","wallet","さいふ"
+3,"急激","きゅうげき","sudden","きゅうげき"
+3,"バナナ","","banana","ばなな"
+3,"合意","ごうい","agreement","ごうい"
+3,"煙","けむり","smoke","けむり"
+3,"作戦","さくせん","tactics; strategy","さくせん"
+3,"付属","ふぞく","attached; affiliated","ふぞく"
+3,"乗客","じょうきゃく","passenger","じょうきゃく"
+3,"仕組み","しく","mechanism; structure","しくみ"
+3,"意志","いし","will; volition","いし"
+3,"破壊","はかい","destruction","はかい"
+3,"遺跡","いせき","ruins","いせき"
+3,"北東","ほくとう","northeast","ほくとう"
+3,"細い","ほそ","thin","ほそい"
+3,"蚊","か","mosquito","か"
+3,"ワイン","","wine","わいん"
+3,"格好いい","かっこ","cool; handsome","かっこいい"
+3,"慎重","しんちょう","careful","しんちょう"
+3,"予報","よほう","forecast","よほう"
+3,"能","のう","talent; Noh theatre","のう"
+3,"協議","きょうぎ","conference; consultation","きょうぎ"
+3,"右手","みぎて","right hand","みぎて"
+3,"所属","しょぞく","affiliation","しょぞく"
+3,"総合","そうごう","synthesis; comprehensive","そうごう"
+3,"かかる","","to hang; to take (time/money)","かかる"
+3,"エネルギー","","energy","えねるぎー"
+3,"着く","つ","to arrive","つく"
+3,"科目","かもく","subject (school)","かもく"
+3,"締める","し","to tie; to fasten","しめる"
+3,"決意","けつい","determination","けつい"
+3,"退職","たいしょく","retirement","たいしょく"
+3,"捜査","そうさ","criminal investigation","そうさ"
+3,"棚","たな","shelf","たな"
+3,"それに","","besides","それに"
+3,"入力","にゅうりょく","input","にゅうりょく"
+3,"乾燥","かんそう","drying","かんそう"
+3,"よ","","particle (emphasis)","よ"
+3,"手伝い","てつだ","help","てつだい"
+3,"開放","かいほう","opening","かいほう"
+3,"負う","お","to bear","おう"
+3,"側面","そくめん","side; flank","そくめん"
+3,"農民","のうみん","farmer","のうみん"
+3,"獲得","かくとく","acquisition","かくとく"
+3,"とりあえず","","for now","とりあえず"
+3,"看板","かんばん","signboard","かんばん"
+3,"恐ろしい","おそ","terrible","おそろしい"
+3,"専攻","せんこう","major subject","せんこう"
+3,"次第","しだい","dependent upon; soon","しだい"
+3,"電報","でんぽう","telegram","でんぽう"
+3,"出産","しゅっさん","childbirth","しゅっさん"
+3,"チョコレート","","chocolate","ちょこれーと"
+3,"針","はり","needle","はり"
+3,"無駄","むだ","futility; waste","むだ"
+3,"か","","question particle","か"
+3,"願う","ねが","to wish","ねがう"
+3,"区分","くぶん","division; section","くぶん"
+3,"覚悟","かくご","resolution; resignation","かくご"
+3,"合同","ごうどう","combination; joint","ごうどう"
+3,"勝利","しょうり","victory","しょうり"
+3,"来日","らいにち","visit to Japan","らいにち"
+3,"権力","けんりょく","power; authority","けんりょく"
+3,"出会い","であ","encounter","であい"
+3,"強力","きょうりょく","powerful","きょうりょく"
+3,"悪化","あっか","deterioration","あっか"
+3,"警告","けいこく","warning","けいこく"
+3,"頼る","たよ","to rely on","たよる"
+3,"演出","えんしゅつ","production; direction","えんしゅつ"
+3,"劇","げき","drama; play","げき"
+3,"せい","","consequence; fault","せい"
+3,"王様","おうさま","king","おうさま"
+3,"自慢","じまん","pride; boast","じまん"
+3,"冗談","じょうだん","joke","じょうだん"
+3,"自主","じしゅ","independence","じしゅ"
+3,"独身","どくしん","bachelorhood; single","どくしん"
+3,"防ぐ","ふせ","to prevent","ふせぐ"
+3,"地上","ちじょう","above ground","ちじょう"
+3,"地点","ちてん","site; point","ちてん"
+3,"本日","ほんじつ","today","ほんじつ"
+3,"公立","こうりつ","public (institution)","こうりつ"
+3,"つける","","to attach; to turn on","つける"
+3,"胃","い","stomach","い"
+3,"上級","じょうきゅう","advanced level","じょうきゅう"
+3,"下町","したまち","downtown","したまち"
+3,"体","たい","body; style","たい"
+3,"銀","ぎん","silver","ぎん"
+3,"投げる","な","to throw","なげる"
+3,"一応","いちおう","more or less; tentatively","いちおう"
+3,"移る","うつ","to move; to transfer","うつる"
+3,"動く","うご","to move","うごく"
+3,"トップ","","top","とっぷ"
+3,"街角","まちかど","street corner","まちかど"
+3,"再生","さいせい","regeneration; playback","さいせい"
+3,"禁煙","きんえん","no smoking","きんえん"
+3,"叔父","おじ","uncle","おじ"
+3,"身分","みぶん","social status","みぶん"
+3,"トマト","","tomato","とまと"
+3,"廃止","はいし","abolition","はいし"
+3,"食堂","しょくどう","cafeteria","しょくどう"
+3,"映像","えいぞう","image; video","えいぞう"
+3,"にくい","","hard to do","にくい"
+3,"素敵","すてき","lovely; nice","すてき"
+3,"境","さかい","border","さかい"
+3,"奨学金","しょうがくきん","scholarship","しょうがくきん"
+3,"何と","なん","how; what","なんと"
+3,"措置","そち","measure","そち"
+3,"政党","せいとう","political party","せいとう"
+3,"観測","かんそく","observation","かんそく"
+3,"木曜","もくよう","Thursday","もくよう"
+3,"定める","さだ","to decide","さだめる"
+3,"生まれ","う","birth","うまれ"
+3,"開く","あ","to open","あく"
+3,"高める","たか","to raise; to boost","たかめる"
+3,"予備","よび","preparation; reserve","よび"
+3,"退院","たいいん","discharge from hospital","たいいん"
+3,"株式","かぶしき","stock; share","かぶしき"
+3,"改造","かいぞう","remodeling","かいぞう"
+3,"天候","てんこう","weather","てんこう"
+3,"演技","えんぎ","acting","えんぎ"
+3,"効率","こうりつ","efficiency","こうりつ"
+3,"改める","あらた","to change; to reform","あらためる"
+3,"葉","は","leaf","は"
+3,"運命","うんめい","fate","うんめい"
+3,"暑い","あつ","hot (weather)","あつい"
+3,"それから","","and then","それから"
+3,"マフラー","","muffler; scarf","まふらー"
+3,"衛星","えいせい","satellite","えいせい"
+3,"収穫","しゅうかく","harvest","しゅうかく"
+3,"工学","こうがく","engineering","こうがく"
+3,"セット","","set","せっと"
+3,"っぱなし","","leaving something in a state","っぱなし"
+3,"大国","たいこく","major power","たいこく"
+3,"都","みやこ","capital","みやこ"
+3,"基地","きち","base","きち"
+3,"舌","した","tongue","した"
+3,"削減","さくげん","reduction","さくげん"
+3,"処分","しょぶん","disposal","しょぶん"
+3,"夜明け","よあ","dawn","よあけ"
+3,"復習","ふくしゅう","review","ふくしゅう"
+3,"腕","うで","arm","うで"
+3,"犠牲","ぎせい","sacrifice","ぎせい"
+3,"映る","うつ","to be reflected","うつる"
+3,"配達","はいたつ","delivery","はいたつ"
+3,"記述","きじゅつ","description","きじゅつ"
+3,"幼児","ようじ","infant","ようじ"
+3,"有する","ゆう","to own","ゆうする"
+3,"本当に","ほんとう","really","ほんとうに"
+3,"愛","あい","love","あい"
+3,"日の出","ひで","sunrise","ひので"
+3,"用語","ようご","term; terminology","ようご"
+3,"まあ","","well...","まあ"
+3,"財政","ざいせい","public finance","ざいせい"
+3,"名称","めいしょう","name; title","めいしょう"
+3,"角度","かくど","angle","かくど"
+3,"上司","じょうし","superior; boss","じょうし"
+3,"スタイル","","style","すたいる"
+3,"民主","みんしゅ","democracy","みんしゅ"
+3,"よかったら","","if you like","よかったら"
+3,"役所","やくしょ","government office","やくしょ"
+3,"四季","しき","four seasons","しき"
+3,"東北","とうほく","Tohoku region","とうほく"
+3,"謎","なぞ","mystery; puzzle","なぞ"
+3,"先行","せんこう","preceding","せんこう"
+3,"話し合う","はなあ","to discuss","はなしあう"
+3,"嫌う","きら","to hate","きらう"
+3,"手袋","てぶくろ","gloves","てぶくろ"
+3,"人々","ひとびと","people","ひとびと"
+3,"尋ねる","たず","to ask","たずねる"
+3,"書道","しょどう","calligraphy","しょどう"
+3,"流通","りゅうつう","distribution; circulation","りゅうつう"
+3,"雇用","こよう","employment","こよう"
+3,"心身","しんしん","mind and body","しんしん"
+3,"年金","ねんきん","pension","ねんきん"
+3,"真実","しんじつ","truth","しんじつ"
+3,"天井","てんじょう","ceiling","てんじょう"
+3,"前進","ぜんしん","advance","ぜんしん"
+3,"国連","こくれん","United Nations","こくれん"
+3,"辺り","あた","neighborhood; vicinity","あたり"
+3,"勢力","せいりょく","influence; power","せいりょく"
+3,"公表","こうひょう","official announcement","こうひょう"
+3,"反発","はんぱつ","repulsion; rebellion","はんぱつ"
+3,"さ","","ness (suffix)","さ"
+3,"集まり","あつ","gathering","あつまり"
+3,"冷房","れいぼう","air conditioning","れいぼう"
+3,"基づく","もと","to be based on","もとづく"
+3,"昼休み","ひるやす","lunch break","ひるやすみ"
+3,"北西","ほくせい","northwest","ほくせい"
+3,"行列","ぎょうれつ","line; queue","ぎょうれつ"
+3,"標準","ひょうじゅん","standard","ひょうじゅん"
+3,"うるさい","","noisy","うるさい"
+3,"以降","いこう","on and after","いこう"
+3,"学長","がくちょう","university president","がくちょう"
+3,"冒険","ぼうけん","adventure","ぼうけん"
+3,"残業","ざんぎょう","overtime work","ざんぎょう"
+3,"確定","かくてい","determination; settlement","かくてい"
+3,"濃い","こ","thick; dark","こい"
+3,"限定","げんてい","limitation","げんてい"
+3,"穏やか","おだ","calm; gentle","おだやか"
+3,"例","れい","example","れい"
+3,"南東","なんとう","southeast","なんとう"
+3,"意義","いぎ","meaning; significance","いぎ"
+3,"星","ほし","star","ほし"
+3,"駐車","ちゅうしゃ","parking","ちゅうしゃ"
+3,"風","かぜ","wind","かぜ"
+3,"集合","しゅうごう","gathering","しゅうごう"
+3,"固定","こてい","fixing","こてい"
+3,"予習","よしゅう","preparation for lesson","よしゅう"
+3,"天下","てんか","the world; ruling power","てんか"
+3,"上京","じょうきょう","proceeding to the capital","じょうきょう"
+3,"司会","しかい","master of ceremonies","しかい"
+3,"辺","へん","area; vicinity","へん"
+3,"加入","かにゅう","joining","かにゅう"
+3,"所有","しょゆう","possession","しょゆう"
+3,"丈夫","じょうぶ","strong; durable","じょうぶ"
+3,"友情","ゆうじょう","friendship","ゆうじょう"
+3,"区域","くいき","zone","くいき"
+3,"法則","ほうそく","law; rule","ほうそく"
+3,"ある","","to be; to exist","ある"
+3,"任務","にんむ","duty; task","にんむ"
+3,"焦点","しょうてん","focus","しょうてん"
+3,"見通し","みとお","prospect; outlook","みとおし"
+3,"福祉","ふくし","welfare","ふくし"
+3,"題","だい","title; subject","だい"
+3,"梅","うめ","plum","うめ"
+3,"縮小","しゅくしょう","reduction","しゅくしょう"
+3,"フォーク","","fork","ふぉーく"
+3,"草","くさ","grass","くさ"
+3,"なくす","","to lose","なくす"
+3,"確率","かくりつ","probability","かくりつ"
+3,"さんがつ","","March","さんがつ"
+3,"収集","しゅうしゅう","gathering","しゅうしゅう"
+3,"入手","にゅうしゅ","acquisition","にゅうしゅ"
+3,"徹底","てってい","thoroughness","てってい"
+3,"外科","げか","surgery","げか"
+3,"親戚","しんせき","relative","しんせき"
+3,"政権","せいけん","political power","せいけん"
+3,"要請","ようせい","request","ようせい"
+3,"教え","おし","teaching","おしえ"
+3,"横断","おうだん","crossing","おうだん"
+3,"集会","しゅうかい","meeting","しゅうかい"
+3,"専門","せんもん","specialty","せんもん"
+3,"僕","ぼく","I (male)","ぼく"
+3,"泉","いずみ","spring; fountain","いずみ"
+3,"文","ぶん","sentence","ぶん"
+3,"引く","ひ","to pull","ひく"
+3,"神","かみ","god","かみ"
+3,"応用","おうよう","application","おうよう"
+3,"伝説","でんせつ","legend","でんせつ"
+3,"統計","とうけい","statistics","とうけい"
+3,"積む","つ","to stack","つむ"
+3,"開会","かいかい","opening of a meeting","かいかい"
+3,"日光","にっこう","sunlight","にっこう"
+3,"実用","じつよう","practical use","じつよう"
+3,"恐れ","おそ","fear","おそれ"
+3,"情熱","じょうねつ","passion","じょうねつ"
+3,"地区","ちく","district","ちく"
+3,"署名","しょめい","signature","しょめい"
+3,"あの","","that","あの"
+3,"夫妻","ふさい","husband and wife","ふさい"
+3,"前日","ぜんじつ","previous day","ぜんじつ"
+3,"応じる","おう","to respond","おうじる"
+3,"筆","ふで","writing brush","ふで"
+3,"削除","さくじょ","deletion","さくじょ"
+3,"先に","さき","before; ahead","さきに"
+3,"失業","しつぎょう","unemployment","しつぎょう"
+3,"満たす","み","to satisfy; to fill","みたす"
+3,"飛ばす","と","to fly (something)","とばす"
+3,"寿命","じゅみょう","life span","じゅみょう"
+3,"国道","こくどう","national highway","こくどう"
+3,"日々","ひび","days; daily","ひび"
+3,"災害","さいがい","disaster","さいがい"
+3,"休業","きゅうぎょう","suspension of business","きゅうぎょう"
+3,"やがて","","before long","やがて"
+3,"純粋","じゅんすい","pure","じゅんすい"
+3,"学期","がっき","semester","がっき"
+3,"角","かど","corner","かど"
+3,"重量","じゅうりょう","weight","じゅうりょう"
+3,"火災","かさい","fire","かさい"
+3,"割る","わ","to divide; to break","わる"
+3,"動向","どうこう","trend","どうこう"
+3,"市内","しない","within the city","しない"
+3,"前回","ぜんかい","last time","ぜんかい"
+3,"先","さき","ahead; previous","さき"
+3,"分解","ぶんかい","disassembly","ぶんかい"
+3,"芝居","しばい","play; drama","しばい"
+3,"領域","りょういき","area; domain","りょういき"
+3,"刀","かたな","sword","かたな"
+3,"きっと","","surely","きっと"
+3,"先端","せんたん","tip; leading edge","せんたん"
+3,"布団","ふとん","futon","ふとん"
+3,"湾","わん","bay","わん"
+3,"真っ赤","まか","deep red","まっか"
+3,"プラス","","plus","ぷらす"
+3,"知り合い","しあ","acquaintance","しりあい"
+3,"質","しつ","quality","しつ"
+3,"鳴る","な","to ring","なる"
+3,"粉","こな","powder; flour","こな"
+3,"システム","","system","しすてむ"
+3,"アルコール","","alcohol","あるこーる"
+3,"誤り","あやま","mistake","あやまり"
+3,"たる","","to be worth; to be sufficient","たる"
+3,"臨時","りんじ","temporary","りんじ"
+3,"テキスト","","textbook","てきすと"
+3,"ダンス","","dance","だんす"
+3,"預ける","あず","to deposit","あずける"
+3,"我慢","がまん","patience","がまん"
+3,"世","よ","world; society","よ"
+3,"制定","せいてい","enactment","せいてい"
+3,"矛盾","むじゅん","contradiction","むじゅん"
+3,"建つ","た","to be built","たつ"
+3,"活発","かっぱつ","active; lively","かっぱつ"
+3,"いじめる","","to bully","いじめる"
+3,"暮らす","く","to live","くらす"
+3,"素直","すなお","honest; obedient","すなお"
+3,"一昨年","おととし","year before last","おととし"
+3,"燃料","ねんりょう","fuel","ねんりょう"
+3,"概念","がいねん","concept","がいねん"
+3,"まあまあ","","so-so","まあまあ"
+3,"医師","いし","doctor","いし"
+3,"港","みなと","harbor","みなと"
+3,"発車","はっしゃ","departure","はっしゃ"
+3,"酢","す","vinegar","す"
+3,"地獄","じごく","hell","じごく"
+3,"と","","particle (and)","と"
+3,"万一","まんいち","emergency; unlikely event","まんいち"
+3,"大きさ","おお","size","おおきさ"
+3,"写す","うつ","to copy; to photograph","うつす"
+3,"統合","とうごう","integration","とうごう"
+3,"試み","こころ","trial","こころみ"
+3,"女王","じょおう","queen","じょおう"
+3,"寺","てら","temple","てら"
+3,"子孫","しそん","descendant","しそん"
+3,"商人","しょうにん","merchant","しょうにん"
+3,"倉庫","そうこ","warehouse","そうこ"
+3,"争い","あらそ","dispute","あらそい"
+3,"毎晩","まいばん","every night","まいばん"
+3,"用","よう","business; task","よう"
+3,"延期","えんき","postponement","えんき"
+3,"人数","にんずう","number of people","にんずう"
+3,"暇","ひま","free time","ひま"
+3,"教員","きょういん","teacher","きょういん"
+3,"機構","きこう","mechanism; organization","きこう"
+3,"当初","とうしょ","beginning","とうしょ"
+3,"多様","たよう","diverse","たよう"
+3,"強盗","ごうとう","robbery","ごうとう"
+3,"松","まつ","pine tree","まつ"
+3,"上がり","あ","rise; finish","あがり"
+3,"結成","けっせい","formation","けっせい"
+3,"地帯","ちたい","zone; area","ちたい"
+3,"思考","しこう","thought","しこう"
+3,"戦後","せんご","postwar","せんご"
+3,"渋滞","じゅうたい","traffic jam","じゅうたい"
+3,"水中","すいちゅう","underwater","すいちゅう"
+3,"貨物","かもつ","cargo","かもつ"
+3,"実に","じつ","indeed","じつに"
+3,"管","かん","pipe","かん"
+3,"参る","まい","to go/come (humble)","まいる"
+3,"嫁","よめ","bride","よめ"
+3,"肯定","こうてい","affirmation","こうてい"
+3,"鍵","かぎ","key","かぎ"
+3,"配置","はいち","arrangement","はいち"
+3,"拒否","きょひ","refusal","きょひ"
+3,"婚約","こんやく","engagement","こんやく"
+3,"交際","こうさい","company; dating","こうさい"
+3,"高価","こうか","high price","こうか"
+3,"日付","ひづけ","date","ひづけ"
+3,"新鮮","しんせん","fresh","しんせん"
+3,"役目","やくめ","duty","やくめ"
+3,"異なる","こと","to differ","ことなる"
+3,"土木","どぼく","civil engineering","どぼく"
+3,"定年","ていねい","retirement age","ていねん"
+3,"出品","しゅっぴん","exhibit","しゅっぴん"
+3,"品質","ひんしつ","quality","ひんしつ"
+3,"仲間","なかま","comrade","なかま"
+3,"レベル","","level","れべる"
+3,"昭和","しょうわ","Showa era","しょうわ"
+3,"理科","りか","science","りか"
+3,"幹部","かんぶ","executive","かんぶ"
+3,"太る","ふと","to gain weight","ふとる"
+3,"降る","ふ","to precipitate","ふる"
+3,"頂上","ちょうじょう","top; summit","ちょうじょう"
+3,"続く","つづ","to continue","つづく"
+3,"サイン","","signature; sign","さいん"
+3,"腰","こし","waist","こし"
+3,"王子","おうじ","prince","おうじ"
+3,"旗","はた","flag","はた"
+3,"知的","ちてき","intellectual","ちてき"
+3,"指揮","しき","command","しき"
+3,"条約","じょうやく","treaty","じょうやく"
+3,"生存","せいぞん","survival","せいぞん"
+3,"ごめんなさい","","I am sorry","ごめんなさい"
+3,"顔","かお","face","かお"
+3,"硬い","かた","hard","かたい"
+3,"やっと","","at last","やっと"
+3,"モデル","","model","もでる"
+3,"隅","すみ","corner","すみ"
+3,"連合","れんごう","union","れんごう"
+3,"定義","ていぎ","definition","ていぎ"
+3,"上着","うわぎ","jacket","うわぎ"
+3,"美術","びじゅつ","art","びじゅつ"
+3,"大正","たいしょう","Taisho era","たいしょう"
+3,"得る","え","to obtain","える"
+3,"高級","こうきゅう","high class","こうきゅう"
+3,"田舎","いなか","countryside","いなか"
+3,"よく","","often; well","よく"
+3,"回","かい","times; counter for occurrences","かい"
+3,"膝","ひざ","knee","ひざ"
+3,"道徳","どうとく","morals","どうとく"
+3,"多数","たすう","majority","たすう"
+3,"収める","おさ","to pay; to store","おさめる"
+3,"大型","おおがた","large scale","おおがた"
+3,"生る","な","to bear fruit","なる"
+3,"役者","やくしゃ","actor","やくしゃ"
+3,"椅子","いす","chair","いす"
+3,"光景","こうけい","scene","こうけい"
+3,"不利","ふり","disadvantage","ふり"
+3,"優先","ゆうせん","priority","ゆうせん"
+3,"涼しい","すず","cool (weather)","すずしい"
+3,"男女","だんじょ","men and women","だんじょ"
+3,"本体","ほんたい","main body","ほんたい"
+3,"写る","うつ","to be photographed","うつる"
+3,"粒","つぶ","grain","つぶ"
+3,"保健","ほけん","health preservation","ほけん"
+3,"成分","せいぶん","ingredient","せいぶん"
+3,"売店","ばいてん","stand; shop","ばいてん"
+3,"手入れ","てい","care; maintenance","ていれ"
+3,"赤","あか","red","あか"
+3,"明治","めいじ","Meiji era","めいじ"
+3,"大工","だいく","carpenter","だいく"
+3,"向き","む","direction","むき"
+3,"睡眠","すいみん","sleep","すいみん"
+3,"及ぶ","およ","to reach","およぶ"
+3,"朝日","あさひ","morning sun","あさひ"
+3,"本国","ほんごく","home country","ほんごく"
+3,"非難","ひなん","criticism","ひなん"
+3,"圧力","あつりょく","pressure","あつりょく"
+3,"手前","てまえ","before; this side","てまえ"
+3,"進む","すす","to advance","すすむ"
+3,"要する","よう","to require","ようする"
+3,"蹴る","け","to kick","ける"
+3,"平野","へいや","plain","へいや"
+3,"お菓子","かし","sweets","おかし"
+3,"差","さ","difference","さ"
+3,"発想","はっそう","idea; conception","はっそう"
+3,"曇り","くも","cloudiness","くもり"
+3,"境界","きょうかい","boundary","きょうかい"
+3,"決勝","けっしょう","finals","けっしょう"
+3,"独自","どくじ","original; unique","どくじ"
+3,"携帯","けいたい","mobile phone","けいたい"
+3,"職場","しょくば","workplace","しょくば"
+3,"小鳥","ことり","small bird","ことり"
+3,"家屋","かおく","house","かおく"
+3,"配る","くば","to distribute","くばる"
+3,"広まる","ひろ","to spread","ひろまる"
+3,"組","くみ","class; group","くみ"
+3,"名物","めいぶつ","famous product","めいぶつ"
+3,"水曜","すいよう","Wednesday","すいよう"
+3,"経る","へ","to pass; to go through","へる"
+3,"参照","さんしょう","reference","さんしょう"
+3,"課程","かてい","course; curriculum","かてい"
+3,"短期","たんき","short term","たんき"
+3,"月末","げつまつ","end of the month","げつまつ"
+3,"測る","はか","to measure","はかる"
+3,"伺う","うかが","to visit; to ask (humble)","うかがう"
+3,"全然","ぜんぜん","not at all","ぜんぜん"
+3,"それで","","so; therefore","それで"
+3,"主題","しゅだい","subject","しゅだい"
+3,"嵐","あらし","storm","あらし"
+3,"見直す","みなお","to re-evaluate","みなおす"
+3,"論理","ろんり","logic","ろんり"
+3,"改良","かいりょう","improvement","かいりょう"
+3,"批評","ひひょう","criticism","ひひょう"
+3,"週末","しゅうまつ","weekend","しゅうまつ"
+3,"本文","ほんぶん","text; body","ほんぶん"
+3,"祝日","しゅくじつ","national holiday","しゅくじつ"
+3,"当選","とうせん","being elected","とうせん"
+3,"引っ張る","ひぱ","to pull","ひっぱる"
+3,"工作","こうさく","handicraft","こうさく"
+3,"特集","とくしゅう","special feature","とくしゅう"
+3,"あれ","","that","あれ"
+3,"火曜","かよう","Tuesday","かよう"
+3,"東京","とうきょう","Tokyo","とうきょう"
+3,"奇妙","きみょう","strange","きみょう"
+3,"比率","ひりつ","ratio","ひりつ"
+3,"機関","きかん","engine; organization","きかん"
+3,"応募","おうぼ","application","おうぼ"
+3,"毛","け","hair; fur","け"
+3,"かもしれない","","may; might","かもしれない"
+3,"実態","じったい","reality","じったい"
+3,"会見","かいけん","interview","かいけん"
+3,"根拠","こんきょ","basis","こんきょ"
+3,"眠い","ねむ","sleepy","ねむい"
+3,"制服","せいふく","uniform","せいふく"
+3,"苦痛","くつう","pain","くつう"
+3,"裸","はだか","naked","はだか"
+3,"目標","もくひょう","goal","もくひょう"
+3,"昨夜","ゆうべ","last night","ゆうべ"
+3,"表紙","ひょうし","cover (book)","ひょうし"
+3,"記入","きにゅう","entry; filling in","きにゅう"
+3,"典型","てんけい","type; pattern","てんけい"
+3,"支援","しえん","support","しえん"
+3,"業績","ぎょうせき","achievement","ぎょうせき"
+3,"部門","ぶもん","division","ぶもん"
+3,"飼う","か","to keep (pet)","かう"
+3,"事前","じぜん","prior","じぜん"
+3,"際","さい","occasion","さい"
+3,"貢献","こうけん","contribution","こうけん"
+3,"分離","ぶんり","separation","ぶんり"
+3,"不自由","ふじゆう","discomfort; disability","ふじゆう"
+3,"髪の毛","かみけ","hair","かみのけ"
+3,"店","みせ","shop","みせ"
+3,"熱帯","ねったい","tropics","ねったい"
+3,"半島","はんとう","peninsula","はんとう"
+3,"襲う","おそ","to attack","おそう"
+3,"鬼","おに","demon","おに"
+3,"死者","ししゃ","the dead","ししゃ"
+3,"娯楽","ごらく","entertainment","ごらく"
+3,"十日","とおか","10th day","とおか"
+3,"掲載","けいさい","publication","けいさい"
+3,"サービス","","service","さーびす"
+3,"育児","いくじ","childcare","いくじ"
+3,"大使館","たいしかん","embassy","たいしかん"
+3,"目指す","めざ","to aim at","めざす"
+3,"自治","じち","autonomy","じち"
+3,"不可","ふか","wrong; bad","ふか"
+3,"贈り物","おくもの","gift","おくりもの"
+3,"まさに","","exactly","まさに"
+3,"出来事","できごと","incident","できごと"
+3,"停車","ていしゃ","stopping (vehicle)","ていしゃ"
+3,"救助","きゅうじょ","relief; aid","きゅうじょ"
+3,"ぶつける","","to bump","ぶつける"
+3,"金銭","きんせん","money","きんせん"
+3,"関西","かんさい","Kansai region","かんさい"
+3,"全般","ぜんぱん","overall; general","ぜんぱん"
+3,"再会","さいかい","reunion","さいかい"
+3,"知恵","ちえ","wisdom","ちえ"
+3,"永久","えいきゅう","eternity","えいきゅう"
+3,"にもかかわらず","","in spite of","にもかかわらず"
+3,"広さ","ひろ","width; area","ひろさ"
+3,"悪魔","あくま","devil","あくま"
+3,"性別","せいべつ","gender","せいべつ"
+3,"ねずみ","","mouse","ねずみ"
+3,"済む","す","to finish","すむ"
+3,"九月","くがつ","September","くがつ"
+3,"審議","しんぎ","deliberation","しんぎ"
+3,"騒ぐ","さわ","to make noise","さわぐ"
+3,"年下","としした","younger","としした"
+3,"強制","きょうせい","compulsion","きょうせい"
+3,"回収","かいしゅう","collection","かいしゅう"
+3,"将棋","しょうぎ","shogi","しょうぎ"
+3,"感じる","かん","to feel","かんじる"
+3,"空き","あ","vacancy","あき"
+3,"双子","ふたご","twins","ふたご"
+3,"食","しょく","meal; food","しょく"
+3,"職人","しょくにん","craftsman","しょくにん"
+3,"段階","だんかい","stage","だんかい"
+3,"乗車","じょうしゃ","boarding a train","じょうしゃ"
+3,"改めて","あらた","another time; again","あらためて"
+3,"運送","うんそう","shipping","うんそう"
+3,"宝石","ほうせき","gem","ほうせき"
+3,"作","さく","work (of art)","さく"
+3,"ただし","","however","ただし"
+3,"判定","はんてい","judgement","はんてい"
+3,"該当","がいとう","corresponding","がいとう"
+3,"系統","けいとう","system; lineage","けいとう"
+3,"容器","ようき","container","ようき"
+3,"対話","たいわ","dialogue","たいわ"
+3,"妊娠","にんしん","pregnancy","にんしん"
+3,"体系","たいけい","system","たいけい"
+3,"語","ご","language; word","ご"
+3,"巣","す","nest","す"
+3,"儀式","ぎしき","ceremony","ぎしき"
+3,"竜","りゅう","dragon","りゅう"
+3,"どの","","which","どの"
+3,"豪華","ごうか","luxury","ごうか"
+3,"大抵","たいてい","usually","たいてい"
+3,"象徴","しょうちょう","symbol","しょうちょう"
+3,"内側","うちがわ","inside","うちがわ"
+3,"ちょうど","","exactly","ちょうど"
+3,"言い方","いかた","way of speaking","いいかた"
+3,"力強い","ちからづよ","powerful","ちからづよい"
+3,"推定","すいてい","presumption","すいてい"
+3,"温暖","おんだん","warm","おんだん"
+3,"接近","せっきん","approach","せっきん"
+3,"軍事","ぐんじ","military affairs","ぐんじ"
+3,"兵士","へいし","soldier","へいし"
+3,"入り","い","entering","いり"
+3,"宣言","せんげん","declaration","せんげん"
+3,"経つ","た","to pass (time)","たつ"
+3,"休暇","きゅうか","holiday","きゅうか"
+3,"経費","けいひ","expenses","けいひ"
+3,"照明","しょうめい","lighting","しょうめい"
+3,"都内","とない","within Tokyo","とない"
+3,"基盤","きばん","foundation","きばん"
+3,"ない","","non-existent","ない"
+3,"運賃","うんちん","fare","うんちん"
+3,"幸い","さいわ","happiness","さいわい"
+3,"権限","けんげん","authority","けんげん"
+3,"命","いのち","life","いのち"
+3,"専用","せんよう","exclusive use","せんよう"
+3,"何しろ","なに","at any rate","なにしろ"
+3,"相撲","すもう","sumo","すもう"
+3,"促進","そくしん","promotion","そくしん"
+3,"たま","","ball; sphere","たま"
+3,"夕刊","ゆうかん","evening paper","ゆうかん"
+3,"住居","すまい","dwelling","すまい"
+3,"ええっと","","let me see","ええっと"
+3,"栽培","さいばい","cultivation","さいばい"
+3,"枠","わく","frame","わく"
+3,"およそ","","about; roughly","およそ"
+3,"大げさ","おお","exaggerated","おおげさ"
+3,"一行","いちぎょう","one line","いちぎょう"
+3,"技師","ぎし","engineer","ぎし"
+3,"意欲","いよく","will; desire","いよく"
+3,"券","けん","ticket","けん"
+3,"若干","じゃっかん","somewhat","じゃっかん"
+3,"編む","あ","to knit","あむ"
+3,"支払い","しはら","payment","しはらい"
+3,"素材","そざい","material","そざい"
+3,"業務","ぎょうむ","business","ぎょうむ"
+3,"具体的","ぐたいてき","concrete","ぐたいてき"
+3,"別々","べつべつ","separately","べつべつ"
+3,"開ける","あ","to open","あける"
+3,"かける","","to hang; to put on","かける"
+3,"翌年","よくねん","following year","よくねん"
+3,"国名","こくめい","country name","こくめい"
+3,"穴","あな","hole","あな"
+3,"妻","つま","wife","つま"
+3,"石炭","せきたん","coal","せきたん"
+3,"汽車","きしゃ","train (steam)","きしゃ"
+3,"損","そん","loss","そん"
+3,"行","ぎょう","line (text)","ぎょう"
+3,"通訳","つうやく","interpretation","つうやく"
+3,"まず","","first of all","まず"
+3,"毒","どく","poison","どく"
+3,"はし","","chopsticks","はし"
+3,"たとえ","","even if","たとえ"
+3,"霧","きり","fog","きり"
+3,"飯","めし","meal; boiled rice","めし"
+3,"派手","はで","showy","はで"
+3,"補助","ほじょ","assistance","ほじょ"
+3,"岸","きし","bank; coast","きし"
+3,"芽","め","sprout","め"
+3,"相変わらず","あいか","as usual","あいかわらず"
+3,"真理","しんり","truth","しんり"
+3,"深夜","しんや","late at night","しんや"
+3,"展示","てんじ","exhibition","てんじ"
+3,"当たり前","あまえ","natural; reasonable","あたりまえ"
+3,"今晩","こんばん","tonight","こんばん"
+3,"申し上げる","もうあ","to say (humble)","もうしあげる"
+3,"消化","しょうか","digestion","しょうか"
+3,"宝","たから","treasure","たから"
+3,"続き","つづ","continuation","つづき"
+3,"目安","めやす","criterion; standard","めやす"
+3,"無限","むげん","infinite","むげん"
+3,"市役所","しやくしょ","city hall","しやくしょ"
+3,"大雨","おおあめ","heavy rain","おおあめ"
+3,"論争","ろんそう","controversy","ろんそう"
+3,"暖房","だんぼう","heating","だんぼう"
+3,"取引","とりひき","transaction","とりひき"
+3,"重力","じゅうりょく","gravity","じゅうりょく"
+3,"妙","みょう","strange","みょう"
+3,"紅葉","こうよう","autumn colors","こうよう"
+3,"一流","いちりゅう","first class","いちりゅう"
+3,"誇り","ほこ","pride","ほこり"
+3,"ビデオ","","video","びでお"
+3,"十月","じゅうがつ","October","じゅうがつ"
+3,"思い出す","おもだ","to recall","おもいだす"
+3,"汗","あせ","sweat","あせ"
+3,"人格","じんかく","personality","じんかく"
+3,"逆","ぎゃく","reverse","ぎゃく"
+3,"果たして","は","really; as expected","はたして"
+3,"明かり","あ","light","あかり"
+3,"戦う","たたか","to fight","たたかう"
+3,"塊","かたまり","lump","かたまり"
+3,"初期","しょき","initial stage","しょき"
+3,"役","やく","role","やく"
+3,"折る","お","to break; to fold","おる"
+3,"骨","ほね","bone","ほね"
+3,"何より","なに","more than anything","なにより"
+3,"奥様","おくさま","wife (polite)","おくさま"
+3,"糸","いと","thread","いと"
+3,"匂い","にお","scent; smell","におい"
+3,"体","からだ","body","からだ"
+3,"発","はつ","departure","はつ"
+3,"いる","","to be (living)","いる"
+3,"真剣","しんけん","serious","しんけん"
+3,"両手","りょうて","both hands","りょうて"
+3,"至る","いた","to reach","いたる"
+3,"防衛","ぼうえい","defense","ぼうえい"
+3,"くらい","","approximately","くらい"
+3,"筒","つつ","pipe; tube","つつ"
+3,"意向","いこう","intention","いこう"
+3,"今すぐ","いま","right now","いますぐ"
+3,"巡る","めぐ","to go around","めぐる"
+3,"見つめる","み","to stare at","みつめる"
+3,"釣る","つ","to fish","つる"
+3,"人材","じんざい","human resources","じんざい"
+3,"撃つ","う","to shoot","うつ"
+3,"生地","きじ","cloth; dough","きじ"
+3,"雌","めす","female (animal)","めす"
+3,"波","なみ","wave","なみ"
+3,"めちゃくちゃ","","messy; extreme","めちゃくちゃ"
+3,"空","から","empty","から"
+3,"名字","みょうじ","surname","みょうじ"
+3,"耐える","た","to endure","たえる"
+3,"真っ白","ましろ","pure white","まっしろ"
+3,"電波","でんぱ","radio wave","でんぱ"
+3,"様々","さまざま","various","さまざま"
+3,"遅れ","おく","delay","おくれ"
+3,"所","ところ","place","ところ"
+3,"ずいぶん","","very; extremely","ずいぶん"
+3,"産む","う","to give birth","うむ"
+3,"成り立つ","なた","to consist of","なりたつ"
+3,"引き出し","ひだ","drawer","ひきだし"
+3,"戸","と","door","と"
+3,"締め切り","しき","deadline","しめきり"
+3,"やめる","","to stop","やめる"
+3,"六月","ろくがつ","June","ろくがつ"
+3,"羽根","はね","feather","はね"
+3,"おかず","","side dish","おかず"
+3,"瓶","びん","bottle","びん"
+3,"車両","しゃりょう","vehicle","しゃりょう"
+3,"バラ","","rose","ばら"
+3,"缶詰","かんづめ","canned food","かんづめ"
+3,"しょうゆ","","soy sauce","しょうゆ"
+3,"足元","あしもと","at one's feet","あしもと"
+3,"もともと","","originally","もともと"
+3,"止まる","と","to stop","とまる"
+3,"四月","しがつ","April","しがつ"
+3,"受付","うけつけ","reception","うけつけ"
+3,"はがき","","postcard","はがき"
+3,"それでは","","well then","それでは"
+3,"あー","","ah","あー"
+3,"無駄遣い","むだづか","waste (of money)","むだづかい"
+3,"小川","おがわ","brook","おがわ"
+3,"一ヶ月","いっかげつ","one month","いっかげつ"
