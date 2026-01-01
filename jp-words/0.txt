@@ -1,0 +1,30 @@
+level,kanji,furigana,definition,kana
+0,二,に,two,に
+0,三,さん,three,さん
+0,四,よん,four,よん
+0,五,ご,five,ご
+0,六,ろく,six,ろく
+0,七,しち,seven,しち
+0,八,はち,eight,はち
+0,九,きゅう,nine,きゅう
+0,十,じゅう,ten,じゅう
+0,千,せん,thousand,せん
+0,一つ,ひと,one (object),ひとつ
+0,二つ,ふた,two (objects),ふたつ
+0,三つ,みっ,three (objects),みっつ
+0,四つ,よっ,four (objects),よっつ
+0,五つ,いつ,five (objects),いつつ
+0,七つ,なな,seven (objects),ななつ
+0,一度,いちど,once,いちど
+0,月曜日,げつようび,Monday,げつようび
+0,火曜日,かようび,Tuesday,かようび
+0,水曜日,すいようび,Wednesday,すいようび
+0,木曜日,もくようび,Thursday,もくようび
+0,金曜日,きんようび,Friday,きんようび
+0,土曜日,どようび,Saturday,どようび
+0,毎週,まいしゅう,every week,まいしゅう
+0,先月,せんげつ,last month,せんげつ
+0,今月,こんげつ,this month,こんげつ
+0,来月,らいげつ,next month,らいげつ
+0,毎月,まいつき,every month,まいつき
+0,毎年,まいとし,every year,まいとし

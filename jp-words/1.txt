@@ -1,500 +1,468 @@
 level,kanji,furigana,definition,kana
-1,"時間","じかん","time","じかん"
-1,"一つ","ひと","one (object)","ひとつ"
-1,"国","くに","country","くに"
-1,"出す","だ","to take out / to submit","だす"
-1,"外国","がいこく","foreign country","がいこく"
-1,"大人","おとな","adult","おとな"
-1,"二つ","ふた","two (objects)","ふたつ"
-1,"見える","み","to be visible","みえる"
-1,"出る","で","to go out / to exit","でる"
-1,"から","","from / because","から"
-1,"小学校","しょうがっこう","elementary school","しょうがっこう"
-1,"後ろ","うし","behind / back","うしろ"
-1,"三つ","みっ","three (objects)","みっつ"
-1,"天気","てんき","weather","てんき"
-1,"白い","しろ","white","しろい"
-1,"みんな","","everyone","みんな"
-1,"言う","い","to say","いう"
-1,"川","かわ","river","かわ"
-1,"ちょっと","","a little","ちょっと"
-1,"男の子","おとここ","boy","おとこのこ"
-1,"自分","じぶん","myself","じぶん"
-1,"会社","かいしゃ","company","かいしゃ"
-1,"仕事","しごと","work / job","しごと"
-1,"作る","つく","to make","つくる"
-1,"少し","すこ","a little / few","すこし"
-1,"口","くち","mouth","くち"
-1,"いつ","","when","いつ"
-1,"四つ","よっ","four (objects)","よっつ"
-1,"見つかる","み","to be found","みつかる"
-1,"歌","うた","song","うた"
-1,"広い","ひろ","wide / spacious","ひろい"
-1,"学校","がっこう","school","がっこう"
-1,"大学","だいがく","university","だいがく"
-1,"思う","おも","to think","おもう"
-1,"あまり","","not very","あまり"
-1,"名前","なまえ","name","なまえ"
-1,"社会","しゃかい","society","しゃかい"
-1,"電話","でんわ","telephone","でんわ"
-1,"お母さん","かあ","mother (polite)","おかあさん"
-1,"六","ろく","six","ろく"
-1,"走る","はし","to run","はしる"
-1,"言葉","ことば","word / language","ことば"
-1,"この","","this","この"
-1,"午後","ごご","afternoon / PM","ごご"
-1,"音","おと","sound","おと"
-1,"元気","げんき","healthy / energetic","げんき"
-1,"売る","う","to sell","うる"
-1,"見せる","み","to show","みせる"
-1,"電車","でんしゃ","train","でんしゃ"
-1,"毎日","まいにち","every day","まいにち"
-1,"研究","けんきゅう","research","けんきゅう"
-1,"呼ぶ","よ","to call","よぶ"
-1,"左","ひだり","left","ひだり"
-1,"地図","ちず","map","ちず"
-1,"大きい","おお","big","おおきい"
-1,"お父さん","とう","father (polite)","おとうさん"
-1,"送る","おく","to send","おくる"
-1,"少ない","すく","few / scarce","すくない"
-1,"木","き","tree","き"
-1,"一人","ひとり","one person / alone","ひとり"
-1,"どこ","","where","どこ"
-1,"考える","かんが","to think / to consider","かんがえる"
-1,"社長","しゃちょう","company president","しゃちょう"
-1,"二人","ふたり","two people","ふたり"
-1,"百","ひゃく","hundred","ひゃく"
-1,"の","","of (possessive particle)","の"
-1,"外","そと","outside","そと"
-1,"半分","はんぶん","half","はんぶん"
-1,"に","","to / at (particle)","に"
-1,"は","","topic marker (particle)","は"
-1,"山","やま","mountain","やま"
-1,"工場","こうじょう","factory","こうじょう"
-1,"五つ","いつ","five (objects)","いつつ"
-1,"集める","あつ","to collect","あつめる"
-1,"近い","ちか","near","ちかい"
-1,"場所","ばしょ","place","ばしょ"
-1,"気","き","spirit / mood","き"
-1,"女の子","おんなこ","girl","おんなのこ"
-1,"全部","ぜんぶ","all","ぜんぶ"
-1,"両親","りょうしん","parents","りょうしん"
-1,"雪","ゆき","snow","ゆき"
-1,"予定","よてい","plan / schedule","よてい"
-1,"選ぶ","えら","to choose","えらぶ"
-1,"文化","ぶんか","culture","ぶんか"
-1,"二","に","two","に"
-1,"外国人","がいこくじん","foreigner","がいこくじん"
-1,"最近","さいきん","recently","さいきん"
-1,"自由","じゆう","freedom","じゆう"
-1,"おもちゃ","","toy","おもちゃ"
-1,"警察","けいさつ","police","けいさつ"
-1,"運ぶ","はこ","to carry","はこぶ"
-1,"安全","あんぜん","safety","あんぜん"
-1,"番組","ばんぐみ","program (TV/radio)","ばんぐみ"
-1,"例えば","たと","for example","たとえば"
-1,"五","ご","five","ご"
-1,"何","なに","what","なに"
-1,"三","さん","three","さん"
-1,"また","","again / also","また"
-1,"聞こえる","き","to be heard","きこえる"
-1,"母","はは","mother (humble)","はは"
-1,"今日","きょう","today","きょう"
-1,"父","ちち","father (humble)","ちち"
-1,"台風","たいふう","typhoon","たいふう"
-1,"きれい","","beautiful / clean","きれい"
-1,"小説","しょうせつ","novel","しょうせつ"
-1,"これ","","this","これ"
-1,"空港","くうこう","airport","くうこう"
-1,"庭","にわ","garden","にわ"
-1,"毎月","まいつき","every month","まいつき"
-1,"相手","あいて","partner / opponent","あいて"
-1,"出身","しゅっしん","place of origin","しゅっしん"
-1,"押す","お","to push","おす"
-1,"高い","たか","high / expensive","たかい"
-1,"本","ほん","book","ほん"
-1,"アメリカ","","America","あめりか"
-1,"午前","ごぜん","morning / AM","ごぜん"
-1,"時々","ときどき","sometimes","ときどき"
-1,"同じ","おな","same","おなじ"
-1,"ここ","","here","ここ"
-1,"電気","でんき","electricity / light","でんき"
-1,"使う","つか","to use","つかう"
-1,"経験","けいけん","experience","けいけん"
-1,"右","みぎ","right","みぎ"
-1,"まだ","","yet / still","まだ"
-1,"聞く","き","to hear / to ask","きく"
-1,"金曜日","きんようび","Friday","きんようび"
-1,"話","はなし","story / talk","はなし"
-1,"作家","さっか","author","さっか"
-1,"地震","じしん","earthquake","じしん"
-1,"重い","おも","heavy","おもい"
-1,"毎年","まいとし","every year","まいとし"
-1,"病院","びょういん","hospital","びょういん"
-1,"昔","むかし","old times","むかし"
-1,"食べる","た","to eat","たべる"
-1,"南","みなみ","south","みなみ"
-1,"高校","こうこう","high school","こうこう"
-1,"頼む","たの","to request","たのむ"
-1,"小さい","ちい","small","ちいさい"
-1,"音楽","おんがく","music","おんがく"
-1,"新聞","しんぶん","newspaper","しんぶん"
-1,"こちら","","this way","こちら"
-1,"北","きた","north","きた"
-1,"月曜日","げつようび","Monday","げつようび"
-1,"見る","み","to see","みる"
-1,"種類","しゅるい","type / kind","しゅるい"
-1,"英語","えいご","English language","えいご"
-1,"約束","やくそく","promise","やくそく"
-1,"雨","あめ","rain","あめ"
-1,"どちら","","which (of two)","どちら"
-1,"思い出","おもで","memory","おもいで"
-1,"落ちる","お","to fall","おちる"
-1,"発表","はっぴょう","announcement","はっぴょう"
-1,"夕方","ゆうがた","evening","ゆうがた"
-1,"読む","よ","to read","よむ"
-1,"絵","え","picture","え"
-1,"歌手","かしゅ","singer","かしゅ"
-1,"なぜ","","why","なぜ"
-1,"休み","やす","rest / holiday","やすみ"
-1,"でも","","but","でも"
-1,"日記","にっき","diary","にっき"
-1,"とても","","very","とても"
-1,"いくら","","how much","いくら"
-1,"違い","ちが","difference","ちがい"
-1,"旅行","りょこう","travel","りょこう"
-1,"お金","かね","money","おかね"
-1,"長い","なが","long","ながい"
-1,"受ける","う","to receive / to take (a test)","うける"
-1,"自転車","じてんしゃ","bicycle","じてんしゃ"
-1,"新しい","あたら","new","あたらしい"
-1,"探す","さが","to look for","さがす"
-1,"病気","びょうき","illness","びょうき"
-1,"冬","ふゆ","winter","ふゆ"
-1,"入れる","い","to put in","いれる"
-1,"趣味","しゅみ","hobby","しゅみ"
-1,"世界","せかい","world","せかい"
-1,"犬","いぬ","dog","いぬ"
-1,"七つ","なな","seven (objects)","ななつ"
-1,"違う","ちが","to be different","ちがう"
-1,"準備","じゅんび","preparation","じゅんび"
-1,"政府","せいふ","government","せいふ"
-1,"ページ","","page","ぺーじ"
-1,"どれ","","which (of three+)","どれ"
-1,"中学生","ちゅうがくせい","junior high student","ちゅうがくせい"
-1,"夫婦","ふうふ","married couple","ふうふ"
-1,"七","しち","seven","しち"
-1,"性格","せいかく","personality","せいかく"
-1,"旅館","りょかん","Japanese inn","りょかん"
-1,"いくつ","","how many","いくつ"
-1,"今年","ことし","this year","ことし"
-1,"大切","たいせつ","important","たいせつ"
-1,"今月","こんげつ","this month","こんげつ"
-1,"生まれる","う","to be born","うまれる"
-1,"手紙","てがみ","letter","てがみ"
-1,"心配","しんぱい","worry","しんぱい"
-1,"左右","さゆう","left and right","さゆう"
-1,"終わる","お","to end","おわる"
-1,"図書館","としょかん","library","としょかん"
-1,"弟","おとうと","younger brother","おとうと"
-1,"実は","じつ","to tell the truth","じつは"
-1,"先月","せんげつ","last month","せんげつ"
-1,"明日","あした","tomorrow","あした"
-1,"楽","らく","comfort / ease","らく"
-1,"部長","ぶちょう","department manager","ぶちょう"
-1,"コーヒー","","coffee","こーひー"
-1,"あの","","that (over there)","あの"
-1,"環境","かんきょう","environment","かんきょう"
-1,"さん","","Mr./Ms.","さん"
-1,"習慣","しゅうかん","custom / habit","しゅうかん"
-1,"先輩","せんぱい","senior","せんぱい"
-1,"あげる","","to give","あげる"
-1,"着物","きもの","kimono","きもの"
-1,"部屋","へや","room","へや"
-1,"入学","にゅうがく","school entrance","にゅうがく"
-1,"広告","こうこく","advertisement","こうこく"
-1,"紙","かみ","paper","かみ"
-1,"木曜日","もくようび","Thursday","もくようび"
-1,"水曜日","すいようび","Wednesday","すいようび"
-1,"テレビ","","television","てれび"
-1,"男","おとこ","man","おとこ"
-1,"もう","","already / anymore","もう"
-1,"問題","もんだい","problem","もんだい"
-1,"いい","","good","いい"
-1,"砂糖","さとう","sugar","さとう"
-1,"虫","むし","insect","むし"
-1,"火曜日","かようび","Tuesday","かようび"
-1,"話す","はな","to speak","はなす"
-1,"幸せ","しあわ","happiness","しあわせ"
-1,"知る","し","to know","しる"
-1,"土","つち","soil / earth","つち"
-1,"起こす","お","to wake someone / to cause","おこす"
-1,"意味","いみ","meaning","いみ"
-1,"千","せん","thousand","せん"
-1,"学生","がくせい","student","がくせい"
-1,"たくさん","","many / a lot","たくさん"
-1,"写真","しゃしん","photograph","しゃしん"
-1,"信号","しんごう","traffic light","しんごう"
-1,"バス","","bus","ばす"
-1,"家族","かぞく","family","かぞく"
-1,"笑う","わら","to laugh","わらう"
-1,"映画","えいが","movie","えいが"
-1,"年間","ねんかん","period of a year","ねんかん"
-1,"答える","こた","to answer","こたえる"
-1,"公園","こうえん","park","こうえん"
-1,"中学","ちゅうがく","junior high school","ちゅうがく"
-1,"女","おんな","woman","おんな"
-1,"兄","あに","older brother","あに"
-1,"空気","くうき","air / atmosphere","くうき"
-1,"早い","はや","early / fast","はやい"
-1,"明るい","あか","bright","あかるい"
-1,"歌う","うた","to sing","うたう"
-1,"秘密","ひみつ","secret","ひみつ"
-1,"見つける","み","to find","みつける"
-1,"スポーツ","","sports","すぽーつ"
-1,"毎週","まいしゅう","every week","まいしゅう"
-1,"ニュース","","news","にゅーす"
-1,"町","まち","town","まち"
-1,"首相","しゅしょう","Prime Minister","しゅしょう"
-1,"手","て","hand","て"
-1,"ホテル","","hotel","ほてる"
-1,"する","","to do","する"
-1,"クラス","","class","くらす"
-1,"人生","じんせい","life","じんせい"
-1,"銀行","ぎんこう","bank","ぎんこう"
-1,"厳しい","きび","strict","きびしい"
-1,"友人","ゆうじん","friend","ゆうじん"
-1,"花","はな","flower","はな"
-1,"食べ物","たもの","food","たべもの"
-1,"動物","どうぶつ","animal","どうぶつ"
-1,"今後","こんご","from now on","こんご"
-1,"歩く","ある","to walk","あるく"
-1,"彼女","かのじょ","she / girlfriend","かのじょ"
-1,"もっと","","more","もっと"
-1,"遠い","とお","far","とおい"
-1,"別れる","わか","to separate / break up","わかれる"
-1,"友達","ともだち","friend","ともだち"
-1,"最後","さいご","last / end","さいご"
-1,"包む","つつ","to wrap","つつむ"
-1,"料理","りょうり","cooking / cuisine","りょうり"
-1,"です","","is / to be","です"
-1,"持つ","も","to hold / to have","もつ"
-1,"今度","こんど","next time","こんど"
-1,"そして","","and then","そして"
-1,"雑誌","ざっし","magazine","ざっし"
-1,"ラジオ","","radio","らじお"
-1,"間違い","まちが","mistake","まちがい"
-1,"上下","じょうげ","up and down","じょうげ"
-1,"質問","しつもん","question","しつもん"
-1,"有名","ゆうめい","famous","ゆうめい"
-1,"来年","らいねん","next year","らいねん"
-1,"答え","こた","answer","こたえ"
-1,"休む","やす","to rest","やすむ"
-1,"カラオケ","","karaoke","からおけ"
-1,"難しい","むずか","difficult","むずかしい"
-1,"怒る","おこ","to get angry","おこる"
-1,"春","はる","spring","はる"
-1,"魚","さかな","fish","さかな"
-1,"カメラ","","camera","かめら"
-1,"海","うみ","sea","うみ"
-1,"犯人","はんにん","criminal","はんにん"
-1,"大学院","だいがくいん","graduate school","だいがくいん"
-1,"建物","たてもの","building","たてもの"
-1,"助ける","たす","to help","たすける"
-1,"パン","","bread","ぱん"
-1,"少々","しょうしょう","a little","しょうしょう"
-1,"楽しい","たの","fun","たのしい"
-1,"書類","しょるい","document","しょるい"
-1,"気分","きぶん","feeling / mood","きぶん"
-1,"理想","りそう","ideal","りそう"
-1,"盗む","ぬす","to steal","ぬすむ"
-1,"勉強","べんきょう","study","べんきょう"
-1,"最低","さいてい","least / worst","さいてい"
-1,"息子","むすこ","son","むすこ"
-1,"強い","つよ","strong","つよい"
-1,"始める","はじ","to start (something)","はじめる"
-1,"火事","かじ","fire","かじ"
-1,"特に","とく","especially","とくに"
-1,"飛行機","ひこうき","airplane","ひこうき"
-1,"番号","ばんごう","number","ばんごう"
-1,"時代","じだい","era","じだい"
-1,"窓","まど","window","まど"
-1,"黒い","くろ","black","くろい"
-1,"困る","こま","to be troubled","こまる"
-1,"いつも","","always","いつも"
-1,"ギター","","guitar","ぎたー"
-1,"駅","えき","station","えき"
-1,"借りる","か","to borrow","かりる"
-1,"なお","","still / furthermore","なお"
-1,"を","","object marker (particle)","を"
-1,"買い物","かもの","shopping","かいもの"
-1,"土曜日","どようび","Saturday","どようび"
-1,"トイレ","","toilet","といれ"
-1,"何か","なに","something","なにか"
-1,"誰","だれ","who","だれ"
-1,"男子","だんし","boy / male","だんし"
-1,"どうして","","why","どうして"
-1,"家事","かじ","housework","かじ"
-1,"子供","こども","child","こども"
-1,"レストラン","","restaurant","れすとらん"
-1,"教室","きょうしつ","classroom","きょうしつ"
-1,"授業","じゅぎょう","class / lesson","じゅぎょう"
-1,"長男","ちょうなん","eldest son","ちょうなん"
-1,"兄弟","きょうだい","siblings","きょうだい"
-1,"買う","か","to buy","かう"
-1,"漫画","まんが","manga / comic","まんが"
-1,"消える","き","to disappear","きえる"
-1,"大好き","だいす","love / like very much","だいすき"
-1,"皆さん","みな","everyone","みなさん"
-1,"負ける","ま","to lose","まける"
-1,"意見","いけん","opinion","いけん"
-1,"ひどい","","terrible","ひどい"
-1,"欲しい","ほ","to want","ほしい"
-1,"募集","ぼしゅう","recruitment","ぼしゅう"
-1,"もらう","","to receive","もらう"
-1,"始まる","はじ","to begin","はじまる"
-1,"赤ちゃん","あか","baby","あかちゃん"
-1,"黒","くろ","black","くろ"
-1,"特別","とくべつ","special","とくべつ"
-1,"冷蔵庫","れいぞうこ","refrigerator","れいぞうこ"
-1,"パソコン","","PC / computer","ぱそこん"
-1,"映画館","えいがかん","movie theater","えいがかん"
-1,"気持ち","きも","feeling","きもち"
-1,"文学","ぶんがく","literature","ぶんがく"
-1,"ピアノ","","piano","ぴあの"
-1,"試合","しあい","match / game","しあい"
-1,"紅茶","こうちゃ","black tea","こうちゃ"
-1,"中","なか","inside / middle","なか"
-1,"上手","じょうず","skillful","じょうず"
-1,"野菜","やさい","vegetable","やさい"
-1,"先生","せんせい","teacher","せんせい"
-1,"プール","","pool","ぷーる"
-1,"本来","ほんらい","originally","ほんらい"
-1,"かわいい","","cute","かわいい"
-1,"靴","くつ","shoes","くつ"
-1,"ソフト","","software","そふと"
-1,"給料","きゅうりょう","salary","きゅうりょう"
-1,"試験","しけん","exam","しけん"
-1,"四","よん","four","よん"
-1,"戻る","もど","to return","もどる"
-1,"家庭","かてい","household","かてい"
-1,"変","へん","strange","へん"
-1,"注意","ちゅうい","caution","ちゅうい"
-1,"アパート","","apartment","あぱーと"
-1,"切る","き","to cut","きる"
-1,"分かる","わ","to understand","わかる"
-1,"一緒","いっしょ","together","いっしょ"
-1,"声","こえ","voice","こえ"
-1,"支店","してん","branch office","してん"
-1,"ノート","","notebook","のーと"
-1,"以下","いか","less than / below","いか"
-1,"地下鉄","ちかてつ","subway","ちかてつ"
-1,"人口","じんこう","population","じんこう"
-1,"取る","と","to take","とる"
-1,"ゲーム","","game","げーむ"
-1,"年","とし","year / age","とし"
-1,"時計","とけい","clock / watch","とけい"
-1,"漢字","かんじ","kanji","かんじ"
-1,"十","じゅう","ten","じゅう"
-1,"静か","しず","quiet","しずか"
-1,"鳥","とり","bird","とり"
-1,"生徒","せいと","pupil","せいと"
-1,"大学生","だいがくせい","university student","だいがくせい"
-1,"ゆっくり","","slowly","ゆっくり"
-1,"八","はち","eight","はち"
-1,"肉","にく","meat","にく"
-1,"車","くるま","car","くるま"
-1,"以上","いじょう","more than","いじょう"
-1,"着る","き","to wear","きる"
-1,"パーティー","","party","ぱーてぃー"
-1,"テニス","","tennis","てにす"
-1,"運動","うんどう","exercise","うんどう"
-1,"作品","さくひん","work of art","さくひん"
-1,"必要","ひつよう","necessary","ひつよう"
-1,"神社","じんじゃ","shrine","じんじゃ"
-1,"用意","ようい","preparation","ようい"
-1,"古い","ふる","old","ふるい"
-1,"生活","せいかつ","life / living","せいかつ"
-1,"毎朝","まいあさ","every morning","まいあさ"
-1,"海外","かいがい","overseas","かいがい"
-1,"医者","いしゃ","doctor","いしゃ"
-1,"楽器","がっき","musical instrument","がっき"
-1,"赤い","あか","red","あかい"
-1,"少年","しょうねん","boy","しょうねん"
-1,"校長","こうちょう","principal","こうちょう"
-1,"でしょう","","probably","でしょう"
-1,"最初","さいしょ","first / beginning","さいしょ"
-1,"最も","もっと","most","もっとも"
-1,"青","あお","blue","あお"
-1,"女性","じょせい","female","じょせい"
-1,"結婚","けっこん","marriage","けっこん"
-1,"計画","けいかく","plan","けいかく"
-1,"踏む","ふ","to step on","ふむ"
-1,"家具","かぐ","furniture","かぐ"
-1,"不足","ふそく","shortage","ふそく"
-1,"目的","もくてき","purpose","もくてき"
-1,"説明","せつめい","explanation","せつめい"
-1,"昼","ひる","noon / daytime","ひる"
-1,"間に合う","まあ","to be in time","まにあう"
-1,"遅い","おそ","slow / late","おそい"
-1,"晴れる","は","to clear up","はれる"
-1,"落とす","お","to drop","おとす"
-1,"壊す","こわ","to break","こわス"
-1,"離れる","はな","to separate from","はなれる"
-1,"関係","かんけい","relationship","かんけい"
-1,"理由","りゆう","reason","りゆう"
-1,"立つ","た","to stand","たつ"
-1,"インターネット","","internet","いんたーねっと"
-1,"九","きゅう","nine","きゅう"
-1,"夏休み","なつやす","summer vacation","なつやすみ"
-1,"今","いま","now","いま"
-1,"美術館","びじゅつかん","art museum","びじゅつかん"
-1,"練習","れんしゅう","practice","れんしゅう"
-1,"明らか","あき","clear / obvious","あきらか"
-1,"文字","もじ","character / letter","もじ"
-1,"待つ","ま","to wait","まつ"
-1,"きっかけ","","trigger / start","きっかけ"
-1,"利用","りよう","usage","りよう"
-1,"変わる","か","to change","かわる"
-1,"読書","どくしょ","reading books","どくしょ"
-1,"別に","べつ","separately / not particularly","べつに"
-1,"神様","かみさま","god","かみさま"
-1,"使用","しよう","use","しよう"
-1,"悲しい","かな","sad","かなしい"
-1,"勝つ","か","to win","かつ"
-1,"足","あし","leg / foot","あし"
-1,"土地","とち","land","とち"
-1,"船","ふね","ship","ふね"
-1,"教える","おし","to teach","おしえる"
-1,"完全","かんぜん","perfect / complete","かんぜん"
-1,"じゃ","","well then","じゃ"
-1,"母親","ははおや","mother","ははおや"
-1,"荷物","にもつ","luggage","にもつ"
-1,"予約","よやく","reservation","よやく"
-1,"十分","じゅうぶん","enough","じゅうぶん"
-1,"猫","ねこ","cat","ねこ"
-1,"ずっと","","the whole time / much more","ずっと"
-1,"直す","なお","to fix / correct","なおす"
-1,"恥ずかしい","は","embarrassed","はずかしい"
-1,"来月","らいげつ","next month","らいげつ"
-1,"日本","にほん","Japan","にほん"
-1,"戦い","たたか","battle","たたかい"
-1,"増える","ふ","to increase","ふえる"
-1,"通る","とお","to pass through","とおる"
-1,"決める","き","to decide","きめる"
-1,"ことができる","","can do","ことができる"
-1,"緑","みどり","green","みどり"
-1,"少女","しょうじょ","girl","しょうじょ"
-1,"来る","く","to come","くる"
-1,"いろいろ","","various","いろいろ"
-1,"下さる","くだ","to give (polite)","くださる"
-1,"会う","あ","to meet","あう"
-1,"ビール","","beer","びーる"
-1,"上がる","あ","to go up","あがる"
-1,"たばこ","","tobacco","たばこ"
-1,"始め","はじ","beginning","はじめ"
-1,"あちら","","over there","あちら"
-1,"いいえ","","no","いいえ"
-1,"行く","い","to go","いく"
-1,"一度","いちど","once","いちど"
-1,"ふるさと","","hometown","ふるさと"
+1,時間,じかん,time,じかん
+1,国,くに,country,くに
+1,出す,だ,to take out / to submit,だす
+1,外国,がいこく,foreign country,がいこく
+1,大人,おとな,adult,おとな
+1,見える,み,to be visible,みえる
+1,出る,で,to go out / to exit,でる
+1,から,,from / because,から
+1,小学校,しょうがっこう,elementary school,しょうがっこう
+1,後ろ,うし,behind / back,うしろ
+1,天気,てんき,weather,てんき
+1,白い,しろ,white,しろい
+1,みんな,,everyone,みんな
+1,言う,い,to say,いう
+1,川,かわ,river,かわ
+1,ちょっと,,a little,ちょっと
+1,男の子,おとここ,boy,おとこのこ
+1,自分,じぶん,myself,じぶん
+1,会社,かいしゃ,company,かいしゃ
+1,仕事,しごと,work / job,しごと
+1,作る,つく,to make,つくる
+1,少し,すこ,a little / few,すこし
+1,口,くち,mouth,くち
+1,いつ,,when,いつ
+1,見つかる,み,to be found,みつかる
+1,歌,うた,song,うた
+1,広い,ひろ,wide / spacious,ひろい
+1,学校,がっこう,school,がっこう
+1,大学,だいがく,university,だいがく
+1,思う,おも,to think,おもう
+1,あまり,,not very,あまり
+1,名前,なまえ,name,なまえ
+1,社会,しゃかい,society,しゃかい
+1,電話,でんわ,telephone,でんわ
+1,お母さん,かあ,mother (polite),おかあさん
+1,走る,はし,to run,はしる
+1,言葉,ことば,word / language,ことば
+1,この,,this,この
+1,午後,ごご,afternoon / PM,ごご
+1,音,おと,sound,おと
+1,元気,げんき,healthy / energetic,げんき
+1,売る,う,to sell,うる
+1,見せる,み,to show,みせる
+1,電車,でんしゃ,train,でんしゃ
+1,毎日,まいにち,every day,まいにち
+1,研究,けんきゅう,research,けんきゅう
+1,呼ぶ,よ,to call,よぶ
+1,左,ひだり,left,ひだり
+1,地図,ちず,map,ちず
+1,大きい,おお,big,おおきい
+1,お父さん,とう,father (polite),おとうさん
+1,送る,おく,to send,おくる
+1,少ない,すく,few / scarce,すくない
+1,木,き,tree,き
+1,どこ,,where,どこ
+1,考える,かんが,to think / to consider,かんがえる
+1,社長,しゃちょう,company president,しゃちょう
+1,の,,of (possessive particle),の
+1,外,そと,outside,そと
+1,半分,はんぶん,half,はんぶん
+1,に,,to / at (particle),に
+1,は,,topic marker (particle),は
+1,山,やま,mountain,やま
+1,工場,こうじょう,factory,こうじょう
+1,集める,あつ,to collect,あつめる
+1,近い,ちか,near,ちかい
+1,場所,ばしょ,place,ばしょ
+1,気,き,spirit / mood,き
+1,女の子,おんなこ,girl,おんなのこ
+1,全部,ぜんぶ,all,ぜんぶ
+1,両親,りょうしん,parents,りょうしん
+1,雪,ゆき,snow,ゆき
+1,予定,よてい,plan / schedule,よてい
+1,選ぶ,えら,to choose,えらぶ
+1,文化,ぶんか,culture,ぶんか
+1,外国人,がいこくじん,foreigner,がいこくじん
+1,最近,さいきん,recently,さいきん
+1,自由,じゆう,freedom,じゆう
+1,おもちゃ,,toy,おもちゃ
+1,警察,けいさつ,police,けいさつ
+1,運ぶ,はこ,to carry,はこぶ
+1,安全,あんぜん,safety,あんぜん
+1,番組,ばんぐみ,program (TV/radio),ばんぐみ
+1,例えば,たと,for example,たとえば
+1,何,なに,what,なに
+1,また,,again / also,また
+1,聞こえる,き,to be heard,きこえる
+1,母,はは,mother (humble),はは
+1,今日,きょう,today,きょう
+1,父,ちち,father (humble),ちち
+1,台風,たいふう,typhoon,たいふう
+1,きれい,,beautiful / clean,きれい
+1,小説,しょうせつ,novel,しょうせつ
+1,これ,,this,これ
+1,空港,くうこう,airport,くうこう
+1,庭,にわ,garden,にわ
+1,相手,あいて,partner / opponent,あいて
+1,出身,しゅっしん,place of origin,しゅっしん
+1,押す,お,to push,おす
+1,高い,たか,high / expensive,たかい
+1,本,ほん,book,ほん
+1,アメリカ,,America,あめりか
+1,午前,ごぜん,morning / AM,ごぜん
+1,時々,ときどき,sometimes,ときどき
+1,同じ,おな,same,おなじ
+1,ここ,,here,ここ
+1,電気,でんき,electricity / light,でんき
+1,使う,つか,to use,つかう
+1,経験,けいけん,experience,けいけん
+1,右,みぎ,right,みぎ
+1,まだ,,yet / still,まだ
+1,聞く,き,to hear / to ask,きく
+1,話,はなし,story / talk,はなし
+1,作家,さっか,author,さっか
+1,地震,じしん,earthquake,じしん
+1,重い,おも,heavy,おもい
+1,病院,びょういん,hospital,びょういん
+1,昔,むかし,old times,むかし
+1,食べる,た,to eat,たべる
+1,南,みなみ,south,みなみ
+1,高校,こうこう,high school,こうこう
+1,頼む,たの,to request,たのむ
+1,小さい,ちい,small,ちいさい
+1,音楽,おんがく,music,おんがく
+1,新聞,しんぶん,newspaper,しんぶん
+1,こちら,,this way,こちら
+1,北,きた,north,きた
+1,見る,み,to see,みる
+1,種類,しゅるい,type / kind,しゅるい
+1,英語,えいご,English language,えいご
+1,約束,やくそく,promise,やくそく
+1,雨,あめ,rain,あめ
+1,どちら,,which (of two),どちら
+1,思い出,おもで,memory,おもいで
+1,落ちる,お,to fall,おちる
+1,発表,はっぴょう,announcement,はっぴょう
+1,夕方,ゆうがた,evening,ゆうがた
+1,読む,よ,to read,よむ
+1,絵,え,picture,え
+1,歌手,かしゅ,singer,かしゅ
+1,なぜ,,why,なぜ
+1,休み,やす,rest / holiday,やすみ
+1,でも,,but,でも
+1,日記,にっき,diary,にっき
+1,とても,,very,とても
+1,いくら,,how much,いくら
+1,違い,ちが,difference,ちがい
+1,旅行,りょこう,travel,りょこう
+1,お金,かね,money,おかね
+1,長い,なが,long,ながい
+1,受ける,う,to receive / to take (a test),うける
+1,自転車,じてんしゃ,bicycle,じてんしゃ
+1,新しい,あたら,new,あたらしい
+1,探す,さが,to look for,さがす
+1,病気,びょうき,illness,びょうき
+1,冬,ふゆ,winter,ふゆ
+1,入れる,い,to put in,いれる
+1,趣味,しゅみ,hobby,しゅみ
+1,世界,せかい,world,せかい
+1,犬,いぬ,dog,いぬ
+1,違う,ちが,to be different,ちがう
+1,準備,じゅんび,preparation,じゅんび
+1,政府,せいふ,government,せいふ
+1,ページ,,page,ぺーじ
+1,どれ,,which (of three+),どれ
+1,中学生,ちゅうがくせい,junior high student,ちゅうがくせい
+1,夫婦,ふうふ,married couple,ふうふ
+1,性格,せいかく,personality,せいかく
+1,旅館,りょかん,Japanese inn,りょかん
+1,いくつ,,how many,いくつ
+1,今年,ことし,this year,ことし
+1,大切,たいせつ,important,たいせつ
+1,生まれる,う,to be born,うまれる
+1,手紙,てがみ,letter,てがみ
+1,心配,しんぱい,worry,しんぱい
+1,左右,さゆう,left and right,さゆう
+1,終わる,お,to end,おわる
+1,図書館,としょかん,library,としょかん
+1,弟,おとうと,younger brother,おとうと
+1,実は,じつ,to tell the truth,じつは
+1,明日,あした,tomorrow,あした
+1,楽,らく,comfort / ease,らく
+1,部長,ぶちょう,department manager,ぶちょう
+1,コーヒー,,coffee,こーひー
+1,あの,,that (over there),あの
+1,環境,かんきょう,environment,かんきょう
+1,さん,,Mr./Ms.,さん
+1,習慣,しゅうかん,custom / habit,しゅうかん
+1,先輩,せんぱい,senior,せんぱい
+1,あげる,,to give,あげる
+1,着物,きもの,kimono,きもの
+1,部屋,へや,room,へや
+1,入学,にゅうがく,school entrance,にゅうがく
+1,広告,こうこく,advertisement,こうこく
+1,紙,かみ,paper,かみ
+1,テレビ,,television,てれび
+1,男,おとこ,man,おとこ
+1,もう,,already / anymore,もう
+1,問題,もんだい,problem,もんだい
+1,いい,,good,いい
+1,砂糖,さとう,sugar,さとう
+1,虫,むし,insect,むし
+1,話す,はな,to speak,はなす
+1,幸せ,しあわ,happiness,しあわせ
+1,知る,し,to know,しる
+1,土,つち,soil / earth,つち
+1,起こす,お,to wake someone / to cause,おこす
+1,意味,いみ,meaning,いみ
+1,学生,がくせい,student,がくせい
+1,たくさん,,many / a lot,たくさん
+1,写真,しゃしん,photograph,しゃしん
+1,信号,しんごう,traffic light,しんごう
+1,バス,,bus,ばす
+1,家族,かぞく,family,かぞく
+1,笑う,わら,to laugh,わらう
+1,映画,えいが,movie,えいが
+1,年間,ねんかん,period of a year,ねんかん
+1,答える,こた,to answer,こたえる
+1,公園,こうえん,park,こうえん
+1,中学,ちゅうがく,junior high school,ちゅうがく
+1,女,おんな,woman,おんな
+1,兄,あに,older brother,あに
+1,空気,くうき,air / atmosphere,くうき
+1,早い,はや,early / fast,はやい
+1,明るい,あか,bright,あかるい
+1,歌う,うた,to sing,うたう
+1,秘密,ひみつ,secret,ひみつ
+1,見つける,み,to find,みつける
+1,スポーツ,,sports,すぽーつ
+1,ニュース,,news,にゅーす
+1,町,まち,town,まち
+1,首相,しゅしょう,Prime Minister,しゅしょう
+1,手,て,hand,て
+1,ホテル,,hotel,ほてる
+1,する,,to do,する
+1,クラス,,class,くらす
+1,人生,じんせい,life,じんせい
+1,銀行,ぎんこう,bank,ぎんこう
+1,厳しい,きび,strict,きびしい
+1,友人,ゆうじん,friend,ゆうじん
+1,花,はな,flower,はな
+1,食べ物,たもの,food,たべもの
+1,動物,どうぶつ,animal,どうぶつ
+1,今後,こんご,from now on,こんご
+1,歩く,ある,to walk,あるく
+1,彼女,かのじょ,she / girlfriend,かのじょ
+1,もっと,,more,もっと
+1,遠い,とお,far,とおい
+1,別れる,わか,to separate / break up,わかれる
+1,友達,ともだち,friend,ともだち
+1,最後,さいご,last / end,さいご
+1,包む,つつ,to wrap,つつむ
+1,料理,りょうり,cooking / cuisine,りょうり
+1,です,,is / to be,です
+1,持つ,も,to hold / to have,もつ
+1,今度,こんど,next time,こんど
+1,そして,,and then,そして
+1,雑誌,ざっし,magazine,ざっし
+1,ラジオ,,radio,らじお
+1,間違い,まちが,mistake,まちがい
+1,上下,じょうげ,up and down,じょうげ
+1,質問,しつもん,question,しつもん
+1,有名,ゆうめい,famous,ゆうめい
+1,来年,らいねん,next year,らいねん
+1,答え,こた,answer,こたえ
+1,休む,やす,to rest,やすむ
+1,カラオケ,,karaoke,からおけ
+1,難しい,むずか,difficult,むずかしい
+1,怒る,おこ,to get angry,おこる
+1,春,はる,spring,はる
+1,魚,さかな,fish,さかな
+1,カメラ,,camera,かめら
+1,海,うみ,sea,うみ
+1,犯人,はんにん,criminal,はんにん
+1,大学院,だいがくいん,graduate school,だいがくいん
+1,建物,たてもの,building,たてもの
+1,助ける,たす,to help,たすける
+1,パン,,bread,ぱん
+1,少々,しょうしょう,a little,しょうしょう
+1,楽しい,たの,fun,たのしい
+1,書類,しょるい,document,しょるい
+1,気分,きぶん,feeling / mood,きぶん
+1,理想,りそう,ideal,りそう
+1,盗む,ぬす,to steal,ぬすむ
+1,勉強,べんきょう,study,べんきょう
+1,最低,さいてい,least / worst,さいてい
+1,息子,むすこ,son,むすこ
+1,強い,つよ,strong,つよい
+1,始める,はじ,to start (something),はじめる
+1,火事,かじ,fire,かじ
+1,特に,とく,especially,とくに
+1,飛行機,ひこうき,airplane,ひこうき
+1,番号,ばんごう,number,ばんごう
+1,時代,じだい,era,じだい
+1,窓,まど,window,まど
+1,黒い,くろ,black,くろい
+1,困る,こま,to be troubled,こまる
+1,いつも,,always,いつも
+1,ギター,,guitar,ぎたー
+1,駅,えき,station,えき
+1,借りる,か,to borrow,かりる
+1,なお,,still / furthermore,なお
+1,を,,object marker (particle),を
+1,買い物,かもの,shopping,かいもの
+1,トイレ,,toilet,といれ
+1,何か,なに,something,なにか
+1,誰,だれ,who,だれ
+1,男子,だんし,boy / male,だんし
+1,どうして,,why,どうして
+1,家事,かじ,housework,かじ
+1,子供,こども,child,こども
+1,レストラン,,restaurant,れすとらん
+1,教室,きょうしつ,classroom,きょうしつ
+1,授業,じゅぎょう,class / lesson,じゅぎょう
+1,長男,ちょうなん,eldest son,ちょうなん
+1,兄弟,きょうだい,siblings,きょうだい
+1,買う,か,to buy,かう
+1,漫画,まんが,manga / comic,まんが
+1,消える,き,to disappear,きえる
+1,大好き,だいす,love / like very much,だいすき
+1,皆さん,みな,everyone,みなさん
+1,負ける,ま,to lose,まける
+1,意見,いけん,opinion,いけん
+1,ひどい,,terrible,ひどい
+1,欲しい,ほ,to want,ほしい
+1,募集,ぼしゅう,recruitment,ぼしゅう
+1,もらう,,to receive,もらう
+1,始まる,はじ,to begin,はじまる
+1,赤ちゃん,あか,baby,あかちゃん
+1,黒,くろ,black,くろ
+1,特別,とくべつ,special,とくべつ
+1,冷蔵庫,れいぞうこ,refrigerator,れいぞうこ
+1,パソコン,,PC / computer,ぱそこん
+1,映画館,えいがかん,movie theater,えいが館
+1,気持ち,きも,feeling,きもち
+1,文学,ぶんがく,literature,ぶんがく
+1,ピアノ,,piano,ぴあの
+1,試合,しあい,match / game,しあい
+1,紅茶,こうちゃ,black tea,こうちゃ
+1,中,なか,inside / middle,なか
+1,上手,じょうず,skillful,じょうず
+1,野菜,やさい,vegetable,やさい
+1,先生,せんせい,teacher,せんせい
+1,プール,,pool,ぷーる
+1,本来,ほんらい,originally,ほんらい
+1,かわいい,,cute,かわいい
+1,靴,くつ,shoes,くつ
+1,ソフト,,software,そふと
+1,給料,きゅうりょう,salary,きゅうりょう
+1,試験,しけん,exam,しけん
+1,戻る,もど,to return,もどる
+1,家庭,かてい,household,かてい
+1,変,へん,strange,へん
+1,注意,ちゅうい,caution,ちゅうい
+1,アパート,,apartment,あぱーと
+1,切る,き,to cut,きる
+1,分かる,わ,to understand,わかる
+1,一緒,いっしょ,together,いっしょ
+1,声,こえ,voice,こえ
+1,支店,してん,branch office,してん
+1,ノート,,notebook,のーと
+1,以下,いか,less than / below,いか
+1,地下鉄,ちかてつ,subway,ちかてつ
+1,人口,じんこう,population,じんこう
+1,取る,と,to take,とる
+1,ゲーム,,game,げーむ
+1,年,とし,year / age,とし
+1,時計,とけい,clock / watch,とけい
+1,漢字,かんじ,kanji,かんじ
+1,静か,しず,quiet,しずか
+1,鳥,とり,bird,とり
+1,生徒,せいと,pupil,せいと
+1,大学生,だいがくせい,university student,だいがくせい
+1,ゆっくり,,slowly,ゆっくり
+1,肉,にく,meat,にく
+1,車,くるま,car,くるま
+1,以上,いじょう,more than,いじょう
+1,着る,き,to wear,きる
+1,パーティー,,party,ぱーてぃー
+1,テニス,,tennis,てにす
+1,運動,うんどう,exercise,うんどう
+1,作品,さくひん,work of art,さくひん
+1,必要,ひつよう,necessary,ひつよう
+1,神社,じんじゃ,shrine,じんじゃ
+1,用意,ようい,preparation,ようい
+1,古い,ふる,old,ふるい
+1,生活,せいかつ,life / living,せいかつ
+1,毎朝,まいあさ,every morning,まいあさ
+1,海外,かいがい,overseas,かいがい
+1,医者,いしゃ,doctor,いしゃ
+1,楽器,がっき,musical instrument,がっき
+1,赤い,あか,red,あかい
+1,少年,しょうねん,boy,しょうねん
+1,校長,こうちょう,principal,こうちょう
+1,でしょう,,probably,でしょう
+1,最初,さいしょ,first / beginning,さいしょ
+1,最も,もっと,most,もっとも
+1,青,あお,blue,あお
+1,女性,じょせい,female,じょせい
+1,結婚,けっこん,marriage,けっこん
+1,計画,けいかく,plan,けいかく
+1,踏む,ふ,to step on,ふむ
+1,家具,かぐ,furniture,かぐ
+1,不足,ふそく,shortage,ふそく
+1,目的,もくてき,purpose,もくてき
+1,説明,せつめい,explanation,せつめい
+1,昼,ひる,noon / daytime,ひる
+1,間に合う,まあ,to be in time,まにあう
+1,遅い,おそ,slow / late,おそい
+1,晴れる,は,to clear up,はれる
+1,落とす,お,to drop,おとす
+1,壊す,こわ,to break,こわス
+1,離れる,はな,to separate from,はなれる
+1,関係,かんけい,relationship,かんけい
+1,理由,りゆう,reason,りゆう
+1,立つ,た,to stand,たつ
+1,インターネット,,internet,いんたーねっと
+1,夏休み,なつやす,summer vacation,なつやすみ
+1,今,いま,now,いま
+1,美術館,びじゅつかん,art museum,びじゅつかん
+1,練習,れんしゅう,practice,れんしゅう
+1,明らか,あき,clear / obvious,あきらか
+1,文字,もじ,character / letter,もじ
+1,待つ,ま,to wait,まつ
+1,きっかけ,,trigger / start,きっかけ
+1,利用,りよう,usage,りよう
+1,変わる,か,to change,かわる
+1,読書,どくしょ,reading books,どくしょ
+1,別に,べつ,separately / not particularly,べつに
+1,神様,かみさま,god,かみさま
+1,使用,しよう,use,しよう
+1,悲しい,かな,sad,かなし
+1,勝つ,か,to win,かつ
+1,足,あし,leg / foot,あし
+1,土地,とち,land,とち
+1,船,ふね,ship,ふね
+1,教える,おし,to teach,おしえる
+1,完全,かんぜん,perfect / complete,かんぜん
+1,じゃ,,well then,じゃ
+1,母親,ははおや,mother,ははおや
+1,荷物,にもつ,luggage,にもつ
+1,予約,よやく,reservation,よやく
+1,十分,じゅうぶん,enough,じゅうぶん
+1,猫,ねこ,cat,ねこ
+1,ずっと,,the whole time / much more,ずっと
+1,直す,なお,to fix / correct,なおす
+1,恥ずかしい,は,embarrassed,はずかしい
+1,日本,にほん,Japan,にほん
+1,戦い,たたか,battle,たたかい
+1,増える,ふ,to increase,ふえる
+1,通る,とお,to pass through,とおる
+1,決める,き,to decide,きめる
+1,ことができる,,can do,ことができる
+1,緑,みどり,green,みどり
+1,少女,しょうじょ,girl,しょうじょ
+1,来る,く,to come,くる
+1,いろいろ,,various,いろいろ
+1,下さる,くだ,to give (polite),くださる
+1,会う,あ,to meet,あう
+1,ビール,,beer,びーる
+1,上がる,あ,to go up,あがる
+1,たばこ,,tobacco,たばこ
+1,始め,はじ,beginning,はじめ
+1,あちら,,over there,あちら
+1,いいえ,,no,いいえ
+1,行く,い,to go,いく
+1,ふるさと,,hometown,ふるさと
