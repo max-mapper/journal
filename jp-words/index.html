@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Level-Based Kanji Tracker + Dictionary</title>
+    <!-- Preload fonts for cleaner rendering -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       :root {
         --bg-color: #f9f9f9;
@@ -17,7 +27,6 @@
         --highlight-border: #c8e6c9;
         --highlight-text: #2e7d32;
       }
-
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         padding: 20px;
@@ -74,6 +83,24 @@
         color: #555;
       }
 
+      /* Unmatched Area Styling */
+      #unmatched-area {
+        background: #fff3cd;
+        border: 1px solid #ffeeba;
+        color: #856404;
+        padding: 10px 15px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+        display: none; /* Hidden by default if empty */
+      }
+      .unmatched-list {
+        font-family: "Sawarabi Mincho";
+        font-size: 1.2rem;
+        margin-left: 10px;
+        letter-spacing: 3px;
+      }
+
       .controls {
         display: flex;
         justify-content: space-between;
@@ -90,6 +117,7 @@
         display: flex;
         gap: 20px;
         align-items: center;
+        flex-wrap: wrap;
       }
 
       .toggle-label {
@@ -148,8 +176,8 @@
       }
 
       /* =========================================
-         LIST VIEW STYLES
-         ========================================= */
+      LIST VIEW STYLES
+      ========================================= */
       .level-section {
         background: white;
         border-radius: 8px;
@@ -243,80 +271,59 @@
         font-size: 1rem;
         margin-bottom: 2px;
       }
-
       /* =========================================
-         GRID VIEW STYLES
-         ========================================= */
+      GRID VIEW STYLES (MASONRY FLOW)
+      ========================================= */
       .kanji-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 12px;
+        column-count: 5;
+        column-gap: 0px;
         width: 100%;
         padding-bottom: 100px;
+        font-family: "M PLUS 1p";
       }
 
-      .k-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        display: flex;
-        flex-direction: column;
-        overflow: visible;
-        position: relative;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-        transition: transform 0.2s, box-shadow 0.2s;
-        z-index: 1;
-      }
-
-      .k-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        z-index: 100;
-        border-color: #bbb;
-      }
-
-      .k-header {
-        background-color: var(--header-bg);
-        padding: 8px 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid #eee;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-      }
-      .k-header.known {
-        /* background-color: #e3f2fd; */
-      }
-
-      .k-char {
-        font-size: 3rem;
-        color: black;
+      .k-inline-char {
+        display: inline-block;
+        font-size: 2.5rem;
         line-height: 1;
+        padding-right: 8px;
+        color: #ce3b3b;
+        user-select: none;
+        font-family: "Sawarabi Mincho";
+        margin-left: 5px;
+        margin-top: 25px;
+        margin-bottom: 5px;
+        break-after: avoid;
       }
 
-      .k-core-mean {
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: #666;
-        text-align: right;
-        line-height: 1.2;
+      .k-inline-char:first-child {
+        margin-top: 0;
       }
 
-      .k-vocab {
-        padding: 6px 6px;
+      .k-inline-char.known {
+        color: black;
+      }
+
+      .level-number {
+        color: #888;
+        font-size: 0.8rem;
+        user-select: none;
+        font-family: "Segoe UI", sans-serif;
+        margin-right: 4px;
+        font-weight: bold;
       }
 
       .v-item {
+        display: inline-block;
         text-align: center;
-        padding: 6px;
+        padding: 4px 8px;
         border-radius: 4px;
         cursor: pointer;
         position: relative;
         background: #f9f9f9;
         font-size: 1.3rem;
-        margin-right: 10px;
-        margin-bottom: 10px;
+        border: 1px solid transparent;
+        margin: 2px;
       }
 
       .v-item:hover {
@@ -326,7 +333,8 @@
 
       .v-item.highlight {
         color: black;
-        border: 1px solid rgba(232, 245, 233, 1);
+        border: 1px solid rgba(200, 230, 201, 1);
+        background-color: #e8f5e9;
       }
       .v-item.highlight:hover {
         background-color: #c8e6c9;
@@ -382,30 +390,86 @@
         margin-bottom: 2px;
       }
       .gt-def {
-        color: #ddd;
-        font-size: 1rem;
+        color: #ff9b63;
+        font-size: 0.8rem;
         font-style: italic;
+      }
+
+      /* =========================================
+          INLINE DETAIL MODE (Activated via Checkbox)
+          Applies to both Editor and Export
+       ========================================= */
+      body.show-inline .word {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        height: auto;
+        vertical-align: top;
+        background: none;
+        border: none;
+        text-decoration: none;
+        font-weight: 500;
+        margin: 4px;
+        padding: 2px;
+      }
+
+      body.show-inline .v-item {
+        background: transparent;
+        border-color: transparent;
+      }
+      body.show-inline .v-item:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      body.show-inline .tooltip,
+      body.show-inline .grid-tooltip {
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        color: #555 !important;
+        width: auto !important;
+        white-space: normal;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+      }
+
+      body.show-inline .tooltip::after,
+      body.show-inline .grid-tooltip::after {
+        display: none;
+      }
+
+      body.show-inline .reading-sub,
+      body.show-inline .gt-read {
+        color: #ff9b63;
+        font-size: 0.8rem;
       }
 
       @media (max-width: 1200px) {
         .kanji-grid {
-          grid-template-columns: repeat(4, 1fr);
+          column-count: 4;
         }
       }
       @media (max-width: 900px) {
         .kanji-grid {
-          grid-template-columns: repeat(3, 1fr);
+          column-count: 3;
         }
       }
       @media (max-width: 600px) {
         .kanji-grid {
-          grid-template-columns: repeat(2, 1fr);
+          column-count: 2;
         }
       }
 
       /* =========================================
-         DICTIONARY MODAL
-         ========================================= */
+      DICTIONARY MODAL
+      ========================================= */
       .modal-overlay {
         display: none;
         position: fixed;
@@ -546,11 +610,26 @@
         text-align: center;
         padding: 10px;
       }
+
+      /* =========================================
+      PRINT OPTIMIZATION (Black & White, High Contrast)
+      ========================================= */
+      @media print {
+        h2 {
+          display: none;
+        }
+        .export-controls {
+          display: none !important;
+        }
+        .controls,
+        #unmatched-area {
+          display: none !important;
+        }
+      }
     </style>
   </head>
   <body>
     <h2>Level-Based Kanji Tracker</h2>
-
     <div id="export-area">
       <!-- Global Stats -->
       <div class="stats-bar">
@@ -586,6 +665,12 @@ level,kanji,furigana,definition,kana
       </div>
     </div>
 
+    <!-- NEW UNMATCHED AREA -->
+    <div id="unmatched-area">
+      <strong>Unused Known Kanji:</strong>
+      <span id="unmatched-list" class="unmatched-list"></span>
+    </div>
+
     <div class="controls">
       <div class="toggles-group">
         <strong>Filters:</strong>
@@ -594,6 +679,13 @@ level,kanji,furigana,definition,kana
         </label>
         <label class="toggle-label">
           <input type="checkbox" id="hideNoKanji" /> Hide words without Kanji
+        </label>
+        <!-- ADDED INLINE TOGGLE HERE -->
+        <label
+          class="toggle-label"
+          style="border-left: 2px solid #ccc; padding-left: 15px"
+        >
+          <input type="checkbox" id="inlineToggle" /> Show Details Inline
         </label>
       </div>
 
@@ -623,10 +715,14 @@ level,kanji,furigana,definition,kana
       const set2Input = document.getElementById("set2");
       const hideUnmatchedInput = document.getElementById("hideUnmatched");
       const hideNoKanjiInput = document.getElementById("hideNoKanji");
+      const inlineToggle = document.getElementById("inlineToggle");
       const output = document.getElementById("output");
       const exportBtn = document.getElementById("exportBtn");
       const viewListBtn = document.getElementById("viewListBtn");
       const viewGridBtn = document.getElementById("viewGridBtn");
+
+      const unmatchedArea = document.getElementById("unmatched-area");
+      const unmatchedListSpan = document.getElementById("unmatched-list");
 
       const modal = document.getElementById("dictModal");
       const modalTitle = document.getElementById("modalTitle");
@@ -667,8 +763,17 @@ level,kanji,furigana,definition,kana
         updateDisplay();
       });
 
+      // Inline Toggle Logic (Editor)
+      inlineToggle.addEventListener("change", (e) => {
+        if (e.target.checked) {
+          document.body.classList.add("show-inline");
+        } else {
+          document.body.classList.remove("show-inline");
+        }
+      });
+
       function updateDisplay() {
-        // Save state
+        // ... (Local Storage saving lines remain same) ...
         localStorage.setItem(STORAGE_KEY_SET1, set1Input.value);
         localStorage.setItem(STORAGE_KEY_SET2, set2Input.value);
         localStorage.setItem(
@@ -677,7 +782,6 @@ level,kanji,furigana,definition,kana
         );
         localStorage.setItem(STORAGE_KEY_HIDE_KANA, hideNoKanjiInput.checked);
 
-        // --- Data Parsing (CSV) ---
         const rawLines = set1Input.value.split("\n").filter((l) => l.trim());
         const hideUnmatched = hideUnmatchedInput.checked;
         const hideNoKanji = hideNoKanjiInput.checked;
@@ -686,6 +790,8 @@ level,kanji,furigana,definition,kana
         const knownSet = new Set(knownKanjiArr);
 
         let parsedItems = [];
+        const seenWords = new Set();
+        const usedKanjiSet = new Set(); // Track kanji actually used in Set 1
 
         rawLines.forEach((line, index) => {
           // Ignore Header
@@ -696,25 +802,31 @@ level,kanji,furigana,definition,kana
             return;
           }
 
-          // CSV Split logic: Split by comma but ignore commas inside quotes
           const regex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
           const parts = line.split(regex);
 
-          // Need at least level and kanji
           if (parts.length >= 2) {
-            // Clean quotes from the parts
             const cleanParts = parts.map((p) =>
               p.trim().replace(/^"|"$/g, "").replace(/""/g, '"')
             );
 
-            // Mapping based on: level, kanji, furigana, definition, kana
             const level = parseInt(cleanParts[0]) || 0;
             const word = cleanParts[1];
-            // Prefer full kana (index 4) if available, else fallback to index 2 (furigana/partial)
+
+            // Deduplication Logic
+            if (seenWords.has(word)) {
+              return;
+            }
+            seenWords.add(word);
+
             const reading = cleanParts[4] || cleanParts[2] || "";
             const meaning = cleanParts[3] || "";
 
             const kanjiInWord = word.match(/[\u4e00-\u9faf]/g) || [];
+
+            // Add to used set
+            kanjiInWord.forEach((k) => usedKanjiSet.add(k));
+
             const hasKanji = kanjiInWord.length > 0;
             const allKnown =
               !hasKanji || kanjiInWord.every((k) => knownSet.has(k));
@@ -730,6 +842,16 @@ level,kanji,furigana,definition,kana
             });
           }
         });
+
+        // --- CALCULATE UNMATCHED KANJI ---
+        const unusedKanji = [...knownSet].filter((k) => !usedKanjiSet.has(k));
+
+        if (unusedKanji.length > 0) {
+          unmatchedArea.style.display = "block";
+          unmatchedListSpan.textContent = unusedKanji.join(" ");
+        } else {
+          unmatchedArea.style.display = "none";
+        }
 
         // Filter Logic
         const visibleItems = parsedItems.filter((item) => {
@@ -749,7 +871,6 @@ level,kanji,furigana,definition,kana
         document.getElementById("totalWordCount").textContent = globalTotal;
         document.getElementById("totalPercent").textContent = totalPct + "%";
 
-        // --- Render ---
         output.innerHTML = "";
 
         if (currentView === "list") {
@@ -785,11 +906,11 @@ level,kanji,furigana,definition,kana
           const header = document.createElement("div");
           header.className = "level-header";
           header.innerHTML = `
-                <div class="level-title">Level ${lvl}</div>
-                <div class="level-stats">
-                  Match: <strong>${levelMatch}</strong> / ${levelTotal} (${levelPct}%)
-                </div>
-              `;
+                  <div class="level-title">Level ${lvl}</div>
+                  <div class="level-stats">
+                    Match: <strong>${levelMatch}</strong> / ${levelTotal} (${levelPct}%)
+                  </div>
+                `;
           section.appendChild(header);
 
           const wordBox = document.createElement("div");
@@ -805,9 +926,9 @@ level,kanji,furigana,definition,kana
             const tip = document.createElement("div");
             tip.className = "tooltip";
             tip.innerHTML = `
-                    <span class="reading-sub">${item.reading || ""}</span>
-                    ${item.meaning || ""}
-                `;
+                      <span class="reading-sub">${item.reading || ""}</span>
+                      ${item.meaning || ""}
+                  `;
             span.appendChild(tip);
             wordBox.appendChild(span);
           });
@@ -815,6 +936,11 @@ level,kanji,furigana,definition,kana
           section.appendChild(wordBox);
           output.appendChild(section);
         });
+      }
+
+      // Helper to get ① ② ③
+      function getCircledNumber(num) {
+        return `L${num}`;
       }
 
       function renderKanjiGrid(items, knownSet) {
@@ -826,13 +952,18 @@ level,kanji,furigana,definition,kana
             if (!kanjiMap["Kana"]) kanjiMap["Kana"] = [];
             kanjiMap["Kana"].push(item);
           } else {
-            item.kanjiChars.forEach((char) => {
-              if (!kanjiMap[char]) kanjiMap[char] = [];
-              // Prevent duplicates
-              if (!kanjiMap[char].includes(item)) {
-                kanjiMap[char].push(item);
-              }
-            });
+            // DEDUPLICATION: Assign word to just one Kanji bucket
+            // Prioritize first UNKNOWN kanji if present, otherwise first kanji
+            let targetChar = item.kanjiChars[0];
+            const firstUnknown = item.kanjiChars.find(
+              (char) => !knownSet.has(char)
+            );
+            if (firstUnknown) {
+              targetChar = firstUnknown;
+            }
+
+            if (!kanjiMap[targetChar]) kanjiMap[targetChar] = [];
+            kanjiMap[targetChar].push(item);
           }
         });
 
@@ -847,6 +978,7 @@ level,kanji,furigana,definition,kana
           return kanjiMap[b].length - kanjiMap[a].length;
         });
 
+        let first = true;
         sortedKanji.forEach((char) => {
           if (char === "Kana" && kanjiMap[char].length === 0) return;
 
@@ -854,50 +986,41 @@ level,kanji,furigana,definition,kana
           // Sort words by Level
           words.sort((a, b) => a.level - b.level);
 
-          const card = document.createElement("div");
-          card.className = "k-card";
+          // 1. Append Kanji Header
+          const charDiv = document.createElement("div");
+          charDiv.className = "k-inline-char";
+          if (knownSet.has(char)) charDiv.classList.add("known");
+          charDiv.textContent = char === "Kana" ? "あ" : char;
+          grid.appendChild(charDiv);
+          first = false;
 
-          // Header
-          const isKnown = knownSet.has(char);
-          const header = document.createElement("div");
-          header.className = "k-header" + (isKnown ? " known" : "");
+          let lastLevel = -1;
 
-          header.innerHTML = `
-                <span class="k-char">${char === "Kana" ? "あ" : char}</span>
-                <span class="k-core-mean">${words.length} word${
-            words.length !== 1 ? "s" : ""
-          }</span>
-             `;
-
-          // Body
-          const body = document.createElement("div");
-          body.className = "k-vocab";
-
+          // 2. Append Words
           words.forEach((w) => {
+            if (w.level !== lastLevel) {
+              const lvlSpan = document.createElement("span");
+              lvlSpan.className = "level-number";
+              lvlSpan.textContent = getCircledNumber(w.level);
+              grid.appendChild(lvlSpan);
+              lastLevel = w.level;
+            }
+
             const row = document.createElement("div");
-            // 'word' class needed for the delegated click event
             row.className = "v-item word" + (w.allKnown ? " highlight" : "");
             row.dataset.word = w.word;
-
-            // CONTENT: Only the word
             row.textContent = w.word;
 
-            // TOOLTIP: Contains Level, Reading, Meaning
             const tip = document.createElement("div");
             tip.className = "grid-tooltip";
             tip.innerHTML = `
-                    <div class="gt-level">Level ${w.level}</div>
-                    <div class="gt-read">${w.reading}</div>
-                    <div class="gt-def">${w.meaning}</div>
-                 `;
+                      <div class="gt-read">${w.reading}</div>
+                      <div class="gt-def">${w.meaning}</div>
+                   `;
 
             row.appendChild(tip);
-            body.appendChild(row);
+            grid.appendChild(row);
           });
-
-          card.appendChild(header);
-          card.appendChild(body);
-          grid.appendChild(card);
         });
 
         output.appendChild(grid);
@@ -1019,11 +1142,11 @@ level,kanji,furigana,definition,kana
             const en = sense.example_sentence[1] || "";
             const jpHtml = parseJotobaFurigana(jpRaw);
             html += `
-              <div class="dict-example" onclick="this.classList.toggle('active')">
-                <span class="dict-ex-jp">${jpHtml}</span>
-                <span class="dict-ex-en">${en}</span>
-              </div>
-            `;
+                <div class="dict-example" onclick="this.classList.toggle('active')">
+                  <span class="dict-ex-jp">${jpHtml}</span>
+                  <span class="dict-ex-en">${en}</span>
+                </div>
+              `;
           }
           div.innerHTML = html;
           modalBody.appendChild(div);
@@ -1055,72 +1178,128 @@ level,kanji,furigana,definition,kana
       });
 
       function exportToHTML() {
-        const statsHtml = document.querySelector(".stats-bar").outerHTML;
+        // We get the styles, then append specific overrides for the export
+        let styles = document.querySelector("style").innerHTML;
+        styles += `
+              /* EXPORT-SPECIFIC OVERRIDES */
+              /* 1. Hide Stats and Count */
+              .stats-bar, .level-stats, .k-core-mean {
+                  display: none !important;
+              }
+
+              /* Export Control Bar */
+              .export-controls {
+                  background: #f1f1f1;
+                  padding: 10px 20px;
+                  border-bottom: 1px solid #ccc;
+                  margin-bottom: 20px;
+                  border-radius: 4px;
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+              }
+              .export-controls label {
+                  margin: 0;
+                  cursor: pointer;
+                  font-weight: bold;
+                  color: #333;
+              }
+              .export-controls input {
+                  transform: scale(1.2);
+                  margin-right: 8px;
+              }
+              #unmatched-area {
+                  display: none;
+              }
+          `;
+
         const resultsHtml = document.getElementById("output").innerHTML;
-        const styles = document.querySelector("style").innerHTML;
         const modalHtml = document.getElementById("dictModal").outerHTML;
+        const isInlineChecked = document.getElementById("inlineToggle").checked;
 
+        // Script to handle the export interactions
         let scriptContent = `<script>
-            const output = document.getElementById("output");
-            const modal = document.getElementById("dictModal");
-            const modalTitle = document.getElementById("modalTitle");
-            const modalBody = document.getElementById("modalBody");
-            const closeModal = document.getElementById("closeModal");
+              const output = document.getElementById("output");
+              const modal = document.getElementById("dictModal");
+              const modalTitle = document.getElementById("modalTitle");
+              const modalBody = document.getElementById("modalBody");
+              const closeModal = document.getElementById("closeModal");
 
-            ${cleanJotobaReading.toString()}
-            ${parseJotobaFurigana.toString()}
-            ${renderValue.toString()}
-            ${formatPOS.toString()}
-            ${fetchWordDetails.toString()}
-            ${renderWordDetails.toString()}
+              // Inline Toggle Logic
+              const inlineToggle = document.getElementById('inlineToggle');
+              if(inlineToggle) {
+                  inlineToggle.addEventListener('change', (e) => {
+                      if(e.target.checked) {
+                          document.body.classList.add('show-inline');
+                      } else {
+                          document.body.classList.remove('show-inline');
+                      }
+                  });
+              }
 
-            output.addEventListener("click", function(e) {
-                let target = e.target;
-                while (target && target !== output) {
-                  if (target.classList.contains("word")) {
-                    const word = target.dataset.word;
-                    if(word) fetchWordDetails(word);
-                    return;
+              ${cleanJotobaReading.toString()}
+              ${parseJotobaFurigana.toString()}
+              ${renderValue.toString()}
+              ${formatPOS.toString()}
+              ${fetchWordDetails.toString()}
+              ${renderWordDetails.toString()}
+
+              output.addEventListener("click", function(e) {
+                  let target = e.target;
+                  while (target && target !== output) {
+                    if (target.classList.contains("word")) {
+                      const word = target.dataset.word;
+                      if(word) fetchWordDetails(word);
+                      return;
+                    }
+                    target = target.parentNode;
                   }
-                  target = target.parentNode;
-                }
-            });
+              });
 
-            closeModal.addEventListener("click", () => {
-                modal.classList.remove("active");
-            });
-
-            window.addEventListener("click", (e) => {
-                if (e.target === modal) {
+              closeModal.addEventListener("click", () => {
                   modal.classList.remove("active");
-                }
-            });
-          </script`;
+              });
+
+              window.addEventListener("click", (e) => {
+                  if (e.target === modal) {
+                    modal.classList.remove("active");
+                  }
+              });
+            </script`;
         scriptContent += ">";
 
         const fileContent = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kanji Tracker Export</title>
-  <style>
-    ${styles}
-    body { background: #fff; }
-  </style>
-</head>
-<body>
-  <h2>Kanji Study Set Export</h2>
-  ${statsHtml}
-  <div id="output">
-    ${resultsHtml}
-  </div>
-  ${modalHtml}
-  ${scriptContent}
-</body>
-</html>`;
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Kanji Study Export</title>
+      <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
 
+      <style>
+      ${styles}
+      body { background: #fff; }
+      </style>
+      </head>
+      <body class="${isInlineChecked ? "show-inline" : ""}">
+      <h2>Kanji Study Set Export</h2>
+      <div class="export-controls">
+      <label>
+      <input type="checkbox" id="inlineToggle" ${
+        isInlineChecked ? "checked" : ""
+      }>
+      Show Details Inline (Furigana & Definition)
+      </label>
+      </div>
+      <div id="output">
+      ${resultsHtml}
+      </div>
+      ${modalHtml}
+      ${scriptContent}
+      </body>
+      </html>`;
         const blob = new Blob([fileContent], { type: "text/html" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
