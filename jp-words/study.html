@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV Flashcard Study</title>
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --text: #1e293b;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      /* Input Section */
+      #setup-container {
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 20px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 150px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: monospace;
+        margin-bottom: 10px;
+      }
+
+      button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.2s;
+      }
+
+      button:hover {
+        filter: brightness(90%);
+      }
+
+      /* List View */
+      #list-container {
+        width: 100%;
+        max-width: 800px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .word-item {
+        background: var(--card-bg);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        cursor: default;
+      }
+
+      .word-item .kanji {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .word-item .details {
+        opacity: 0;
+        transition: opacity 0.2s;
+        height: 50px; /* Reserve space */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .word-item:hover .details {
+        opacity: 1;
+      }
+
+      .word-item .furigana {
+        color: #64748b;
+        font-size: 0.9rem;
+      }
+
+      .word-item .meaning {
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+
+      .word-item .stats {
+        margin-top: 10px;
+        font-size: 0.7rem;
+        color: #94a3b8;
+        border-top: 1px solid #eee;
+        padding-top: 5px;
+      }
+
+      /* Flashcard Full Page Mode */
+      #flashcard-container {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--bg);
+        z-index: 100;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        background: var(--card-bg);
+        width: 90%;
+        max-width: 500px;
+        min-height: 300px;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .card-main-text {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .card-sub-info {
+        font-size: 1.5rem;
+        color: #475569;
+        margin-bottom: 10px;
+      }
+
+      .card-meaning {
+        font-size: 1.2rem;
+        color: #64748b;
+        margin-bottom: 30px;
+      }
+
+      .controls {
+        margin-top: 30px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn-easy {
+        background-color: #22c55e;
+      }
+      .btn-diff {
+        background-color: #ef4444;
+      }
+      .btn-again {
+        background-color: #f59e0b;
+      }
+      .btn-next {
+        background-color: #3b82f6;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .shortcut-hint {
+        position: absolute;
+        bottom: 20px;
+        font-size: 0.8rem;
+        color: #94a3b8;
+      }
+
+      .exit-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: transparent;
+        color: #64748b;
+        border: 1px solid #cbd5e1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Setup / List View -->
+    <div id="setup-container">
+      <h2>Vocabulary List</h2>
+      <textarea id="csv-input" placeholder="Paste CSV here...">
+level,kanji,furigana,definition,kana
+"1","出す","だ","to take out / to submit","だす"
+"1","大人","おとな","adult","おとな"
+"1","見える","み","to be visible","みえる"
+"1","出る","で","to go out / to exit","でる"
+"1","から","","from / because","から"
+"1","小学校","しょうがっこう","elementary school","しょうがっこう"
+"1","天気","てんき","weather","てんき"
+"1","白い","しろ","white","しろい"
+"1","みんな","","everyone","みんな"
+"1","川","かわ","river","かわ"
+"1","ちょっと","","a little","ちょっと"
+</textarea
+      >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <button onclick="parseAndRenderList()">Refresh List</button>
+        <button onclick="startStudySession()">Start Flashcard Study</button>
+      </div>
+    </div>
+
+    <div id="list-container"></div>
+
+    <!-- Flashcard View -->
+    <div id="flashcard-container">
+      <button class="exit-btn" onclick="exitStudy()">Exit</button>
+      <div id="card-display" class="card">
+        <!-- Content injected via JS -->
+      </div>
+      <div class="shortcut-hint">
+        Shortcuts: (E)asy, (D)ifficult, (A)gain, (N)ext
+      </div>
+    </div>
+
+    <script>
+      // --- State Management ---
+      let cards = [];
+      let studyQueue = [];
+      let currentCard = null;
+      let isCardBackVisible = false;
+
+      // localStorage Key
+      const STORAGE_KEY = "flashcard_stats";
+
+      // --- Helper: Statistics ---
+      function getStats() {
+        const data = localStorage.getItem(STORAGE_KEY);
+        return data ? JSON.parse(data) : {};
+      }
+
+      function updateStat(word, type) {
+        const stats = getStats();
+        if (!stats[word]) {
+          stats[word] = { easy: 0, difficult: 0, again: 0 };
+        }
+        stats[word][type]++;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+      }
+
+      function getStatString(word) {
+        const stats = getStats();
+        const s = stats[word] || { easy: 0, difficult: 0, again: 0 };
+        return `Easy: ${s.easy} | Diff: ${s.difficult} | Again: ${s.again}`;
+      }
+
+      // --- CSV Parsing ---
+      function parseCSV(text) {
+        const lines = text.trim().split("\n");
+        const data = [];
+
+        // Skip header (index 0)
+        for (let i = 1; i < lines.length; i++) {
+          // Regex to handle quoted CSV values safely
+          const match = lines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+          if (match) {
+            // Remove quotes if present
+            const clean = match.map((val) => val.replace(/^"|"$/g, ""));
+            if (clean.length >= 5) {
+              data.push({
+                level: clean[0],
+                kanji: clean[1],
+                furigana: clean[2],
+                definition: clean[3],
+                kana: clean[4],
+              });
+            }
+          }
+        }
+        return data;
+      }
+
+      // --- Templates ---
+      // 1. List Item Template
+      const listItemTemplate = (card, statsStr) => `
+            <div class="word-item">
+                <div class="kanji">${card.kanji}</div>
+                <div class="details">
+                    <div class="furigana">${card.kana || card.furigana}</div>
+                    <div class="meaning">${card.definition}</div>
+                </div>
+                <div class="stats">${statsStr}</div>
+            </div>
+        `;
+
+      // 2. Flashcard Front Template
+      const cardFrontTemplate = (card) => `
+            <div class="card-main-text">${card.kanji}</div>
+            <div class="controls">
+                <button class="btn-easy" onclick="handleResponse('easy')">Easy (E)</button>
+                <button class="btn-diff" onclick="handleResponse('difficult')">Difficult (D)</button>
+                <button class="btn-again" onclick="handleResponse('again')">Again (A)</button>
+            </div>
+        `;
+
+      // 3. Flashcard Back Template
+      const cardBackTemplate = (card) => `
+            <div class="card-main-text">${card.kanji}</div>
+            <div class="card-sub-info">${card.kana}</div>
+            <div class="card-meaning">${card.definition}</div>
+            <div class="controls">
+                <button class="btn-next" onclick="nextCard()">Next Card (N)</button>
+            </div>
+        `;
+
+      // --- Core Logic: List View ---
+      function parseAndRenderList() {
+        const input = document.getElementById("csv-input").value;
+        cards = parseCSV(input);
+        const container = document.getElementById("list-container");
+        container.innerHTML = "";
+
+        cards.forEach((card) => {
+          const stats = getStatString(card.kanji);
+          container.innerHTML += listItemTemplate(card, stats);
+        });
+      }
+
+      // --- Core Logic: Study Session ---
+      function startStudySession() {
+        parseAndRenderList(); // Ensure data is fresh
+        if (cards.length === 0) return alert("Please load data first.");
+
+        // Shuffle cards for a new session
+        studyQueue = [...cards];
+        shuffleArray(studyQueue);
+
+        // Switch View
+        document.getElementById("setup-container").style.display = "none";
+        document.getElementById("list-container").style.display = "none";
+        document.getElementById("flashcard-container").style.display = "flex";
+
+        nextCard(true); // Start with first card
+      }
+
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+
+      function nextCard(isStart = false) {
+        if (studyQueue.length === 0) {
+          alert("Session Complete!");
+          exitStudy();
+          return;
+        }
+
+        isCardBackVisible = false;
+
+        // If it's the start, we just peek. If it's a "Next" click, we pull from queue.
+        // Actually, handleResponse removes/moves the previous card.
+        // So here we just take the head of the queue.
+        currentCard = studyQueue[0];
+
+        renderCardFront();
+      }
+
+      function renderCardFront() {
+        const display = document.getElementById("card-display");
+        display.innerHTML = cardFrontTemplate(currentCard);
+      }
+
+      function renderCardBack() {
+        const display = document.getElementById("card-display");
+        display.innerHTML = cardBackTemplate(currentCard);
+        isCardBackVisible = true;
+      }
+
+      function handleResponse(type) {
+        if (isCardBackVisible) return; // Prevent double clicking logic
+
+        // 1. Log stats
+        updateStat(currentCard.kanji, type);
+
+        // 2. Manipulate Queue
+        const card = studyQueue.shift(); // Remove current from front
+
+        if (type === "easy") {
+          // Done. Don't add back.
+        } else if (type === "difficult") {
+          // Insert randomly later (between index 1 and end)
+          if (studyQueue.length > 0) {
+            const randIndex = Math.floor(Math.random() * studyQueue.length) + 1;
+            studyQueue.splice(randIndex, 0, card);
+          } else {
+            studyQueue.push(card);
+          }
+        } else if (type === "again") {
+          // Insert randomly in next 5
+          const lookahead = Math.min(studyQueue.length, 5);
+          const randIndex = Math.floor(Math.random() * (lookahead + 1));
+          studyQueue.splice(randIndex, 0, card);
+        }
+
+        // 3. Show Back
+        renderCardBack();
+      }
+
+      function exitStudy() {
+        document.getElementById("flashcard-container").style.display = "none";
+        document.getElementById("setup-container").style.display = "block";
+        document.getElementById("list-container").style.display = "grid";
+        parseAndRenderList(); // Refresh stats in list
+      }
+
+      // --- Keyboard Shortcuts ---
+      document.addEventListener("keydown", (e) => {
+        const container = document.getElementById("flashcard-container");
+        if (container.style.display !== "flex") return; // Only if in study mode
+
+        const key = e.key.toLowerCase();
+
+        if (isCardBackVisible) {
+          if (key === "n" || key === "enter" || key === " ") {
+            nextCard();
+          }
+        } else {
+          if (key === "e") handleResponse("easy");
+          if (key === "d") handleResponse("difficult");
+          if (key === "a") handleResponse("again");
+        }
+      });
+
+      // Initialize on load
+      parseAndRenderList();
+    </script>
+  </body>
+</html>

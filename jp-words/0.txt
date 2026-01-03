@@ -1,4 +1,6 @@
 level,kanji,furigana,definition,kana
+0,"ゼロ","","zero","ぜろ"
+0,"一","いち","one","いち"
 0,二,に,two,に
 0,三,さん,three,さん
 0,四,よん,four,よん
@@ -9,12 +11,16 @@ level,kanji,furigana,definition,kana
 0,九,きゅう,nine,きゅう
 0,十,じゅう,ten,じゅう
 0,千,せん,thousand,せん
+0,"万","まん","ten thousand","まん"
 0,一つ,ひと,one (object),ひとつ
 0,二つ,ふた,two (objects),ふたつ
 0,三つ,みっ,three (objects),みっつ
 0,四つ,よっ,four (objects),よっつ
 0,五つ,いつ,five (objects),いつつ
+0,"六つ","むっ","six items","むっつ"
 0,七つ,なな,seven (objects),ななつ
+0,"八つ","やっ","eight items","やっつ"
+0,"九つ","ここの","nine items","ここのつ"
 0,一度,いちど,once,いちど
 0,月曜日,げつようび,Monday,げつようび
 0,火曜日,かようび,Tuesday,かようび
@@ -22,6 +28,7 @@ level,kanji,furigana,definition,kana
 0,木曜日,もくようび,Thursday,もくようび
 0,金曜日,きんようび,Friday,きんようび
 0,土曜日,どようび,Saturday,どようび
+0,"日曜日","にちようび","Sunday","にちようび"
 0,毎週,まいしゅう,every week,まいしゅう
 0,先月,せんげつ,last month,せんげつ
 0,今月,こんげつ,this month,こんげつ

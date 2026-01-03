@@ -160,6 +160,12 @@
         color: white;
       }
 
+      /* Button Group for exports */
+      .export-group {
+        display: flex;
+        gap: 10px;
+      }
+
       .btn-export {
         background-color: #007bff;
         color: white;
@@ -173,6 +179,14 @@
       }
       .btn-export:hover {
         background-color: #0056b3;
+      }
+
+      /* Specific style for CSV button */
+      .btn-csv {
+        background-color: #28a745;
+      }
+      .btn-csv:hover {
+        background-color: #218838;
       }
 
       /* =========================================
@@ -300,6 +314,7 @@
         margin-top: 0;
       }
 
+      /* This class still visually marks kanji that are in the set */
       .k-inline-char.known {
         color: black;
       }
@@ -660,14 +675,16 @@ level,kanji,furigana,definition,kana
         >
       </div>
       <div class="input-group">
-        <label for="set2">Set 2: Known Kanji (Determines Highlighting)</label>
+        <label for="set2"
+          >Set 2: Kanji Study Set (Determines Highlighting & Order)</label
+        >
         <textarea id="set2">一 右 雨 祭 見</textarea>
       </div>
     </div>
 
     <!-- NEW UNMATCHED AREA -->
     <div id="unmatched-area">
-      <strong>Unused Known Kanji:</strong>
+      <strong>Unused Study Set Kanji:</strong>
       <span id="unmatched-list" class="unmatched-list"></span>
     </div>
 
@@ -680,7 +697,6 @@ level,kanji,furigana,definition,kana
         <label class="toggle-label">
           <input type="checkbox" id="hideNoKanji" /> Hide words without Kanji
         </label>
-        <!-- ADDED INLINE TOGGLE HERE -->
         <label
           class="toggle-label"
           style="border-left: 2px solid #ccc; padding-left: 15px"
@@ -694,7 +710,12 @@ level,kanji,furigana,definition,kana
         <button class="view-btn" id="viewGridBtn">Kanji Tile View</button>
       </div>
 
-      <button class="btn-export" id="exportBtn">Export Results to HTML</button>
+      <div class="export-group">
+        <button class="btn-export" id="exportBtn">Export HTML</button>
+        <button class="btn-export btn-csv" id="csvBtn">
+          Export Matched to CSV
+        </button>
+      </div>
     </div>
 
     <!-- DICTIONARY MODAL -->
@@ -718,6 +739,7 @@ level,kanji,furigana,definition,kana
       const inlineToggle = document.getElementById("inlineToggle");
       const output = document.getElementById("output");
       const exportBtn = document.getElementById("exportBtn");
+      const csvBtn = document.getElementById("csvBtn");
       const viewListBtn = document.getElementById("viewListBtn");
       const viewGridBtn = document.getElementById("viewGridBtn");
 
@@ -786,7 +808,9 @@ level,kanji,furigana,definition,kana
         const hideUnmatched = hideUnmatchedInput.checked;
         const hideNoKanji = hideNoKanjiInput.checked;
 
+        // Get the ordered list of kanji from input for Sorting
         const knownKanjiArr = set2Input.value.match(/[\u4e00-\u9faf]/g) || [];
+        // Create Set for quick lookup (Matched status)
         const knownSet = new Set(knownKanjiArr);
 
         let parsedItems = [];
@@ -876,7 +900,8 @@ level,kanji,furigana,definition,kana
         if (currentView === "list") {
           renderListView(visibleItems);
         } else {
-          renderKanjiGrid(visibleItems, knownSet);
+          // Pass the ordered array for sorting
+          renderKanjiGrid(visibleItems, knownSet, knownKanjiArr);
         }
       }
 
@@ -943,7 +968,7 @@ level,kanji,furigana,definition,kana
         return `L${num}`;
       }
 
-      function renderKanjiGrid(items, knownSet) {
+      function renderKanjiGrid(items, knownSet, knownOrderedList) {
         // 1. Group words by Kanji
         const kanjiMap = {};
 
@@ -970,11 +995,34 @@ level,kanji,furigana,definition,kana
         const grid = document.createElement("div");
         grid.className = "kanji-grid";
 
+        // Create a map of index positions for O(1) lookup during sort
+        const orderMap = new Map();
+        knownOrderedList.forEach((char, index) => {
+          // If duplicates exist in input, the first one determines order
+          if (!orderMap.has(char)) {
+            orderMap.set(char, index);
+          }
+        });
+
         const sortedKanji = Object.keys(kanjiMap).sort((a, b) => {
-          const aKnown = knownSet.has(a);
-          const bKnown = knownSet.has(b);
-          if (aKnown && !bKnown) return -1;
-          if (!aKnown && bKnown) return 1;
+          // Kana always last (or handle as preferred)
+          if (a === "Kana") return 1;
+          if (b === "Kana") return -1;
+
+          const hasA = orderMap.has(a);
+          const hasB = orderMap.has(b);
+
+          // Priority 1: Input Order (both in Study Set)
+          if (hasA && hasB) {
+            return orderMap.get(a) - orderMap.get(b);
+          }
+
+          // Priority 2: In Study Set vs Not In Study Set
+          // A is in set, B is not -> A comes first
+          if (hasA) return -1;
+          if (hasB) return 1;
+
+          // Priority 3: Frequency (Fallback for kanji NOT in study set)
           return kanjiMap[b].length - kanjiMap[a].length;
         });
 
@@ -991,8 +1039,9 @@ level,kanji,furigana,definition,kana
           charDiv.className = "k-inline-char";
           if (knownSet.has(char)) charDiv.classList.add("known");
           charDiv.textContent = char === "Kana" ? "あ" : char;
-          grid.appendChild(charDiv);
+          if (!first) grid.appendChild(document.createElement("div"));
           first = false;
+          grid.appendChild(charDiv);
 
           let lastLevel = -1;
 
@@ -1153,29 +1202,81 @@ level,kanji,furigana,definition,kana
         });
       }
 
-      // --- Event Listeners ---
+      // --- EXPORT LOGIC ---
 
-      // Delegated click for words
-      output.addEventListener("click", function (e) {
-        let target = e.target;
-        while (target && target !== output) {
-          if (target.classList.contains("word")) {
-            const word = target.dataset.word || target.textContent.trim();
-            fetchWordDetails(word);
+      function exportToCSV() {
+        const rawLines = set1Input.value.split("\n").filter((l) => l.trim());
+        const knownKanjiArr = set2Input.value.match(/[\u4e00-\u9faf]/g) || [];
+        const knownSet = new Set(knownKanjiArr);
+
+        // Capture filter state
+        const hideNoKanji = hideNoKanjiInput.checked;
+
+        // Keep seen words to dedupe based on logic in updateDisplay
+        const seenWords = new Set();
+        let csvContent = "";
+        let headerFound = false;
+
+        rawLines.forEach((line, index) => {
+          // Handle Header
+          if (
+            line.toLowerCase().startsWith("level,") ||
+            (index === 0 && line.includes("level"))
+          ) {
+            csvContent += line + "\n";
+            headerFound = true;
             return;
           }
-          target = target.parentNode;
-        }
-      });
 
-      closeModal.addEventListener("click", () => {
-        modal.classList.remove("active");
-      });
-      window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          modal.classList.remove("active");
-        }
-      });
+          // Parse Line
+          const regex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
+          const parts = line.split(regex);
+
+          if (parts.length >= 2) {
+            // Clean parts for logic checking
+            const cleanParts = parts.map((p) =>
+              p.trim().replace(/^"|"$/g, "").replace(/""/g, '"')
+            );
+            const word = cleanParts[1];
+
+            // Deduplication Logic (match updateDisplay)
+            if (seenWords.has(word)) return;
+            seenWords.add(word);
+
+            // Determine if matched
+            const kanjiInWord = word.match(/[\u4e00-\u9faf]/g) || [];
+            const hasKanji = kanjiInWord.length > 0;
+            const allKnown =
+              !hasKanji || kanjiInWord.every((k) => knownSet.has(k));
+
+            if (allKnown) {
+              // Apply specific "Hide No Kanji" filter for CSV export
+              if (hideNoKanji && !hasKanji) {
+                return; // Skip this word
+              }
+
+              // Reconstruct CSV line to ensure clean quoting
+              // We reconstruct using the clean parts to ensure consistency
+              const reconstructedRow = cleanParts
+                .map((p) => `"${p.replace(/"/g, '""')}"`)
+                .join(",");
+              csvContent += reconstructedRow + "\n";
+            }
+          }
+        });
+
+        const blob = new Blob([csvContent], {
+          type: "text/csv;charset=utf-8;",
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", "kanji_matched_words.csv");
+        link.style.visibility = "hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
 
       function exportToHTML() {
         // We get the styles, then append specific overrides for the export
@@ -1311,12 +1412,37 @@ level,kanji,furigana,definition,kana
         URL.revokeObjectURL(url);
       }
 
+      // --- Event Listeners ---
       [set1Input, set2Input, hideUnmatchedInput, hideNoKanjiInput].forEach(
         (el) => el.addEventListener("input", updateDisplay)
       );
       hideUnmatchedInput.addEventListener("change", updateDisplay);
       hideNoKanjiInput.addEventListener("change", updateDisplay);
+
+      // Delegated click for words
+      output.addEventListener("click", function (e) {
+        let target = e.target;
+        while (target && target !== output) {
+          if (target.classList.contains("word")) {
+            const word = target.dataset.word || target.textContent.trim();
+            fetchWordDetails(word);
+            return;
+          }
+          target = target.parentNode;
+        }
+      });
+
+      closeModal.addEventListener("click", () => {
+        modal.classList.remove("active");
+      });
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
+
       exportBtn.addEventListener("click", exportToHTML);
+      csvBtn.addEventListener("click", exportToCSV);
 
       updateDisplay();
     </script>
