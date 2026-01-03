@@ -32,6 +32,44 @@
         margin-bottom: 20px;
       }
 
+      .input-controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      /* File Upload Styling */
+      input[type="file"] {
+        display: none;
+      }
+
+      .custom-file-upload {
+        border: 1px solid #cbd5e1;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+        background: white;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        color: #475569;
+      }
+
+      .custom-file-upload:hover {
+        background: #f1f5f9;
+      }
+
+      /* Sort Dropdown */
+      select {
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid #cbd5e1;
+        background: white;
+        color: #475569;
+        font-size: 0.9rem;
+      }
+
       textarea {
         width: 100%;
         height: 150px;
@@ -40,6 +78,8 @@
         border-radius: 8px;
         font-family: monospace;
         margin-bottom: 10px;
+        resize: vertical;
+        box-sizing: border-box;
       }
 
       button {
@@ -57,12 +97,20 @@
         filter: brightness(90%);
       }
 
+      .reset-link {
+        font-size: 0.8rem;
+        color: #64748b;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: auto;
+      }
+
       /* List View */
       #list-container {
         width: 100%;
         max-width: 800px;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         gap: 15px;
       }
 
@@ -74,18 +122,31 @@
         text-align: center;
         position: relative;
         cursor: default;
+        transition: opacity 0.3s;
+      }
+
+      .word-item.ignored {
+        opacity: 0.5;
+        background: #f1f5f9;
+      }
+
+      .checkbox-wrapper {
+        position: absolute;
+        top: 10px;
+        left: 10px;
       }
 
       .word-item .kanji {
         font-size: 2rem;
         font-weight: bold;
         margin-bottom: 5px;
+        margin-top: 10px;
       }
 
       .word-item .details {
         opacity: 0;
         transition: opacity 0.2s;
-        height: 50px; /* Reserve space */
+        height: 50px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -115,7 +176,7 @@
 
       /* Flashcard Full Page Mode */
       #flashcard-container {
-        display: none; /* Hidden by default */
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -132,7 +193,7 @@
         background: var(--card-bg);
         width: 90%;
         max-width: 500px;
-        min-height: 300px;
+        min-height: 350px;
         padding: 40px;
         border-radius: 16px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -142,6 +203,15 @@
         align-items: center;
         justify-content: center;
         position: relative;
+      }
+
+      .card-counter {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 0.9rem;
+        color: #94a3b8;
+        font-weight: bold;
       }
 
       .card-main-text {
@@ -168,21 +238,35 @@
         gap: 10px;
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
       }
 
       .btn-easy {
         background-color: #22c55e;
+        flex: 1;
       }
       .btn-diff {
         background-color: #ef4444;
+        flex: 1;
       }
       .btn-again {
         background-color: #f59e0b;
+        flex: 1;
       }
+
+      .nav-controls {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+      }
+
       .btn-next {
         background-color: #3b82f6;
-        width: 100%;
-        margin-top: 10px;
+        flex: 2;
+      }
+      .btn-back {
+        background-color: #64748b;
+        flex: 1;
       }
 
       .shortcut-hint {
@@ -206,29 +290,34 @@
     <!-- Setup / List View -->
     <div id="setup-container">
       <h2>Vocabulary List</h2>
-      <textarea id="csv-input" placeholder="Paste CSV here...">
-level,kanji,furigana,definition,kana
-"1","出す","だ","to take out / to submit","だす"
-"1","大人","おとな","adult","おとな"
-"1","見える","み","to be visible","みえる"
-"1","出る","で","to go out / to exit","でる"
-"1","から","","from / because","から"
-"1","小学校","しょうがっこう","elementary school","しょうがっこう"
-"1","天気","てんき","weather","てんき"
-"1","白い","しろ","white","しろい"
-"1","みんな","","everyone","みんな"
-"1","川","かわ","river","かわ"
-"1","ちょっと","","a little","ちょっと"
-</textarea
-      >
+
+      <div class="input-controls">
+        <label for="csv-file-upload" class="custom-file-upload">
+          📂 Upload CSV File
+        </label>
+        <input
+          id="csv-file-upload"
+          type="file"
+          accept=".csv"
+          onchange="handleFileUpload(this)"
+        />
+
+        <select id="sort-select" onchange="parseAndRenderList()">
+          <option value="csv">Sort: CSV Order</option>
+          <option value="easy">Sort: Highest Easy Count</option>
+          <option value="hard">Sort: Highest Difficult + Again</option>
+        </select>
+
+        <span class="reset-link" onclick="resetToDefault()"
+          >Reset to Sample Data</span
+        >
+      </div>
+
+      <textarea id="csv-input" placeholder="Paste CSV here..."></textarea>
+
       <div
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        "
+        style="display: flex; justify-content: flex-end; align-items: center"
       >
-        <button onclick="parseAndRenderList()">Refresh List</button>
         <button onclick="startStudySession()">Start Flashcard Study</button>
       </div>
     </div>
@@ -242,52 +331,141 @@ level,kanji,furigana,definition,kana
         <!-- Content injected via JS -->
       </div>
       <div class="shortcut-hint">
-        Shortcuts: (E)asy, (D)ifficult, (A)gain, (N)ext
+        Shortcuts: (E)asy, (D)ifficult, (A)gain, (N)ext, (Backspace) Undo
       </div>
     </div>
 
     <script>
+      // --- Constants & Config ---
+      const DEFAULT_CSV = `level,kanji,furigana,definition,kana
+"1","出す","だ","to take out / to submit","だす"
+"1","大人","おとな","adult","おとな"
+"1","見える","み","to be visible","みえる"
+"1","出る","で","to go out / to exit","でる"
+"1","から","","from / because","から"
+"1","小学校","しょうがっこう","elementary school","しょうがっこう"
+"1","天気","てんき","weather","てんき"
+"1","白い","しろ","white","しろい"
+"1","みんな","","everyone","みんな"
+"1","川","かわ","river","かわ"
+"1","ちょっと","","a little","ちょっと"`;
+
+      // localStorage Keys
+      const STATS_KEY = "flashcard_stats";
+      const IGNORED_KEY = "flashcard_ignored";
+      const CSV_DATA_KEY = "flashcard_csv_data";
+
       // --- State Management ---
       let cards = [];
       let studyQueue = [];
+      let initialSessionCount = 0;
       let currentCard = null;
       let isCardBackVisible = false;
+      let lastActionState = null;
+      let debounceTimer = null;
 
-      // localStorage Key
-      const STORAGE_KEY = "flashcard_stats";
+      // --- Initialization ---
+      function init() {
+        // Load saved CSV or Default
+        const savedCSV = localStorage.getItem(CSV_DATA_KEY);
+        const inputArea = document.getElementById("csv-input");
+        inputArea.value = savedCSV ? savedCSV : DEFAULT_CSV;
 
-      // --- Helper: Statistics ---
+        // Setup Auto-Refresh Listener
+        inputArea.addEventListener("input", handleInputDebounce);
+
+        // Initial Render
+        parseAndRenderList();
+      }
+
+      // --- Input Handling & File Upload ---
+      function handleInputDebounce(e) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          const content = e.target.value;
+          localStorage.setItem(CSV_DATA_KEY, content);
+          parseAndRenderList();
+        }, 500); // 500ms delay
+      }
+
+      function handleFileUpload(input) {
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const content = e.target.result;
+          const textarea = document.getElementById("csv-input");
+          textarea.value = content;
+          // Save and render immediately
+          localStorage.setItem(CSV_DATA_KEY, content);
+          parseAndRenderList();
+        };
+        reader.readAsText(file);
+        input.value = "";
+      }
+
+      function resetToDefault() {
+        if (
+          confirm(
+            "This will overwrite your current list with the sample data. Continue?"
+          )
+        ) {
+          const textarea = document.getElementById("csv-input");
+          textarea.value = DEFAULT_CSV;
+          localStorage.setItem(CSV_DATA_KEY, DEFAULT_CSV);
+          parseAndRenderList();
+        }
+      }
+
+      // --- Helper: Statistics & Settings ---
       function getStats() {
-        const data = localStorage.getItem(STORAGE_KEY);
+        const data = localStorage.getItem(STATS_KEY);
         return data ? JSON.parse(data) : {};
       }
 
-      function updateStat(word, type) {
+      function updateStat(word, type, increment = true) {
         const stats = getStats();
         if (!stats[word]) {
           stats[word] = { easy: 0, difficult: 0, again: 0 };
         }
-        stats[word][type]++;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+        if (increment) {
+          stats[word][type]++;
+        } else {
+          if (stats[word][type] > 0) stats[word][type]--;
+        }
+        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
       }
 
       function getStatString(word) {
         const stats = getStats();
         const s = stats[word] || { easy: 0, difficult: 0, again: 0 };
-        return `Easy: ${s.easy} | Diff: ${s.difficult} | Again: ${s.again}`;
+        return `E: ${s.easy} | D: ${s.difficult} | A: ${s.again}`;
+      }
+
+      function getIgnoredCards() {
+        const data = localStorage.getItem(IGNORED_KEY);
+        return data ? JSON.parse(data) : [];
+      }
+
+      function toggleIgnoredCard(kanji) {
+        let ignored = getIgnoredCards();
+        if (ignored.includes(kanji)) {
+          ignored = ignored.filter((k) => k !== kanji);
+        } else {
+          ignored.push(kanji);
+        }
+        localStorage.setItem(IGNORED_KEY, JSON.stringify(ignored));
+        parseAndRenderList();
       }
 
       // --- CSV Parsing ---
       function parseCSV(text) {
         const lines = text.trim().split("\n");
         const data = [];
-
-        // Skip header (index 0)
         for (let i = 1; i < lines.length; i++) {
-          // Regex to handle quoted CSV values safely
           const match = lines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
           if (match) {
-            // Remove quotes if present
             const clean = match.map((val) => val.replace(/^"|"$/g, ""));
             if (clean.length >= 5) {
               data.push({
@@ -304,9 +482,14 @@ level,kanji,furigana,definition,kana
       }
 
       // --- Templates ---
-      // 1. List Item Template
-      const listItemTemplate = (card, statsStr) => `
-            <div class="word-item">
+      const listItemTemplate = (card, statsStr, isIgnored) => `
+            <div class="word-item ${isIgnored ? "ignored" : ""}">
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" 
+                        ${!isIgnored ? "checked" : ""} 
+                        onchange="toggleIgnoredCard('${card.kanji}')"
+                    >
+                </div>
                 <div class="kanji">${card.kanji}</div>
                 <div class="details">
                     <div class="furigana">${card.kana || card.furigana}</div>
@@ -316,8 +499,12 @@ level,kanji,furigana,definition,kana
             </div>
         `;
 
-      // 2. Flashcard Front Template
+      const getCounterText = () => {
+        return `${studyQueue.length} Remaining / ${initialSessionCount} Total`;
+      };
+
       const cardFrontTemplate = (card) => `
+            <div class="card-counter">${getCounterText()}</div>
             <div class="card-main-text">${card.kanji}</div>
             <div class="controls">
                 <button class="btn-easy" onclick="handleResponse('easy')">Easy (E)</button>
@@ -326,12 +513,13 @@ level,kanji,furigana,definition,kana
             </div>
         `;
 
-      // 3. Flashcard Back Template
       const cardBackTemplate = (card) => `
+            <div class="card-counter">${getCounterText()}</div>
             <div class="card-main-text">${card.kanji}</div>
             <div class="card-sub-info">${card.kana}</div>
             <div class="card-meaning">${card.definition}</div>
-            <div class="controls">
+            <div class="controls nav-controls">
+                <button class="btn-back" onclick="undoResponse()">Go Back</button>
                 <button class="btn-next" onclick="nextCard()">Next Card (N)</button>
             </div>
         `;
@@ -340,30 +528,59 @@ level,kanji,furigana,definition,kana
       function parseAndRenderList() {
         const input = document.getElementById("csv-input").value;
         cards = parseCSV(input);
+
+        // Apply Sort
+        const sortMode = document.getElementById("sort-select").value;
+        const stats = getStats();
+
+        if (sortMode !== "csv") {
+          cards.sort((a, b) => {
+            const sA = stats[a.kanji] || { easy: 0, difficult: 0, again: 0 };
+            const sB = stats[b.kanji] || { easy: 0, difficult: 0, again: 0 };
+
+            if (sortMode === "easy") {
+              // Descending Easy Count
+              return sB.easy - sA.easy;
+            } else if (sortMode === "hard") {
+              // Descending Difficult + Again
+              const hardA = sA.difficult + sA.again;
+              const hardB = sB.difficult + sB.again;
+              return hardB - hardA;
+            }
+            return 0;
+          });
+        }
+
         const container = document.getElementById("list-container");
         container.innerHTML = "";
 
+        const ignored = getIgnoredCards();
+
         cards.forEach((card) => {
-          const stats = getStatString(card.kanji);
-          container.innerHTML += listItemTemplate(card, stats);
+          const statsStr = getStatString(card.kanji);
+          const isIgnored = ignored.includes(card.kanji);
+          container.innerHTML += listItemTemplate(card, statsStr, isIgnored);
         });
       }
 
       // --- Core Logic: Study Session ---
       function startStudySession() {
-        parseAndRenderList(); // Ensure data is fresh
-        if (cards.length === 0) return alert("Please load data first.");
+        parseAndRenderList();
 
-        // Shuffle cards for a new session
-        studyQueue = [...cards];
+        const ignored = getIgnoredCards();
+        studyQueue = cards.filter((c) => !ignored.includes(c.kanji));
+
+        if (studyQueue.length === 0)
+          return alert("No cards selected for study!");
+
+        initialSessionCount = studyQueue.length;
         shuffleArray(studyQueue);
 
-        // Switch View
         document.getElementById("setup-container").style.display = "none";
         document.getElementById("list-container").style.display = "none";
         document.getElementById("flashcard-container").style.display = "flex";
 
-        nextCard(true); // Start with first card
+        renderNextCardSetup();
       }
 
       function shuffleArray(array) {
@@ -373,7 +590,7 @@ level,kanji,furigana,definition,kana
         }
       }
 
-      function nextCard(isStart = false) {
+      function renderNextCardSetup() {
         if (studyQueue.length === 0) {
           alert("Session Complete!");
           exitStudy();
@@ -381,69 +598,85 @@ level,kanji,furigana,definition,kana
         }
 
         isCardBackVisible = false;
-
-        // If it's the start, we just peek. If it's a "Next" click, we pull from queue.
-        // Actually, handleResponse removes/moves the previous card.
-        // So here we just take the head of the queue.
         currentCard = studyQueue[0];
+        lastActionState = null;
 
-        renderCardFront();
-      }
-
-      function renderCardFront() {
         const display = document.getElementById("card-display");
         display.innerHTML = cardFrontTemplate(currentCard);
       }
 
-      function renderCardBack() {
-        const display = document.getElementById("card-display");
-        display.innerHTML = cardBackTemplate(currentCard);
-        isCardBackVisible = true;
+      function nextCard() {
+        renderNextCardSetup();
       }
 
       function handleResponse(type) {
-        if (isCardBackVisible) return; // Prevent double clicking logic
+        if (isCardBackVisible) return;
 
-        // 1. Log stats
-        updateStat(currentCard.kanji, type);
+        updateStat(currentCard.kanji, type, true);
 
-        // 2. Manipulate Queue
-        const card = studyQueue.shift(); // Remove current from front
+        const card = studyQueue.shift();
+        let insertedAtIndex = -1;
 
-        if (type === "easy") {
-          // Done. Don't add back.
-        } else if (type === "difficult") {
-          // Insert randomly later (between index 1 and end)
+        if (type === "difficult") {
           if (studyQueue.length > 0) {
-            const randIndex = Math.floor(Math.random() * studyQueue.length) + 1;
-            studyQueue.splice(randIndex, 0, card);
+            insertedAtIndex = Math.floor(Math.random() * studyQueue.length) + 1;
+            studyQueue.splice(insertedAtIndex, 0, card);
           } else {
+            insertedAtIndex = 0;
             studyQueue.push(card);
           }
         } else if (type === "again") {
-          // Insert randomly in next 5
           const lookahead = Math.min(studyQueue.length, 5);
-          const randIndex = Math.floor(Math.random() * (lookahead + 1));
-          studyQueue.splice(randIndex, 0, card);
+          insertedAtIndex = Math.floor(Math.random() * (lookahead + 1));
+          studyQueue.splice(insertedAtIndex, 0, card);
         }
 
-        // 3. Show Back
-        renderCardBack();
+        lastActionState = {
+          card: card,
+          type: type,
+          insertedAtIndex: insertedAtIndex,
+        };
+
+        isCardBackVisible = true;
+        const display = document.getElementById("card-display");
+        display.innerHTML = cardBackTemplate(currentCard);
+      }
+
+      function undoResponse() {
+        if (!lastActionState) return;
+
+        updateStat(lastActionState.card.kanji, lastActionState.type, false);
+
+        if (lastActionState.insertedAtIndex !== -1) {
+          studyQueue.splice(lastActionState.insertedAtIndex, 1);
+        }
+
+        studyQueue.unshift(lastActionState.card);
+
+        isCardBackVisible = false;
+        lastActionState = null;
+        const display = document.getElementById("card-display");
+        display.innerHTML = cardFrontTemplate(currentCard);
       }
 
       function exitStudy() {
         document.getElementById("flashcard-container").style.display = "none";
         document.getElementById("setup-container").style.display = "block";
         document.getElementById("list-container").style.display = "grid";
-        parseAndRenderList(); // Refresh stats in list
+        parseAndRenderList();
       }
 
       // --- Keyboard Shortcuts ---
       document.addEventListener("keydown", (e) => {
         const container = document.getElementById("flashcard-container");
-        if (container.style.display !== "flex") return; // Only if in study mode
+        if (container.style.display !== "flex") return;
 
         const key = e.key.toLowerCase();
+
+        if (key === "backspace" || key === "u") {
+          if (isCardBackVisible) undoResponse();
+          return;
+        }
 
         if (isCardBackVisible) {
           if (key === "n" || key === "enter" || key === " ") {
@@ -456,8 +689,8 @@ level,kanji,furigana,definition,kana
         }
       });
 
-      // Initialize on load
-      parseAndRenderList();
+      // Start app
+      init();
     </script>
   </body>
 </html>
