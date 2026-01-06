@@ -97,14 +97,6 @@
         filter: brightness(90%);
       }
 
-      .reset-link {
-        font-size: 0.8rem;
-        color: #64748b;
-        text-decoration: underline;
-        cursor: pointer;
-        margin-left: auto;
-      }
-
       /* List View */
       #list-container {
         width: 100%;
@@ -273,6 +265,13 @@
         flex: 1;
       }
 
+      .btn-show {
+        background-color: #3b82f6;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1rem;
+      }
+
       .shortcut-hint {
         position: absolute;
         bottom: 20px;
@@ -330,9 +329,8 @@
       <div id="card-display" class="card">
         <!-- Content injected via JS -->
       </div>
-      <div class="shortcut-hint">
-        Shortcuts: (E)asy, (D)ifficult, (A)gain, (N)ever, (Enter/Space) Next,
-        (Backspace) Undo
+      <div class="shortcut-hint" id="shortcut-hint-text">
+        <!-- Updated dynamically -->
       </div>
     </div>
 
@@ -365,8 +363,27 @@
       let lastActionState = null;
       let debounceTimer = null;
 
+      // In-memory caches to prevent sync blocking reads
+      let statsCache = {};
+      let ignoredCache = [];
+
+      // --- Async Storage Helper ---
+      // Wraps localStorage in a promise/timeout to avoid blocking the main thread
+      async function saveAsync(key, value) {
+        // Use setTimeout 0 to push to end of event loop
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        localStorage.setItem(key, value);
+      }
+
       // --- Initialization ---
       function init() {
+        // Load caches synchronously once on startup
+        const savedStats = localStorage.getItem(STATS_KEY);
+        statsCache = savedStats ? JSON.parse(savedStats) : {};
+
+        const savedIgnored = localStorage.getItem(IGNORED_KEY);
+        ignoredCache = savedIgnored ? JSON.parse(savedIgnored) : [];
+
         // Load saved CSV or Default
         const savedCSV = localStorage.getItem(CSV_DATA_KEY);
         const inputArea = document.getElementById("csv-input");
@@ -384,9 +401,9 @@
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
           const content = e.target.value;
-          localStorage.setItem(CSV_DATA_KEY, content);
+          saveAsync(CSV_DATA_KEY, content);
           parseAndRenderList();
-        }, 500); // 500ms delay
+        }, 500);
       }
 
       function handleFileUpload(input) {
@@ -398,65 +415,42 @@
           const content = e.target.result;
           const textarea = document.getElementById("csv-input");
           textarea.value = content;
-          // Save and render immediately
-          localStorage.setItem(CSV_DATA_KEY, content);
+          // Save and render
+          saveAsync(CSV_DATA_KEY, content);
           parseAndRenderList();
         };
         reader.readAsText(file);
         input.value = "";
       }
 
-      function resetToDefault() {
-        if (
-          confirm(
-            "This will overwrite your current list with the sample data. Continue?"
-          )
-        ) {
-          const textarea = document.getElementById("csv-input");
-          textarea.value = DEFAULT_CSV;
-          localStorage.setItem(CSV_DATA_KEY, DEFAULT_CSV);
-          parseAndRenderList();
-        }
-      }
-
       // --- Helper: Statistics & Settings ---
-      function getStats() {
-        const data = localStorage.getItem(STATS_KEY);
-        return data ? JSON.parse(data) : {};
-      }
-
       function updateStat(word, type, increment = true) {
-        const stats = getStats();
-        if (!stats[word]) {
-          stats[word] = { easy: 0, difficult: 0, again: 0 };
+        if (!statsCache[word]) {
+          statsCache[word] = { easy: 0, difficult: 0, again: 0 };
         }
         if (increment) {
-          stats[word][type]++;
+          statsCache[word][type]++;
         } else {
-          if (stats[word][type] > 0) stats[word][type]--;
+          if (statsCache[word][type] > 0) statsCache[word][type]--;
         }
-        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+
+        // Async save
+        saveAsync(STATS_KEY, JSON.stringify(statsCache));
       }
 
       function getStatString(word) {
-        const stats = getStats();
-        const s = stats[word] || { easy: 0, difficult: 0, again: 0 };
+        const s = statsCache[word] || { easy: 0, difficult: 0, again: 0 };
         return `E: ${s.easy} | D: ${s.difficult} | A: ${s.again}`;
       }
 
-      function getIgnoredCards() {
-        const data = localStorage.getItem(IGNORED_KEY);
-        return data ? JSON.parse(data) : [];
-      }
-
       function toggleIgnoredCard(kanji) {
-        let ignored = getIgnoredCards();
-        if (ignored.includes(kanji)) {
-          ignored = ignored.filter((k) => k !== kanji);
+        if (ignoredCache.includes(kanji)) {
+          ignoredCache = ignoredCache.filter((k) => k !== kanji);
         } else {
-          ignored.push(kanji);
+          ignoredCache.push(kanji);
         }
-        localStorage.setItem(IGNORED_KEY, JSON.stringify(ignored));
+
+        saveAsync(IGNORED_KEY, JSON.stringify(ignoredCache));
         parseAndRenderList();
       }
 
@@ -504,40 +498,37 @@
         return `${studyQueue.length} Remaining / ${initialSessionCount} Total`;
       };
 
+      // FRONT: No rating buttons, only "Show Back"
       const cardFrontTemplate = (card) => `
             <div class="card-counter">${getCounterText()}</div>
             <div class="card-main-text">${card.kanji}</div>
             <div class="controls">
-                <button class="btn-easy" onclick="handleResponse('easy')">Easy (E)</button>
-                <button class="btn-diff" onclick="handleResponse('difficult')">Difficult (D)</button>
-                <button class="btn-again" onclick="handleResponse('again')">Again (A)</button>
-            </div>
-            <div class="controls">
-                <button class="btn-never" onclick="handleNever()">Never (N)</button>
+                <button class="btn-show" onclick="showBack()">Show Answer (Enter)</button>
             </div>
         `;
 
+      // BACK: Rating buttons trigger logic to save and move next
       const cardBackTemplate = (card) => `
             <div class="card-counter">${getCounterText()}</div>
             <div class="card-main-text">${card.kanji}</div>
             <div class="card-sub-info">${card.kana}</div>
             <div class="card-meaning">${card.definition}</div>
             
-            <!-- Rating Controls (Overwrite) -->
             <div class="controls">
-                <button class="btn-easy" onclick="handleResponse('easy', true)">Easy (E)</button>
-                <button class="btn-diff" onclick="handleResponse('difficult', true)">Difficult (D)</button>
-                <button class="btn-again" onclick="handleResponse('again', true)">Again (A)</button>
+                <button class="btn-easy" onclick="handleResponse('easy')">Easy (E)</button>
+                <button class="btn-diff" onclick="handleResponse('difficult')">Difficult (D)</button>
+                <button class="btn-again" onclick="handleResponse('again')">Again (A)</button>
             </div>
             
             <div class="controls">
-                <button class="btn-never" onclick="handleNever(true)">Never (N)</button>
+                <button class="btn-never" onclick="handleNever()">Never (N)</button>
             </div>
 
-            <!-- Navigation -->
+            <!-- Optional: Manual next if they just want to skip grading? 
+                 Usually in SRS you MUST grade. We'll leave it as a neutral 'Next'
             <div class="controls nav-controls">
-                <button class="btn-next" onclick="nextCard()">Keep & Next (Enter)</button>
-            </div>
+                <button class="btn-next" onclick="nextCard()">Next (Enter)</button>
+            </div> -->
         `;
 
       // --- Core Logic: List View ---
@@ -547,18 +538,23 @@
 
         // Apply Sort
         const sortMode = document.getElementById("sort-select").value;
-        const stats = getStats();
 
         if (sortMode !== "csv") {
           cards.sort((a, b) => {
-            const sA = stats[a.kanji] || { easy: 0, difficult: 0, again: 0 };
-            const sB = stats[b.kanji] || { easy: 0, difficult: 0, again: 0 };
+            const sA = statsCache[a.kanji] || {
+              easy: 0,
+              difficult: 0,
+              again: 0,
+            };
+            const sB = statsCache[b.kanji] || {
+              easy: 0,
+              difficult: 0,
+              again: 0,
+            };
 
             if (sortMode === "easy") {
-              // Descending Easy Count
               return sB.easy - sA.easy;
             } else if (sortMode === "hard") {
-              // Descending Difficult + Again
               const hardA = sA.difficult + sA.again;
               const hardB = sB.difficult + sB.again;
               return hardB - hardA;
@@ -570,21 +566,18 @@
         const container = document.getElementById("list-container");
         container.innerHTML = "";
 
-        const ignored = getIgnoredCards();
-
         cards.forEach((card) => {
           const statsStr = getStatString(card.kanji);
-          const isIgnored = ignored.includes(card.kanji);
+          const isIgnored = ignoredCache.includes(card.kanji);
           container.innerHTML += listItemTemplate(card, statsStr, isIgnored);
         });
       }
 
       // --- Core Logic: Study Session ---
       function startStudySession() {
-        parseAndRenderList();
+        parseAndRenderList(); // Refresh data
 
-        const ignored = getIgnoredCards();
-        studyQueue = cards.filter((c) => !ignored.includes(c.kanji));
+        studyQueue = cards.filter((c) => !ignoredCache.includes(c.kanji));
 
         if (studyQueue.length === 0)
           return alert("No cards selected for study!");
@@ -619,66 +612,59 @@
 
         const display = document.getElementById("card-display");
         display.innerHTML = cardFrontTemplate(currentCard);
+
+        document.getElementById("shortcut-hint-text").innerText =
+          "Shortcuts: (Enter/Space) Show Answer";
+      }
+
+      function showBack() {
+        isCardBackVisible = true;
+        const display = document.getElementById("card-display");
+        display.innerHTML = cardBackTemplate(currentCard);
+
+        document.getElementById("shortcut-hint-text").innerText =
+          "Shortcuts: (E)asy, (D)ifficult, (A)gain, (N)ever, (Enter) Next";
       }
 
       function nextCard() {
+        // Just skip to next without rating if clicked directly
+        // But usually we rate. If 'Next' is clicked, maybe just keep current queue order?
+        // For simplicity, 'Next' button implies "I'm done looking at this",
+        // effectively treating it like a neutral review or 'easy'.
+        // Let's just render the next setup.
+
+        // Remove current card from queue since we are done with it
+        studyQueue.shift();
         renderNextCardSetup();
       }
 
-      /**
-       * Handles the "Never" button logic.
-       * Marks as ignored (future) and Easy (current session).
-       */
-      function handleNever(isCorrection = false) {
-        // 1. Mark as ignored in local storage
+      function handleNever() {
         toggleIgnoredCard(currentCard.kanji);
 
-        // 2. Treat as "Easy" for this session
-        handleResponse("easy", isCorrection);
+        // Treat as Easy for stats purposes this session
+        updateStat(currentCard.kanji, "easy", true);
 
-        // 3. Update the lastActionState to record that this was a 'never' action
-        // We do this after handleResponse to append the specific flag
-        if (lastActionState) {
-          lastActionState.wasNever = true;
-        }
+        const card = studyQueue.shift();
+
+        lastActionState = {
+          card: card,
+          type: "easy",
+          insertedAtIndex: -1,
+          wasNever: true,
+        };
+
+        renderNextCardSetup();
       }
 
-      /**
-       * Handles rating the card.
-       * @param {string} type - 'easy', 'difficult', or 'again'
-       * @param {boolean} isCorrection - If true, we are on the back of the card overwriting the previous choice.
-       */
-      function handleResponse(type, isCorrection = false) {
-        // 1. If this is a correction (clicked on back), UNDO the previous action first
-        if (isCorrection && lastActionState) {
-          // If the previous state was "Never", we need to un-ignore it before processing the new rating
-          if (lastActionState.wasNever) {
-            toggleIgnoredCard(lastActionState.card.kanji);
-          }
-
-          // Revert stats
-          updateStat(lastActionState.card.kanji, lastActionState.type, false);
-
-          // Revert Queue: Remove the card from where it was moved to
-          if (lastActionState.insertedAtIndex !== -1) {
-            studyQueue.splice(lastActionState.insertedAtIndex, 1);
-          }
-
-          // Put the card back at the very front of the queue so we can process it anew
-          studyQueue.unshift(lastActionState.card);
-
-          // Reset currentCard to ensure we are acting on the correct object
-          currentCard = lastActionState.card;
-        }
-
-        // 2. Apply the New Rating (Standard Logic)
+      function handleResponse(type) {
+        // Update Stats
         updateStat(currentCard.kanji, type, true);
 
         // Remove card from head of queue
         const card = studyQueue.shift();
         let insertedAtIndex = -1;
 
-        // Re-insert based on difficulty
+        // Re-insert logic based on SRS-lite
         if (type === "difficult") {
           if (studyQueue.length > 0) {
             insertedAtIndex = Math.floor(Math.random() * studyQueue.length) + 1;
@@ -693,46 +679,47 @@
           studyQueue.splice(insertedAtIndex, 0, card);
         }
 
-        // Save state for potential future correction
+        // Save state for Undo
         lastActionState = {
           card: card,
           type: type,
           insertedAtIndex: insertedAtIndex,
-          wasNever: false, // Default to false, handleNever will overwrite if needed
+          wasNever: false,
         };
 
-        // 3. Determine Next Step
-        if (isCorrection) {
-          // If we just corrected on the back, immediately go to next card
-          nextCard();
-        } else {
-          // If this was the first rating (front), show the back
-          isCardBackVisible = true;
-          const display = document.getElementById("card-display");
-          display.innerHTML = cardBackTemplate(currentCard);
-        }
+        // Move to next card immediately
+        renderNextCardSetup();
       }
 
       function undoResponse() {
         if (!lastActionState) return;
 
-        // If the action we are undoing was a "Never" action, we must un-ignore the card
+        // If the action we are undoing was a "Never" action
         if (lastActionState.wasNever) {
           toggleIgnoredCard(lastActionState.card.kanji);
         }
 
+        // Revert stats
         updateStat(lastActionState.card.kanji, lastActionState.type, false);
 
+        // Remove from where it was potentially re-inserted
         if (lastActionState.insertedAtIndex !== -1) {
           studyQueue.splice(lastActionState.insertedAtIndex, 1);
         }
 
+        // Put the card back at the front
         studyQueue.unshift(lastActionState.card);
 
-        isCardBackVisible = false;
+        // Reset
         lastActionState = null;
+
+        // Go back to the FRONT of the restored card
+        isCardBackVisible = false;
+        currentCard = studyQueue[0];
         const display = document.getElementById("card-display");
         display.innerHTML = cardFrontTemplate(currentCard);
+        document.getElementById("shortcut-hint-text").innerText =
+          "Shortcuts: (Enter/Space) Show Answer";
       }
 
       function exitStudy() {
@@ -749,29 +736,34 @@
 
         const key = e.key.toLowerCase();
 
-        // Check if we are on the back of the card
-        if (isCardBackVisible) {
-          // Allow rating keys to trigger correction
-          if (key === "e") handleResponse("easy", true);
-          if (key === "d") handleResponse("difficult", true);
-          if (key === "a") handleResponse("again", true);
-          if (key === "n") handleNever(true);
-
-          // Navigation (Note: 'n' removed from here)
+        // Shortcuts depend on Front vs Back
+        if (!isCardBackVisible) {
+          // FRONT
           if (key === "enter" || key === " ") {
-            e.preventDefault(); // Stop page scrolling on Space
-            nextCard();
+            e.preventDefault();
+            showBack();
+          }
+          // Block rating keys on front to prevent accidents
+          if (["e", "d", "a", "n"].includes(key)) {
+            e.preventDefault();
           }
         } else {
-          // Front of card
+          // BACK
           if (key === "e") handleResponse("easy");
           if (key === "d") handleResponse("difficult");
           if (key === "a") handleResponse("again");
           if (key === "n") handleNever();
+
+          if (key === "enter" || key === " ") {
+            e.preventDefault();
+            // If on back and hit enter, usually implies "Next" (keeping card as is or skip)
+            nextCard();
+          }
         }
 
         if (key === "backspace") undoResponse();
       });
+
       // Start app
       init();
     </script>
