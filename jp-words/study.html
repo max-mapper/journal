@@ -518,9 +518,17 @@
             <div class="card-main-text">${card.kanji}</div>
             <div class="card-sub-info">${card.kana}</div>
             <div class="card-meaning">${card.definition}</div>
+            
+            <!-- Rating Controls (Overwrite) -->
+            <div class="controls">
+                <button class="btn-easy" onclick="handleResponse('easy', true)">Easy (E)</button>
+                <button class="btn-diff" onclick="handleResponse('difficult', true)">Difficult (D)</button>
+                <button class="btn-again" onclick="handleResponse('again', true)">Again (A)</button>
+            </div>
+
+            <!-- Navigation -->
             <div class="controls nav-controls">
-                <button class="btn-back" onclick="undoResponse()">Go Back</button>
-                <button class="btn-next" onclick="nextCard()">Next Card (N)</button>
+                <button class="btn-next" onclick="nextCard()">Keep & Next (Enter)</button>
             </div>
         `;
 
@@ -609,14 +617,37 @@
         renderNextCardSetup();
       }
 
-      function handleResponse(type) {
-        if (isCardBackVisible) return;
+      /**
+       * Handles rating the card.
+       * @param {string} type - 'easy', 'difficult', or 'again'
+       * @param {boolean} isCorrection - If true, we are on the back of the card overwriting the previous choice.
+       */
+      function handleResponse(type, isCorrection = false) {
+        // 1. If this is a correction (clicked on back), UNDO the previous action first
+        if (isCorrection && lastActionState) {
+          // Revert stats
+          updateStat(lastActionState.card.kanji, lastActionState.type, false);
 
+          // Revert Queue: Remove the card from where it was moved to
+          if (lastActionState.insertedAtIndex !== -1) {
+            studyQueue.splice(lastActionState.insertedAtIndex, 1);
+          }
+
+          // Put the card back at the very front of the queue so we can process it anew
+          studyQueue.unshift(lastActionState.card);
+
+          // Reset currentCard to ensure we are acting on the correct object
+          currentCard = lastActionState.card;
+        }
+
+        // 2. Apply the New Rating (Standard Logic)
         updateStat(currentCard.kanji, type, true);
 
+        // Remove card from head of queue
         const card = studyQueue.shift();
         let insertedAtIndex = -1;
 
+        // Re-insert based on difficulty
         if (type === "difficult") {
           if (studyQueue.length > 0) {
             insertedAtIndex = Math.floor(Math.random() * studyQueue.length) + 1;
@@ -631,15 +662,23 @@
           studyQueue.splice(insertedAtIndex, 0, card);
         }
 
+        // Save state for potential future correction
         lastActionState = {
           card: card,
           type: type,
           insertedAtIndex: insertedAtIndex,
         };
 
-        isCardBackVisible = true;
-        const display = document.getElementById("card-display");
-        display.innerHTML = cardBackTemplate(currentCard);
+        // 3. Determine Next Step
+        if (isCorrection) {
+          // If we just corrected on the back, immediately go to next card
+          nextCard();
+        } else {
+          // If this was the first rating (front), show the back
+          isCardBackVisible = true;
+          const display = document.getElementById("card-display");
+          display.innerHTML = cardBackTemplate(currentCard);
+        }
       }
 
       function undoResponse() {
@@ -673,22 +712,25 @@
 
         const key = e.key.toLowerCase();
 
-        if (key === "backspace" || key === "u") {
-          if (isCardBackVisible) undoResponse();
-          return;
-        }
-
+        // Check if we are on the back of the card
         if (isCardBackVisible) {
+          // Allow rating keys to trigger correction
+          if (key === "e") handleResponse("easy", true);
+          if (key === "d") handleResponse("difficult", true);
+          if (key === "a") handleResponse("again", true);
+
+          // Navigation
           if (key === "n" || key === "enter" || key === " ") {
+            e.preventDefault(); // Stop page scrolling on Space
             nextCard();
           }
         } else {
+          // Front of card
           if (key === "e") handleResponse("easy");
           if (key === "d") handleResponse("difficult");
           if (key === "a") handleResponse("again");
         }
       });
-
       // Start app
       init();
     </script>
