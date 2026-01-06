@@ -1,3 +1,5 @@
+--- START OF FILE study.html ---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -253,6 +255,10 @@
         background-color: #f59e0b;
         flex: 1;
       }
+      .btn-never {
+        background-color: #475569;
+        flex: 1;
+      }
 
       .nav-controls {
         display: flex;
@@ -307,10 +313,6 @@
           <option value="easy">Sort: Highest Easy Count</option>
           <option value="hard">Sort: Highest Difficult + Again</option>
         </select>
-
-        <!-- <span class="reset-link" onclick="resetToDefault()"
-          >Reset to Sample Data</span
-        > -->
       </div>
 
       <textarea id="csv-input" placeholder="Paste CSV here..."></textarea>
@@ -331,7 +333,8 @@
         <!-- Content injected via JS -->
       </div>
       <div class="shortcut-hint">
-        Shortcuts: (E)asy, (D)ifficult, (A)gain, (N)ext, (Backspace) Undo
+        Shortcuts: (E)asy, (D)ifficult, (A)gain, (N)ever, (Enter/Space) Next,
+        (Backspace) Undo
       </div>
     </div>
 
@@ -511,6 +514,9 @@
                 <button class="btn-diff" onclick="handleResponse('difficult')">Difficult (D)</button>
                 <button class="btn-again" onclick="handleResponse('again')">Again (A)</button>
             </div>
+            <div class="controls">
+                <button class="btn-never" onclick="handleNever()">Never (N)</button>
+            </div>
         `;
 
       const cardBackTemplate = (card) => `
@@ -524,6 +530,10 @@
                 <button class="btn-easy" onclick="handleResponse('easy', true)">Easy (E)</button>
                 <button class="btn-diff" onclick="handleResponse('difficult', true)">Difficult (D)</button>
                 <button class="btn-again" onclick="handleResponse('again', true)">Again (A)</button>
+            </div>
+            
+            <div class="controls">
+                <button class="btn-never" onclick="handleNever(true)">Never (N)</button>
             </div>
 
             <!-- Navigation -->
@@ -618,6 +628,24 @@
       }
 
       /**
+       * Handles the "Never" button logic.
+       * Marks as ignored (future) and Easy (current session).
+       */
+      function handleNever(isCorrection = false) {
+        // 1. Mark as ignored in local storage
+        toggleIgnoredCard(currentCard.kanji);
+
+        // 2. Treat as "Easy" for this session
+        handleResponse("easy", isCorrection);
+
+        // 3. Update the lastActionState to record that this was a 'never' action
+        // We do this after handleResponse to append the specific flag
+        if (lastActionState) {
+          lastActionState.wasNever = true;
+        }
+      }
+
+      /**
        * Handles rating the card.
        * @param {string} type - 'easy', 'difficult', or 'again'
        * @param {boolean} isCorrection - If true, we are on the back of the card overwriting the previous choice.
@@ -625,6 +653,11 @@
       function handleResponse(type, isCorrection = false) {
         // 1. If this is a correction (clicked on back), UNDO the previous action first
         if (isCorrection && lastActionState) {
+          // If the previous state was "Never", we need to un-ignore it before processing the new rating
+          if (lastActionState.wasNever) {
+            toggleIgnoredCard(lastActionState.card.kanji);
+          }
+
           // Revert stats
           updateStat(lastActionState.card.kanji, lastActionState.type, false);
 
@@ -667,6 +700,7 @@
           card: card,
           type: type,
           insertedAtIndex: insertedAtIndex,
+          wasNever: false, // Default to false, handleNever will overwrite if needed
         };
 
         // 3. Determine Next Step
@@ -683,6 +717,11 @@
 
       function undoResponse() {
         if (!lastActionState) return;
+
+        // If the action we are undoing was a "Never" action, we must un-ignore the card
+        if (lastActionState.wasNever) {
+          toggleIgnoredCard(lastActionState.card.kanji);
+        }
 
         updateStat(lastActionState.card.kanji, lastActionState.type, false);
 
@@ -718,9 +757,10 @@
           if (key === "e") handleResponse("easy", true);
           if (key === "d") handleResponse("difficult", true);
           if (key === "a") handleResponse("again", true);
+          if (key === "n") handleNever(true);
 
-          // Navigation
-          if (key === "n" || key === "enter" || key === " ") {
+          // Navigation (Note: 'n' removed from here)
+          if (key === "enter" || key === " ") {
             e.preventDefault(); // Stop page scrolling on Space
             nextCard();
           }
@@ -729,7 +769,10 @@
           if (key === "e") handleResponse("easy");
           if (key === "d") handleResponse("difficult");
           if (key === "a") handleResponse("again");
+          if (key === "n") handleNever();
         }
+
+        if (key === "backspace") undoResponse();
       });
       // Start app
       init();
