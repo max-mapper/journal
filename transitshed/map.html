@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Time Map</title>
+    <link
+      href="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/maplibre-gl@4.0.0/dist/maplibre-gl.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .legend {
+        background-color: #fff;
+        border-radius: 3px;
+        bottom: 30px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+        padding: 10px;
+        position: absolute;
+        right: 10px;
+        z-index: 1;
+      }
+      .legend h4 {
+        margin: 0 0 10px;
+      }
+      .legend-key {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="legend">
+      <h4>Travel Time</h4>
+      <div>
+        <span class="legend-key" style="background: #00ff00"></span>Short (Fast
+        / Large)
+      </div>
+      <div>
+        <span class="legend-key" style="background: #ff0000"></span>Long (Slow /
+        Small)
+      </div>
+    </div>
+
+    <script>
+      async function run() {
+        async function fetchJsonData(url) {
+          try {
+            // 1. Fetch the resource from the network
+            const response = await fetch(url);
+
+            // 2. Check if the request was successful (status 200-299)
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // 3. Parse the response body as JSON
+            const data = await response.json();
+
+            // 4. Return the parsed JSON object
+            return data;
+          } catch (error) {
+            // Handle network errors, parsing errors, or HTTP errors
+            console.error("Could not fetch JSON data:", error);
+            throw error; // Re-throw to allow calling code to handle it
+          }
+        }
+
+        // 1. Helper function to parse "1時間4分" or "23分" into total minutes (Integer)
+        function parseDuration(timeStr) {
+          if (!timeStr) return 0;
+
+          let totalMinutes = 0;
+
+          // Check for Hours (時間)
+          const hoursMatch = timeStr.match(/(\d+)時間/);
+          if (hoursMatch) {
+            totalMinutes += parseInt(hoursMatch[1], 10) * 60;
+          }
+
+          // Check for Minutes (分)
+          const minutesMatch = timeStr.match(/(\d+)分/);
+          if (minutesMatch) {
+            totalMinutes += parseInt(minutesMatch[1], 10);
+          }
+
+          // Fallback: If no symbols found but it's a number, treat as minutes
+          if (totalMinutes === 0 && !isNaN(parseInt(timeStr))) {
+            totalMinutes = parseInt(timeStr);
+          }
+
+          return totalMinutes;
+        }
+
+        // 2. The Data
+        const rawData = await fetchJsonData("./results.json");
+
+        // 3. Process Data: Convert strings to integers using the helper
+        const features = rawData.map((item) => {
+          const timeValue = parseDuration(item.route_details.totalTime);
+
+          return {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [item.lon, item.lat],
+            },
+            properties: {
+              station: item.station_name_kanji,
+              timeString: item.route_details.totalTime,
+              timeValue: timeValue, // This is now an integer (e.g., 23, 40, 64)
+              description: item.route_details.path,
+            },
+          };
+        });
+
+        const destinationGeoJSON = {
+          type: "FeatureCollection",
+          features: features,
+        };
+
+        // Calculate Min and Max for scaling
+        // Min Time (Fastest) = Max Radius, Green
+        // Max Time (Slowest) = Min Radius, Red
+        const times = features.map((f) => f.properties.timeValue);
+        const minTime = Math.min(...times); // e.g., 23
+        const maxTime = Math.max(...times); // e.g., 64
+
+        // Prevent divide-by-zero errors in interpolation if only 1 data point exists
+        const safeMaxTime = minTime === maxTime ? maxTime + 1 : maxTime;
+
+        // 4. Origin Point (White Circle)
+        const originGeoJSON = {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              geometry: { type: "Point", coordinates: [139.582582, 35.697435] },
+              properties: { name: "Origin" },
+            },
+          ],
+        };
+
+        // 5. Initialize Map
+        const map = new maplibregl.Map({
+          container: "map",
+          style:
+            "https://api.maptiler.com/maps/bright/style.json?key=VK9en7fqcN8VTzfv5LVe",
+          center: [139.68, 35.65],
+          zoom: 10,
+        });
+
+        map.on("load", () => {
+          // --- LAYER 1: Destinations ---
+          map.addSource("destinations", {
+            type: "geojson",
+            data: destinationGeoJSON,
+          });
+
+          map.addLayer({
+            id: "destinations-circles",
+            type: "circle",
+            source: "destinations",
+            paint: {
+              // Size: MinTime(23m) -> 30px (Large), MaxTime(64m) -> 10px (Small)
+              "circle-radius": [
+                "interpolate",
+                ["linear"],
+                ["get", "timeValue"],
+                minTime,
+                30,
+                safeMaxTime,
+                10,
+              ],
+              // Color: MinTime(23m) -> Green, MaxTime(64m) -> Red
+              "circle-color": [
+                "interpolate",
+                ["linear"],
+                ["get", "timeValue"],
+                minTime,
+                "#00FF00",
+                safeMaxTime,
+                "#FF0000",
+              ],
+              "circle-opacity": 0.8,
+              "circle-stroke-color": "#ffffff",
+              "circle-stroke-width": 2,
+            },
+          });
+
+          // Labels
+          map.addLayer({
+            id: "destinations-labels",
+            type: "symbol",
+            source: "destinations",
+            layout: {
+              "text-field": ["get", "station"],
+              "text-offset": [0, 2.5], // Push label below the circle
+              "text-size": 12,
+            },
+            paint: {
+              "text-color": "#000",
+              "text-halo-color": "#fff",
+              "text-halo-width": 2,
+            },
+          });
+
+          // --- LAYER 2: Origin ---
+          map.addSource("origin", { type: "geojson", data: originGeoJSON });
+
+          map.addLayer({
+            id: "origin-circle",
+            type: "circle",
+            source: "origin",
+            paint: {
+              "circle-radius": 15,
+              "circle-color": "#FFFFFF",
+              "circle-stroke-color": "#000000",
+              "circle-stroke-width": 3,
+            },
+          });
+
+          // Popups
+          map.on("click", "destinations-circles", (e) => {
+            const props = e.features[0].properties;
+            new maplibregl.Popup()
+              .setLngLat(e.lngLat)
+              .setHTML(
+                `
+                          <strong>${props.station}</strong><br>
+                          Raw: ${props.timeString}<br>
+                          Calculated: ${props.timeValue} mins<br>
+                          ${props.description}
+                      `
+              )
+              .addTo(map);
+          });
+
+          // Cursor pointer
+          map.on(
+            "mouseenter",
+            "destinations-circles",
+            () => (map.getCanvas().style.cursor = "pointer")
+          );
+          map.on(
+            "mouseleave",
+            "destinations-circles",
+            () => (map.getCanvas().style.cursor = "")
+          );
+        });
+      }
+
+      run();
+    </script>
+  </body>
+</html>

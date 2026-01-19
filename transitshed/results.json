@@ -1,0 +1,1864 @@
+[
+  {
+    "from": "井の頭湖園",
+    "to": "赤羽",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "赤羽",
+    "station_name_en": "Akabane",
+    "lat": 35.778,
+    "lon": 139.721,
+    "station_code": "1476",
+    "route_details": {
+      "totalTime": "47分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→新宿→赤羽"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "赤羽岩淵",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "赤羽岩淵",
+    "station_name_en": "Akabane-Iwabuchi",
+    "lat": 35.7828,
+    "lon": 139.7214,
+    "station_code": "1477",
+    "route_details": {
+      "totalTime": "57分",
+      "totalCharge": "710円",
+      "path": "井の頭公園→吉祥寺→四ツ谷→赤羽岩淵"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "秋葉原",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "秋葉原",
+    "station_name_en": "Akihabara",
+    "lat": 35.6984,
+    "lon": 139.7731,
+    "station_code": "1483",
+    "route_details": {
+      "totalTime": "39分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→秋葉原"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "青砥",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "青砥",
+    "station_name_en": "Aoto",
+    "lat": 35.7456,
+    "lon": 139.8569,
+    "station_code": "1464",
+    "route_details": {
+      "totalTime": "1時間6分",
+      "totalCharge": "745円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→日暮里→青砥"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "浅草",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "浅草",
+    "station_name_en": "Asakusa",
+    "lat": 35.7115,
+    "lon": 139.7972,
+    "station_code": "1491",
+    "route_details": {
+      "totalTime": "52分",
+      "totalCharge": "724円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→浅草(東武・都営・メトロ)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "熱海",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "熱海",
+    "station_name_en": "Atami",
+    "lat": 35.1037,
+    "lon": 139.0778,
+    "station_code": "1506",
+    "route_details": {
+      "totalTime": "1時間24分",
+      "totalCharge": "4,300円",
+      "path": "井の頭公園→久我山→渋谷→品川→熱海"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "千葉",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "千葉",
+    "station_name_en": "Chiba",
+    "lat": 35.6131,
+    "lon": 140.1132,
+    "station_code": "2532",
+    "route_details": {
+      "totalTime": "1時間21分",
+      "totalCharge": "1,085円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→錦糸町→千葉"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "調布",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "調布",
+    "station_name_en": "Chofu",
+    "lat": 35.6521,
+    "lon": 139.5441,
+    "station_code": "2547",
+    "route_details": {
+      "totalTime": "29分",
+      "totalCharge": "273円",
+      "path": "井の頭公園→久我山→明大前→調布"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "中央林間",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "中央林間",
+    "station_name_en": "Chuo-Rinkan",
+    "lat": 35.5097,
+    "lon": 139.4447,
+    "station_code": "2540",
+    "route_details": {
+      "totalTime": "1時間2分",
+      "totalCharge": "596円",
+      "path": "井の頭公園→久我山→下北沢→相模大野→中央林間"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "台場",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "台場",
+    "station_name_en": "Daiba",
+    "lat": 35.6268,
+    "lon": 139.7704,
+    "station_code": "2515",
+    "route_details": {
+      "totalTime": "1時間10分",
+      "totalCharge": "921円",
+      "path": "井の頭公園→渋谷→[大崎]→東京テレポート→お台場海浜公園→台場"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "大門",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "大門",
+    "station_name_en": "Daimon",
+    "lat": 35.6568,
+    "lon": 139.7547,
+    "station_code": "2518",
+    "route_details": {
+      "totalTime": "48分",
+      "totalCharge": "590円",
+      "path": "井の頭公園→吉祥寺→新宿→大門(東京)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "府中本町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "府中本町",
+    "station_name_en": "Fuchu-Hommachi",
+    "lat": 35.6662,
+    "lon": 139.477,
+    "station_code": "2971",
+    "route_details": {
+      "totalTime": "39分",
+      "totalCharge": "370円",
+      "path": "井の頭公園→吉祥寺→西国分寺→府中本町"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "二子玉川",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "二子玉川",
+    "station_name_en": "Futako-Tamagawa",
+    "lat": 35.6119,
+    "lon": 139.6264,
+    "station_code": "2962",
+    "route_details": {
+      "totalTime": "44分",
+      "totalCharge": "457円",
+      "path": "井の頭公園→久我山→渋谷→二子玉川"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "銀座",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "銀座",
+    "station_name_en": "Ginza",
+    "lat": 35.6712,
+    "lon": 139.765,
+    "station_code": "1996",
+    "route_details": {
+      "totalTime": "41分",
+      "totalCharge": "636円",
+      "path": "井の頭公園→吉祥寺→四ツ谷→銀座"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "八王子",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "八王子",
+    "station_name_en": "Hachioji",
+    "lat": 35.6554,
+    "lon": 139.339,
+    "station_code": "2803",
+    "route_details": {
+      "totalTime": "42分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→三鷹→八王子"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "拝島",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "拝島",
+    "station_name_en": "Haijima",
+    "lat": 35.7212,
+    "lon": 139.3546,
+    "station_code": "2784",
+    "route_details": {
+      "totalTime": "42分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→三鷹→立川→拝島"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "浜松町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "浜松町",
+    "station_name_en": "Hamamatsucho",
+    "lat": 35.6554,
+    "lon": 139.7571,
+    "station_code": "2827",
+    "route_details": {
+      "totalTime": "45分",
+      "totalCharge": "623円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→浜松町"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "羽田空港第2ターミナル",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "羽田空港第2ターミナル",
+    "station_name_en": "Haneda Airport Terminal 2",
+    "lat": 35.5516,
+    "lon": 139.7865,
+    "station_code": "9453",
+    "route_details": {
+      "totalTime": "1時間10分",
+      "totalCharge": "735円",
+      "path": "井の頭公園→久我山→渋谷→品川→[京急蒲田]→羽田空港第１・第２ターミナル(京急)→羽田空港第２ターミナル(東京モノレール)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "飯能",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "飯能",
+    "station_name_en": "Hanno",
+    "lat": 35.8512,
+    "lon": 139.3175,
+    "station_code": "2836",
+    "route_details": {
+      "totalTime": "1時間14分",
+      "totalCharge": "705円",
+      "path": "井の頭公園→吉祥寺→三鷹→国分寺→東村山→所沢→飯能"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "日比谷",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "日比谷",
+    "station_name_en": "Hibiya",
+    "lat": 35.6751,
+    "lon": 139.7601,
+    "station_code": "2923",
+    "route_details": {
+      "totalTime": "46分",
+      "totalCharge": "408円",
+      "path": "井の頭公園→久我山→渋谷→表参道→日比谷"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "光が丘",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "光が丘",
+    "station_name_en": "Hikarigaoka",
+    "lat": 35.7592,
+    "lon": 139.6293,
+    "station_code": "2843",
+    "route_details": {
+      "totalTime": "49分",
+      "totalCharge": "590円",
+      "path": "井の頭公園→吉祥寺→中野(東京)→東中野→光が丘"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "本厚木",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "本厚木",
+    "station_name_en": "Hon-Atsugi",
+    "lat": 35.4402,
+    "lon": 139.3639,
+    "station_code": "3008",
+    "route_details": {
+      "totalTime": "1時間6分",
+      "totalCharge": "681円",
+      "path": "井の頭公園→久我山→下北沢→本厚木"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "本川越",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "本川越",
+    "station_name_en": "Hon-Kawagoe",
+    "lat": 35.9136,
+    "lon": 139.4816,
+    "station_code": "3009",
+    "route_details": {
+      "totalTime": "1時間7分",
+      "totalCharge": "705円",
+      "path": "井の頭公園→吉祥寺→三鷹→国分寺→東村山→本川越"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "市ヶ谷",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "市ヶ谷",
+    "station_name_en": "Ichigaya",
+    "lat": 35.691,
+    "lon": 139.7356,
+    "station_code": "1582",
+    "route_details": {
+      "totalTime": "32分",
+      "totalCharge": "458円",
+      "path": "井の頭公園→吉祥寺→四ツ谷→市ケ谷"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "飯田橋",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "飯田橋",
+    "station_name_en": "Iidabashi",
+    "lat": 35.702,
+    "lon": 139.745,
+    "station_code": "1533",
+    "route_details": {
+      "totalTime": "33分",
+      "totalCharge": "527円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→飯田橋"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "池袋",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "池袋",
+    "station_name_en": "Ikebukuro",
+    "lat": 35.7295,
+    "lon": 139.7109,
+    "station_code": "1541",
+    "route_details": {
+      "totalTime": "35分",
+      "totalCharge": "622円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→高田馬場→池袋"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "神保町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "神保町",
+    "station_name_en": "Jimbocho",
+    "lat": 35.6959,
+    "lon": 139.7583,
+    "station_code": "2382",
+    "route_details": {
+      "totalTime": "41分",
+      "totalCharge": "527円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→九段下→神保町"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "自由が丘",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "自由が丘",
+    "station_name_en": "Jiyugaoka",
+    "lat": 35.6074,
+    "lon": 139.6687,
+    "station_code": "2376",
+    "route_details": {
+      "totalTime": "43分",
+      "totalCharge": "410円",
+      "path": "井の頭公園→久我山→渋谷→自由が丘(東京)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "海浜幕張",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "海浜幕張",
+    "station_name_en": "Kaihin-Makuhari",
+    "lat": 35.6484,
+    "lon": 140.0419,
+    "station_code": "1791",
+    "route_details": {
+      "totalTime": "1時間29分",
+      "totalCharge": "1,201円",
+      "path": "井の頭公園→渋谷→[大崎]→新木場→海浜幕張"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "鎌倉",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "鎌倉",
+    "station_name_en": "Kamakura",
+    "lat": 35.319,
+    "lon": 139.5504,
+    "station_code": "1865",
+    "route_details": {
+      "totalTime": "1時間28分",
+      "totalCharge": "1,175円",
+      "path": "井の頭公園→久我山→渋谷→西大井→鎌倉"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "上大岡",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "上大岡",
+    "station_name_en": "Kami-Ooka",
+    "lat": 35.4093,
+    "lon": 139.596,
+    "station_code": "1875",
+    "route_details": {
+      "totalTime": "1時間13分",
+      "totalCharge": "863円",
+      "path": "井の頭公園→久我山→渋谷→品川→上大岡"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "柏",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "柏",
+    "station_name_en": "Kashiwa",
+    "lat": 35.8544,
+    "lon": 139.9689,
+    "station_code": "1811",
+    "route_details": {
+      "totalTime": "1時間18分",
+      "totalCharge": "1,085円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→日暮里→柏"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "霞ケ関",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "霞ケ関",
+    "station_name_en": "Kasumigaseki",
+    "lat": 35.6749,
+    "lon": 139.7516,
+    "station_code": "1818",
+    "route_details": {
+      "totalTime": "1時間15分",
+      "totalCharge": "947円",
+      "path": "井の頭公園→吉祥寺→三鷹→国分寺→西国分寺→北朝霞→朝霞台→霞ケ関(埼玉)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "川越",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "川越",
+    "station_name_en": "Kawagoe",
+    "lat": 35.9086,
+    "lon": 139.4853,
+    "station_code": "1909",
+    "route_details": {
+      "totalTime": "1時間9分",
+      "totalCharge": "884円",
+      "path": "井の頭公園→吉祥寺→三鷹→国分寺→西国分寺→北朝霞→朝霞台→川越"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "川崎",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "川崎",
+    "station_name_en": "Kawasaki",
+    "lat": 35.5314,
+    "lon": 139.6969,
+    "station_code": "1911",
+    "route_details": {
+      "totalTime": "1時間1分",
+      "totalCharge": "711円",
+      "path": "井の頭公園→吉祥寺→東京→川崎"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "京急蒲田",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "京急蒲田",
+    "station_name_en": "Keikyu Kamata",
+    "lat": 35.5611,
+    "lon": 139.7245,
+    "station_code": "2049",
+    "route_details": {
+      "totalTime": "52分",
+      "totalCharge": "636円",
+      "path": "井の頭公園→久我山→渋谷→品川→京急蒲田"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "京王八王子",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "京王八王子",
+    "station_name_en": "Keio-Hachioji",
+    "lat": 35.6575,
+    "lon": 139.3444,
+    "station_code": "2045",
+    "route_details": {
+      "totalTime": "53分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→三鷹→八王子→京王八王子"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "京成船橋",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "京成船橋",
+    "station_name_en": "Keisei Funabashi",
+    "lat": 35.7004,
+    "lon": 139.9854,
+    "station_code": "2076",
+    "route_details": {
+      "totalTime": "1時間13分",
+      "totalCharge": "876円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→錦糸町→船橋→京成船橋"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "京成上野",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "京成上野",
+    "station_name_en": "Keisei Ueno",
+    "lat": 35.7113,
+    "lon": 139.775,
+    "station_code": "2059",
+    "route_details": {
+      "totalTime": "50分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→上野→京成上野"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "吉祥寺",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "吉祥寺",
+    "station_name_en": "Kichijoji",
+    "lat": 35.7031,
+    "lon": 139.5798,
+    "station_code": "1978",
+    "route_details": {
+      "totalTime": "2分",
+      "totalCharge": "140円",
+      "path": "井の頭公園→吉祥寺"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "錦糸町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "錦糸町",
+    "station_name_en": "Kinshicho",
+    "lat": 35.6967,
+    "lon": 139.8144,
+    "station_code": "1991",
+    "route_details": {
+      "totalTime": "47分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→錦糸町"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "北綾瀬",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "北綾瀬",
+    "station_name_en": "Kita-Ayase",
+    "lat": 35.7766,
+    "lon": 139.8296,
+    "station_code": "1941",
+    "route_details": {
+      "totalTime": "1時間6分",
+      "totalCharge": "710円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→新御茶ノ水→[綾瀬]→北綾瀬"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "北千住",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "北千住",
+    "station_name_en": "Kita-Senju",
+    "lat": 35.7494,
+    "lon": 139.8051,
+    "station_code": "1958",
+    "route_details": {
+      "totalTime": "56分",
+      "totalCharge": "667円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→新御茶ノ水→北千住"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "国際展示場",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "国際展示場",
+    "station_name_en": "Kokusai-Tenjijo",
+    "lat": 35.6346,
+    "lon": 139.7941,
+    "station_code": "2109",
+    "route_details": {
+      "totalTime": "58分",
+      "totalCharge": "732円",
+      "path": "井の頭公園→渋谷→[大崎]→国際展示場"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "久里浜",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "久里浜",
+    "station_name_en": "Kurihama",
+    "lat": 35.2307,
+    "lon": 139.7026,
+    "station_code": "2024",
+    "route_details": {
+      "totalTime": "1時間49分",
+      "totalCharge": "1,091円",
+      "path": "井の頭公園→久我山→渋谷→横浜→[堀ノ内]→京急久里浜→久里浜"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "町田",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "町田",
+    "station_name_en": "Machida",
+    "lat": 35.542,
+    "lon": 139.4455,
+    "station_code": "3034",
+    "route_details": {
+      "totalTime": "49分",
+      "totalCharge": "565円",
+      "path": "井の頭公園→久我山→下北沢→町田"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "舞浜",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "舞浜",
+    "station_name_en": "Maihama",
+    "lat": 35.6366,
+    "lon": 139.8837,
+    "station_code": "3022",
+    "route_details": {
+      "totalTime": "1時間8分",
+      "totalCharge": "799円",
+      "path": "井の頭公園→吉祥寺→東京→舞浜"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "松戸",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "松戸",
+    "station_name_en": "Matsudo",
+    "lat": 35.7844,
+    "lon": 139.9022,
+    "station_code": "3041",
+    "route_details": {
+      "totalTime": "1時間8分",
+      "totalCharge": "799円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→日暮里→松戸"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "目黒",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "目黒",
+    "station_name_en": "Meguro",
+    "lat": 35.634,
+    "lon": 139.7157,
+    "station_code": "3170",
+    "route_details": {
+      "totalTime": "35分",
+      "totalCharge": "397円",
+      "path": "井の頭公園→久我山→渋谷→目黒"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "明大前",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "明大前",
+    "station_name_en": "Meidaimae",
+    "lat": 35.6685,
+    "lon": 139.6504,
+    "station_code": "3169",
+    "route_details": {
+      "totalTime": "15分",
+      "totalCharge": "188円",
+      "path": "井の頭公園→久我山→明大前"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "南流山",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "南流山",
+    "station_name_en": "Minami-Nagareyama",
+    "lat": 35.8385,
+    "lon": 139.9038,
+    "station_code": "3113",
+    "route_details": {
+      "totalTime": "1時間9分",
+      "totalCharge": "1,122円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→秋葉原→南流山"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "南浦和",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "南浦和",
+    "station_name_en": "Minami-Urawa",
+    "lat": 35.8478,
+    "lon": 139.6692,
+    "station_code": "3095",
+    "route_details": {
+      "totalTime": "1時間0分",
+      "totalCharge": "711円",
+      "path": "井の頭公園→吉祥寺→三鷹→国分寺→西国分寺→南浦和"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "三田",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "三田",
+    "station_name_en": "Mita",
+    "lat": 35.648,
+    "lon": 139.7424,
+    "station_code": "3071",
+    "route_details": {
+      "totalTime": "50分",
+      "totalCharge": "575円",
+      "path": "井の頭公園→久我山→渋谷→五反田→泉岳寺→三田(東京)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "三鷹",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "三鷹",
+    "station_name_en": "Mitaka",
+    "lat": 35.7027,
+    "lon": 139.5606,
+    "station_code": "3072",
+    "route_details": {
+      "totalTime": "15分",
+      "totalCharge": "276円",
+      "path": "井の頭公園→吉祥寺→三鷹"
+    }
+  },
+
+  {
+    "from": "井の頭湖園",
+    "to": "本八幡",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "本八幡",
+    "station_name_en": "Moto-Yawata",
+    "lat": 35.7208,
+    "lon": 139.9272,
+    "station_code": "3184",
+    "route_details": {
+      "totalTime": "1時間3分",
+      "totalCharge": "799円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→本八幡"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "武蔵小杉",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "武蔵小杉",
+    "station_name_en": "Musashi-Kosugi",
+    "lat": 35.5755,
+    "lon": 139.6596,
+    "station_code": "3146",
+    "route_details": {
+      "totalTime": "44分",
+      "totalCharge": "548円",
+      "path": "井の頭公園→久我山→渋谷→武蔵小杉"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "永田町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "永田町",
+    "station_name_en": "Nagatacho",
+    "lat": 35.679,
+    "lon": 139.7432,
+    "station_code": "2672",
+    "route_details": {
+      "totalTime": "37分",
+      "totalCharge": "636円",
+      "path": "井の頭公園→吉祥寺→四ツ谷→永田町"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "中目黒",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "中目黒",
+    "station_name_en": "Naka-Meguro",
+    "lat": 35.6444,
+    "lon": 139.6991,
+    "station_code": "2667",
+    "route_details": {
+      "totalTime": "38分",
+      "totalCharge": "370円",
+      "path": "井の頭公園→久我山→渋谷→中目黒"
+    }
+  },
+
+  {
+    "from": "井の頭湖園",
+    "to": "成増",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "成増",
+    "station_name_en": "Narimasu",
+    "lat": 35.7777,
+    "lon": 139.6307,
+    "station_code": "2694",
+    "route_details": {
+      "totalTime": "55分",
+      "totalCharge": "658円",
+      "path": "井の頭公園→明大前→新宿→池袋→成増"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "成田空港",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "成田空港",
+    "station_name_en": "Narita Airport",
+    "lat": 35.7649,
+    "lon": 140.3863,
+    "station_code": "1998",
+    "route_details": {
+      "totalTime": "1時間35分",
+      "totalCharge": "3,113円",
+      "path": "井の頭公園→吉祥寺→新宿→池袋→日暮里→成田空港(空港第２ビル)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "練馬",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "練馬",
+    "station_name_en": "Nerima",
+    "lat": 35.7378,
+    "lon": 139.6543,
+    "station_code": "2770",
+    "route_details": {
+      "totalTime": "42分",
+      "totalCharge": "538円",
+      "path": "井の頭公園→吉祥寺→中野(東京)→東中野→練馬"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "日本橋",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "日本橋",
+    "station_name_en": "Nihombashi",
+    "lat": 35.6811,
+    "lon": 139.7744,
+    "station_code": "2757",
+    "route_details": {
+      "totalTime": "41分",
+      "totalCharge": "570円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→日本橋(東京)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "日暮里",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "日暮里",
+    "station_name_en": "Nippori",
+    "lat": 35.7278,
+    "lon": 139.7709,
+    "station_code": "2755",
+    "route_details": {
+      "totalTime": "47分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→日暮里"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "西船橋",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "西船橋",
+    "station_name_en": "Nishi-Funabashi",
+    "lat": 35.7075,
+    "lon": 139.9592,
+    "station_code": "2744",
+    "route_details": {
+      "totalTime": "1時間8分",
+      "totalCharge": "799円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→西船橋"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "西国分寺",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "西国分寺",
+    "station_name_en": "Nishi-Kokubunji",
+    "lat": 35.6997,
+    "lon": 139.4659,
+    "station_code": "2723",
+    "route_details": {
+      "totalTime": "27分",
+      "totalCharge": "370円",
+      "path": "井の頭公園→吉祥寺→三鷹→国分寺→西国分寺"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "西馬込",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "西馬込",
+    "station_name_en": "Nishi-Magome",
+    "lat": 35.5869,
+    "lon": 139.7058,
+    "station_code": "2745",
+    "route_details": {
+      "totalTime": "53分",
+      "totalCharge": "617円",
+      "path": "井の頭公園→久我山→渋谷→五反田→西馬込"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "西日暮里",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "西日暮里",
+    "station_name_en": "Nishi-Nippori",
+    "lat": 35.7321,
+    "lon": 139.7668,
+    "station_code": "2739",
+    "route_details": {
+      "totalTime": "46分",
+      "totalCharge": "654円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→高田馬場→西日暮里"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "西高島平",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "西高島平",
+    "station_name_en": "Nishi-Takashimadaira",
+    "lat": 35.7938,
+    "lon": 139.6542,
+    "station_code": "2730",
+    "route_details": {
+      "totalTime": "1時間7分",
+      "totalCharge": "915円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→高田馬場→巣鴨→西高島平"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "西新井",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "西新井",
+    "station_name_en": "Nishiarai",
+    "lat": 35.7775,
+    "lon": 139.7904,
+    "station_code": "2706",
+    "route_details": {
+      "totalTime": "1時間11分",
+      "totalCharge": "789円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→茅場町→[北千住]→西新井"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "登戸",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "登戸",
+    "station_name_en": "Noborito",
+    "lat": 35.6206,
+    "lon": 139.5699,
+    "station_code": "2783",
+    "route_details": {
+      "totalTime": "37分",
+      "totalCharge": "439円",
+      "path": "井の頭公園→久我山→下北沢→登戸"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "小田原",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "小田原",
+    "station_name_en": "Odawara",
+    "lat": 35.2562,
+    "lon": 139.1553,
+    "station_code": "1759",
+    "route_details": {
+      "totalTime": "1時間42分",
+      "totalCharge": "1,748円",
+      "path": "井の頭公園→久我山→渋谷→[大船]→小田原"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "大船",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "大船",
+    "station_name_en": "Ofuna",
+    "lat": 35.3536,
+    "lon": 139.5312,
+    "station_code": "1721",
+    "route_details": {
+      "totalTime": "1時間11分",
+      "totalCharge": "1,054円",
+      "path": "井の頭公園→久我山→渋谷→大船"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "小川町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "小川町",
+    "station_name_en": "Ogawamachi",
+    "lat": 36.0583,
+    "lon": 139.2608,
+    "station_code": "1740",
+    "route_details": {
+      "totalTime": "1時間48分",
+      "totalCharge": "1,293円",
+      "path": "井の頭公園→吉祥寺→三鷹→国分寺→西国分寺→北朝霞→朝霞台→小川町(埼玉)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "荻窪",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "荻窪",
+    "station_name_en": "Ogikubo",
+    "lat": 35.7053,
+    "lon": 139.62,
+    "station_code": "1742",
+    "route_details": {
+      "totalTime": "12分",
+      "totalCharge": "307円",
+      "path": "井の頭公園→吉祥寺→荻窪"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "大井町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "大井町",
+    "station_name_en": "Oimachi",
+    "lat": 35.6075,
+    "lon": 139.7348,
+    "station_code": "1687",
+    "route_details": {
+      "totalTime": "46分",
+      "totalCharge": "607円",
+      "path": "井の頭公園→渋谷→[大崎]→大井町"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "奥多摩",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "奥多摩",
+    "station_name_en": "Okutama",
+    "lat": 35.8093,
+    "lon": 139.0963,
+    "station_code": "1746",
+    "route_details": {
+      "totalTime": "1時間53分",
+      "totalCharge": "1,085円",
+      "path": "井の頭公園→吉祥寺→三鷹→[立川]→青梅→奥多摩"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "青梅",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "青梅",
+    "station_name_en": "Ome",
+    "lat": 35.7905,
+    "lon": 139.2745,
+    "station_code": "1679",
+    "route_details": {
+      "totalTime": "1時間0分",
+      "totalCharge": "711円",
+      "path": "井の頭公園→吉祥寺→三鷹→立川→青梅"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "大宮",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "大宮",
+    "station_name_en": "Omiya",
+    "lat": 35.9063,
+    "lon": 139.624,
+    "station_code": "1728",
+    "route_details": {
+      "totalTime": "1時間0分",
+      "totalCharge": "799円",
+      "path": "井の頭公園→吉祥寺→新宿→大宮(埼玉)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "表参道",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "表参道",
+    "station_name_en": "Omotesando",
+    "lat": 35.6652,
+    "lon": 139.7123,
+    "station_code": "1779",
+    "route_details": {
+      "totalTime": "32分",
+      "totalCharge": "408円",
+      "path": "井の頭公園→久我山→渋谷→表参道"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "大崎",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "大崎",
+    "station_name_en": "Osaki",
+    "lat": 35.6197,
+    "lon": 139.7283,
+    "station_code": "1697",
+    "route_details": {
+      "totalTime": "36分",
+      "totalCharge": "397円",
+      "path": "井の頭公園→久我山→渋谷→大崎"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "押上",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "押上",
+    "station_name_en": "Oshiage",
+    "lat": 35.7107,
+    "lon": 139.8129,
+    "station_code": "1752",
+    "route_details": {
+      "totalTime": "58分",
+      "totalCharge": "677円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→日本橋(東京)→押上"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "大手町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "大手町",
+    "station_name_en": "Otemachi",
+    "lat": 35.6848,
+    "lon": 139.763,
+    "station_code": "1709",
+    "route_details": {
+      "totalTime": "40分",
+      "totalCharge": "527円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→大手町(東京)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "六本木",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "六本木",
+    "station_name_en": "Roppongi",
+    "lat": 35.6641,
+    "lon": 139.7343,
+    "station_code": "3289",
+    "route_details": {
+      "totalTime": "39分",
+      "totalCharge": "516円",
+      "path": "井の頭公園→久我山→渋谷→青山一丁目→六本木"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "両国",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "両国",
+    "station_name_en": "Ryogoku",
+    "lat": 35.6961,
+    "lon": 139.7928,
+    "station_code": "3284",
+    "route_details": {
+      "totalTime": "44分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→両国"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "三軒茶屋",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "三軒茶屋",
+    "station_name_en": "Sangen-Jaya",
+    "lat": 35.6439,
+    "lon": 139.6713,
+    "station_code": "2217",
+    "route_details": {
+      "totalTime": "34分",
+      "totalCharge": "410円",
+      "path": "井の頭公園→久我山→渋谷→三軒茶屋"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "笹塚",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "笹塚",
+    "station_name_en": "Sasazuka",
+    "lat": 35.6736,
+    "lon": 139.6671,
+    "station_code": "2193",
+    "route_details": {
+      "totalTime": "22分",
+      "totalCharge": "188円",
+      "path": "井の頭公園→久我山→明大前→笹塚"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "西武新宿",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "西武新宿",
+    "station_name_en": "Seibu-Shinjuku",
+    "lat": 35.6953,
+    "lon": 139.7003,
+    "station_code": "2407",
+    "route_details": {
+      "totalTime": "32分",
+      "totalCharge": "370円",
+      "path": "井の頭公園→吉祥寺→新宿→西武新宿"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "泉岳寺",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "泉岳寺",
+    "station_name_en": "Sengakuji",
+    "lat": 35.6384,
+    "lon": 139.7402,
+    "station_code": "2417",
+    "route_details": {
+      "totalTime": "48分",
+      "totalCharge": "575円",
+      "path": "井の頭公園→久我山→渋谷→五反田→泉岳寺"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "石神井公園",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "石神井公園",
+    "station_name_en": "Shakujii-koen",
+    "lat": 35.7436,
+    "lon": 139.6063,
+    "station_code": "2284",
+    "route_details": {
+      "totalTime": "54分",
+      "totalCharge": "678円",
+      "path": "井の頭公園→吉祥寺→新宿→池袋→石神井公園"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "渋谷",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "渋谷",
+    "station_name_en": "Shibuya",
+    "lat": 35.658,
+    "lon": 139.7016,
+    "station_code": "2248",
+    "route_details": {
+      "totalTime": "23分",
+      "totalCharge": "230円",
+      "path": "井の頭公園→久我山→渋谷"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "新橋",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "新橋",
+    "station_name_en": "Shimbashi",
+    "lat": 35.6664,
+    "lon": 139.7583,
+    "station_code": "2354",
+    "route_details": {
+      "totalTime": "43分",
+      "totalCharge": "408円",
+      "path": "井の頭公園→久我山→渋谷→新橋"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "下北沢",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "下北沢",
+    "station_name_en": "Shimokitazawa",
+    "lat": 35.662,
+    "lon": 139.667,
+    "station_code": "2265",
+    "route_details": {
+      "totalTime": "18分",
+      "totalCharge": "209円",
+      "path": "井の頭公園→久我山→下北沢"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "新木場",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "新木場",
+    "station_name_en": "Shin-Kiba",
+    "lat": 35.6462,
+    "lon": 139.8273,
+    "station_code": "2318",
+    "route_details": {
+      "totalTime": "57分",
+      "totalCharge": "482円",
+      "path": "井の頭公園→久我山→渋谷→永田町→新木場"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "新松戸",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "新松戸",
+    "station_name_en": "Shin-Matsudo",
+    "lat": 35.8256,
+    "lon": 139.9213,
+    "station_code": "2362",
+    "route_details": {
+      "totalTime": "1時間23分",
+      "totalCharge": "876円",
+      "path": "井の頭公園→吉祥寺→新宿→武蔵浦和→新松戸"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "新浦安",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "新浦安",
+    "station_name_en": "Shin-Urayasu",
+    "lat": 35.6493,
+    "lon": 139.9126,
+    "station_code": "2306",
+    "route_details": {
+      "totalTime": "1時間11分",
+      "totalCharge": "799円",
+      "path": "井の頭公園→吉祥寺→東京→新浦安"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "品川",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "品川",
+    "station_name_en": "Shinagawa",
+    "lat": 35.6285,
+    "lon": 139.7387,
+    "station_code": "2236",
+    "route_details": {
+      "totalTime": "42分",
+      "totalCharge": "408円",
+      "path": "井の頭公園→久我山→渋谷→品川"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "新宿",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "新宿",
+    "station_name_en": "Shinjuku",
+    "lat": 35.6896,
+    "lon": 139.7006,
+    "station_code": "2334",
+    "route_details": {
+      "totalTime": "23分",
+      "totalCharge": "370円",
+      "path": "井の頭公園→吉祥寺→新宿"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "新宿三丁目",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "新宿三丁目",
+    "station_name_en": "Shinjuku-sanchome",
+    "lat": 35.6908,
+    "lon": 139.7047,
+    "station_code": "2336",
+    "route_details": {
+      "totalTime": "32分",
+      "totalCharge": "548円",
+      "path": "井の頭公園→吉祥寺→新宿→新宿三丁目"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "蘇我",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "蘇我",
+    "station_name_en": "Soga",
+    "lat": 35.5822,
+    "lon": 140.1309,
+    "station_code": "2436",
+    "route_details": {
+      "totalTime": "1時間31分",
+      "totalCharge": "1,306円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→錦糸町→千葉→蘇我"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "巣鴨",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "巣鴨",
+    "station_name_en": "Sugamo",
+    "lat": 35.7334,
+    "lon": 139.7395,
+    "station_code": "2390",
+    "route_details": {
+      "totalTime": "40分",
+      "totalCharge": "643円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→高田馬場→巣鴨"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "立川",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "立川",
+    "station_name_en": "Tachikawa",
+    "lat": 35.6978,
+    "lon": 139.4137,
+    "station_code": "2480",
+    "route_details": {
+      "totalTime": "28分",
+      "totalCharge": "370円",
+      "path": "井の頭公園→吉祥寺→三鷹→立川"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "高田馬場",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "高田馬場",
+    "station_name_en": "Takadanobaba",
+    "lat": 35.7132,
+    "lon": 139.7046,
+    "station_code": "2453",
+    "route_details": {
+      "totalTime": "25分",
+      "totalCharge": "476円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→高田馬場"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "高尾",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "高尾",
+    "station_name_en": "Takao",
+    "lat": 35.642,
+    "lon": 139.282,
+    "station_code": "2444",
+    "route_details": {
+      "totalTime": "49分",
+      "totalCharge": "711円",
+      "path": "井の頭公園→吉祥寺→三鷹→高尾(東京)"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "多摩センター",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "多摩センター",
+    "station_name_en": "Tama-Center",
+    "lat": 35.6247,
+    "lon": 139.4239,
+    "station_code": "2497",
+    "route_details": {
+      "totalTime": "49分",
+      "totalCharge": "388円",
+      "path": "井の頭公園→久我山→明大前→[調布]→京王多摩センター→多摩センター"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "たまプラーザ",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "たまプラーザ",
+    "station_name_en": "Tama-Plaza",
+    "lat": 35.5786,
+    "lon": 139.5583,
+    "station_code": "2501",
+    "route_details": {
+      "totalTime": "54分",
+      "totalCharge": "518円",
+      "path": "井の頭公園→久我山→渋谷→二子玉川→[溝の口]→たまプラーザ"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "田無",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "田無",
+    "station_name_en": "Tanashi",
+    "lat": 35.7281,
+    "lon": 139.5401,
+    "station_code": "2489",
+    "route_details": {
+      "totalTime": "48分",
+      "totalCharge": "728円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→高田馬場→田無"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "天王洲アイル",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "天王洲アイル",
+    "station_name_en": "Tennozu Isle",
+    "lat": 35.6212,
+    "lon": 139.746,
+    "station_code": "2582",
+    "route_details": {
+      "totalTime": "51分",
+      "totalCharge": "669円",
+      "path": "井の頭公園→渋谷→[大崎]→天王洲アイル"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "東武動物公園",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "東武動物公園",
+    "station_name_en": "Tobu-Dobutsu-Koen",
+    "lat": 36.0249,
+    "lon": 139.7275,
+    "station_code": "2598",
+    "route_details": {
+      "totalTime": "1時間36分",
+      "totalCharge": "1,200円",
+      "path": "井の頭公園→吉祥寺→三鷹→国分寺→西国分寺→南越谷→新越谷→東武動物公園"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "都庁前",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "都庁前",
+    "station_name_en": "Tochomae",
+    "lat": 35.6891,
+    "lon": 139.6917,
+    "station_code": "2618",
+    "route_details": {
+      "totalTime": "38分",
+      "totalCharge": "548円",
+      "path": "井の頭公園→吉祥寺→新宿→新宿西口→都庁前"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "所沢",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "所沢",
+    "station_name_en": "Tokorozawa",
+    "lat": 35.7864,
+    "lon": 139.4678,
+    "station_code": "2610",
+    "route_details": {
+      "totalTime": "45分",
+      "totalCharge": "538円",
+      "path": "井の頭公園→吉祥寺→三鷹→国分寺→東村山→所沢"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "東京",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "東京",
+    "station_name_en": "Tokyo",
+    "lat": 35.6812,
+    "lon": 139.7671,
+    "station_code": "2590",
+    "route_details": {
+      "totalTime": "38分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→東京"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "とうきょうスカイツリー",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "とうきょうスカイツリー",
+    "station_name_en": "Tokyo Skytree",
+    "lat": 35.7105,
+    "lon": 139.8095,
+    "station_code": "2693",
+    "route_details": {
+      "totalTime": "1時間1分",
+      "totalCharge": "881円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→浅草(東武・都営・メトロ)→とうきょうスカイツリー"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "東京テレポート",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "東京テレポート",
+    "station_name_en": "Tokyo Teleport",
+    "lat": 35.6276,
+    "lon": 139.7801,
+    "station_code": "2591",
+    "route_details": {
+      "totalTime": "55分",
+      "totalCharge": "732円",
+      "path": "井の頭公園→渋谷→[大崎]→東京テレポート"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "東陽町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "東陽町",
+    "station_name_en": "Toyocho",
+    "lat": 35.6698,
+    "lon": 139.8174,
+    "station_code": "2602",
+    "route_details": {
+      "totalTime": "49分",
+      "totalCharge": "570円",
+      "path": "井の頭公園→吉祥寺→[中野(東京)]→東陽町"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "豊洲",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "豊洲",
+    "station_name_en": "Toyosu",
+    "lat": 35.6552,
+    "lon": 139.7964,
+    "station_code": "2629",
+    "route_details": {
+      "totalTime": "52分",
+      "totalCharge": "439円",
+      "path": "井の頭公園→久我山→渋谷→永田町→豊洲"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "月島",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "月島",
+    "station_name_en": "Tsukishima",
+    "lat": 35.6644,
+    "lon": 139.7844,
+    "station_code": "2553",
+    "route_details": {
+      "totalTime": "49分",
+      "totalCharge": "439円",
+      "path": "井の頭公園→久我山→渋谷→永田町→月島"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "つくば",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "つくば",
+    "station_name_en": "Tsukuba",
+    "lat": 36.0827,
+    "lon": 140.1114,
+    "station_code": "9502",
+    "route_details": {
+      "totalTime": "1時間33分",
+      "totalCharge": "1,751円",
+      "path": "井の頭公園→吉祥寺→御茶ノ水→秋葉原→つくば"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "上野",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "上野",
+    "station_name_en": "Ueno",
+    "lat": 35.7141,
+    "lon": 139.7774,
+    "station_code": "1627",
+    "route_details": {
+      "totalTime": "43分",
+      "totalCharge": "546円",
+      "path": "井の頭公園→吉祥寺→神田(東京)→上野"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "浦賀",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "浦賀",
+    "station_name_en": "Uraga",
+    "lat": 35.2514,
+    "lon": 139.7153,
+    "station_code": "1651",
+    "route_details": {
+      "totalTime": "1時間45分",
+      "totalCharge": "1,091円",
+      "path": "井の頭公園→久我山→渋谷→横浜→堀ノ内→浦賀"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "和光市",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "和光市",
+    "station_name_en": "Wakoshi",
+    "lat": 35.7884,
+    "lon": 139.6123,
+    "station_code": "3294",
+    "route_details": {
+      "totalTime": "58分",
+      "totalCharge": "658円",
+      "path": "井の頭公園→明大前→新宿→池袋→和光市"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "横浜",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "横浜",
+    "station_name_en": "Yokohama",
+    "lat": 35.4658,
+    "lon": 139.6223,
+    "station_code": "3260",
+    "route_details": {
+      "totalTime": "55分",
+      "totalCharge": "636円",
+      "path": "井の頭公園→久我山→渋谷→横浜"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "四ツ谷",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "四ツ谷",
+    "station_name_en": "Yotsuya",
+    "lat": 35.686,
+    "lon": 139.7307,
+    "station_code": "3270",
+    "route_details": {
+      "totalTime": "28分",
+      "totalCharge": "458円",
+      "path": "井の頭公園→吉祥寺→四ツ谷"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "代々木上原",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "代々木上原",
+    "station_name_en": "Yoyogi-Uehara",
+    "lat": 35.6691,
+    "lon": 139.6797,
+    "station_code": "3276",
+    "route_details": {
+      "totalTime": "28分",
+      "totalCharge": "345円",
+      "path": "井の頭公園→久我山→下北沢→代々木上原"
+    }
+  },
+  {
+    "from": "井の頭湖園",
+    "to": "有楽町",
+    "departure_time_input": "2026-01-19T05:33:24.136Z",
+    "station_name_kanji": "有楽町",
+    "station_name_en": "Yurakucho",
+    "lat": 35.675,
+    "lon": 139.7628,
+    "station_code": "3241",
+    "route_details": {
+      "totalTime": "44分",
+      "totalCharge": "408円",
+      "path": "井の頭公園→久我山→渋谷→永田町→有楽町"
+    }
+  }
+]

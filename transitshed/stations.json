@@ -1,0 +1,315 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Hachioji",
+        "stationName": "Hachioji Station",
+        "placeId": "ChIJm3bo4tsdGWARdW7IcuYMzfE"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.3389, 35.6556]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Tachikawa",
+        "stationName": "Tachikawa Station",
+        "placeId": "ChIJybXK-3rhGGARmUgQKV-MO5c"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.4139, 35.6983]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Musashino",
+        "stationName": "Kichijoji Station",
+        "placeId": "ChIJw2wi9kfuGGARTirViZm25jQ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.5798, 35.7031]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Mitaka",
+        "stationName": "Mitaka Station",
+        "placeId": "ChIJQ6xBTbDvGGARWjMM50vhcgE"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.5608, 35.7028]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Ome",
+        "stationName": "Ome Station",
+        "placeId": "ChIJD4yWjmkkGWARNqZhnqwoOC8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.2582, 35.7906]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Fuchu",
+        "stationName": "Fuchu Station",
+        "placeId": "ChIJ2XkGMfvkGGARkSh9ql97Lu0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.4804, 35.6722]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Akishima",
+        "stationName": "Haijima Station",
+        "placeId": "ChIJcf_AmJQfGWARDxo8F4kX84g"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.3435, 35.7212]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Chofu",
+        "stationName": "Chofu Station",
+        "placeId": "ChIJJ-YgtRTwGGARtjFXuzbjkrM"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.544, 35.6522]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Machida",
+        "stationName": "Machida Station",
+        "placeId": "ChIJ407gFLP-GGARKyhZou_vmq0"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.4453, 35.5442]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Koganei",
+        "stationName": "Musashi-Koganei Station",
+        "placeId": "ChIJXdsKR73lGGARwm7gGZuJ4x8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.506, 35.701]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Kodaira",
+        "stationName": "Kodaira Station",
+        "placeId": "ChIJEUcaNGDmGGARNg-_Qlsxb9U"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.4885, 35.7369]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Hino",
+        "stationName": "Hino Station",
+        "placeId": "ChIJszQFQybiGGARZ5lyOZP17P4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.394, 35.6792]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Higashimurayama",
+        "stationName": "Higashimurayama Station",
+        "placeId": "ChIJqY-Mlj3nGGAR9EloDXnZsGU"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.4658, 35.7615]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Kokubunji",
+        "stationName": "Kokubunji Station",
+        "placeId": "ChIJt8vyNzbkGGAR2RRBzn3BBNc"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.4803, 35.7002]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Kunitachi",
+        "stationName": "Kunitachi Station",
+        "placeId": "ChIJe1s0q_jjGGARHPi--nE0AgI"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.4465, 35.6995]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Fussa",
+        "stationName": "Fussa Station",
+        "placeId": "ChIJIVGLiDMgGWAR34O24MQOKFk"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.3275, 35.7424]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Komae",
+        "stationName": "Komae Station",
+        "placeId": "ChIJ62gNlBnxGGARI8j9aApuk8w"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.5771, 35.6319]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Higashiyamato",
+        "stationName": "Higashiyamato-shi Station",
+        "placeId": "ChIJWVplUSbhGGARqRpPQE3EvaI"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.434, 35.7329]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Kiyose",
+        "stationName": "Kiyose Station",
+        "placeId": "ChIJ32LO-9LnGGARjZkNRQexXzo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.5197, 35.7723]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Higashikurume",
+        "stationName": "Higashikurume Station",
+        "placeId": "ChIJyyzoJJnoGGARHa-6-283UaU"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.5337, 35.761]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Musashimurayama",
+        "stationName": null,
+        "placeId": null,
+        "note": "No train station in city limits"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Tama",
+        "stationName": "Tama-Center Station",
+        "placeId": "ChIJ757GRDTjGGARzGDW0tIS2-U"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.4243, 35.625]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Inagi",
+        "stationName": "Inagi Station",
+        "placeId": "ChIJ0eidVML6GGAR6HCbLQDzp5g"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.5004, 35.6362]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Hamura",
+        "stationName": "Hamura Station",
+        "placeId": "ChIJSQVxXqghGWAR5vr1oO9xQ68"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.3159, 35.758]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Akiruno",
+        "stationName": "Akigawa Station",
+        "placeId": "ChIJhwcnAPUhGWAR1YUwx5HzEWw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.2871, 35.7277]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Nishitokyo",
+        "stationName": "Tanashi Station",
+        "placeId": "ChIJpVibXkPvGGARyLisM7uXisA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.5393, 35.7271]
+      }
+    }
+  ]
+}

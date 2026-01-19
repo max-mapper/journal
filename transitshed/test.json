@@ -1,0 +1,715 @@
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T03:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  origin: { address: 'London St Pancras International' },
+  destination: { address: 'Paris Gare du Nord' },
+  travelMode: 'TRANSIT',
+  departureTime: '2026-01-19T04:37:24.753Z',
+  computeAlternativeRoutes: true,
+  polylineEncoding: 'GEO_JSON_LINESTRING'
+}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Hachioji",
+        "stationName": "Hachioji Station",
+        "placeId": "ChIJm3bo4tsdGWARdW7IcuYMzfE",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Tachikawa",
+        "stationName": "Tachikawa Station",
+        "placeId": "ChIJybXK-3rhGGARmUgQKV-MO5c",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Musashino",
+        "stationName": "Kichijoji Station",
+        "placeId": "ChIJw2wi9kfuGGARTirViZm25jQ",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Mitaka",
+        "stationName": "Mitaka Station",
+        "placeId": "ChIJQ6xBTbDvGGARWjMM50vhcgE",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Ome",
+        "stationName": "Ome Station",
+        "placeId": "ChIJD4yWjmkkGWARNqZhnqwoOC8",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Fuchu",
+        "stationName": "Fuchu Station",
+        "placeId": "ChIJ2XkGMfvkGGARkSh9ql97Lu0",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Akishima",
+        "stationName": "Haijima Station",
+        "placeId": "ChIJcf_AmJQfGWARDxo8F4kX84g",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Chofu",
+        "stationName": "Chofu Station",
+        "placeId": "ChIJJ-YgtRTwGGARtjFXuzbjkrM",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Machida",
+        "stationName": "Machida Station",
+        "placeId": "ChIJ407gFLP-GGARKyhZou_vmq0",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Koganei",
+        "stationName": "Musashi-Koganei Station",
+        "placeId": "ChIJXdsKR73lGGARwm7gGZuJ4x8",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Kodaira",
+        "stationName": "Kodaira Station",
+        "placeId": "ChIJEUcaNGDmGGARNg-_Qlsxb9U",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Hino",
+        "stationName": "Hino Station",
+        "placeId": "ChIJszQFQybiGGARZ5lyOZP17P4",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Higashimurayama",
+        "stationName": "Higashimurayama Station",
+        "placeId": "ChIJqY-Mlj3nGGAR9EloDXnZsGU",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Kokubunji",
+        "stationName": "Kokubunji Station",
+        "placeId": "ChIJt8vyNzbkGGAR2RRBzn3BBNc",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Kunitachi",
+        "stationName": "Kunitachi Station",
+        "placeId": "ChIJe1s0q_jjGGARHPi--nE0AgI",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Fussa",
+        "stationName": "Fussa Station",
+        "placeId": "ChIJIVGLiDMgGWAR34O24MQOKFk",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Komae",
+        "stationName": "Komae Station",
+        "placeId": "ChIJ62gNlBnxGGARI8j9aApuk8w",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Higashiyamato",
+        "stationName": "Higashiyamato-shi Station",
+        "placeId": "ChIJWVplUSbhGGARqRpPQE3EvaI",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Kiyose",
+        "stationName": "Kiyose Station",
+        "placeId": "ChIJ32LO-9LnGGARjZkNRQexXzo",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Higashikurume",
+        "stationName": "Higashikurume Station",
+        "placeId": "ChIJyyzoJJnoGGARHa-6-283UaU",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Musashimurayama",
+        "stationName": null,
+        "placeId": null,
+        "note": "No train station in city limits"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Tama",
+        "stationName": "Tama-Center Station",
+        "placeId": "ChIJ757GRDTjGGARzGDW0tIS2-U",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Inagi",
+        "stationName": "Inagi Station",
+        "placeId": "ChIJ0eidVML6GGAR6HCbLQDzp5g",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Hamura",
+        "stationName": "Hamura Station",
+        "placeId": "ChIJSQVxXqghGWAR5vr1oO9xQ68",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Akiruno",
+        "stationName": "Akigawa Station",
+        "placeId": "ChIJhwcnAPUhGWAR1YUwx5HzEWw",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "cityName": "Nishitokyo",
+        "stationName": "Tanashi Station",
+        "placeId": "ChIJpVibXkPvGGARyLisM7uXisA",
+        "route_status": "OK",
+        "best_duration_seconds": 8282,
+        "best_distance_meters": 451129,
+        "best_departure_time": "2026-01-19T03:37:24.753Z"
+      }
+    }
+  ]
+}
