@@ -7,186 +7,18 @@
     "station_code": "1605"
   },
   {
-    "station_name_kanji": "赤羽",
-    "station_name_en": "Akabane",
-    "lat": 35.778,
-    "lon": 139.721,
-    "station_code": "1476"
+    "station_name_kanji": "東京",
+    "station_name_en": "Tokyo",
+    "lat": 35.6812,
+    "lon": 139.7671,
+    "station_code": "2590"
   },
   {
-    "station_name_kanji": "赤羽岩淵",
-    "station_name_en": "Akabane-Iwabuchi",
-    "lat": 35.7828,
-    "lon": 139.7214,
-    "station_code": "1477"
-  },
-  {
-    "station_name_kanji": "秋葉原",
-    "station_name_en": "Akihabara",
-    "lat": 35.6984,
-    "lon": 139.7731,
-    "station_code": "1483"
-  },
-  {
-    "station_name_kanji": "青砥",
-    "station_name_en": "Aoto",
-    "lat": 35.7456,
-    "lon": 139.8569,
-    "station_code": "1464"
-  },
-  {
-    "station_name_kanji": "浅草",
-    "station_name_en": "Asakusa",
-    "lat": 35.7115,
-    "lon": 139.7972,
-    "station_code": "1491"
-  },
-  {
-    "station_name_kanji": "熱海",
-    "station_name_en": "Atami",
-    "lat": 35.1037,
-    "lon": 139.0778,
-    "station_code": "1506"
-  },
-  {
-    "station_name_kanji": "千葉",
-    "station_name_en": "Chiba",
-    "lat": 35.6131,
-    "lon": 140.1132,
-    "station_code": "2532"
-  },
-  {
-    "station_name_kanji": "調布",
-    "station_name_en": "Chofu",
-    "lat": 35.6521,
-    "lon": 139.5441,
-    "station_code": "2547"
-  },
-  {
-    "station_name_kanji": "中央林間",
-    "station_name_en": "Chuo-Rinkan",
-    "lat": 35.5097,
-    "lon": 139.4447,
-    "station_code": "2540"
-  },
-  {
-    "station_name_kanji": "台場",
-    "station_name_en": "Daiba",
-    "lat": 35.6268,
-    "lon": 139.7704,
-    "station_code": "2515"
-  },
-  {
-    "station_name_kanji": "大門",
-    "station_name_en": "Daimon",
-    "lat": 35.6568,
-    "lon": 139.7547,
-    "station_code": "2518"
-  },
-  {
-    "station_name_kanji": "府中",
-    "station_name_en": "Fuchu",
-    "lat": 35.6721,
-    "lon": 139.4804,
-    "station_code": "7147"
-  },
-  {
-    "station_name_kanji": "府中本町",
-    "station_name_en": "Fuchu-Hommachi",
-    "lat": 35.6662,
-    "lon": 139.477,
-    "station_code": "2971"
-  },
-  {
-    "station_name_kanji": "二子玉川",
-    "station_name_en": "Futako-Tamagawa",
-    "lat": 35.6119,
-    "lon": 139.6264,
-    "station_code": "2962"
-  },
-  {
-    "station_name_kanji": "銀座",
-    "station_name_en": "Ginza",
-    "lat": 35.6712,
-    "lon": 139.765,
-    "station_code": "1996"
-  },
-  {
-    "station_name_kanji": "八王子",
-    "station_name_en": "Hachioji",
-    "lat": 35.6554,
-    "lon": 139.339,
-    "station_code": "2803"
-  },
-  {
-    "station_name_kanji": "拝島",
-    "station_name_en": "Haijima",
-    "lat": 35.7212,
-    "lon": 139.3546,
-    "station_code": "2784"
-  },
-  {
-    "station_name_kanji": "浜松町",
-    "station_name_en": "Hamamatsucho",
-    "lat": 35.6554,
-    "lon": 139.7571,
-    "station_code": "2827"
-  },
-  {
-    "station_name_kanji": "羽田空港第2ターミナル",
-    "station_name_en": "Haneda Airport Terminal 2",
-    "lat": 35.5516,
-    "lon": 139.7865,
-    "station_code": "9453"
-  },
-  {
-    "station_name_kanji": "飯能",
-    "station_name_en": "Hanno",
-    "lat": 35.8512,
-    "lon": 139.3175,
-    "station_code": "2836"
-  },
-  {
-    "station_name_kanji": "日比谷",
-    "station_name_en": "Hibiya",
-    "lat": 35.6751,
-    "lon": 139.7601,
-    "station_code": "2923"
-  },
-  {
-    "station_name_kanji": "光が丘",
-    "station_name_en": "Hikarigaoka",
-    "lat": 35.7592,
-    "lon": 139.6293,
-    "station_code": "2843"
-  },
-  {
-    "station_name_kanji": "本厚木",
-    "station_name_en": "Hon-Atsugi",
-    "lat": 35.4402,
-    "lon": 139.3639,
-    "station_code": "3008"
-  },
-  {
-    "station_name_kanji": "本川越",
-    "station_name_en": "Hon-Kawagoe",
-    "lat": 35.9136,
-    "lon": 139.4816,
-    "station_code": "3009"
-  },
-  {
-    "station_name_kanji": "市ヶ谷",
-    "station_name_en": "Ichigaya",
-    "lat": 35.691,
-    "lon": 139.7356,
-    "station_code": "1582"
-  },
-  {
-    "station_name_kanji": "飯田橋",
-    "station_name_en": "Iidabashi",
-    "lat": 35.702,
-    "lon": 139.745,
-    "station_code": "1533"
+    "station_name_kanji": "新宿",
+    "station_name_en": "Shinjuku",
+    "lat": 35.6909,
+    "lon": 139.7005,
+    "station_code": "2334"
   },
   {
     "station_name_kanji": "池袋",
@@ -196,116 +28,32 @@
     "station_code": "1541"
   },
   {
-    "station_name_kanji": "神保町",
-    "station_name_en": "Jimbocho",
-    "lat": 35.6959,
-    "lon": 139.7583,
-    "station_code": "2382"
+    "station_name_kanji": "渋谷",
+    "station_name_en": "Shibuya",
+    "lat": 35.658,
+    "lon": 139.7016,
+    "station_code": "2248"
   },
   {
-    "station_name_kanji": "自由が丘",
-    "station_name_en": "Jiyugaoka",
-    "lat": 35.6074,
-    "lon": 139.6687,
-    "station_code": "2376"
+    "station_name_kanji": "上野",
+    "station_name_en": "Ueno",
+    "lat": 35.7137,
+    "lon": 139.7774,
+    "station_code": "1627"
   },
   {
-    "station_name_kanji": "海浜幕張",
-    "station_name_en": "Kaihin-Makuhari",
-    "lat": 35.6484,
-    "lon": 140.0419,
-    "station_code": "1791"
+    "station_name_kanji": "品川",
+    "station_name_en": "Shinagawa",
+    "lat": 35.6285,
+    "lon": 139.7392,
+    "station_code": "2236"
   },
   {
-    "station_name_kanji": "鎌倉",
-    "station_name_en": "Kamakura",
-    "lat": 35.319,
-    "lon": 139.5504,
-    "station_code": "1865"
-  },
-  {
-    "station_name_kanji": "上大岡",
-    "station_name_en": "Kami-Ooka",
-    "lat": 35.4093,
-    "lon": 139.596,
-    "station_code": "1875"
-  },
-  {
-    "station_name_kanji": "柏",
-    "station_name_en": "Kashiwa",
-    "lat": 35.8544,
-    "lon": 139.9689,
-    "station_code": "1811"
-  },
-  {
-    "station_name_kanji": "霞ケ関",
-    "station_name_en": "Kasumigaseki",
-    "lat": 35.6749,
-    "lon": 139.7516,
-    "station_code": "1818"
-  },
-  {
-    "station_name_kanji": "川越",
-    "station_name_en": "Kawagoe",
-    "lat": 35.9086,
-    "lon": 139.4853,
-    "station_code": "1909"
-  },
-  {
-    "station_name_kanji": "川崎",
-    "station_name_en": "Kawasaki",
-    "lat": 35.5314,
-    "lon": 139.6969,
-    "station_code": "1911"
-  },
-  {
-    "station_name_kanji": "京急蒲田",
-    "station_name_en": "Keikyu Kamata",
-    "lat": 35.5611,
-    "lon": 139.7245,
-    "station_code": "2049"
-  },
-  {
-    "station_name_kanji": "京王八王子",
-    "station_name_en": "Keio-Hachioji",
-    "lat": 35.6575,
-    "lon": 139.3444,
-    "station_code": "2045"
-  },
-  {
-    "station_name_kanji": "京成船橋",
-    "station_name_en": "Keisei Funabashi",
-    "lat": 35.7004,
-    "lon": 139.9854,
-    "station_code": "2076"
-  },
-  {
-    "station_name_kanji": "京成上野",
-    "station_name_en": "Keisei Ueno",
-    "lat": 35.7113,
-    "lon": 139.775,
-    "station_code": "2059"
-  },
-  {
-    "station_name_kanji": "吉祥寺",
-    "station_name_en": "Kichijoji",
-    "lat": 35.7031,
-    "lon": 139.5798,
-    "station_code": "1978"
-  },
-  {
-    "station_name_kanji": "錦糸町",
-    "station_name_en": "Kinshicho",
-    "lat": 35.6967,
-    "lon": 139.8144,
-    "station_code": "1991"
-  },
-  {
-    "station_name_kanji": "北綾瀬",
-    "station_name_en": "Kita-Ayase",
-    "lat": 35.7766,
-    "lon": 139.8296,
-    "station_code": "1941"
+    "station_name_kanji": "浅草",
+    "station_name_en": "Asakusa",
+    "lat": 35.7106,
+    "lon": 139.7966,
+    "station_code": "1491"
   },
   {
     "station_name_kanji": "北千住",
@@ -315,557 +63,123 @@
     "station_code": "1958"
   },
   {
-    "station_name_kanji": "国際展示場",
-    "station_name_en": "Kokusai-Tenjijo",
-    "lat": 35.6346,
-    "lon": 139.7941,
-    "station_code": "2109"
-  },
-  {
-    "station_name_kanji": "久里浜",
-    "station_name_en": "Kurihama",
-    "lat": 35.2307,
-    "lon": 139.7026,
-    "station_code": "2024"
-  },
-  {
-    "station_name_kanji": "町田",
-    "station_name_en": "Machida",
-    "lat": 35.542,
-    "lon": 139.4455,
-    "station_code": "3034"
-  },
-  {
-    "station_name_kanji": "舞浜",
-    "station_name_en": "Maihama",
-    "lat": 35.6366,
-    "lon": 139.8837,
-    "station_code": "3022"
-  },
-  {
-    "station_name_kanji": "松戸",
-    "station_name_en": "Matsudo",
-    "lat": 35.7844,
-    "lon": 139.9022,
-    "station_code": "3041"
-  },
-  {
-    "station_name_kanji": "目黒",
-    "station_name_en": "Meguro",
-    "lat": 35.634,
-    "lon": 139.7157,
-    "station_code": "3170"
-  },
-  {
-    "station_name_kanji": "明大前",
-    "station_name_en": "Meidaimae",
-    "lat": 35.6685,
-    "lon": 139.6504,
-    "station_code": "3169"
-  },
-  {
-    "station_name_kanji": "南流山",
-    "station_name_en": "Minami-Nagareyama",
-    "lat": 35.8385,
-    "lon": 139.9038,
-    "station_code": "3113"
-  },
-  {
-    "station_name_kanji": "南浦和",
-    "station_name_en": "Minami-Urawa",
-    "lat": 35.8478,
-    "lon": 139.6692,
-    "station_code": "3095"
-  },
-  {
-    "station_name_kanji": "三田",
-    "station_name_en": "Mita",
-    "lat": 35.648,
-    "lon": 139.7424,
-    "station_code": "3071"
-  },
-  {
-    "station_name_kanji": "三鷹",
-    "station_name_en": "Mitaka",
-    "lat": 35.7027,
-    "lon": 139.5606,
-    "station_code": "3072"
-  },
-  {
-    "station_name_kanji": "水戸",
-    "station_name_en": "Mito",
-    "lat": 36.3712,
-    "lon": 140.4764,
-    "station_code": "3084"
-  },
-  {
-    "station_name_kanji": "本八幡",
-    "station_name_en": "Moto-Yawata",
-    "lat": 35.7208,
-    "lon": 139.9272,
-    "station_code": "3184"
-  },
-  {
-    "station_name_kanji": "武蔵小杉",
-    "station_name_en": "Musashi-Kosugi",
-    "lat": 35.5755,
-    "lon": 139.6596,
-    "station_code": "3146"
-  },
-  {
-    "station_name_kanji": "永田町",
-    "station_name_en": "Nagatacho",
-    "lat": 35.679,
-    "lon": 139.7432,
-    "station_code": "2672"
-  },
-  {
-    "station_name_kanji": "中目黒",
-    "station_name_en": "Naka-Meguro",
-    "lat": 35.6444,
-    "lon": 139.6991,
-    "station_code": "2667"
-  },
-  {
-    "station_name_kanji": "中野",
-    "station_name_en": "Nakano",
-    "lat": 35.7058,
-    "lon": 139.6658,
-    "station_code": "2655"
-  },
-  {
-    "station_name_kanji": "成増",
-    "station_name_en": "Narimasu",
-    "lat": 35.7777,
-    "lon": 139.6307,
-    "station_code": "2694"
-  },
-  {
-    "station_name_kanji": "成田空港",
-    "station_name_en": "Narita Airport",
-    "lat": 35.7649,
-    "lon": 140.3863,
-    "station_code": "1998"
-  },
-  {
-    "station_name_kanji": "練馬",
-    "station_name_en": "Nerima",
-    "lat": 35.7378,
-    "lon": 139.6543,
-    "station_code": "2770"
-  },
-  {
-    "station_name_kanji": "日本橋",
-    "station_name_en": "Nihombashi",
-    "lat": 35.6811,
-    "lon": 139.7744,
-    "station_code": "2757"
-  },
-  {
-    "station_name_kanji": "日暮里",
-    "station_name_en": "Nippori",
-    "lat": 35.7278,
-    "lon": 139.7709,
-    "station_code": "2755"
-  },
-  {
-    "station_name_kanji": "西船橋",
-    "station_name_en": "Nishi-Funabashi",
-    "lat": 35.7075,
-    "lon": 139.9592,
-    "station_code": "2744"
-  },
-  {
-    "station_name_kanji": "西国分寺",
-    "station_name_en": "Nishi-Kokubunji",
-    "lat": 35.6997,
-    "lon": 139.4659,
-    "station_code": "2723"
-  },
-  {
-    "station_name_kanji": "西馬込",
-    "station_name_en": "Nishi-Magome",
-    "lat": 35.5869,
-    "lon": 139.7058,
-    "station_code": "2745"
-  },
-  {
-    "station_name_kanji": "西日暮里",
-    "station_name_en": "Nishi-Nippori",
-    "lat": 35.7321,
-    "lon": 139.7668,
-    "station_code": "2739"
-  },
-  {
-    "station_name_kanji": "西高島平",
-    "station_name_en": "Nishi-Takashimadaira",
-    "lat": 35.7938,
-    "lon": 139.6542,
-    "station_code": "2730"
-  },
-  {
-    "station_name_kanji": "西新井",
-    "station_name_en": "Nishiarai",
-    "lat": 35.7775,
-    "lon": 139.7904,
-    "station_code": "2706"
-  },
-  {
-    "station_name_kanji": "登戸",
-    "station_name_en": "Noborito",
-    "lat": 35.6206,
-    "lon": 139.5699,
-    "station_code": "2783"
-  },
-  {
-    "station_name_kanji": "小田原",
-    "station_name_en": "Odawara",
-    "lat": 35.2562,
-    "lon": 139.1553,
-    "station_code": "1759"
-  },
-  {
-    "station_name_kanji": "大船",
-    "station_name_en": "Ofuna",
-    "lat": 35.3536,
-    "lon": 139.5312,
-    "station_code": "1721"
-  },
-  {
-    "station_name_kanji": "小川町",
-    "station_name_en": "Ogawamachi",
-    "lat": 36.0583,
-    "lon": 139.2608,
-    "station_code": "1740"
-  },
-  {
-    "station_name_kanji": "荻窪",
-    "station_name_en": "Ogikubo",
-    "lat": 35.7053,
-    "lon": 139.62,
-    "station_code": "1742"
-  },
-  {
-    "station_name_kanji": "大井町",
-    "station_name_en": "Oimachi",
-    "lat": 35.6075,
-    "lon": 139.7348,
-    "station_code": "1687"
-  },
-  {
-    "station_name_kanji": "奥多摩",
-    "station_name_en": "Okutama",
-    "lat": 35.8093,
-    "lon": 139.0963,
-    "station_code": "1746"
-  },
-  {
-    "station_name_kanji": "青梅",
-    "station_name_en": "Ome",
-    "lat": 35.7905,
-    "lon": 139.2745,
-    "station_code": "1679"
-  },
-  {
-    "station_name_kanji": "大宮",
-    "station_name_en": "Omiya",
-    "lat": 35.9063,
-    "lon": 139.624,
-    "station_code": "1728"
-  },
-  {
-    "station_name_kanji": "表参道",
-    "station_name_en": "Omotesando",
-    "lat": 35.6652,
-    "lon": 139.7123,
-    "station_code": "1779"
-  },
-  {
-    "station_name_kanji": "大崎",
-    "station_name_en": "Osaki",
-    "lat": 35.6197,
-    "lon": 139.7283,
-    "station_code": "1697"
-  },
-  {
-    "station_name_kanji": "押上",
-    "station_name_en": "Oshiage",
-    "lat": 35.7107,
-    "lon": 139.8129,
-    "station_code": "1752"
-  },
-  {
-    "station_name_kanji": "大手町",
-    "station_name_en": "Otemachi",
-    "lat": 35.6848,
-    "lon": 139.763,
-    "station_code": "1709"
-  },
-  {
-    "station_name_kanji": "六本木",
-    "station_name_en": "Roppongi",
-    "lat": 35.6641,
-    "lon": 139.7343,
-    "station_code": "3289"
-  },
-  {
-    "station_name_kanji": "両国",
-    "station_name_en": "Ryogoku",
-    "lat": 35.6961,
-    "lon": 139.7928,
-    "station_code": "3284"
-  },
-  {
-    "station_name_kanji": "三軒茶屋",
-    "station_name_en": "Sangen-Jaya",
-    "lat": 35.6439,
-    "lon": 139.6713,
-    "station_code": "2217"
-  },
-  {
-    "station_name_kanji": "笹塚",
-    "station_name_en": "Sasazuka",
-    "lat": 35.6736,
-    "lon": 139.6671,
-    "station_code": "2193"
-  },
-  {
-    "station_name_kanji": "西武新宿",
-    "station_name_en": "Seibu-Shinjuku",
-    "lat": 35.6953,
-    "lon": 139.7003,
-    "station_code": "2407"
-  },
-  {
-    "station_name_kanji": "泉岳寺",
-    "station_name_en": "Sengakuji",
-    "lat": 35.6384,
-    "lon": 139.7402,
-    "station_code": "2417"
-  },
-  {
-    "station_name_kanji": "石神井公園",
-    "station_name_en": "Shakujii-koen",
-    "lat": 35.7436,
-    "lon": 139.6063,
-    "station_code": "2284"
-  },
-  {
-    "station_name_kanji": "渋谷",
-    "station_name_en": "Shibuya",
-    "lat": 35.658,
-    "lon": 139.7016,
-    "station_code": "2248"
-  },
-  {
-    "station_name_kanji": "新橋",
-    "station_name_en": "Shimbashi",
-    "lat": 35.6664,
-    "lon": 139.7583,
-    "station_code": "2354"
-  },
-  {
-    "station_name_kanji": "下北沢",
-    "station_name_en": "Shimokitazawa",
-    "lat": 35.662,
-    "lon": 139.667,
-    "station_code": "2265"
-  },
-  {
-    "station_name_kanji": "新木場",
-    "station_name_en": "Shin-Kiba",
-    "lat": 35.6462,
-    "lon": 139.8273,
-    "station_code": "2318"
-  },
-  {
-    "station_name_kanji": "新松戸",
-    "station_name_en": "Shin-Matsudo",
-    "lat": 35.8256,
-    "lon": 139.9213,
-    "station_code": "2362"
-  },
-  {
-    "station_name_kanji": "新浦安",
-    "station_name_en": "Shin-Urayasu",
-    "lat": 35.6493,
-    "lon": 139.9126,
-    "station_code": "2306"
-  },
-  {
-    "station_name_kanji": "品川",
-    "station_name_en": "Shinagawa",
-    "lat": 35.6285,
-    "lon": 139.7387,
-    "station_code": "2236"
-  },
-  {
-    "station_name_kanji": "新宿",
-    "station_name_en": "Shinjuku",
-    "lat": 35.6896,
-    "lon": 139.7006,
-    "station_code": "2334"
-  },
-  {
-    "station_name_kanji": "新宿三丁目",
-    "station_name_en": "Shinjuku-sanchome",
-    "lat": 35.6908,
-    "lon": 139.7047,
-    "station_code": "2336"
-  },
-  {
-    "station_name_kanji": "蘇我",
-    "station_name_en": "Soga",
-    "lat": 35.5822,
-    "lon": 140.1309,
-    "station_code": "2436"
-  },
-  {
-    "station_name_kanji": "巣鴨",
-    "station_name_en": "Sugamo",
-    "lat": 35.7334,
-    "lon": 139.7395,
-    "station_code": "2390"
+    "station_name_kanji": "八王子",
+    "station_name_en": "Hachioji",
+    "lat": 35.6556,
+    "lon": 139.3389,
+    "station_code": "2803"
   },
   {
     "station_name_kanji": "立川",
     "station_name_en": "Tachikawa",
-    "lat": 35.6978,
-    "lon": 139.4137,
+    "lat": 35.6983,
+    "lon": 139.4139,
     "station_code": "2480"
   },
   {
-    "station_name_kanji": "高田馬場",
-    "station_name_en": "Takadanobaba",
-    "lat": 35.7132,
-    "lon": 139.7046,
-    "station_code": "2453"
+    "station_name_kanji": "青梅",
+    "station_name_en": "Ome",
+    "lat": 35.7906,
+    "lon": 139.2582,
+    "station_code": "1679"
   },
   {
-    "station_name_kanji": "高尾",
-    "station_name_en": "Takao",
-    "lat": 35.642,
-    "lon": 139.282,
-    "station_code": "2444"
+    "station_name_kanji": "奥多摩",
+    "station_name_en": "Okutama",
+    "lat": 35.8096,
+    "lon": 139.0962,
+    "station_code": "1746"
   },
   {
-    "station_name_kanji": "多摩センター",
-    "station_name_en": "Tama-Center",
-    "lat": 35.6247,
-    "lon": 139.4239,
-    "station_code": "2497"
-  },
-  {
-    "station_name_kanji": "たまプラーザ",
-    "station_name_en": "Tama-Plaza",
-    "lat": 35.5786,
-    "lon": 139.5583,
-    "station_code": "2501"
-  },
-  {
-    "station_name_kanji": "田無",
-    "station_name_en": "Tanashi",
+    "station_name_kanji": "日暮里",
+    "station_name_en": "Nippori",
     "lat": 35.7281,
-    "lon": 139.5401,
-    "station_code": "2489"
+    "lon": 139.7706,
+    "station_code": "2755"
   },
   {
-    "station_name_kanji": "天王洲アイル",
-    "station_name_en": "Tennozu Isle",
-    "lat": 35.6212,
-    "lon": 139.746,
-    "station_code": "2582"
-  },
-  {
-    "station_name_kanji": "東武動物公園",
-    "station_name_en": "Tobu-Dobutsu-Koen",
-    "lat": 36.0249,
-    "lon": 139.7275,
-    "station_code": "2598"
-  },
-  {
-    "station_name_kanji": "都庁前",
-    "station_name_en": "Tochomae",
-    "lat": 35.6891,
-    "lon": 139.6917,
-    "station_code": "2618"
-  },
-  {
-    "station_name_kanji": "所沢",
-    "station_name_en": "Tokorozawa",
-    "lat": 35.7864,
-    "lon": 139.4678,
-    "station_code": "2610"
-  },
-  {
-    "station_name_kanji": "東京",
-    "station_name_en": "Tokyo",
-    "lat": 35.6812,
-    "lon": 139.7671,
-    "station_code": "2590"
-  },
-  {
-    "station_name_kanji": "とうきょうスカイツリー",
-    "station_name_en": "Tokyo Skytree",
-    "lat": 35.7105,
-    "lon": 139.8095,
-    "station_code": "2693"
-  },
-  {
-    "station_name_kanji": "東京テレポート",
-    "station_name_en": "Tokyo Teleport",
-    "lat": 35.6276,
-    "lon": 139.7801,
-    "station_code": "2591"
-  },
-  {
-    "station_name_kanji": "東陽町",
-    "station_name_en": "Toyocho",
-    "lat": 35.6698,
-    "lon": 139.8174,
-    "station_code": "2602"
+    "station_name_kanji": "京成上野",
+    "station_name_en": "Keisei-Ueno",
+    "lat": 35.7109,
+    "lon": 139.7735,
+    "station_code": "2059"
   },
   {
     "station_name_kanji": "豊洲",
     "station_name_en": "Toyosu",
-    "lat": 35.6552,
-    "lon": 139.7964,
+    "lat": 35.655,
+    "lon": 139.7961,
     "station_code": "2629"
   },
   {
-    "station_name_kanji": "月島",
-    "station_name_en": "Tsukishima",
-    "lat": 35.6644,
-    "lon": 139.7844,
-    "station_code": "2553"
+    "station_name_kanji": "西武新宿",
+    "station_name_en": "Seibu-Shinjuku",
+    "lat": 35.6958,
+    "lon": 139.7,
+    "station_code": "2407"
   },
   {
-    "station_name_kanji": "つくば",
-    "station_name_en": "Tsukuba",
-    "lat": 36.0827,
-    "lon": 140.1114,
-    "station_code": "9502"
+    "station_name_kanji": "高尾山口",
+    "station_name_en": "Takaosanguchi",
+    "lat": 35.6322,
+    "lon": 139.2699,
+    "station_code": "2445"
   },
   {
-    "station_name_kanji": "上野",
-    "station_name_en": "Ueno",
-    "lat": 35.7141,
-    "lon": 139.7774,
-    "station_code": "1627"
+    "station_name_kanji": "大宮",
+    "station_name_en": "Omiya",
+    "lat": 35.9064,
+    "lon": 139.6239,
+    "station_code": "1728"
   },
   {
-    "station_name_kanji": "浦賀",
-    "station_name_en": "Uraga",
-    "lat": 35.2514,
-    "lon": 139.7153,
-    "station_code": "1651"
+    "station_name_kanji": "熊谷",
+    "station_name_en": "Kumagaya",
+    "lat": 36.14,
+    "lon": 139.39,
+    "station_code": "2016"
   },
   {
-    "station_name_kanji": "和光市",
-    "station_name_en": "Wakoshi",
-    "lat": 35.7884,
-    "lon": 139.6123,
-    "station_code": "3294"
+    "station_name_kanji": "本川越",
+    "station_name_en": "Hon-Kawagoe",
+    "lat": 35.9138,
+    "lon": 139.4812,
+    "station_code": "3009"
+  },
+  {
+    "station_name_kanji": "飯能",
+    "station_name_en": "Hanno",
+    "lat": 35.8515,
+    "lon": 139.3184,
+    "station_code": "2836"
+  },
+  {
+    "station_name_kanji": "西武秩父",
+    "station_name_en": "Seibu-Chichibu",
+    "lat": 35.9901,
+    "lon": 139.0831,
+    "station_code": "2409"
+  },
+  {
+    "station_name_kanji": "所沢",
+    "station_name_en": "Tokorozawa",
+    "lat": 35.787,
+    "lon": 139.4734,
+    "station_code": "2610"
+  },
+  {
+    "station_name_kanji": "春日部",
+    "station_name_en": "Kasukabe",
+    "lat": 35.98,
+    "lon": 139.7526,
+    "station_code": "1814"
+  },
+  {
+    "station_name_kanji": "小川町",
+    "station_name_en": "Ogawamachi",
+    "lat": 36.0589,
+    "lon": 139.2608,
+    "station_code": "1740"
   },
   {
     "station_name_kanji": "横浜",
@@ -875,11 +189,564 @@
     "station_code": "3260"
   },
   {
-    "station_name_kanji": "四ツ谷",
-    "station_name_en": "Yotsuya",
-    "lat": 35.686,
-    "lon": 139.7307,
-    "station_code": "3270"
+    "station_name_kanji": "新横浜",
+    "station_name_en": "Shin-Yokohama",
+    "lat": 35.5086,
+    "lon": 139.6175,
+    "station_code": "2370"
+  },
+  {
+    "station_name_kanji": "小田原",
+    "station_name_en": "Odawara",
+    "lat": 35.2564,
+    "lon": 139.155,
+    "station_code": "1759"
+  },
+  {
+    "station_name_kanji": "箱根湯本",
+    "station_name_en": "Hakone-Yumoto",
+    "lat": 35.2333,
+    "lon": 139.1039,
+    "station_code": "2792"
+  },
+  {
+    "station_name_kanji": "片瀬江ノ島",
+    "station_name_en": "Katase-Enoshima",
+    "lat": 35.3089,
+    "lon": 139.4833,
+    "station_code": "1841"
+  },
+  {
+    "station_name_kanji": "藤沢",
+    "station_name_en": "Fujisawa",
+    "lat": 35.3372,
+    "lon": 139.4872,
+    "station_code": "2950"
+  },
+  {
+    "station_name_kanji": "鎌倉",
+    "station_name_en": "Kamakura",
+    "lat": 35.319,
+    "lon": 139.5504,
+    "station_code": "1865"
+  },
+  {
+    "station_name_kanji": "横須賀",
+    "station_name_en": "Yokosuka",
+    "lat": 35.2842,
+    "lon": 139.655,
+    "station_code": "3256"
+  },
+  {
+    "station_name_kanji": "三崎口",
+    "station_name_en": "Misakiguchi",
+    "lat": 35.1769,
+    "lon": 139.6297,
+    "station_code": "3061"
+  },
+  {
+    "station_name_kanji": "海老名",
+    "station_name_en": "Ebina",
+    "lat": 35.4528,
+    "lon": 139.3908,
+    "station_code": "1674"
+  },
+  {
+    "station_name_kanji": "湘南台",
+    "station_name_en": "Shonandai",
+    "lat": 35.3962,
+    "lon": 139.4666,
+    "station_code": "2293"
+  },
+  {
+    "station_name_kanji": "元町・中華街",
+    "station_name_en": "Motomachi-Chukagai",
+    "lat": 35.4422,
+    "lon": 139.6508,
+    "station_code": "9316"
+  },
+  {
+    "station_name_kanji": "橋本",
+    "station_name_en": "Hashimoto",
+    "lat": 35.5947,
+    "lon": 139.3444,
+    "station_code": "2795"
+  },
+  {
+    "station_name_kanji": "千葉",
+    "station_name_en": "Chiba",
+    "lat": 35.6134,
+    "lon": 140.1133,
+    "station_code": "2532"
+  },
+  {
+    "station_name_kanji": "成田空港",
+    "station_name_en": "Narita Airport",
+    "lat": 35.7658,
+    "lon": 140.3863,
+    "station_code": "1998"
+  },
+  {
+    "station_name_kanji": "銚子",
+    "station_name_en": "Choshi",
+    "lat": 35.7292,
+    "lon": 140.8275,
+    "station_code": "2544"
+  },
+  {
+    "station_name_kanji": "館山",
+    "station_name_en": "Tateyama",
+    "lat": 34.9965,
+    "lon": 139.8699,
+    "station_code": "2487"
+  },
+  {
+    "station_name_kanji": "船橋",
+    "station_name_en": "Funabashi",
+    "lat": 35.7017,
+    "lon": 139.9852,
+    "station_code": "2976"
+  },
+  {
+    "station_name_kanji": "安房鴨川",
+    "station_name_en": "Awa-Kamogawa",
+    "lat": 35.1076,
+    "lon": 140.1037,
+    "station_code": "1523"
+  },
+  {
+    "station_name_kanji": "勝浦",
+    "station_name_en": "Katsuura",
+    "lat": 35.1529,
+    "lon": 140.312,
+    "station_code": "1846"
+  },
+  {
+    "station_name_kanji": "宇都宮",
+    "station_name_en": "Utsunomiya",
+    "lat": 36.5595,
+    "lon": 139.8985,
+    "station_code": "1639"
+  },
+  {
+    "station_name_kanji": "那須塩原",
+    "station_name_en": "Nasushiobara",
+    "lat": 36.9316,
+    "lon": 140.0207,
+    "station_code": "2680"
+  },
+  {
+    "station_name_kanji": "東武日光",
+    "station_name_en": "Tobu-Nikko",
+    "lat": 36.7481,
+    "lon": 139.6201,
+    "station_code": "2599"
+  },
+  {
+    "station_name_kanji": "鬼怒川温泉",
+    "station_name_en": "Kinugawa-Onsen",
+    "lat": 36.8227,
+    "lon": 139.7163,
+    "station_code": "1980"
+  },
+  {
+    "station_name_kanji": "甲府",
+    "station_name_en": "Kofu",
+    "lat": 35.6672,
+    "lon": 138.569,
+    "station_code": "3513"
+  },
+  {
+    "station_name_kanji": "大月",
+    "station_name_en": "Otsuki",
+    "lat": 35.6132,
+    "lon": 138.9427,
+    "station_code": "1707"
+  },
+  {
+    "station_name_kanji": "小淵沢",
+    "station_name_en": "Kobuchizawa",
+    "lat": 35.8635,
+    "lon": 138.3169,
+    "station_code": "3519"
+  },
+  {
+    "station_name_kanji": "河口湖",
+    "station_name_en": "Kawaguchiko",
+    "lat": 35.4983,
+    "lon": 138.7686,
+    "station_code": "3469"
+  },
+  {
+    "station_name_kanji": "富士山",
+    "station_name_en": "Mt. Fuji (Fujisan)",
+    "lat": 35.4836,
+    "lon": 138.7958,
+    "station_code": "3710"
+  },
+  {
+    "station_name_kanji": "熱海",
+    "station_name_en": "Atami",
+    "lat": 35.1033,
+    "lon": 139.0778,
+    "station_code": "1506"
+  },
+  {
+    "station_name_kanji": "三島",
+    "station_name_en": "Mishima",
+    "lat": 35.1272,
+    "lon": 138.9106,
+    "station_code": "3063"
+  },
+  {
+    "station_name_kanji": "伊東",
+    "station_name_en": "Ito",
+    "lat": 34.9748,
+    "lon": 139.0922,
+    "station_code": "1588"
+  },
+  {
+    "station_name_kanji": "伊豆急下田",
+    "station_name_en": "Izukyu-Shimoda",
+    "lat": 34.6792,
+    "lon": 138.9444,
+    "station_code": "1555"
+  },
+  {
+    "station_name_kanji": "修善寺",
+    "station_name_en": "Shuzenji",
+    "lat": 34.9791,
+    "lon": 138.9505,
+    "station_code": "2288"
+  },
+  {
+    "station_name_kanji": "沼津",
+    "station_name_en": "Numazu",
+    "lat": 35.1031,
+    "lon": 138.8593,
+    "station_code": "2764"
+  },
+  {
+    "station_name_kanji": "御殿場",
+    "station_name_en": "Gotemba",
+    "lat": 35.3005,
+    "lon": 138.9344,
+    "station_code": "2162"
+  },
+  {
+    "station_name_kanji": "富士",
+    "station_name_en": "Fuji",
+    "lat": 35.1515,
+    "lon": 138.6512,
+    "station_code": "2946"
+  },
+  {
+    "station_name_kanji": "新富士",
+    "station_name_en": "Shin-Fuji",
+    "lat": 35.1424,
+    "lon": 138.6632,
+    "station_code": "4270"
+  },
+  {
+    "station_name_kanji": "富士宮",
+    "station_name_en": "Fujinomiya",
+    "lat": 35.2214,
+    "lon": 138.6153,
+    "station_code": "4597"
+  },
+  {
+    "station_name_kanji": "静岡",
+    "station_name_en": "Shizuoka",
+    "lat": 34.9716,
+    "lon": 138.3891,
+    "station_code": "4203"
+  },
+  {
+    "station_name_kanji": "掛川",
+    "station_name_en": "Kakegawa",
+    "lat": 34.7697,
+    "lon": 138.015,
+    "station_code": "3985"
+  },
+  {
+    "station_name_kanji": "浜松",
+    "station_name_en": "Hamamatsu",
+    "lat": 34.7036,
+    "lon": 137.7344,
+    "station_code": "4520"
+  },
+  {
+    "station_name_kanji": "金谷",
+    "station_name_en": "Kanaya",
+    "lat": 34.8191,
+    "lon": 138.1255,
+    "station_code": "4002"
+  },
+  {
+    "station_name_kanji": "千頭",
+    "station_name_en": "Senzu",
+    "lat": 35.1078,
+    "lon": 138.1366,
+    "station_code": "8476"
+  },
+  {
+    "station_name_kanji": "大崎",
+    "station_name_en": "Osaki",
+    "lat": 35.6197,
+    "lon": 139.7282,
+    "station_code": "1697"
+  },
+  {
+    "station_name_kanji": "田端",
+    "station_name_en": "Tabata",
+    "lat": 35.7381,
+    "lon": 139.7608,
+    "station_code": "2491"
+  },
+  {
+    "station_name_kanji": "磯子",
+    "station_name_en": "Isogo",
+    "lat": 35.4005,
+    "lon": 139.6179,
+    "station_code": "1567"
+  },
+  {
+    "station_name_kanji": "大船",
+    "station_name_en": "Ofuna",
+    "lat": 35.3541,
+    "lon": 139.5313,
+    "station_code": "1721"
+  },
+  {
+    "station_name_kanji": "逗子",
+    "station_name_en": "Zushi",
+    "lat": 35.2974,
+    "lon": 139.5786,
+    "station_code": "2401"
+  },
+  {
+    "station_name_kanji": "久里浜",
+    "station_name_en": "Kurihama",
+    "lat": 35.2312,
+    "lon": 139.7027,
+    "station_code": "2024"
+  },
+  {
+    "station_name_kanji": "高尾",
+    "station_name_en": "Takao",
+    "lat": 35.642,
+    "lon": 139.2822,
+    "station_code": "2444"
+  },
+  {
+    "station_name_kanji": "武蔵五日市",
+    "station_name_en": "Musashi-Itsukaichi",
+    "lat": 35.7326,
+    "lon": 139.2281,
+    "station_code": "3143"
+  },
+  {
+    "station_name_kanji": "拝島",
+    "station_name_en": "Haijima",
+    "lat": 35.7212,
+    "lon": 139.3435,
+    "station_code": "2784"
+  },
+  {
+    "station_name_kanji": "三鷹",
+    "station_name_en": "Mitaka",
+    "lat": 35.7027,
+    "lon": 139.5606,
+    "station_code": "3072"
+  },
+  {
+    "station_name_kanji": "御茶ノ水",
+    "station_name_en": "Ochanomizu",
+    "lat": 35.6996,
+    "lon": 139.7649,
+    "station_code": "1762"
+  },
+  {
+    "station_name_kanji": "蘇我",
+    "station_name_en": "Soga",
+    "lat": 35.5815,
+    "lon": 140.1309,
+    "station_code": "2436"
+  },
+  {
+    "station_name_kanji": "桜木町",
+    "station_name_en": "Sakuragicho",
+    "lat": 35.451,
+    "lon": 139.6312,
+    "station_code": "2186"
+  },
+  {
+    "station_name_kanji": "茅ヶ崎",
+    "station_name_en": "Chigasaki",
+    "lat": 35.3304,
+    "lon": 139.4068,
+    "station_code": "2521"
+  },
+  {
+    "station_name_kanji": "南浦和",
+    "station_name_en": "Minami-Urawa",
+    "lat": 35.8478,
+    "lon": 139.6692,
+    "station_code": "3095"
+  },
+  {
+    "station_name_kanji": "川越",
+    "station_name_en": "Kawagoe",
+    "lat": 35.9071,
+    "lon": 139.4828,
+    "station_code": "1909"
+  },
+  {
+    "station_name_kanji": "高麗川",
+    "station_name_en": "Komagawa",
+    "lat": 35.8955,
+    "lon": 139.3385,
+    "station_code": "2137"
+  },
+  {
+    "station_name_kanji": "川崎",
+    "station_name_en": "Kawasaki",
+    "lat": 35.5313,
+    "lon": 139.6975,
+    "station_code": "1911"
+  },
+  {
+    "station_name_kanji": "鶴見",
+    "station_name_en": "Tsurumi",
+    "lat": 35.5085,
+    "lon": 139.6761,
+    "station_code": "2573"
+  },
+  {
+    "station_name_kanji": "海芝浦",
+    "station_name_en": "Umi-Shibaura",
+    "lat": 35.4855,
+    "lon": 139.7001,
+    "station_code": "1644"
+  },
+  {
+    "station_name_kanji": "成田",
+    "station_name_en": "Narita",
+    "lat": 35.7766,
+    "lon": 140.3142,
+    "station_code": "2691"
+  },
+  {
+    "station_name_kanji": "我孫子",
+    "station_name_en": "Abiko",
+    "lat": 35.8732,
+    "lon": 140.0105,
+    "station_code": "1512"
+  },
+  {
+    "station_name_kanji": "木更津",
+    "station_name_en": "Kisarazu",
+    "lat": 35.3814,
+    "lon": 139.9264,
+    "station_code": "1935"
+  },
+  {
+    "station_name_kanji": "君津",
+    "station_name_en": "Kimitsu",
+    "lat": 35.3341,
+    "lon": 139.8952,
+    "station_code": "1985"
+  },
+  {
+    "station_name_kanji": "上総亀山",
+    "station_name_en": "Kazusa-Kameyama",
+    "lat": 35.2348,
+    "lon": 140.0631,
+    "station_code": "1824"
+  },
+  {
+    "station_name_kanji": "大網",
+    "station_name_en": "Oami",
+    "lat": 35.5204,
+    "lon": 140.3096,
+    "station_code": "1682"
+  },
+  {
+    "station_name_kanji": "日光",
+    "station_name_en": "Nikko",
+    "lat": 36.7472,
+    "lon": 139.619,
+    "station_code": "2751"
+  },
+  {
+    "station_name_kanji": "黒磯",
+    "station_name_en": "Kuroiso",
+    "lat": 36.9701,
+    "lon": 140.0594,
+    "station_code": "2027"
+  },
+  {
+    "station_name_kanji": "小山",
+    "station_name_en": "Oyama",
+    "lat": 36.3128,
+    "lon": 139.8064,
+    "station_code": "1781"
+  },
+  {
+    "station_name_kanji": "烏山",
+    "station_name_en": "Karasuyama",
+    "lat": 36.6508,
+    "lon": 140.1506,
+    "station_code": "1904"
+  },
+  {
+    "station_name_kanji": "国府津",
+    "station_name_en": "Kozu",
+    "lat": 35.2811,
+    "lon": 139.2141,
+    "station_code": "2093"
+  },
+  {
+    "station_name_kanji": "荻窪",
+    "station_name_en": "Ogikubo",
+    "lat": 35.7047,
+    "lon": 139.6199,
+    "station_code": "1742"
+  },
+  {
+    "station_name_kanji": "方南町",
+    "station_name_en": "Honancho",
+    "lat": 35.6837,
+    "lon": 139.6599,
+    "station_code": "2996"
+  },
+  {
+    "station_name_kanji": "中目黒",
+    "station_name_en": "Naka-Meguro",
+    "lat": 35.6443,
+    "lon": 139.6991,
+    "station_code": "2667"
+  },
+  {
+    "station_name_kanji": "中野",
+    "station_name_en": "Nakano",
+    "lat": 35.7057,
+    "lon": 139.6657,
+    "station_code": "2655"
+  },
+  {
+    "station_name_kanji": "西船橋",
+    "station_name_en": "Nishi-Funabashi",
+    "lat": 35.7075,
+    "lon": 139.9592,
+    "station_code": "2744"
+  },
+  {
+    "station_name_kanji": "綾瀬",
+    "station_name_en": "Ayase",
+    "lat": 35.7621,
+    "lon": 139.8243,
+    "station_code": "1514"
   },
   {
     "station_name_kanji": "代々木上原",
@@ -889,10 +756,605 @@
     "station_code": "3276"
   },
   {
-    "station_name_kanji": "有楽町",
-    "station_name_en": "Yurakucho",
-    "lat": 35.675,
-    "lon": 139.7628,
-    "station_code": "3241"
+    "station_name_kanji": "和光市",
+    "station_name_en": "Wakoshi",
+    "lat": 35.7884,
+    "lon": 139.6124,
+    "station_code": "3294"
+  },
+  {
+    "station_name_kanji": "新木場",
+    "station_name_en": "Shin-Kiba",
+    "lat": 35.6459,
+    "lon": 139.8262,
+    "station_code": "2318"
+  },
+  {
+    "station_name_kanji": "押上",
+    "station_name_en": "Oshiage",
+    "lat": 35.7103,
+    "lon": 139.8132,
+    "station_code": "1752"
+  },
+  {
+    "station_name_kanji": "目黒",
+    "station_name_en": "Meguro",
+    "lat": 35.6339,
+    "lon": 139.7158,
+    "station_code": "3170"
+  },
+  {
+    "station_name_kanji": "赤羽岩淵",
+    "station_name_en": "Akabane-Iwabuchi",
+    "lat": 35.7834,
+    "lon": 139.7214,
+    "station_code": "1477"
+  },
+  {
+    "station_name_kanji": "西馬込",
+    "station_name_en": "Nishi-Magome",
+    "lat": 35.5869,
+    "lon": 139.7061,
+    "station_code": "2745"
+  },
+  {
+    "station_name_kanji": "西高島平",
+    "station_name_en": "Nishi-Takashimadaira",
+    "lat": 35.7909,
+    "lon": 139.6465,
+    "station_code": "2730"
+  },
+  {
+    "station_name_kanji": "本八幡",
+    "station_name_en": "Moto-Yawata",
+    "lat": 35.7206,
+    "lon": 139.9272,
+    "station_code": "3184"
+  },
+  {
+    "station_name_kanji": "光が丘",
+    "station_name_en": "Hikarigaoka",
+    "lat": 35.7584,
+    "lon": 139.6293,
+    "station_code": "2843"
+  },
+  {
+    "station_name_kanji": "都庁前",
+    "station_name_en": "Tochomae",
+    "lat": 35.6908,
+    "lon": 139.6917,
+    "station_code": "2618"
+  },
+  {
+    "station_name_kanji": "あざみ野",
+    "station_name_en": "Azamino",
+    "lat": 35.5683,
+    "lon": 139.554,
+    "station_code": "1496"
+  },
+  {
+    "station_name_kanji": "中山",
+    "station_name_en": "Nakayama",
+    "lat": 35.5147,
+    "lon": 139.5401,
+    "station_code": "2668"
+  },
+  {
+    "station_name_kanji": "日吉",
+    "station_name_en": "Hiyoshi",
+    "lat": 35.5534,
+    "lon": 139.6468,
+    "station_code": "2926"
+  },
+  {
+    "station_name_kanji": "東武動物公園",
+    "station_name_en": "Tobu-Dobutsu-Koen",
+    "lat": 36.0249,
+    "lon": 139.7262,
+    "station_code": "2598"
+  },
+  {
+    "station_name_kanji": "亀戸",
+    "station_name_en": "Kameido",
+    "lat": 35.6974,
+    "lon": 139.8262,
+    "station_code": "1896"
+  },
+  {
+    "station_name_kanji": "大師前",
+    "station_name_en": "Daishimae",
+    "lat": 35.7845,
+    "lon": 139.782,
+    "station_code": "2512"
+  },
+  {
+    "station_name_kanji": "新藤原",
+    "station_name_en": "Shin-Fujiwara",
+    "lat": 36.8732,
+    "lon": 139.7151,
+    "station_code": "2356"
+  },
+  {
+    "station_name_kanji": "下今市",
+    "station_name_en": "Shimo-Imaichi",
+    "lat": 36.7247,
+    "lon": 139.6922,
+    "station_code": "2257"
+  },
+  {
+    "station_name_kanji": "柏",
+    "station_name_en": "Kashiwa",
+    "lat": 35.8622,
+    "lon": 139.9709,
+    "station_code": "1811"
+  },
+  {
+    "station_name_kanji": "坂戸",
+    "station_name_en": "Sakado",
+    "lat": 35.9567,
+    "lon": 139.3957,
+    "station_code": "2169"
+  },
+  {
+    "station_name_kanji": "越生",
+    "station_name_en": "Ogose",
+    "lat": 35.9626,
+    "lon": 139.2995,
+    "station_code": "1749"
+  },
+  {
+    "station_name_kanji": "寄居",
+    "station_name_en": "Yorii",
+    "lat": 36.1182,
+    "lon": 139.1947,
+    "station_code": "3279"
+  },
+  {
+    "station_name_kanji": "練馬",
+    "station_name_en": "Nerima",
+    "lat": 35.7374,
+    "lon": 139.6548,
+    "station_code": "2770"
+  },
+  {
+    "station_name_kanji": "西武球場前",
+    "station_name_en": "Seibukyujo-mae",
+    "lat": 35.7709,
+    "lon": 139.4206,
+    "station_code": "2406"
+  },
+  {
+    "station_name_kanji": "小平",
+    "station_name_en": "Kodaira",
+    "lat": 35.7371,
+    "lon": 139.4883,
+    "station_code": "2122"
+  },
+  {
+    "station_name_kanji": "西武園",
+    "station_name_en": "Seibuen",
+    "lat": 35.7656,
+    "lon": 139.4497,
+    "station_code": "2405"
+  },
+  {
+    "station_name_kanji": "国分寺",
+    "station_name_en": "Kokubunji",
+    "lat": 35.7001,
+    "lon": 139.4802,
+    "station_code": "2112"
+  },
+  {
+    "station_name_kanji": "多摩湖",
+    "station_name_en": "Tamako",
+    "lat": 35.7618,
+    "lon": 139.4312,
+    "station_code": "2411"
+  },
+  {
+    "station_name_kanji": "京成津田沼",
+    "station_name_en": "Keisei-Tsudanuma",
+    "lat": 35.6838,
+    "lon": 140.0249,
+    "station_code": "2071"
+  },
+  {
+    "station_name_kanji": "千葉中央",
+    "station_name_en": "Chiba-Chuo",
+    "lat": 35.6094,
+    "lon": 140.1192,
+    "station_code": "2534"
+  },
+  {
+    "station_name_kanji": "京成高砂",
+    "station_name_en": "Keisei-Takasago",
+    "lat": 35.7511,
+    "lon": 139.8669,
+    "station_code": "2068"
+  },
+  {
+    "station_name_kanji": "印旛日本医大",
+    "station_name_en": "Inba-Nihon-Idai",
+    "lat": 35.7876,
+    "lon": 140.1997,
+    "station_code": "8196"
+  },
+  {
+    "station_name_kanji": "京王八王子",
+    "station_name_en": "Keio-Hachioji",
+    "lat": 35.6576,
+    "lon": 139.3421,
+    "station_code": "2045"
+  },
+  {
+    "station_name_kanji": "調布",
+    "station_name_en": "Chofu",
+    "lat": 35.6521,
+    "lon": 139.5445,
+    "station_code": "2547"
+  },
+  {
+    "station_name_kanji": "吉祥寺",
+    "station_name_en": "Kichijoji",
+    "lat": 35.7031,
+    "lon": 139.5798,
+    "station_code": "1978"
+  },
+  {
+    "station_name_kanji": "高幡不動",
+    "station_name_en": "Takahatafudo",
+    "lat": 35.6617,
+    "lon": 139.4128,
+    "station_code": "2460"
+  },
+  {
+    "station_name_kanji": "多摩動物公園",
+    "station_name_en": "Tama-Dobutsu-Koen",
+    "lat": 35.6499,
+    "lon": 139.4045,
+    "station_code": "2500"
+  },
+  {
+    "station_name_kanji": "相模大野",
+    "station_name_en": "Sagami-Ono",
+    "lat": 35.5317,
+    "lon": 139.4379,
+    "station_code": "2172"
+  },
+  {
+    "station_name_kanji": "新百合ヶ丘",
+    "station_name_en": "Shin-Yurigaoka",
+    "lat": 35.6041,
+    "lon": 139.5074,
+    "station_code": "2369"
+  },
+  {
+    "station_name_kanji": "唐木田",
+    "station_name_en": "Karakida",
+    "lat": 35.6148,
+    "lon": 139.4116,
+    "station_code": "1903"
+  },
+  {
+    "station_name_kanji": "大井町",
+    "station_name_en": "Oimachi",
+    "lat": 35.6074,
+    "lon": 139.7348,
+    "station_code": "1687"
+  },
+  {
+    "station_name_kanji": "溝の口",
+    "station_name_en": "Mizonokuchi",
+    "lat": 35.6001,
+    "lon": 139.6106,
+    "station_code": "3070"
+  },
+  {
+    "station_name_kanji": "中央林間",
+    "station_name_en": "Chuo-Rinkan",
+    "lat": 35.5085,
+    "lon": 139.4442,
+    "station_code": "2540"
+  },
+  {
+    "station_name_kanji": "五反田",
+    "station_name_en": "Gotanda",
+    "lat": 35.6264,
+    "lon": 139.7236,
+    "station_code": "2159"
+  },
+  {
+    "station_name_kanji": "蒲田",
+    "station_name_en": "Kamata",
+    "lat": 35.5624,
+    "lon": 139.716,
+    "station_code": "1868"
+  },
+  {
+    "station_name_kanji": "こどもの国",
+    "station_name_en": "Kodomonokuni",
+    "lat": 35.5583,
+    "lon": 139.4883,
+    "station_code": "2128"
+  },
+  {
+    "station_name_kanji": "長津田",
+    "station_name_en": "Nagatsuta",
+    "lat": 35.5319,
+    "lon": 139.495,
+    "station_code": "2673"
+  },
+  {
+    "station_name_kanji": "三軒茶屋",
+    "station_name_en": "Sangen-Jaya",
+    "lat": 35.6437,
+    "lon": 139.669,
+    "station_code": "2217"
+  },
+  {
+    "station_name_kanji": "泉岳寺",
+    "station_name_en": "Sengakuji",
+    "lat": 35.6377,
+    "lon": 139.7408,
+    "station_code": "2417"
+  },
+  {
+    "station_name_kanji": "浦賀",
+    "station_name_en": "Uraga",
+    "lat": 35.2505,
+    "lon": 139.7153,
+    "station_code": "1651"
+  },
+  {
+    "station_name_kanji": "京急蒲田",
+    "station_name_en": "Keikyu-Kamata",
+    "lat": 35.5611,
+    "lon": 139.7233,
+    "station_code": "2049"
+  },
+  {
+    "station_name_kanji": "羽田空港第1・第2ターミナル",
+    "station_name_en": "Haneda Airport T1/T2",
+    "lat": 35.5492,
+    "lon": 139.7845,
+    "station_code": "2821"
+  },
+  {
+    "station_name_kanji": "金沢八景",
+    "station_name_en": "Kanazawa-Hakkei",
+    "lat": 35.3314,
+    "lon": 139.62,
+    "station_code": "1854"
+  },
+  {
+    "station_name_kanji": "逗子・葉山",
+    "station_name_en": "Zushi-Hayama",
+    "lat": 35.2982,
+    "lon": 139.5824,
+    "station_code": "2338"
+  },
+  {
+    "station_name_kanji": "西谷",
+    "station_name_en": "Nishiya",
+    "lat": 35.4783,
+    "lon": 139.5658,
+    "station_code": "2747"
+  },
+  {
+    "station_name_kanji": "浜松町",
+    "station_name_en": "Hamamatsucho",
+    "lat": 35.6554,
+    "lon": 139.7571,
+    "station_code": "2827"
+  },
+  {
+    "station_name_kanji": "新橋",
+    "station_name_en": "Shimbashi",
+    "lat": 35.6655,
+    "lon": 139.7597,
+    "station_code": "2354"
+  },
+  {
+    "station_name_kanji": "秋葉原",
+    "station_name_en": "Akihabara",
+    "lat": 35.6984,
+    "lon": 139.7731,
+    "station_code": "1483"
+  },
+  {
+    "station_name_kanji": "多摩センター",
+    "station_name_en": "Tama-Center",
+    "lat": 35.6247,
+    "lon": 139.4239,
+    "station_code": "2497"
+  },
+  {
+    "station_name_kanji": "新杉田",
+    "station_name_en": "Shin-Sugita",
+    "lat": 35.3857,
+    "lon": 139.6198,
+    "station_code": "2337"
+  },
+  {
+    "station_name_kanji": "湘南江の島",
+    "station_name_en": "Shonan-Enoshima",
+    "lat": 35.3117,
+    "lon": 139.4867,
+    "station_code": "2291"
+  },
+  {
+    "station_name_kanji": "強羅",
+    "station_name_en": "Gora",
+    "lat": 35.2506,
+    "lon": 139.0483,
+    "station_code": "2154"
+  },
+  {
+    "station_name_kanji": "早雲山",
+    "station_name_en": "Sounzan",
+    "lat": 35.2464,
+    "lon": 139.0378,
+    "station_code": "9738"
+  },
+  {
+    "station_name_kanji": "大雄山",
+    "station_name_en": "Daiyuzan",
+    "lat": 35.3188,
+    "lon": 139.1026,
+    "station_code": "2520"
+  },
+  {
+    "station_name_kanji": "伊勢原",
+    "station_name_en": "Isehara",
+    "lat": 35.3961,
+    "lon": 139.3148,
+    "station_code": "1566"
+  },
+  {
+    "station_name_kanji": "浦和美園",
+    "station_name_en": "Urawa-Misono",
+    "lat": 35.8943,
+    "lon": 139.728,
+    "station_code": "9187"
+  },
+  {
+    "station_name_kanji": "羽生",
+    "station_name_en": "Hanyu",
+    "lat": 36.1706,
+    "lon": 139.5398,
+    "station_code": "2818"
+  },
+  {
+    "station_name_kanji": "三峰口",
+    "station_name_en": "Mitsumineguchi",
+    "lat": 35.9525,
+    "lon": 138.9715,
+    "station_code": "3082"
+  },
+  {
+    "station_name_kanji": "松戸",
+    "station_name_en": "Matsudo",
+    "lat": 35.7844,
+    "lon": 139.9009,
+    "station_code": "3041"
+  },
+  {
+    "station_name_kanji": "流山",
+    "station_name_en": "Nagareyama",
+    "lat": 35.857,
+    "lon": 139.9022,
+    "station_code": "2678"
+  },
+  {
+    "station_name_kanji": "五井",
+    "station_name_en": "Goi",
+    "lat": 35.5132,
+    "lon": 140.089,
+    "station_code": "2149"
+  },
+  {
+    "station_name_kanji": "上総中野",
+    "station_name_en": "Kazusa-Nakano",
+    "lat": 35.2676,
+    "lon": 140.1772,
+    "station_code": "1830"
+  },
+  {
+    "station_name_kanji": "大原",
+    "station_name_en": "Ohara",
+    "lat": 35.2514,
+    "lon": 140.392,
+    "station_code": "1717"
+  },
+  {
+    "station_name_kanji": "外川",
+    "station_name_en": "Tokawa",
+    "lat": 35.6983,
+    "lon": 140.8587,
+    "station_code": "2604"
+  },
+  {
+    "station_name_kanji": "下館",
+    "station_name_en": "Shimodate",
+    "lat": 36.3045,
+    "lon": 139.9781,
+    "station_code": "2273"
+  },
+  {
+    "station_name_kanji": "茂木",
+    "station_name_en": "Motegi",
+    "lat": 36.5414,
+    "lon": 140.1192,
+    "station_code": "3177"
+  },
+  {
+    "station_name_kanji": "間藤",
+    "station_name_en": "Mato",
+    "lat": 36.6508,
+    "lon": 139.4316,
+    "station_code": "3047"
+  },
+  {
+    "station_name_kanji": "芳賀・高根沢工業団地",
+    "station_name_en": "Haga-Takanezawa",
+    "lat": 36.5925,
+    "lon": 140.0164,
+    "station_code": "9968"
+  },
+  {
+    "station_name_kanji": "吉原",
+    "station_name_en": "Yoshiwara",
+    "lat": 35.1437,
+    "lon": 138.6946,
+    "station_code": "3267"
+  },
+  {
+    "station_name_kanji": "岳南江尾",
+    "station_name_en": "Gakunan-Enoo",
+    "lat": 35.1481,
+    "lon": 138.7611,
+    "station_code": "8448"
+  },
+  {
+    "station_name_kanji": "新清水",
+    "station_name_en": "Shin-Shimizu",
+    "lat": 35.0163,
+    "lon": 138.4896,
+    "station_code": "8466"
+  },
+  {
+    "station_name_kanji": "新静岡",
+    "station_name_en": "Shin-Shizuoka",
+    "lat": 34.9748,
+    "lon": 138.3868,
+    "station_code": "8465"
+  },
+  {
+    "station_name_kanji": "井川",
+    "station_name_en": "Ikawa",
+    "lat": 35.2155,
+    "lon": 138.2238,
+    "station_code": "8423"
+  },
+  {
+    "station_name_kanji": "新所原",
+    "station_name_en": "Shin-Johara",
+    "lat": 34.7332,
+    "lon": 137.5144,
+    "station_code": "4261"
+  },
+  {
+    "station_name_kanji": "新浜松",
+    "station_name_en": "Shin-Hamamatsu",
+    "lat": 34.7047,
+    "lon": 137.7329,
+    "station_code": "8468"
+  },
+  {
+    "station_name_kanji": "西鹿島",
+    "station_name_en": "Nishi-Kashima",
+    "lat": 34.8488,
+    "lon": 137.8105,
+    "station_code": "4477"
   }
 ]
