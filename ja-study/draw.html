@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanji Study Canvas</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f9;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      /* Setup Section */
+      #setup-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 150px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: monospace;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      button.secondary {
+        background-color: #6c757d;
+      }
+      button.secondary:hover {
+        background-color: #545b62;
+      }
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      /* Study Section */
+      #study-section {
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      .kana-display {
+        font-size: 2em;
+        font-weight: bold;
+        color: #444;
+        margin-bottom: 5px;
+      }
+
+      .def-display {
+        color: #666;
+        font-style: italic;
+      }
+
+      /* Construction Area */
+      .word-construction {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        min-height: 40px;
+        margin-bottom: 10px;
+      }
+
+      .kanji-tile {
+        font-size: 24px;
+        border: 1px solid #333;
+        padding: 5px 10px;
+        background: #fff;
+        border-radius: 4px;
+      }
+
+      .kanji-tile.placeholder {
+        border: 1px dashed #ccc;
+        color: transparent;
+        width: 1.5em;
+      }
+
+      /* Canvas Area */
+      .canvas-container {
+        position: relative;
+        border: 2px solid #333;
+        background: white;
+        cursor: crosshair;
+        display: inline-block;
+      }
+
+      /* Candidate List */
+      #candidate-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        min-height: 50px;
+        padding: 10px;
+        background: #e9ecef;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .candidate-char {
+        font-size: 24px;
+        background: white;
+        padding: 5px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        transition: background 0.2s;
+      }
+
+      .candidate-char:hover {
+        background: #dbeaff;
+        border-color: #007bff;
+      }
+
+      /* Feedback */
+      #feedback-area {
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: bold;
+        min-height: 1.5em;
+      }
+      .correct {
+        color: green;
+      }
+      .wrong {
+        color: red;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Kanji Writing Practice</h1>
+
+    <!-- SECTION 1: DATA INPUT -->
+    <div id="setup-section">
+      <p>
+        Paste your CSV data below (level, kanji, furigana, definition, kana):
+      </p>
+      <textarea
+        id="csv-input"
+        placeholder='"1","時間","じかん","time","じかん"...'
+      >
+"1","時間","じかん","time","じかん"
+"1","国","くに","country","くに"
+"1","出す","だ","to take out / to submit","だす"
+"1","外国","がいこく","foreign country","がいこく"
+</textarea
+      >
+      <button onclick="startStudy()">Start Studying</button>
+    </div>
+
+    <!-- SECTION 2: STUDY INTERFACE -->
+    <div id="study-section">
+      <!-- Question Card -->
+      <div class="card">
+        <div class="kana-display" id="question-kana"></div>
+        <div class="def-display" id="question-def"></div>
+      </div>
+
+      <!-- Answer Construction -->
+      <div class="word-construction" id="constructed-word">
+        <!-- Selected Kanji will appear here -->
+      </div>
+
+      <!-- Drawing Canvas -->
+      <div>
+        <div class="canvas-container">
+          <canvas id="can" width="256" height="256"></canvas>
+        </div>
+        <div style="text-align: center; margin-top: 5px">
+          <button
+            class="secondary"
+            style="padding: 5px 10px; font-size: 12px"
+            onclick="clearCanvas()"
+          >
+            Clear Canvas
+          </button>
+          <button
+            class="secondary"
+            style="padding: 5px 10px; font-size: 12px"
+            onclick="undoStroke()"
+          >
+            Undo Stroke
+          </button>
+        </div>
+      </div>
+
+      <!-- Candidates -->
+      <div id="candidate-list">
+        <span style="color: #666; font-size: 14px; align-self: center"
+          >Draw to see candidates...</span
+        >
+      </div>
+
+      <div id="feedback-area"></div>
+
+      <!-- Main Controls -->
+      <div class="controls">
+        <button id="check-btn" onclick="checkAnswer()">Check Answer</button>
+        <button
+          id="next-btn"
+          class="secondary"
+          style="display: none"
+          onclick="nextWord()"
+        >
+          Next Word
+        </button>
+      </div>
+
+      <button class="secondary" onclick="restart()">Exit / Restart</button>
+    </div>
+
+    <!-- KanjiCanvas Scripts (via CDN) -->
+    <!-- Note: ref-patterns must be loaded after kanji-canvas -->
+    <script src="https://cdn.jsdelivr.net/gh/asdfjkl/kanjicanvas@master/docs/resources/javascript/kanji-canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/asdfjkl/kanjicanvas@master/docs/resources/javascript/ref-patterns.js"></script>
+
+    <script>
+      // --- State Management ---
+      let studyList = [];
+      let currentIndex = 0;
+      let currentWord = null;
+      let constructedKanji = []; // Array of strings selected by user
+
+      // --- CSV Parsing ---
+      function parseCSV(text) {
+        const lines = text.trim().split("\n");
+        const data = [];
+
+        // Regex to handle CSV quotes: "val1","val2"
+        const parseLine = (line) => {
+          const result = [];
+          let current = "";
+          let inQuote = false;
+          for (let i = 0; i < line.length; i++) {
+            const char = line[i];
+            if (char === '"') {
+              inQuote = !inQuote;
+            } else if (char === "," && !inQuote) {
+              result.push(current);
+              current = "";
+            } else {
+              current += char;
+            }
+          }
+          result.push(current);
+          return result;
+        };
+
+        lines.forEach((line) => {
+          if (!line.trim()) return;
+          const cols = parseLine(line).map((c) => c.trim());
+          // Expecting header or data. Map to object.
+          // Format: level, kanji, furigana, definition, kana
+          if (cols.length >= 5 && cols[0] !== "level") {
+            data.push({
+              level: cols[0],
+              kanji: cols[1],
+              furigana: cols[2],
+              def: cols[3],
+              kana: cols[4],
+            });
+          }
+        });
+        return data;
+      }
+
+      // --- Setup & Navigation ---
+      function startStudy() {
+        const input = document.getElementById("csv-input").value;
+        studyList = parseCSV(input);
+
+        if (studyList.length === 0) {
+          alert("No valid words found in CSV.");
+          return;
+        }
+
+        // Shuffle list for random order
+        studyList.sort(() => Math.random() - 0.5);
+
+        currentIndex = 0;
+        document.getElementById("setup-section").style.display = "none";
+        document.getElementById("study-section").style.display = "flex";
+
+        // Initialize KanjiCanvas
+        try {
+          KanjiCanvas.init("can");
+        } catch (e) {
+          console.error(
+            "Canvas init failed (scripts might not be loaded yet):",
+            e,
+          );
+        }
+
+        loadWord();
+      }
+
+      function restart() {
+        document.getElementById("setup-section").style.display = "flex";
+        document.getElementById("study-section").style.display = "none";
+      }
+
+      function loadWord() {
+        if (currentIndex >= studyList.length) {
+          alert("Session Complete!");
+          restart();
+          return;
+        }
+
+        currentWord = studyList[currentIndex];
+        constructedKanji = [];
+
+        // UI Updates
+        document.getElementById("question-kana").textContent = currentWord.kana;
+        document.getElementById("question-def").textContent = currentWord.def;
+        document.getElementById("feedback-area").textContent = "";
+        document.getElementById("check-btn").style.display = "inline-block";
+        document.getElementById("next-btn").style.display = "none";
+
+        updateConstructedDisplay();
+        clearCanvas();
+        renderCandidates([]);
+      }
+
+      function updateConstructedDisplay() {
+        const container = document.getElementById("constructed-word");
+        container.innerHTML = "";
+
+        // Display selected kanji
+        constructedKanji.forEach((char) => {
+          const div = document.createElement("div");
+          div.className = "kanji-tile";
+          div.textContent = char;
+          // Allow removing by clicking
+          div.title = "Click to remove";
+          div.onclick = () => removeKanji(char);
+          container.appendChild(div);
+        });
+
+        // Optional: Show placeholder hint for length?
+        // For now, we just grow the list as they add.
+      }
+
+      // --- Canvas & Recognition Logic ---
+
+      // We need to listen for when the user finishes drawing to run recognition
+      const canvasEl = document.getElementById("can");
+
+      // Listeners for mouse/touch end
+      canvasEl.addEventListener("mouseup", triggerRecognize);
+      canvasEl.addEventListener("touchend", triggerRecognize);
+      // Also mouseout in case they drag out of canvas
+      canvasEl.addEventListener("mouseout", (e) => {
+        // Only trigger if they were drawing (mouse button down)
+        if (e.buttons === 1) triggerRecognize();
+      });
+
+      let recognizeTimeout;
+      function triggerRecognize() {
+        // Small delay to ensure stroke is registered by library
+        clearTimeout(recognizeTimeout);
+        recognizeTimeout = setTimeout(() => {
+          const candidates = KanjiCanvas.recognize("can");
+          renderCandidates(candidates);
+        }, 100);
+      }
+
+      function renderCandidates(list) {
+        const container = document.getElementById("candidate-list");
+        container.innerHTML = "";
+        if (!list) return;
+        else list = list.trim().split("  ");
+
+        if (!list || list.length === 0) {
+          container.innerHTML =
+            '<span style="color:#666; font-size: 14px; align-self: center;">Draw to see candidates...</span>';
+          return;
+        }
+
+        list.forEach((char) => {
+          const btn = document.createElement("div");
+          btn.className = "candidate-char";
+          btn.textContent = char;
+          btn.onclick = () => selectCandidate(char);
+          container.appendChild(btn);
+        });
+      }
+
+      function selectCandidate(char) {
+        constructedKanji.push(char);
+        updateConstructedDisplay();
+        clearCanvas();
+      }
+
+      function removeKanji(char) {
+        // Remove the specific instance clicked (simplified here to remove last or filter)
+        // Better UX: Remove the clicked index.
+        // For simplicity, let's just pop the last one or reset.
+        // Let's do: remove the specific one clicked.
+        const index = constructedKanji.lastIndexOf(char);
+        if (index > -1) {
+          constructedKanji.splice(index, 1);
+        }
+        updateConstructedDisplay();
+      }
+
+      function clearCanvas() {
+        KanjiCanvas.erase("can");
+        renderCandidates([]);
+      }
+
+      function undoStroke() {
+        KanjiCanvas.deleteLast("can");
+        triggerRecognize();
+      }
+
+      // --- Checking Logic ---
+
+      function checkAnswer() {
+        const userString = constructedKanji.join("");
+        const targetString = currentWord.kanji;
+        const feedbackEl = document.getElementById("feedback-area");
+
+        if (userString === targetString) {
+          feedbackEl.innerHTML = '<span class="correct">Correct!</span>';
+          document.getElementById("check-btn").style.display = "none";
+          document.getElementById("next-btn").style.display = "inline-block";
+        } else {
+          feedbackEl.innerHTML = `<span class="wrong">Incorrect.</span> <br> Expected: ${targetString} <br> Your answer: ${userString || "(empty)"}`;
+          document.getElementById("check-btn").style.display = "none";
+          document.getElementById("next-btn").style.display = "inline-block";
+        }
+      }
+
+      function nextWord() {
+        currentIndex++;
+        loadWord();
+      }
+    </script>
+  </body>
+</html>
