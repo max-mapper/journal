@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shodo Kanji Quiz</title>
+    <!-- jQuery for Shodo -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Hanzi Writer library -->
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+
+    <style>
+      body {
+        background-color: #f0f2f5;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        user-select: none;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      /* Container holds both HanziWriter (bottom) and Shodo (top) */
+      #canvas-container {
+        position: relative;
+        width: 415px;
+        height: 498px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        /* Japanese paper texture simulation */
+        background-image: radial-gradient(#fff 0%, #f4f1ea 100%);
+        cursor: crosshair;
+        margin-bottom: 20px;
+      }
+
+      /* Hanzi Writer Container - sits at the bottom */
+      #character-target {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 415px;
+        height: 498px;
+        z-index: 0;
+        pointer-events: none; /* Let clicks pass through to Shodo layer if needed, though we manually dispatch */
+      }
+
+      /* Shodo Canvases - sit on top */
+      canvas.shodo-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        touch-action: none;
+      }
+
+      #layered-canvas {
+        z-index: 1;
+      }
+      #write-canvas {
+        z-index: 2;
+        opacity: 1;
+      }
+      #hand-canvas {
+        z-index: 3;
+      }
+
+      /* Visual Hand Cursor */
+      #hand-image {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: rgba(200, 0, 0, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10;
+        display: none;
+        margin-top: -10px;
+        margin-left: -10px;
+      }
+
+      /* UI Controls */
+      .controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 450px;
+      }
+
+      input[type="text"] {
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 50px;
+        text-align: center;
+      }
+
+      button {
+        padding: 8px 16px;
+        background: #333;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:hover {
+        background: #555;
+      }
+      button.secondary {
+        background-color: #6c757d;
+      }
+      button.secondary:hover {
+        background-color: #545b62;
+      }
+      button.action {
+        background-color: #007bff;
+      }
+      button.action:hover {
+        background-color: #0056b3;
+      }
+
+      .status-msg {
+        margin-top: 10px;
+        font-weight: bold;
+        min-height: 24px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Shodo Kanji Quiz</h1>
+
+    <div class="controls">
+      <input
+        type="text"
+        id="kanji-input"
+        value="七"
+        maxlength="1"
+        placeholder="字"
+      />
+      <button class="action" onclick="loadChar()">Load Kanji</button>
+      <button class="secondary" onclick="startQuiz()">Start Quiz</button>
+      <button onclick="clearCanvas()">Clear Paper</button>
+    </div>
+
+    <div class="status-msg" id="status-text">Load a character to begin.</div>
+
+    <div id="canvas-container">
+      <!-- Hanzi Writer Layer -->
+      <div id="character-target"></div>
+
+      <!-- Shodo Layer -->
+      <div id="hand-image"></div>
+      <canvas
+        id="layered-canvas"
+        class="shodo-layer"
+        width="415"
+        height="498"
+      ></canvas>
+      <canvas
+        id="write-canvas"
+        class="shodo-layer"
+        width="415"
+        height="498"
+      ></canvas>
+      <canvas
+        id="hand-canvas"
+        class="shodo-layer"
+        width="415"
+        height="498"
+      ></canvas>
+    </div>
+
+    <div class="controls" style="margin-top: 10px">
+      <small>Brush Size:</small>
+      <button onclick="setBrush('Large')">Large</button>
+      <button onclick="setBrush('Medium')">Medium</button>
+      <button onclick="setBrush('Small')">Small</button>
+    </div>
+
+    <!-- ========================================= -->
+    <!-- SCRIPT 1: SHODO LIBRARY DEFINITIONS       -->
+    <!-- ========================================= -->
+    <script>
+      // Polyfill for jQuery .live()
+      jQuery.fn.live = function (types, data, fn) {
+        jQuery(this.context).on(types, this.selector, data, fn);
+        return this;
+      };
+
+      window.TheShodo = window.TheShodo || {};
+      if (!TheShodo.Shodo) TheShodo.Shodo = {};
+      TheShodo.baseUrl = "";
+
+      // --- Brush Definitions ---
+      TheShodo.Shodo.Brush = function (brushName, opt) {
+        this.name = brushName;
+        this.width = opt.width;
+        this.height = opt.height;
+        this.maxSize = opt.maxSize || opt.width;
+        this.minSize = opt.minSize || 0;
+        this.brushImageName = opt.brushImageName || brushName;
+        this.image = opt.image;
+        this.kasureImage = opt.kasureImage;
+      };
+      TheShodo.Shodo.Brush.prototype.draw = function (ctx, pos, size) {
+        ctx.drawImage(
+          this.image,
+          pos.x - size / 2,
+          pos.y - size / 2,
+          size,
+          size,
+        );
+      };
+      TheShodo.Shodo.Brush.prototype.clone = function () {
+        return new TheShodo.Shodo.Brush(this.name, {
+          width: this.width,
+          height: this.height,
+          maxSize: this.maxSize,
+          minSize: this.minSize,
+          brushImageName: this.brushImageName,
+          image: this.image,
+          kasureImage: this.kasureImage,
+        });
+      };
+
+      TheShodo.Shodo.Brushes = {
+        Small: new TheShodo.Shodo.Brush("Small", {
+          width: 90,
+          height: 90,
+          maxSize: 15,
+          minSize: 3,
+          brushImageName: "Medium",
+        }),
+        Medium: new TheShodo.Shodo.Brush("Medium", {
+          width: 90,
+          height: 90,
+          maxSize: 40,
+          minSize: 3,
+        }),
+        Large: new TheShodo.Shodo.Brush("Large", {
+          width: 90,
+          height: 90,
+          maxSize: 60,
+          minSize: 3,
+          brushImageName: "Medium",
+        }),
+        getBrush: function (brushName) {
+          if (!this[brushName].image) {
+            this[brushName].image = TheShodo.Shodo.Resources.getImage(
+              "Brushes",
+              brushName,
+            );
+            this[brushName].kasureImage = TheShodo.Shodo.Resources.getImage(
+              "KasureBrushes",
+              brushName,
+            );
+          }
+          return this[brushName].clone();
+        },
+      };
+
+      TheShodo.Shodo.Resources = {
+        createImage: function (url) {
+          var image = document.createElement("img");
+          image.src = url;
+          return image;
+        },
+        getImage: function (category, name) {
+          // Fallback logic
+          if (!this[category] || !this[category][name]) {
+            if (this[category] && this[category]["Medium"])
+              return this[category]["Medium"];
+          }
+          return this[category][name];
+        },
+      };
+    </script>
+
+    <!-- ========================================= -->
+    <!-- SCRIPT 2: GENERATE BRUSH IMAGES (BASE64)  -->
+    <!-- ========================================= -->
+    <script>
+      (function () {
+        TheShodo.Shodo.Resources.Brushes = {
+          Small: TheShodo.Shodo.Resources.createImage(
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAOOSURBVHja7JxfhFRRHMfPNAzLsAzDEvu0REQZNjHEUC89xRI9TeplX3uKEkv0usxTbCKWlrVPPSR6SL1sdm12FWvZlNKIsllapUy/0/yuPffOnZlz555zu+fe75eP/Wt29nPPnPs7/6bQ6XQEYj9HoACiIRqBaIiGaASiIRqBaIiGaASiIRqBaIjOeeR8tIqSElEjJmDJgNcBomfl7yvsEgvERWIcKs2ILhI7AdEqP4lF4hyUxhNdHyA5yA63/jHojS66FUG0x1dijqhAs77ojRFEe+wT88RRiB4susR9cCcm8jHuEccgOlz0lAHJQR4RDYj2i65ZEK2WiLfz0K3oiK5bFK3ylJjJ6oAo6LUQ3KlUKBRO0IfNhJ/XB+KVwjbRdl20z2uIaPmy/piS5yuFfyde89dviQP+/JNyMQ74Z06JFlyilR1uUN4F+UVs8ffafHG2+RX0Lg2i1/immPVssfCXxBPlohgX3W/AMp/QDTFtyNHtCtGMO6WgOzK8kFPRKl94SqFqU7S8mj8g2zfCLdsQLfMQkn1sRmndUUTXIbeHFzwXZFR03Fm8rDJnQ/QMxIb22cdNiy6iVfftQoomRaOv7s+sadGCyxvI7R3cVEyLrvADQ7Cfu6ZFy1yF2NAb45Rp0RjE9F+mMy5aDkPfQG4PddOiBdeQ+5DrYyNY7pkQLXMJcgeXe6ZEy1yH3J5yb8KGaMHlDSQf8sCWaJlFCPaVe9Uw0SZ2/F8hlgUieAq1qTeCGS1FftmgVfOeGBtdh5oWRP9j3LZomTsQLRo2+uhgbhHXePNKXtOzidPW8bf7xHnh+P65GBlLSrTMc+K0yd0/DqVtq+oYdnXzNus3mcTNcND8yF4OJO/aGrDoZok4JbobCrOcJZsDlqiDm5vCzIGkNLbmchIDliiRp7WeZa1+tjmpFDfNjCz8tmzNR5uMXGWXWxp+O7zCUnJBtLpMtuKY5D0Rcmg17aK9TIvutisXVlWmtYqMlIr2cpZ4nFLJq6LPng4XRatdykJKSsLPxOVhT9hV0V7kMtEN8f/2lrSE5hEL10WrqfE/nkRp+F503+JIO1kSrabBCw6rFsq2kd5dR+csuOtzDVW+iZ7hiuCk0D9R9UccnkdfjjMvo3tyNmuR8ie5ZYYdi5CnZ78R66b+4FDRiJ3gnRwhGqIRiIZoiIYCiIZoBKIhGqIRiIZoBKIhGqIRiM5Q/gowAMsRJLrK/gy+AAAAAElFTkSuQmCC",
+          ),
+          Medium: TheShodo.Shodo.Resources.createImage(
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAOOSURBVHja7JxfhFRRHMfPNAzLsAzDEvu0REQZNjHEUC89xRI9TeplX3uKEkv0usxTbCKWlrVPPSR6SL1sdm12FWvZlNKIsllapUy/0/yuPffOnZlz555zu+fe75eP/Wt29nPPnPs7/6bQ6XQEYj9HoACiIRqBaIiGaASiIRqBaIiGaASiIRqBaIjOeeR8tIqSElEjJmDJgNcBomfl7yvsEgvERWIcKs2ILhI7AdEqP4lF4hyUxhNdHyA5yA63/jHojS66FUG0x1dijqhAs77ojRFEe+wT88RRiB4susR9cCcm8jHuEccgOlz0lAHJQR4RDYj2i65ZEK2WiLfz0K3oiK5bFK3ylJjJ6oAo6LUQ3KlUKBRO0IfNhJ/XB+KVwjbRdl20z2uIaPmy/piS5yuFfyde89dviQP+/JNyMQ74Z06JFlyilR1uUN4F+UVs8ffafHG2+RX0Lg2i1/immPVssfCXxBPlohgX3W/AMp/QDTFtyNHtCtGMO6WgOzK8kFPRKl94SqFqU7S8mj8g2zfCLdsQLfMQkn1sRmndUUTXIbeHFzwXZFR03Fm8rDJnQ/QMxIb22cdNiy6iVfftQoomRaOv7s+sadGCyxvI7R3cVEyLrvADQ7Cfu6ZFy1yF2NAb45Rp0RjE9F+mMy5aDkPfQG4PddOiBdeQ+5DrYyNY7pkQLXMJcgeXe6ZEy1yH3J5yb8KGaMHlDSQf8sCWaJlFCPaVe9Uw0SZ2/F8hlgUieAq1qTeCGS1FftmgVfOeGBtdh5oWRP9j3LZomTsQLRo2+uhgbhHXePNKXtOzidPW8bf7xHnh+P65GBlLSrTMc+K0yd0/DqVtq+oYdnXzNus3mcTNcND8yF4OJO/aGrDoZok4JbobCrOcJZsDlqiDm5vCzIGkNLbmchIDliiRp7WeZa1+tjmpFDfNjCz8tmzNR5uMXGWXWxp+O7zCUnJBtLpMtuKY5D0Rcmg17aK9TIvutisXVlWmtYqMlIr2cpZ4nFLJq6LPng4XRatdykJKSsLPxOVhT9hV0V7kMtEN8f/2lrSE5hEL10WrqfE/nkRp+F503+JIO1kSrabBCw6rFsq2kd5dR+csuOtzDVW+iZ7hiuCk0D9R9UccnkdfjjMvo3tyNmuR8ie5ZYYdi5CnZ78R66b+4FDRiJ3gnRwhGqIRiIZoiIYCiIZoBKIhGqIRiIZoBKIhGqIRiM5Q/gowAMsRJLrK/gy+AAAAAElFTkSuQmCC",
+          ),
+          Large: TheShodo.Shodo.Resources.createImage(
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAOOSURBVHja7JxfhFRRHMfPNAzLsAzDEvu0REQZNjHEUC89xRI9TeplX3uKEkv0usxTbCKWlrVPPSR6SL1sdm12FWvZlNKIsllapUy/0/yuPffOnZlz555zu+fe75eP/Wt29nPPnPs7/6bQ6XQEYj9HoACiIRqBaIiGaASiIRqBaIiGaASiIRqBaIjOeeR8tIqSElEjJmDJgNcBomfl7yvsEgvERWIcKs2ILhI7AdEqP4lF4hyUxhNdHyA5yA63/jHojS66FUG0x1dijqhAs77ojRFEe+wT88RRiB4susR9cCcm8jHuEccgOlz0lAHJQR4RDYj2i65ZEK2WiLfz0K3oiK5bFK3ylJjJ6oAo6LUQ3KlUKBRO0IfNhJ/XB+KVwjbRdl20z2uIaPmy/piS5yuFfyde89dviQP+/JNyMQ74Z06JFlyilR1uUN4F+UVs8ffafHG2+RX0Lg2i1/immPVssfCXxBPlohgX3W/AMp/QDTFtyNHtCtGMO6WgOzK8kFPRKl94SqFqU7S8mj8g2zfCLdsQLfMQkn1sRmndUUTXIbeHFzwXZFR03Fm8rDJnQ/QMxIb22cdNiy6iVfftQoomRaOv7s+sadGCyxvI7R3cVEyLrvADQ7Cfu6ZFy1yF2NAb45Rp0RjE9F+mMy5aDkPfQG4PddOiBdeQ+5DrYyNY7pkQLXMJcgeXe6ZEy1yH3J5yb8KGaMHlDSQf8sCWaJlFCPaVe9Uw0SZ2/F8hlgUieAq1qTeCGS1FftmgVfOeGBtdh5oWRP9j3LZomTsQLRo2+uhgbhHXePNKXtOzidPW8bf7xHnh+P65GBlLSrTMc+K0yd0/DqVtq+oYdnXzNus3mcTNcND8yF4OJO/aGrDoZok4JbobCrOcJZsDlqiDm5vCzIGkNLbmchIDliiRp7WeZa1+tjmpFDfNjCz8tmzNR5uMXGWXWxp+O7zCUnJBtLpMtuKY5D0Rcmg17aK9TIvutisXVlWmtYqMlIr2cpZ4nFLJq6LPng4XRatdykJKSsLPxOVhT9hV0V7kMtEN8f/2lrSE5hEL10WrqfE/nkRp+F503+JIO1kSrabBCw6rFsq2kd5dR+csuOtzDVW+iZ7hiuCk0D9R9UccnkdfjjMvo3tyNmuR8ie5ZYYdi5CnZ78R66b+4FDRiJ3gnRwhGqIRiIZoiIYCiIZoBKIhGqIRiIZoBKIhGqIRiM5Q/gowAMsRJLrK/gy+AAAAAElFTkSuQmCC",
+          ),
+        };
+        TheShodo.Shodo.Resources.KasureBrushes = {
+          Small: TheShodo.Shodo.Resources.createImage(
+            "data:image/png;base64,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",
+          ),
+          Medium: TheShodo.Shodo.Resources.createImage(
+            "data:image/png;base64,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",
+          ),
+          Large: TheShodo.Shodo.Resources.createImage(
+            "data:image/png;base64,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",
+          ),
+        };
+      })();
+    </script>
+
+    <!-- ========================================= -->
+    <!-- SCRIPT 3: STROKE MANAGER & ENGINE         -->
+    <!-- ========================================= -->
+    <script>
+      TheShodo.Shodo.StrokeManager = function (
+        eventCaptureTarget,
+        strokeEngine,
+      ) {
+        this.eventCaptureTarget = eventCaptureTarget;
+        this.strokeEngine = strokeEngine;
+        this.handElementSelector = "#hand-image";
+        this.strokeHistory = [];
+        this.isHandVisible = false;
+        this.isInStroke = false;
+        this.strokeBeginTime = null;
+        this.isLocked = false;
+      };
+
+      TheShodo.Shodo.StrokeManager.StrokeOperation = {
+        Stroke: 0,
+        SetOpacity: 1,
+        SetBrush: 2,
+        SetColor: 3,
+      };
+
+      TheShodo.Shodo.StrokeManager.prototype.selectBrush = function (
+        brushName,
+      ) {
+        if (this.isLocked) return;
+        this.endStroke();
+        this.strokeHistory.push({
+          O: TheShodo.Shodo.StrokeManager.StrokeOperation.SetBrush,
+          D: brushName,
+        });
+        return this.strokeEngine.selectBrush(brushName);
+      };
+
+      TheShodo.Shodo.StrokeManager.prototype.clearHistory = function () {
+        if (this.isLocked) return;
+        this.endStroke();
+        this.strokeHistory = [];
+        this.strokeEngine.clear();
+        return this;
+      };
+
+      TheShodo.Shodo.StrokeManager.prototype.beginStroke = function () {
+        if (this.isLocked) return;
+        this.endStroke();
+        this.isInStroke = true;
+        this.strokeBeginTime = new Date().valueOf();
+        this.currentStroke = [];
+        this.strokeEngine.beginStroke();
+        return this;
+      };
+
+      TheShodo.Shodo.StrokeManager.prototype.addStrokePosition = function (
+        x,
+        y,
+        pressure,
+      ) {
+        if (this.isLocked) return;
+        var pos = {
+          x: x,
+          y: y,
+          t: new Date().valueOf() - this.strokeBeginTime,
+          p: pressure,
+        };
+        this.currentStroke.push(pos);
+        this.strokeEngine.addStrokePosition(pos);
+        this.strokeEngine.draw();
+        return this;
+      };
+
+      TheShodo.Shodo.StrokeManager.prototype.setBrushOpacity = function (
+        value,
+      ) {
+        /// <summary>set a brush opacity.</summary>
+        if (this.isLocked) return;
+
+        this.endStroke();
+        this.strokeHistory.push({
+          O: TheShodo.Shodo.StrokeManager.StrokeOperation.SetOpacity,
+          D: value,
+        });
+
+        return this.strokeEngine.setBrushOpacity(value);
+      };
+
+      TheShodo.Shodo.StrokeManager.prototype.endStroke = function () {
+        if (this.isLocked) return;
+        if (!this.isInStroke) return;
+        this.strokeHistory.push({
+          O: TheShodo.Shodo.StrokeManager.StrokeOperation.Stroke,
+          D: this.currentStroke.map(function (e) {
+            return { X: e.x, Y: e.y, T: e.t, P: e.p };
+          }),
+        });
+        this.isInStroke = false;
+        this.currentStroke = null;
+        this.strokeEngine.endStroke();
+        return this;
+      };
+
+      TheShodo.Shodo.StrokeManager.prototype.start = function () {
+        var handCanvasObject = $(this.eventCaptureTarget);
+        var self = this;
+        var isMouseDown = false;
+        var handE = $(this.handElementSelector);
+        var offset = handCanvasObject.offset();
+
+        $(window).on("resize scroll", function () {
+          offset = handCanvasObject.offset();
+        });
+
+        // Helper to forward events to Hanzi Writer's SVG
+        function dispatchToHanziWriter(type, e, x, y) {
+          const svg = document.querySelector("#character-target svg");
+          if (!svg) return;
+
+          // Create a MouseEvent or TouchEvent to dispatch
+          // HanziWriter typically listens to mouse/touch events on the SVG
+          // We need to construct a synthetic event.
+          // Note: HanziWriter relies on clientX/clientY in the event object
+
+          let clientX, clientY;
+          if (e.touches && e.touches.length > 0) {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+          } else if (e.changedTouches && e.changedTouches.length > 0) {
+            clientX = e.changedTouches[0].clientX;
+            clientY = e.changedTouches[0].clientY;
+          } else {
+            clientX = e.clientX;
+            clientY = e.clientY;
+          }
+
+          // Create the event
+          const eventInit = {
+            bubbles: true,
+            cancelable: true,
+            view: window,
+            clientX: clientX,
+            clientY: clientY,
+            screenX: clientX,
+            screenY: clientY,
+          };
+
+          let simEvent;
+          // Determine event type mapping
+          if (type === "mousedown")
+            simEvent = new MouseEvent("mousedown", eventInit);
+          else if (type === "mousemove")
+            simEvent = new MouseEvent("mousemove", eventInit);
+          else if (type === "mouseup")
+            simEvent = new MouseEvent("mouseup", eventInit);
+          else if (type === "touchstart")
+            simEvent = new TouchEvent("touchstart", {
+              ...eventInit,
+              touches: e.touches,
+              targetTouches: e.touches,
+              changedTouches: e.changedTouches,
+            });
+          else if (type === "touchmove")
+            simEvent = new TouchEvent("touchmove", {
+              ...eventInit,
+              touches: e.touches,
+              targetTouches: e.touches,
+              changedTouches: e.changedTouches,
+            });
+          else if (type === "touchend")
+            simEvent = new TouchEvent("touchend", {
+              ...eventInit,
+              touches: e.touches,
+              targetTouches: e.touches,
+              changedTouches: e.changedTouches,
+            });
+
+          if (simEvent) svg.dispatchEvent(simEvent);
+        }
+
+        function onStart(e) {
+          e.preventDefault();
+          isMouseDown = true;
+          var pageX = e.pageX;
+          var pageY = e.pageY;
+          if (e.touches && e.touches.length > 0) {
+            pageX = e.touches[0].pageX;
+            pageY = e.touches[0].pageY;
+          }
+          var x = pageX - offset.left;
+          var y = pageY - offset.top;
+
+          handE.css("top", y).css("left", x);
+          if (self.isHandVisible) handE.fadeIn("fast");
+          self.beginStroke();
+
+          // Dispatch to Hanzi Writer
+          dispatchToHanziWriter(
+            e.type === "touchstart" ? "touchstart" : "mousedown",
+            e,
+            x,
+            y,
+          );
+        }
+
+        function onDraw(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (!isMouseDown) return;
+          var pageX = e.pageX;
+          var pageY = e.pageY;
+          if (e.touches && e.touches.length > 0) {
+            pageX = e.touches[0].pageX;
+            pageY = e.touches[0].pageY;
+          } else if (e.changedTouches) {
+            pageX = e.changedTouches[0].pageX;
+            pageY = e.changedTouches[0].pageY;
+          }
+          var x = pageX - offset.left;
+          var y = pageY - offset.top;
+
+          self.addStrokePosition(x, y);
+          handE.css("top", y).css("left", x);
+
+          // Dispatch to Hanzi Writer
+          dispatchToHanziWriter(
+            e.type === "touchmove" ? "touchmove" : "mousemove",
+            e,
+            x,
+            y,
+          );
+        }
+
+        function onEnd(e) {
+          e.preventDefault();
+          if (!isMouseDown) return;
+          isMouseDown = false;
+          self.endStroke();
+          if (self.isHandVisible) handE.fadeOut("fast");
+
+          // Dispatch to Hanzi Writer
+          dispatchToHanziWriter(
+            e.type === "touchend" ? "touchend" : "mouseup",
+            e,
+            0,
+            0,
+          );
+        }
+
+        handCanvasObject
+          .on("mousedown", onStart)
+          .on("mousemove", onDraw)
+          .on("mouseup", onEnd)
+          .on("mouseleave", onEnd);
+
+        if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+          handCanvasObject[0].addEventListener("touchstart", onStart, {
+            passive: false,
+          });
+          handCanvasObject[0].addEventListener("touchmove", onDraw, {
+            passive: false,
+          });
+          handCanvasObject[0].addEventListener("touchend", onEnd, {
+            passive: false,
+          });
+        }
+      };
+
+      // --- Stroke Engine ---
+      TheShodo.Shodo.StrokeEngine = function (
+        width,
+        height,
+        canvas,
+        compositedCanvas,
+      ) {
+        this.velocityPressureCoff = 5;
+        this.canvas = $(canvas);
+        this.width = width;
+        this.height = height;
+        this.canvasContext = this.canvas.get(0).getContext("2d");
+        this.backgroundImage = null; // No background image
+        this.brushOpacity = 1;
+        this.brushColor = 0x000000;
+        this.selectBrush("Medium");
+        this.bufferingSize = 4;
+        this.strokeBuffer = [];
+        this.splineBuffer = [];
+        this.previousPosition = null;
+        this.previousBrushSize = null;
+        this.previousVelocity = 0;
+        this.previousDistance = 0;
+        this.expectedNextPosition = null;
+        this.accelerate = 0;
+        this.compositedCanvas = compositedCanvas;
+        this.compositedCanvasContext = this.compositedCanvas.getContext("2d");
+        this.clear();
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.clear = function () {
+        this.canvasContext.clearRect(0, 0, this.width, this.height);
+        this.compositedCanvasContext.save();
+        this.compositedCanvasContext.clearRect(0, 0, this.width, this.height);
+        this.compositedCanvasContext.restore();
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.createColoredBrushImage = function (
+        originalBrushImage,
+        brushColor,
+        width,
+        height,
+      ) {
+        if (brushColor === 0x000000) return originalBrushImage;
+        var tmpCanvas = document.createElement("canvas");
+        tmpCanvas.width = width;
+        tmpCanvas.height = height;
+        var ctx = tmpCanvas.getContext("2d");
+        ctx.drawImage(originalBrushImage, 0, 0);
+        var imageData = ctx.getImageData(
+          0,
+          0,
+          tmpCanvas.width,
+          tmpCanvas.height,
+        );
+        for (var i = 0, n = imageData.data.length / 4; i < n; i++) {
+          imageData.data[i * 4] = (brushColor & 0xff0000) >> 16;
+          imageData.data[i * 4 + 1] = (brushColor & 0x00ff00) >> 8;
+          imageData.data[i * 4 + 2] = brushColor & 0x0000ff;
+        }
+        ctx.putImageData(imageData, 0, 0);
+        var img = document.createElement("img");
+        img.src = tmpCanvas.toDataURL();
+        return img;
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.refreshBrush = function () {
+        var newBrush = TheShodo.Shodo.Brushes.getBrush(this.brushName);
+        newBrush.image = this.createColoredBrushImage(
+          newBrush.image,
+          this.brushColor,
+          newBrush.width,
+          newBrush.height,
+        );
+        newBrush.kasureImage = this.createColoredBrushImage(
+          newBrush.kasureImage,
+          this.brushColor,
+          newBrush.width,
+          newBrush.height,
+        );
+        this.currentBrush = newBrush;
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.getImage = function (
+        withoutBackground,
+      ) {
+        // Always transparent background for merging
+        return this.compositedCanvas;
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.compositeCanvas = function () {
+        var tmpCanvas = document.createElement("canvas");
+        tmpCanvas.width = this.width;
+        tmpCanvas.height = this.height;
+        var tmpCtx = tmpCanvas.getContext("2d");
+        tmpCtx.globalAlpha = this.brushOpacity;
+        tmpCtx.drawImage(this.canvas.get(0), 0, 0);
+        this.compositedCanvasContext.drawImage(tmpCanvas, 0, 0);
+        this.canvasContext.clearRect(0, 0, this.width, this.height);
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.selectBrush = function (brushName) {
+        this.brushName = brushName;
+        this.refreshBrush();
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.beginStroke = function () {
+        this.strokeBuffer = [];
+        this.splineBuffer = [];
+        this.previousPosition = null;
+        this.previousBrushSize = null;
+        this.previousVelocity = 0;
+        this.previousDistance = 0;
+        this.expectedNextPosition = null;
+        this.accelerate = 0;
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.addStrokePosition = function (pos) {
+        this.strokeBuffer.push(pos);
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.endStroke = function () {
+        if (this.accelerate > 1) {
+          var pos = {
+            x: this.expectedNextPosition.x,
+            y: this.expectedNextPosition.y,
+            t:
+              this.accelerate /
+                (this.previousDistance * this.previousVelocity) +
+              this.previousPosition.t,
+            p:
+              this.previousPosition.p *
+              Math.min(
+                this.accelerate /
+                  (this.previousDistance * this.previousVelocity),
+                1,
+              ),
+          };
+          for (var i = 0, n = this.bufferingSize; i < n; i++)
+            this.strokeBuffer.push(pos);
+          this.draw(true);
+        }
+        this.compositeCanvas();
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.getInterlatePos = function (
+        p0,
+        p1,
+        moveLen,
+      ) {
+        var x = p0.x + (p1.x - p0.x) * moveLen;
+        var y = p0.y + (p1.y - p0.y) * moveLen;
+        return { x: x, y: y };
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.getDistance = function (p0, p1) {
+        var distance =
+          (p1.x - p0.x) * (p1.x - p0.x) + (p1.y - p0.y) * (p1.y - p0.y);
+        return distance == 0 ? distance : Math.sqrt(distance);
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.getBufferedCurrentPosition =
+        function () {
+          var pos = { x: 0, y: 0, t: 0, p: 0 };
+          var bufferingSize = Math.min(
+            this.bufferingSize,
+            this.strokeBuffer.length,
+          );
+          if (bufferingSize == 0) return null;
+          for (var i = 1; i < bufferingSize + 1; i++) {
+            var p = this.strokeBuffer[this.strokeBuffer.length - i];
+            pos.x += p.x;
+            pos.y += p.y;
+            pos.t += p.t;
+            pos.p += p.p;
+          }
+          pos.x /= bufferingSize;
+          pos.y /= bufferingSize;
+          pos.t /= bufferingSize;
+          pos.p /= bufferingSize;
+          return pos;
+        };
+
+      TheShodo.Shodo.StrokeEngine.prototype.draw = function (isEnding) {
+        var pos = this.getBufferedCurrentPosition();
+        if (pos == null) return;
+        if (this.previousPosition == null) this.previousPosition = pos;
+
+        var t = pos.t - this.previousPosition.t;
+        var distance = this.getDistance(pos, this.previousPosition);
+        var velocity = distance / Math.max(1, t);
+        var accelerate =
+          this.previousVelocity == 0 ? 0 : velocity / this.previousVelocity;
+
+        var curve = function (t, b, c, d) {
+          return (c * t) / d + b;
+        };
+        var brushSize = Math.max(
+          this.currentBrush.minSize,
+          curve(
+            velocity,
+            this.currentBrush.maxSize,
+            -this.currentBrush.maxSize - this.currentBrush.minSize,
+            this.velocityPressureCoff,
+          ),
+        );
+        if (pos.p > 0)
+          brushSize = Math.max(
+            this.currentBrush.minSize,
+            this.currentBrush.maxSize * pos.p,
+          );
+        pos.s = brushSize;
+
+        var ctx = this.canvasContext;
+        ctx.save();
+        this.drawStroke(
+          ctx,
+          this.previousPosition,
+          pos,
+          brushSize,
+          distance,
+          velocity,
+        );
+        this.drawStrokeSpline(
+          ctx,
+          this.previousPosition,
+          pos,
+          brushSize,
+          distance,
+          velocity,
+        );
+        ctx.restore();
+
+        this.accelerate = accelerate;
+        this.expectedNextPosition = this.getInterlatePos(
+          this.previousPosition,
+          pos,
+          1 + this.accelerate,
+        );
+        this.previousPosition = pos;
+        this.previousBrushSize = brushSize;
+        this.previousVelocity = velocity;
+        this.previousDistance = distance;
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.setBrushOpacity = function (
+        brushOpacity,
+      ) {
+        /// <summary>Set a brush opacity.</summary>
+        // set new opacity
+        this.brushOpacity = brushOpacity;
+        //this.createBrushWithOpacity(this.currentBrush.name, brushOpacity);
+        this.canvas.css("opacity", this.brushOpacity);
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.drawStroke = function (
+        ctx,
+        startPos,
+        endPos,
+        brushSize,
+        distance,
+      ) {
+        var t = 0;
+        var brushDelta = brushSize - this.previousBrushSize;
+        while (t < 1) {
+          var brushSizeCur = Math.min(
+            this.previousBrushSize + brushDelta * t,
+            this.currentBrush.maxSize,
+          );
+          var pos = this.getInterlatePos(startPos, endPos, t);
+          if (Math.random() > 0.1) {
+            var jitter =
+              (Math.random() > 0.5 ? 1 : -1) *
+              parseInt(Math.random() * 1.2, 10);
+            var px = pos.x - brushSizeCur / 2 + jitter;
+            var py = pos.y - brushSizeCur / 2 + jitter;
+            try {
+              ctx.drawImage(
+                this.currentBrush.kasureImage,
+                px,
+                py,
+                brushSizeCur,
+                brushSizeCur,
+              );
+            } catch (e) {}
+          }
+          t += 1 / Math.max(distance, 1);
+        }
+      };
+
+      TheShodo.Shodo.StrokeEngine.prototype.drawStrokeSpline = function (
+        ctx,
+        startPos,
+        endPos,
+        brushSize,
+        distance,
+        velocity,
+      ) {
+        this.splineBuffer.push(endPos);
+        if (this.splineBuffer.length > 3) {
+          var segCount = 40;
+          var points = Array.apply(null, this.splineBuffer);
+          points = points.slice(points.length - 4);
+          points.unshift(points[0]);
+          points.push(points[points.length - 1]);
+
+          for (var j = 0, m = points.length - 3; j < m; j++) {
+            var p0 = points[j],
+              p1 = points[j + 1],
+              p2 = points[j + 2],
+              p3 = points[j + 3];
+            var v0 = { x: (p2.x - p0.x) / 2, y: (p2.y - p0.y) / 2 };
+            var v1 = { x: (p3.x - p1.x) / 2, y: (p3.y - p1.y) / 2 };
+
+            var tmp1 = 2 * p1.x - 2 * p2.x + v0.x + v1.x;
+            var tmp2 = -3 * p1.x + 3 * p2.x - 2 * v0.x - v1.x;
+            var tmp3 = 2 * p1.y - 2 * p2.y + v0.y + v1.y;
+            var tmp4 = -3 * p1.y + 3 * p2.y - 2 * v0.y - v1.y;
+
+            for (var i = 1, n = segCount + 1; i <= n; i++) {
+              var seg = i / segCount;
+              var tX =
+                tmp1 * Math.pow(seg, 3) +
+                tmp2 * Math.pow(seg, 2) +
+                v0.x * seg +
+                p1.x;
+              var tY =
+                tmp3 * Math.pow(seg, 3) +
+                tmp4 * Math.pow(seg, 2) +
+                v0.y * seg +
+                p1.y;
+              var tS =
+                this.previousBrushSize +
+                ((brushSize - this.previousBrushSize) / segCount) * i;
+
+              if (this.previousBrushSize == brushSize && Math.random() < 0.3)
+                continue;
+              ctx.drawImage(
+                this.currentBrush.image,
+                tX - tS / 2,
+                tY - tS / 2,
+                tS,
+                tS,
+              );
+            }
+          }
+        }
+      };
+
+      TheShodo.Shodo.Shared = { StrokeEngine: null, StrokeManager: null };
+    </script>
+
+    <!-- ========================================= -->
+    <!-- SCRIPT 4: HANZI WRITER & INTEGRATION      -->
+    <!-- ========================================= -->
+    <script>
+      let writer = null;
+      const CANVAS_WIDTH = 415;
+      const CANVAS_HEIGHT = 498;
+
+      // Initialize Shodo Engine
+      $(document).ready(function () {
+        var canvas = $("#write-canvas");
+        var canvasE = canvas.get(0);
+        var layeredCanvas = $("#layered-canvas");
+        var layeredCanvasE = layeredCanvas.get(0);
+        var handCanvas = $("#hand-canvas");
+
+        // Set dimensions explicitly just in case
+        canvasE.width = CANVAS_WIDTH;
+        canvasE.height = CANVAS_HEIGHT;
+        layeredCanvasE.width = CANVAS_WIDTH;
+        layeredCanvasE.height = CANVAS_HEIGHT;
+        handCanvas[0].width = CANVAS_WIDTH;
+        handCanvas[0].height = CANVAS_HEIGHT;
+
+        TheShodo.Shodo.Shared.StrokeEngine = new TheShodo.Shodo.StrokeEngine(
+          canvasE.width,
+          canvasE.height,
+          canvas,
+          layeredCanvasE,
+        );
+
+        TheShodo.Shodo.Shared.StrokeManager = new TheShodo.Shodo.StrokeManager(
+          handCanvas,
+          TheShodo.Shodo.Shared.StrokeEngine,
+        );
+
+        TheShodo.Shodo.Shared.StrokeManager.isHandVisible = true;
+        TheShodo.Shodo.Shared.StrokeManager.start();
+
+        TheShodo.Shodo.Shared.StrokeManager.setBrushOpacity(0.5);
+        // Load default char
+        loadChar();
+      });
+
+      function clearCanvas() {
+        TheShodo.Shodo.Shared.StrokeManager.clearHistory();
+      }
+
+      function setBrush(name) {
+        TheShodo.Shodo.Shared.StrokeManager.selectBrush(name);
+      }
+
+      // Hanzi Writer Integration
+      const japaneseCharDataLoader = (char, onComplete, onError) => {
+        fetch(
+          `https://cdn.jsdelivr.net/npm/kanji-writer-data-jp@latest/${char}.json`,
+        )
+          .then((res) => {
+            if (!res.ok) throw new Error("Character not found");
+            return res.json();
+          })
+          .then(onComplete)
+          .catch(onError);
+      };
+
+      function loadChar() {
+        const char = document.getElementById("kanji-input").value;
+        const statusText = document.getElementById("status-text");
+
+        if (!char) return;
+
+        // Reset Shodo canvas
+        clearCanvas();
+
+        statusText.textContent = "Loading...";
+        statusText.style.color = "#555";
+
+        document.getElementById("character-target").innerHTML = ""; // Clear existing writer
+
+        try {
+          writer = HanziWriter.create("character-target", char, {
+            width: CANVAS_WIDTH,
+            height: CANVAS_HEIGHT,
+            padding: 20,
+            showOutline: true,
+            showCharacter: true, // Show initial char
+            strokeAnimationSpeed: 1,
+            delayBetweenStrokes: 0,
+            strokeColor: "#8ac926",
+            highlightColor: "#f75b43",
+            outlineColor: "#dee0e4",
+            drawingColor: "#0a121f",
+            drawingWidth: 30, // Make detection area wide
+            showHintAfterMisses: 1,
+            charDataLoader: japaneseCharDataLoader,
+            onLoadCharDataError: (error) => {
+              statusText.textContent = "Error: Character not supported.";
+              statusText.style.color = "red";
+            },
+            onLoadCharDataSuccess: () => {
+              statusText.textContent = "Loaded! Press 'Start Quiz'.";
+              statusText.style.color = "#333";
+            },
+          });
+        } catch (e) {
+          statusText.textContent = "Error initializing writer.";
+        }
+      }
+
+      function startQuiz() {
+        if (!writer) return;
+
+        const statusText = document.getElementById("status-text");
+
+        // Clear Shodo canvas for fresh start
+        clearCanvas();
+
+        // Configure Writer for Quiz
+        // We want the writer to be invisible mostly, acting as a logic layer
+        writer.hideCharacter();
+        writer.showOutline();
+
+        statusText.textContent = "Draw with the brush!";
+        statusText.style.color = "#007bff";
+
+        writer.quiz({
+          delineateStrokes: true, // Needed for visual feedback on correct strokes if using SVG
+          drawingWidth: 40, // Wide tolerance for brush
+          onMistake: function (strokeData) {
+            statusText.textContent =
+              "Mistake on stroke " + (strokeData.strokeNum + 1);
+            statusText.style.color = "red";
+            // Optional: flash screen or sound
+          },
+          onCorrectStroke: function (strokeData) {
+            statusText.textContent =
+              "Good! " + strokeData.strokesRemaining + " strokes remaining.";
+            statusText.style.color = "green";
+          },
+          onComplete: function (summaryData) {
+            statusText.textContent = `Quiz Complete! Mistakes: ${summaryData.totalMistakes}`;
+            statusText.style.color = "#28a745";
+
+            // Optional: Flash the perfect SVG behind the brush strokes
+            writer.showCharacter();
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
