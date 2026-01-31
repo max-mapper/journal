@@ -155,8 +155,12 @@
         color: #007bff;
       }
 
+      .def-display-show {
+        color: #333 !important;
+      }
+
       .def-display {
-        color: #666;
+        color: #fff;
         font-style: italic;
         font-size: 0.9em;
         margin-top: 5px;
@@ -628,6 +632,9 @@
 
         document.getElementById("question-kana").innerHTML = kanaHtml;
         document.getElementById("question-def").textContent = data.def;
+        document
+          .querySelector(".def-display")
+          .classList.remove("def-display-show");
         document.getElementById("status-text").textContent = "";
 
         currentKanjiArray = data.kanji.split("");
@@ -705,6 +712,9 @@
       };
 
       function setupWriter(char) {
+        document
+          .querySelector(".def-display")
+          .classList.remove("def-display-show");
         clearCanvas();
         document.getElementById("character-target").innerHTML = "";
         document.getElementById("status-text").textContent = "Loading...";
@@ -794,6 +804,9 @@
               if (currentRepetition < repetitionGoal) {
                 setupWriter(currentKanjiArray[currentKanjiIndex]);
               } else {
+                document
+                  .querySelector(".def-display")
+                  .classList.add("def-display-show");
                 currentKanjiIndex++;
                 updateWordProgress(currentKanjiArray, currentKanjiIndex);
                 loadCurrentKanji();
