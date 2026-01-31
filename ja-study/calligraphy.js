@@ -29,23 +29,23 @@ Calligraphy.Writer.Brush.prototype.clone = function () {
 
 Calligraphy.Writer.Brushes = {
   Small: new Calligraphy.Writer.Brush("Small", {
-    width: 90,
-    height: 90,
+    width: 40,
+    height: 40,
     maxSize: 15,
     minSize: 3,
-    brushImageName: "Medium",
-  }),
-  Medium: new Calligraphy.Writer.Brush("Medium", {
-    width: 90,
-    height: 90,
-    maxSize: 40,
-    minSize: 3,
+    brushImageName: "Small",
   }),
   SmallMed: new Calligraphy.Writer.Brush("SmallMed", {
     width: 70,
     height: 70,
     maxSize: 30,
     minSize: 5,
+  }),
+  Medium: new Calligraphy.Writer.Brush("Medium", {
+    width: 90,
+    height: 90,
+    maxSize: 40,
+    minSize: 3,
   }),
   Large: new Calligraphy.Writer.Brush("Large", {
     width: 90,
@@ -78,8 +78,8 @@ Calligraphy.Writer.Resources = {
   getImage: function (category, name) {
     // Fallback logic
     if (!this[category] || !this[category][name]) {
-      if (this[category] && this[category]["Medium"])
-        return this[category]["Medium"];
+      if (this[category] && this[category]["Small"])
+        return this[category]["Small"];
     }
     return this[category][name];
   },
@@ -257,6 +257,10 @@ Calligraphy.Writer.StrokeManager.prototype.start = function () {
   var handE = $(this.handElementSelector);
   var offset = handCanvasObject.offset();
 
+  setTimeout(() => {
+    offset = handCanvasObject.offset();
+  }, 500); // initial redraw
+
   $(window).on("resize scroll", function () {
     offset = handCanvasObject.offset();
   });
@@ -429,7 +433,7 @@ Calligraphy.Writer.StrokeEngine = function (
   this.backgroundImage = null; // No background image
   this.brushOpacity = 1;
   this.brushColor = 0x000000;
-  this.selectBrush("SmallMed");
+  this.selectBrush("Small");
   this.bufferingSize = 4;
   this.strokeBuffer = [];
   this.splineBuffer = [];

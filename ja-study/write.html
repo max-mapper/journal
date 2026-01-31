@@ -7,7 +7,7 @@
     <style>
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
         padding: 20px;
         background-color: #f0f2f5;
@@ -36,6 +36,13 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
+      .setup-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
       textarea {
         width: 100%;
         height: 120px;
@@ -46,16 +53,55 @@
         box-sizing: border-box;
       }
 
+      select,
+      input[type="number"] {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+
       /* Study Section */
       #study-section {
         display: none;
         flex-direction: column;
         align-items: center;
         width: 100%;
+        position: relative;
+      }
+
+      /* Stats Overlay */
+      #stats-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 10px;
+        border-radius: 0 0 8px 0;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        font-size: 0.9em;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .stat-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .stat-label {
+        font-weight: bold;
+        color: #555;
+      }
+      .stat-val-perfect {
+        color: green;
+      }
+      .stat-val-imperfect {
+        color: orange;
       }
 
       .info-card {
-        height: 150px;
+        min-height: 160px;
         background: white;
         padding: 15px 20px;
         border-radius: 8px;
@@ -68,7 +114,7 @@
       }
 
       .word-display {
-        font-size: 2em;
+        font-size: 2.5em;
         font-weight: bold;
         color: #333;
         margin: 10px 0;
@@ -76,21 +122,27 @@
       }
 
       .word-display span {
-        border-bottom: 1px solid black;
+        border-bottom: 3px solid #ababab;
         margin-right: 5px;
+        padding-bottom: 5px;
+        display: inline-block;
+      }
+
+      .kana-char {
+        color: #ccc !important;
       }
 
       .current-char-highlight {
-        color: #fff;
-        /* border-bottom: 3px solid #d93025; */
+        border-bottom: 2px solid #007bff !important;
+        color: white;
       }
 
       .pending-char {
-        color: #fff;
+        color: white;
       }
 
       .correct {
-        color: black;
+        color: #333 !important;
       }
 
       .kana-display {
@@ -98,71 +150,69 @@
         color: #555;
       }
 
+      .kana-accent {
+        color: #007bff;
+      }
+
       .def-display {
         color: #666;
         font-style: italic;
         font-size: 0.9em;
+        margin-top: 5px;
       }
 
       /* Calligraphy Canvas Container */
       #canvas-container {
         position: relative;
-        /* UPDATED: 500x500 Square */
-        width: 500px;
-        height: 500px;
+        width: 350px;
+        height: 350px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         background-color: #fff;
-        /* Japanese paper texture simulation */
         background-image: radial-gradient(#fff 0%, #f4f1ea 100%);
         cursor: crosshair;
         margin-bottom: 15px;
-        box-sizing: border-box; /* Ensures border doesn't break layout */
+        box-sizing: border-box;
       }
 
       /* GUIDE LINES STYLES */
       #canvas-container.show-guides {
-        border: 2px solid #007bff; /* Blue Outline */
+        border: 2px solid #007bff;
       }
 
-      /* Vertical Dotted Line */
       #canvas-container.show-guides::before {
         content: "";
         position: absolute;
         top: 0;
         bottom: 0;
         left: 50%;
-        border-left: 2px dashed #89cff0; /* Light blue dashed */
+        border-left: 2px dashed #89cff0;
         transform: translateX(-50%);
         pointer-events: none;
-        z-index: 1; /* Above background, below canvas */
+        z-index: 1;
       }
 
-      /* Horizontal Dotted Line */
       #canvas-container.show-guides::after {
         content: "";
         position: absolute;
         left: 0;
         right: 0;
         top: 50%;
-        border-top: 2px dashed #89cff0; /* Light blue dashed */
+        border-top: 2px dashed #89cff0;
         transform: translateY(-50%);
         pointer-events: none;
         z-index: 1;
       }
 
-      /* Hanzi Writer Layer (Bottom, Logic) */
       #character-target {
         position: absolute;
         top: 0;
         left: 0;
-        /* UPDATED: 500x500 */
-        width: 500px;
-        height: 500px;
+        width: 350px;
+        height: 350px;
         z-index: 0;
         pointer-events: none;
       }
 
-      /* Calligraphy Layers (Top, Visual) */
       canvas.calligraphy-layer {
         position: absolute;
         top: 0;
@@ -181,7 +231,6 @@
         z-index: 4;
       }
 
-      /* Visual Hand Cursor */
       #hand-image {
         position: absolute;
         width: 20px;
@@ -195,7 +244,6 @@
         margin-left: -10px;
       }
 
-      /* Controls */
       .controls {
         display: flex;
         gap: 10px;
@@ -231,19 +279,23 @@
       button:hover {
         background-color: #555;
       }
-
       button.primary {
         background-color: #007bff;
       }
       button.primary:hover {
         background-color: #0056b3;
       }
-
       button.secondary {
         background-color: #6c757d;
       }
       button.secondary:hover {
         background-color: #545b62;
+      }
+      button.danger {
+        background-color: #dc3545;
+      }
+      button.danger:hover {
+        background-color: #a71d2a;
       }
 
       #status-text {
@@ -252,78 +304,150 @@
         color: #007bff;
         margin-top: 5px;
       }
+
+      /* Review Screen */
+      #review-section {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 800px;
+      }
+
+      .review-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .review-card {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+        border-bottom: 3px solid transparent;
+      }
+      .review-card:hover {
+        transform: translateY(-2px);
+      }
+      .review-card.perfect {
+        border-bottom-color: green;
+      }
+      .review-card.imperfect {
+        border-bottom-color: orange;
+      }
+
+      .review-kanji {
+        font-size: 2em;
+        font-weight: bold;
+        color: #333;
+      }
+      .review-reading {
+        color: #555;
+        font-size: 0.9em;
+      }
+      .review-def {
+        color: #888;
+        font-size: 0.8em;
+        font-style: italic;
+        margin-top: 5px;
+      }
+      .review-stats {
+        margin-top: 5px;
+        font-size: 0.8em;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
     <h1>Calligraphy Kanji Practice</h1>
 
-    <!-- SECTION 1: DATA INPUT -->
+    <!-- SECTION 1: SETUP -->
     <div id="setup-section">
-      <p>
-        Paste your CSV data below (level, kanji, furigana, definition, kana):
-      </p>
-      <textarea
-        id="csv-input"
-        placeholder='"1","時間","じかん","time","じかん"...'
-      >
-"1","時間","じかん","time","じかん"
-"1","国","くに","country","くに"
-"1","出す","だ","to take out / to submit","だす"
-"1","外国","がいこく","foreign country","がいこく"
-</textarea
-      >
+      <div class="setup-row">
+        <label
+          >Load Preset:
+          <select id="preset-list" onchange="loadPreset()">
+            <option value="example">Grade 1 Kanji Words</option>
+            <option value="custom">Custom (Paste below)</option>
+          </select>
+        </label>
+      </div>
+      <div class="setup-row">
+        <label
+          >Mode:
+          <select id="mode-select">
+            <option value="1">Review (1x)</option>
+            <option value="10">Learning (10x)</option>
+          </select>
+        </label>
+        <label> <input type="checkbox" id="strict-mode" /> Strict Mode </label>
+        <label> <input type="checkbox" id="write-kana" /> Write Kana </label>
+      </div>
+      <p>Data (CSV: tags, kanji, readings, definition):</p>
+      <textarea id="csv-input"></textarea>
       <button class="primary" onclick="startStudy()">Start Studying</button>
     </div>
 
     <!-- SECTION 2: STUDY INTERFACE -->
     <div id="study-section">
+      <div id="stats-bar">
+        <div class="stat-item">
+          <span class="stat-label">Perfect:</span>
+          <span class="stat-val-perfect" id="stat-perfect">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Review:</span>
+          <span class="stat-val-imperfect" id="stat-imperfect">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Progress:</span>
+          <span id="stat-progress">0/0</span>
+        </div>
+      </div>
+
       <div class="info-card">
         <div class="kana-display" id="question-kana"></div>
-        <!-- This displays the word with the active character highlighted -->
         <div class="word-display" id="word-progress-display"></div>
         <div class="def-display" id="question-def"></div>
         <div id="status-text"></div>
+        <div id="repetition-text" style="font-size: 0.8em; color: #999"></div>
       </div>
 
       <div id="canvas-container">
-        <!-- Hanzi Writer Layer -->
         <div id="character-target"></div>
-
-        <!-- Calligraphy Layers -->
         <div id="hand-image"></div>
-        <!-- UPDATED: Canvas Dimensions 500x500 -->
         <canvas
           id="layered-canvas"
           class="calligraphy-layer"
-          width="500"
-          height="500"
+          width="350"
+          height="350"
         ></canvas>
         <canvas
           id="write-canvas"
           class="calligraphy-layer"
-          width="500"
-          height="500"
+          width="350"
+          height="350"
         ></canvas>
         <canvas
           id="hand-canvas"
           class="calligraphy-layer"
-          width="500"
-          height="500"
+          width="350"
+          height="350"
         ></canvas>
       </div>
 
       <div class="controls">
-        <!-- <button class="secondary" onclick="clearCurrentCanvas()">
-          Clear Canvas
-        </button> -->
         <button class="secondary" onclick="toggleOutline()">Hint</button>
-        <!-- <button class="secondary" onclick="undoStroke()">Undo</button> -->
         <div style="width: 10px"></div>
-        <!-- Spacer -->
-
-        <button onclick="setBrush('SmallMed')">Small Brush</button>
-        <button onclick="setBrush('Medium')">Medium Brush</button>
-        <button onclick="setBrush('Large')">Large Brush</button>
+        <button onclick="setBrush('Small')">Small</button>
+        <button onclick="setBrush('SmallMed')">Medium</button>
+        <button onclick="setBrush('Large')">Large</button>
         <label>
           <input
             type="checkbox"
@@ -339,33 +463,41 @@
         class="controls"
         style="margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px"
       >
-        <button
-          id="next-btn"
-          class="primary"
-          style="display: none"
-          onclick="nextWord()"
-        >
-          Next Word
+        <button id="back-btn" class="danger" onclick="prevWord()">
+          Back (Redo Word)
         </button>
-        <!-- <button class="secondary" onclick="restart()">Exit / Restart</button> -->
+        <button id="skip-btn" class="secondary" onclick="skipWord()">
+          Skip Word
+        </button>
+        <button class="secondary" onclick="restart()">Exit</button>
       </div>
+    </div>
+
+    <!-- SECTION 3: REVIEW / FINISH -->
+    <div id="review-section">
+      <h2 id="review-title">Review</h2>
+      <div id="review-grid" class="review-grid">
+        <!-- Cards go here -->
+      </div>
+      <button
+        class="primary"
+        id="review-continue-btn"
+        onclick="continueFromReview()"
+      >
+        Continue
+      </button>
     </div>
 
     <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.17/paper-full.min.js"></script>
-    <!-- Offset Extension (Handles the complex math) -->
     <script src="paper-offset.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
-      // Polyfill for jQuery .live() used by older plugins
       jQuery.fn.live = function (types, data, fn) {
         jQuery(this.context).on(types, this.selector, data, fn);
         return this;
       };
     </script>
-
-    <!-- Hanzi Writer -->
     <script src="hanzi-writer.js"></script>
     <script src="calligraphy.js" type="text/javascript"></script>
     <script src="brushes.js" type="text/javascript"></script>
@@ -373,39 +505,294 @@
 
     <script>
       // --- Constants ---
-      // UPDATED: 500x500
-      const CANVAS_WIDTH = 500;
-      const CANVAS_HEIGHT = 500;
+      const CANVAS_WIDTH = 350;
+      const CANVAS_HEIGHT = 350;
 
-      // --- State Management ---
+      const EXAMPLE_CSV = `"tags","kanji","readings","definition"
+"1","出す","だ|す","to take out / to submit"
+"1","大人","おとな","adult"
+"1","見える","み|える","to be visible"
+"1","出る","で|る","to go out / to exit"
+"1","小学校","しょうがっこう","elementary school"
+"1","天気","てんき","weather"
+"1","白い","しろ|い","white"
+"1","川","かわ","river"
+"1","男の子","おとこ|の|こ","boy"
+"1","口","くち","mouth"
+"1","見つかる","み|つかる","to be found"
+"1","学校","がっこう","school"
+"1","大学","だいがく","university"
+"1","音","おと","sound"
+"1","見せる","み|せる","to show"
+"1","左","ひだり","left"
+"1","大きい","おお|きい","big"
+"1","木","き","tree"
+"1","山","やま","mountain"
+"1","気","き","spirit / mood"
+"1","女の子","おんな|の|こ","girl"
+"1","本","ほん","book"
+"1","右","みぎ","right"
+"1","小さい","ちい|さい","small"
+"1","見る","み|る","to see"
+"1","雨","あめ","rain"
+"1","休み","やす|み","rest / holiday"
+"1","お金","お|かね","money"
+"1","入れる","い|れる","to put in"
+"1","犬","いぬ","dog"
+"1","中学生","ちゅうがくせい","junior high student"
+"1","生まれる","う|まれる","to be born"
+"1","左右","さゆう","left and right"
+"1","入学","にゅうがく","school entrance"
+"1","男","おとこ","man"
+"1","虫","むし","insect"
+"1","土","つち","soil / earth"
+"1","学生","がくせい","student"
+"1","中学","ちゅうがく","junior high school"
+"1","女","おんな","woman"
+"1","空気","くうき","air / atmosphere"
+"1","早い","はや|い","early / fast"
+"1","見つける","み|つける","to find"
+"1","町","まち","town"
+"1","手","て","hand"
+"1","人生","じんせい","life"
+"1","花","はな","flower"
+"1","上下","じょうげ","up and down"
+"1","休む","やす|む","to rest"
+"1","男子","だんし","boy / male"
+"1","赤ちゃん","あか|ちゃん","baby"
+"1","文学","ぶんがく","literature"
+"1","中","なか","inside / middle"
+"1","上手","じょうず","skillful"
+"1","先生","せんせい","teacher"
+"1","人口","じんこう","population"
+"1","年","とし","year / age"
+"1","大学生","だいがくせい","university student"
+"1","車","くるま","car"
+"1","赤い","あか|い","red"
+"1","青","あお","blue"
+"1","立つ","た|つ","to stand"
+"1","文字","もじ","character / letter"
+"1","足","あし","leg / foot"
+"1","日本","にほん","Japan"
+"1","下さる","くだ|さる","to give (polite)"
+"1","上がる","あ|がる","to go up"
+"1.1","花だん","か|だん","flower bed"
+"1.1","花たば","はな|たば","bouquet"
+"1.1","花びら","はな|びら","flower petal"
+"1.1","木かげ","こ|かげ","shade of a tree"
+"1.1","にわ木","にわ|き","garden tree"
+"1.1","木目","もくめ","wood grain"
+"1.1","ざっ草","ざっ|そう","weeds"
+"1.1","草もち","くさ|もち","rice cake with mugwort"
+"1.1","草はら","くさ|はら","grassy field"
+"1.1","ちょ金","ちょ|きん","savings"
+"1.1","金いろ","きん|いろ","gold color"
+"1.1","ほう石","ほう|せき","gem / jewel"
+"1.1","じ石","じ|しゃく","magnet"
+"1.1","小石","こいし","pebble"
+"1.1","赤土","あかつち","red clay / red soil"
+"1.1","土足","どそく","with shoes on / muddy feet"
+"1.1","ほら貝","ほら|がい","conch shell"
+"1.1","まき貝","まき|がい","spiral shell"
+"1.1","貝がら","かい|がら","shell"
+"1.1","ふじ山","ふじ|さん","Mt. Fuji"
+"1.1","山いも","やま|いも","yam"
+"1.1","山みち","やま|みち","mountain path"
+"1.1","虫かご","むし|かご","insect cage"
+"1.1","こん虫","こん|ちゅう","insect"
+"1.1","すず虫","すず|むし","bell cricket"
+"1.1","川べり","かわ|べり","riverbank"
+"1.1","川しも","かわ|しも","downstream"
+"1.1","川かみ","かわ|かみ","upstream"
+"1.1","日じ","にち|じ","date and time"
+"1.1","犬ぞり","いぬ|ぞり","dog sled"
+"1.1","白い犬","しろ|い|いぬ","white dog"
+"1.1","名犬","めいけん","faithful dog / famous dog"
+"1.1","山林","さんりん","mountain forest"
+"1.1","まつ林","まつ|ばやし","pine forest"
+"1.1","竹林","ちくりん","bamboo grove"
+"1.1","まん月","まん|げつ","full moon"
+"1.1","月見","つきみ","moon viewing"
+"1.1","田うえ","た|うえ","rice planting"
+"1.1","水田","すいでん","paddy field"
+"1.1","田んぼ","た|んぼ","rice field"
+"1.1","青森","あおもり","Aomori (place)"
+"1.1","森林","しんりん","forest"
+"1.1","森の中","もり|の|なか","in the forest"
+"1.1","火のこ","ひ|のこ","sparks / fire sparks"
+"1.1","火山","かざん","volcano"
+"1.1","火じ","か|じ","fire / conflagration"
+"1.1","年より","とし|より","elderly person"
+"1.1","年上","としうえ","older / senior"
+"1.1","竹わ","ちく|わ","chikuwa (fish cake)"
+"1.1","竹やぶ","たけ|やぶ","bamboo thicket"
+"1.1","竹うま","たけ|うま","stilts"
+"1.1","水どう","すい|どう","water supply"
+"1.1","水草","みずくさ","water plant"
+"1.1","水玉","みずたま","polka dot / water drop"
+"1.1","き立","き|りつ","stand up"
+"1.1","立てる","た|てる","to stand something up"
+"1.1","かい力","かい|りき","superhuman strength"
+"1.1","学力","がくりょく","academic ability"
+"1.1","力もち","ちから|もち","strong person"
+"1.1","大へん","たい|へん","difficult / very"
+"1.1","大すき","だい|すき","love / like a lot"
+"1.1","空ばこ","から|ばこ","empty box"
+"1.1","空いろ","そら|いろ","sky blue"
+"1.1","休じつ","きゅう|じつ","holiday / day off"
+"1.1","休める","やす|める","to rest (something)"
+"1.1","口べに","くち|べに","lipstick"
+"1.1","口ぶえ","くち|ぶえ","whistle"
+"1.1","中にわ","なか|にわ","courtyard"
+"1.1","中学校","ちゅうがっこう","middle school"
+"1.1","天ごく","てん|ごく","heaven"
+"1.1","天の川","あま|の|がわ","Milky Way"
+"1.1","出ぱつ","しゅっ|ぱつ","departure"
+"1.1","目てき","もく|てき","purpose / goal"
+"1.1","目つき","め|つき","look (in eyes)"
+"1.1","目と口","め|と|くち","eyes and mouth"
+"1.1","げん気","げん|き","healthy / energetic"
+"1.1","気もち","き|もち","feeling"
+"1.1","入り口","い|り|ぐち","entrance"
+"1.1","入る","はい|る","to enter"
+"1.1","はく手","はく|しゅ","applause"
+"1.1","手くび","て|くび","wrist"
+"1.1","右手","みぎて","right hand"
+"1.1","上ぎ","うわ|ぎ","jacket / outerwear"
+"1.1","上げる","あ|げる","to raise"
+"1.1","木の上","き|の|うえ","on the tree"
+"1.1","雨ぐも","あま|ぐも","rain cloud"
+"1.1","雨天","うてん","rainy weather"
+"1.1","雨ふり","あめ|ふり","rainfall / rainy"
+"1.1","女と男","おんな|と|おとこ","woman and man"
+"1.1","女の人","おんな|の|ひと","woman"
+"1.1","女子","じょし","girl / woman"
+"1.1","足くび","あし|くび","ankle"
+"1.1","足あと","あし|あと","footprint"
+"1.1","下校","げこう","coming home from school"
+"1.1","下げる","さ|げる","to lower"
+"1.1","木の下","き|の|した","under the tree"
+"1.1","夕ぐれ","ゆう|ぐれ","dusk / twilight"
+"1.1","夕がた","ゆう|がた","evening"
+"1.1","夕日","ゆうひ","setting sun"
+"1.1","男の人","おとこ|の|ひと","man"
+"1.1","目と耳","め|と|みみ","eyes and ears"
+"1.1","耳うち","みみ|うち","whispering in ear"
+"1.1","耳たぶ","みみ|たぶ","earlobe"
+"1.1","左足","ひだりあし","left foot"
+"1.1","左がわ","ひだり|がわ","left side"
+"1.1","空白","くうはく","blank space"
+"1.1","白い花","しろ|い|はな","white flower"
+"1.1","白ぐみ","しろ|ぐみ","white team"
+"1.1","子犬","こいぬ","puppy"
+"1.1","子ども","こ|ども","child"
+"1.1","音いろ","ね|いろ","tone color / timbre"
+"1.1","雨の音","あめ|の|おと","sound of rain"
+"1.1","音ぷ","おん|ぷ","musical note"
+"1.1","右がわ","みぎ|がわ","right side"
+"1.1","青空","あおぞら","blue sky"
+"1.1","青年","せいねん","youth / young man"
+"1.1","青い","あお|い","blue"
+"1.1","人げん","にん|げん","human"
+"1.1","めい人","めい|じん","master / expert"
+"1.1","人ごみ","ひと|ごみ","crowd of people"
+"1.1","見学","けんがく","field trip / study"
+"1.1","円けい","えん|けい","circular shape"
+"1.1","円ばん","えん|ばん","disk"
+"1.1","円い","まる|い","round"
+"1.1","赤はん","せき|はん","red rice (festive)"
+"1.1","赤い車","あか|い|くるま","red car"
+"1.1","早める","はや|める","to hasten"
+"1.1","早足","はやあし","quick pace"
+"1.1","本名","ほんみょう","real name"
+"1.1","名じん","めい|じん","master / expert"
+"1.1","名まえ","な|まえ","name"
+"1.1","正かい","せい|かい","correct answer"
+"1.1","正じき","しょう|じき","honest"
+"1.1","正しい","ただ|しい","correct / right"
+"1.1","てん字","てん|じ","braille"
+"1.1","すう字","すう|じ","number / digit"
+"1.1","かん字","かん|じ","kanji characters"
+"1.1","こく王","こく|おう","king"
+"1.1","王かん","おう|かん","crown"
+"1.1","王さま","おう|さま","king"
+"1.1","文なし","もん|なし","penniless"
+"1.1","文がく","ぶん|がく","literature"
+"1.1","さく文","さく|ぶん","composition / essay"
+"1.1","玉手ばこ","たまて|ばこ","Pandora's box"
+"1.1","玉虫","たまむし","jewel beetle"
+"1.1","本とう","ほん|とう","truth / really"
+"1.1","本だな","ほん|だな","bookshelf"
+"1.1","え本","え|ほん","picture book"
+"1.1","きぬ糸","きぬ|いと","silk thread"
+"1.1","赤い糸","あか|い|いと","red thread"
+"1.1","白い糸","しろ|い|いと","white thread"
+"1.1","学ぶ","まな|ぶ","to learn"
+"1.1","小学生","しょうがくせい","elementary student"
+"1.1","学年","がくねん","school grade"
+"1.1","車りん","しゃ|りん","wheel"
+"1.1","でん車","でん|しゃ","train"
+"1.1","青い車","あお|い|くるま","blue car"
+"1.1","てん校","てん|こう","changing schools"
+"1.1","校てい","こう|てい","schoolyard"
+"1.1","山村","さんそん","mountain village"
+"1.1","町と村","まち|と|むら","towns and villages"
+"1.1","村の人","むら|の|ひと","villager"
+"1.1","足の先","あし|の|さき","toes / tip of foot"
+"1.1","先とう","せん|とう","head / lead"
+"1.1","町村","ちょうそん","towns and villages"
+"1.1","町の中","まち|の|なか","in the town"
+"1.1","町なみ","まち|なみ","townscape"
+"1.1","生もの","なま|もの","raw food"
+"1.1","生きる","い|きる","to live"
+"1.1","生む","う|む","to give birth"`;
+
+      // --- State ---
       let studyList = [];
       let currentWordIndex = 0;
-      let currentWordData = null;
+      let sessionResults = {}; // Map wordIndex -> { perfect: bool, mistakes: int }
+      let stats = { perfect: 0, imperfect: 0 };
+
       let currentKanjiArray = [];
       let currentKanjiIndex = 0;
       let writer = null;
 
-      // --- Guide Toggle ---
-      function toggleGuides() {
-        const container = document.getElementById("canvas-container");
-        const checkbox = document.getElementById("guide-toggle");
-        if (checkbox.checked) {
-          container.classList.add("show-guides");
+      // Settings
+      let repetitionGoal = 1;
+      let isStrictMode = false;
+      let writeKanaEnabled = false; // New Setting
+      let currentRepetition = 0;
+      let currentCharMistakes = 0; // Mistakes for current char iteration
+      let currentWordHasMistake = false; // Track if whole word is perfect
+
+      // --- Initialization ---
+      window.onload = function () {
+        document.getElementById("csv-input").value = EXAMPLE_CSV;
+      };
+
+      function loadPreset() {
+        const val = document.getElementById("preset-list").value;
+        if (val === "example") {
+          document.getElementById("csv-input").value = EXAMPLE_CSV;
         } else {
-          container.classList.remove("show-guides");
+          document.getElementById("csv-input").value = "";
         }
       }
 
-      // --- Calligraphy Initialization ---
+      function toggleGuides() {
+        const container = document.getElementById("canvas-container");
+        const checkbox = document.getElementById("guide-toggle");
+        if (checkbox.checked) container.classList.add("show-guides");
+        else container.classList.remove("show-guides");
+      }
+
       function initCalligraphy() {
         var canvas = $("#write-canvas");
         var layeredCanvas = $("#layered-canvas");
         var handCanvas = $("#hand-canvas");
-
         var canvasE = canvas.get(0);
         var layeredCanvasE = layeredCanvas.get(0);
 
-        // Ensure sizes
         canvasE.width = CANVAS_WIDTH;
         canvasE.height = CANVAS_HEIGHT;
         layeredCanvasE.width = CANVAS_WIDTH;
@@ -421,41 +808,23 @@
               canvas,
               layeredCanvasE,
             );
-
           Calligraphy.Writer.Shared.StrokeManager =
             new Calligraphy.Writer.StrokeManager(
               handCanvas,
               Calligraphy.Writer.Shared.StrokeEngine,
             );
-
           Calligraphy.Writer.Shared.StrokeManager.isHandVisible = false;
           Calligraphy.Writer.Shared.StrokeManager.start();
           Calligraphy.Writer.Shared.StrokeManager.setBrushOpacity(0.5);
         } catch (e) {
-          console.error(
-            "Calligraphy engine failed to load. Check if calligraphy.js is present.",
-            e,
-          );
-          document.getElementById("status-text").textContent =
-            "Error loading Calligraphy engine.";
+          console.error("Engine Error", e);
         }
       }
 
-      function clearCurrentCanvas() {
+      function clearCanvas() {
         if (Calligraphy.Writer.Shared.StrokeManager) {
           Calligraphy.Writer.Shared.StrokeManager.clearHistory();
         }
-        // If the writer has specific internal state to reset:
-        if (writer) {
-          startQuizForCurrentChar();
-        }
-      }
-
-      function toggleOutline() {
-        writer.showOutline();
-        setTimeout(() => {
-          writer.hideOutline();
-        }, 1000);
       }
 
       function undoStroke() {
@@ -470,7 +839,14 @@
         }
       }
 
-      // --- CSV Parsing ---
+      function toggleOutline() {
+        if (writer) {
+          writer.showOutline();
+          setTimeout(() => writer.hideOutline(), 1000);
+        }
+      }
+
+      // --- Parsing ---
       function parseCSV(text) {
         const lines = text.trim().split("\n");
         const data = [];
@@ -493,35 +869,47 @@
         lines.forEach((line) => {
           if (!line.trim()) return;
           const cols = parseLine(line).map((c) => c.trim());
-          if (cols.length >= 5 && cols[0] !== "level") {
+          if (cols.length >= 4 && cols[1] !== "kanji") {
             data.push({
-              level: cols[0],
+              tags: cols[0],
               kanji: cols[1],
-              furigana: cols[2],
+              readingRaw: cols[2],
               def: cols[3],
-              kana: cols[4],
             });
           }
         });
         return data;
       }
 
-      // --- Study Logic ---
+      // --- Helper: Check if Char is Kana ---
+      function isKana(char) {
+        // Range covers Hiragana, Katakana, and prolonged sound mark (ー)
+        return /[\u3040-\u309f\u30a0-\u30ff\u30fc]/.test(char);
+      }
 
+      // --- Study Logic ---
       function startStudy() {
         const input = document.getElementById("csv-input").value;
         studyList = parseCSV(input);
         if (studyList.length === 0) {
-          alert("No valid words found.");
+          alert("No valid words.");
           return;
         }
+        studyList = studyList.sort(() => Math.random() - 0.5);
 
-        // Shuffle
-        studyList.sort(() => Math.random() - 0.5);
+        repetitionGoal = parseInt(document.getElementById("mode-select").value);
+        isStrictMode = document.getElementById("strict-mode").checked;
+        writeKanaEnabled = document.getElementById("write-kana").checked; // NEW
+
+        stats = { perfect: 0, imperfect: 0 };
+        sessionResults = {};
+        updateStatsUI();
+
         currentWordIndex = 0;
 
         document.getElementById("setup-section").style.display = "none";
         document.getElementById("study-section").style.display = "flex";
+        document.getElementById("review-section").style.display = "none";
 
         initCalligraphy();
         toggleGuides();
@@ -529,112 +917,190 @@
       }
 
       function restart() {
-        document.getElementById("setup-section").style.display = "flex";
-        document.getElementById("study-section").style.display = "none";
+        location.reload();
+      }
+
+      function updateStatsUI() {
+        document.getElementById("stat-perfect").innerText = stats.perfect;
+        document.getElementById("stat-imperfect").innerText = stats.imperfect;
+        document.getElementById("stat-progress").innerText =
+          `${currentWordIndex}/${studyList.length}`;
+      }
+
+      function updateNavigationButtons() {
+        const backBtn = document.getElementById("back-btn");
+        if (currentWordIndex === 0) {
+          backBtn.style.display = "none";
+        } else {
+          backBtn.style.display = "inline-block";
+        }
+      }
+
+      function prevWord() {
+        if (currentWordIndex > 0) {
+          currentWordIndex--;
+          if (sessionResults[currentWordIndex]) {
+            if (sessionResults[currentWordIndex].perfect) stats.perfect--;
+            else stats.imperfect--;
+            delete sessionResults[currentWordIndex];
+          }
+          updateStatsUI();
+          loadWord();
+        }
+      }
+
+      function skipWord() {
+        if (currentWordIndex < studyList.length) {
+          // Mark as imperfect/skipped
+          stats.imperfect++;
+          sessionResults[currentWordIndex] = {
+            perfect: false,
+            word: studyList[currentWordIndex],
+          };
+          currentWordIndex++;
+          updateStatsUI();
+          loadWord();
+        }
       }
 
       function loadWord() {
-        if (currentWordIndex >= studyList.length) {
-          alert("Session Complete!");
-          // restart();
+        updateNavigationButtons();
+
+        // Check Review Interval
+        if (
+          currentWordIndex > 0 &&
+          currentWordIndex % 10 === 0 &&
+          !sessionResults["reviewed_" + currentWordIndex]
+        ) {
+          showReviewScreen(false);
           return;
         }
 
-        currentWordData = studyList[currentWordIndex];
-        // Split word into array of characters
-        currentKanjiArray = currentWordData.kanji.split("");
-        currentKanjiIndex = 0;
+        if (currentWordIndex >= studyList.length) {
+          showReviewScreen(true);
+          return;
+        }
 
-        // UI Setup
-        document.getElementById("question-kana").textContent =
-          currentWordData.kana;
-        document.getElementById("next-btn").style.display = "none";
+        const data = studyList[currentWordIndex];
+        currentWordHasMistake = false;
+
+        let kanaHtml = "";
+        if (data.readingRaw.includes("|")) {
+          const parts = data.readingRaw.split("|");
+          kanaHtml = "";
+          for (let p of parts) {
+            kanaHtml += `<span>${p}</span>`;
+          }
+        } else {
+          kanaHtml = data.readingRaw;
+        }
+
+        document.getElementById("question-kana").innerHTML = kanaHtml;
+        document.getElementById("question-def").textContent = data.def;
+        document.getElementById("status-text").textContent = "";
+
+        currentKanjiArray = data.kanji.split("");
+        currentKanjiIndex = 0;
 
         updateWordProgress();
         loadCurrentKanji();
+        updateStatsUI();
       }
 
       function updateWordProgress() {
         const container = document.getElementById("word-progress-display");
         container.innerHTML = "";
-
         currentKanjiArray.forEach((char, idx) => {
           const span = document.createElement("span");
           span.textContent = char;
-          if (idx < currentKanjiIndex) {
-            span.className = "correct"; // Completed
-          } else if (idx === currentKanjiIndex) {
-            span.className = "current-char-highlight"; // Active
-          } else {
-            span.className = "pending-char"; // Future
-          }
+          if (idx < currentKanjiIndex) span.className = "correct";
+          else if (idx === currentKanjiIndex)
+            span.className = "current-char-highlight";
+          else if (isKana(char)) span.className = "kana-char";
+          else span.className = "pending-char";
+
           container.appendChild(span);
         });
       }
 
       const kanjiVGCharDataLoader = (char, onComplete, onError) => {
-        // Get the code point of the first character to handle surrogate pairs correctly
         const codePoint = char.codePointAt(0);
-
-        // Convert to hexadecimal, ensure lower case, and pad with zeros to 5 digits
         let filename = codePoint.toString(16).toLowerCase().padStart(5, "0");
         fetch(`kanji/${filename}.svg`)
           .then(async (res) => {
-            if (!res.ok) throw new Error("Character not found");
+            if (!res.ok) throw new Error("Not found");
             let svg = await res.text();
-            console.log("svg", svg);
             let json = processKanjiSVG(svg);
-            console.log("json", json);
-            let buffered = bufferObjectStrokes(json);
-            console.log("buffered", buffered);
-            return buffered;
-          })
-          .then(onComplete);
-        // .catch(onError);
-      };
-
-      // Hanzi Writer Data Loader
-      const japaneseCharDataLoader = (char, onComplete, onError) => {
-        fetch(
-          `https://cdn.jsdelivr.net/npm/kanji-writer-data-jp@latest/${char}.json`,
-        )
-          .then((res) => {
-            if (!res.ok) throw new Error("Character not found");
-            return res.json();
+            return bufferObjectStrokes(json);
           })
           .then(onComplete)
-          .catch(onError);
+          .catch(() => {
+            fetch(
+              `https://cdn.jsdelivr.net/npm/kanji-writer-data-jp@latest/${char}.json`,
+            )
+              .then((r) => r.json())
+              .then(onComplete);
+          });
       };
 
       function loadCurrentKanji() {
         if (currentKanjiIndex >= currentKanjiArray.length) {
-          // Word Complete
+          // Word Done
+          if (currentWordHasMistake) stats.imperfect++;
+          else stats.perfect++;
+
+          sessionResults[currentWordIndex] = {
+            perfect: !currentWordHasMistake,
+            word: studyList[currentWordIndex],
+          };
+
           document.getElementById("status-text").textContent = "Word Complete!";
-          document.getElementById("status-text").style.color = "green";
-          // UPDATED: Auto advance after 1 second
-          setTimeout(nextWord, 1000);
+
+          // Add 1 second pause before next word
+          setTimeout(() => {
+            currentWordIndex++;
+            loadWord();
+          }, 1000);
           return;
         }
 
         const char = currentKanjiArray[currentKanjiIndex];
-        const statusEl = document.getElementById("status-text");
 
-        // Clear Canvas for new char
-        if (Calligraphy.Writer.Shared.StrokeManager) {
-          Calligraphy.Writer.Shared.StrokeManager.clearHistory();
+        // --- NEW LOGIC: Skip Kana if setting is unchecked ---
+        if (!writeKanaEnabled && isKana(char)) {
+          // Skip logic
+          currentKanjiIndex++;
+          updateWordProgress();
+          loadCurrentKanji(); // Recursively load next char
+          return;
+        }
+        // ---------------------------------------------------
+
+        currentRepetition = 0;
+        setupWriter(char);
+      }
+
+      function setupWriter(char) {
+        clearCanvas();
+        document.getElementById("character-target").innerHTML = "";
+        document.getElementById("status-text").textContent = "Loading...";
+
+        let showOutline = false;
+        if (repetitionGoal > 1 && currentRepetition < 4) {
+          showOutline = true;
         }
 
-        document.getElementById("character-target").innerHTML = "";
-
-        statusEl.textContent = "Loading ...";
-        statusEl.style.color = "#555";
+        document.getElementById("repetition-text").innerText =
+          repetitionGoal > 1
+            ? `Repetition: ${currentRepetition + 1} / ${repetitionGoal}`
+            : "";
 
         writer = HanziWriter.create("character-target", char, {
           charDataLoader: kanjiVGCharDataLoader,
           width: CANVAS_WIDTH,
           height: CANVAS_HEIGHT,
           padding: 20,
-          showOutline: false,
+          showOutline: showOutline,
           showCharacter: false,
           strokeAnimationSpeed: 1,
           delayBetweenStrokes: 0,
@@ -643,55 +1109,128 @@
           outlineColor: "#dee0e4",
           drawingColor: "#fff",
           drawingFadeDuration: 0,
-          drawingWidth: 1,
           showHintAfterMisses: 3,
-          onLoadCharDataError: (err) => {
-            console.log("Skipping character (not found): " + char);
-            // Auto-advance if character data isn't found
+          onLoadCharDataError: () => {
+            // If data load fails, auto-skip regardless of type
+            console.log("Failed to load data for " + char);
             currentKanjiIndex++;
             updateWordProgress();
             loadCurrentKanji();
           },
           onLoadCharDataSuccess: () => {
-            startQuizForCurrentChar();
+            runQuiz();
           },
         });
       }
 
-      function startQuizForCurrentChar() {
+      function runQuiz() {
         const statusEl = document.getElementById("status-text");
         statusEl.textContent = "";
+        currentCharMistakes = 0;
+        let strictResetTriggered = false;
 
         writer.quiz({
           delineateStrokes: true,
           drawingWidth: 50,
           onMistake: function (strokeData) {
-            statusEl.textContent =
-              "Mistake on stroke " + (strokeData.strokeNum + 1);
+            statusEl.textContent = "Mistake!";
             statusEl.style.color = "orange";
             undoStroke();
+            currentCharMistakes++;
+            currentWordHasMistake = true;
+
+            if (isStrictMode && !strictResetTriggered) {
+              strictResetTriggered = true;
+              statusEl.textContent = "Strict Mode: Resetting character...";
+              writer.cancelQuiz(); // Stop accepting input
+
+              // Immediately restart after 1s
+              setTimeout(() => {
+                setupWriter(currentKanjiArray[currentKanjiIndex]);
+              }, 1000);
+            }
           },
-          onCorrectStroke: function (strokeData) {
-            statusEl.textContent =
-              "Correct! (" + strokeData.strokesRemaining + " remaining)";
+          onCorrectStroke: function (d) {
+            if (strictResetTriggered) return; // Ignore if resetting
+            statusEl.textContent = "Good";
             statusEl.style.color = "#007bff";
           },
-          onComplete: function (summaryData) {
+          onComplete: function (d) {
+            if (strictResetTriggered) return; // Should not happen if cancelled, but safety check
+
             statusEl.textContent = "Correct!";
             statusEl.style.color = "green";
 
-            // Advance to next char after short delay
             setTimeout(() => {
-              currentKanjiIndex++;
-              updateWordProgress();
-              loadCurrentKanji();
+              currentRepetition++;
+              if (currentRepetition < repetitionGoal) {
+                setupWriter(currentKanjiArray[currentKanjiIndex]);
+              } else {
+                currentKanjiIndex++;
+                updateWordProgress();
+                loadCurrentKanji();
+              }
             }, 800);
           },
         });
       }
 
-      function nextWord() {
-        currentWordIndex++;
+      // --- Review Logic ---
+      function showReviewScreen(isFinish) {
+        document.getElementById("study-section").style.display = "none";
+        document.getElementById("review-section").style.display = "flex";
+
+        const grid = document.getElementById("review-grid");
+        grid.innerHTML = "";
+
+        const title = document.getElementById("review-title");
+        title.textContent = isFinish
+          ? "Session Complete!"
+          : "Review Checkpoint";
+
+        const btn = document.getElementById("review-continue-btn");
+        btn.style.display = isFinish ? "none" : "block";
+
+        let startIndex = 0;
+        if (!isFinish) {
+          startIndex = Math.max(0, currentWordIndex - 10);
+        }
+
+        const limit = currentWordIndex;
+
+        for (let i = startIndex; i < limit; i++) {
+          const data = studyList[i];
+          const res = sessionResults[i];
+          if (!res) continue;
+
+          const card = document.createElement("div");
+          card.className = `review-card ${res.perfect ? "perfect" : "imperfect"}`;
+
+          let readingDisp = data.readingRaw.replace("|", "");
+
+          card.innerHTML = `
+                      <div class="review-kanji">${data.kanji}</div>
+                      <div class="review-reading">${readingDisp}</div>
+                      <div class="review-def">${data.def}</div>
+                      <div class="review-stats">${res.perfect ? "Perfect" : "Review Needed"}</div>
+                    `;
+
+          card.onclick = () => {
+            window.open(
+              `https://jotoba.de/search/0/${encodeURIComponent(data.kanji)}`,
+              "_blank",
+            );
+          };
+
+          grid.appendChild(card);
+        }
+
+        sessionResults["reviewed_" + currentWordIndex] = true;
+      }
+
+      function continueFromReview() {
+        document.getElementById("review-section").style.display = "none";
+        document.getElementById("study-section").style.display = "flex";
         loadWord();
       }
     </script>
