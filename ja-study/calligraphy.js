@@ -433,7 +433,7 @@ Calligraphy.Writer.StrokeEngine = function (
   this.backgroundImage = null; // No background image
   this.brushOpacity = 1;
   this.brushColor = 0x000000;
-  this.selectBrush("Small");
+  this.selectBrush("SmallMed");
   this.bufferingSize = 4;
   this.strokeBuffer = [];
   this.splineBuffer = [];
