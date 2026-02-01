@@ -1,0 +1,361 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Setup Section */
+#setup-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.setup-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: monospace;
+  box-sizing: border-box;
+}
+
+select,
+input[type="number"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Study Section */
+#study-section {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+/* Stats Overlay */
+#stats-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 0 0 8px 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 0.9em;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.stat-label {
+  font-weight: bold;
+  color: #555;
+}
+.stat-val-perfect {
+  color: green;
+}
+.stat-val-imperfect {
+  color: orange;
+}
+
+.info-card {
+  min-height: 160px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.word-display {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+  letter-spacing: 5px;
+}
+
+.word-display span {
+  border-bottom: 3px solid #ababab;
+  margin-right: 5px;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.kana-char {
+  color: #ccc !important;
+}
+
+.current-char-highlight {
+  border-bottom: 2px solid #007bff !important;
+  color: white;
+}
+
+.pending-char {
+  color: white;
+}
+
+.correct {
+  color: #333 !important;
+}
+
+.kana-display {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.kana-accent {
+  color: #007bff;
+}
+
+.def-display-show {
+  color: #333 !important;
+}
+
+.def-display {
+  color: #fff;
+  font-style: italic;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* Calligraphy Canvas Container */
+#canvas-container {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  /* background-image: radial-gradient(#fff 0%, #f4f1ea 100%); */
+  cursor: crosshair;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+/* GUIDE LINES STYLES */
+#canvas-container.show-guides {
+  border: 2px solid #007bff;
+}
+
+#canvas-container.show-guides::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 2px dashed #89cff0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#canvas-container.show-guides::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 2px dashed #89cff0;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#character-target {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 350px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+canvas.calligraphy-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  touch-action: none;
+}
+
+#layered-canvas {
+  z-index: 2;
+}
+#write-canvas {
+  z-index: 3;
+  opacity: 1;
+}
+#hand-canvas {
+  z-index: 4;
+}
+
+#hand-image {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(200, 0, 0, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10;
+  display: none;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 500px;
+  align-items: center;
+}
+
+.controls label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  background: #e9ecef;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+button:hover {
+  background-color: #555;
+}
+button.primary {
+  background-color: #007bff;
+}
+button.primary:hover {
+  background-color: #0056b3;
+}
+button.secondary {
+  background-color: #6c757d;
+}
+button.secondary:hover {
+  background-color: #545b62;
+}
+button.danger {
+  background-color: #dc3545;
+}
+button.danger:hover {
+  background-color: #a71d2a;
+}
+
+#status-text {
+  min-height: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 5px;
+}
+
+/* Review Screen */
+#review-section {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.review-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border-bottom: 3px solid transparent;
+}
+.review-card:hover {
+  transform: translateY(-2px);
+}
+.review-card.perfect {
+  border-bottom-color: green;
+}
+.review-card.imperfect {
+  border-bottom-color: orange;
+}
+
+.review-kanji {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+}
+.review-reading {
+  color: #555;
+  font-size: 0.9em;
+}
+.review-def {
+  color: #888;
+  font-size: 0.8em;
+  font-style: italic;
+  margin-top: 5px;
+}
+.review-stats {
+  margin-top: 5px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
