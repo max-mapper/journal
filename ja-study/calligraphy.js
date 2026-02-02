@@ -37,12 +37,12 @@ Calligraphy.Writer.Brushes = {
     minSize: 3,
     brushImageName: "Small",
   }),
-  // SmallMed: new Calligraphy.Writer.Brush("SmallMed", {
-  //   width: 70,
-  //   height: 70,
-  //   maxSize: 30,
-  //   minSize: 5,
-  // }),
+  SmallMed: new Calligraphy.Writer.Brush("SmallMed", {
+    width: 70,
+    height: 70,
+    maxSize: 30,
+    minSize: 5,
+  }),
   Medium: new Calligraphy.Writer.Brush("Medium", {
     width: 90,
     height: 90,
@@ -509,7 +509,7 @@ Calligraphy.Writer.StrokeEngine = function (
 
   this.brushOpacity = 1;
   this.brushColor = 0x000000;
-  this.selectBrush("Medium");
+  this.selectBrush("SmallMed");
 
   this.bufferingSize = 4;
   this.strokeBuffer = [];

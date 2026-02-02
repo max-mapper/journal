@@ -261,24 +261,19 @@ function initCalligraphy(width, height) {
   handCanvas[0].width = width;
   handCanvas[0].height = height;
 
-  try {
-    Calligraphy.Writer.Shared.StrokeEngine =
-      new Calligraphy.Writer.StrokeEngine(
-        canvasE.width,
-        canvasE.height,
-        canvas,
-        layeredCanvasE,
-      );
-    Calligraphy.Writer.Shared.StrokeManager =
-      new Calligraphy.Writer.StrokeManager(
-        handCanvas,
-        Calligraphy.Writer.Shared.StrokeEngine,
-      );
-    Calligraphy.Writer.Shared.StrokeManager.isHandVisible = false;
-    Calligraphy.Writer.Shared.StrokeManager.start();
-  } catch (e) {
-    console.error("Engine Error", e);
-  }
+  Calligraphy.Writer.Shared.StrokeEngine = new Calligraphy.Writer.StrokeEngine(
+    canvasE.width,
+    canvasE.height,
+    canvas,
+    layeredCanvasE,
+  );
+  Calligraphy.Writer.Shared.StrokeManager =
+    new Calligraphy.Writer.StrokeManager(
+      handCanvas,
+      Calligraphy.Writer.Shared.StrokeEngine,
+    );
+  Calligraphy.Writer.Shared.StrokeManager.isHandVisible = false;
+  Calligraphy.Writer.Shared.StrokeManager.start();
 }
 
 function clearCanvas() {

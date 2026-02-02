@@ -4,7 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calligraphy Kanji Study</title>
+    <script type="text/javascript" src="app-utils.js"></script>
+
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <style>
+      /* Additional styles for the new context list */
+      .context-list {
+        max-height: 100px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+        text-align: left;
+        width: 100%;
+        font-size: 1.2rem;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        padding: 10px;
+      }
+      .context-item {
+        display: inline-block;
+        margin-right: 15px;
+        color: #555;
+      }
+      .context-highlight {
+        color: #41b1e6;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      #stat-progress {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #555;
+      }
+    </style>
   </head>
   <body>
     <!-- SECTION 1: SETUP -->
@@ -38,17 +69,23 @@
     <!-- SECTION 2: STUDY INTERFACE -->
     <div id="study-section">
       <div id="stats-bar">
+        <!-- Stats removed, just progress -->
         <div class="stat-item">
           <span id="stat-progress">0/0</span>
         </div>
       </div>
 
       <div class="info-card">
-        <div class="kana-display" id="question-kana"></div>
-        <div class="word-display" id="word-progress-display"></div>
-        <div class="def-display" id="question-def"></div>
-        <div id="status-text"></div>
-        <div id="repetition-text" style="font-size: 0.8em; color: #999"></div>
+        <!-- This container changes based on mode -->
+        <div id="learning-context-container" style="display: none">
+          <div class="context-list" id="context-word-list"></div>
+        </div>
+
+        <div id="review-context-container">
+          <div class="kana-display" id="question-kana"></div>
+          <div class="word-display" id="word-progress-display"></div>
+          <div class="def-display" id="question-def"></div>
+        </div>
       </div>
 
       <div id="canvas-container">
@@ -73,19 +110,18 @@
           height="350"
         ></canvas>
       </div>
-
+      <div class="status-container">
+        <div id="status-text"></div>
+        <div id="repetition-text" style="font-size: 0.8em; color: #999"></div>
+      </div>
       <!-- Navigation / Exit Controls -->
       <div class="controls">
         <div class="btn-group">
-          <button id="back-btn" class="danger" onclick="prevWord()">
+          <button id="back-btn" class="danger" onclick="prevItem()">
             Back
           </button>
-          <button class="secondary" onclick="repeatCurrentWord()">
-            Restart Word
-          </button>
-          <button class="nextButton" onclick="finishAndNextWord()">
-            Next Word &rarr;
-          </button>
+          <button class="secondary" onclick="restartItem()">Restart</button>
+          <button class="nextButton" onclick="forceNext()">Next &rarr;</button>
         </div>
       </div>
 
@@ -95,27 +131,19 @@
         <button class="secondary" id="outline-btn" onclick="toggleOutline()">
           Outline
         </button>
-        <button class="secondary" id="outline-btn" onclick="toggleBrush()">
+        <button class="secondary" id="brush-btn" onclick="toggleBrush()">
           Brush
         </button>
-        <button class="secondary" id="outline-btn" onclick="toggleDrawing()">
+        <button class="secondary" id="drawing-btn" onclick="toggleDrawing()">
           Drawing
         </button>
-        <button class="secondary" id="outline-btn" onclick="undoStroke()">
-          Undo
-        </button>
-        <button class="secondary" id="outline-btn" onclick="toggleFont()">
-          Font
-        </button>
-        <button
-          class="secondary"
-          id="outline-btn"
-          onclick="toggleCorrectStrokes()"
-        >
+        <button class="secondary" onclick="undoStroke()">Undo</button>
+        <button class="secondary" onclick="toggleFont()">Font</button>
+        <button class="secondary" onclick="toggleCorrectStrokes()">
           Strokes
         </button>
-        <button onclick="setBrush('Small')">Small</button>
-        <button onclick="setBrush('SmallMed')">Medium</button>
+        <button onclick="setBrush('SmallMed')">Small</button>
+        <button onclick="setBrush('Medium')">Medium</button>
         <button onclick="setBrush('Large')">Large</button>
         <label>
           <input
@@ -131,7 +159,7 @@
 
     <!-- SECTION 3: REVIEW / FINISH -->
     <div id="review-section">
-      <h2 id="review-title">Review</h2>
+      <h2 id="review-title">Session Complete</h2>
       <div id="review-grid" class="review-grid">
         <!-- Cards go here -->
       </div>
@@ -155,7 +183,6 @@
       };
     </script>
     <script type="text/javascript" src="levels.js"></script>
-    <script type="text/javascript" src="app-utils.js"></script>
     <script type="text/javascript" src="hanzi-writer.js"></script>
     <script type="text/javascript" src="calligraphy.js"></script>
     <script type="text/javascript" src="brushes.js"></script>
@@ -169,41 +196,43 @@
       var usingKanjiVG = true;
 
       // --- State ---
-      let studyList = [];
-      let currentWordIndex = 0;
-      let sessionResults = {};
-      let stats = { perfect: 0, imperfect: 0 };
+      let studyList = []; // The list of words (CSV data)
+      let activeKanjiQueue = []; // For Learning Mode: List of chars
+
+      let currentIndex = 0; // Index in studyList (Review) or activeKanjiQueue (Learning)
 
       let currentKanjiArray = [];
-      let currentKanjiIndex = 0;
+      let currentKanjiSubIndex = 0;
+
       let writer = null;
       window.writer = writer;
 
       // Settings
-      let repetitionGoal = 1;
-      let isStrictMode = false;
+      let mode = 1; // 1 or 10
       let isShuffling = false;
       let writeKanaEnabled = false;
-      let activeKanjiSet = null; // String containing valid kanji for current level
+      let activeKanjiSetString = null;
+
+      // Visual States
       let isOutlineVisible = false;
       let isDrawingEnabled = false;
-      let layeredCanvas = document.querySelector("#layered-canvas");
-      var nextButton = document.querySelector(".nextButton");
       let isBrushVisible = false;
       let isCorrectStrokesEnabled = false;
 
+      let layeredCanvas = document.querySelector("#layered-canvas");
+      var nextButton = document.querySelector(".nextButton");
+
+      // Colors
       var clear = "rgba(0, 0, 0, 0)";
       var blue = "rgba(65, 177, 230, 1)";
       var gray = "#dee0e4";
-      var highlightColor = clear;
+      var highlightColor = blue;
       var strokeColor = clear;
       var outlineColor = gray;
       var drawingColor = clear;
 
       // Progress Trackers
-      let currentRepetition = 0;
-      let currentCharMistakes = 0;
-      let currentWordHasMistake = false;
+      let currentRepetition = 0; // 0 to 9 for Learning Mode
 
       window.onload = function () {
         loadPreset();
@@ -211,36 +240,52 @@
 
       function startStudy() {
         const input = document.getElementById("csv-input").value;
-        studyList = parseCSV(input);
+        studyList = parseCSV(input); // Provided in app-utils
         if (studyList.length === 0) {
           alert("No valid words.");
           return;
         }
 
-        repetitionGoal = parseInt(document.getElementById("mode-select").value);
+        mode = parseInt(document.getElementById("mode-select").value);
         isShuffling = document.getElementById("shuffle").checked;
         writeKanaEnabled = document.getElementById("write-kana").checked;
 
-        // Determine active kanji list based on preset
+        // Determine active kanji list
         const presetVal = document.getElementById("preset-list").value;
         if (presetVal === "kanken10" && typeof kanken10kanji !== "undefined") {
-          activeKanjiSet = kanken10kanji;
+          activeKanjiSetString = kanken10kanji;
         } else if (
           presetVal === "kanken9" &&
           typeof kanken9kanji !== "undefined"
         ) {
-          activeKanjiSet = kanken9kanji;
+          activeKanjiSetString = kanken9kanji;
         } else {
-          activeKanjiSet = null;
+          let allK = studyList.map((item) => item.kanji).join("");
+          let unique = [...new Set(allK.split(""))]
+            .filter((c) => !isKana(c))
+            .join("");
+          activeKanjiSetString = unique;
         }
 
-        if (isShuffling) studyList = studyList.sort(() => Math.random() - 0.5);
+        currentIndex = 0;
 
-        stats = { perfect: 0, imperfect: 0 };
-        sessionResults = {};
-        updateStatsUI(stats, currentWordIndex, studyList.length);
-
-        currentWordIndex = 0;
+        if (mode === 10) {
+          // LEARNING MODE: Setup Queue based on Kanji Set
+          activeKanjiQueue = activeKanjiSetString.split("");
+          if (isShuffling) activeKanjiQueue.sort(() => Math.random() - 0.5);
+          document.getElementById("learning-context-container").style.display =
+            "block";
+          document.getElementById("review-context-container").style.display =
+            "none";
+        } else {
+          // REVIEW MODE: Setup Queue based on Words
+          if (isShuffling)
+            studyList = studyList.sort(() => Math.random() - 0.5);
+          document.getElementById("learning-context-container").style.display =
+            "none";
+          document.getElementById("review-context-container").style.display =
+            "block";
+        }
 
         document.getElementById("setup-section").style.display = "none";
         document.getElementById("study-section").style.display = "flex";
@@ -248,48 +293,130 @@
 
         initCalligraphy(CANVAS_WIDTH, CANVAS_HEIGHT);
         toggleGuides();
-        loadWord();
+
+        loadItem();
       }
 
-      function prevWord() {
-        if (currentWordIndex > 0) {
-          currentWordIndex--;
-          if (sessionResults[currentWordIndex]) {
-            if (sessionResults[currentWordIndex].perfect) stats.perfect--;
-            else stats.imperfect--;
-            delete sessionResults[currentWordIndex];
-          }
-          updateStatsUI(stats, currentWordIndex, studyList.length);
-          loadWord();
+      function loadItem() {
+        nextButton.classList.remove("primary");
+        document.getElementById("character-target").innerHTML = "";
+        clearCanvas();
+        updateStatus("");
+
+        if (mode === 10) {
+          loadLearningModeItem();
+        } else {
+          loadReviewModeItem();
         }
       }
 
-      function loadWord() {
-        // Reset UI
-        nextButton.classList.remove("primary");
-        document.querySelector(".controls").style.visibility = "visible";
+      // Helper to detect Kanji (common CJK range)
+      function isKanjiChar(ch) {
+        return (ch >= "\u4e00" && ch <= "\u9faf") || ch === "々";
+      }
 
-        if (currentWordIndex >= studyList.length) {
-          showReviewScreen(true, currentWordIndex, studyList, sessionResults);
+      // ==========================================
+      // LEARNING MODE LOGIC (10x Reps)
+      // ==========================================
+      function loadLearningModeItem() {
+        if (currentIndex >= activeKanjiQueue.length) {
+          showFinishScreen();
           return;
         }
 
-        const data = studyList[currentWordIndex];
-        currentWordHasMistake = false;
+        const targetChar = activeKanjiQueue[currentIndex];
+        document.getElementById("stat-progress").innerText =
+          `${currentIndex + 1}/${activeKanjiQueue.length} (Kanji)`;
 
-        const backBtn = document.getElementById("back-btn");
-        backBtn.style.display =
-          currentWordIndex === 0 ? "none" : "inline-block";
+        const contextDiv = document.getElementById("context-word-list");
+        contextDiv.innerHTML = "";
 
-        let kanaHtml = "";
-        if (data.readingRaw.includes("|")) {
-          const parts = data.readingRaw.split("|");
-          kanaHtml = "";
-          for (let p of parts) {
-            kanaHtml += `<span>${p}</span>`;
-          }
+        const relevantWords = studyList.filter((w) =>
+          w.kanji.includes(targetChar),
+        );
+
+        if (relevantWords.length === 0) {
+          contextDiv.innerHTML =
+            "<em>No example words in current dataset.</em>";
         } else {
-          kanaHtml = data.readingRaw;
+          relevantWords.forEach((word) => {
+            const span = document.createElement("span");
+            span.className = "context-item";
+
+            const kString = word.kanji;
+            // Handle cases where reading isn't split by pipes gracefully
+            const rParts = word.readingRaw.includes("|")
+              ? word.readingRaw.split("|")
+              : [word.readingRaw];
+
+            let html = "";
+            let kCursor = 0; // Cursor for the kanji string
+
+            // Iterate through Reading Parts and map to Kanji String
+            for (let i = 0; i < rParts.length; i++) {
+              const rPart = rParts[i];
+
+              // Safety: if we ran out of string characters
+              if (kCursor >= kString.length) {
+                html += rPart;
+                continue;
+              }
+
+              const charAtCursor = kString[kCursor];
+
+              if (isKanjiChar(charAtCursor)) {
+                // Case 1: Cursor is at a Kanji
+                // We assume this entire reading part belongs to this Kanji
+                if (charAtCursor === targetChar) {
+                  html += `<span class="context-highlight">${rPart}</span>`;
+                } else {
+                  html += rPart;
+                }
+                kCursor++; // Move cursor past this Kanji
+              } else {
+                // Case 2: Cursor is at Kana/Symbol
+                // We assume the text in the string matches the reading part
+                // (e.g. "ごはん" matches "ごはん", "を" matches "を")
+                html += rPart;
+
+                // Advance cursor by length of reading part
+                // (e.g. "ごはん" is 3 chars, so skip 3 chars in string)
+                // Note: This assumes strict mapping.
+                // Fallback: if lengths don't align logically (e.g. "は" vs "わ"),
+                // we usually just advance by reading length or 1.
+                // Given Kanken data usually has matching kana literals:
+                kCursor += rPart.length;
+              }
+            }
+
+            span.innerHTML = html;
+            contextDiv.appendChild(span);
+          });
+        }
+
+        currentRepetition = 0;
+        setupWriter(targetChar);
+      }
+
+      // ==========================================
+      // REVIEW MODE LOGIC (1x Rep)
+      // ==========================================
+      function loadReviewModeItem() {
+        if (currentIndex >= studyList.length) {
+          showFinishScreen();
+          return;
+        }
+
+        const data = studyList[currentIndex];
+        document.getElementById("stat-progress").innerText =
+          `${currentIndex + 1}/${studyList.length} (Words)`;
+
+        let kanaHtml = data.readingRaw.replace(/\|/g, "<span></span>");
+        if (data.readingRaw.includes("|")) {
+          kanaHtml = data.readingRaw
+            .split("|")
+            .map((s) => `<span>${s}</span>`)
+            .join("");
         }
 
         document.getElementById("question-kana").innerHTML = kanaHtml;
@@ -297,65 +424,50 @@
         document
           .querySelector(".def-display")
           .classList.remove("def-display-show");
-        updateStatus("");
+
+        const backBtn = document.getElementById("back-btn");
+        backBtn.style.display = currentIndex === 0 ? "none" : "inline-block";
 
         currentKanjiArray = data.kanji.split("");
-        currentKanjiIndex = 0;
+        currentKanjiSubIndex = 0;
 
         updateWordProgress(
           currentKanjiArray,
-          currentKanjiIndex,
-          activeKanjiSet,
+          currentKanjiSubIndex,
+          activeKanjiSetString,
         );
-        loadCurrentKanji();
-        updateStatsUI(stats, currentWordIndex, studyList.length);
+        loadNextReviewChar();
       }
 
-      function loadCurrentKanji() {
-        // Check if Word is Complete
-        if (currentKanjiIndex >= currentKanjiArray.length) {
-          if (currentWordHasMistake) stats.imperfect++;
-          else stats.perfect++;
-
-          sessionResults[currentWordIndex] = {
-            perfect: !currentWordHasMistake,
-            word: studyList[currentWordIndex],
-          };
-
+      function loadNextReviewChar() {
+        if (currentKanjiSubIndex >= currentKanjiArray.length) {
           updateStatus("Word Complete!");
           document
             .querySelector(".def-display")
             .classList.add("def-display-show");
           nextButton.classList.add("primary");
-
           return;
         }
 
-        const char = currentKanjiArray[currentKanjiIndex];
-        const isKanaChar = isKana(char);
+        const char = currentKanjiArray[currentKanjiSubIndex];
 
-        // Filter Logic
         let shouldQuiz = true;
-
-        if (isKanaChar && !writeKanaEnabled) {
+        if (isKana(char) && !writeKanaEnabled) shouldQuiz = false;
+        if (
+          !isKana(char) &&
+          activeKanjiSetString &&
+          !activeKanjiSetString.includes(char)
+        )
           shouldQuiz = false;
-        }
-
-        if (!isKanaChar && activeKanjiSet !== null) {
-          if (!activeKanjiSet.includes(char)) {
-            shouldQuiz = false;
-          }
-        }
 
         if (!shouldQuiz) {
-          // Skip
-          currentKanjiIndex++;
+          currentKanjiSubIndex++;
           updateWordProgress(
             currentKanjiArray,
-            currentKanjiIndex,
-            activeKanjiSet,
+            currentKanjiSubIndex,
+            activeKanjiSetString,
           );
-          loadCurrentKanji();
+          loadNextReviewChar();
           return;
         }
 
@@ -363,17 +475,140 @@
         setupWriter(char);
       }
 
-      function finishAndNextWord() {
-        currentWordIndex++;
-        loadWord();
+      // ==========================================
+      // CONTROLS & WRITER
+      // ==========================================
+
+      function prevItem() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          loadItem();
+        }
       }
 
-      function repeatCurrentWord() {
-        if (sessionResults[currentWordIndex]) {
-          if (sessionResults[currentWordIndex].perfect) stats.perfect--;
-          else stats.imperfect--;
+      function restartItem() {
+        loadItem();
+      }
+
+      function forceNext() {
+        currentIndex++;
+        loadItem();
+      }
+
+      function showFinishScreen() {
+        document.getElementById("study-section").style.display = "none";
+        document.getElementById("review-section").style.display = "flex";
+      }
+
+      function continueFromReview() {
+        location.reload();
+      }
+
+      function setupWriter(char) {
+        document.getElementById("character-target").innerHTML = "";
+        clearCanvas();
+        updateStatus("Loading...");
+        configureEnvironmentForRep(currentRepetition);
+
+        let repText = "";
+        if (mode === 10) repText = `Repetition: ${currentRepetition + 1} / 10`;
+        document.getElementById("repetition-text").innerText = repText;
+
+        writer = HanziWriter.create("character-target", char, {
+          charDataLoader: LOADER,
+          width: CANVAS_WIDTH,
+          height: CANVAS_HEIGHT,
+          padding: 20,
+          showOutline: isOutlineVisible,
+          showCharacter: false,
+          strokeAnimationSpeed: 250,
+          delayBetweenStrokes: 0,
+          strokeColor: strokeColor,
+          highlightColor: highlightColor,
+          outlineColor: outlineColor,
+          drawingColor: drawingColor,
+          drawingFadeDuration: 0,
+          showHintAfterMisses: 2,
+          onLoadCharDataError: () => {
+            updateStatus("Error loading " + char);
+            onCompleteHandler();
+          },
+          onLoadCharDataSuccess: () => {
+            runQuiz();
+          },
+        });
+      }
+
+      function configureEnvironmentForRep(repIndex) {
+        if (mode === 1) {
+          isOutlineVisible = false;
+          enableDrawing();
+          disableBrush();
+          showCorrectStrokes();
+          return;
         }
-        loadWord();
+        // Learning Mode (10 reps)
+        if (repIndex >= 0 && repIndex <= 2) {
+          // 1-3
+          isOutlineVisible = true;
+          enableDrawing();
+          disableBrush();
+          showCorrectStrokes();
+        } else if (repIndex >= 3 && repIndex <= 5) {
+          // 4-6
+          isOutlineVisible = false;
+          enableDrawing();
+          disableBrush();
+          showCorrectStrokes();
+        } else {
+          // 7-10
+          isOutlineVisible = false;
+          disableDrawing();
+          enableBrush();
+          hideCorrectStrokes();
+        }
+      }
+
+      function runQuiz() {
+        updateStatus("");
+        writer.quiz({
+          delineateStrokes: true,
+          onMistake: function (strokeData) {
+            updateStatus("Mistake!", "orange");
+            undoStroke();
+          },
+          onCorrectStroke: function (d) {
+            updateStatus("Good", "#007bff");
+            if (isCorrectStrokesEnabled)
+              writer.highlightStroke(d.strokeNum, { fadeHighlightOut: false });
+          },
+          onComplete: function (d) {
+            updateStatus("Correct!", blue);
+            setTimeout(() => {
+              onCompleteHandler();
+            }, 500);
+          },
+        });
+      }
+
+      function onCompleteHandler() {
+        if (mode === 10) {
+          currentRepetition++;
+          if (currentRepetition < 10) {
+            setupWriter(activeKanjiQueue[currentIndex]);
+          } else {
+            currentIndex++;
+            loadItem();
+          }
+        } else {
+          currentKanjiSubIndex++;
+          updateWordProgress(
+            currentKanjiArray,
+            currentKanjiSubIndex,
+            activeKanjiSetString,
+          );
+          loadNextReviewChar();
+        }
       }
 
       function toggleFont() {
@@ -384,7 +619,11 @@
           usingKanjiVG = true;
           LOADER = kanjiVGCharDataLoader;
         }
-        repeatCurrentWord();
+        setupWriter(
+          mode === 10
+            ? activeKanjiQueue[currentIndex]
+            : currentKanjiArray[currentKanjiSubIndex],
+        );
       }
 
       function toggleBrush() {
@@ -412,13 +651,13 @@
       function enableDrawing() {
         isDrawingEnabled = true;
         drawingColor = blue;
-        writer.updateColor("drawingColor", blue);
+        if (writer) writer.updateColor("drawingColor", blue);
       }
 
       function disableDrawing() {
         isDrawingEnabled = false;
         drawingColor = clear;
-        writer.updateColor("drawingColor", clear);
+        if (writer) writer.updateColor("drawingColor", clear);
       }
 
       function toggleCorrectStrokes() {
@@ -428,14 +667,14 @@
 
       function showCorrectStrokes() {
         isCorrectStrokesEnabled = true;
-        highlightColor = "rgba(65, 177, 230, 1)";
-        writer.updateColor("highlightColor", highlightColor);
+        // highlightColor = "rgba(65, 177, 230, 1)";
+        // if (writer) writer.updateColor("highlightColor", highlightColor);
       }
 
       function hideCorrectStrokes() {
         isCorrectStrokesEnabled = false;
-        highlightColor = clear;
-        writer.updateColor("highlightColor", highlightColor);
+        // highlightColor = clear;
+        // if (writer) writer.updateColor("highlightColor", highlightColor);
       }
 
       function toggleOutline() {
@@ -444,116 +683,6 @@
           if (isOutlineVisible) writer.showOutline();
           else writer.hideOutline();
         }
-      }
-
-      function continueFromReview() {
-        document.getElementById("review-section").style.display = "none";
-        document.getElementById("study-section").style.display = "flex";
-        if (currentWordIndex >= studyList.length) {
-          alert("All words studied!");
-          restart();
-        } else {
-          loadWord();
-        }
-      }
-
-      function setupWriter(char) {
-        document
-          .querySelector(".def-display")
-          .classList.remove("def-display-show");
-        clearCanvas();
-        document.getElementById("character-target").innerHTML = "";
-        updateStatus("Loading...");
-
-        document.getElementById("repetition-text").innerText =
-          repetitionGoal > 1
-            ? `Repetition: ${currentRepetition + 1} / ${repetitionGoal}`
-            : "";
-
-        writer = HanziWriter.create("character-target", char, {
-          charDataLoader: LOADER,
-          width: CANVAS_WIDTH,
-          height: CANVAS_HEIGHT,
-          padding: 20,
-          showOutline: isOutlineVisible,
-          showCharacter: false,
-          strokeAnimationSpeed: 250,
-          strokeFadeDuration: 1000,
-          strokeHighlightSpeed: 1,
-          highlightOnComplete: false,
-          delayBetweenStrokes: 0,
-          strokeColor,
-          highlightColor,
-          outlineColor,
-          drawingColor,
-          drawingFadeDuration: 100,
-          showHintAfterMisses: 3,
-          averageDistanceThreshold: 400,
-          onLoadCharDataError: () => {
-            console.log("Failed to load data for " + char);
-            currentKanjiIndex++;
-            updateWordProgress(
-              currentKanjiArray,
-              currentKanjiIndex,
-              activeKanjiSet,
-            );
-            loadCurrentKanji();
-          },
-          onLoadCharDataSuccess: () => {
-            runQuiz();
-          },
-        });
-      }
-
-      function runQuiz() {
-        updateStatus("");
-        currentCharMistakes = 0;
-        let strictResetTriggered = false;
-
-        writer.quiz({
-          delineateStrokes: true,
-          onMistake: function (strokeData) {
-            updateStatus("Mistake!", "orange");
-            undoStroke();
-            currentCharMistakes++;
-            currentWordHasMistake = true;
-
-            if (isStrictMode && !strictResetTriggered) {
-              strictResetTriggered = true;
-              updateStatus("Strict Mode: Resetting character...");
-              writer.cancelQuiz();
-
-              setTimeout(() => {
-                setupWriter(currentKanjiArray[currentKanjiIndex]);
-              }, 1000);
-            }
-          },
-          onCorrectStroke: function (d) {
-            if (strictResetTriggered) return;
-            updateStatus("Good", "#007bff");
-            writer.highlightStroke(d.strokeNum, { fadeHighlightOut: false });
-          },
-          onComplete: function (d) {
-            if (strictResetTriggered) return;
-
-            updateStatus("Correct!", blue);
-
-            setTimeout(() => {
-              currentRepetition++;
-              if (currentRepetition < repetitionGoal) {
-                setupWriter(currentKanjiArray[currentKanjiIndex]);
-              } else {
-                currentKanjiIndex++;
-                updateWordProgress(
-                  currentKanjiArray,
-                  currentKanjiIndex,
-                  activeKanjiSet,
-                );
-                loadCurrentKanji();
-              }
-            }, 500);
-          },
-        });
       }
     </script>
   </body>

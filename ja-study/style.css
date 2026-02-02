@@ -299,7 +299,7 @@ button.danger:hover {
   min-height: 24px;
   font-weight: bold;
   color: #007bff;
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 
 /* Review Screen */
