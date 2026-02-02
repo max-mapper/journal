@@ -1,6 +1,8 @@
 window.Calligraphy = window.Calligraphy || {};
 if (!Calligraphy.Writer) Calligraphy.Writer = {};
 
+// TODO paper     $('#hanshi-image').attr('src', 'res/img/' + paperNameWithMode + '.png');
+
 // --- Brush Definitions ---
 Calligraphy.Writer.Brush = function (brushName, opt) {
   this.name = brushName;
@@ -35,12 +37,12 @@ Calligraphy.Writer.Brushes = {
     minSize: 3,
     brushImageName: "Small",
   }),
-  SmallMed: new Calligraphy.Writer.Brush("SmallMed", {
-    width: 70,
-    height: 70,
-    maxSize: 30,
-    minSize: 5,
-  }),
+  // SmallMed: new Calligraphy.Writer.Brush("SmallMed", {
+  //   width: 70,
+  //   height: 70,
+  //   maxSize: 30,
+  //   minSize: 5,
+  // }),
   Medium: new Calligraphy.Writer.Brush("Medium", {
     width: 90,
     height: 90,
@@ -86,8 +88,12 @@ Calligraphy.Writer.Resources = {
 };
 
 Calligraphy.Writer.StrokeManager = function (eventCaptureTarget, strokeEngine) {
+  /// <summary></summary>
+  /// <return>Calligraphy.Writer.StrokeManager</return>
   this.eventCaptureTarget = eventCaptureTarget;
   this.strokeEngine = strokeEngine;
+  this.timerObservable = null;
+  this.timerInterval = 1000 /*/ 60*/;
   this.handElementSelector = "#hand-image";
   this.strokeHistory = [];
   this.isHandVisible = false;
@@ -103,31 +109,146 @@ Calligraphy.Writer.StrokeManager.StrokeOperation = {
   SetColor: 3,
 };
 
+Calligraphy.Writer.StrokeManager.prototype.lock = function () {
+  this.isLocked = true;
+};
+
+Calligraphy.Writer.StrokeManager.prototype.unlock = function () {
+  this.isLocked = false;
+};
+
 Calligraphy.Writer.StrokeManager.prototype.selectBrush = function (brushName) {
+  /// <summary>Select a brush.</summary>
   if (this.isLocked) return;
+
   this.endStroke();
   this.strokeHistory.push({
     O: Calligraphy.Writer.StrokeManager.StrokeOperation.SetBrush,
     D: brushName,
   });
+
   return this.strokeEngine.selectBrush(brushName);
 };
 
-Calligraphy.Writer.StrokeManager.prototype.clearHistory = function () {
+Calligraphy.Writer.StrokeManager.prototype.getCurrentBrush = function () {
+  /// <summary>Get a current selected brush.</summary>
+  return this.strokeEngine.getCurrentBrush().name;
+};
+
+Calligraphy.Writer.StrokeManager.prototype.setBrushOpacity = function (value) {
+  /// <summary>set a brush opacity.</summary>
   if (this.isLocked) return;
+
+  this.endStroke();
+  this.strokeHistory.push({
+    O: Calligraphy.Writer.StrokeManager.StrokeOperation.SetOpacity,
+    D: value,
+  });
+
+  return this.strokeEngine.setBrushOpacity(value);
+};
+
+Calligraphy.Writer.StrokeManager.prototype.getBrushOpacity = function () {
+  /// <summary>get a brush opacity.</summary>
+  return this.strokeEngine.getBrushOpacity();
+};
+Calligraphy.Writer.StrokeManager.prototype.setBrushColor = function (value) {
+  /// <summary>set a brush color.</summary>
+  if (this.isLocked) return;
+
+  this.endStroke();
+
+  this.strokeHistory.push({
+    O: Calligraphy.Writer.StrokeManager.StrokeOperation.SetColor,
+    D: value,
+  });
+
+  return this.strokeEngine.setBrushColor(value);
+};
+
+Calligraphy.Writer.StrokeManager.prototype.getBrushColor = function () {
+  /// <summary>get a brush color.</summary>
+  return this.strokeEngine.getBrushColor();
+};
+
+Calligraphy.Writer.StrokeManager.prototype.toDataURL = function (type) {
+  /// <summary>Get Image data URI</summary>
+  return this.strokeEngine.toDataURL(type);
+};
+
+Calligraphy.Writer.StrokeManager.prototype.clearHistory = function () {
+  /// <summary>Clear Stroke History</summary>
+  /// <return>Calligraphy.Writer.StrokeManager</return>
+  if (this.isLocked) return;
+
   this.endStroke();
   this.strokeHistory = [];
   this.strokeEngine.clear();
+
+  // set current style to History
+  // this.setBrushOpacity(this.getBrushOpacity());
+  // this.setBrushColor(this.getBrushColor());
+  this.selectBrush(this.getCurrentBrush());
+
   return this;
 };
 
 Calligraphy.Writer.StrokeManager.prototype.beginStroke = function () {
+  /// <summary>Begin state of one stroke</summary>
+  /// <return>Calligraphy.Writer.StrokeManager</return>
   if (this.isLocked) return;
+
   this.endStroke();
+
   this.isInStroke = true;
   this.strokeBeginTime = new Date().valueOf();
   this.currentStroke = [];
   this.strokeEngine.beginStroke();
+
+  return this;
+};
+
+Calligraphy.Writer.StrokeManager.prototype.addStrokePosition = function (
+  x,
+  y,
+  pressure,
+) {
+  /// <summary>Add stroke position to history and render</summary>
+  /// <return>Calligraphy.Writer.StrokeManager</return>
+  if (this.isLocked) return;
+
+  var pos = {
+    x: x,
+    y: y,
+    t: new Date().valueOf() - this.strokeBeginTime,
+    p: pressure,
+  };
+  this.currentStroke.push(pos);
+  this.strokeEngine.addStrokePosition(pos);
+  this.strokeEngine.draw();
+
+  //console.log(pos.x + ', ' + pos.y);
+
+  return this;
+};
+
+Calligraphy.Writer.StrokeManager.prototype.endStroke = function () {
+  /// <summary>End state of one stroke</summary>
+  /// <return>Calligraphy.Writer.StrokeManager</return>
+  if (this.isLocked) return;
+
+  if (!this.isInStroke) return;
+
+  this.strokeHistory.push({
+    O: Calligraphy.Writer.StrokeManager.StrokeOperation.Stroke,
+    D: this.currentStroke.map(function (e) {
+      return { X: e.x, Y: e.y, T: e.t, P: e.p };
+    }), // convert format
+  });
+  this.isInStroke = false;
+  this.currentStroke = null;
+  this.strokeEngine.endStroke();
+
   return this;
 };
 
@@ -163,16 +284,16 @@ Calligraphy.Writer.StrokeManager.prototype.undoStroke = function () {
         this.strokeEngine.selectBrush(op.D);
         break;
 
-      case Calligraphy.Writer.StrokeManager.StrokeOperation.SetOpacity:
-        // Op Data (D) contains the opacity value
-        this.strokeEngine.setBrushOpacity(op.D);
-        break;
+      // case Calligraphy.Writer.StrokeManager.StrokeOperation.SetOpacity:
+      //   // Op Data (D) contains the opacity value
+      //   this.strokeEngine.setBrushOpacity(op.D);
+      //   break;
 
-      case Calligraphy.Writer.StrokeManager.StrokeOperation.SetColor:
-        // Op Data (D) contains the color hex
-        this.strokeEngine.brushColor = op.D;
-        this.strokeEngine.refreshBrush();
-        break;
+      // case Calligraphy.Writer.StrokeManager.StrokeOperation.SetColor:
+      //   // Op Data (D) contains the color hex
+      //   this.strokeEngine.brushColor = op.D;
+      //   this.strokeEngine.refreshBrush();
+      //   break;
 
       case Calligraphy.Writer.StrokeManager.StrokeOperation.Stroke:
         // Op Data (D) contains the array of points {X, Y, T, P}
@@ -204,56 +325,16 @@ Calligraphy.Writer.StrokeManager.prototype.undoStroke = function () {
   return this;
 };
 
-Calligraphy.Writer.StrokeManager.prototype.addStrokePosition = function (
-  x,
-  y,
-  pressure,
-) {
-  if (this.isLocked) return;
-  var pos = {
-    x: x,
-    y: y,
-    t: new Date().valueOf() - this.strokeBeginTime,
-    p: pressure,
-  };
-  this.currentStroke.push(pos);
-  this.strokeEngine.addStrokePosition(pos);
-  this.strokeEngine.draw();
-  return this;
-};
-
-Calligraphy.Writer.StrokeManager.prototype.setBrushOpacity = function (value) {
-  /// <summary>set a brush opacity.</summary>
-  if (this.isLocked) return;
-
-  this.endStroke();
-  this.strokeHistory.push({
-    O: Calligraphy.Writer.StrokeManager.StrokeOperation.SetOpacity,
-    D: value,
-  });
-
-  return this.strokeEngine.setBrushOpacity(value);
-};
-
-Calligraphy.Writer.StrokeManager.prototype.endStroke = function () {
-  if (this.isLocked) return;
-  if (!this.isInStroke) return;
-  this.strokeHistory.push({
-    O: Calligraphy.Writer.StrokeManager.StrokeOperation.Stroke,
-    D: this.currentStroke.map(function (e) {
-      return { X: e.x, Y: e.y, T: e.t, P: e.p };
-    }),
-  });
-  this.isInStroke = false;
-  this.currentStroke = null;
-  this.strokeEngine.endStroke();
-  return this;
-};
-
 Calligraphy.Writer.StrokeManager.prototype.start = function () {
   var handCanvasObject = $(this.eventCaptureTarget);
+  var handCanvas = handCanvasObject.get(0);
+  $("body .content").live("mousemove", function (e) {
+    handCanvasObject.trigger("mouseup", e);
+  });
+
   var self = this;
   var isMouseDown = false;
+
   var handE = $(this.handElementSelector);
   var offset = handCanvasObject.offset();
 
@@ -265,175 +346,171 @@ Calligraphy.Writer.StrokeManager.prototype.start = function () {
     offset = handCanvasObject.offset();
   });
 
-  // Helper to forward events to Hanzi Writer's SVG
-  function dispatchToHanziWriter(type, e, x, y) {
-    const svg = document.querySelector("#character-target svg");
-    if (!svg) return;
+  if (window.navigator.msPointerEnabled) {
+    handCanvasObject[0].addEventListener(
+      "MSPointerDown",
+      function (e) {
+        if (!e.isPrimary) return;
 
-    // Create a MouseEvent or TouchEvent to dispatch
-    // HanziWriter typically listens to mouse/touch events on the SVG
-    // We need to construct a synthetic event.
-    // Note: HanziWriter relies on clientX/clientY in the event object
+        e.preventDefault();
+        isMouseDown = true;
 
-    let clientX, clientY;
-    if (e.touches && e.touches.length > 0) {
-      clientX = e.touches[0].clientX;
-      clientY = e.touches[0].clientY;
-    } else if (e.changedTouches && e.changedTouches.length > 0) {
-      clientX = e.changedTouches[0].clientX;
-      clientY = e.changedTouches[0].clientY;
-    } else {
-      clientX = e.clientX;
-      clientY = e.clientY;
+        var x = e.pageX - offset.left;
+        var y = e.pageY - offset.top;
+        handE.css("top", y);
+        handE.css("left", x);
+
+        if (self.isHandVisible) handE.fadeIn("fast");
+
+        self.beginStroke();
+      },
+      false,
+    );
+    handCanvasObject[0].addEventListener(
+      "MSPointerMove",
+      function (e) {
+        if (!e.isPrimary) return;
+        if (!isMouseDown) return;
+
+        var x = e.pageX - offset.left;
+        var y = e.pageY - offset.top;
+
+        if (
+          e.pressure == 0 &&
+          e.pointerType == 0x00000003 /* MSPOINTER_TYPE_PEN */
+        )
+          return;
+
+        self.addStrokePosition(x, y, e.pressure);
+
+        handE.css("top", y);
+        handE.css("left", x);
+      },
+      false,
+    );
+    handCanvasObject[0].addEventListener(
+      "MSPointerUp",
+      function (e) {
+        if (!e.isPrimary) return;
+
+        e.preventDefault();
+        if (!isMouseDown) return;
+        isMouseDown = false;
+
+        self.endStroke();
+
+        if (self.isHandVisible) handE.fadeOut("fast");
+      },
+      false,
+    );
+  } else {
+    function onStart(e) {
+      // console.log("onStart");
+      e.preventDefault();
+      isMouseDown = true;
+
+      var x = e.pageX - offset.left;
+      var y = e.pageY - offset.top;
+      handE.css("top", y);
+      handE.css("left", x);
+
+      if (self.isHandVisible) handE.fadeIn("fast");
+
+      self.beginStroke();
+
+      dispatchToHanziWriter(
+        e.type === "touchstart" ? "touchstart" : "mousedown",
+        e,
+        x,
+        y,
+      );
+    }
+    function onDraw(e) {
+      // console.log("onDraw", e.touches);
+      e.preventDefault();
+      (e.stopPropagation(), e.touches && (e = e.touches[0]));
+      if (!isMouseDown) return;
+
+      var x = e.pageX - offset.left;
+      var y = e.pageY - offset.top;
+
+      // console.log(x, y);
+
+      self.addStrokePosition(x, y);
+
+      handE.css("top", y);
+      handE.css("left", x);
+
+      dispatchToHanziWriter(
+        e.type === "touchmove" ? "touchmove" : "mousemove",
+        e,
+        x,
+        y,
+      );
+    }
+    function onEnd(e) {
+      // console.log("onEnd");
+      e.preventDefault();
+      if (!isMouseDown) return;
+      isMouseDown = false;
+
+      var x = e.pageX - offset.left;
+      var y = e.pageY - offset.top;
+
+      self.endStroke();
+
+      if (self.isHandVisible) handE.fadeOut("fast");
+
+      dispatchToHanziWriter(
+        e.type === "touchend" ? "touchend" : "mouseup",
+        e,
+        x,
+        y,
+      );
     }
 
-    // Create the event
-    const eventInit = {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-      clientX: clientX,
-      clientY: clientY,
-      screenX: clientX,
-      screenY: clientY,
-    };
-
-    let simEvent;
-    // Determine event type mapping
-    if (type === "mousedown") simEvent = new MouseEvent("mousedown", eventInit);
-    else if (type === "mousemove")
-      simEvent = new MouseEvent("mousemove", eventInit);
-    else if (type === "mouseup")
-      simEvent = new MouseEvent("mouseup", eventInit);
-    else if (type === "touchstart")
-      simEvent = new TouchEvent("touchstart", {
-        ...eventInit,
-        touches: e.touches,
-        targetTouches: e.touches,
-        changedTouches: e.changedTouches,
-      });
-    else if (type === "touchmove")
-      simEvent = new TouchEvent("touchmove", {
-        ...eventInit,
-        touches: e.touches,
-        targetTouches: e.touches,
-        changedTouches: e.changedTouches,
-      });
-    else if (type === "touchend")
-      simEvent = new TouchEvent("touchend", {
-        ...eventInit,
-        touches: e.touches,
-        targetTouches: e.touches,
-        changedTouches: e.changedTouches,
-      });
-
-    if (simEvent) svg.dispatchEvent(simEvent);
-  }
-
-  function onStart(e) {
-    e.preventDefault();
-    isMouseDown = true;
-    var pageX = e.pageX;
-    var pageY = e.pageY;
-    if (e.touches && e.touches.length > 0) {
-      pageX = e.touches[0].pageX;
-      pageY = e.touches[0].pageY;
+    function isSupportTouch() {
+      var touchObj = {};
+      touchObj.isSupportTouch = "ontouchend" in document ? true : false;
+      touchObj.isEvent = touchObj.isSupportTouch ? "touchstart" : "click";
+      return touchObj.isEvent;
     }
-    var x = pageX - offset.left;
-    var y = pageY - offset.top;
+    handCanvasObject
+      .on("mousedown", onStart)
+      .on("mousemove", onDraw)
+      .on("mouseup", onEnd);
 
-    handE.css("top", y).css("left", x);
-    if (self.isHandVisible) handE.fadeIn("fast");
-    self.beginStroke();
-
-    // Dispatch to Hanzi Writer
-    dispatchToHanziWriter(
-      e.type === "touchstart" ? "touchstart" : "mousedown",
-      e,
-      x,
-      y,
-    );
-  }
-
-  function onDraw(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (!isMouseDown) return;
-    var pageX = e.pageX;
-    var pageY = e.pageY;
-    if (e.touches && e.touches.length > 0) {
-      pageX = e.touches[0].pageX;
-      pageY = e.touches[0].pageY;
-    } else if (e.changedTouches) {
-      pageX = e.changedTouches[0].pageX;
-      pageY = e.changedTouches[0].pageY;
+    if (isSupportTouch()) {
+      handCanvasObject[0].addEventListener("touchstart", onStart, false);
+      handCanvasObject[0].addEventListener("touchmove", onDraw, false);
+      handCanvasObject[0].addEventListener("touchend", onEnd, false);
     }
-    var x = pageX - offset.left;
-    var y = pageY - offset.top;
-
-    self.addStrokePosition(x, y);
-    handE.css("top", y).css("left", x);
-
-    // Dispatch to Hanzi Writer
-    dispatchToHanziWriter(
-      e.type === "touchmove" ? "touchmove" : "mousemove",
-      e,
-      x,
-      y,
-    );
-  }
-
-  function onEnd(e) {
-    e.preventDefault();
-    if (!isMouseDown) return;
-    isMouseDown = false;
-    self.endStroke();
-    if (self.isHandVisible) handE.fadeOut("fast");
-
-    // Dispatch to Hanzi Writer
-    dispatchToHanziWriter(
-      e.type === "touchend" ? "touchend" : "mouseup",
-      e,
-      0,
-      0,
-    );
-  }
-
-  handCanvasObject
-    .on("mousedown", onStart)
-    .on("mousemove", onDraw)
-    .on("mouseup", onEnd)
-    .on("mouseleave", onEnd);
-
-  if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
-    handCanvasObject[0].addEventListener("touchstart", onStart, {
-      passive: false,
-    });
-    handCanvasObject[0].addEventListener("touchmove", onDraw, {
-      passive: false,
-    });
-    handCanvasObject[0].addEventListener("touchend", onEnd, {
-      passive: false,
-    });
   }
 };
 
-// --- Stroke Engine ---
+// ----------------------------------------------------------------------------
+
 Calligraphy.Writer.StrokeEngine = function (
   width,
   height,
   canvas,
   compositedCanvas,
 ) {
+  /// <summary></summary>
+  /// <return>Calligraphy.Writer.StrokeEngine</return>
   this.velocityPressureCoff = 5;
   this.canvas = $(canvas);
   this.width = width;
   this.height = height;
   this.canvasContext = this.canvas.get(0).getContext("2d");
-  this.backgroundImage = null; // No background image
+
+  this.backgroundImage = null;
+  this.backgroundImageClipping = { top: -43, left: 0 };
+
   this.brushOpacity = 1;
   this.brushColor = 0x000000;
-  this.selectBrush("SmallMed");
+  this.selectBrush("Medium");
+
   this.bufferingSize = 4;
   this.strokeBuffer = [];
   this.splineBuffer = [];
@@ -443,14 +520,28 @@ Calligraphy.Writer.StrokeEngine = function (
   this.previousDistance = 0;
   this.expectedNextPosition = null;
   this.accelerate = 0;
+
   this.compositedCanvas = compositedCanvas;
   this.compositedCanvasContext = this.compositedCanvas.getContext("2d");
+
+  this.onImageCreated = function (canvas) {};
+
   this.clear();
 };
 
+Calligraphy.Writer.StrokeEngine.prototype.toDataURL = function (type) {
+  /// <summary>Get Image data URI</summary>
+  this.compositeCanvas();
+  return this.getImage().toDataURL(type || "image/png");
+};
+
 Calligraphy.Writer.StrokeEngine.prototype.clear = function () {
+  /// <summary>Clear Canvas</summary>
   this.canvasContext.clearRect(0, 0, this.width, this.height);
+
   this.compositedCanvasContext.save();
+  //this.compositedCanvasContext.fillStyle = '#ffffff';
+  //this.compositedCanvasContext.fillRect(0, 0, this.width, this.height);
   this.compositedCanvasContext.clearRect(0, 0, this.width, this.height);
   this.compositedCanvasContext.restore();
 };
@@ -461,25 +552,36 @@ Calligraphy.Writer.StrokeEngine.prototype.createColoredBrushImage = function (
   width,
   height,
 ) {
-  if (brushColor === 0x000000) return originalBrushImage;
   var tmpCanvas = document.createElement("canvas");
   tmpCanvas.width = width;
   tmpCanvas.height = height;
   var ctx = tmpCanvas.getContext("2d");
   ctx.drawImage(originalBrushImage, 0, 0);
   var imageData = ctx.getImageData(0, 0, tmpCanvas.width, tmpCanvas.height);
+
   for (var i = 0, n = imageData.data.length / 4; i < n; i++) {
     imageData.data[i * 4] = (brushColor & 0xff0000) >> 16;
     imageData.data[i * 4 + 1] = (brushColor & 0x00ff00) >> 8;
     imageData.data[i * 4 + 2] = brushColor & 0x0000ff;
   }
   ctx.putImageData(imageData, 0, 0);
+
+  // 合成する
+  var tmpCanvas2 = document.createElement("canvas");
+  tmpCanvas2.width = width;
+  tmpCanvas2.height = height;
+  var ctx2 = tmpCanvas2.getContext("2d");
+  for (var i = 0; i < 15; i++) {
+    ctx2.drawImage(tmpCanvas, 0, 0);
+  }
+
   var img = document.createElement("img");
-  img.src = tmpCanvas.toDataURL();
+  img.src = tmpCanvas2.toDataURL();
+
   return img;
 };
-
 Calligraphy.Writer.StrokeEngine.prototype.refreshBrush = function () {
+  /// <summary>Create a brush.</summary>
   var newBrush = Calligraphy.Writer.Brushes.getBrush(this.brushName);
   newBrush.image = this.createColoredBrushImage(
     newBrush.image,
@@ -499,27 +601,101 @@ Calligraphy.Writer.StrokeEngine.prototype.refreshBrush = function () {
 Calligraphy.Writer.StrokeEngine.prototype.getImage = function (
   withoutBackground,
 ) {
-  // Always transparent background for merging
-  return this.compositedCanvas;
-};
+  /// <summary>Get a completion image</summary>
 
-Calligraphy.Writer.StrokeEngine.prototype.compositeCanvas = function () {
+  if (withoutBackground) return this.compositedCanvas;
+
+  // create background canvas
   var tmpCanvas = document.createElement("canvas");
   tmpCanvas.width = this.width;
   tmpCanvas.height = this.height;
+  var ctx = tmpCanvas.getContext("2d");
+
+  // set background
+  if (this.backgroundImage) {
+    ctx.drawImage(
+      this.backgroundImage,
+      0,
+      0,
+      this.backgroundImage.width,
+      this.backgroundImage.height,
+    );
+  } else {
+    ctx.fillStyle = "rgba(255,255,255,1)";
+    ctx.fillRect(0, 0, tmpCanvas.width, tmpCanvas.height);
+  }
+  // draw composited canvas
+  ctx.drawImage(this.compositedCanvas, 0, 0, tmpCanvas.width, tmpCanvas.height);
+
+  // callback
+  if (this.onImageCreated) {
+    this.onImageCreated(tmpCanvas);
+  }
+
+  return tmpCanvas;
+};
+Calligraphy.Writer.StrokeEngine.prototype.compositeCanvas = function () {
+  // copy to Background
+  var tmpCanvas = document.createElement("canvas");
+  tmpCanvas.width = this.width;
+  tmpCanvas.height = this.height;
+  // WORKAROUND: IE9
+  tmpCanvas.getContext("2d").fillRect(0, 0, 0, 0);
+  this.canvas.get(0).getContext("2d").fillRect(0, 0, 0, 0);
+
+  // writeCanvas -(w/alpha)-> tmpCanvas
   var tmpCtx = tmpCanvas.getContext("2d");
   tmpCtx.globalAlpha = this.brushOpacity;
   tmpCtx.drawImage(this.canvas.get(0), 0, 0);
+  // tmpCanvas -> compositedCanvas
   this.compositedCanvasContext.drawImage(tmpCanvas, 0, 0);
+  // clear writeCanvas
   this.canvasContext.clearRect(0, 0, this.width, this.height);
 };
 
+Calligraphy.Writer.StrokeEngine.prototype.setBrushOpacity = function (
+  brushOpacity,
+) {
+  /// <summary>Set a brush opacity.</summary>
+  // set new opacity
+  this.brushOpacity = brushOpacity;
+  //this.createBrushWithOpacity(this.currentBrush.name, brushOpacity);
+  this.canvas.css("opacity", this.brushOpacity);
+};
+
+Calligraphy.Writer.StrokeEngine.prototype.getBrushOpacity = function () {
+  /// <summary>Get a brush opacity.</summary>
+  return this.brushOpacity;
+};
+
+Calligraphy.Writer.StrokeEngine.prototype.setBrushColor = function (
+  brushColor,
+) {
+  /// <summary>Set a brush color.</summary>
+  // set new opacity
+  this.brushColor = brushColor;
+  this.refreshBrush();
+};
+
+Calligraphy.Writer.StrokeEngine.prototype.getBrushColor = function () {
+  /// <summary>Get a brush color.</summary>
+  return this.brushColor;
+};
+
 Calligraphy.Writer.StrokeEngine.prototype.selectBrush = function (brushName) {
+  /// <summary>Select a brush</summary>
   this.brushName = brushName;
   this.refreshBrush();
 };
 
+Calligraphy.Writer.StrokeEngine.prototype.getCurrentBrush = function () {
+  /// <summary>Get a current brush</summary>
+  return this.currentBrush;
+};
+
+// -----
 Calligraphy.Writer.StrokeEngine.prototype.beginStroke = function () {
+  /// <summary></summary>
   this.strokeBuffer = [];
   this.splineBuffer = [];
   this.previousPosition = null;
@@ -528,14 +704,21 @@ Calligraphy.Writer.StrokeEngine.prototype.beginStroke = function () {
   this.previousDistance = 0;
   this.expectedNextPosition = null;
   this.accelerate = 0;
+
+  //console.log('beginStroke');
 };
 
 Calligraphy.Writer.StrokeEngine.prototype.addStrokePosition = function (pos) {
+  /// <summary></summary>
+  /// <param name="pos">a point</param>
   this.strokeBuffer.push(pos);
 };
 
 Calligraphy.Writer.StrokeEngine.prototype.endStroke = function () {
+  /// <summary></summary>
+
   if (this.accelerate > 1) {
+    // はらい
     var pos = {
       x: this.expectedNextPosition.x,
       y: this.expectedNextPosition.y,
@@ -549,33 +732,53 @@ Calligraphy.Writer.StrokeEngine.prototype.endStroke = function () {
           1,
         ),
     };
-    for (var i = 0, n = this.bufferingSize; i < n; i++)
+    for (var i = 0, n = this.bufferingSize; i < n; i++) {
       this.strokeBuffer.push(pos);
+    }
     this.draw(true);
+    //console.log('endStroke: this.previousVelocity=%d, this.accelerate=%d, this.previousDistance=%d', this.previousVelocity, this.accelerate, this.previousDistance);
   }
+
   this.compositeCanvas();
+
+  //console.log('endStroke');
 };
+// -----
 
 Calligraphy.Writer.StrokeEngine.prototype.getInterlatePos = function (
   p0,
   p1,
   moveLen,
 ) {
+  /// <summary></summary>
+  /// <param name="p0">a source position</param>
+  /// <param name="p1">a destination position</param>
+  /// <param name="moveLen"></param>
+  /// <return>Object</return>
   var x = p0.x + (p1.x - p0.x) * moveLen;
   var y = p0.y + (p1.y - p0.y) * moveLen;
+
   return { x: x, y: y };
 };
 
 Calligraphy.Writer.StrokeEngine.prototype.getDistance = function (p0, p1) {
+  /// <summary></summary>
+  /// <param name="p0">a source position</param>
+  /// <param name="p1">a destination position</param>
+  /// <return>Number</return>
   var distance = (p1.x - p0.x) * (p1.x - p0.x) + (p1.y - p0.y) * (p1.y - p0.y);
   return distance == 0 ? distance : Math.sqrt(distance);
 };
 
 Calligraphy.Writer.StrokeEngine.prototype.getBufferedCurrentPosition =
   function () {
+    /// <summary></summary>
+    /// <return>Object</return>
     var pos = { x: 0, y: 0, t: 0, p: 0 };
     var bufferingSize = Math.min(this.bufferingSize, this.strokeBuffer.length);
+
     if (bufferingSize == 0) return null;
+
     for (var i = 1; i < bufferingSize + 1; i++) {
       var p = this.strokeBuffer[this.strokeBuffer.length - i];
       pos.x += p.x;
@@ -583,24 +786,53 @@ Calligraphy.Writer.StrokeEngine.prototype.getBufferedCurrentPosition =
       pos.t += p.t;
       pos.p += p.p;
     }
+
     pos.x /= bufferingSize;
     pos.y /= bufferingSize;
     pos.t /= bufferingSize;
     pos.p /= bufferingSize;
+
     return pos;
   };
 
+Calligraphy.Writer.StrokeEngine.prototype.spline = function (
+  x0,
+  x1,
+  v0,
+  v1,
+  t,
+) {
+  /// <summary>Spline function (A -> B -> C -> D)</summary>
+  /// <param name="x0">point 1 (B)</param>
+  /// <param name="x1">point 2 (C)</param>
+  /// <param name="v0">velocity 1 (A -> C)</param>
+  /// <param name="v1">velocity 2 (B -> D)</param>
+  /// <param name="t"></param>
+  /// <return>Number</return>
+  return (
+    (2 * x0 - 2 * x1 + v0 + v1) * Math.pow(t, 3) +
+    (-3 * x0 + 3 * x1 - 2 * v0 - v1) * Math.pow(t, 2) +
+    v0 * t +
+    x0
+  );
+};
+
+//!!!!!!
 Calligraphy.Writer.StrokeEngine.prototype.draw = function (isEnding) {
+  /// <summary>Draw stroke line.</summary>
   var pos = this.getBufferedCurrentPosition();
   if (pos == null) return;
+  //console.log(pos);
+
   if (this.previousPosition == null) this.previousPosition = pos;
 
+  // ---- stroke setup
   var t = pos.t - this.previousPosition.t;
   var distance = this.getDistance(pos, this.previousPosition);
   var velocity = distance / Math.max(1, t);
   var accelerate =
     this.previousVelocity == 0 ? 0 : velocity / this.previousVelocity;
-
+  //var brushSize = this.currentBrush.maxSize - Math.min(this.currentBrush.maxSize - this.currentBrush.minSize, Math.max(0, velocity * 12));
   var curve = function (t, b, c, d) {
     return (c * t) / d + b;
   };
@@ -613,13 +845,23 @@ Calligraphy.Writer.StrokeEngine.prototype.draw = function (isEnding) {
       this.velocityPressureCoff,
     ),
   );
-  if (pos.p > 0)
+  if (pos.p > 0) {
+    // Has pressure value
     brushSize = Math.max(
       this.currentBrush.minSize,
       this.currentBrush.maxSize * pos.p,
     );
+  }
+
+  function __(i) {
+    return i.toString().replace(/(\.\d{4})\d+/, "$1");
+  }
+  //console.log('v='+ __(velocity) + "; d=" + __(distance) + "; a=" + __(accelerate) + "; bsize=" + __(brushSize) + ' / (' + __(pos.x) + ',' + __(pos.y) + ') t:' + __(t));
+
+  //
   pos.s = brushSize;
 
+  // ---- draw
   var ctx = this.canvasContext;
   ctx.save();
   this.drawStroke(
@@ -630,15 +872,9 @@ Calligraphy.Writer.StrokeEngine.prototype.draw = function (isEnding) {
     distance,
     velocity,
   );
-  this.drawStrokeSpline(
-    ctx,
-    this.previousPosition,
-    pos,
-    brushSize,
-    distance,
-    velocity,
-  );
+  //this.drawStrokeSpline(ctx, this.previousPosition, pos, brushSize, distance, velocity);
   ctx.restore();
+  // ----
 
   this.accelerate = accelerate;
   this.expectedNextPosition = this.getInterlatePos(
@@ -646,20 +882,13 @@ Calligraphy.Writer.StrokeEngine.prototype.draw = function (isEnding) {
     pos,
     1 + this.accelerate,
   );
+  //    console.log('accelerate: '+this.accelerate);
+  //    console.log('pos: '+pos.x+','+pos.y);
+  //    console.log('expectedNextPosition: '+this.expectedNextPosition.x+','+this.expectedNextPosition.y);
   this.previousPosition = pos;
   this.previousBrushSize = brushSize;
   this.previousVelocity = velocity;
   this.previousDistance = distance;
-};
-
-Calligraphy.Writer.StrokeEngine.prototype.setBrushOpacity = function (
-  brushOpacity,
-) {
-  /// <summary>Set a brush opacity.</summary>
-  // set new opacity
-  this.brushOpacity = brushOpacity;
-  //this.createBrushWithOpacity(this.currentBrush.name, brushOpacity);
-  this.canvas.css("opacity", this.brushOpacity);
 };
 
 Calligraphy.Writer.StrokeEngine.prototype.drawStroke = function (
@@ -671,28 +900,29 @@ Calligraphy.Writer.StrokeEngine.prototype.drawStroke = function (
 ) {
   var t = 0;
   var brushDelta = brushSize - this.previousBrushSize;
+
   while (t < 1) {
     var brushSizeCur = Math.min(
       this.previousBrushSize + brushDelta * t,
       this.currentBrush.maxSize,
     );
     var pos = this.getInterlatePos(startPos, endPos, t);
-    if (Math.random() > 0.1) {
+
+    if (Math.random() > 0.2) {
       var jitter =
         (Math.random() > 0.5 ? 1 : -1) * parseInt(Math.random() * 1.2, 10);
       var px = pos.x - brushSizeCur / 2 + jitter;
       var py = pos.y - brushSizeCur / 2 + jitter;
-      try {
-        ctx.drawImage(
-          this.currentBrush.kasureImage,
-          px,
-          py,
-          brushSizeCur,
-          brushSizeCur,
-        );
-      } catch (e) {}
+      ctx.drawImage(
+        this.currentBrush.kasureImage,
+        px,
+        py,
+        brushSizeCur,
+        brushSizeCur,
+      );
+      //console.log('drawImage: brushSize=%d, startPos.p=%d, endPos.p=%d, %d, %d, %d, %d', brushSize, startPos.p, endPos.p, px, py, brushSizeCur, brushSizeCur);
     }
-    t += 1 / Math.max(distance, 1);
+    t += 1 / distance;
   }
 };
 
@@ -704,21 +934,27 @@ Calligraphy.Writer.StrokeEngine.prototype.drawStrokeSpline = function (
   distance,
   velocity,
 ) {
+  /// <summary>Draw stroke line (Spline).</summary>
   this.splineBuffer.push(endPos);
+
+  // Draw Stroke part (Spline)
   if (this.splineBuffer.length > 3) {
-    var segCount = 40;
+    var segCount = 40; // spline
+    var buffLen = this.splineBuffer.length;
     var points = Array.apply(null, this.splineBuffer);
     points = points.slice(points.length - 4);
+
     points.unshift(points[0]);
     points.push(points[points.length - 1]);
+    //console.log(points.map(function(e){ return e.x+"," +e.y;}).join('; '));
 
     for (var j = 0, m = points.length - 3; j < m; j++) {
-      var p0 = points[j],
-        p1 = points[j + 1],
-        p2 = points[j + 2],
-        p3 = points[j + 3];
-      var v0 = { x: (p2.x - p0.x) / 2, y: (p2.y - p0.y) / 2 };
-      var v1 = { x: (p3.x - p1.x) / 2, y: (p3.y - p1.y) / 2 };
+      var p0 = points[j];
+      var p1 = points[j + 1];
+      var p2 = points[j + 2];
+      var p3 = points[j + 3];
+      var v0 = { x: (p2.x - p0.x) / 2, y: (p2.y - p0.y) / 2, s: p2.s - p0.s };
+      var v1 = { x: (p3.x - p1.x) / 2, y: (p3.y - p1.y) / 2, s: p3.s - p1.s };
 
       var tmp1 = 2 * p1.x - 2 * p2.x + v0.x + v1.x;
       var tmp2 = -3 * p1.x + 3 * p2.x - 2 * v0.x - v1.x;
@@ -727,16 +963,26 @@ Calligraphy.Writer.StrokeEngine.prototype.drawStrokeSpline = function (
 
       for (var i = 1, n = segCount + 1; i <= n; i++) {
         var seg = i / segCount;
+
+        // Method Inlining --
+        // function spline() {
+        //     return ((2*x0 - 2*x1 + v0 + v1) * Math.pow(t, 3)) + ((-3*x0 + 3*x1 - 2*v0 - v1) * Math.pow(t, 2)) + v0*t + x0;
+        // }
+        // var tX = this.spline(p1.x, p2.x, v0.x, v1.x, seg);
+        // var tY = this.spline(p1.y, p2.y, v0.y, v1.y, seg);
         var tX =
           tmp1 * Math.pow(seg, 3) + tmp2 * Math.pow(seg, 2) + v0.x * seg + p1.x;
         var tY =
           tmp3 * Math.pow(seg, 3) + tmp4 * Math.pow(seg, 2) + v0.y * seg + p1.y;
+
+        //var tS = this.spline(p1.s, p2.s, v0.s, v1.s, seg);
         var tS =
           this.previousBrushSize +
           ((brushSize - this.previousBrushSize) / segCount) * i;
 
         if (this.previousBrushSize == brushSize && Math.random() < 0.3)
           continue;
+
         ctx.drawImage(
           this.currentBrush.image,
           tX - tS / 2,
@@ -744,9 +990,19 @@ Calligraphy.Writer.StrokeEngine.prototype.drawStrokeSpline = function (
           tS,
           tS,
         );
+
+        //            if (Math.random() > 0.6) {
+        //                ctx.drawImage(this.currentBrush.image,
+        //                      tX + (Math.random() * 0) - (brushSize/2),
+        //                      tY + (Math.random() * 0) - (brushSize/2),
+        //                      brushSize,
+        //                      brushSize);
+        //            }
       }
     }
   }
 };
+
+// Setup ----------------------------------------------------------------------
 
 Calligraphy.Writer.Shared = { StrokeEngine: null, StrokeManager: null };

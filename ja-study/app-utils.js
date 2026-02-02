@@ -2,6 +2,95 @@
 
 // --- UI & Setup Helpers ---
 
+function animCJKLoader(char, onComplete, onError) {
+  fetch(`animcjk/${char}.json`)
+    .then((res) => res.json())
+    .then(onComplete)
+    .catch(onError);
+}
+
+function kanjiVGCharDataLoader(char, onComplete, onError) {
+  const codePoint = char.codePointAt(0);
+  let filename = codePoint.toString(16).toLowerCase().padStart(5, "0");
+  if (isKana(char)) {
+    // kanjivg kana is broken
+    animCJKLoader(char, onComplete, onError);
+    return;
+  }
+  fetch(`kanjivg/${filename}.svg`)
+    .then(async (res) => {
+      if (!res.ok) throw new Error("Not found");
+      let svg = await res.text();
+      let json = processKanjiSVG(svg);
+      return bufferObjectStrokes(json);
+    })
+    .then(onComplete)
+    .catch(onError);
+}
+
+// Helper to forward events to Hanzi Writer's SVG
+function dispatchToHanziWriter(type, e, x, y) {
+  const svg = document.querySelector("#character-target svg");
+  if (!svg) return;
+
+  // Create a MouseEvent or TouchEvent to dispatch
+  // HanziWriter typically listens to mouse/touch events on the SVG
+  // We need to construct a synthetic event.
+  // Note: HanziWriter relies on clientX/clientY in the event object
+
+  let clientX, clientY;
+  if (e.touches && e.touches.length > 0) {
+    clientX = e.touches[0].clientX;
+    clientY = e.touches[0].clientY;
+  } else if (e.changedTouches && e.changedTouches.length > 0) {
+    clientX = e.changedTouches[0].clientX;
+    clientY = e.changedTouches[0].clientY;
+  } else {
+    clientX = e.clientX;
+    clientY = e.clientY;
+  }
+
+  // Create the event
+  const eventInit = {
+    bubbles: true,
+    cancelable: true,
+    view: window,
+    clientX: clientX,
+    clientY: clientY,
+    screenX: clientX,
+    screenY: clientY,
+  };
+
+  let simEvent;
+  // Determine event type mapping
+  if (type === "mousedown") simEvent = new MouseEvent("mousedown", eventInit);
+  else if (type === "mousemove")
+    simEvent = new MouseEvent("mousemove", eventInit);
+  else if (type === "mouseup") simEvent = new MouseEvent("mouseup", eventInit);
+  else if (type === "touchstart")
+    simEvent = new TouchEvent("touchstart", {
+      ...eventInit,
+      touches: e.touches,
+      targetTouches: e.touches,
+      changedTouches: e.changedTouches,
+    });
+  else if (type === "touchmove")
+    simEvent = new TouchEvent("touchmove", {
+      ...eventInit,
+      touches: e.touches,
+      targetTouches: e.touches,
+      changedTouches: e.changedTouches,
+    });
+  else if (type === "touchend")
+    simEvent = new TouchEvent("touchend", {
+      ...eventInit,
+      touches: e.touches,
+      targetTouches: e.touches,
+      changedTouches: e.changedTouches,
+    });
+  if (simEvent) svg.dispatchEvent(simEvent);
+}
+
 function updateStatus(content, color) {
   let statusEl = document.getElementById("status-text");
   statusEl.classList.toggle("pulse-on-change");
@@ -187,7 +276,6 @@ function initCalligraphy(width, height) {
       );
     Calligraphy.Writer.Shared.StrokeManager.isHandVisible = false;
     Calligraphy.Writer.Shared.StrokeManager.start();
-    Calligraphy.Writer.Shared.StrokeManager.setBrushOpacity(1);
   } catch (e) {
     console.error("Engine Error", e);
   }
@@ -211,9 +299,8 @@ function setBrush(name) {
   }
 }
 
-function toggleOutline(writerInstance) {
-  if (writerInstance) {
-    writerInstance.showOutline();
-    setTimeout(() => writerInstance.hideOutline(), 1000);
+function setBrushOpacity(val) {
+  if (Calligraphy.Writer.Shared.StrokeManager) {
+    Calligraphy.Writer.Shared.StrokeManager.setBrushOpacity(val);
   }
 }

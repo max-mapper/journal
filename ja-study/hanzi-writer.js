@@ -1180,10 +1180,10 @@ var HanziWriter = (function () {
       }),
     ];
   };
-  const highlightStroke = (stroke, color, speed) => {
+  const highlightStroke = (stroke, color, speed, fadeHighlightOut = true) => {
     const strokeNum = stroke.strokeNum;
     const duration = (stroke.getLength() + 600) / (3 * speed);
-    return [
+    let mutations = [
       new Mutation("options.highlightColor", color),
       new Mutation("character.highlight", {
         opacity: 1,
@@ -1204,11 +1204,18 @@ var HanziWriter = (function () {
           duration,
         },
       ),
-      new Mutation(`character.highlight.strokes.${strokeNum}.opacity`, 0, {
-        duration,
-        force: true,
-      }),
     ];
+
+    if (fadeHighlightOut) {
+      mutations.push(
+        new Mutation(`character.highlight.strokes.${strokeNum}.opacity`, 0, {
+          duration,
+          force: true,
+        }),
+      );
+    }
+
+    return mutations;
   };
   const animateStroke = (charName, stroke, speed) => {
     const strokeNum = stroke.strokeNum;
@@ -2880,6 +2887,7 @@ var HanziWriter = (function () {
               selectIndex(this._character.strokes, strokeNum),
               colorStringToVals(this._options.highlightColor),
               this._options.strokeHighlightSpeed,
+              options.fadeHighlightOut,
             ),
           )
           .then((res) => {

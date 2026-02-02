@@ -360,6 +360,28 @@ button.danger:hover {
   font-weight: bold;
 }
 
+.controls {
+  margin-top: 15px;
+  border-top: 1px solid rgb(221, 221, 221);
+  padding-top: 15px;
+}
+
+#post-word-controls {
+  display: none;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #eee;
+  text-align: center;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.non-level-kanji {
+  color: #aaa; /* Or any other distinct style */
+}
+
 @keyframes pulse-animation {
   0% {
     transform: scale(1);

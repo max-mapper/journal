@@ -5,29 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calligraphy Kanji Study</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <style>
-      #post-word-controls {
-        display: none;
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 2px solid #eee;
-        text-align: center;
-      }
-      .btn-group {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-      }
-      /* Ensure the new class has a style if not already in css, 
-         though usually it just needs to NOT look like pending-char */
-      .non-level-kanji {
-        color: #aaa; /* Or any other distinct style */
-      }
-    </style>
   </head>
   <body>
-    <h1>Calligraphy Kanji Practice</h1>
-
     <!-- SECTION 1: SETUP -->
     <div id="setup-section">
       <div class="setup-row">
@@ -95,16 +74,46 @@
         ></canvas>
       </div>
 
+      <!-- Navigation / Exit Controls -->
+      <div class="controls">
+        <div class="btn-group">
+          <button id="back-btn" class="danger" onclick="prevWord()">
+            Back
+          </button>
+          <button class="secondary" onclick="repeatCurrentWord()">
+            Restart Word
+          </button>
+          <button class="nextButton" onclick="finishAndNextWord()">
+            Next Word &rarr;
+          </button>
+        </div>
+      </div>
+
       <!-- Live Controls -->
       <div class="controls">
+        <div style="width: 10px"></div>
+        <button class="secondary" id="outline-btn" onclick="toggleOutline()">
+          Outline
+        </button>
+        <button class="secondary" id="outline-btn" onclick="toggleBrush()">
+          Brush
+        </button>
+        <button class="secondary" id="outline-btn" onclick="toggleDrawing()">
+          Drawing
+        </button>
+        <button class="secondary" id="outline-btn" onclick="undoStroke()">
+          Undo
+        </button>
+        <button class="secondary" id="outline-btn" onclick="toggleFont()">
+          Font
+        </button>
         <button
           class="secondary"
           id="outline-btn"
-          onclick="toggleOutlinePerm()"
+          onclick="toggleCorrectStrokes()"
         >
-          Show Outline: OFF
+          Strokes
         </button>
-        <div style="width: 10px"></div>
         <button onclick="setBrush('Small')">Small</button>
         <button onclick="setBrush('SmallMed')">Medium</button>
         <button onclick="setBrush('Large')">Large</button>
@@ -117,31 +126,6 @@
           />
           Guides
         </label>
-      </div>
-
-      <!-- Post-Word Manual Controls -->
-      <div id="post-word-controls">
-        <h3>Word Complete</h3>
-        <div class="btn-group">
-          <button class="secondary" onclick="repeatCurrentWord()">
-            Repeat Word
-          </button>
-          <button class="primary" onclick="finishAndNextWord()">
-            Next Word &rarr;
-          </button>
-        </div>
-      </div>
-
-      <!-- Navigation / Exit Controls -->
-      <div
-        class="controls"
-        style="margin-top: 15px; border-top: 1px solid #ddd; padding-top: 15px"
-      >
-        <button id="back-btn" class="danger" onclick="prevWord()">Back</button>
-        <button id="skip-btn" class="secondary" onclick="skipWord()">
-          Skip Word
-        </button>
-        <button class="secondary" onclick="restart()">Exit</button>
       </div>
     </div>
 
@@ -170,17 +154,19 @@
         return this;
       };
     </script>
-    <script src="levels.js"></script>
-    <script src="hanzi-writer.js"></script>
-    <script src="calligraphy.js" type="text/javascript"></script>
-    <script src="brushes.js" type="text/javascript"></script>
-    <script src="kanjivg-loader.js" type="text/javascript"></script>
-    <script src="app-utils.js"></script>
+    <script type="text/javascript" src="levels.js"></script>
+    <script type="text/javascript" src="app-utils.js"></script>
+    <script type="text/javascript" src="hanzi-writer.js"></script>
+    <script type="text/javascript" src="calligraphy.js"></script>
+    <script type="text/javascript" src="brushes.js"></script>
+    <script type="text/javascript" src="kanjivg-loader.js"></script>
 
-    <script>
+    <script type="text/javascript">
       // --- Constants ---
       const CANVAS_WIDTH = 350;
       const CANVAS_HEIGHT = 350;
+      var LOADER = kanjiVGCharDataLoader;
+      var usingKanjiVG = true;
 
       // --- State ---
       let studyList = [];
@@ -191,6 +177,7 @@
       let currentKanjiArray = [];
       let currentKanjiIndex = 0;
       let writer = null;
+      window.writer = writer;
 
       // Settings
       let repetitionGoal = 1;
@@ -199,6 +186,19 @@
       let writeKanaEnabled = false;
       let activeKanjiSet = null; // String containing valid kanji for current level
       let isOutlineVisible = false;
+      let isDrawingEnabled = false;
+      let layeredCanvas = document.querySelector("#layered-canvas");
+      var nextButton = document.querySelector(".nextButton");
+      let isBrushVisible = false;
+      let isCorrectStrokesEnabled = false;
+
+      var clear = "rgba(0, 0, 0, 0)";
+      var blue = "rgba(65, 177, 230, 1)";
+      var gray = "#dee0e4";
+      var highlightColor = clear;
+      var strokeColor = clear;
+      var outlineColor = gray;
+      var drawingColor = clear;
 
       // Progress Trackers
       let currentRepetition = 0;
@@ -264,22 +264,9 @@
         }
       }
 
-      function skipWord() {
-        if (currentWordIndex < studyList.length) {
-          stats.imperfect++;
-          sessionResults[currentWordIndex] = {
-            perfect: false,
-            word: studyList[currentWordIndex],
-          };
-          currentWordIndex++;
-          updateStatsUI(stats, currentWordIndex, studyList.length);
-          loadWord();
-        }
-      }
-
       function loadWord() {
         // Reset UI
-        document.getElementById("post-word-controls").style.display = "none";
+        nextButton.classList.remove("primary");
         document.querySelector(".controls").style.visibility = "visible";
 
         if (currentWordIndex >= studyList.length) {
@@ -339,8 +326,8 @@
           document
             .querySelector(".def-display")
             .classList.add("def-display-show");
+          nextButton.classList.add("primary");
 
-          document.getElementById("post-word-controls").style.display = "block";
           return;
         }
 
@@ -389,13 +376,70 @@
         loadWord();
       }
 
-      function toggleOutlinePerm() {
-        isOutlineVisible = !isOutlineVisible;
-        const btn = document.getElementById("outline-btn");
-        btn.innerText = isOutlineVisible
-          ? "Show Outline: ON"
-          : "Show Outline: OFF";
+      function toggleFont() {
+        if (usingKanjiVG) {
+          usingKanjiVG = false;
+          LOADER = animCJKLoader;
+        } else {
+          usingKanjiVG = true;
+          LOADER = kanjiVGCharDataLoader;
+        }
+        repeatCurrentWord();
+      }
 
+      function toggleBrush() {
+        if (isBrushVisible) disableBrush();
+        else enableBrush();
+      }
+
+      function enableBrush() {
+        isBrushVisible = true;
+        layeredCanvas.style.opacity = "1";
+        setBrushOpacity(1);
+      }
+
+      function disableBrush() {
+        isBrushVisible = false;
+        layeredCanvas.style.opacity = "0";
+        setBrushOpacity(0);
+      }
+
+      function toggleDrawing() {
+        if (isDrawingEnabled) disableDrawing();
+        else enableDrawing();
+      }
+
+      function enableDrawing() {
+        isDrawingEnabled = true;
+        drawingColor = blue;
+        writer.updateColor("drawingColor", blue);
+      }
+
+      function disableDrawing() {
+        isDrawingEnabled = false;
+        drawingColor = clear;
+        writer.updateColor("drawingColor", clear);
+      }
+
+      function toggleCorrectStrokes() {
+        if (isCorrectStrokesEnabled) hideCorrectStrokes();
+        else showCorrectStrokes();
+      }
+
+      function showCorrectStrokes() {
+        isCorrectStrokesEnabled = true;
+        highlightColor = "rgba(65, 177, 230, 1)";
+        writer.updateColor("highlightColor", highlightColor);
+      }
+
+      function hideCorrectStrokes() {
+        isCorrectStrokesEnabled = false;
+        highlightColor = clear;
+        writer.updateColor("highlightColor", highlightColor);
+      }
+
+      function toggleOutline() {
+        isOutlineVisible = !isOutlineVisible;
         if (writer) {
           if (isOutlineVisible) writer.showOutline();
           else writer.hideOutline();
@@ -413,28 +457,6 @@
         }
       }
 
-      const kanjiVGCharDataLoader = (char, onComplete, onError) => {
-        const codePoint = char.codePointAt(0);
-        let filename = codePoint.toString(16).toLowerCase().padStart(5, "0");
-        if (isKana(char)) {
-          fetch(
-            `https://cdn.jsdelivr.net/npm/kanji-writer-data-jp@latest/${char}.json`,
-          )
-            .then((r) => r.json())
-            .then(onComplete);
-          return;
-        }
-        fetch(`kanji/${filename}.svg`)
-          .then(async (res) => {
-            if (!res.ok) throw new Error("Not found");
-            let svg = await res.text();
-            let json = processKanjiSVG(svg);
-            return bufferObjectStrokes(json);
-          })
-          .then(onComplete)
-          .catch(onError);
-      };
-
       function setupWriter(char) {
         document
           .querySelector(".def-display")
@@ -449,22 +471,22 @@
             : "";
 
         writer = HanziWriter.create("character-target", char, {
-          charDataLoader: kanjiVGCharDataLoader,
+          charDataLoader: LOADER,
           width: CANVAS_WIDTH,
           height: CANVAS_HEIGHT,
           padding: 20,
           showOutline: isOutlineVisible,
-          showCharacter: true,
-          strokeAnimationSpeed: 1,
-          strokeFadeDuration: 1,
+          showCharacter: false,
+          strokeAnimationSpeed: 250,
+          strokeFadeDuration: 1000,
           strokeHighlightSpeed: 1,
           highlightOnComplete: false,
           delayBetweenStrokes: 0,
-          strokeColor: "#fff",
-          highlightColor: "#dee0e4",
-          outlineColor: "#dee0e4",
-          drawingColor: "#fff",
-          drawingFadeDuration: 0,
+          strokeColor,
+          highlightColor,
+          outlineColor,
+          drawingColor,
+          drawingFadeDuration: 100,
           showHintAfterMisses: 3,
           averageDistanceThreshold: 400,
           onLoadCharDataError: () => {
@@ -509,12 +531,12 @@
           onCorrectStroke: function (d) {
             if (strictResetTriggered) return;
             updateStatus("Good", "#007bff");
+            writer.highlightStroke(d.strokeNum, { fadeHighlightOut: false });
           },
           onComplete: function (d) {
             if (strictResetTriggered) return;
 
-            updateStatus("Correct!", "green");
-            writer.updateColor("strokeColor", "#8ac926");
+            updateStatus("Correct!", blue);
 
             setTimeout(() => {
               currentRepetition++;
