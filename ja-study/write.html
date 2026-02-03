@@ -31,8 +31,7 @@
         text-decoration: underline;
       }
       #stat-progress {
-        font-size: 1.2rem;
-        font-weight: bold;
+        font-size: 1rem;
         color: #555;
       }
     </style>
@@ -68,13 +67,6 @@
 
     <!-- SECTION 2: STUDY INTERFACE -->
     <div id="study-section">
-      <div id="stats-bar">
-        <!-- Stats removed, just progress -->
-        <div class="stat-item">
-          <span id="stat-progress">0/0</span>
-        </div>
-      </div>
-
       <div class="info-card">
         <!-- This container changes based on mode -->
         <div id="learning-context-container" style="display: none">
@@ -112,6 +104,7 @@
       </div>
       <div class="status-container">
         <div id="status-text"></div>
+        <span id="stat-progress">0/0</span>
         <div id="repetition-text" style="font-size: 0.8em; color: #999"></div>
       </div>
       <!-- Navigation / Exit Controls -->
@@ -156,6 +149,8 @@
           Guides
         </label>
       </div>
+
+      <div id="kanji-meaning" class="info-card" style="margin-top: 10px"></div>
     </div>
 
     <!-- SECTION 3: REVIEW / FINISH -->
@@ -326,8 +321,12 @@
         }
 
         const targetChar = activeKanjiQueue[currentIndex];
+        let meaning = "";
+        if (kanjiMeanings[targetChar]) meaning = kanjiMeanings[targetChar];
+        document.getElementById("kanji-meaning").innerHTML = meaning;
+
         document.getElementById("stat-progress").innerText =
-          `${currentIndex + 1}/${activeKanjiQueue.length} (Kanji)`;
+          `${currentIndex + 1}/${activeKanjiQueue.length}`;
 
         const contextDiv = document.getElementById("context-word-list");
         contextDiv.innerHTML = "";
@@ -389,8 +388,7 @@
                 kCursor += rPart.length;
               }
             }
-
-            span.innerHTML = html;
+            span.innerHTML = `<ruby><a target="_blank" href="${`https://jotoba.de/search/0/${encodeURIComponent(word.kanji)}`}">${html}</a><rt>${word.def}</rt></ruby>`;
             contextDiv.appendChild(span);
           });
         }
@@ -410,7 +408,7 @@
 
         const data = studyList[currentIndex];
         document.getElementById("stat-progress").innerText =
-          `${currentIndex + 1}/${studyList.length} (Words)`;
+          `${currentIndex + 1}/${studyList.length}`;
 
         let kanaHtml = data.readingRaw.replace(/\|/g, "<span></span>");
         if (data.readingRaw.includes("|")) {
