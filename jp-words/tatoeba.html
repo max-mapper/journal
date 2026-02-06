@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kanji Sentence Filter with Sudachi</title>
+    <!-- PapaParse for fast CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --success: #16a34a;
+        --warning: #f59e0b;
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --text: #1e293b;
+        --ruby-color: #64748b;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 20px;
+        line-height: 2.2;
+      }
+
+      .container {
+        max-width: 1400px; /* Increased for 3rd column */
+        margin: 0 auto;
+      }
+
+      /* Header & Controls */
+      header {
+        background: var(--surface);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        margin: 0 0 15px 0;
+        font-size: 1.5rem;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .file-upload {
+        border: 2px dashed var(--border);
+        padding: 15px;
+        border-radius: 6px;
+        background: #f1f5f9;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .filters {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        flex: 3;
+      }
+
+      .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .input-group input[type="text"] {
+        padding: 6px 10px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-size: 1rem;
+        width: 200px;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        user-select: none;
+      }
+
+      input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--primary);
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+      }
+
+      button {
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          opacity 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .export-btn {
+        background-color: var(--success);
+        color: white;
+      }
+      .export-btn:hover {
+        background-color: #15803d;
+      }
+
+      .sort-btn {
+        background-color: var(--warning);
+        color: white;
+      }
+      .sort-btn:hover {
+        background-color: #d97706;
+      }
+
+      button:disabled {
+        background-color: #94a3b8;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      /* Stats & Pagination */
+      .status-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        background: var(--surface);
+        padding: 12px 20px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+
+      .pagination button {
+        background: var(--primary);
+        color: white;
+      }
+      .pagination button:hover {
+        background: var(--primary-hover);
+      }
+
+      /* Table */
+      .table-container {
+        background: var(--surface);
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        min-height: 400px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 18px;
+        table-layout: fixed;
+      }
+
+      th,
+      td {
+        padding: 14px 18px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+
+      th {
+        background-color: #f8fafc;
+        font-weight: 600;
+        color: #475569;
+        border-bottom: 2px solid var(--border);
+      }
+
+      tr:hover td {
+        background-color: #f1f5f9;
+      }
+
+      /* Column Widths */
+      .jp-col {
+        width: 50%;
+        border-right: 1px solid #f1f5f9;
+        cursor: pointer;
+        position: relative;
+      }
+      .en-col {
+        color: rgba(0, 0, 0, 0);
+        width: 50%;
+        border-right: 1px solid #f1f5f9;
+      }
+      .en-col:hover {
+        color: #334155;
+      }
+      /* .useful-col {
+        width: 30%;
+        color: #334155;
+        font-size: 0.9em;
+      } */
+
+      /* Click hint */
+      .jp-col:hover::after,
+      .useful-word-item:hover::after {
+        content: "Analyze";
+        position: absolute;
+        top: 2px;
+        right: 5px;
+        font-size: 0.6rem;
+        color: var(--primary);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2px 4px;
+        border-radius: 4px;
+        pointer-events: none;
+      }
+
+      #loading {
+        display: none;
+        color: var(--primary);
+        font-weight: bold;
+        margin-left: 10px;
+      }
+
+      /* Ruby Text Styling */
+      ruby {
+        ruby-position: over;
+      }
+      rt {
+        font-size: 0.6em;
+        color: var(--ruby-color);
+        user-select: none;
+      }
+
+      /* Useful Words Tags */
+      .useful-word-item {
+        display: inline-block;
+        background: #e0f2fe;
+        color: #0369a1;
+        padding: 2px 8px;
+        border-radius: 12px;
+        margin: 2px;
+        cursor: pointer;
+        position: relative;
+        border: 1px solid #bae6fd;
+      }
+      .level-badge {
+        font-size: 0.75em;
+        font-weight: bold;
+        margin-left: 4px;
+        color: #0c4a6e;
+      }
+      .score-display {
+        display: inline-block;
+        font-weight: bold;
+        color: var(--warning);
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>CSV Kanji Filter & Sudachi Analyzer</h1>
+        <div class="controls">
+          <div class="filters">
+            <div class="file-upload">
+              <input type="file" id="csvFile" accept=".csv, .txt, .tsv" />
+              <span id="loading">Processing...</span>
+            </div>
+            <button class="sort-btn" onclick="app.loadTatoeba()">
+              Load Tatoeba Export
+            </button>
+          </div>
+          <div class="filters">
+            <div class="filter-row">
+              <strong>Grade Filter:</strong>
+              <label class="checkbox-group">
+                <input
+                  type="checkbox"
+                  id="grade1"
+                  onchange="app.applyFilters()"
+                />
+                1st Grade
+              </label>
+              <label class="checkbox-group">
+                <input
+                  type="checkbox"
+                  id="grade2"
+                  onchange="app.applyFilters()"
+                />
+                2nd Grade
+              </label>
+            </div>
+
+            <div class="filter-row">
+              <div class="input-group">
+                <label
+                  for="customKanji"
+                  style="font-weight: bold; font-size: 0.9rem"
+                  >Custom Kanji (Allow list):</label
+                >
+                <input
+                  type="text"
+                  id="customKanji"
+                  placeholder="e.g. 何言 (Matches included)"
+                  oninput="app.applyFilters()"
+                />
+              </div>
+            </div>
+
+            <div class="filter-row">
+              <strong>Options:</strong>
+              <label class="checkbox-group">
+                <input
+                  type="checkbox"
+                  id="requireKanji"
+                  onchange="app.applyFilters()"
+                />
+                Only sentences with 1+ Kanji
+              </label>
+            </div>
+
+            <div class="actions">
+              <button
+                class="sort-btn"
+                id="sortBtn"
+                onclick="app.sortByUsefulness()"
+                disabled
+              >
+                <span>⚡</span> Sort by Usefulness
+              </button>
+              <button
+                class="export-btn"
+                id="exportBtn"
+                onclick="app.exportCSV()"
+                disabled
+              >
+                <span>📥</span> Export Filtered CSV
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="status-bar">
+        <div id="countDisplay">Rows: 0</div>
+        <div class="pagination">
+          <button id="prevBtn" onclick="app.changePage(-1)" disabled>
+            Previous
+          </button>
+          <span id="pageDisplay" style="margin: 0 15px">Page 1 / 1</span>
+          <button id="nextBtn" onclick="app.changePage(1)" disabled>
+            Next
+          </button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th class="jp-col">Japanese (Click to Add Furigana)</th>
+              <th class="en-col">English</th>
+              <!-- <th class="useful-col">Useful Words & Score</th> -->
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <td
+                colspan="3"
+                style="text-align: center; padding: 30px; color: #64748b"
+              >
+                Please upload a CSV file to begin.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script type="module">
+      console.time("import");
+      import {
+        SudachiStateless,
+        TokenizeMode,
+      } from "./sudachi-wasm/sudachi.js";
+      console.timeEnd("import");
+
+      // --- Global App State ---
+      const state = (window.state = {
+        allData: [],
+        filteredIndices: [],
+        currentPage: 1,
+        sudachi: null,
+        usefulnessMap: new Map(), // O(1) Lookup
+        isSortedByScore: false,
+      });
+
+      function sudachiParse(text) {
+        if (!state.sudachi) return [];
+        return JSON.parse(
+          state.sudachi.tokenize_stringified(text, TokenizeMode.C),
+        );
+      }
+      window.sudachiParse = sudachiParse;
+
+      async function fetchAndGunzip(url) {
+        // 1. Fetch the compressed resource
+        const response = await fetch(url);
+
+        if (!response.body) throw new Error("No response body");
+
+        // 2. Pipe the stream through DecompressionStream
+        const ds = new DecompressionStream("gzip");
+        const decompressedStream = response.body.pipeThrough(ds);
+
+        // 3. Consume the stream and convert to Uint8Array
+        // Response.blob() or Response.arrayBuffer() efficiently handles streaming data
+        const blob = await new Response(decompressedStream).blob();
+        const buffer = await blob.arrayBuffer();
+        const uint8Array = new Uint8Array(buffer);
+
+        return uint8Array;
+      }
+
+      async function initSudachi() {
+        console.time("gunzip");
+        let dict = await fetchAndGunzip("sudachi-wasm/resources/system.dic.gz");
+        console.timeEnd("gunzip");
+        console.time("init");
+        state.sudachi = new SudachiStateless();
+        await state.sudachi.initialize_from_bytes(dict);
+        console.timeEnd("init");
+
+        // Load Usefulness Data
+        try {
+          const response = await fetch("kanshudo-usefulness.json");
+          const data = await response.json();
+
+          // Build map for fast lookup: Key = Kanji/Word, Value = Level
+          // We map both valid spelling and reading to be safe, though dictionary match is best
+          if (data && data.usefulness) {
+            data.usefulness.forEach((item) => {
+              // Mapping the kanji form (e.g. "赤ちゃん")
+              state.usefulnessMap.set(item.kanji, item.level);
+            });
+          }
+          console.log(`Loaded ${state.usefulnessMap.size} useful words.`);
+        } catch (e) {
+          console.error("Failed to load usefulness data", e);
+        }
+      }
+      initSudachi();
+
+      const PAGE_SIZE = 100;
+      const KANJI_G1 =
+        "一二三四五六七八九十百千日月火水木金土年山川田石空雨天夕花草竹林森犬虫貝人男女子王目耳口手足力上下左右中大小円白赤青正早気入出立見休生先学校文字本名村町車糸玉音";
+      const KANJI_G2 =
+        "引羽雲園遠何科夏家歌画回会海絵外角楽活間丸岩顔汽記帰弓牛魚京強教近兄形計元言原戸古午後語工公広交光考行高黄合谷国黒今才細作算止市矢姉思紙寺自時室社弱首秋週春書少場色食心新親図数西声星晴切雪船線前組走多太体台地池知茶昼長鳥朝直通弟店点電刀冬当東答頭同道読内南肉馬売買麦半番父風分聞米歩母方北毎妹万明鳴毛門夜野友用曜来里理話";
+
+      // --- DOM Elements ---
+      const ui = {
+        fileInput: document.getElementById("csvFile"),
+        loadingMsg: document.getElementById("loading"),
+        tableBody: document.getElementById("tableBody"),
+        countDisplay: document.getElementById("countDisplay"),
+        pageDisplay: document.getElementById("pageDisplay"),
+        prevBtn: document.getElementById("prevBtn"),
+        nextBtn: document.getElementById("nextBtn"),
+        exportBtn: document.getElementById("exportBtn"),
+        sortBtn: document.getElementById("sortBtn"),
+        checkG1: document.getElementById("grade1"),
+        checkG2: document.getElementById("grade2"),
+        checkRequire: document.getElementById("requireKanji"),
+        customKanjiInput: document.getElementById("customKanji"),
+      };
+
+      // --- Main Logic ---
+      window.app = {
+        applyFilters: () => {
+          if (state.allData.length === 0) return;
+
+          state.isSortedByScore = false; // Reset sort on filter change
+          ui.sortBtn.innerHTML = `<span>⚡</span> Sort by Usefulness`;
+
+          const useG1 = ui.checkG1.checked;
+          const useG2 = ui.checkG2.checked;
+          const requireKanji = ui.checkRequire.checked;
+          const customKanjiText = ui.customKanjiInput.value || "";
+
+          // Build Allowed Set
+          const allowedSet = new Set();
+          if (useG1) KANJI_G1.split("").forEach((k) => allowedSet.add(k));
+          if (useG2) KANJI_G2.split("").forEach((k) => allowedSet.add(k));
+
+          // Add Custom Kanji Input to allowed set
+          for (const char of customKanjiText) {
+            if (/\p{Script=Han}/u.test(char)) {
+              // Simple check for Kanji script
+              allowedSet.add(char);
+            }
+          }
+
+          const isFilteringGrades =
+            useG1 || useG2 || customKanjiText.length > 0;
+          state.filteredIndices = [];
+
+          for (let i = 0; i < state.allData.length; i++) {
+            const row = state.allData[i];
+            const kanjiCount = row.rowKanji.size;
+
+            if (requireKanji && kanjiCount === 0) continue;
+
+            if (isFilteringGrades) {
+              let isValid = true;
+              if (kanjiCount > 0) {
+                for (let k of row.rowKanji) {
+                  if (!allowedSet.has(k)) {
+                    isValid = false;
+                    break;
+                  }
+                }
+              }
+              if (isValid) state.filteredIndices.push(i);
+            } else {
+              state.filteredIndices.push(i);
+            }
+          }
+
+          state.currentPage = 1;
+          renderTable();
+        },
+
+        loadTatoeba: async () => {
+          const response = await fetch("tatoeba-feb2026.tsv");
+          const data = await response.text();
+
+          Papa.parse(data, {
+            header: true,
+            skipEmptyLines: true,
+            quoteChar: "",
+            delimiter: "",
+            complete: function (results) {
+              processData(results.data);
+              ui.loadingMsg.style.display = "none";
+              ui.exportBtn.disabled = false;
+              ui.sortBtn.disabled = false;
+            },
+            error: function (err) {
+              console.error(err);
+              alert("Error parsing CSV");
+              ui.loadingMsg.style.display = "none";
+            },
+          });
+        },
+        // --- Usefulness Sorting Logic ---
+        sortByUsefulness: async () => {
+          if (state.filteredIndices.length === 0) return;
+
+          ui.loadingMsg.style.display = "inline";
+          ui.loadingMsg.innerText = "Analyzing usefulness...";
+          ui.sortBtn.disabled = true;
+
+          // Yield control to UI to render the loading text
+          await new Promise((r) => setTimeout(r, 10));
+
+          const totalRows = state.filteredIndices.length;
+
+          // Process every filtered sentence
+          for (let i = 0; i < totalRows; i++) {
+            const globalIndex = state.filteredIndices[i];
+            const row = state.allData[globalIndex];
+
+            // Only calculate if we haven't already done it for this row
+            if (!row.usefulnessData) {
+              const tokens = sudachiParse(row.jp);
+              const matchedWords = [];
+              let totalInvertedLevel = 0;
+
+              // Logic:
+              // Level 1 = Most Useful. Level 5 = Least.
+              // Score Contribution = 6 - Level (Level 1 gives 5 pts, Level 5 gives 1 pt)
+
+              tokens.forEach((t) => {
+                const dictForm = t.dictionary_form;
+                const normForm = t.normalized_form;
+
+                // Check dictionary form or normalized form
+                let level =
+                  state.usefulnessMap.get(dictForm) ||
+                  state.usefulnessMap.get(normForm);
+
+                if (level) {
+                  matchedWords.push({
+                    surface: t.surface,
+                    reading: t.reading_form,
+                    dict: dictForm,
+                    level: level,
+                  });
+                  totalInvertedLevel += 6 - level;
+                }
+              });
+
+              // Calculate Normalized Score (0 to 1)
+              // We normalize by the length of the sentence (density of useful words)
+              // Max possible score per token is 5 (if it's a level 1 word).
+              // Avoid divide by zero.
+              const tokenCount = tokens.length > 0 ? tokens.length : 1;
+              let score = totalInvertedLevel / (tokenCount * 5);
+              if (score > 1) score = 1;
+
+              row.usefulnessData = {
+                score: score,
+                matchedWords: matchedWords, // Store for display
+              };
+            }
+          }
+
+          // Sort filteredIndices based on the score in state.allData
+          state.filteredIndices.sort((a, b) => {
+            const scoreA = state.allData[a].usefulnessData.score;
+            const scoreB = state.allData[b].usefulnessData.score;
+            return scoreB - scoreA; // Descending order (High score first)
+          });
+
+          state.isSortedByScore = true;
+          ui.sortBtn.innerHTML = `<span>⚡</span> Sorted by Score`;
+          ui.sortBtn.disabled = false;
+          ui.loadingMsg.style.display = "none";
+          ui.loadingMsg.innerText = "Processing...";
+          state.currentPage = 1;
+          renderTable();
+        },
+
+        changePage: (direction) => {
+          const totalPages =
+            Math.ceil(state.filteredIndices.length / PAGE_SIZE) || 1;
+          const newPage = state.currentPage + direction;
+          if (newPage > 0 && newPage <= totalPages) {
+            state.currentPage = newPage;
+            renderTable();
+          }
+        },
+
+        exportCSV: () => {
+          if (state.filteredIndices.length === 0) return;
+
+          const originalText = ui.exportBtn.innerText;
+          ui.exportBtn.innerText = "Processing...";
+          ui.exportBtn.disabled = true;
+
+          setTimeout(() => {
+            const dataToExport = state.filteredIndices.map((i) => {
+              const r = state.allData[i];
+              return { jpid: r.jpid, jp: r.jp, enid: r.enid, en: r.en };
+            });
+
+            const csv = Papa.unparse(dataToExport, { delimiter: "\t" });
+            const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+
+            link.setAttribute("href", url);
+            link.setAttribute(
+              "download",
+              `filtered_kanji_${new Date().toISOString().slice(0, 10)}.csv`,
+            );
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            ui.exportBtn.innerHTML = `<span>📥</span> Export Filtered CSV`;
+            ui.exportBtn.disabled = false;
+          }, 50);
+        },
+
+        // --- Toggle Furigana (Standard Column) ---
+        toggleFurigana: async (tdElement, index) => {
+          if (tdElement.dataset.mode === "ruby") {
+            tdElement.innerHTML = tdElement.dataset.raw;
+            tdElement.dataset.mode = "raw";
+            return;
+          }
+
+          if (!tdElement.dataset.raw) {
+            tdElement.dataset.raw = tdElement.innerText;
+          }
+
+          const rawText = tdElement.dataset.raw;
+          tdElement.innerHTML = `<span style="color:var(--primary)">Analyzing...</span>`;
+          const morphemes = sudachiParse(rawText);
+
+          if (!morphemes) {
+            tdElement.innerHTML = rawText;
+            return;
+          }
+
+          let html = "";
+          const kanjiRegex = /[\u4e00-\u9faf]/;
+
+          morphemes.forEach((m) => {
+            const surface = m.surface;
+            let reading = m.reading_form;
+            if (kanjiRegex.test(surface) && reading) {
+              const hiraganaReading = katakanaToHiragana(reading);
+              const rubyHtml = generateRuby(surface, hiraganaReading);
+              html += rubyHtml;
+            } else {
+              html += surface;
+            }
+          });
+
+          tdElement.innerHTML = html;
+          tdElement.dataset.mode = "ruby";
+        },
+
+        // --- Toggle Furigana (Useful Words Column Item) ---
+        toggleUsefulItem: (spanElement, reading, surface) => {
+          // If already showing ruby, revert
+          if (spanElement.dataset.mode === "ruby") {
+            const level = spanElement.dataset.level;
+            spanElement.innerHTML = `${surface} <span class="level-badge">L${level}</span>`;
+            spanElement.dataset.mode = "raw";
+            return;
+          }
+
+          const hiragana = katakanaToHiragana(reading);
+          const rubyHtml = generateRuby(surface, hiragana);
+          const level = spanElement.dataset.level;
+
+          spanElement.innerHTML = `${rubyHtml} <span class="level-badge">L${level}</span>`;
+          spanElement.dataset.mode = "ruby";
+        },
+      };
+
+      // --- Helper Functions ---
+      function generateRuby(surface, reading) {
+        if (surface === reading) return surface;
+        let sEnd = surface.length - 1;
+        let rEnd = reading.length - 1;
+        let suffix = "";
+        while (sEnd >= 0 && rEnd >= 0) {
+          if (surface[sEnd] === reading[rEnd]) {
+            suffix = surface[sEnd] + suffix;
+            sEnd--;
+            rEnd--;
+          } else break;
+        }
+        let sStart = 0;
+        let rStart = 0;
+        let prefix = "";
+        while (sStart <= sEnd && rStart <= rEnd) {
+          if (surface[sStart] === reading[rStart]) {
+            prefix += surface[sStart];
+            sStart++;
+            rStart++;
+          } else break;
+        }
+        const stemSurface = surface.substring(sStart, sEnd + 1);
+        const stemReading = reading.substring(rStart, rEnd + 1);
+        return `${prefix}<ruby>${stemSurface}<rt>${stemReading}</rt></ruby>${suffix}`;
+      }
+
+      function katakanaToHiragana(input) {
+        return input.replace(/[\u30a1-\u30f6]/g, function (match) {
+          const katakanaCode = match.charCodeAt(0);
+          return String.fromCharCode(katakanaCode - 96);
+        });
+      }
+
+      // --- File Input Listener ---
+      ui.fileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        ui.loadingMsg.style.display = "inline";
+        ui.exportBtn.disabled = true;
+        ui.sortBtn.disabled = true;
+
+        Papa.parse(file, {
+          header: true,
+          skipEmptyLines: true,
+          quoteChar: "",
+          delimiter: "",
+          complete: function (results) {
+            processData(results.data);
+            ui.loadingMsg.style.display = "none";
+            ui.exportBtn.disabled = false;
+            ui.sortBtn.disabled = false;
+          },
+          error: function (err) {
+            console.error(err);
+            alert("Error parsing CSV");
+            ui.loadingMsg.style.display = "none";
+          },
+        });
+      });
+
+      function processData(rawData) {
+        const kanjiRegex = /[\u4e00-\u9faf]/g;
+        state.allData = rawData.map((row) => {
+          const jpSentence = row.jp || "";
+          const matches = jpSentence.match(kanjiRegex) || [];
+          return {
+            jpid: row.jpid,
+            jp: jpSentence,
+            enid: row.enid,
+            en: row.en,
+            rowKanji: new Set(matches),
+            usefulnessData: null, // Will be populated on sort
+          };
+        });
+        window.app.applyFilters();
+      }
+
+      function renderTable() {
+        const totalItems = state.filteredIndices.length;
+        const totalPages = Math.ceil(totalItems / PAGE_SIZE) || 1;
+
+        ui.countDisplay.textContent = `Rows: ${totalItems.toLocaleString()}`;
+        ui.pageDisplay.textContent = `Page ${state.currentPage} / ${totalPages}`;
+        ui.prevBtn.disabled = state.currentPage === 1;
+        ui.nextBtn.disabled =
+          state.currentPage === totalPages || totalItems === 0;
+
+        const startIndex = (state.currentPage - 1) * PAGE_SIZE;
+        const endIndex = startIndex + PAGE_SIZE;
+        const currentIndices = state.filteredIndices.slice(
+          startIndex,
+          endIndex,
+        );
+
+        if (totalItems === 0) {
+          ui.tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:30px;">No rows match the selected filters.</td></tr>`;
+          return;
+        }
+
+        let html = "";
+        for (let idx of currentIndices) {
+          const row = state.allData[idx];
+
+          // Generate Useful Words Column Content
+          let usefulHtml = "-";
+          if (row.usefulnessData) {
+            const scorePercent = (row.usefulnessData.score * 100).toFixed(1);
+            let wordsHtml = row.usefulnessData.matchedWords
+              .map((w) => {
+                return `<span class="useful-word-item" 
+                          data-level="${w.level}" 
+                          onclick="app.toggleUsefulItem(this, '${w.reading}', '${w.surface}')">
+                          ${w.surface} <span class="level-badge">L${w.level}</span>
+                          </span>`;
+              })
+              .join("");
+
+            usefulHtml = `
+                <div class="score-display">Score: ${row.usefulnessData.score.toFixed(3)}</div><br/>
+                ${wordsHtml}
+              `;
+          } else if (state.isSortedByScore) {
+            usefulHtml = `<span style="color:#94a3b8">No useful words found</span>`;
+          }
+
+          html += `
+                <tr>
+                    <td class="jp-col" onclick="app.toggleFurigana(this, ${idx})">${row.jp || ""}</td>
+                    <td class="en-col">${row.en || ""}</td>
+                    <!-- <td class="useful-col">${usefulHtml}</td>-->
+                </tr>
+            `;
+        }
+
+        ui.tableBody.innerHTML = html;
+        document.querySelector(".table-container").scrollTop = 0;
+      }
+    </script>
+  </body>
+</html>
