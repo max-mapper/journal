@@ -314,12 +314,12 @@
                 <label
                   for="customKanji"
                   style="font-weight: bold; font-size: 0.9rem"
-                  >Custom Kanji (Allow list):</label
+                  >Must include one of:</label
                 >
                 <input
                   type="text"
                   id="customKanji"
-                  placeholder="e.g. 何言 (Matches included)"
+                  placeholder=""
                   oninput="app.applyFilters()"
                 />
               </div>
@@ -396,6 +396,9 @@
     </div>
 
     <script type="module">
+      var MIN_LEN = 1;
+      const kanjiRegex = /[\u4e00-\u9faf]/;
+
       console.time("import");
       import {
         SudachiStateless,
@@ -525,16 +528,13 @@
           if (useG1) KANJI_G1.split("").forEach((k) => allowedSet.add(k));
           if (useG2) KANJI_G2.split("").forEach((k) => allowedSet.add(k));
 
+          const secondFilter = new Set();
           // Add Custom Kanji Input to allowed set
           for (const char of customKanjiText) {
-            if (/\p{Script=Han}/u.test(char)) {
-              // Simple check for Kanji script
-              allowedSet.add(char);
-            }
+            secondFilter.add(char);
           }
 
-          const isFilteringGrades =
-            useG1 || useG2 || customKanjiText.length > 0;
+          const isFilteringGrades = useG1 || useG2;
           state.filteredIndices = [];
 
           for (let i = 0; i < state.allData.length; i++) {
@@ -543,20 +543,34 @@
 
             if (requireKanji && kanjiCount === 0) continue;
 
-            if (isFilteringGrades) {
-              let isValid = true;
-              if (kanjiCount > 0) {
-                for (let k of row.rowKanji) {
-                  if (!allowedSet.has(k)) {
-                    isValid = false;
-                    break;
-                  }
+            if (!isFilteringGrades && !secondFilter.size) {
+              state.filteredIndices.push(i);
+              continue;
+            }
+
+            let isValid = true;
+            if (kanjiCount > 0 && isFilteringGrades) {
+              for (let k of row.rowKanji) {
+                if (!allowedSet.has(k)) {
+                  isValid = false;
+                  break;
                 }
               }
-              if (isValid) state.filteredIndices.push(i);
-            } else {
-              state.filteredIndices.push(i);
             }
+            if (!isValid) continue;
+
+            if (!secondFilter.size) {
+              state.filteredIndices.push(i);
+              continue;
+            }
+
+            let matchesOneOrMore = false;
+            for (let k of row.rowKanji) {
+              if (secondFilter.has(k)) {
+                matchesOneOrMore = true;
+              }
+            }
+            if (matchesOneOrMore) state.filteredIndices.push(i);
           }
 
           state.currentPage = 1;
@@ -567,7 +581,6 @@
           statusEl.innerText = "Downloading tatoeba...";
 
           const data = await fetchAndGunzip("tatoeba-feb2026.tsv.gz", true);
-
           Papa.parse(data, {
             header: true,
             skipEmptyLines: true,
@@ -636,13 +649,14 @@
                 }
               });
 
-              // Calculate Normalized Score (0 to 1)
+              // Calculate Normalized Score
               // We normalize by the length of the sentence (density of useful words)
               // Max possible score per token is 5 (if it's a level 1 word).
               // Avoid divide by zero.
-              const tokenCount = tokens.length > 0 ? tokens.length : 1;
-              let score = totalInvertedLevel / (tokenCount * 5);
-              if (score > 1) score = 1;
+              // const tokenCount = tokens.length > 0 ? tokens.length : 1;
+              // let score = totalInvertedLevel / (tokenCount * 5);
+              // if (score > 1) score = 1;
+              let score = totalInvertedLevel;
 
               row.usefulnessData = {
                 score: score,
@@ -664,7 +678,6 @@
           ui.sortBtn.innerHTML = `<span>⚡</span> Sorted by Score`;
           ui.sortBtn.disabled = false;
           ui.loadingMsg.style.display = "none";
-          statusEl.innerText = "Processing...";
           state.currentPage = 1;
           renderTable();
         },
@@ -733,7 +746,6 @@
           }
 
           let html = "";
-          const kanjiRegex = /[\u4e00-\u9faf]/;
 
           morphemes.forEach((m) => {
             const surface = m.surface;
@@ -834,17 +846,19 @@
 
       function processData(rawData) {
         const kanjiRegex = /[\u4e00-\u9faf]/g;
-        state.allData = rawData.map((row) => {
+        state.allData = [];
+        rawData.forEach((row) => {
           const jpSentence = row.jp || "";
+          if (jpSentence.length < MIN_LEN) return;
           const matches = jpSentence.match(kanjiRegex) || [];
-          return {
+          state.allData.push({
             jpid: row.jpid,
             jp: jpSentence,
             enid: row.enid,
             en: row.en,
             rowKanji: new Set(matches),
             usefulnessData: null, // Will be populated on sort
-          };
+          });
         });
         window.app.applyFilters();
       }
