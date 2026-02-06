@@ -230,21 +230,6 @@
         font-size: 0.9em;
       } */
 
-      /* Click hint */
-      .jp-col:hover::after,
-      .useful-word-item:hover::after {
-        content: "Analyze";
-        position: absolute;
-        top: 2px;
-        right: 5px;
-        font-size: 0.6rem;
-        color: var(--primary);
-        background: rgba(255, 255, 255, 0.9);
-        padding: 2px 4px;
-        border-radius: 4px;
-        pointer-events: none;
-      }
-
       #loading {
         display: none;
         color: var(--primary);
@@ -301,6 +286,7 @@
             <button class="sort-btn" onclick="app.loadTatoeba()">
               Load Tatoeba Export
             </button>
+            <span class="status"></span>
           </div>
           <div class="filters">
             <div class="filter-row">
@@ -390,8 +376,8 @@
         <table>
           <thead>
             <tr>
-              <th class="jp-col">Japanese (Click to Add Furigana)</th>
-              <th class="en-col">English</th>
+              <th class="jp-col"></th>
+              <th class="en-col"></th>
               <!-- <th class="useful-col">Useful Words & Score</th> -->
             </tr>
           </thead>
@@ -417,6 +403,8 @@
       } from "./sudachi-wasm/sudachi.js";
       console.timeEnd("import");
 
+      var statusEl = document.querySelector(".status");
+
       // --- Global App State ---
       const state = (window.state = {
         allData: [],
@@ -429,9 +417,13 @@
 
       function sudachiParse(text) {
         if (!state.sudachi) return [];
-        return JSON.parse(
-          state.sudachi.tokenize_stringified(text, TokenizeMode.C),
-        );
+        try {
+          return JSON.parse(
+            state.sudachi.tokenize_stringified(text, TokenizeMode.C),
+          );
+        } catch (err) {
+          statusEl.innerText = "Sudachi error: " + err.message;
+        }
       }
       window.sudachiParse = sudachiParse;
 
@@ -455,13 +447,21 @@
       }
 
       async function initSudachi() {
-        console.time("gunzip");
-        let dict = await fetchAndGunzip("sudachi-wasm/resources/system.dic.gz");
-        console.timeEnd("gunzip");
-        console.time("init");
-        state.sudachi = new SudachiStateless();
-        await state.sudachi.initialize_from_bytes(dict);
-        console.timeEnd("init");
+        try {
+          console.time("gunzip");
+          statusEl.innerText = "Downloading dictionary...";
+          let dict = await fetchAndGunzip(
+            "sudachi-wasm/resources/system.dic.gz",
+          );
+          console.timeEnd("gunzip");
+          console.time("init");
+          state.sudachi = new SudachiStateless();
+          await state.sudachi.initialize_from_bytes(dict);
+          console.timeEnd("init");
+          statusEl.innerText = "Dictionary loaded";
+        } catch (err) {
+          statusEl.innerText = "Dict error: " + err.message;
+        }
 
         // Load Usefulness Data
         try {
