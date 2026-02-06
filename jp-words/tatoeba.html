@@ -276,7 +276,7 @@
   <body>
     <div class="container">
       <header>
-        <h1>CSV Kanji Filter & Sudachi Analyzer</h1>
+        <h1>Tatoeba Explorer</h1>
         <div class="controls">
           <div class="filters">
             <div class="file-upload">
@@ -427,7 +427,7 @@
       }
       window.sudachiParse = sudachiParse;
 
-      async function fetchAndGunzip(url) {
+      async function fetchAndGunzip(url, asBlob = false) {
         // 1. Fetch the compressed resource
         const response = await fetch(url);
 
@@ -440,6 +440,7 @@
         // 3. Consume the stream and convert to Uint8Array
         // Response.blob() or Response.arrayBuffer() efficiently handles streaming data
         const blob = await new Response(decompressedStream).blob();
+        if (asBlob) return blob;
         const buffer = await blob.arrayBuffer();
         const uint8Array = new Uint8Array(buffer);
 
@@ -563,8 +564,9 @@
         },
 
         loadTatoeba: async () => {
-          const response = await fetch("tatoeba-feb2026.tsv");
-          const data = await response.text();
+          statusEl.innerText = "Downloading tatoeba...";
+
+          const data = await fetchAndGunzip("tatoeba-feb2026.tsv.gz", true);
 
           Papa.parse(data, {
             header: true,
@@ -573,13 +575,15 @@
             delimiter: "",
             complete: function (results) {
               processData(results.data);
+              statusEl.innerText = "Tatoeba loaded";
+
               ui.loadingMsg.style.display = "none";
               ui.exportBtn.disabled = false;
               ui.sortBtn.disabled = false;
             },
             error: function (err) {
               console.error(err);
-              alert("Error parsing CSV");
+              statusEl.innerText = "Error: " + err.message;
               ui.loadingMsg.style.display = "none";
             },
           });
@@ -589,7 +593,7 @@
           if (state.filteredIndices.length === 0) return;
 
           ui.loadingMsg.style.display = "inline";
-          ui.loadingMsg.innerText = "Analyzing usefulness...";
+          statusEl.innerText = "Analyzing usefulness...";
           ui.sortBtn.disabled = true;
 
           // Yield control to UI to render the loading text
@@ -655,10 +659,12 @@
           });
 
           state.isSortedByScore = true;
+          statusEl.innerText = "Sorting complete";
+
           ui.sortBtn.innerHTML = `<span>⚡</span> Sorted by Score`;
           ui.sortBtn.disabled = false;
           ui.loadingMsg.style.display = "none";
-          ui.loadingMsg.innerText = "Processing...";
+          statusEl.innerText = "Processing...";
           state.currentPage = 1;
           renderTable();
         },
@@ -811,7 +817,6 @@
         Papa.parse(file, {
           header: true,
           skipEmptyLines: true,
-          quoteChar: "",
           delimiter: "",
           complete: function (results) {
             processData(results.data);
@@ -876,8 +881,8 @@
             const scorePercent = (row.usefulnessData.score * 100).toFixed(1);
             let wordsHtml = row.usefulnessData.matchedWords
               .map((w) => {
-                return `<span class="useful-word-item" 
-                          data-level="${w.level}" 
+                return `<span class="useful-word-item"
+                          data-level="${w.level}"
                           onclick="app.toggleUsefulItem(this, '${w.reading}', '${w.surface}')">
                           ${w.surface} <span class="level-badge">L${w.level}</span>
                           </span>`;
