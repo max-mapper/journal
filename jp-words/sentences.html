@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kanji Sentence Filter with Sudachi</title>
+    <title>Sentence Explorer</title>
     <!-- PapaParse for fast CSV parsing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <style>
@@ -276,15 +276,15 @@
   <body>
     <div class="container">
       <header>
-        <h1>Tatoeba Explorer</h1>
+        <h1>Sentence Explorer</h1>
         <div class="controls">
           <div class="filters">
             <div class="file-upload">
               <input type="file" id="csvFile" accept=".csv, .txt, .tsv" />
               <span id="loading">Processing...</span>
             </div>
-            <button class="sort-btn" onclick="app.loadTatoeba()">
-              Load Tatoeba Export
+            <button class="sort-btn" onclick="app.loadExamples()">
+              Load Example Sentences
             </button>
             <span class="status"></span>
           </div>
@@ -577,10 +577,10 @@
           renderTable();
         },
 
-        loadTatoeba: async () => {
-          statusEl.innerText = "Downloading tatoeba...";
+        loadExamples: async () => {
+          statusEl.innerText = "Downloading examples...";
 
-          const data = await fetchAndGunzip("tatoeba-feb2026.tsv.gz", true);
+          const data = await fetchAndGunzip("iyaku-sentences.tsv.gz", true);
           Papa.parse(data, {
             header: true,
             skipEmptyLines: true,
@@ -588,7 +588,7 @@
             delimiter: "",
             complete: function (results) {
               processData(results.data);
-              statusEl.innerText = "Tatoeba loaded";
+              statusEl.innerText = "Examples loaded";
 
               ui.loadingMsg.style.display = "none";
               ui.exportBtn.disabled = false;
