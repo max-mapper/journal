@@ -16,7 +16,8 @@
         --surface: #ffffff;
         --border: #e2e8f0;
         --text: #1e293b;
-        --ruby-color: #64748b;
+        --highlight-bg: #e0f2fe;
+        --highlight-text: #0369a1;
       }
 
       body {
@@ -31,7 +32,7 @@
       }
 
       .container {
-        max-width: 1400px; /* Increased for 3rd column */
+        max-width: 1200px;
         margin: 0 auto;
       }
 
@@ -55,7 +56,6 @@
         gap: 20px;
         align-items: flex-start;
       }
-
       .file-upload {
         border: 2px dashed var(--border);
         padding: 15px;
@@ -64,14 +64,12 @@
         flex: 1;
         min-width: 250px;
       }
-
       .filters {
         display: flex;
         flex-direction: column;
         gap: 15px;
         flex: 3;
       }
-
       .filter-row {
         display: flex;
         flex-wrap: wrap;
@@ -84,7 +82,6 @@
         flex-direction: column;
         gap: 5px;
       }
-
       .input-group input[type="text"] {
         padding: 6px 10px;
         border: 1px solid var(--border);
@@ -101,7 +98,6 @@
         font-weight: 500;
         user-select: none;
       }
-
       input[type="checkbox"] {
         width: 16px;
         height: 16px;
@@ -130,7 +126,6 @@
         align-items: center;
         gap: 8px;
       }
-
       .export-btn {
         background-color: var(--success);
         color: white;
@@ -138,7 +133,6 @@
       .export-btn:hover {
         background-color: #15803d;
       }
-
       .sort-btn {
         background-color: var(--warning);
         color: white;
@@ -146,7 +140,6 @@
       .sort-btn:hover {
         background-color: #d97706;
       }
-
       button:disabled {
         background-color: #94a3b8;
         cursor: not-allowed;
@@ -165,7 +158,6 @@
         border: 1px solid var(--border);
         font-size: 0.95rem;
       }
-
       .pagination button {
         background: var(--primary);
         color: white;
@@ -189,7 +181,6 @@
         font-size: 18px;
         table-layout: fixed;
       }
-
       th,
       td {
         padding: 14px 18px;
@@ -197,14 +188,12 @@
         border-bottom: 1px solid var(--border);
         vertical-align: top;
       }
-
       th {
         background-color: #f8fafc;
         font-weight: 600;
         color: #475569;
         border-bottom: 2px solid var(--border);
       }
-
       tr:hover td {
         background-color: #f1f5f9;
       }
@@ -213,63 +202,84 @@
       .jp-col {
         width: 50%;
         border-right: 1px solid #f1f5f9;
-        cursor: pointer;
-        position: relative;
       }
       .en-col {
         color: rgba(0, 0, 0, 0);
         width: 50%;
-        border-right: 1px solid #f1f5f9;
       }
       .en-col:hover {
         color: #334155;
       }
-      /* .useful-col {
-        width: 30%;
-        color: #334155;
-        font-size: 0.9em;
-      } */
+
+      ruby {
+        ruby-position: over;
+      }
+      rt {
+        font-size: 0.6em;
+        color: rgba(0, 0, 0, 0); /* var(--ruby-color) */
+        user-select: none;
+      }
+      ruby:hover rt,
+      rt:hover {
+        color: #64748b;
+      }
+
+      /* Ensure highlights play nicely with ruby */
+      .highlighted-word {
+        /* Existing styles... */
+        /* background-color: var(--highlight-bg); */
+        color: var(--highlight-text);
+        /* border-bottom: 2px solid var(--primary); */
+        /* border-radius: 4px; */
+        /* padding: 0 2px; */
+        cursor: help;
+        transition: background 0.2s;
+        /* Tweaks for ruby layout */
+        display: inline-block;
+        line-height: 1.8;
+      }
+      .highlighted-word:hover {
+        font-weight: bold;
+      }
+
+      /* Tooltip Styling */
+      #tooltip {
+        position: fixed;
+        display: none;
+        background: #1e293b;
+        color: #fff;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        max-width: 320px;
+        z-index: 2000;
+        pointer-events: none; /* Allows mouse to move without flickering */
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        line-height: 1.5;
+      }
+
+      #tooltip .entry {
+        margin-bottom: 1px;
+        border-bottom: 1px solid #647080;
+        padding-bottom: 1px;
+      }
+      #tooltip .entry:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      #tooltip i {
+        color: #94a3b8;
+        font-size: 0.85em;
+      }
 
       #loading {
         display: none;
         color: var(--primary);
         font-weight: bold;
         margin-left: 10px;
-      }
-
-      /* Ruby Text Styling */
-      ruby {
-        ruby-position: over;
-      }
-      rt {
-        font-size: 0.6em;
-        color: var(--ruby-color);
-        user-select: none;
-      }
-
-      /* Useful Words Tags */
-      .useful-word-item {
-        display: inline-block;
-        background: #e0f2fe;
-        color: #0369a1;
-        padding: 2px 8px;
-        border-radius: 12px;
-        margin: 2px;
-        cursor: pointer;
-        position: relative;
-        border: 1px solid #bae6fd;
-      }
-      .level-badge {
-        font-size: 0.75em;
-        font-weight: bold;
-        margin-left: 4px;
-        color: #0c4a6e;
-      }
-      .score-display {
-        display: inline-block;
-        font-weight: bold;
-        color: var(--warning);
-        margin-bottom: 5px;
       }
     </style>
   </head>
@@ -371,20 +381,19 @@
           </button>
         </div>
       </div>
-
+      <!-- Inside the body container -->
       <div class="table-container">
         <table>
           <thead>
             <tr>
-              <th class="jp-col"></th>
-              <th class="en-col"></th>
-              <!-- <th class="useful-col">Useful Words & Score</th> -->
+              <th class="jp-col">Japanese</th>
+              <th class="en-col">English</th>
             </tr>
           </thead>
           <tbody id="tableBody">
             <tr>
               <td
-                colspan="3"
+                colspan="2"
                 style="text-align: center; padding: 30px; color: #64748b"
               >
                 Please upload a CSV file to begin.
@@ -393,11 +402,19 @@
           </tbody>
         </table>
       </div>
+
+      <!-- Tooltip Container -->
+      <div id="tooltip"></div>
     </div>
 
     <script type="module">
+      // --- Global Variables & Imports ---
       var MIN_LEN = 1;
-      const kanjiRegex = /[\u4e00-\u9faf]/;
+      const KANJI_G1 =
+        "一二三四五六七八九十百千日月火水木金土年山川田石空雨天夕花草竹林森犬虫貝人男女子王目耳口手足力上下左右中大小円白赤青正早気入出立見休生先学校文字本名村町車糸玉音";
+      const KANJI_G2 =
+        "引羽雲園遠何科夏家歌画回会海絵外角楽活間丸岩顔汽記帰弓牛魚京強教近兄形計元言原戸古午後語工公広交光考行高黄合谷国黒今才細作算止市矢姉思紙寺自時室社弱首秋週春書少場色食心新親図数西声星晴切雪船線前組走多太体台地池知茶昼長鳥朝直通弟店点電刀冬当東答頭同道読内南肉馬売買麦半番父風分聞米歩母方北毎妹万明鳴毛門夜野友用曜来里理話";
+      const kanjiRegex = /[\u4e00-\u9faf]/g;
 
       console.time("import");
       import {
@@ -406,62 +423,108 @@
       } from "./sudachi-wasm/sudachi.js";
       console.timeEnd("import");
 
-      var statusEl = document.querySelector(".status");
+      const statusEl = document.querySelector(".status");
+      const tooltip = document.getElementById("tooltip");
+      let db;
 
-      // --- Global App State ---
+      // --- App State ---
       const state = (window.state = {
         allData: [],
         filteredIndices: [],
         currentPage: 1,
         sudachi: null,
-        usefulnessMap: new Map(), // O(1) Lookup
+        usefulnessMap: new Map(),
         isSortedByScore: false,
       });
 
-      function sudachiParse(text) {
-        if (!state.sudachi) return [];
-        try {
-          return JSON.parse(
-            state.sudachi.tokenize_stringified(text, TokenizeMode.C),
-          );
-        } catch (err) {
-          statusEl.innerText = "Sudachi error: " + err.message;
-        }
-      }
-      window.sudachiParse = sudachiParse;
-
-      async function fetchAndGunzip(url, asBlob = false) {
-        // 1. Fetch the compressed resource
+      // --- Helpers: Dictionary & Parsing ---
+      async function fetchAndGunzip(url) {
         const response = await fetch(url);
-
         if (!response.body) throw new Error("No response body");
-
-        // 2. Pipe the stream through DecompressionStream
         const ds = new DecompressionStream("gzip");
-        const decompressedStream = response.body.pipeThrough(ds);
-
-        // 3. Consume the stream and convert to Uint8Array
-        // Response.blob() or Response.arrayBuffer() efficiently handles streaming data
-        const blob = await new Response(decompressedStream).blob();
-        if (asBlob) return blob;
-        const buffer = await blob.arrayBuffer();
-        const uint8Array = new Uint8Array(buffer);
-
-        return uint8Array;
+        const stream = response.body.pipeThrough(ds);
+        return await new Response(stream).blob();
       }
 
+      function isKanji(ch) {
+        return (ch >= "\u4e00" && ch <= "\u9faf") || ch === "々";
+      }
+      function isKana(char) {
+        return /[\u3040-\u309f\u30a0-\u30ff\u30fc]/.test(char);
+      }
+
+      function katakanaToHiragana(input) {
+        return input.replace(/[\u30a1-\u30f6]/g, function (match) {
+          var code = match.charCodeAt(0) - 0x60;
+          return String.fromCharCode(code);
+        });
+      }
+
+      function generateRuby(surface, reading) {
+        if (surface === reading) return surface;
+
+        // Find matching suffix
+        let sEnd = surface.length;
+        let rEnd = reading.length;
+        while (sEnd > 0 && rEnd > 0) {
+          if (surface[sEnd - 1] === reading[rEnd - 1]) {
+            sEnd--;
+            rEnd--;
+          } else break;
+        }
+
+        // Find matching prefix
+        let sStart = 0;
+        let rStart = 0;
+        while (sStart < sEnd && rStart < rEnd) {
+          if (surface[sStart] === reading[rStart]) {
+            sStart++;
+            rStart++;
+          } else break;
+        }
+
+        const prefix = surface.substring(0, sStart);
+        const suffix = surface.substring(sEnd);
+        const coreSurface = surface.substring(sStart, sEnd);
+        const coreReading = reading.substring(rStart, rEnd);
+
+        // Don't ruby if core is empty or just kana
+        if (!coreSurface) return surface;
+
+        return `${prefix}<ruby>${coreSurface}<rt>${coreReading}</rt></ruby>${suffix}`;
+      }
+
+      async function searchDictionary(term) {
+        if (!db) {
+          tooltip.innerHTML = "Loading dictionary...";
+          let blob = await fetchAndGunzip("jpdict.json.gz");
+          db = JSON.parse(await blob.text());
+        }
+
+        let idx = db.index[term];
+        if (!idx && term.length > 1) {
+          let last = term[term.length - 1];
+          let lastlast = term[term.length - 2];
+          if (isKanji(lastlast) && isKana(last)) {
+            idx = db.index[term.slice(0, term.length - 1)];
+          }
+        }
+        if (!idx) return null;
+        return db.defs[idx[0]];
+      }
+
+      // --- Sudachi Handling ---
       async function initSudachi() {
         try {
-          console.time("gunzip");
           statusEl.innerText = "Downloading dictionary...";
-          let dict = await fetchAndGunzip(
+          let dictBlob = await fetchAndGunzip(
             "sudachi-wasm/resources/system.dic.gz",
           );
-          console.timeEnd("gunzip");
-          console.time("init");
+          const buffer = await dictBlob.arrayBuffer();
+          const uint8Array = new Uint8Array(buffer);
+
           state.sudachi = new SudachiStateless();
-          await state.sudachi.initialize_from_bytes(dict);
-          console.timeEnd("init");
+          await state.sudachi.initialize_from_bytes(uint8Array);
           statusEl.innerText = "Dictionary loaded";
         } catch (err) {
           statusEl.innerText = "Dict error: " + err.message;
@@ -471,29 +534,29 @@
         try {
           const response = await fetch("kanshudo-usefulness.json");
           const data = await response.json();
-
-          // Build map for fast lookup: Key = Kanji/Word, Value = Level
-          // We map both valid spelling and reading to be safe, though dictionary match is best
           if (data && data.usefulness) {
             data.usefulness.forEach((item) => {
-              // Mapping the kanji form (e.g. "赤ちゃん")
               state.usefulnessMap.set(item.kanji, item.level);
             });
           }
-          console.log(`Loaded ${state.usefulnessMap.size} useful words.`);
         } catch (e) {
           console.error("Failed to load usefulness data", e);
         }
       }
       initSudachi();
 
-      const PAGE_SIZE = 100;
-      const KANJI_G1 =
-        "一二三四五六七八九十百千日月火水木金土年山川田石空雨天夕花草竹林森犬虫貝人男女子王目耳口手足力上下左右中大小円白赤青正早気入出立見休生先学校文字本名村町車糸玉音";
-      const KANJI_G2 =
-        "引羽雲園遠何科夏家歌画回会海絵外角楽活間丸岩顔汽記帰弓牛魚京強教近兄形計元言原戸古午後語工公広交光考行高黄合谷国黒今才細作算止市矢姉思紙寺自時室社弱首秋週春書少場色食心新親図数西声星晴切雪船線前組走多太体台地池知茶昼長鳥朝直通弟店点電刀冬当東答頭同道読内南肉馬売買麦半番父風分聞米歩母方北毎妹万明鳴毛門夜野友用曜来里理話";
+      function sudachiParse(text) {
+        if (!state.sudachi) return [];
+        try {
+          return JSON.parse(
+            state.sudachi.tokenize_stringified(text, TokenizeMode.C),
+          );
+        } catch (err) {
+          return [];
+        }
+      }
 
-      // --- DOM Elements ---
+      // --- UI Elements ---
       const ui = {
         fileInput: document.getElementById("csvFile"),
         loadingMsg: document.getElementById("loading"),
@@ -579,102 +642,56 @@
 
         loadExamples: async () => {
           statusEl.innerText = "Downloading examples...";
-
-          const data = await fetchAndGunzip("iyaku-sentences.tsv.gz", true);
-          Papa.parse(data, {
+          const blob = await fetchAndGunzip("iyaku-sentences.tsv.gz");
+          const text = await blob.text();
+          Papa.parse(text, {
             header: true,
             skipEmptyLines: true,
             quoteChar: "",
-            delimiter: "",
+            delimiter: "\t",
             complete: function (results) {
               processData(results.data);
               statusEl.innerText = "Examples loaded";
-
               ui.loadingMsg.style.display = "none";
               ui.exportBtn.disabled = false;
               ui.sortBtn.disabled = false;
             },
-            error: function (err) {
-              console.error(err);
-              statusEl.innerText = "Error: " + err.message;
-              ui.loadingMsg.style.display = "none";
-            },
           });
         },
-        // --- Usefulness Sorting Logic ---
+
         sortByUsefulness: async () => {
           if (state.filteredIndices.length === 0) return;
-
           ui.loadingMsg.style.display = "inline";
           statusEl.innerText = "Analyzing usefulness...";
           ui.sortBtn.disabled = true;
-
-          // Yield control to UI to render the loading text
           await new Promise((r) => setTimeout(r, 10));
 
-          const totalRows = state.filteredIndices.length;
-
-          // Process every filtered sentence
-          for (let i = 0; i < totalRows; i++) {
+          for (let i = 0; i < state.filteredIndices.length; i++) {
             const globalIndex = state.filteredIndices[i];
             const row = state.allData[globalIndex];
-
-            // Only calculate if we haven't already done it for this row
+            // Calculate Score only (Parsing for display happens in renderTable)
             if (!row.usefulnessData) {
               const tokens = sudachiParse(row.jp);
-              const matchedWords = [];
               let totalInvertedLevel = 0;
-
-              // Logic:
-              // Level 1 = Most Useful. Level 5 = Least.
-              // Score Contribution = 6 - Level (Level 1 gives 5 pts, Level 5 gives 1 pt)
-
               tokens.forEach((t) => {
-                const dictForm = t.dictionary_form;
-                const normForm = t.normalized_form;
-
-                // Check dictionary form or normalized form
                 let level =
-                  state.usefulnessMap.get(dictForm) ||
-                  state.usefulnessMap.get(normForm);
-
-                if (level) {
-                  matchedWords.push({
-                    surface: t.surface,
-                    reading: t.reading_form,
-                    dict: dictForm,
-                    level: level,
-                  });
-                  totalInvertedLevel += 6 - level;
-                }
+                  state.usefulnessMap.get(t.dictionary_form) ||
+                  state.usefulnessMap.get(t.normalized_form);
+                if (level) totalInvertedLevel += 6 - level;
               });
-
-              // Calculate Normalized Score
-              // We normalize by the length of the sentence (density of useful words)
-              // Max possible score per token is 5 (if it's a level 1 word).
-              // Avoid divide by zero.
-              // const tokenCount = tokens.length > 0 ? tokens.length : 1;
-              // let score = totalInvertedLevel / (tokenCount * 5);
-              // if (score > 1) score = 1;
-              let score = totalInvertedLevel;
-
-              row.usefulnessData = {
-                score: score,
-                matchedWords: matchedWords, // Store for display
-              };
+              row.usefulnessData = { score: totalInvertedLevel };
             }
           }
 
-          // Sort filteredIndices based on the score in state.allData
           state.filteredIndices.sort((a, b) => {
-            const scoreA = state.allData[a].usefulnessData.score;
-            const scoreB = state.allData[b].usefulnessData.score;
-            return scoreB - scoreA; // Descending order (High score first)
+            return (
+              state.allData[b].usefulnessData.score -
+              state.allData[a].usefulnessData.score
+            );
           });
 
           state.isSortedByScore = true;
           statusEl.innerText = "Sorting complete";
-
           ui.sortBtn.innerHTML = `<span>⚡</span> Sorted by Score`;
           ui.sortBtn.disabled = false;
           ui.loadingMsg.style.display = "none";
@@ -682,150 +699,71 @@
           renderTable();
         },
 
-        changePage: (direction) => {
-          const totalPages =
-            Math.ceil(state.filteredIndices.length / PAGE_SIZE) || 1;
-          const newPage = state.currentPage + direction;
-          if (newPage > 0 && newPage <= totalPages) {
-            state.currentPage = newPage;
+        changePage: (d) => {
+          const t = Math.ceil(state.filteredIndices.length / 3) || 1;
+          const n = state.currentPage + d;
+          if (n > 0 && n <= t) {
+            state.currentPage = n;
             renderTable();
           }
         },
 
         exportCSV: () => {
-          if (state.filteredIndices.length === 0) return;
-
-          const originalText = ui.exportBtn.innerText;
-          ui.exportBtn.innerText = "Processing...";
-          ui.exportBtn.disabled = true;
-
-          setTimeout(() => {
-            const dataToExport = state.filteredIndices.map((i) => {
-              const r = state.allData[i];
-              return { jpid: r.jpid, jp: r.jp, enid: r.enid, en: r.en };
-            });
-
-            const csv = Papa.unparse(dataToExport, { delimiter: "\t" });
-            const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-
-            link.setAttribute("href", url);
-            link.setAttribute(
-              "download",
-              `filtered_kanji_${new Date().toISOString().slice(0, 10)}.csv`,
-            );
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-            ui.exportBtn.innerHTML = `<span>📥</span> Export Filtered CSV`;
-            ui.exportBtn.disabled = false;
-          }, 50);
-        },
-
-        // --- Toggle Furigana (Standard Column) ---
-        toggleFurigana: async (tdElement, index) => {
-          if (tdElement.dataset.mode === "ruby") {
-            tdElement.innerHTML = tdElement.dataset.raw;
-            tdElement.dataset.mode = "raw";
-            return;
-          }
-
-          if (!tdElement.dataset.raw) {
-            tdElement.dataset.raw = tdElement.innerText;
-          }
-
-          const rawText = tdElement.dataset.raw;
-          tdElement.innerHTML = `<span style="color:var(--primary)">Analyzing...</span>`;
-          const morphemes = sudachiParse(rawText);
-
-          if (!morphemes) {
-            tdElement.innerHTML = rawText;
-            return;
-          }
-
-          let html = "";
-
-          morphemes.forEach((m) => {
-            const surface = m.surface;
-            let reading = m.reading_form;
-            if (kanjiRegex.test(surface) && reading) {
-              const hiraganaReading = katakanaToHiragana(reading);
-              const rubyHtml = generateRuby(surface, hiraganaReading);
-              html += rubyHtml;
-            } else {
-              html += surface;
-            }
+          const dataToExport = state.filteredIndices.map((i) => {
+            const r = state.allData[i];
+            return { jpid: r.jpid, jp: r.jp, enid: r.enid, en: r.en };
           });
-
-          tdElement.innerHTML = html;
-          tdElement.dataset.mode = "ruby";
-        },
-
-        // --- Toggle Furigana (Useful Words Column Item) ---
-        toggleUsefulItem: (spanElement, reading, surface) => {
-          // If already showing ruby, revert
-          if (spanElement.dataset.mode === "ruby") {
-            const level = spanElement.dataset.level;
-            spanElement.innerHTML = `${surface} <span class="level-badge">L${level}</span>`;
-            spanElement.dataset.mode = "raw";
-            return;
-          }
-
-          const hiragana = katakanaToHiragana(reading);
-          const rubyHtml = generateRuby(surface, hiragana);
-          const level = spanElement.dataset.level;
-
-          spanElement.innerHTML = `${rubyHtml} <span class="level-badge">L${level}</span>`;
-          spanElement.dataset.mode = "ruby";
+          const csv = Papa.unparse(dataToExport, { delimiter: "\t" });
+          const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = `filtered.csv`;
+          link.click();
         },
       };
 
-      // --- Helper Functions ---
-      function generateRuby(surface, reading) {
-        if (surface === reading) return surface;
-        let sEnd = surface.length - 1;
-        let rEnd = reading.length - 1;
-        let suffix = "";
-        while (sEnd >= 0 && rEnd >= 0) {
-          if (surface[sEnd] === reading[rEnd]) {
-            suffix = surface[sEnd] + suffix;
-            sEnd--;
-            rEnd--;
-          } else break;
-        }
-        let sStart = 0;
-        let rStart = 0;
-        let prefix = "";
-        while (sStart <= sEnd && rStart <= rEnd) {
-          if (surface[sStart] === reading[rStart]) {
-            prefix += surface[sStart];
-            sStart++;
-            rStart++;
-          } else break;
-        }
-        const stemSurface = surface.substring(sStart, sEnd + 1);
-        const stemReading = reading.substring(rStart, rEnd + 1);
-        return `${prefix}<ruby>${stemSurface}<rt>${stemReading}</rt></ruby>${suffix}`;
-      }
+      // --- Interaction Logic (Tooltip) ---
+      window.handleMouseOver = async (e) => {
+        // Use closest() to handle hovering over the ruby/rt tags inside the span
+        const target = e.target.closest("[data-kanji]");
+        if (!target) return;
 
-      function katakanaToHiragana(input) {
-        return input.replace(/[\u30a1-\u30f6]/g, function (match) {
-          const katakanaCode = match.charCodeAt(0);
-          return String.fromCharCode(katakanaCode - 96);
-        });
-      }
+        const kanji = target.getAttribute("data-kanji");
 
-      // --- File Input Listener ---
+        tooltip.style.display = "block";
+        tooltip.style.left = e.clientX + 15 + "px";
+        tooltip.style.top = e.clientY + 15 + "px";
+        tooltip.innerHTML = `<strong>${kanji}</strong><br/>Loading...`;
+
+        const results = await searchDictionary(kanji);
+        console.log(results);
+        if (results) {
+          let out = ``;
+          results.forEach((g) => {
+            out += `<div class="entry">`;
+            if (g.info && g.info.length) out += `<i>${g.info}</i><br/>`;
+            out += `${g.gloss.join(", ")}
+              </div>`;
+          });
+          tooltip.innerHTML = out;
+        } else {
+          tooltip.innerHTML = `No definition found for "${kanji}"`;
+        }
+      };
+
+      window.handleMouseOut = (e) => {
+        // Hide if we leave the span (bubbling handles child elements)
+        const target = e.target.closest("[data-kanji]");
+        if (target) {
+          tooltip.style.display = "none";
+        }
+      };
+
       ui.fileInput.addEventListener("change", (e) => {
         const file = e.target.files[0];
         if (!file) return;
-
         ui.loadingMsg.style.display = "inline";
-        ui.exportBtn.disabled = true;
-        ui.sortBtn.disabled = true;
-
         Papa.parse(file, {
           header: true,
           skipEmptyLines: true,
@@ -836,8 +774,7 @@
             ui.exportBtn.disabled = false;
             ui.sortBtn.disabled = false;
           },
-          error: function (err) {
-            console.error(err);
+          error: () => {
             alert("Error parsing CSV");
             ui.loadingMsg.style.display = "none";
           },
@@ -845,7 +782,6 @@
       });
 
       function processData(rawData) {
-        const kanjiRegex = /[\u4e00-\u9faf]/g;
         state.allData = [];
         rawData.forEach((row) => {
           const jpSentence = row.jp || "";
@@ -864,6 +800,8 @@
       }
 
       function renderTable() {
+        const PAGE_SIZE = 10;
+
         const totalItems = state.filteredIndices.length;
         const totalPages = Math.ceil(totalItems / PAGE_SIZE) || 1;
 
@@ -874,54 +812,57 @@
           state.currentPage === totalPages || totalItems === 0;
 
         const startIndex = (state.currentPage - 1) * PAGE_SIZE;
-        const endIndex = startIndex + PAGE_SIZE;
-        const currentIndices = state.filteredIndices.slice(
+        const indices = state.filteredIndices.slice(
           startIndex,
-          endIndex,
+          startIndex + PAGE_SIZE,
         );
 
         if (totalItems === 0) {
-          ui.tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:30px;">No rows match the selected filters.</td></tr>`;
+          ui.tableBody.innerHTML = `<tr><td colspan="2" style="text-align:center; padding:30px;">No rows match filters.</td></tr>`;
           return;
         }
 
         let html = "";
-        for (let idx of currentIndices) {
+        for (let idx of indices) {
           const row = state.allData[idx];
+          let jpDisplay = row.jp;
 
-          // Generate Useful Words Column Content
-          let usefulHtml = "-";
-          if (row.usefulnessData) {
-            const scorePercent = (row.usefulnessData.score * 100).toFixed(1);
-            let wordsHtml = row.usefulnessData.matchedWords
-              .map((w) => {
-                return `<span class="useful-word-item"
-                          data-level="${w.level}"
-                          onclick="app.toggleUsefulItem(this, '${w.reading}', '${w.surface}')">
-                          ${w.surface} <span class="level-badge">L${w.level}</span>
-                          </span>`;
+          // 1. Try to parse with Sudachi
+          const tokens = sudachiParse(row.jp);
+
+          if (tokens && tokens.length > 0) {
+            jpDisplay = tokens
+              .map((t) => {
+                const surface = t.surface;
+                const reading = t.reading_form
+                  ? katakanaToHiragana(t.reading_form)
+                  : surface;
+                const dict = t.dictionary_form;
+
+                // Generate Ruby (Furigana) if needed
+                let content = surface;
+                if (kanjiRegex.test(surface) && reading !== surface) {
+                  content = generateRuby(surface, reading);
+                }
+
+                // Wrap in Highlight Span if in Usefulness Map
+                // This happens immediately regardless of Sort button status
+                if (state.usefulnessMap.has(dict)) {
+                  return `<span class="highlighted-word" data-kanji="${dict}">${content}</span>`;
+                }
+                return content;
               })
               .join("");
-
-            usefulHtml = `
-                <div class="score-display">Score: ${row.usefulnessData.score.toFixed(3)}</div><br/>
-                ${wordsHtml}
-              `;
-          } else if (state.isSortedByScore) {
-            usefulHtml = `<span style="color:#94a3b8">No useful words found</span>`;
           }
 
           html += `
-                <tr>
-                    <td class="jp-col" onclick="app.toggleFurigana(this, ${idx})">${row.jp || ""}</td>
-                    <td class="en-col">${row.en || ""}</td>
-                    <!-- <td class="useful-col">${usefulHtml}</td>-->
-                </tr>
-            `;
+        <tr>
+          <td class="jp-col" onmouseover="handleMouseOver(event)" onmouseout="handleMouseOut(event)">${jpDisplay}</td>
+          <td class="en-col">${row.en || ""}</td>
+        </tr>
+      `;
         }
-
         ui.tableBody.innerHTML = html;
-        document.querySelector(".table-container").scrollTop = 0;
       }
     </script>
   </body>
