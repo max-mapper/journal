@@ -349,6 +349,13 @@
 
             <div class="actions">
               <button
+                class="reverse-btn"
+                id="reverseBtn"
+                onclick="app.reverse()"
+              >
+                Reverse order
+              </button>
+              <button
                 class="sort-btn"
                 id="sortBtn"
                 onclick="app.sortByUsefulness()"
@@ -446,6 +453,9 @@
         return await new Response(stream).blob();
       }
 
+      function hasKanji(str) {
+        return /[\u4E00-\u9FCF]/.test(str);
+      }
       function isKanji(ch) {
         return (ch >= "\u4e00" && ch <= "\u9faf") || ch === "々";
       }
@@ -544,7 +554,6 @@
         }
       }
       initSudachi();
-
       function sudachiParse(text) {
         if (!state.sudachi) return [];
         try {
@@ -555,6 +564,7 @@
           return [];
         }
       }
+      window.sudachiParse = sudachiParse;
 
       // --- UI Elements ---
       const ui = {
@@ -672,14 +682,24 @@
             // Calculate Score only (Parsing for display happens in renderTable)
             if (!row.usefulnessData) {
               const tokens = sudachiParse(row.jp);
-              let totalInvertedLevel = 0;
+              let score = 0;
+              let count = { useful: 0, not: 0 };
               tokens.forEach((t) => {
                 let level =
                   state.usefulnessMap.get(t.dictionary_form) ||
-                  state.usefulnessMap.get(t.normalized_form);
-                if (level) totalInvertedLevel += 6 - level;
+                  state.usefulnessMap.get(t.normalized_form) ||
+                  state.usefulnessMap.get(t.surface);
+                if (level) {
+                  count.useful++;
+                  score += 6 - level; // give higher score to more useful words (e.g. level 1)
+                } else {
+                  if (t.surface.length > 1) {
+                    count.not++; // 2 char or greater words not in top 10k
+                    if (hasKanji(t.surface)) score -= 6; // kanji word above 10k gets deranked
+                  }
+                }
               });
-              row.usefulnessData = { score: totalInvertedLevel };
+              row.usefulnessData = { score, count };
             }
           }
 
@@ -696,6 +716,11 @@
           ui.sortBtn.disabled = false;
           ui.loadingMsg.style.display = "none";
           state.currentPage = 1;
+          renderTable();
+        },
+
+        reverse: () => {
+          state.filteredIndices.reverse();
           renderTable();
         },
 
@@ -737,7 +762,7 @@
         tooltip.innerHTML = `<strong>${kanji}</strong><br/>Loading...`;
 
         const results = await searchDictionary(kanji);
-        console.log(results);
+
         if (results) {
           let out = ``;
           results.forEach((g) => {
@@ -848,7 +873,12 @@
                 // Wrap in Highlight Span if in Usefulness Map
                 // This happens immediately regardless of Sort button status
                 if (state.usefulnessMap.has(dict)) {
-                  return `<span class="highlighted-word" data-kanji="${dict}">${content}</span>`;
+                  let useful, not;
+                  if (row.usefulnessData) {
+                    useful = row.usefulnessData.count.useful;
+                    not = row.usefulnessData.count.not;
+                  }
+                  return `<span class="highlighted-word" data-score-useful="${useful}" data-score-not="${not}" data-kanji="${dict}">${content}</span>`;
                 }
                 return content;
               })
