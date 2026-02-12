@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japanese Grammar Analyzer</title>
+    <style>
+      body {
+        font-family:
+          "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+          Meiryo, sans-serif;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      /* Input Area */
+      textarea {
+        width: 100%;
+        height: 100px;
+        font-size: 16px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      /* Output Area */
+      #output {
+        font-size: 20px;
+        border: 1px solid #eee;
+        padding: 20px;
+        background: #f9f9f9;
+        min-height: 100px;
+        white-space: pre-wrap; /* Preserve newlines */
+      }
+
+      /* Grammar Highlight Styling */
+      .grammar-match {
+        border-bottom: 2px solid #007bff; /* Blue underline */
+        background-color: rgba(0, 123, 255, 0.1); /* Slight highlight */
+        cursor: help;
+        position: relative;
+        transition: background 0.2s;
+      }
+
+      .grammar-match:hover {
+        background-color: rgba(0, 123, 255, 0.3);
+      }
+
+      /* Tooltip Logic */
+      .grammar-match::after {
+        content: attr(
+          data-tooltip
+        ); /* The text comes from the HTML attribute */
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+        z-index: 10;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .grammar-match:hover::after {
+        opacity: 1;
+        bottom: 125%; /* Move up slightly on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Sudachi Grammar Parser Demo</h2>
+    <p>Type Japanese text below. Grammar points will be underlined.</p>
+
+    <textarea id="inputText" placeholder="Type here...">
+ジュースを友達にあげます。
+明日は雨がふると思います。
+パンを食べました。お腹が空いたからです。
+アメリカから来ました。
+何人ぐらい来ますか。
+友達が私にジュースをくれました。
+日本語の森で働きたいです。
+ここのパソコンは学生だけが使えます。
+大学に行くつもりです。
+これから地球の温度がだんだん高くなっていく。
+今、朝ごはんを食べています。
+先生に聞いてください。
+他の人を傷つけてはいけません。
+仕事は忙しいです。
+帰ってもいいですか。
+ここに来てください。
+宿題を忘れないでください。
+ジュホさんは韓国人じゃないですか。
+大人になりました。
+ゲームをしましょう。
+カフェに行きましょうか。
+テレビを見ませんか。
+授業は4時までです。
+私は友達にジュースをもらいました。
+テストの前に勉強します。
+授業の後で帰りました。
+この漢字の読み方は何ですか。
+たくさん本があります。</textarea
+    >
+
+    <div id="output"></div>
+
+    <script type="module">
+      var outputEl = document.getElementById("output");
+
+      console.time("import");
+      import { rules } from "./grammar-rules.js";
+
+      import GrammarMatcher from "./grammar-matcher.js";
+
+      import {
+        SudachiStateless,
+        TokenizeMode,
+      } from "./sudachi-wasm/sudachi.js";
+      console.timeEnd("import");
+
+      // --- App State ---
+      const state = (window.state = {
+        sudachi: null,
+      });
+
+      // --- Helpers: Dictionary & Parsing ---
+      async function fetchAndGunzip(url) {
+        const response = await fetch(url);
+        if (!response.body) throw new Error("No response body");
+        const ds = new DecompressionStream("gzip");
+        const stream = response.body.pipeThrough(ds);
+        return await new Response(stream).blob();
+      }
+
+      // --- Sudachi Handling ---
+      async function initSudachi() {
+        console.log("init sudachi");
+        try {
+          outputEl.innerText = "Downloading dictionary...";
+          let dictBlob = await fetchAndGunzip(
+            "sudachi-wasm/resources/system.dic.gz",
+          );
+          const buffer = await dictBlob.arrayBuffer();
+          const uint8Array = new Uint8Array(buffer);
+
+          state.sudachi = new SudachiStateless();
+          await state.sudachi.initialize_from_bytes(uint8Array);
+          outputEl.innerText = "Dictionary loaded";
+        } catch (err) {
+          outputEl.innerText = "Dict error: " + err.message;
+        }
+      }
+
+      function sudachiParse(text) {
+        if (!state.sudachi) return [];
+        try {
+          console.log(TokenizeMode.C);
+          return JSON.parse(
+            state.sudachi.tokenize_stringified(text, TokenizeMode.A),
+          );
+        } catch (err) {
+          return [];
+        }
+      }
+
+      window.sudachiParse = sudachiParse;
+
+      // ==========================================
+      // 2. MAIN LOGIC & RENDERING
+      // ==========================================
+
+      let matcher = null;
+
+      async function init() {
+        await initSudachi();
+        console.log("await sudachi done");
+        // CHECK FOR STATE.SUDACHI
+        if (typeof state === "undefined" || !state.sudachi) {
+          outputEl.innerHTML =
+            "<span style='color:red'>Error: state.sudachi is not loaded. Ensure this script runs in the sudachi-wasm environment.</span>";
+          return;
+        }
+
+        matcher = new GrammarMatcher(state.sudachi);
+        matcher.addRules(rules);
+
+        // Add event listener
+        const input = document.getElementById("inputText");
+        input.addEventListener("input", runAnalysis);
+
+        // Run once on load
+        runAnalysis();
+      }
+
+      function runAnalysis() {
+        if (!matcher) return;
+
+        const text = document.getElementById("inputText").value;
+        if (!text.trim()) {
+          document.getElementById("output").innerHTML = "";
+          return;
+        }
+
+        let html = "";
+
+        var lines = text.trim().split("\n");
+        lines.forEach((l) => {
+          // 1. Tokenize entire text
+          const rawJson = state.sudachi.tokenize_stringified(l, 0); // Mode A
+          const tokens = JSON.parse(rawJson);
+
+          // 2. Find Matches
+          // This returns [{ id: 4, grammar: "...", indices: [0, 7, 8] }]
+          const matches = matcher.matchSentence(tokens);
+          // 3. Render HTML
+          // We map every token index to an object containing match data
+          const tokenMap = new Array(tokens.length).fill(null);
+
+          matches.forEach((match) => {
+            match.indices.forEach((tokenIndex) => {
+              // For demo simplicity, last match wins if they overlap
+              // A production app might handle overlaps with multiple spans
+              tokenMap[tokenIndex] = match;
+            });
+          });
+
+          // Build HTML
+          tokens.forEach((token, index) => {
+            const matchData = tokenMap[index];
+
+            if (matchData) {
+              // It's a match!
+              html += `<span class="grammar-match" data-tooltip="ID: ${matchData.rule} ${matchData.meaning} ${matchData.id}">${token.surface}</span>`;
+            } else {
+              // Standard text
+              html += token.surface;
+            }
+          });
+          html += "\n";
+        });
+
+        document.getElementById("output").innerHTML = html;
+      }
+
+      init();
+    </script>
+  </body>
+</html>
