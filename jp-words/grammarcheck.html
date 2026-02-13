@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sudachi Grammar Matcher</title>
+  </head>
+  <body>
+    <h1>Sudachi Grammar Matcher Test</h1>
+    <pre id="output">Loading Sudachi...</pre>
+
+    <!-- Load Sudachi Wasm wrapper -->
+    <script type="module">
+      console.time("import");
+
+      import {
+        SudachiStateless,
+        TokenizeMode,
+      } from "./sudachi-wasm/sudachi.js";
+
+      import { runGrammarEngineCheck } from "./grammar-engine.js"; // The file above
+
+      console.timeEnd("import");
+      const outputEl = document.getElementById("output");
+
+      // --- App State ---
+      const state = (window.state = {
+        sudachi: null,
+      });
+
+      // --- Helpers: Dictionary & Parsing ---
+      async function fetchAndGunzip(url) {
+        const response = await fetch(url);
+        if (!response.body) throw new Error("No response body");
+        const ds = new DecompressionStream("gzip");
+        const stream = response.body.pipeThrough(ds);
+        return await new Response(stream).blob();
+      }
+
+      // --- Sudachi Handling ---
+      async function initSudachi() {
+        console.log("init sudachi");
+        try {
+          outputEl.innerText = "Downloading dictionary...";
+          let dictBlob = await fetchAndGunzip(
+            "sudachi-wasm/resources/system.dic.gz",
+          );
+          const buffer = await dictBlob.arrayBuffer();
+          const uint8Array = new Uint8Array(buffer);
+
+          state.sudachi = new SudachiStateless();
+          await state.sudachi.initialize_from_bytes(uint8Array);
+          outputEl.innerText = "Dictionary loaded";
+        } catch (err) {
+          outputEl.innerText = "Dict error: " + err.message;
+        }
+      }
+
+      async function init() {
+        await initSudachi();
+
+        try {
+          outputEl.textContent = "Sudachi Loaded. Running Tests...\n";
+
+          // 2. Hook up console.log to screen for demo
+          const oldLog = console.log;
+          console.log = function (...args) {
+            oldLog(...args);
+            outputEl.textContent += args.join(" ") + "\n";
+          };
+
+          // 3. Run the engine
+          await runGrammarEngineCheck(state.sudachi);
+        } catch (e) {
+          outputEl.textContent = "Error: " + e.message;
+          console.error(e);
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>
