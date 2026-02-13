@@ -15,7 +15,7 @@
         SudachiStateless,
         TokenizeMode,
       } from "./sudachi-wasm/sudachi.js";
-
+      import GRAMMAR_RULES from "./grammar-rules.js";
       import { runGrammarEngineCheck } from "./grammar-engine.js"; // The file above
 
       console.timeEnd("import");
@@ -68,7 +68,7 @@
           };
 
           // 3. Run the engine
-          await runGrammarEngineCheck(state.sudachi);
+          await runGrammarEngineCheck(state.sudachi, GRAMMAR_RULES);
         } catch (e) {
           outputEl.textContent = "Error: " + e.message;
           console.error(e);
