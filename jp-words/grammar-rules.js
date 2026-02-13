@@ -1,75 +1,80 @@
 const GRAMMAR_RULES = [
   {
-    id: "te-iru",
-    title: "～ている／ておる",
+    id: "te-iru-1",
+    level: "N5",
+    title: "ている①",
+    description: "Is, Am, Are (~ing)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B1",
     patterns: [
+      [{ pos: "動詞" }, { surface: "て" }, { baseForm: "いる" }],
+      [{ pos: "動詞" }, { surface: "て" }, { baseForm: "おる" }],
+      [{ pos: "動詞" }, { surface: "で" }, { baseForm: "いる" }],
+      [{ pos: "動詞" }, { surface: "で" }, { baseForm: "おる" }],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "いる",
-        },
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "おる", conjugation: "連用形" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "おる",
-        },
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "おる", conjugation: "連用形" },
+      ],
+    ],
+    tests: [
+      "公園で子供たちが走っている。",
+      "一人で歌を歌っております。",
+      "この交差点は毎年多くの人が交通事故で死んでいる。",
+    ],
+  },
+  {
+    id: "te-iru-2",
+    level: "N5",
+    title: "ている②",
+    description: "State of being, Has (have) done",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B2",
+    patterns: [
+      [{ pos: "動詞" }, { surface: "て" }, { baseForm: "いる" }],
+      [{ pos: "動詞" }, { surface: "て" }, { baseForm: "おる" }],
+      [{ pos: "動詞" }, { surface: "で" }, { baseForm: "いる" }],
+      [{ pos: "動詞" }, { surface: "で" }, { baseForm: "おる" }],
+      [
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "おる", conjugation: "連用形" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "いる",
-        },
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "おる", conjugation: "連用形" },
+      ],
+    ],
+    tests: [
+      "公園で子供たちが走っている。",
+      "一人で歌を歌っております。",
+      "この交差点は毎年多くの人が交通事故で死んでいる。",
+    ],
+  },
+  {
+    id: "te-iru-3",
+    level: "N5",
+    title: "ている③",
+    description: "Has/have done, Is ~ing (Repetition)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B3",
+    patterns: [
+      [{ pos: "動詞" }, { surface: "て" }, { baseForm: "いる" }],
+      [{ pos: "動詞" }, { surface: "て" }, { baseForm: "おる" }],
+      [{ pos: "動詞" }, { surface: "で" }, { baseForm: "いる" }],
+      [{ pos: "動詞" }, { surface: "で" }, { baseForm: "おる" }],
+      [
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "おる", conjugation: "連用形" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "おる",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "おる",
-          conjugation: "連用形",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "おる",
-          conjugation: "連用形",
-        },
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "おる", conjugation: "連用形" },
       ],
     ],
     tests: [
@@ -80,34 +85,15 @@ const GRAMMAR_RULES = [
   },
   {
     id: "giving-verbs",
-    title: "～あげる／やる／差し上げる",
+    level: "N5",
+    title: "あげる",
+    description: "To give (away), To present, To provide",
+    link: "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%92%E3%82%8B",
     patterns: [
-      [
-        {
-          baseForm: "あげる",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          baseForm: "やる",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          baseForm: "差し上げる",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          surface: "差し",
-        },
-        {
-          baseForm: "上げる",
-        },
-      ],
+      [{ baseForm: "あげる", pos: "動詞" }],
+      [{ baseForm: "やる", pos: "動詞" }],
+      [{ baseForm: "差し上げる", pos: "動詞" }],
+      [{ surface: "差し" }, { baseForm: "上げる" }],
     ],
     tests: [
       "友達にお菓子をあげました。",
@@ -117,20 +103,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ga-suru",
-    title: "～がする",
+    level: "N4",
+    title: "がする",
+    description: "To give off, Smell, Sound, Taste, Sensation",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%99%E3%82%8B",
     patterns: [
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-        },
-        {
-          baseForm: "する",
-          pos: "動詞",
-        },
-      ],
+      [{ pos: "名詞" }, { surface: "が" }, { baseForm: "する", pos: "動詞" }],
     ],
     tests: [
       "キッチンからカレーの匂いがする。",
@@ -140,40 +118,21 @@ const GRAMMAR_RULES = [
   },
   {
     id: "kata-method",
-    title: "～方",
+    level: "N4",
+    title: "かた",
+    description: "Way of ~ing, How to ~, Manner of ~ing",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%9F",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "方",
-          pos: "接尾辞",
-        },
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "方", pos: "接尾辞" },
       ],
+      [{ surface: "仕方", pos: "名詞" }],
       [
-        {
-          surface: "仕方",
-          pos: "名詞",
-        },
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "方", pos: "名詞" },
       ],
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "方",
-          pos: "名詞",
-        },
-      ],
-      [
-        {
-          surfaceEndsWith: "方",
-          pos: "名詞",
-        },
-      ],
+      [{ surfaceEndsWith: "方", pos: "名詞" }],
     ],
     tests: [
       "彼の話し方はどうも鼻につく。",
@@ -183,20 +142,11 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ka-dou-ka",
-    title: "～かどうか",
-    patterns: [
-      [
-        {
-          surface: "か",
-        },
-        {
-          surface: "どう",
-        },
-        {
-          surface: "か",
-        },
-      ],
-    ],
+    level: "N4",
+    title: "かどうか",
+    description: "Whether or not, If...or not",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B",
+    patterns: [[{ surface: "か" }, { surface: "どう" }, { surface: "か" }]],
     tests: [
       "契約を更新するかどうか悩む。",
       "この服似合ってるかどうかは自分ではちょっとわからない。",
@@ -204,41 +154,23 @@ const GRAMMAR_RULES = [
   },
   {
     id: "kamo-shirenai",
-    title: "～かもしれない",
+    title: "かもしれない",
+    description: "Might, Maybe, Probably",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%82%E3%81%97%E3%82%8C%E3%81%AA%E3%81%84",
     patterns: [
       [
-        {
-          surface: "か",
-        },
-        {
-          surface: "も",
-        },
-        {
-          surface: "しれ",
-        },
-        {
-          baseForm: "ない",
-        },
+        { surface: "か" },
+        { surface: "も" },
+        { surface: "しれ" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          surface: "か",
-        },
-        {
-          surface: "も",
-        },
-        {
-          surface: "しれ",
-        },
-        {
-          surface: "ませ",
-        },
+        { surface: "か" },
+        { surface: "も" },
+        { surface: "しれ" },
+        { surface: "ませ" },
       ],
-      [
-        {
-          surface: "かもしれない",
-        },
-      ],
+      [{ surface: "かもしれない" }],
     ],
     tests: [
       "夫が不倫をしているかもしれない。",
@@ -247,85 +179,28 @@ const GRAMMAR_RULES = [
   },
   {
     id: "kara-reason",
-    title: "～から (Reason)",
-    patterns: [
-      [
-        {
-          surface: "から",
-          pos: "助詞",
-        },
-      ],
-    ],
+    title: "から",
+    description: "Because, Since",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89-because",
+    patterns: [[{ surface: "から", pos: "助詞" }]],
     tests: ["眠いから寝ます。", "明日用事あるから早く寝ないと。"],
   },
   {
     id: "ato-de",
-    title: "～後に／後で",
+    title: "あとで",
+    description: "After, Later",
+    link: "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%A8%E3%81%A7",
     patterns: [
+      [{ surface: "の" }, { baseForm: "後", pos: "名詞" }],
       [
-        {
-          surface: "の",
-        },
-        {
-          baseForm: "後",
-          pos: "名詞",
-        },
+        { surface: "た", pos: "助動詞" },
+        { baseForm: "後", pos: "名詞" },
       ],
-      [
-        {
-          surface: "た",
-          pos: "助動詞",
-        },
-        {
-          baseForm: "後",
-          pos: "名詞",
-        },
-      ],
-      [
-        {
-          baseForm: "後",
-          pos: "名詞",
-        },
-        {
-          surface: "で",
-        },
-      ],
-      [
-        {
-          baseForm: "後",
-          pos: "名詞",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          surface: "後",
-          pos: "接尾辞",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          surface: "後",
-          pos: "接尾辞",
-        },
-        {
-          surface: "で",
-        },
-      ],
-      [
-        {
-          surface: "後",
-          pos: "接尾辞",
-        },
-        {
-          surface: "の",
-        },
-      ],
+      [{ baseForm: "後", pos: "名詞" }, { surface: "で" }],
+      [{ baseForm: "後", pos: "名詞" }, { surface: "に" }],
+      [{ surface: "後", pos: "接尾辞" }, { surface: "に" }],
+      [{ surface: "後", pos: "接尾辞" }, { surface: "で" }],
+      [{ surface: "後", pos: "接尾辞" }, { surface: "の" }],
     ],
     tests: [
       "仕事の後のお風呂は最高だ。",
@@ -337,119 +212,58 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ga-hoshii",
-    title: "～が欲しい／欲しがる",
+    title: "がほしい",
+    description: "To want something, To be in need of",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%BB%E3%81%97%E3%81%84",
     patterns: [
-      [
-        {
-          surface: "が",
-        },
-        {
-          baseForm: "欲しい",
-        },
-      ],
-      [
-        {
-          baseForm: "欲しい",
-        },
-        {
-          baseForm: "ない",
-        },
-      ],
-      [
-        {
-          surface: "欲し",
-        },
-        {
-          baseForm: "がる",
-        },
-      ],
-      [
-        {
-          surface: "欲し",
-        },
-        {
-          surface: "がっ",
-        },
-      ],
-      [
-        {
-          baseForm: "欲しがる",
-        },
-      ],
+      [{ surface: "が" }, { baseForm: "欲しい" }],
+      [{ baseForm: "欲しい" }, { baseForm: "ない" }],
     ],
-    tests: [
-      "遊ぶお金が欲しい。",
-      "母は大きい冷蔵庫を欲しがっている。",
-      "子供は欲しくない。",
-    ],
+    tests: ["遊ぶお金が欲しい。", "子供は欲しくない。"],
   },
   {
-    id: "shi-tai",
-    title: "～したい／したくない／したがる",
+    id: "garu",
+    title: "がる",
+    description: "To feel, To think, To act as if, To want, To desire",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8C%E3%82%8B",
     patterns: [
-      [
-        {
-          baseForm: "たい",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          surface: "たく",
-        },
-        {
-          baseForm: "ない",
-        },
-      ],
-      [
-        {
-          surface: "た",
-        },
-        {
-          baseForm: "がる",
-        },
-      ],
-      [
-        {
-          baseForm: "たがる",
-          pos: "助動詞",
-        },
-      ],
+      [{ surface: "欲し" }, { baseForm: "がる" }],
+      [{ surface: "欲し" }, { surface: "がっ" }],
+      [{ baseForm: "欲しがる" }],
     ],
-    tests: [
-      "髪染めたい。",
-      "学校は行きたくない。",
-      "彼女は海外旅行に行きたがっている。",
+    tests: ["母は大きい冷蔵庫を欲しがっている。"],
+  },
+  {
+    id: "tai",
+    title: "たい",
+    description: "Want to do",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%84",
+    patterns: [
+      [{ baseForm: "たい", pos: "助動詞" }],
+      [{ surface: "たく" }, { baseForm: "ない" }],
     ],
+    tests: ["髪染めたい。", "学校は行きたくない。"],
+  },
+  {
+    id: "tagaru",
+    title: "たがる",
+    description: "To want to (Third person)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%8C%E3%82%8B",
+    patterns: [
+      [{ surface: "た" }, { baseForm: "がる" }],
+      [{ baseForm: "たがる", pos: "助動詞" }],
+    ],
+    tests: ["彼女は海外旅行に行きたがっている。"],
   },
   {
     id: "naide-zuni",
-    title: "～ないで／ずに",
+    title: "ないで",
+    description: "Without doing, Not ~ and ~",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A7",
     patterns: [
-      [
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
-        {
-          surface: "で",
-        },
-      ],
-      [
-        {
-          baseForm: "ず",
-          pos: "助動詞",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          baseForm: "ず",
-          pos: "助動詞",
-        },
-      ],
+      [{ baseForm: "ない", pos: "助動詞" }, { surface: "で" }],
+      [{ baseForm: "ず", pos: "助動詞" }, { surface: "に" }],
+      [{ baseForm: "ず", pos: "助動詞" }],
     ],
     tests: [
       "手を傷つけないで掴み取る。",
@@ -459,59 +273,22 @@ const GRAMMAR_RULES = [
   },
   {
     id: "nagara",
-    title: "～ながら",
-    patterns: [
-      [
-        {
-          surface: "ながら",
-          pos: "助詞",
-        },
-      ],
-    ],
+    title: "ながら",
+    description: "While ~ing, During, As",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8C%E3%82%89",
+    patterns: [[{ surface: "ながら", pos: "助詞" }]],
     tests: ["歌いながら踊る。"],
   },
   {
     id: "ni-suru",
-    title: "～にする／くする",
+    title: "～にする・～くする",
+    description: "Adjective + する, To make something/someone (more)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%99%E3%82%8B-%E3%81%8F%E3%81%99%E3%82%8B",
     patterns: [
-      [
-        {
-          surface: "に",
-          pos: "助詞",
-        },
-        {
-          baseForm: "する",
-        },
-      ],
-      [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "する",
-        },
-      ],
-      [
-        {
-          pos: "形容詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "する",
-        },
-      ],
-      [
-        {
-          baseForm: "ない",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "する",
-        },
-      ],
+      [{ surface: "に", pos: "助詞" }, { baseForm: "する" }],
+      [{ pos: "形状詞" }, { surface: "に" }, { baseForm: "する" }],
+      [{ pos: "形容詞", conjugation: "連用形" }, { baseForm: "する" }],
+      [{ baseForm: "ない", conjugation: "連用形" }, { baseForm: "する" }],
     ],
     tests: [
       "我が子を弁護士にしたい。",
@@ -521,44 +298,14 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ni-naru",
-    title: "～になる／くなる／となる",
+    title: "～になる・～くなる",
+    description: "To become (Adjective)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%AA%E3%82%8B-%E3%81%8F%E3%81%AA%E3%82%8B",
     patterns: [
-      [
-        {
-          surface: "に",
-          pos: "助詞",
-        },
-        {
-          baseForm: "なる",
-        },
-      ],
-      [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "なる",
-        },
-      ],
-      [
-        {
-          pos: "形容詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "なる",
-        },
-      ],
-      [
-        {
-          baseForm: "ない",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "なる",
-        },
-      ],
+      [{ surface: "に", pos: "助詞" }, { baseForm: "なる" }],
+      [{ surface: "と", pos: "助詞" }, { baseForm: "なる" }],
+      [{ pos: "形容詞", conjugation: "連用形" }, { baseForm: "なる" }],
+      [{ baseForm: "ない", conjugation: "連用形" }, { baseForm: "なる" }],
     ],
     tests: [
       "大人になった。",
@@ -569,44 +316,14 @@ const GRAMMAR_RULES = [
   },
   {
     id: "mae-ni",
-    title: "～前に／前で",
+    title: "まえに",
+    description: "Before, In front of",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%88%E3%81%AB",
     patterns: [
-      [
-        {
-          baseForm: "前",
-          pos: "名詞",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          baseForm: "前",
-          pos: "名詞",
-        },
-        {
-          surface: "で",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-          surfaceEndsWith: "前",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-          surfaceEndsWith: "前",
-        },
-        {
-          surface: "で",
-        },
-      ],
+      [{ baseForm: "前", pos: "名詞" }, { surface: "に" }],
+      [{ baseForm: "前", pos: "名詞" }, { surface: "で" }],
+      [{ pos: "名詞", surfaceEndsWith: "前" }, { surface: "に" }],
+      [{ pos: "名詞", surfaceEndsWith: "前" }, { surface: "で" }],
     ],
     tests: [
       "寝る前に歯を磨く。",
@@ -616,103 +333,45 @@ const GRAMMAR_RULES = [
   },
   {
     id: "mashou",
-    title: "～ましょう",
+    title: "ましょう",
     patterns: [
-      [
-        {
-          surface: "ましょ",
-        },
-        {
-          surface: "う",
-        },
-      ],
-      [
-        {
-          surface: "ましょう",
-        },
-      ],
+      [{ surface: "ましょ" }, { surface: "う" }],
+      [{ surface: "ましょう" }],
     ],
-    tests: [
-      "元気出しましょう。",
-      "また会いましょう。",
-      "お寿司でも食べにいきましょうか。",
+    tests: ["元気出しましょう。", "また会いましょう。"],
+    description: "Let's, Shall we (Polite volitional)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%97%E3%82%87%E3%81%86",
+  },
+  {
+    id: "mashou-ka",
+    title: "～ましょうか",
+    patterns: [
+      [{ surface: "ましょ" }, { surface: "う" }, { surface: "か" }],
+      [{ surface: "ましょう" }, { surface: "か" }],
     ],
+    tests: ["お寿司でも食べにいきましょうか。"],
+    description: "Shall we, Shall I",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%81%8B",
   },
   {
     id: "masen-ka",
-    title: "～ませんか",
-    patterns: [
-      [
-        {
-          surface: "ませ",
-        },
-        {
-          surface: "ん",
-        },
-        {
-          surface: "か",
-        },
-      ],
-    ],
+    title: "ませんか",
+    patterns: [[{ surface: "ませ" }, { surface: "ん" }, { surface: "か" }]],
     tests: ["一緒に行きませんか。"],
+    description: "Won't you, Would you not, Why don't we",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8B",
   },
   {
     id: "o-kudasai",
-    title: "～をください (Object)",
+    title: "くれる",
     patterns: [
-      [
-        {
-          surface: "を",
-        },
-        {
-          baseForm: "くださる",
-        },
-      ],
-      [
-        {
-          surface: "を",
-        },
-        {
-          surface: "ちょうだい",
-        },
-      ],
-      [
-        {
-          surface: "を",
-        },
-        {
-          baseForm: "くれる",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          baseForm: "くれる",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          baseForm: "くださる",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "くれ",
-        },
-      ],
-      [
-        {
-          surface: "ちょうだい",
-        },
-      ],
+      [{ surface: "を" }, { baseForm: "くださる" }],
+      [{ surface: "を" }, { surface: "ちょうだい" }],
+      [{ surface: "を" }, { baseForm: "くれる" }],
+      [{ pos: "名詞" }, { baseForm: "くれる" }],
+      [{ pos: "名詞" }, { baseForm: "くださる" }],
+      [{ pos: "名詞" }, { surface: "くれ" }],
+      [{ surface: "ちょうだい" }],
     ],
     tests: [
       "メニューをください。",
@@ -721,185 +380,74 @@ const GRAMMAR_RULES = [
       "彼が素敵な花束をくれた。",
       "ちょっとそこのお皿ちょうだい。",
     ],
+    description: "To give (me), To be given",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BC%E3%81%8F%E3%82%8C%E3%82%8B",
   },
   {
     id: "garu",
-    title: "～がる／がっている",
+    title: "がる",
     patterns: [
-      [
-        {
-          pos: "接尾辞",
-          baseForm: "がる",
-        },
-      ],
-      [
-        {
-          surface: "がっ",
-        },
-        {
-          surface: "て",
-        },
-      ],
-      [
-        {
-          surface: "がり",
-        },
-      ],
-      [
-        {
-          surface: "が",
-        },
-        {
-          surface: "られ",
-        },
-      ],
+      [{ pos: "接尾辞", baseForm: "がる" }],
+      [{ surface: "がっ" }, { surface: "て" }],
+      [{ surface: "がり" }],
+      [{ surface: "が" }, { surface: "られ" }],
     ],
     tests: [
       "彼は死ぬことを怖がっている。",
       "彼女は寂しがり屋だ。",
       "うちの猫は爪切られるのをとても嫌がる。",
     ],
+    description: "To feel, To think, To act as if, To want, To desire",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8C%E3%82%8B",
   },
   {
     id: "kurai-gurai",
-    title: "～くらい／ぐらい",
+    title: "くらい ①",
     patterns: [
-      [
-        {
-          surface: "くらい",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          surface: "ぐらい",
-          pos: "助詞",
-        },
-      ],
+      [{ surface: "くらい", pos: "助詞" }],
+      [{ surface: "ぐらい", pos: "助詞" }],
     ],
     tests: ["食費は毎月３万円くらいかかる。", "二人の身長は同じぐらいだ。"],
+    description: "About, Approximately",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%89%E3%81%841",
   },
   {
     id: "kureru-kudasaru",
-    title: "～くれる／くださる",
+    title: "くれる",
+    description: "To give (me), To be given",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%8C%E3%82%8B",
     patterns: [
-      [
-        {
-          baseForm: "くれる",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          baseForm: "くださる",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          surface: "くださっ",
-        },
-        {
-          surface: "た",
-        },
-      ],
+      [{ baseForm: "くれる", pos: "動詞" }],
+      [{ baseForm: "くださる", pos: "動詞" }],
+      [{ surface: "くださっ" }, { surface: "た" }],
     ],
     tests: ["娘が手紙をくれた。", "先生が手紙をくださった。"],
   },
   {
     id: "koto-ga-dekiru",
-    title: "～ことができる",
+    title: "ことができる",
+    description: "Can, Be able to",
+    link: "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B",
     patterns: [
-      [
-        {
-          surface: "こと",
-        },
-        {
-          surface: "が",
-        },
-        {
-          baseForm: "できる",
-        },
-      ],
-      [
-        {
-          surface: "こと",
-        },
-        {
-          surface: "が",
-        },
-        {
-          baseForm: "でき",
-        },
-      ],
+      [{ surface: "こと" }, { surface: "が" }, { baseForm: "できる" }],
+      [{ surface: "こと" }, { surface: "が" }, { baseForm: "でき" }],
     ],
     tests: ["夢を叶えることができた。", "言葉に表すことができない。"],
   },
   {
     id: "saserareru",
-    title: "～（さ）せられる",
+    title: "Causative-Passive",
+    description:
+      "Verbs (Causative-passive voice), To be made to do something, To be forced to do",
+    link: "https://bunpro.jp/grammar_points/causative-passive",
     patterns: [
-      [
-        {
-          baseForm: "させる",
-        },
-        {
-          baseForm: "られる",
-        },
-      ],
-      [
-        {
-          surface: "させ",
-        },
-        {
-          baseForm: "られる",
-        },
-      ],
-      [
-        {
-          surface: "させ",
-        },
-        {
-          surface: "られ",
-        },
-      ],
-      [
-        {
-          surface: "さ",
-        },
-        {
-          baseForm: "れる",
-        },
-      ],
-      [
-        {
-          surface: "さ",
-        },
-        {
-          surface: "せ",
-        },
-        {
-          baseForm: "られる",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          surfaceEndsWith: "さ",
-        },
-        {
-          baseForm: "れる",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          surfaceEndsWith: "さ",
-        },
-        {
-          baseForm: "られる",
-        },
-      ],
+      [{ baseForm: "させる" }, { baseForm: "られる" }],
+      [{ surface: "させ" }, { baseForm: "られる" }],
+      [{ surface: "させ" }, { baseForm: "られ" }],
+      [{ surface: "さ" }, { baseForm: "れる" }],
+      [{ surface: "さ" }, { surface: "せ" }, { baseForm: "られる" }],
+      [{ pos: "動詞", surfaceEndsWith: "さ" }, { baseForm: "れる" }],
+      [{ pos: "動詞", surfaceEndsWith: "さ" }, { baseForm: "られる" }],
     ],
     tests: [
       "母に薬を飲まされた。",
@@ -909,37 +457,15 @@ const GRAMMAR_RULES = [
   },
   {
     id: "sugiru",
-    title: "～過ぎる",
+    title: "すぎる",
+    description: "Too much, Very",
+    link: "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8E%E3%82%8B",
     patterns: [
-      [
-        {
-          baseForm: "過ぎる",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          baseForm: "すぎる",
-        },
-      ],
-      [
-        {
-          surface: "すぎ",
-        },
-        {
-          surface: "て",
-        },
-      ],
-      [
-        {
-          surface: "すぎ",
-        },
-      ],
-      [
-        {
-          surface: "過ぎ",
-        },
-      ],
+      [{ baseForm: "過ぎる", pos: "動詞" }],
+      [{ baseForm: "すぎる" }],
+      [{ surface: "すぎ" }, { surface: "て" }],
+      [{ surface: "すぎ" }],
+      [{ surface: "過ぎ" }],
     ],
     tests: [
       "夜景が美しすぎて見とれてしまった。",
@@ -949,36 +475,14 @@ const GRAMMAR_RULES = [
   },
   {
     id: "seru-saseru",
-    title: "～せる／させる",
+    title: "Verb［せる・させる］",
+    description: "To make/let/have (somebody do something)",
+    link: "https://bunpro.jp/grammar_points/causative",
     patterns: [
-      [
-        {
-          baseForm: "せる",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          baseForm: "させる",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          surface: "せ",
-        },
-        {
-          surface: "て",
-        },
-      ],
-      [
-        {
-          surface: "させ",
-        },
-        {
-          surface: "て",
-        },
-      ],
+      [{ baseForm: "せる", pos: "助動詞" }],
+      [{ baseForm: "させる", pos: "助動詞" }],
+      [{ surface: "せ" }, { surface: "て" }],
+      [{ surface: "させ" }, { surface: "て" }],
     ],
     tests: [
       "母は私を買い物に行かせた。",
@@ -987,71 +491,35 @@ const GRAMMAR_RULES = [
     ],
   },
   {
-    id: "souda",
-    title: "～そうだ（様態・伝聞）",
+    id: "souda-40",
+    title: "そう",
+    description: "Look like, Appear, Seem, Have a feeling that",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86",
     patterns: [
-      [
-        {
-          surface: "そう",
-        },
-        {
-          baseForm: "だ",
-        },
-      ],
-      [
-        {
-          surface: "そう",
-        },
-        {
-          baseForm: "です",
-        },
-      ],
-      [
-        {
-          surface: "そう",
-        },
-        {
-          surface: "な",
-        },
-      ],
-      [
-        {
-          surface: "そう",
-        },
-        {
-          surface: "に",
-        },
-      ],
+      [{ surface: "そう" }, { baseForm: "だ" }],
+      [{ surface: "そう" }, { baseForm: "です" }],
     ],
-    tests: [
-      "明日は雨だそうだ。",
-      "美味しそうなケーキだ。",
-      "雨が降りそうだ。",
-      "不思議そうに首を傾げた。",
+    tests: ["雨が降りそうだ。"],
+  },
+  {
+    id: "souda-56",
+    title: "そうに・そうな",
+    description: "Seem, Look like, Sound",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%81%AB-%E3%81%9D%E3%81%86%E3%81%AA",
+    patterns: [
+      [{ surface: "そう" }, { surface: "な" }],
+      [{ surface: "そう" }, { surface: "に" }],
     ],
+    tests: ["美味しそうなケーキだ。", "不思議そうに首を傾げた。"],
   },
   {
     id: "dasu",
-    title: "～出す",
+    title: "だす",
+    description: "To suddenly begin, To start doing",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%99",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "だす",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "出す",
-        },
-      ],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "だす" }],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "出す" }],
     ],
     tests: [
       "赤ちゃんが急に泣き出した。",
@@ -1061,104 +529,51 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ta-tokoro-da",
-    title: "～たところだ",
+    title: "たところだ",
+    description: "Just finished doing, Was just doing",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0",
     patterns: [
       [
-        {
-          pos: "助動詞",
-          surface: "た",
-        },
-        {
-          surface: "ところ",
-        },
-        {
-          baseForm: "だ",
-        },
+        { pos: "助動詞", surface: "た" },
+        { surface: "ところ" },
+        { baseForm: "だ" },
       ],
       [
-        {
-          pos: "助動詞",
-          surface: "た",
-        },
-        {
-          surface: "ところ",
-        },
-        {
-          baseForm: "です",
-        },
+        { pos: "助動詞", surface: "た" },
+        { surface: "ところ" },
+        { baseForm: "です" },
       ],
     ],
     tests: ["今帰って来たところです。", "ちょうど食べ終わったところだ。"],
   },
   {
     id: "ta-bakari-da",
-    title: "～たばかりだ",
-    patterns: [
-      [
-        {
-          pos: "助動詞",
-          surface: "た",
-        },
-        {
-          surface: "ばかり",
-        },
-      ],
-    ],
+    title: "たばかり",
+    description: "Just did, Something just happened",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%B0%E3%81%8B%E3%82%8A",
+    patterns: [[{ pos: "助動詞", surface: "た" }, { surface: "ばかり" }]],
     tests: ["さっき起きたばかりだ。", "日本に来たばかりです。"],
   },
   {
     id: "tsudzukeru",
-    title: "～続ける",
+    title: "つづける",
+    description: "To continue",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%A5%E3%81%91%E3%82%8B",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "続ける",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "続く",
-        },
-      ],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "続ける" }],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "続く" }],
     ],
     tests: ["努力し続ける。", "雨が降り続いている。"],
   },
   {
     id: "tsumori",
-    title: "～つもりだ",
+    title: "つもりだ",
+    description: "To plan to, To intend to",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A4%E3%82%82%E3%82%8A%E3%81%A0",
     patterns: [
-      [
-        {
-          surface: "つもり",
-        },
-        {
-          baseForm: "だ",
-        },
-      ],
-      [
-        {
-          surface: "つもり",
-        },
-        {
-          baseForm: "です",
-        },
-      ],
-      [
-        {
-          surface: "つもり",
-        },
-        {
-          surface: "は",
-        },
-      ],
+      [{ surface: "つもり" }, { baseForm: "だ" }],
+      [{ surface: "つもり" }, { baseForm: "です" }],
+      [{ surface: "つもり" }, { surface: "は" }],
     ],
     tests: [
       "来年大学に進学するつもりだ。",
@@ -1168,59 +583,16 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-ageru",
-    title: "～てあげる",
+    title: "てあげる",
+    description: "To do something for someone, As a favor for",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%82%E3%81%92%E3%82%8B",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "あげる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "やる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "差し上げる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "差し",
-        },
-        {
-          baseForm: "上げる",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "あげる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "やっ",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "あげる" }],
+      [{ surface: "て" }, { baseForm: "やる" }],
+      [{ surface: "て" }, { baseForm: "差し上げる" }],
+      [{ surface: "て" }, { surface: "差し" }, { baseForm: "上げる" }],
+      [{ surface: "で" }, { baseForm: "あげる" }],
+      [{ surface: "て" }, { surface: "やっ" }],
     ],
     tests: [
       "妹に香水買ってあげた。",
@@ -1230,161 +602,54 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-aru",
-    title: "～てある",
+    title: "てある",
+    description: "Something is done, Has been done, Remaining state",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%82%E3%82%8B",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "ある",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "ある",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "あり",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "ある" }],
+      [{ surface: "で" }, { baseForm: "ある" }],
+      [{ surface: "て" }, { surface: "あり" }],
     ],
     tests: ["壁に絵が飾ってある。", "ホテルはもう予約してあります。"],
   },
   {
     id: "te-iku",
-    title: "～ていく",
+    title: "ていく",
+    description: "To ~ and go, To go on, To start",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%8F",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "いく",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "行く",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "いく",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          surface: "いっ",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "いく" }],
+      [{ surface: "て" }, { baseForm: "行く" }],
+      [{ surface: "で" }, { baseForm: "いく" }],
+      [{ surface: "で" }, { surface: "いっ" }],
     ],
     tests: ["これからも日本語を勉強していく。", "鳥が飛んでいった。"],
   },
   {
     id: "te-iru-tokoro",
-    title: "～ているところだ",
+    title: "ているところだ",
+    description: "In the process of doing ~ right now/at this moment",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "いる",
-        },
-        {
-          surface: "ところ",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "いる",
-        },
-        {
-          surface: "ところ",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "いる" }, { surface: "ところ" }],
+      [{ surface: "で" }, { baseForm: "いる" }, { surface: "ところ" }],
     ],
     tests: ["今ご飯を食べているところです。", "掃除しているところだ。"],
   },
   {
     id: "te-oku",
-    title: "～ておく",
+    title: "ておく",
+    description: "To do something in advance",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8B%E3%82%89",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "おく",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "おく",
-        },
-      ],
-      [
-        {
-          surface: "とく",
-        },
-      ],
-      [
-        {
-          surface: "どく",
-        },
-      ],
-      [
-        {
-          surface: "とい",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          surface: "どい",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "おき",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "おい",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "おく" }],
+      [{ surface: "で" }, { baseForm: "おく" }],
+      [{ surface: "とく" }],
+      [{ surface: "どく" }],
+      [{ surface: "とい", pos: "助動詞" }],
+      [{ surface: "どい", pos: "助動詞" }],
+      [{ surface: "て" }, { surface: "おき" }],
+      [{ surface: "て" }, { surface: "おい" }],
     ],
     tests: [
       "部屋を掃除しておきましょう。",
@@ -1395,40 +660,15 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-kuru",
-    title: "～てくる",
+    title: "てくる",
+    description:
+      "To come to, To become, To continue, To be starting to, Has been ~ing",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8B",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "くる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "来る",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "くる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "き",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "くる" }],
+      [{ surface: "て" }, { baseForm: "来る" }],
+      [{ surface: "で" }, { baseForm: "くる" }],
+      [{ surface: "て" }, { surface: "き" }],
     ],
     tests: [
       "お腹が空いてきた。",
@@ -1438,40 +678,14 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-kureru",
-    title: "～てくれる",
+    title: "てくれる",
+    description: "To do something for someone (usually you)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8C%E3%82%8B",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "くれる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "くださる",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "くれる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "くれ",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "くれる" }],
+      [{ surface: "て" }, { baseForm: "くださる" }],
+      [{ surface: "で" }, { baseForm: "くれる" }],
+      [{ surface: "て" }, { surface: "くれ" }],
     ],
     tests: [
       "友達が手伝ってくれた。",
@@ -1482,39 +696,16 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-shimau",
-    title: "～てしまう",
+    title: "てしまう・ちゃう",
+    description:
+      "To do something by accident, To finish completely・totally, Unfortunately",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86-%E3%81%A1%E3%82%83%E3%81%86",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "しまう",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "しまう",
-        },
-      ],
-      [
-        {
-          baseForm: "ちゃう",
-        },
-      ],
-      [
-        {
-          baseForm: "じゃう",
-        },
-      ],
-      [
-        {
-          surface: "ちゃっ",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "しまう" }],
+      [{ surface: "で" }, { baseForm: "しまう" }],
+      [{ baseForm: "ちゃう" }],
+      [{ baseForm: "じゃう" }],
+      [{ surface: "ちゃっ" }],
     ],
     tests: [
       "忘れてしまった。",
@@ -1524,123 +715,39 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-wa-ikenai",
-    title: "～てはいけない",
+    title: "てはいけない",
+    description: "Must not, May not",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84",
     patterns: [
+      [{ surface: "て" }, { surface: "は" }, { baseForm: "いける" }],
+      [{ surface: "て" }, { surface: "は" }, { baseForm: "いけない" }],
+      [{ surface: "て" }, { surface: "は" }, { baseForm: "だめ" }],
+      [{ surface: "て" }, { surface: "は" }, { baseForm: "ならない" }],
       [
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          baseForm: "いける",
-        },
+        { surface: "て" },
+        { surface: "は" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
+      ],
+      [{ surface: "ちゃ" }, { baseForm: "いけない" }],
+      [{ surface: "じゃ" }, { baseForm: "いけない" }],
+      [
+        { surface: "で" },
+        { surface: "は" },
+        { surface: "いけ" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          baseForm: "いけない",
-        },
+        { surface: "て" },
+        { surface: "は" },
+        { surface: "いけ" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          baseForm: "だめ",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          baseForm: "ならない",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          baseForm: "なる",
-        },
-        {
-          baseForm: "ない",
-        },
-      ],
-      [
-        {
-          surface: "ちゃ",
-        },
-        {
-          baseForm: "いけない",
-        },
-      ],
-      [
-        {
-          surface: "じゃ",
-        },
-        {
-          baseForm: "いけない",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          surface: "は",
-        },
-        {
-          surface: "いけ",
-        },
-        {
-          baseForm: "ない",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          surface: "いけ",
-        },
-        {
-          baseForm: "ない",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          surface: "いけ",
-        },
-        {
-          surface: "ませ",
-        },
+        { surface: "て" },
+        { surface: "は" },
+        { surface: "いけ" },
+        { surface: "ませ" },
       ],
     ],
     tests: [
@@ -1653,577 +760,294 @@ const GRAMMAR_RULES = [
   {
     id: "te-bakari",
     title: "～てばかり",
+    description: "Just, Only, Nothing but",
+    link: "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%8B%E3%82%8A",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "ばかり",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          surface: "ばかり",
-        },
-      ],
+      [{ surface: "て" }, { surface: "ばかり" }],
+      [{ surface: "で" }, { surface: "ばかり" }],
     ],
     tests: ["寝てばかりいる。", "負けてばかりだ。"],
+    link: null,
+    description: null,
   },
   {
     id: "te-miru",
-    title: "～てみる",
+    title: "てみる",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "みる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "見る",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "みる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "み",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "みる" }],
+      [{ surface: "て" }, { baseForm: "見る" }],
+      [{ surface: "で" }, { baseForm: "みる" }],
+      [{ surface: "て" }, { surface: "み" }],
     ],
     tests: [
       "一度やってみたら。",
       "着てみてもいいですか。",
       "死ぬまでに一度は本場の中華料理を食べてみたい。",
     ],
+    description: "To try to",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%BF%E3%82%8B",
   },
   {
     id: "te-mo-ii",
-    title: "～てもいい",
+    title: "てもいい",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "も",
-        },
-        {
-          baseForm: "いい",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "も",
-        },
-        {
-          baseForm: "よい",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          surface: "も",
-        },
-        {
-          baseForm: "いい",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          surface: "も",
-        },
-        {
-          baseForm: "いい",
-        },
-      ],
+      [{ surface: "て" }, { surface: "も" }, { baseForm: "いい" }],
+      [{ surface: "て" }, { surface: "も" }, { baseForm: "よい" }],
+      [{ surface: "で" }, { surface: "も" }, { baseForm: "いい" }],
+      [{ surface: "で" }, { surface: "も" }, { baseForm: "いい" }],
     ],
     tests: [
       "読んでもいいですか？",
       "下手でもいい。",
       "嫌なら断ってもいいです。",
     ],
+    description: "It is alright/fine/okay even if, Can/may, ~ is also okay",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E3%81%84%E3%81%84",
   },
   {
     id: "te-morau",
-    title: "～てもらう",
+    title: "てもらう",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "もらう",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "いただく",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "頂く",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "もらう",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "頂き",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "もらう" }],
+      [{ surface: "て" }, { baseForm: "いただく" }],
+      [{ surface: "て" }, { baseForm: "頂く" }],
+      [{ surface: "で" }, { baseForm: "もらう" }],
+      [{ surface: "て" }, { surface: "頂き" }],
     ],
     tests: ["友だちに紹介してもらった。", "案内して頂きました。"],
+    description: "To get someone to do, To have someone do",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E3%82%89%E3%81%86",
   },
   {
     id: "ru-tokoro",
-    title: "～（る）ところだ",
-    patterns: [
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "ところ",
-        },
-      ],
-    ],
+    title: "るところだ",
+    patterns: [[{ pos: "動詞" }, { surface: "ところ" }]],
     tests: [
       "これから出かけるところだ。",
       "今寝るところです。",
       "これから仕事に行くところだ。",
     ],
+    description: "About to, On the verge of",
+    link: "https://bunpro.jp/grammar_points/%E3%82%8B%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0",
   },
   {
     id: "ni-tsuite",
     title: "～について",
     patterns: [
-      [
-        {
-          surface: "に",
-        },
-        {
-          surface: "つい",
-        },
-        {
-          surface: "て",
-        },
-      ],
-      [
-        {
-          surface: "に",
-        },
-        {
-          surface: "つき",
-        },
-        {
-          surface: "まし",
-        },
-      ],
+      [{ surface: "に" }, { surface: "つい" }, { surface: "て" }],
+      [{ surface: "に" }, { surface: "つき" }, { surface: "まし" }],
     ],
     tests: [
       "この件について話し合う。",
       "将来について考える。",
       "詳しい内容につきましては添付画像をご確認ください。",
+      "契約のことについて、何か質問はありますか。",
+      "今日は和製英語についてのレッスンをしたいと思います。",
     ],
+    link: "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6",
+    description: "Concerning, About, Regarding",
   },
   {
     id: "ni-totte",
     title: "～にとって",
-    patterns: [
-      [
-        {
-          surface: "に",
-        },
-        {
-          surface: "とっ",
-        },
-        {
-          surface: "て",
-        },
-      ],
-    ],
-    tests: ["私にとって重要だ。"],
-  },
-  {
-    id: "no-uchi",
-    title: "～のうち",
-    patterns: [
-      [
-        {
-          surface: "の",
-        },
-        {
-          baseForm: "うち",
-        },
-      ],
-      [
-        {
-          surface: "の",
-        },
-        {
-          baseForm: "内",
-        },
-      ],
-      [
-        {
-          pos: "形容詞",
-        },
-        {
-          baseForm: "うち",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          baseForm: "うち",
-        },
-      ],
-    ],
-    tests: [
-      "３つのうち１つを選ぶ。",
-      "若いうちに旅をする。",
-      "買い物で２つの内どっち買うかで迷ったら、両方買うようにしている。",
-    ],
+    patterns: [[{ surface: "に" }, { surface: "とっ" }, { surface: "て" }]],
+    tests: ["私にとって重要だ。", "この石はタケル君にとって、宝物です。"],
+    link: "https://bunpro.jp/grammar_points/%E3%81%AB%E5%8F%96%E3%81%A3%E3%81%A6",
+    description: "To, For, Concerning",
   },
   {
     id: "node",
-    title: "～ので",
+    title: "ので",
     patterns: [
-      [
-        {
-          surface: "ので",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          surface: "んで",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          surface: "の",
-        },
-        {
-          surface: "で",
-        },
-      ],
-      [
-        {
-          surface: "ん",
-        },
-        {
-          surface: "で",
-        },
-      ],
+      [{ surface: "ので", pos: "助詞" }],
+      [{ surface: "んで", pos: "助詞" }],
+      [{ surface: "の" }, { surface: "で" }],
+      [{ surface: "ん" }, { surface: "で" }],
     ],
     tests: ["頭が痛いので寝ます。", "分からないんで教えて。"],
+    link: "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A7",
+    description: "Because, So, Since, The reason being",
   },
   {
     id: "no-desu",
-    title: "～のです／んです",
+    title: "～んです・のです",
     patterns: [
-      [
-        {
-          surface: "の",
-        },
-        {
-          baseForm: "です",
-        },
-      ],
-      [
-        {
-          surface: "ん",
-        },
-        {
-          baseForm: "です",
-        },
-      ],
-      [
-        {
-          surface: "ん",
-        },
-        {
-          baseForm: "だ",
-        },
-      ],
-      [
-        {
-          surface: "の",
-        },
-        {
-          baseForm: "だ",
-        },
-      ],
+      [{ surface: "の" }, { baseForm: "です" }],
+      [{ surface: "ん" }, { baseForm: "です" }],
+      [{ surface: "ん" }, { baseForm: "だ" }],
+      [{ surface: "の" }, { baseForm: "だ" }],
     ],
     tests: [
       "明日行くのです。",
       "大好きなんです。",
       "あいつ、絶対許さないんだから。",
-      "満員電車は嫌いですが、会社に行くためには毎日乗らないといけないのです。",
+      "満員電車は嫌いですが,会社に行くためには毎日乗らないといけないのです。",
     ],
+    link: "https://bunpro.jp/grammar_points/-%E3%82%93%E3%81%A7%E3%81%99-%E3%81%AE%E3%81%A7%E3%81%99",
+    description: "Explanatory, Emphasis, The fact is",
   },
   {
     id: "no-tokoro",
-    title: "～のところ",
-    patterns: [
-      [
-        {
-          surface: "の",
-        },
-        {
-          surface: "ところ",
-        },
-      ],
-    ],
+    title: "るところだ",
+    patterns: [[{ surface: "の" }, { surface: "ところ" }]],
     tests: ["今のところ変化はない。", "現在のところ不明だ。"],
+    link: "https://bunpro.jp/grammar_points/%E3%82%8B%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0",
+    description: "About to, On the verge of",
+  },
+  {
+    id: "no-tokoro",
+    title: "たところだ",
+    patterns: [[{ surface: "の" }, { surface: "ところ" }]],
+    tests: ["今のところ変化はない。", "現在のところ不明だ。"],
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0",
+    description: "Just finished doing, Was just doing",
+  },
+  {
+    id: "no-tokoro",
+    title: "ているところだ",
+    patterns: [[{ surface: "の" }, { surface: "ところ" }]],
+    tests: ["今のところ変化はない。", "現在のところ不明だ。"],
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A0",
+    description: "In the process of doing ~ right now/at this moment",
   },
   {
     id: "bakari",
-    title: "～ばかり",
-    patterns: [
-      [
-        {
-          surface: "ばかり",
-          pos: "助詞",
-        },
-      ],
-    ],
+    title: "たばかり",
+    patterns: [[{ surface: "ばかり", pos: "助詞" }]],
     tests: [
       "雨ばかり降っている。",
       "嘘ばかりつく。",
       "ここは良いものばかりで目移りする。",
     ],
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%B0%E3%81%8B%E3%82%8A",
+    description: "Just did, Something just happened",
   },
   {
     id: "demo",
-    title: "～でも",
+    title: "でも",
     patterns: [
       [
-        {
-          surface: "で",
-          pos: "助詞",
-        },
-        {
-          surface: "も",
-          pos: "助詞",
-        },
+        { surface: "で", pos: "助詞" },
+        { surface: "も", pos: "助詞" },
       ],
     ],
     tests: ["仕事は忙しいですでも、楽しいです"],
+    link: "https://bunpro.jp/grammar_points/%E3%81%A7%E3%82%82",
+    description: "Or something, Any... (with question words), No matter (who)",
+  },
+  {
+    id: "demo",
+    title: "〜でも 〜でも",
+    patterns: [
+      [
+        { surface: "で", pos: "助詞" },
+        { surface: "も", pos: "助詞" },
+      ],
+    ],
+    tests: ["仕事は忙しいですでも、楽しいです"],
+    link: "https://bunpro.jp/grammar_points/%E3%81%A7%E3%82%82-%E3%81%A7%E3%82%82",
+    description: "Whether ~ or, Neither ~ or",
   },
   {
     id: "dake",
-    title: "～だけ",
-    patterns: [
-      [
-        {
-          surface: "だけ",
-          pos: "助詞",
-        },
-      ],
-    ],
+    title: "だけ",
+    patterns: [[{ surface: "だけ", pos: "助詞" }]],
     tests: ["ここのパソコンは学生だけが使えます。"],
+    link: "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91",
+    description: "Only, Just",
   },
   {
     id: "to-omou",
-    title: "～うと思う",
-    patterns: [
-      [
-        {
-          surface: "と",
-        },
-        {
-          baseForm: "思う",
-        },
-      ],
-    ],
+    title: "とおもう",
+    patterns: [[{ surface: "と" }, { baseForm: "思う" }]],
     tests: ["明日は雨がふると思います。"],
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8A%E3%82%82%E3%81%86",
+    description: "I think",
   },
-
+  {
+    id: "to-omou",
+    title: "〜ようと思う・〜おうと思う",
+    patterns: [[{ surface: "と" }, { baseForm: "思う" }]],
+    tests: ["明日は雨がふると思います。"],
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%A8%E6%80%9D%E3%81%86-%E3%81%8A%E3%81%86%E3%81%A8%E6%80%9D%E3%81%86",
+    description:
+      "I think I will, I think I shall, Going to, Gonna (Volitional + と思う)",
+  },
   {
     id: "hazu-da",
-    title: "～はずだ",
+    title: "はずだ",
     patterns: [
-      [
-        {
-          baseForm: "はず",
-        },
-        {
-          baseForm: "だ",
-        },
-      ],
-      [
-        {
-          baseForm: "はず",
-        },
-        {
-          baseForm: "です",
-        },
-      ],
+      [{ baseForm: "はず" }, { baseForm: "だ" }],
+      [{ baseForm: "はず" }, { baseForm: "です" }],
     ],
     tests: [
       "彼は来るはずだ。",
       "寒いはずだ。",
       "小学校の頃にサッカーやっていたので、リフティングは今でもできるはずです。",
     ],
+    description: "Bound to (be), Expected to (be), Should be (able)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%9A%E3%81%A0",
   },
   {
     id: "betsu-ni-nai",
     title: "別に～ない",
     patterns: [
-      [
-        {
-          baseForm: "別に",
-          pos: "副詞",
-        },
-      ],
-      [
-        {
-          surface: "別",
-        },
-        {
-          surface: "に",
-        },
-      ],
+      [{ baseForm: "別に", pos: "副詞" }],
+      [{ surface: "別" }, { surface: "に" }],
     ],
     tests: [
-      "別にいいよ。",
-      "別に嫌いではない。",
+      "別に痛くないよ。少しチクってするだけ。",
       "酒は好きですけど別に強くはないです。",
+      "パーティーってみんな言っているけど、別にそんなに大したものではないよ。",
     ],
+    description: "Not really, Not particularly, It's not like...",
+    link: "https://bunpro.jp/grammar_points/%E5%88%A5%E3%81%AB-%E3%81%AA%E3%81%84",
   },
   {
     id: "hodo",
     title: "～ほど",
-    patterns: [
-      [
-        {
-          surface: "ほど",
-          pos: "助詞",
-        },
-      ],
-    ],
+    patterns: [[{ surface: "ほど", pos: "助詞" }]],
     tests: [
       "死ぬほど好き。",
       "３時間ほど待った。",
       "今年の冬は去年の冬ほど寒くはない。",
     ],
+    description: "The more, About, To the extent that, So much… that",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BB%E3%81%A9",
   },
   {
     id: "made-ni",
-    title: "～までに",
-    patterns: [
-      [
-        {
-          surface: "まで",
-        },
-        {
-          surface: "に",
-        },
-      ],
-    ],
+    title: "までに",
+    patterns: [[{ surface: "まで" }, { surface: "に" }]],
     tests: [
       "明日までに終わらせる。",
       "５時までに来る。",
       "夏までに５kg痩せたい。",
     ],
-  },
-  {
-    id: "mama",
-    title: "～まま",
-    patterns: [
-      [
-        {
-          baseForm: "まま",
-          pos: "名詞",
-        },
-      ],
-    ],
-    tests: ["このままではいけない。", "服を着たまま寝る。"],
+    description: "By ~, By the time that ~, Before ~",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A7%E3%81%AB",
   },
   {
     id: "mitai",
-    title: "～みたい",
+    title: "みたい",
+    description: "Like, Similar to, Resembling",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BF%E3%81%9F%E3%81%84",
     patterns: [
-      [
-        {
-          baseForm: "みたい",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          surface: "みたい",
-        },
-        {
-          surface: "な",
-        },
-      ],
-      [
-        {
-          surface: "みたい",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          baseForm: "みたい",
-          pos: "形状詞",
-        },
-      ],
+      [{ baseForm: "みたい", pos: "助動詞" }],
+      [{ baseForm: "みたい", pos: "形状詞" }],
+    ],
+    tests: ["夢みたいだ。"],
+  },
+  {
+    id: "mitai-ni-na",
+    title: "みたいに・みたいな",
+    description: "Like, Similar to, Resembling",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AB-%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA",
+    patterns: [
+      [{ surface: "みたい" }, { surface: "な" }],
+      [{ surface: "みたい" }, { surface: "に" }],
     ],
     tests: [
-      "夢みたいだ。",
       "子供みたいに泣く。",
       "葬式みたいな話は聞きたくない。",
       "彼女は太陽みたいな人だ。",
@@ -2231,36 +1055,15 @@ const GRAMMAR_RULES = [
   },
   {
     id: "morau",
-    title: "～もらう",
+    title: "もらう",
+    description: "To receive, To get, To obtain",
+    link: "https://bunpro.jp/grammar_points/%E3%82%82%E3%82%89%E3%81%86",
     patterns: [
-      [
-        {
-          baseForm: "もらう",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          baseForm: "いただく",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          baseForm: "頂く",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          surface: "もらっ",
-        },
-      ],
-      [
-        {
-          surface: "頂い",
-        },
-      ],
+      [{ baseForm: "もらう", pos: "動詞" }],
+      [{ baseForm: "いただく", pos: "動詞" }],
+      [{ baseForm: "頂く", pos: "動詞" }],
+      [{ surface: "もらっ" }],
+      [{ surface: "頂い" }],
     ],
     tests: [
       "プレゼントをもらった。",
@@ -2270,387 +1073,183 @@ const GRAMMAR_RULES = [
   },
   {
     id: "you-da",
-    title: "～ようだ",
+    title: "ようだ",
+    description: "It seems that, It appears that, It looks like",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%A0",
     patterns: [
-      [
-        {
-          baseForm: "よう",
-          pos: "助動詞",
-        },
-        {
-          baseForm: "だ",
-        },
-      ],
-      [
-        {
-          surface: "よう",
-        },
-        {
-          surface: "な",
-        },
-      ],
-      [
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          baseForm: "よう",
-          pos: "形状詞",
-        },
-      ],
+      [{ baseForm: "よう", pos: "助動詞" }, { baseForm: "だ" }],
+      [{ baseForm: "よう", pos: "形状詞" }],
     ],
-    tests: [
-      "雨のようだ。",
-      "魔法のように消えた。",
-      "まるでサウナの中にいるような天気だ。",
+    tests: ["雨のようだ。"],
+  },
+  {
+    id: "you-ni-you-na",
+    title: "ように・ような",
+    description: "As・like, Just like",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB-%E3%82%88%E3%81%86%E3%81%AA",
+    patterns: [
+      [{ surface: "よう" }, { surface: "な" }],
+      [{ surface: "よう" }, { surface: "に" }],
     ],
+    tests: ["魔法のように消えた。", "まるでサウナの中にいるような天気だ。"],
   },
   {
     id: "you-to-omou",
-    title: "～ようと思う",
+    title: "〜ようと思う・〜おうと思う",
+    description:
+      "I think I will, I think I shall, Going to, Gonna (Volitional + と思う)",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%A8%E6%80%9D%E3%81%86-%E3%81%8A%E3%81%86%E3%81%A8%E6%80%9D%E3%81%86",
     patterns: [
+      [{ surface: "う" }, { surface: "と" }, { baseForm: "思う" }],
+      [{ surface: "よう" }, { surface: "と" }, { baseForm: "思う" }],
       [
-        {
-          surface: "う",
-        },
-        {
-          surface: "と",
-        },
-        {
-          baseForm: "思う",
-        },
-      ],
-      [
-        {
-          surface: "よう",
-        },
-        {
-          surface: "と",
-        },
-        {
-          baseForm: "思う",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          conjugation: "意志推量形",
-        },
-        {
-          surface: "と",
-        },
-        {
-          baseForm: "思う",
-        },
+        { pos: "動詞", conjugation: "意志推量形" },
+        { surface: "と" },
+        { baseForm: "思う" },
       ],
     ],
     tests: ["行こうと思う。", "始めようと思っている。"],
   },
   {
     id: "you-ni-suru",
-    title: "～ようにする",
-    patterns: [
-      [
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "する",
-        },
-      ],
-    ],
+    title: "ようにする",
+    description: "To try to, To make sure to, To endeavor to",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B",
+    patterns: [[{ surface: "よう" }, { surface: "に" }, { baseForm: "する" }]],
     tests: ["遅れないようにする。", "メモするようにしている。"],
   },
   {
     id: "you-ni-naru",
-    title: "～ようになる",
-    patterns: [
-      [
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "なる",
-        },
-      ],
-    ],
+    title: "ようになる",
+    patterns: [[{ surface: "よう" }, { surface: "に" }, { baseForm: "なる" }]],
     tests: ["泳げるようになった。", "分かるようになった。"],
+    description: "To reach the point that, To come to be that, To turn into",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B",
   },
   {
-    id: "rashii",
-    title: "～らしい",
-    patterns: [
-      [
-        {
-          baseForm: "らしい",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          surface: "らしく",
-        },
-      ],
-    ],
-    tests: ["雨らしい。", "男らしい。", "子供は子供らしく遊べばいい。"],
+    id: "rashii-1",
+    title: "らしい ①",
+    patterns: [[{ baseForm: "らしい", pos: "助動詞" }]],
+    tests: ["雨らしい。"],
+    description: "Seems like, Apparently, I heard",
+    link: "https://bunpro.jp/grammar_points/%E3%82%89%E3%81%97%E3%81%841",
   },
   {
-    id: "reru-rareru",
-    title: "～れる／られる",
+    id: "rashii-2",
+    title: "らしい ②",
     patterns: [
-      [
-        {
-          baseForm: "れる",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          baseForm: "られる",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          surface: "れ",
-        },
-      ],
-      [
-        {
-          surface: "られ",
-        },
-      ],
+      [{ baseForm: "らしい", pos: "助動詞" }],
+      [{ surface: "らしく" }],
     ],
-    tests: ["先生に叱られた。", "食べられる（可能）。", "食べられる（受身）。"],
+    tests: ["男らしい。", "子供は子供らしく遊べばいい。"],
+    description:
+      "typical of, -ish・like, appropriate for, becoming of, befitting",
+    link: "https://bunpro.jp/grammar_points/%E3%82%89%E3%81%97%E3%81%842",
+  },
+  {
+    id: "reru-rareru-passive",
+    title: "Verb［れる・られる］",
+    patterns: [
+      [{ baseForm: "れる", pos: "助動詞" }],
+      [{ baseForm: "られる", pos: "助動詞" }],
+      [{ surface: "れ" }],
+      [{ surface: "られ" }],
+    ],
+    tests: ["先生に叱られた。", "食べられる（受身）。"],
+    description:
+      "Was done to ~ by ~, Done without consent, Done to one's dismay",
+    link: "https://bunpro.jp/grammar_points/Verb%5Bpassive%5D",
+  },
+  {
+    id: "reru-rareru-potential",
+    title: "れる・られる (Potential)",
+    patterns: [
+      [{ baseForm: "れる", pos: "助動詞" }],
+      [{ baseForm: "られる", pos: "助動詞" }],
+    ],
+    tests: ["食べられる（可能）。"],
+    description: "To be able, Can (Potential)",
+    link: "https://bunpro.jp/grammar_points/Verb%5Bpotential%5D",
   },
   {
     id: "te-kara",
-    title: "～てから",
+    title: "てから",
     patterns: [
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-        },
-        {
-          surface: "から",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          surface: "から",
-        },
-      ],
+      [{ pos: "動詞" }, { surface: "て" }, { surface: "から" }],
+      [{ pos: "動詞" }, { surface: "で" }, { surface: "から" }],
     ],
     tests: [
       "ご飯を食べてから行く。",
       "薬を飲んでから寝る。",
       "よく考えてから返事をする。",
     ],
+    description: "Once...is done, Once...happens, After doing",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8B%E3%82%89",
   },
   {
     id: "te-kudasai",
-    title: "～てください",
+    title: "てください",
     patterns: [
-      [
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "くださる",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "くださる",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "ちょうだい",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          surface: "ちょうだい",
-        },
-      ],
-      [
-        {
-          surface: "て",
-        },
-        {
-          surface: "くれ",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          surface: "くれ",
-        },
-      ],
-      [
-        {
-          baseForm: "ない",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "くださる",
-        },
-      ],
-      [
-        {
-          baseForm: "ない",
-        },
-        {
-          surface: "で",
-        },
-        {
-          surface: "ちょうだい",
-        },
-      ],
+      [{ surface: "て" }, { baseForm: "くださる" }],
+      [{ surface: "で" }, { baseForm: "くださる" }],
+      [{ surface: "て" }, { surface: "ちょうだい" }],
+      [{ surface: "で" }, { surface: "ちょうだい" }],
+      [{ surface: "て" }, { surface: "くれ" }],
+      [{ surface: "で" }, { surface: "くれ" }],
     ],
-    tests: [
-      "名前を書いてください。",
-      // "大盛りでお願いします。",
-      "入らないでください。",
-      "教えてちょうだい。",
+    tests: ["名前を書いてください。", "教えてちょうだい。"],
+    description: "Please do (Polite request)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84",
+  },
+  {
+    id: "naide-kudasai",
+    title: "ないでください",
+    patterns: [
+      [{ baseForm: "ない" }, { surface: "で" }, { baseForm: "くださる" }],
+      [{ baseForm: "ない" }, { surface: "で" }, { surface: "ちょうだい" }],
     ],
+    tests: ["入らないでください。"],
+    description: "Please don't (Polite request)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84",
   },
   {
     id: "nakutemo-ii",
-    title: "～なくてもいい／なくても構わない／ずともよい",
+    title: "なくてもいい",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%82%82%E3%81%84%E3%81%84",
+    description: "Don't have to",
     patterns: [
       [
-        {
-          baseForm: "ない",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-        },
-        {
-          surface: "も",
-        },
-        {
-          baseForm: "いい",
-        },
+        { baseForm: "ない", conjugation: "連用形" },
+        { surface: "て" },
+        { surface: "も" },
+        { baseForm: "いい" },
       ],
       [
-        {
-          baseForm: "ない",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-        },
-        {
-          surface: "も",
-        },
-        {
-          baseForm: "よい",
-        },
+        { baseForm: "ない", conjugation: "連用形" },
+        { surface: "て" },
+        { surface: "も" },
+        { baseForm: "よい" },
       ],
       [
-        {
-          baseForm: "ない",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-        },
-        {
-          surface: "も",
-        },
-        {
-          baseForm: "かまう",
-        },
+        { baseForm: "ない", conjugation: "連用形" },
+        { surface: "て" },
+        { surface: "も" },
+        { baseForm: "かまう" },
       ],
       [
-        {
-          baseForm: "ない",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-        },
-        {
-          surface: "も",
-        },
-        {
-          baseForm: "構う",
-        },
-      ],
-      // Handle split 'to' + 'mo'
-      [
-        {
-          baseForm: "ず",
-        },
-        {
-          surface: "と",
-        },
-        {
-          surface: "も",
-        },
-        {
-          baseForm: "よい",
-        },
-      ],
-      // Handle combined 'tomo' (as seen in your error log)
-      [
-        {
-          baseForm: "ず",
-        },
-        {
-          surface: "とも",
-        },
-        {
-          baseForm: "よい",
-        },
+        { baseForm: "ない", conjugation: "連用形" },
+        { surface: "て" },
+        { surface: "も" },
+        { baseForm: "構う" },
       ],
       [
-        {
-          baseForm: "ず",
-        },
-        {
-          surface: "とも",
-        },
-        {
-          baseForm: "いい",
-        },
+        { baseForm: "ず" },
+        { surface: "と" },
+        { surface: "も" },
+        { baseForm: "よい" },
       ],
+      [{ baseForm: "ず" }, { surface: "とも" }, { baseForm: "よい" }],
+      [{ baseForm: "ず" }, { surface: "とも" }, { baseForm: "いい" }],
     ],
     tests: [
       "無理しなくてもいい。",
@@ -2661,19 +1260,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "nasai",
-    title: "～なさい",
+    title: "なさい",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%95%E3%81%84",
+    description: "Command to do",
     patterns: [
-      [
-        {
-          baseForm: "なさい",
-        },
-      ],
-      [
-        {
-          baseForm: "なさる",
-          conjugation: "命令形",
-        },
-      ],
+      [{ baseForm: "なさい" }],
+      [{ baseForm: "なさる", conjugation: "命令形" }],
     ],
     tests: ["早く起きなさい。", "野菜も食べなさい。"],
   },
@@ -2681,107 +1273,39 @@ const GRAMMAR_RULES = [
     id: "ni-taishite",
     title: "～に対して",
     patterns: [
-      [
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "対する",
-        },
-        {
-          surface: "て",
-        },
-      ],
-      [
-        {
-          surface: "に",
-        },
-        {
-          surface: "対し",
-        },
-        {
-          surface: "て",
-        },
-      ],
+      [{ surface: "に" }, { baseForm: "対する" }, { surface: "て" }],
+      [{ surface: "に" }, { surface: "対し" }, { surface: "て" }],
     ],
     tests: ["目上の人に対して敬語を使う。", "質問に対して答える。"],
-  },
-  {
-    id: "wa-ga",
-    title: "～は～が",
-    patterns: [
-      [
-        {
-          surface: "は",
-          pos: "助詞",
-        },
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          surface: "は",
-          pos: "助詞",
-        },
-        {
-          pos: "代名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-      ],
-    ],
-    tests: ["私は背が高い。", "象は鼻が長い。", "北海道は冬が寒い。"],
+    link: "https://bunpro.jp/grammar_points/%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6",
+    description: "In contrast to, While, In regard to, Whereas",
   },
   {
     id: "yasui",
-    title: "～やすい",
+    title: "やすい",
+    link: "https://bunpro.jp/grammar_points/%E3%82%84%E3%81%99%E3%81%84",
+    description: "Easy to, Likely to",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "やすい",
-        },
-      ],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "やすい" }],
     ],
     tests: ["このペンは書きやすい。", "分かりやすい説明だ。"],
   },
   {
     id: "nikui",
-    title: "～にくい",
+    title: "にくい",
+    description: "Difficult to, Hard to",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8F%E3%81%84",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "にくい",
-        },
-      ],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "にくい" }],
     ],
     tests: ["この肉は食べにくい。", "歩きにくい靴。"],
   },
   {
     id: "deshou",
-    title: "～でしょう",
-    patterns: [
-      [
-        {
-          surface: "でしょう",
-          pos: "助動詞",
-        },
-      ],
-    ],
+    title: "でしょう",
+    description: "Right?, Probably, Isn't it?",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%97%E3%82%87%E3%81%86",
+    patterns: [[{ surface: "でしょう", pos: "助動詞" }]],
     tests: [
       "明日は雨でしょう。",
       "美味しいでしょう？",
@@ -2792,46 +1316,20 @@ const GRAMMAR_RULES = [
   },
   {
     id: "darou",
-    title: "～だろう",
+    title: "だろう",
+    description: "Right?, Probably, Isn't it?",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%8D%E3%81%86",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "だろう",
-          pos: "助動詞",
-        },
+        { pos: "動詞", conjugation: "終止形" },
+        { surface: "だろう", pos: "助動詞" },
       ],
+      [{ pos: "名詞" }, { surface: "だろう", pos: "助動詞" }],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "だろう",
-          pos: "助動詞",
-        },
+        { pos: "形容詞", conjugation: "終止形" },
+        { surface: "だろう", pos: "助動詞" },
       ],
-      [
-        {
-          pos: "形容詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "だろう",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "だろう",
-          pos: "助動詞",
-        },
-      ],
+      [{ pos: "形状詞" }, { surface: "だろう", pos: "助動詞" }],
     ],
     tests: [
       "明日は雨が降るだろう。",
@@ -2843,27 +1341,33 @@ const GRAMMAR_RULES = [
   },
   {
     id: "he-iku",
-    title: "～へいく",
+    title: "へいく",
+    description: "To go to, To head toward",
+    link: "https://bunpro.jp/grammar_points/%E3%81%B8%E3%81%84%E3%81%8F",
     patterns: [
       [
-        {
-          surface: "へ",
-          pos: "助詞",
-        },
-        {
-          baseForm: "行く",
-          pos: "動詞",
-        },
+        { surface: "へ", pos: "助詞" },
+        { baseForm: "行く", pos: "動詞" },
       ],
       [
-        {
-          surface: "へ",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いく",
-          pos: "動詞",
-        },
+        { surface: "へ", pos: "助詞" },
+        { baseForm: "いく", pos: "動詞" },
+      ],
+      [
+        { surface: "へ", pos: "助詞" },
+        { baseForm: "来る", pos: "動詞" },
+      ],
+      [
+        { surface: "へ", pos: "助詞" },
+        { baseForm: "くる", pos: "動詞" },
+      ],
+      [
+        { surface: "へ", pos: "助詞" },
+        { baseForm: "帰る", pos: "動詞" },
+      ],
+      [
+        { surface: "へ", pos: "助詞" },
+        { baseForm: "かえる", pos: "動詞" },
       ],
     ],
     tests: [
@@ -2875,20 +1379,21 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ni-iku",
-    title: "～に行く",
+    title: "Verb + にいく",
+    description: "To go ~, To go in order to ~",
+    link: "https://bunpro.jp/grammar_points/verb-%E3%81%AB%E3%81%84%E3%81%8F",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "に",
-          pos: "助詞",
-        },
-        {
-          baseForm: "行く",
-        },
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "に", pos: "助詞" },
+        { baseForm: "行く" },
+      ],
+      [{ pos: "名詞" }, { surface: "に", pos: "助詞" }, { baseForm: "行く" }],
+      [{ pos: "名詞" }, { surface: "に", pos: "助詞" }, { baseForm: "いく" }],
+      [
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "に", pos: "助詞" },
+        { baseForm: "いく" },
       ],
     ],
     tests: [
@@ -2901,24 +1406,21 @@ const GRAMMAR_RULES = [
   },
   {
     id: "no-ga-suki",
-    title: "～のが好き",
+    title: "のがすき",
+    description: "Like doing, Love doing",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%99%E3%81%8D",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "好き",
-        },
+        { pos: "動詞" },
+        { surface: "の", pos: "助詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "好き" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "の", pos: "助詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "すき" },
       ],
     ],
     tests: [
@@ -2930,29 +1432,15 @@ const GRAMMAR_RULES = [
   },
   {
     id: "kedo-dakedo",
-    title: "～けど・だけど",
+    title: "けど・だけど",
+    description: "But, However",
+    link: "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A9-%E3%81%A0%E3%81%91%E3%81%A9",
     patterns: [
+      [{ surface: "けど", pos: "助詞" }],
+      [{ surface: "だけど", pos: "接続詞" }],
       [
-        {
-          surface: "けど",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          surface: "だけど",
-          pos: "接続詞",
-        },
-      ],
-      [
-        {
-          surface: "だ",
-          pos: "助動詞",
-        },
-        {
-          surface: "けど",
-          pos: "助詞",
-        },
+        { surface: "だ", pos: "助動詞" },
+        { surface: "けど", pos: "助詞" },
       ],
     ],
     tests: [
@@ -2966,17 +1454,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ja-nai",
-    title: "～じゃない",
+    title: "じゃない",
+    description: "Is not, Isn't",
+    link: "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A9-%E3%81%A0%E3%81%91%E3%81%A9",
     patterns: [
-      [
-        {
-          surface: "じゃ",
-        },
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
-      ],
+      [{ surface: "じゃ" }, { baseForm: "ない" }],
+      [{ surface: "で" }, { surface: "は" }, { baseForm: "ない" }],
     ],
     tests: [
       "これは私の本じゃない。",
@@ -2987,20 +1470,23 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ja-nakatta",
-    title: "～じゃなかった",
+    title: "じゃなかった",
+    description: "Was not, Wasn't",
+    link: "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F",
     patterns: [
+      [{ surface: "じゃ" }, { baseForm: "ない" }, { baseForm: "た" }],
+      [{ surface: "じゃ" }, { surface: "なかっ" }, { baseForm: "た" }],
       [
-        {
-          surface: "じゃ",
-        },
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
-        {
-          baseForm: "た",
-          pos: "助動詞",
-        },
+        { surface: "で" },
+        { surface: "は" },
+        { baseForm: "ない" },
+        { baseForm: "た" },
+      ],
+      [
+        { surface: "で" },
+        { surface: "は" },
+        { surface: "なかっ" },
+        { baseForm: "た" },
       ],
     ],
     tests: [
@@ -3013,21 +1499,14 @@ const GRAMMAR_RULES = [
   },
   {
     id: "i-adjective-kunakatta",
-    title: "～くなかった",
+    title: "い-Adjective くなかった",
+    description: "Was not, Wasn't (Adjective)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%84-Adjective-%E3%81%8F%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F",
     patterns: [
       [
-        {
-          pos: "形容詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "ない",
-          surface: "なかっ",
-        },
-        {
-          baseForm: "た",
-          surface: "た",
-        },
+        { pos: "形容詞", conjugation: "連用形" },
+        { baseForm: "ない", surface: "なかっ" },
+        { baseForm: "た", surface: "た" },
       ],
     ],
     tests: [
@@ -3041,56 +1520,66 @@ const GRAMMAR_RULES = [
   {
     id: "mada-te-imasen",
     title: "まだ～ていません",
+    description: "Still haven't done (something)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A0-%E3%81%A6%E3%81%84%E3%81%BE%E3%81%9B%E3%82%93",
     patterns: [
       [
-        {
-          surface: "まだ",
-          pos: "副詞",
-        },
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "いる",
-          pos: "動詞",
-        },
-        {
-          surface: "ませ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ん",
-          pos: "助動詞",
-        },
+        { surface: "まだ" },
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "いる" },
+        { surface: "ませ" },
+        { surface: "ん" },
       ],
       [
-        {
-          surface: "まだ",
-          pos: "副詞",
-        },
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "いる",
-          pos: "動詞",
-        },
-        {
-          surface: "ませ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ん",
-          pos: "助動詞",
-        },
+        { surface: "まだ" },
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "いる" },
+        { surface: "ませ" },
+        { surface: "ん" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "いる" },
+        { surface: "ませ" },
+        { surface: "ん" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "いる" },
+        { surface: "ませ" },
+        { surface: "ん" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "いる", pos: "動詞" },
+        { surface: "ませ" },
+        { surface: "ん" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "いる", pos: "動詞" },
+        { surface: "ませ" },
+        { surface: "ん" },
+      ],
+      [
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "て" },
+        { baseForm: "いる" },
+        { surface: "ませ" },
+        { surface: "ん" },
+      ],
+      [
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "で" },
+        { baseForm: "いる" },
+        { surface: "ませ" },
+        { surface: "ん" },
       ],
     ],
     tests: [
@@ -3103,48 +1592,15 @@ const GRAMMAR_RULES = [
   },
   {
     id: "tari-tari-suru",
-    title: "～たり～たりする",
+    title: "たり～たりする",
+    description: "Things like ~ and ~",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%8A-%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B",
     patterns: [
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "たり",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "だり",
-        },
-      ],
-      [
-        {
-          pos: "形容詞",
-        },
-        {
-          surface: "たり",
-        },
-      ],
-      [
-        {
-          surface: "たり",
-        },
-        {
-          baseForm: "する",
-        },
-      ],
-      [
-        {
-          surface: "だり",
-        },
-        {
-          baseForm: "する",
-        },
-      ],
+      [{ pos: "動詞" }, { surface: "たり" }],
+      [{ pos: "動詞" }, { surface: "だり" }],
+      [{ pos: "形容詞" }, { surface: "たり" }],
+      [{ surface: "たり" }, { baseForm: "する" }],
+      [{ surface: "だり" }, { baseForm: "する" }],
     ],
     tests: [
       "昨日は本を読んだり、テレビを見たりしました。",
@@ -3157,18 +1613,9 @@ const GRAMMAR_RULES = [
   {
     id: "kekkou",
     title: "けっこう",
-    patterns: [
-      [
-        {
-          baseForm: "結構",
-        },
-      ],
-      [
-        {
-          surface: "けっこう",
-        },
-      ],
-    ],
+    description: "Quite, A lot, Fairly, Rather",
+    link: "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A3%E3%81%93%E3%81%86",
+    patterns: [[{ baseForm: "結構" }], [{ surface: "けっこう" }]],
     tests: [
       "この料理はけっこう美味しいです。",
       "今日はけっこう寒いですね。",
@@ -3180,13 +1627,9 @@ const GRAMMAR_RULES = [
   {
     id: "takusan",
     title: "たくさん",
-    patterns: [
-      [
-        {
-          baseForm: "たくさん",
-        },
-      ],
-    ],
+    description: "Many, A lot of, Plenty, Enough",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%8F%E3%81%95%E3%82%93",
+    patterns: [[{ baseForm: "たくさん" }]],
     tests: [
       "お菓子をたくさん食べました。",
       "昨日はたくさん寝ました。",
@@ -3196,60 +1639,34 @@ const GRAMMAR_RULES = [
     ],
   },
   {
-    id: "made",
-    title: "まで",
+    id: "noun-made",
+    title: "Noun + まで",
+    description: "Until, Till, To (but no further than)",
+    link: "https://bunpro.jp/grammar_points/noun-%E3%81%BE%E3%81%A7",
     patterns: [
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "まで",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          pos: "代名詞",
-        },
-        {
-          surface: "まで",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "まで",
-          pos: "助詞",
-        },
-      ],
+      [{ pos: "名詞" }, { surface: "まで", pos: "助詞" }],
+      [{ pos: "代名詞" }, { surface: "まで", pos: "助詞" }],
     ],
     tests: [
       "５時までここにいます。",
       "東京駅から上野駅まで行きます。",
-      "昼休みが終わるまで本を読みました。",
       "そこまで歩いて何分かかりますか。",
     ],
   },
   {
+    id: "verb-made",
+    title: "Verb + まで",
+    description: "Until (something) happens",
+    link: "https://bunpro.jp/grammar_points/v-%E3%81%BE%E3%81%A7",
+    patterns: [[{ pos: "動詞" }, { surface: "まで", pos: "助詞" }]],
+    tests: ["昼休みが終わるまで本を読みました。"],
+  },
+  {
     id: "ichiban",
-    title: "いちばん",
-    patterns: [
-      [
-        {
-          surface: "いちばん",
-        },
-      ],
-      [
-        {
-          surface: "一番",
-        },
-      ],
-    ],
+    title: "のなかで～がいちばん～",
+    description: "Out of ~, ~ is the best/most ~",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AA%E3%81%8B%E3%81%A7-%E3%81%8C%E3%81%84%E3%81%A1%E3%81%B0%E3%82%93",
+    patterns: [[{ surface: "いちばん" }], [{ surface: "一番" }]],
     tests: [
       "クラスの中でいちばん背が高いです。",
       "これが一番おいしいリンゴです。",
@@ -3260,67 +1677,31 @@ const GRAMMAR_RULES = [
   },
   {
     id: "hou-ga",
-    title: "～ほうが",
+    title: "より～のほうが",
+    description: "To be more ~ than ~",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%82%8A-%E3%81%AE%E3%81%BB%E3%81%86%E3%81%8C",
     patterns: [
+      [{ pos: "動詞" }, { surface: "ほう" }, { surface: "が" }],
+      [{ pos: "形容詞" }, { surface: "ほう" }, { surface: "が" }],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "ほう",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
+        { pos: "形状詞" },
+        { surface: "な" },
+        { surface: "ほう" },
+        { surface: "が" },
       ],
       [
-        {
-          pos: "形容詞",
-        },
-        {
-          surface: "ほう",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
+        { pos: "名詞" },
+        { surface: "の" },
+        { surface: "ほう" },
+        { surface: "が" },
       ],
       [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "な",
-        },
-        {
-          surface: "ほう",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
+        { pos: "代名詞" },
+        { surface: "の" },
+        { surface: "ほう" },
+        { surface: "が" },
       ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          surface: "ほう",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-      ],
+      [{ pos: "助動詞" }, { surface: "ほう" }, { surface: "が" }],
     ],
     tests: [
       "毎日運動したほうがいいです。",
@@ -3333,27 +1714,16 @@ const GRAMMAR_RULES = [
   {
     id: "nanika-nanimo",
     title: "なにか・なにも",
+    description:
+      "Something, Nothing, Anything, Not anything, Some kind of, Not any kind of",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%AB%E3%81%8B-%E3%81%AA%E3%81%AB%E3%82%82",
     patterns: [
-      [
-        {
-          baseForm: "何",
-          pos: "代名詞",
-        },
-        {
-          surface: "か",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          baseForm: "何",
-          pos: "代名詞",
-        },
-        {
-          surface: "も",
-          pos: "助詞",
-        },
-      ],
+      [{ baseForm: "何" }, { surface: "か" }],
+      [{ baseForm: "何" }, { surface: "も" }],
+      [{ baseForm: "なに" }, { surface: "か" }],
+      [{ baseForm: "なに" }, { surface: "も" }],
+      [{ surface: "なに" }, { surface: "か" }],
+      [{ surface: "なに" }, { surface: "も" }],
     ],
     tests: [
       "カバンの中になにかありますか。",
@@ -3366,46 +1736,24 @@ const GRAMMAR_RULES = [
   {
     id: "dareka-dokoka-daremo-dokomo",
     title: "誰か・どこか・誰も・どこも",
+    description: "Someone, Somewhere, Not anyone, Not anywhere",
+    link: "https://bunpro.jp/grammar_points/%E8%AA%B0%E3%81%8B-%E3%81%A9%E3%81%93%E3%81%8B-%E8%AA%B0%E3%82%82-%E3%81%A9%E3%81%93%E3%82%82",
     patterns: [
       [
-        {
-          baseForm: "誰",
-          pos: "代名詞",
-        },
-        {
-          surface: "か",
-          pos: "助詞",
-        },
+        { baseForm: "誰", pos: "代名詞" },
+        { surface: "か", pos: "助詞" },
       ],
       [
-        {
-          baseForm: "どこ",
-          pos: "代名詞",
-        },
-        {
-          surface: "か",
-          pos: "助詞",
-        },
+        { baseForm: "どこ", pos: "代名詞" },
+        { surface: "か", pos: "助詞" },
       ],
       [
-        {
-          baseForm: "誰",
-          pos: "代名詞",
-        },
-        {
-          surface: "も",
-          pos: "助詞",
-        },
+        { baseForm: "誰", pos: "代名詞" },
+        { surface: "も", pos: "助詞" },
       ],
       [
-        {
-          baseForm: "どこ",
-          pos: "代名詞",
-        },
-        {
-          surface: "も",
-          pos: "助詞",
-        },
+        { baseForm: "どこ", pos: "代名詞" },
+        { surface: "も", pos: "助詞" },
       ],
     ],
     tests: [
@@ -3417,58 +1765,28 @@ const GRAMMAR_RULES = [
   },
   {
     id: "nakute-wa-ikenai",
-    title: "～なくてはいけない",
+    title: "なくてはいけない",
+    description: "Must do, Have to do",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84",
     patterns: [
       [
-        {
-          surface: "なく",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          surface: "は",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いけない",
-        },
+        { surface: "なく" },
+        { surface: "て", pos: "助詞" },
+        { surface: "は", pos: "助詞" },
+        { baseForm: "いけない" },
       ],
       [
-        {
-          surface: "なく",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          surface: "は",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いける",
-        },
+        { surface: "なく" },
+        { surface: "て", pos: "助詞" },
+        { surface: "は", pos: "助詞" },
+        { baseForm: "いける" },
       ],
       [
-        {
-          surface: "なく",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          surface: "は",
-          pos: "助詞",
-        },
-        {
-          surface: "いけ",
-        },
-        {
-          surface: "ません",
-        },
+        { surface: "なく" },
+        { surface: "て", pos: "助詞" },
+        { surface: "は", pos: "助詞" },
+        { surface: "いけ" },
+        { surface: "ません" },
       ],
     ],
     tests: [
@@ -3482,74 +1800,51 @@ const GRAMMAR_RULES = [
   },
   {
     id: "nakute-wa-naranai",
-    title: "～なくてはならない",
+    title: "なくてはならない",
+    description: "Must do, Have to do",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          surface: "なく",
-        },
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          baseForm: "なる",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "動詞" },
+        { surface: "なく" },
+        { surface: "て" },
+        { surface: "は" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          surface: "なく",
-        },
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          baseForm: "なる",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "名詞" },
+        { surface: "で" },
+        { surface: "なく" },
+        { surface: "て" },
+        { surface: "は" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          surface: "なく",
-        },
-        {
-          surface: "て",
-        },
-        {
-          surface: "は",
-        },
-        {
-          baseForm: "なる",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "形状詞" },
+        { surface: "で" },
+        { surface: "なく" },
+        { surface: "て" },
+        { surface: "は" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
+      ],
+      [
+        { pos: "助動詞" },
+        { surface: "なく" },
+        { surface: "て" },
+        { surface: "は" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
+      ],
+      [
+        { pos: "助動詞" },
+        { baseForm: "ない", conjugation: "連用形" },
+        { surface: "て" },
+        { surface: "は" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
       ],
     ],
     tests: [
@@ -3562,70 +1857,30 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ta-hou-ga-ii",
-    title: "～たほうがいい",
+    title: "たほうがいい",
+    description: "It'd be better to, Should do",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84",
     patterns: [
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "た",
-          pos: "助動詞",
-        },
-        {
-          baseForm: "ほう",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いい",
-          pos: "形容詞",
-        },
+        { pos: "動詞" },
+        { surface: "た", pos: "助動詞" },
+        { baseForm: "ほう", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "いい", pos: "形容詞" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "だ",
-          pos: "助動詞",
-        },
-        {
-          baseForm: "ほう",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いい",
-          pos: "形容詞",
-        },
+        { pos: "動詞" },
+        { surface: "だ", pos: "助動詞" },
+        { baseForm: "ほう", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "いい", pos: "形容詞" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
-        {
-          baseForm: "ほう",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いい",
-          pos: "形容詞",
-        },
+        { pos: "動詞" },
+        { baseForm: "ない", pos: "助動詞" },
+        { baseForm: "ほう", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "いい", pos: "形容詞" },
       ],
     ],
     tests: [
@@ -3637,49 +1892,23 @@ const GRAMMAR_RULES = [
   },
   {
     id: "nai-hou-ga-ii",
-    title: "～ないほうがいい",
+    title: "ないほうがいい",
+    description: "It'd be better not to, Shouldn't do",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          surface: "ない",
-          pos: "助動詞",
-        },
-        {
-          surface: "ほう",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いい",
-        },
+        { pos: "動詞", conjugation: "未然形" },
+        { surface: "ない", pos: "助動詞" },
+        { surface: "ほう", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "いい" },
       ],
       [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          surface: "ない",
-          pos: "助動詞",
-        },
-        {
-          surface: "方",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いい",
-        },
+        { pos: "動詞", conjugation: "未然形" },
+        { surface: "ない", pos: "助動詞" },
+        { surface: "方", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "いい" },
       ],
     ],
     tests: [
@@ -3692,26 +1921,16 @@ const GRAMMAR_RULES = [
   },
   {
     id: "nakucha-nakya",
-    title: "～なくちゃ・～なきゃ",
+    title: "なくちゃ・なきゃ",
+    description: "Must do, Have to do",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A1%E3%82%83-%E3%81%AA%E3%81%8D%E3%82%83",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          surface: "なきゃ",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          surface: "なくちゃ",
-        },
-      ],
+      [{ pos: "動詞" }, { surface: "なきゃ" }],
+      [{ pos: "動詞" }, { surface: "なくちゃ" }],
+      [{ pos: "動詞" }, { surface: "なく" }, { surface: "ちゃ" }],
+      [{ pos: "助動詞", surface: "なく" }, { surface: "ちゃ" }],
+      [{ pos: "形容詞", surface: "なく" }, { surface: "ちゃ" }],
+      [{ surface: "な" }, { surface: "きゃ" }],
     ],
     tests: [
       "もう帰らなきゃ。",
@@ -3722,49 +1941,23 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ta-koto-ga-aru",
-    title: "～たことがある",
+    title: "たことがある",
+    description: "Have done before",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B",
     patterns: [
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "た",
-          pos: "助動詞",
-        },
-        {
-          baseForm: "こと",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ある",
-          pos: "動詞",
-        },
+        { pos: "動詞" },
+        { surface: "た", pos: "助動詞" },
+        { baseForm: "こと", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "ある", pos: "動詞" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "だ",
-          pos: "助動詞",
-        },
-        {
-          baseForm: "こと",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ある",
-          pos: "動詞",
-        },
+        { pos: "動詞" },
+        { surface: "だ", pos: "助動詞" },
+        { baseForm: "こと", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "ある", pos: "動詞" },
       ],
     ],
     tests: [
@@ -3776,25 +1969,11 @@ const GRAMMAR_RULES = [
   },
   {
     id: "adjective-te-conjunctive",
-    title: "～くて／～で",
+    title: "Adjective + て・Noun + で",
     patterns: [
-      [
-        {
-          pos: "形容詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-        },
-      ],
-      [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "で",
-        },
-      ],
+      [{ pos: "形容詞", conjugation: "連用形" }, { surface: "て" }],
+      [{ pos: "形状詞" }, { surface: "で" }],
+      [{ pos: "名詞" }, { surface: "で", pos: "助動詞" }],
     ],
     tests: [
       "この林檎は赤くて甘いです。",
@@ -3804,46 +1983,30 @@ const GRAMMAR_RULES = [
       "この辞書は不便で古いです。",
       "彼は親切でハンサムです。",
     ],
+    link: "https://bunpro.jp/grammar_points/adjective-%E3%81%A6-noun-%E3%81%A7",
+    description: "And... (Conjunctive)",
   },
   {
     id: "no-ga-heta",
-    title: "～のが下手（へた）",
+    title: "のがへた",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "下手",
-          pos: "形状詞",
-        },
+        { pos: "動詞" },
+        { surface: "の" },
+        { surface: "が" },
+        { baseForm: "下手" },
       ],
       [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "へた",
-          pos: "形状詞",
-        },
+        { pos: "動詞" },
+        { surface: "の" },
+        { surface: "が" },
+        { baseForm: "へた" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "の" },
+        { surface: "が" },
+        { surface: "へた" },
       ],
     ],
     tests: [
@@ -3852,27 +2015,37 @@ const GRAMMAR_RULES = [
       "泳ぐのが下手な人はここに来てください。",
       "日本語を話すのがへたでした。",
     ],
+    link: "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%B8%E3%81%9F",
+    description: "To be bad at, Poor at, Unskillful",
   },
   {
     id: "no-ga-jouzu",
-    title: "～のが上手（じょうず）",
+    title: "のがじょうず",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "上手",
-        },
+        { pos: "動詞" },
+        { surface: "の" },
+        { surface: "が" },
+        { baseForm: "上手" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "の" },
+        { surface: "が" },
+        { surface: "とても" },
+        { baseForm: "上手" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "の" },
+        { surface: "が" },
+        { baseForm: "じょうず" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "の" },
+        { surface: "が" },
+        { surface: "じょうず" },
       ],
     ],
     tests: [
@@ -3881,50 +2054,19 @@ const GRAMMAR_RULES = [
       "母は歌を歌うのがとても上手だ。",
       "日本語を話すのが上手になりたい。",
     ],
+    link: "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%98%E3%82%87%E3%81%86%E3%81%9A",
+    description: "To be good at, Proficient",
   },
   {
     id: "no-the-one",
-    title: "～の（は）",
+    title: "Adjective + の(は)",
     patterns: [
-      [
-        {
-          pos: "形容詞",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "な",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-      ],
+      [{ pos: "形容詞" }, { surface: "の", pos: "助詞" }],
+      [{ pos: "動詞" }, { surface: "の", pos: "助詞" }],
+      [{ pos: "形状詞" }, { surface: "な" }, { surface: "の", pos: "助詞" }],
+      [{ pos: "名詞" }, { surface: "の", pos: "助詞" }],
+      [{ pos: "代名詞" }, { surface: "の", pos: "助詞" }],
+      [{ pos: "助動詞" }, { surface: "の", pos: "助詞" }],
     ],
     tests: [
       "青いのが好きです。",
@@ -3933,51 +2075,36 @@ const GRAMMAR_RULES = [
       "それは私のです。",
       "大きいのはいくらですか。",
     ],
+    link: "Adjective + の(は) (JLPT N5) | Bunpro",
+    description:
+      "The 'one' that... (Indefinite pronoun, Adjective nominalization)",
   },
   {
     id: "keredomo",
-    title: "～けれども／～けれど／～けど",
+    title: "けれども",
     patterns: [
-      [
-        {
-          surface: "けれども",
-        },
-      ],
-      [
-        {
-          surface: "けれど",
-        },
-      ],
-      [
-        {
-          surface: "けど",
-        },
-      ],
+      [{ surface: "けれども" }],
+      [{ surface: "けれど" }],
+      [{ surface: "けど" }],
     ],
     tests: [
       "雨が降っていますけれども、学校へ行きます。",
       "昨日は寒かったけれど、今日は暖かいです。",
-      "一生懸命走ったけれど、電車に間に合いませんでした。",
+      "一生懸命走ったけれど、電車に間に間に合いませんでした。",
       "その鞄は高いけど、とても綺麗だ。",
       "けれども、私の名前は書きませんでした。",
     ],
+    link: "https://bunpro.jp/grammar_points/%E3%81%91%E3%82%8C%E3%81%A9%E3%82%82",
+    description: "But, Although",
   },
   {
     id: "dandan",
     title: "だんだん",
+    description: "Gradually, Little by little, Step by step",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%93%E3%81%A0%E3%82%93",
     patterns: [
-      [
-        {
-          baseForm: "だんだん",
-          pos: "副詞",
-        },
-      ],
-      [
-        {
-          baseForm: "段々",
-          pos: "副詞",
-        },
-      ],
+      [{ baseForm: "だんだん", pos: "副詞" }],
+      [{ baseForm: "段々", pos: "副詞" }],
     ],
     tests: [
       "だんだん暖かくなってきました。",
@@ -3990,14 +2117,9 @@ const GRAMMAR_RULES = [
   {
     id: "dondon",
     title: "どんどん",
-    patterns: [
-      [
-        {
-          surface: "どんどん",
-          pos: "副詞",
-        },
-      ],
-    ],
+    description: "Progressively, Rapidly increasing, More and more",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A9%E3%82%93%E3%81%A9%E3%82%93",
+    patterns: [[{ surface: "どんどん", pos: "副詞" }]],
     tests: [
       "日本語がどんどん上手になります。",
       "遠慮しないでどんどん食べてください。",
@@ -4008,69 +2130,29 @@ const GRAMMAR_RULES = [
   },
   {
     id: "dakede",
-    title: "～だけで",
+    title: "だけで",
+    description: "Just by, Just with",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%A7",
     patterns: [
+      [{ pos: "名詞" }, { surface: "だけ" }, { surface: "で" }],
+      [{ pos: "代名詞" }, { surface: "だけ" }, { surface: "で" }],
+      [{ pos: "動詞" }, { surface: "だけ" }, { surface: "で" }],
+      [{ pos: "形容詞" }, { surface: "だけ" }, { surface: "で" }],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "だけ",
-        },
-        {
-          surface: "で",
-        },
+        { pos: "形状詞" },
+        { surface: "な" },
+        { surface: "だけ" },
+        { surface: "で" },
       ],
       [
-        {
-          pos: "代名詞",
-        },
-        {
-          surface: "だけ",
-        },
-        {
-          surface: "で",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "だけ",
-        },
-        {
-          surface: "で",
-        },
-      ],
-      [
-        {
-          pos: "形容詞",
-        },
-        {
-          surface: "だけ",
-        },
-        {
-          surface: "で",
-        },
-      ],
-      [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "な",
-        },
-        {
-          surface: "だけ",
-        },
-        {
-          surface: "で",
-        },
+        { pos: "名詞" },
+        { surface: "な" },
+        { surface: "だけ" },
+        { surface: "で" },
       ],
     ],
     tests: [
-      "君の顔を見るだけで幸せだ。",
+      "君 of 顔を見るだけで幸せだ。",
       "箸だけでご飯を食べるのは難しい。",
       "それだけで十分ですよ。",
       "大きいだけで、このバッグは重すぎる。",
@@ -4080,38 +2162,18 @@ const GRAMMAR_RULES = [
   {
     id: "daga-desuga",
     title: "だが・ですが",
+    description: "But, Still, However, Nevertheless",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%8C%E3%83%BB%E3%81%A7%E3%81%99%E3%81%8C",
     patterns: [
+      [{ surface: "だが", pos: "接続詞" }],
+      [{ surface: "ですが", pos: "接続詞" }],
       [
-        {
-          surface: "だが",
-          pos: "接続詞",
-        },
+        { baseForm: "だ", pos: "助動詞" },
+        { surface: "が", pos: "助詞" },
       ],
       [
-        {
-          surface: "ですが",
-          pos: "接続詞",
-        },
-      ],
-      [
-        {
-          baseForm: "だ",
-          pos: "助動詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          baseForm: "です",
-          pos: "助動詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
+        { baseForm: "です", pos: "助動詞" },
+        { surface: "が", pos: "助詞" },
       ],
     ],
     tests: [
@@ -4124,24 +2186,37 @@ const GRAMMAR_RULES = [
     ],
   },
   {
-    id: "nakute",
-    title: "～なくて",
+    id: "nakute-conjunction",
+    title: "なくて",
+    description: "To not ~ and ~, Not ~ and ~ (Conjugations)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6-conjunction",
     patterns: [
       [
-        {
-          baseForm: "ない",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
+        { baseForm: "ない", conjugation: "連用形" },
+        { surface: "て", pos: "助詞" },
       ],
+      [{ surface: "なくて" }],
+    ],
+    tests: [
+      "お金がなくて、何も買えません。",
+      "この料理は辛くなくて、美味しいです。",
+      "昨日は日曜日じゃなくて、土曜日でした。",
+      "朝ご飯を食べなくて、お腹が空きました。",
+      "このカバンは重くなくて、持ち運びが楽だ。",
+      "傘を待っていかなくて、濡れてしまった。",
+    ],
+  },
+  {
+    id: "nakute-examples",
+    title: "なくて",
+    description: "Not ~ and, Not so, Because not (Examples)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6",
+    patterns: [
       [
-        {
-          surface: "なくて",
-        },
+        { baseForm: "ない", conjugation: "連用形" },
+        { surface: "て", pos: "助詞" },
       ],
+      [{ surface: "なくて" }],
     ],
     tests: [
       "お金がなくて、何も買えません。",
@@ -4154,26 +2229,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "naosu-redo",
-    title: "～直す（～なおす）",
+    title: "なおす",
+    description: "To do over, To redo",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8A%E3%81%99",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "直す",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "なおす",
-        },
-      ],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "直す" }],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "なおす" }],
     ],
     tests: [
       "間違いがあったので、作文を書き直しました。",
@@ -4186,21 +2247,14 @@ const GRAMMAR_RULES = [
   },
   {
     id: "to-iu-koto",
-    title: "～ということ",
+    title: "ということ",
+    description: "~ing, The ~ that ~ (Nominalization)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8",
     patterns: [
       [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いう",
-          pos: "動詞",
-        },
-        {
-          surface: "こと",
-          pos: "名詞",
-        },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "いう", pos: "動詞" },
+        { surface: "こと", pos: "名詞" },
       ],
     ],
     tests: [
@@ -4213,17 +2267,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "hajimeru",
-    title: "～はじめる",
+    title: "はじめる",
+    description: "To start, To begin to",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%98%E3%82%81%E3%82%8B",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "始める",
-        },
-      ],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "始める" }],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "はじめる" }],
     ],
     tests: [
       "急に雨が降り始めました。",
@@ -4235,17 +2284,11 @@ const GRAMMAR_RULES = [
   },
   {
     id: "owaru-finish",
-    title: "～終わる",
+    title: "おわる",
+    description: "To finish, To end",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%8F%E3%82%8B",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "終わる",
-        },
-      ],
+      [{ pos: "動詞", conjugation: "連用形" }, { baseForm: "終わる" }],
     ],
     tests: [
       "この本を読み終わったら貸してください。",
@@ -4258,14 +2301,9 @@ const GRAMMAR_RULES = [
   {
     id: "tou-tou",
     title: "とうとう",
-    patterns: [
-      [
-        {
-          baseForm: "とうとう",
-          pos: "副詞",
-        },
-      ],
-    ],
+    description: "Finally, After all",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%86%E3%81%A8%E3%81%86",
+    patterns: [[{ baseForm: "とうとう", pos: "副詞" }]],
     tests: [
       "とうとう夏休みが終わってしまった。",
       "三年間勉強して、とうとう試験に合格した。",
@@ -4276,42 +2314,17 @@ const GRAMMAR_RULES = [
   },
   {
     id: "goto-ni",
-    title: "～ごとに",
+    title: "ごとに",
+    description: "Each, Every",
+    link: "https://bunpro.jp/grammar_points/%E3%81%94%E3%81%A8%E3%81%AB",
     patterns: [
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "ごとに",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "毎に",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "ごとに",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "毎に",
-        },
-      ],
+      [{ pos: "名詞" }, { surface: "ごとに" }],
+      [{ pos: "名詞" }, { surface: "毎に" }],
+      [{ pos: "動詞" }, { surface: "ごとに" }],
+      [{ pos: "動詞" }, { surface: "毎に" }],
+      [{ pos: "接尾辞" }, { surface: "ごと" }, { surface: "に" }],
+      [{ surface: "ごと" }, { surface: "に" }],
+      [{ pos: "名詞" }, { surface: "毎", pos: "接尾辞" }, { surface: "に" }],
     ],
     tests: [
       "バス停ごとに止まります。",
@@ -4324,14 +2337,9 @@ const GRAMMAR_RULES = [
   {
     id: "narubeku",
     title: "なるべく",
-    patterns: [
-      [
-        {
-          surface: "なるべく",
-          pos: "副詞",
-        },
-      ],
-    ],
+    description: "As ~ as possible, Wherever practicable",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%8B%E3%81%B9%E3%81%8F",
+    patterns: [[{ surface: "なるべく", pos: "副詞" }]],
     tests: [
       "なるべく早く来てください",
       "なるべく毎日勉強します",
@@ -4341,14 +2349,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "toka-toka",
-    title: "～とか～とか",
+    title: "とか～とか",
+    description: "Among other things, For example, Such as",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8B-%E3%81%A8%E3%81%8B",
     patterns: [
-      [
-        {
-          surface: "とか",
-          pos: "助詞",
-        },
-      ],
+      [{ surface: "とか", pos: "助詞" }],
+      [{ surface: "と" }, { surface: "か" }],
     ],
     tests: [
       "休日は、本を読めとかテレビを見るとかしています。",
@@ -4361,20 +2367,11 @@ const GRAMMAR_RULES = [
   {
     id: "sou-iu",
     title: "そういう",
+    description: "Like that, Kind of",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%81%84%E3%81%86",
     patterns: [
-      [
-        {
-          surface: "そういう",
-        },
-      ],
-      [
-        {
-          surface: "そう",
-        },
-        {
-          baseForm: "いう",
-        },
-      ],
+      [{ surface: "そういう" }],
+      [{ surface: "そう" }, { baseForm: "いう" }],
     ],
     tests: [
       "そういう意味ではありません。",
@@ -4387,84 +2384,51 @@ const GRAMMAR_RULES = [
   {
     id: "amari-nai",
     title: "あまり～ない",
+    description: "Not very, Not much, Not really, Hardly",
+    link: "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%BE%E3%82%8A-%E3%81%AA%E3%81%84",
     patterns: [
+      [{ baseForm: "あまり" }, { pos: "動詞" }, { baseForm: "ない" }],
+      [{ baseForm: "あまり" }, { pos: "形容詞" }, { baseForm: "ない" }],
       [
-        {
-          baseForm: "あまり",
-          pos: "副詞",
-        },
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
+        { baseForm: "あまり" },
+        { pos: "形状詞" },
+        { surface: "では" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          baseForm: "あまり",
-          pos: "副詞",
-        },
-        {
-          pos: "形容詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
+        { baseForm: "あまり" },
+        { pos: "形状詞" },
+        { surface: "で" },
+        { surface: "は" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          baseForm: "あまり",
-          pos: "副詞",
-        },
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "では",
-        },
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
+        { baseForm: "あまり" },
+        { pos: "形状詞" },
+        { surface: "じゃ" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          baseForm: "あまり",
-          pos: "副詞",
-        },
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "じゃ",
-        },
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
+        { baseForm: "あまり" },
+        { pos: "形状詞" },
+        { surface: "じゃ" },
+        { surface: "あり" },
+        { surface: "ませ" },
+        { surface: "ん" },
       ],
       [
-        {
-          baseForm: "あまり",
-          pos: "副詞",
-        },
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "ませ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ん",
-          pos: "助動詞",
-        },
+        { baseForm: "あまり" },
+        { pos: "動詞" },
+        { surface: "ませ" },
+        { surface: "ん" },
+      ],
+      [
+        { baseForm: "あまり" },
+        { pos: "名詞" },
+        { surface: "を" },
+        { pos: "動詞" },
+        { surface: "ませ" },
+        { surface: "ん" },
       ],
     ],
     tests: [
@@ -4478,87 +2442,46 @@ const GRAMMAR_RULES = [
   },
   {
     id: "to-ii",
-    title: "～といい",
+    title: "といい",
+    description: "I hope, I wish, You should, It would be good",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%84",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いい",
-          pos: "形容詞",
-        },
+        { pos: "動詞", conjugation: "終止形" },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "いい", pos: "形容詞" },
       ],
       [
-        {
-          pos: "形容詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いい",
-          pos: "形容詞",
-        },
+        { pos: "形容詞", conjugation: "終止形" },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "いい", pos: "形容詞" },
       ],
       [
-        {
-          pos: "助動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いい",
-          pos: "形容詞",
-        },
+        { pos: "助動詞", conjugation: "終止形" },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "いい", pos: "形容詞" },
       ],
     ],
     tests: [
       "明日晴れるといいですね。",
       "試験が簡単だといいなあ。",
       "忘れ物がないといいが。",
-      "もっと安いといいのに。",
+      "もっと安いといいなのに。",
       "病気が早く治るといい。",
     ],
   },
   {
     id: "janai-ka",
-    title: "～じゃないか",
+    title: "じゃないか",
+    description: "Isn't it?, Is it not?",
+    link: "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%E3%81%8B",
     patterns: [
+      [{ surface: "じゃ" }, { surface: "ない" }, { surface: "か" }],
       [
-        {
-          surface: "じゃ",
-        },
-        {
-          surface: "ない",
-        },
-        {
-          surface: "か",
-        },
-      ],
-      [
-        {
-          surface: "で",
-        },
-        {
-          surface: "は",
-        },
-        {
-          surface: "ない",
-        },
-        {
-          surface: "か",
-        },
+        { surface: "で" },
+        { surface: "は" },
+        { surface: "ない" },
+        { surface: "か" },
       ],
     ],
     tests: [
@@ -4570,30 +2493,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-hoshii",
-    title: "～てほしい",
+    title: "てほしい",
+    description: "I want you to",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%BB%E3%81%97%E3%81%84",
     patterns: [
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "ほしい",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "ほしい",
-        },
-      ],
+      [{ pos: "動詞" }, { surface: "て" }, { baseForm: "ほしい" }],
+      [{ pos: "動詞" }, { surface: "で" }, { baseForm: "ほしい" }],
     ],
     tests: [
       "お父さんにタバコをやめてほしいです。",
@@ -4604,39 +2509,20 @@ const GRAMMAR_RULES = [
   },
   {
     id: "to-kiita",
-    title: "～と聞いた",
+    title: "ときいた",
+    description: "I heard that",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8D%E3%81%84%E3%81%9F",
     patterns: [
       [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "聞く",
-          pos: "動詞",
-        },
-        {
-          baseForm: "た",
-          pos: "助動詞",
-        },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "聞く", pos: "動詞" },
+        { baseForm: "た", pos: "助動詞" },
       ],
       [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "聞く",
-          pos: "動詞",
-        },
-        {
-          baseForm: "ます",
-          pos: "助動詞",
-        },
-        {
-          baseForm: "た",
-          pos: "助動詞",
-        },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "聞く", pos: "動詞" },
+        { baseForm: "ます", pos: "助動詞" },
+        { baseForm: "た", pos: "助動詞" },
       ],
     ],
     tests: [
@@ -4651,14 +2537,9 @@ const GRAMMAR_RULES = [
   {
     id: "kikoeru",
     title: "聞こえる",
-    patterns: [
-      [
-        {
-          baseForm: "聞こえる",
-          pos: "動詞",
-        },
-      ],
-    ],
+    description: "To be audible, To sound (like), (Can) hear, To be heard",
+    link: "https://bunpro.jp/grammar_points/%E8%81%9E%E3%81%93%E3%81%88%E3%82%8B",
+    patterns: [[{ baseForm: "聞こえる", pos: "動詞" }]],
     tests: [
       "隣の部屋から声が聞こえる。",
       "テレビの音がよく聞こえますか。",
@@ -4669,15 +2550,8 @@ const GRAMMAR_RULES = [
   },
   {
     id: "mieru",
-    title: "～見える",
-    patterns: [
-      [
-        {
-          baseForm: "見える",
-          pos: "動詞",
-        },
-      ],
-    ],
+    title: "見える",
+    patterns: [[{ baseForm: "見える", pos: "動詞" }]],
     tests: [
       "遠くに山が見える。",
       "今日は富士山が見えません。",
@@ -4685,17 +2559,13 @@ const GRAMMAR_RULES = [
       "窓から綺麗な景色が見えます。",
       "電気がついているので、中がよく見える。",
     ],
+    description: "To be visible, To seem, To be in sight",
+    link: "https://bunpro.jp/grammar_points/%E8%A6%8B%E3%81%88%E3%82%8B",
   },
   {
     id: "hotondo",
     title: "ほとんど",
-    patterns: [
-      [
-        {
-          baseForm: "ほとんど",
-        },
-      ],
-    ],
+    patterns: [[{ baseForm: "ほとんど" }]],
     tests: [
       "宿題はほとんど終わりました。",
       "ほとんどの人がそのニュースを知っています。",
@@ -4703,43 +2573,19 @@ const GRAMMAR_RULES = [
       "雨が降っていたので、客がほとんど来なかった。",
       "彼はほとんど毎日公園で走っています。",
     ],
+    description: "Almost all, Most, Hardly any, Few (Adverbial noun)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BB%E3%81%A8%E3%82%93%E3%81%A9",
   },
   {
     id: "igai",
-    title: "～以外",
+    title: "いがい",
     patterns: [
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          baseForm: "以外",
-        },
-      ],
-      [
-        {
-          pos: "代名詞",
-        },
-        {
-          baseForm: "以外",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          baseForm: "以外",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "いがい",
-        },
-      ],
+      [{ pos: "名詞" }, { baseForm: "以外" }],
+      [{ pos: "代名詞" }, { baseForm: "以外" }],
+      [{ pos: "動詞" }, { baseForm: "以外" }],
+      [{ pos: "名詞" }, { surface: "いがい" }],
+      [{ pos: "代名詞" }, { baseForm: "いがい" }],
+      [{ pos: "代名詞" }, { surface: "いがい" }],
     ],
     tests: [
       "日曜日以外は休みです。",
@@ -4748,18 +2594,13 @@ const GRAMMAR_RULES = [
       "これ以外に何かありますか？",
       "それいがい、いいかんがえがない。",
     ],
+    description: "Except・besides, Other than, With the exception of",
+    link: "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%8C%E3%81%84",
   },
   {
     id: "zutto",
-    title: "ずっと",
-    patterns: [
-      [
-        {
-          baseForm: "ずっと",
-          pos: "副詞",
-        },
-      ],
-    ],
+    title: "ずっと ①",
+    patterns: [[{ baseForm: "ずっと", pos: "副詞" }]],
     tests: [
       "昨日からずっと雨が降っています。",
       "彼女のほうがずっと背が高いです。",
@@ -4767,46 +2608,34 @@ const GRAMMAR_RULES = [
       "駅はもっとずっと先にあります。",
       "さっきからずっとあなたのことを考えていました。",
     ],
+    description:
+      "Continuously, All throughout, Entire time, Ever (since), The whole time, All the way",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%A3%E3%81%A81",
   },
   {
     id: "daitai",
     title: "だいたい",
-    patterns: [
-      [
-        {
-          surface: "だいたい",
-        },
-      ],
-      [
-        {
-          surface: "大体",
-        },
-      ],
-    ],
+    patterns: [[{ surface: "だいたい" }], [{ surface: "大体" }]],
     tests: [
       "だいたい分かりました。",
       "宿題はだいたい終わりました。",
       "駅から家まで大体１０分です。",
       "ここにある本は、だいたい読みました。",
     ],
+    description:
+      "Most・mostly, Adequately・generally, For the most part, Roughly・approximately, In the first place",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%84%E3%81%9F%E3%81%84",
   },
   {
     id: "no-naka-de",
-    title: "～の中で",
+    title: "のなかで～がいちばん～",
+    description: "Out of ~, ~ is the best/most ~",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AA%E3%81%8B%E3%81%A7-%E3%81%AC%E3%81%84%E3%81%A1%E3%81%B0%E3%82%93",
     patterns: [
       [
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          baseForm: "中",
-          pos: "名詞",
-        },
-        {
-          surface: "で",
-          pos: "助詞",
-        },
+        { surface: "の", pos: "助詞" },
+        { baseForm: "中", pos: "名詞" },
+        { surface: "で", pos: "助詞" },
       ],
     ],
     tests: [
@@ -4819,77 +2648,26 @@ const GRAMMAR_RULES = [
   },
   {
     id: "you-ni-simile",
-    title: "～ように (As, Like)",
+    title: "ように・ような",
+    description: "As・like, Just like",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB-%E3%82%88%E3%81%86%E3%81%AA",
     patterns: [
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "の",
-        },
-        {
-          baseForm: "よう",
-        },
-        {
-          surface: "に",
-        },
+        { pos: "名詞" },
+        { surface: "の" },
+        { baseForm: "よう" },
+        { surface: "に" },
       ],
+      [{ pos: "名詞" }, { surface: "の" }, { surface: "ように" }],
+      [{ pos: "動詞" }, { baseForm: "よう" }, { surface: "に" }],
+      [{ pos: "動詞" }, { surface: "ように" }],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "の",
-        },
-        {
-          surface: "ように",
-        },
+        { pos: "形状詞" },
+        { surface: "な" },
+        { baseForm: "よう" },
+        { surface: "に" },
       ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          baseForm: "よう",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "ように",
-        },
-      ],
-      [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "な",
-        },
-        {
-          baseForm: "よう",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          pos: "形容詞",
-        },
-        {
-          baseForm: "よう",
-        },
-        {
-          surface: "に",
-        },
-      ],
+      [{ pos: "形容詞" }, { baseForm: "よう" }, { surface: "に" }],
     ],
     tests: [
       "彼は猫のように静かに歩く。",
@@ -4900,62 +2678,28 @@ const GRAMMAR_RULES = [
   },
   {
     id: "shika-nai",
-    title: "～しか～ない",
+    title: "しか～ない",
+    description: "There's only, Nothing but",
+    link: "https://bunpro.jp/grammar_points/%E3%81%97%E3%81%8B-%E3%81%AA%E3%81%84",
     patterns: [
+      [{ surface: "しか", pos: "助詞" }, { baseForm: "ない" }],
       [
-        {
-          surface: "しか",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ない",
-        },
+        { surface: "しか", pos: "助詞" },
+        { conjugation: "未然形" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          surface: "しか",
-          pos: "助詞",
-        },
-        {
-          conjugation: "未然形",
-        },
-        {
-          baseForm: "ない",
-        },
+        { surface: "しか", pos: "助詞" },
+        { pos: "動詞", conjugation: "連用形" },
+        { baseForm: "ます" },
+        { surface: "ん" },
       ],
       [
-        {
-          surface: "しか",
-          pos: "助詞",
-        },
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "ます",
-        },
-        {
-          surface: "ん",
-        },
-      ],
-      [
-        {
-          surface: "しか",
-          pos: "助詞",
-        },
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-        },
-        {
-          conjugation: "未然形",
-        },
-        {
-          baseForm: "ない",
-        },
+        { surface: "しか", pos: "助詞" },
+        { pos: "動詞" },
+        { surface: "て" },
+        { conjugation: "未然形" },
+        { baseForm: "ない" },
       ],
     ],
     tests: [
@@ -4968,41 +2712,23 @@ const GRAMMAR_RULES = [
   },
   {
     id: "no-hitotsu-da",
-    title: "～の一つだ",
+    title: "～は～の一つだ",
+    description: "〜 is one of (many) 〜",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AF-%E3%81%AE%E4%B8%80%E3%81%A4%E3%81%A0",
     patterns: [
+      [{ surface: "の" }, { surface: "一つ" }, { baseForm: "だ" }],
+      [{ surface: "の" }, { surface: "ひとつ" }, { baseForm: "だ" }],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          surface: "一つ",
-          pos: "名詞",
-        },
-        {
-          baseForm: "だ",
-          pos: "助動詞",
-        },
+        { surface: "の" },
+        { surface: "一" },
+        { surface: "つ" },
+        { baseForm: "だ" },
       ],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          surface: "ひとつ",
-          pos: "名詞",
-        },
-        {
-          baseForm: "だ",
-          pos: "助動詞",
-        },
+        { surface: "の" },
+        { surface: "一" },
+        { surface: "つ" },
+        { surface: "です" },
       ],
     ],
     tests: [
@@ -5015,40 +2741,20 @@ const GRAMMAR_RULES = [
   {
     id: "nai-wa-nai",
     title: "～ない～はない",
+    description: "There is not ~ that is not/does not",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84-%E3%81%AF%E3%81%AA%E3%81%84",
     patterns: [
       [
-        {
-          pos: "助動詞",
-          surface: "ない",
-        },
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "は",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ない",
-          pos: "形容詞",
-        },
+        { pos: "助動詞", surface: "ない" },
+        { pos: "名詞" },
+        { surface: "は", pos: "助詞" },
+        { baseForm: "ない", pos: "形容詞" },
       ],
       [
-        {
-          pos: "形容詞",
-          surfaceEndsWith: "ない",
-        },
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "は",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ない",
-          pos: "形容詞",
-        },
+        { pos: "形容詞", surfaceEndsWith: "ない" },
+        { pos: "名詞" },
+        { surface: "は", pos: "助詞" },
+        { baseForm: "ない", pos: "形容詞" },
       ],
     ],
     tests: [
@@ -5060,37 +2766,21 @@ const GRAMMAR_RULES = [
   },
   {
     id: "sukoshi-mo-nai",
-    title: "少しも～ない",
+    title: "すこしも～ない",
+    description: "Not even a little, Not at all, Not in the least, Never",
+    link: "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%93%E3%81%97%E3%82%82-%E3%81%AA%E3%81%84",
     patterns: [
       [
-        {
-          baseForm: "少し",
-          pos: "副詞",
-        },
-        {
-          surface: "も",
-          pos: "助詞",
-        },
+        { baseForm: "少し", pos: "副詞" },
+        { surface: "も", pos: "助詞" },
       ],
       [
-        {
-          surface: "すこし",
-          pos: "副詞",
-        },
-        {
-          surface: "も",
-          pos: "助詞",
-        },
+        { surface: "すこし", pos: "副詞" },
+        { surface: "も", pos: "助詞" },
       ],
       [
-        {
-          baseForm: "少し",
-          pos: "名詞",
-        },
-        {
-          surface: "も",
-          pos: "助詞",
-        },
+        { baseForm: "少し", pos: "名詞" },
+        { surface: "も", pos: "助詞" },
       ],
     ],
     tests: [
@@ -5105,25 +2795,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "sukunaku-nai",
-    title: "～少なくない",
+    title: "すくなくない",
+    description: "Quite a few, Quite a lot, Many, Not a few, Not a little",
+    link: "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8F%E3%81%AA%E3%81%8F%E3%81%AA%E3%81%84",
     patterns: [
-      [
-        {
-          baseForm: "少ない",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "ない",
-        },
-      ],
-      [
-        {
-          surface: "すくなく",
-        },
-        {
-          baseForm: "ない",
-        },
-      ],
+      [{ baseForm: "少ない", conjugation: "連用形" }, { baseForm: "ない" }],
+      [{ surface: "すくなく" }, { baseForm: "ない" }],
     ],
     tests: [
       "日本に興味がある外国人は少なくない。",
@@ -5135,61 +2812,30 @@ const GRAMMAR_RULES = [
   },
   {
     id: "baai-wa",
-    title: "～場合は",
+    title: "ばあいは",
+    description: "In the event of, In the case of",
+    link: "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%82%E3%81%84%E3%81%AF",
     patterns: [
+      [{ pos: "動詞" }, { baseForm: "場合" }, { surface: "は", pos: "助詞" }],
+      [{ pos: "助動詞" }, { baseForm: "場合" }, { surface: "は", pos: "助詞" }],
+      [{ pos: "形容詞" }, { baseForm: "場合" }, { surface: "は", pos: "助詞" }],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          baseForm: "場合",
-        },
-        {
-          surface: "は",
-          pos: "助詞",
-        },
+        { pos: "形状詞" },
+        { surface: "な" },
+        { baseForm: "場合" },
+        { surface: "は", pos: "助詞" },
       ],
       [
-        {
-          pos: "形容詞",
-        },
-        {
-          baseForm: "場合",
-        },
-        {
-          surface: "は",
-          pos: "助詞",
-        },
+        { pos: "名詞" },
+        { surface: "の" },
+        { baseForm: "場合" },
+        { surface: "は", pos: "助詞" },
       ],
       [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "な",
-        },
-        {
-          baseForm: "場合",
-        },
-        {
-          surface: "は",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "の",
-        },
-        {
-          baseForm: "場合",
-        },
-        {
-          surface: "は",
-          pos: "助詞",
-        },
+        { pos: "名詞" },
+        { surface: "の" },
+        { surface: "ばあい" },
+        { surface: "は", pos: "助詞" },
       ],
     ],
     tests: [
@@ -5203,27 +2849,17 @@ const GRAMMAR_RULES = [
   },
   {
     id: "verb-te-casual-request",
-    title: "～て",
+    title: "Verb[て]",
+    description: "Please do for me (Casual request)",
+    link: "https://bunpro.jp/grammar_points/verb%E3%81%A6-request",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "て", pos: "助詞" },
       ],
       [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "で",
-          pos: "助詞",
-        },
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "で", pos: "助詞" },
       ],
     ],
     tests: [
@@ -5236,77 +2872,45 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-yokatta",
-    title: "～てよかった",
+    title: "てよかった",
+    description: "I'm glad that",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%88%E3%81%8B%E3%81%A3%E3%81%9F",
     patterns: [
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "良い",
-          surface: "よかった",
-        },
+        { pos: "動詞" },
+        { surface: "て" },
+        { surface: "よかっ" },
+        { surface: "た" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "良い",
-          surface: "よかった",
-        },
+        { pos: "動詞" },
+        { surface: "で" },
+        { surface: "よかっ" },
+        { surface: "た" },
       ],
       [
-        {
-          baseForm: "ない",
-          surface: "なくて",
-        },
-        {
-          baseForm: "良い",
-          surface: "よかった",
-        },
+        { baseForm: "ない", surface: "なく" },
+        { surface: "て" },
+        { surface: "よかっ" },
+        { surface: "た" },
       ],
       [
-        {
-          pos: "形容詞",
-        },
-        {
-          surface: "くて",
-        },
-        {
-          baseForm: "良い",
-          surface: "よかった",
-        },
+        { pos: "形容詞" },
+        { surface: "て" },
+        { surface: "よかっ" },
+        { surface: "た" },
       ],
       [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "良い",
-          surface: "よかった",
-        },
+        { pos: "形状詞" },
+        { surface: "で" },
+        { surface: "よかっ" },
+        { surface: "た" },
       ],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "良い",
-          surface: "よかった",
-        },
+        { pos: "名詞" },
+        { surface: "で" },
+        { surface: "よかっ" },
+        { surface: "た" },
       ],
     ],
     tests: [
@@ -5320,29 +2924,16 @@ const GRAMMAR_RULES = [
   },
   {
     id: "to-itte-mo-ii",
-    title: "～といってもいい",
+    title: "といってもいい",
+    description: "You could say, You might say",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84",
     patterns: [
       [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いう",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          surface: "も",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いい",
-          pos: "形容詞",
-        },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "いう", conjugation: "連用形" },
+        { surface: "て", pos: "助詞" },
+        { surface: "も", pos: "助詞" },
+        { baseForm: "いい", pos: "形容詞" },
       ],
     ],
     tests: [
@@ -5354,7 +2945,9 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-mo",
-    title: "～ても / ～でも",
+    title: "ても",
+    description: "Even if, Even though",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82",
     patterns: [
       [
         {
@@ -5430,52 +3023,36 @@ const GRAMMAR_RULES = [
   {
     id: "youni-te-hoshii",
     title: "ように～てほしい",
+    description:
+      "Want ~ to ~ like ~, Want ~ to be able to ~, Want ~ to ~ in the way of ~",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB-%E3%81%A6%E3%81%BB%E3%81%97%E3%81%84",
     patterns: [
       [
-        {
-          surface: "ように",
-        },
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ほしい",
-          pos: "形容詞",
-        },
+        { surface: "よう" },
+        { surface: "に" },
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "ほしい" },
       ],
       [
-        {
-          surface: "ように",
-        },
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "で",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ほしい",
-          pos: "形容詞",
-        },
+        { surface: "よう" },
+        { surface: "に" },
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "ほしい" },
       ],
     ],
     tests: [
-      "忘れないようにしてほしい。",
-      "子供がもっと野菜を食べるように工夫してほしい。",
-      "彼が試験に合格できるように祈ってほしい。",
-      "時間に遅れないように気をつけてほしい。",
+      "弁護士になれるように頑張ってほしい。",
+      "あなたに漢字を書けるようになってほしい。",
+      "トムに友達ができるようになってほしい。",
     ],
   },
   {
     id: "te-iru-aida-ni",
-    title: "～ているあいだに",
+    title: "ているあいだに",
+    description: "While, During the time that ~",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B%E3%81%82%E3%81%84%E3%81%A0%E3%81%AB",
     patterns: [
       [
         {
@@ -5559,65 +3136,23 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-sumimasen",
-    title: "～てすみません",
+    title: "てすみません",
+    description: "I'm sorry for",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%99%E3%81%BF%E3%81%BE%E3%81%9B%E3%82%93",
     patterns: [
+      [{ surface: "て" }, { baseForm: "すみません" }],
+      [{ surface: "で" }, { baseForm: "すみません" }],
       [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "すみません",
-        },
+        { surface: "て" },
+        { surface: "すみ" },
+        { surface: "ませ" },
+        { surface: "ん" },
       ],
       [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "すみません",
-        },
-      ],
-      [
-        {
-          pos: "形容詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "すみません",
-        },
-      ],
-      [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "すみません",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "すみません",
-        },
+        { surface: "で" },
+        { surface: "すみ" },
+        { surface: "ませ" },
+        { surface: "ん" },
       ],
     ],
     tests: [
@@ -5631,41 +3166,35 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-kurete-arigatou",
-    title: "～てくれてありがとう",
+    title: "てくれてありがとう",
+    description: "Thank you for ~ ing",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%A6%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86",
     patterns: [
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          baseForm: "くれる",
-          surface: "くれて",
-          pos: "動詞",
-        },
-        {
-          surface: "ありがとう",
-        },
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "くれる", surface: "くれて" },
+        { surface: "ありがとう" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "で",
-          pos: "助詞",
-        },
-        {
-          baseForm: "くれる",
-          surface: "くれて",
-          pos: "動詞",
-        },
-        {
-          surface: "ありがとう",
-        },
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "くれる", surface: "くれて" },
+        { surface: "ありがとう" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "て" },
+        { surface: "くれ" },
+        { surface: "て" },
+        { surface: "ありがとう" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "で" },
+        { surface: "くれ" },
+        { surface: "て" },
+        { surface: "ありがとう" },
       ],
     ],
     tests: [
@@ -5678,39 +3207,21 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-kurenai",
-    title: "～てくれない",
+    title: "てくれない・てもらえない",
+    description: "Won't you?, Will you?, Could you?, Can you?, Would you?",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84-%E3%81%A6%E3%82%82%E3%82%89%E3%82%82%E3%81%AA%E3%81%84",
     patterns: [
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "くれる",
-          pos: "動詞",
-        },
-        {
-          surface: "ない",
-          pos: "助動詞",
-        },
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "くれる", pos: "動詞" },
+        { surface: "ない", pos: "助動詞" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "くれる",
-          pos: "動詞",
-        },
-        {
-          surface: "ない",
-          pos: "助動詞",
-        },
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "くれる", pos: "動詞" },
+        { surface: "ない", pos: "助動詞" },
       ],
     ],
     tests: [
@@ -5723,61 +3234,31 @@ const GRAMMAR_RULES = [
   },
   {
     id: "no-darou-ka",
-    title: "～のだろうか / ～んだろうか",
+    title: "～のだろうか",
+    description: "I wonder...",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A0%E3%82%8D%E3%81%86%E3%81%8B",
     patterns: [
       [
-        {
-          surface: "の",
-        },
-        {
-          baseForm: "だろう",
-          pos: "助動詞",
-        },
-        {
-          surface: "か",
-          pos: "助詞",
-        },
+        { surface: "の" },
+        { surface: "だろう" },
+        { surface: "か", pos: "助詞" },
       ],
       [
-        {
-          surface: "ん",
-        },
-        {
-          baseForm: "だろう",
-          pos: "助動詞",
-        },
-        {
-          surface: "か",
-          pos: "助詞",
-        },
+        { surface: "ん" },
+        { surface: "だろう" },
+        { surface: "か", pos: "助詞" },
       ],
       [
-        {
-          surface: "の",
-        },
-        {
-          surface: "だろ",
-        },
-        {
-          surface: "う",
-        },
-        {
-          surface: "か",
-        },
+        { surface: "の" },
+        { surface: "だろ" },
+        { surface: "う" },
+        { surface: "か" },
       ],
       [
-        {
-          surface: "ん",
-        },
-        {
-          surface: "だろ",
-        },
-        {
-          surface: "う",
-        },
-        {
-          surface: "か",
-        },
+        { surface: "ん" },
+        { surface: "だろ" },
+        { surface: "う" },
+        { surface: "か" },
       ],
     ],
     tests: [
@@ -5791,23 +3272,20 @@ const GRAMMAR_RULES = [
   {
     id: "o-ni-naru",
     title: "お～になる",
+    description: "To do (Honorific)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8A-%E3%81%AB%E3%81%AA%E3%82%8B",
     patterns: [
       [
-        {
-          surface: "お",
-        },
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "に",
-          pos: "助詞",
-        },
-        {
-          baseForm: "なる",
-          pos: "動詞",
-        },
+        { surface: "お" },
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "に" },
+        { baseForm: "なる" },
+      ],
+      [
+        { surface: "お" },
+        { pos: "名詞" },
+        { surface: "に" },
+        { baseForm: "なる" },
       ],
     ],
     tests: [
@@ -5821,14 +3299,9 @@ const GRAMMAR_RULES = [
   {
     id: "nasaru-honorific",
     title: "なさる",
-    patterns: [
-      [
-        {
-          baseForm: "なさる",
-          pos: "動詞",
-        },
-      ],
-    ],
+    description: "To do (Honorific)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%95%E3%82%8B",
+    patterns: [[{ baseForm: "なさる", pos: "動詞" }]],
     tests: [
       "今日は何をなさいますか？",
       "先生がそのようになさいました。",
@@ -5841,34 +3314,12 @@ const GRAMMAR_RULES = [
   {
     id: "irassharu",
     title: "いらっしゃる",
+    description: "To be (Honorific), To come (Honorific), To go (Honorific)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%84%E3%82%89%E3%81%A3%E3%81%97%E3%82%83%E3%82%8B",
     patterns: [
-      [
-        {
-          baseForm: "いらっしゃる",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "て",
-        },
-        {
-          baseForm: "いらっしゃる",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          baseForm: "いらっしゃる",
-        },
-      ],
+      [{ baseForm: "いらっしゃる" }],
+      [{ pos: "動詞" }, { surface: "て" }, { baseForm: "いらっしゃる" }],
+      [{ pos: "動詞" }, { surface: "で" }, { baseForm: "いらっしゃる" }],
     ],
     tests: [
       "先生は明日学校にいらっしゃいますか。",
@@ -5881,15 +3332,10 @@ const GRAMMAR_RULES = [
   },
   {
     id: "gozaimasu",
-    title: "～ございます",
-    patterns: [
-      [
-        {
-          baseForm: "ござる",
-          pos: "動詞",
-        },
-      ],
-    ],
+    title: "ございます",
+    description: "To be, To exist (Polite)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99",
+    patterns: [[{ baseForm: "ござる", pos: "動詞" }]],
     tests: [
       "お手洗いはあちらでございます。",
       "何かご不明な点はございますか。",
@@ -5901,32 +3347,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "de-gozaimasu",
-    title: "～でございます",
+    title: "でございます",
+    description: "To be, Polite copula",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99",
     patterns: [
-      [
-        {
-          surface: "で",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ございます",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          surface: "で",
-          pos: "助詞",
-        },
-        {
-          surface: "ござい",
-          pos: "助動詞",
-        },
-        {
-          surface: "ます",
-          pos: "助動詞",
-        },
-      ],
+      [{ surface: "で" }, { baseForm: "ございます" }],
+      [{ surface: "で" }, { surface: "ござい" }, { surface: "ます" }],
     ],
     tests: [
       "こちらは山田でございます。",
@@ -5938,31 +3364,24 @@ const GRAMMAR_RULES = [
   },
   {
     id: "o-suru-humble",
-    title: "お～する",
+    title: "お〜する",
+    description: "I humbly do, I am obliged to do, Humble speech",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8B-%E3%81%99%E3%82%8B",
     patterns: [
       [
-        {
-          surface: "お",
-        },
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          baseForm: "する",
-        },
+        { surface: "お" },
+        { pos: "動詞", conjugation: "連用形" },
+        { baseForm: "する" },
       ],
       [
-        {
-          surface: "お",
-        },
-        {
-          pos: "動詞",
-          conjugation: "連y用形",
-        },
-        {
-          baseForm: "いたす",
-        },
+        { surface: "お" },
+        { pos: "動詞", conjugation: "連用形" },
+        { baseForm: "いたす" },
+      ],
+      [
+        { surface: "お" },
+        { pos: "動詞", conjugation: "連用形" },
+        { surface: "いたし" },
       ],
     ],
     tests: [
@@ -5976,14 +3395,9 @@ const GRAMMAR_RULES = [
   {
     id: "itasu",
     title: "いたす",
-    patterns: [
-      [
-        {
-          baseForm: "いたす",
-          pos: "動詞",
-        },
-      ],
-    ],
+    description: "To do (Humble)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%9F%E3%81%99",
+    patterns: [[{ baseForm: "いたす", pos: "動詞" }]],
     tests: [
       "よろしくお願いいたします。",
       "昨日は失礼いたしました。",
@@ -5994,59 +3408,49 @@ const GRAMMAR_RULES = [
   },
   {
     id: "te-itadakemasen-ka",
-    title: "～ていただけませんか",
+    title: "ていただけませんか",
+    description: "Won't you, Could you please (Humble request)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%9F%E3%81%A0%E3%81%91%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8B",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いただく",
-          pos: "動詞",
-        },
-        {
-          surface: "ませ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ん",
-          pos: "助動詞",
-        },
-        {
-          surface: "か",
-          pos: "助詞",
-        },
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "いただく" },
+        { surface: "ませ" },
+        { surface: "ん" },
+        { surface: "か" },
       ],
       [
-        {
-          pos: "動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "で",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いただく",
-          pos: "動詞",
-        },
-        {
-          surface: "ませ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ん",
-          pos: "助動詞",
-        },
-        {
-          surface: "か",
-          pos: "助詞",
-        },
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "いただく" },
+        { surface: "ませ" },
+        { surface: "ん" },
+        { surface: "か" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "いただける" },
+        { surface: "ませ" },
+        { surface: "ん" },
+        { surface: "か" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "で" },
+        { baseForm: "いただける" },
+        { surface: "ませ" },
+        { surface: "ん" },
+        { surface: "か" },
+      ],
+      [
+        { pos: "動詞" },
+        { surface: "て" },
+        { baseForm: "頂ける" },
+        { surface: "ませ" },
+        { surface: "ん" },
+        { surface: "か" },
       ],
     ],
     tests: [
@@ -6061,39 +3465,15 @@ const GRAMMAR_RULES = [
   },
   {
     id: "tara",
-    title: "～たら",
+    title: "たら",
+    description: "When, From when, Just when, If",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89",
     patterns: [
-      [
-        {
-          surface: "たら",
-          pos: "助動詞",
-        },
-      ],
-      [
-        {
-          surface: "た",
-          pos: "助動詞",
-        },
-        {
-          surface: "ら",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          surface: "だ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ら",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          surface: "だったら",
-        },
-      ],
+      [{ surface: "たら" }],
+      [{ surface: "だら" }],
+      [{ surface: "た" }, { surface: "ら" }],
+      [{ surface: "だ" }, { surface: "ら" }],
+      [{ surface: "だったら" }],
     ],
     tests: [
       "日本に行ったら、お寿司を食べたい。",
@@ -6106,24 +3486,13 @@ const GRAMMAR_RULES = [
   },
   {
     id: "hoka-ni",
-    title: "ほかに",
+    title: "ほかに(も)・ほか(に)は",
+    description:
+      "Other, Another, Any other, Anything else, As well as, Besides, In addition",
+    link: "https://bunpro.jp/grammar_points/%E3%81%BB%E3%81%8B%E3%81%AB%E3%82%82-%E3%81%BB%E3%81%8B%E3%81%AB%E3%81%AF",
     patterns: [
-      [
-        {
-          surface: "ほか",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          surface: "他",
-        },
-        {
-          surface: "に",
-        },
-      ],
+      [{ surface: "ほか" }, { surface: "に" }],
+      [{ surface: "他" }, { surface: "に" }],
     ],
     tests: [
       "りんごのほかに、バナナも買いました。",
@@ -6135,22 +3504,13 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ga-hitsuyou",
-    title: "～が必要",
-    patterns: [
-      [
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "必要",
-        },
-      ],
-    ],
+    title: "がひつよう",
+    description: "Need, Necessary",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%B2%E3%81%A4%E3%82%88%E3%81%86",
+    patterns: [[{ surface: "が", pos: "助詞" }, { baseForm: "必要" }]],
     tests: [
       "外国へ行くとき、パスポートが必要です。",
       "日本で生活するにはお金が必要だ。",
-      "何か必要なものがありますか。",
       "この作業には人手が必要だ。",
       "車を運転するには免許が必要になります。",
     ],
@@ -6158,13 +3518,11 @@ const GRAMMAR_RULES = [
   {
     id: "sonnani",
     title: "そんなに",
+    description: "So (much), That much, Like that",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%93%E3%81%AA%E3%81%AB",
     patterns: [
-      [
-        {
-          surface: "そんなに",
-          pos: "副詞",
-        },
-      ],
+      [{ surface: "そんなに" }],
+      [{ surface: "そんな" }, { surface: "に" }],
     ],
     tests: [
       "そんなに食べないでください。",
@@ -6176,47 +3534,21 @@ const GRAMMAR_RULES = [
   },
   {
     id: "hitsuyou-ga-aru",
-    title: "～必要がある",
+    title: "ひつようがある",
     patterns: [
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "必要",
-        },
-        {
-          surface: "が",
-        },
-        {
-          baseForm: "ある",
-        },
+        { pos: "動詞" },
+        { surface: "必要" },
+        { surface: "が" },
+        { baseForm: "ある" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "ひつよう",
-        },
-        {
-          surface: "が",
-        },
-        {
-          baseForm: "ある",
-        },
+        { pos: "動詞" },
+        { surface: "ひつよう" },
+        { surface: "が" },
+        { baseForm: "ある" },
       ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "必要",
-        },
-        {
-          baseForm: "ある",
-        },
-      ],
+      [{ pos: "動詞" }, { surface: "必要" }, { baseForm: "ある" }],
     ],
     tests: [
       "毎日、練習する必要がある。",
@@ -6224,74 +3556,52 @@ const GRAMMAR_RULES = [
       "確認するひつようがあった。",
       "これ、直す必要ある？",
     ],
+    description: "It is necessary to",
+    link: "https://bunpro.jp/grammar_points/%E3%81%B2%E3%81%A4%E3%82%88%E3%81%86%E3%81%8C%E3%81%82%E3%82%8B",
   },
   {
     id: "tatoeba",
     title: "たとえば",
     patterns: [
-      [
-        {
-          baseForm: "例えば",
-          pos: "副詞",
-        },
-      ],
-      [
-        {
-          surface: "たとえば",
-          pos: "副詞",
-        },
-      ],
+      [{ baseForm: "例えば", pos: "副詞" }],
+      [{ surface: "たとえば", pos: "副詞" }],
     ],
     tests: [
       "たとえば、私はりんごが好きです。",
       "例えばどうやって作りますか？",
       "果物、たとえばイチゴやメロンを買いました。",
     ],
+    description: "For example",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A8%E3%81%88%E3%81%B0",
   },
   {
     id: "n-da-kedo",
-    title: "～んだけど",
+    title: "んだけど・んですが",
     patterns: [
       [
-        {
-          surface: "ん",
-          pos: "助詞",
-        },
-        {
-          baseForm: "だ",
-          pos: "助動詞",
-        },
-        {
-          surface: "けど",
-          pos: "助詞",
-        },
+        { surface: "ん", pos: "助詞" },
+        { baseForm: "だ", pos: "助動詞" },
+        { surface: "けど", pos: "助詞" },
       ],
     ],
     tests: [
       "明日、パーティーに行くんだけど、君も来る？",
-      "このパソコン、ちょっと高いんだけど、性能はいいよ。",
+      "このパソコン、ちょっと高いんだけど、性能はいいよ.",
       "昨日は暇だったんだけど、今日はとても忙しい。",
       "彼女はとてもきれいなんだけど、性格が少しきつい。",
       "今は仕事中なんだけど、何か急用ですか？",
     ],
+    description: "But..., And...",
+    link: "https://bunpro.jp/grammar_points/%E3%82%93%E3%81%A0%E3%81%91%E3%81%A9-%E3%82%93%E3%81%A7%E3%81%99%E3%81%8C",
   },
   {
     id: "naito-must",
-    title: "～ないと",
+    title: "ないと",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
-        {
-          surface: "と",
-          pos: "助詞",
-        },
+        { pos: "動詞", conjugation: "未然形" },
+        { baseForm: "ない", pos: "助動詞" },
+        { surface: "と", pos: "助詞" },
       ],
     ],
     tests: [
@@ -6300,81 +3610,38 @@ const GRAMMAR_RULES = [
       "毎日、野菜を食べないとだめですよ。",
       "もう寝ないと間に合わない。",
     ],
+    description: "Must, Have to",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A8",
   },
   {
     id: "hazu-ga-nai",
-    title: "～はずがない",
+    title: "はずがない",
     patterns: [
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "はず",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "動詞" },
+        { surface: "はず", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          pos: "形容詞",
-        },
-        {
-          surface: "はず",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "形容詞" },
+        { surface: "はず", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "な",
-        },
-        {
-          surface: "はず",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "形状詞" },
+        { surface: "な" },
+        { surface: "はず", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          surface: "はず",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "名詞" },
+        { surface: "の", pos: "助詞" },
+        { surface: "はず", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "ない" },
       ],
     ],
     tests: [
@@ -6383,23 +3650,13 @@ const GRAMMAR_RULES = [
       "まじめな田中さんが、今日休むはずがない。",
       "昨日見たのは幽霊のはずがない。",
     ],
+    description: "Hardly possible, Cannot be, Highly unlikely, Improbable",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%9A%E3%81%8C%E3%81%AA%E3%81%84",
   },
   {
     id: "dake-denaku",
-    title: "～だけでなく",
-    patterns: [
-      [
-        {
-          surface: "だけ",
-        },
-        {
-          surface: "で",
-        },
-        {
-          surface: "なく",
-        },
-      ],
-    ],
+    title: "だけでなく",
+    patterns: [[{ surface: "だけ" }, { surface: "で" }, { surface: "なく" }]],
     tests: [
       "日本だけでなく、外国でも有名だ。",
       "この料理は美味しいだけでなく、見た目もいい。",
@@ -6407,17 +3664,15 @@ const GRAMMAR_RULES = [
       "ここは静かなだけでなく、景色もとてもいい。",
       "子供だけでなく大人も楽しめる映画です。",
     ],
+    description: "Not only… but also",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AA%E3%81%8F",
   },
   {
     id: "kai-question-marker",
-    title: "～かい",
+    title: "かい",
     patterns: [
-      [
-        {
-          surface: "かい",
-          pos: "助詞",
-        },
-      ],
+      [{ surface: "かい", pos: "助詞" }],
+      [{ surface: "か" }, { surface: "い" }],
     ],
     tests: [
       "明日は暇かい？",
@@ -6426,18 +3681,13 @@ const GRAMMAR_RULES = [
       "この意味がわかるかい？",
       "本当に行くのかい？",
     ],
+    description: "Question marker",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%84",
   },
   {
     id: "moshi",
     title: "もし",
-    patterns: [
-      [
-        {
-          surface: "もし",
-          pos: "副詞",
-        },
-      ],
-    ],
+    patterns: [[{ surface: "もし", pos: "副詞" }]],
     tests: [
       "もし雨が降ったら、ピクニックは中止です。",
       "もし時間があれば、手伝ってください。",
@@ -6446,47 +3696,17 @@ const GRAMMAR_RULES = [
       "もし宝くじが当たったら、何をしますか。",
       "もし困ったことがあったら、電話してください。",
     ],
+    description: "If (For emphasis)",
+    link: "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%97",
   },
   {
     id: "shi-listing-reasons",
-    title: "～し、～し",
+    title: "し～し",
     patterns: [
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "し",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          pos: "形容詞",
-        },
-        {
-          surface: "し",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          surface: "だ",
-        },
-        {
-          surface: "し",
-          pos: "助詞",
-        },
-      ],
-      [
-        {
-          pos: "助動詞",
-        },
-        {
-          surface: "し",
-          pos: "助詞",
-        },
-      ],
+      [{ pos: "動詞" }, { surface: "し", pos: "助詞" }],
+      [{ pos: "形容詞" }, { surface: "し", pos: "助詞" }],
+      [{ surface: "だ" }, { surface: "し", pos: "助詞" }],
+      [{ pos: "助動詞" }, { surface: "し", pos: "助詞" }],
     ],
     tests: [
       "この店は安いし、おいしいです。",
@@ -6496,20 +3716,16 @@ const GRAMMAR_RULES = [
       "時間もありますし、ゆっくりしていってください。",
       "雨もやんだし、帰りましょう。",
     ],
+    description: "And, Giving reasons",
+    link: "https://bunpro.jp/grammar_points/%E3%81%97-%E3%81%97",
   },
   {
     id: "de-dekiru",
-    title: "～でできる",
+    title: "でできる・からできる",
     patterns: [
       [
-        {
-          surface: "で",
-          pos: "助詞",
-        },
-        {
-          baseForm: "できる",
-          pos: "動詞",
-        },
+        { surface: "で", pos: "助詞" },
+        { baseForm: "できる", pos: "動詞" },
       ],
     ],
     tests: [
@@ -6518,58 +3734,28 @@ const GRAMMAR_RULES = [
       "このカメラはほとんどプラスチックでできたおもちゃです。",
       "それは何でできていますか？",
     ],
+    description: "Made of, Made from, Produced from, Come from",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%A7%E3%81%8D%E3%82%8B-%E3%81%8B%E3%82%89%E3%81%A7%E3%81%8D%E3%82%8B",
   },
   {
     id: "to-to-dochira-ga",
-    title: "～と～と、どちらが",
+    title: "と～と、どちらが",
+    description: "Between ~ which one",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8-%E3%81%A8-%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8C",
     patterns: [
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "どちら",
-          pos: "代名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
+        { surface: "と", pos: "助詞" },
+        {},
+        { surface: "と", pos: "助詞" },
+        { baseForm: "どちら" },
+        { surface: "が" },
       ],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "どっち",
-          pos: "代名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
+        { surface: "と", pos: "助詞" },
+        {},
+        { surface: "と", pos: "助詞" },
+        { baseForm: "どっち" },
+        { surface: "が" },
       ],
     ],
     tests: [
@@ -6582,54 +3768,26 @@ const GRAMMAR_RULES = [
   },
   {
     id: "nakereba-ikenai",
-    title: "～なければいけない",
+    title: "なければいけない",
+    description: "Must do, Have to do",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%84%E3%81%91%E3%81%AA%E3%81%84",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          surface: "なけれ",
-          baseForm: "ない",
-        },
-        {
-          surface: "ば",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いけない",
-        },
+        { pos: "動詞", conjugation: "未然形" },
+        { surface: "なけれ", baseForm: "ない" },
+        { surface: "ば", pos: "助詞" },
+        { baseForm: "いけない" },
       ],
       [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          surface: "なけれ",
-          baseForm: "ない",
-        },
-        {
-          surface: "ば",
-          pos: "助詞",
-        },
-        {
-          surface: "いけ",
-          baseForm: "いける",
-        },
+        { pos: "動詞", conjugation: "未然形" },
+        { surface: "なけれ", baseForm: "ない" },
+        { surface: "ば", pos: "助詞" },
+        { surface: "いけ", baseForm: "いける" },
       ],
       [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          surface: "なければ",
-        },
-        {
-          baseForm: "いけない",
-        },
+        { pos: "動詞", conjugation: "未然形" },
+        { surface: "なければ" },
+        { baseForm: "いけない" },
       ],
     ],
     tests: [
@@ -6641,91 +3799,39 @@ const GRAMMAR_RULES = [
   },
   {
     id: "nakereba-naranai",
-    title: "～なければならない",
+    title: "なければならない",
+    description: "Must do, Have to do",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84",
     patterns: [
       [
-        {
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          surface: "なけれ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ば",
-          pos: "助詞",
-        },
-        {
-          baseForm: "なる",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "動詞" },
+        { surface: "なけれ" },
+        { surface: "ば" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          pos: "形容詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "なけれ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ば",
-          pos: "助詞",
-        },
-        {
-          baseForm: "なる",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "形容詞" },
+        { surface: "なけれ" },
+        { surface: "ば" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          surface: "なけれ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ば",
-          pos: "助詞",
-        },
-        {
-          baseForm: "なる",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "名詞" },
+        { surface: "で" },
+        { surface: "なけれ" },
+        { surface: "ば" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
       ],
       [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "で",
-        },
-        {
-          surface: "なけれ",
-          pos: "助動詞",
-        },
-        {
-          surface: "ば",
-          pos: "助詞",
-        },
-        {
-          baseForm: "なる",
-        },
-        {
-          baseForm: "ない",
-        },
+        { pos: "形状詞" },
+        { surface: "で" },
+        { surface: "なけれ" },
+        { surface: "ば" },
+        { baseForm: "なる" },
+        { baseForm: "ない" },
       ],
     ],
     tests: [
@@ -6738,63 +3844,33 @@ const GRAMMAR_RULES = [
   },
   {
     id: "you-ni-iu",
-    title: "～ように言う",
+    title: "ようにいう",
+    description: "To tell, request, or order to do (in such a way)",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%84%E3%81%86",
     patterns: [
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "言う",
-        },
+        { pos: "動詞" },
+        { surface: "よう" },
+        { surface: "に" },
+        { baseForm: "言う" },
       ],
       [
-        {
-          baseForm: "ない",
-        },
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "言う",
-        },
+        { baseForm: "ない" },
+        { surface: "よう" },
+        { surface: "に" },
+        { baseForm: "言う" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "伝える",
-        },
+        { pos: "動詞" },
+        { surface: "よう" },
+        { surface: "に" },
+        { baseForm: "伝える" },
       ],
       [
-        {
-          baseForm: "ない",
-        },
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "伝える",
-        },
+        { baseForm: "ない" },
+        { surface: "よう" },
+        { surface: "に" },
+        { baseForm: "伝える" },
       ],
     ],
     tests: [
@@ -6807,38 +3883,13 @@ const GRAMMAR_RULES = [
   },
   {
     id: "yotei-da",
-    title: "～予定だ",
+    title: "よていだ",
+    description: "Plan to, Intend to",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%A6%E3%81%84%E3%81%A0",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          baseForm: "予定",
-        },
-      ],
-      [
-        {
-          pos: "助動詞",
-          conjugation: "終止形",
-        },
-        {
-          baseForm: "予定",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "の",
-          pos: "助詞",
-        },
-        {
-          baseForm: "予定",
-        },
-      ],
+      [{ pos: "動詞" }, { baseForm: "予定" }],
+      [{ pos: "助動詞" }, { baseForm: "予定" }],
+      [{ pos: "名詞" }, { surface: "の", pos: "助詞" }, { baseForm: "予定" }],
     ],
     tests: [
       "来年、日本へ行く予定です。",
@@ -6850,60 +3901,14 @@ const GRAMMAR_RULES = [
   },
   {
     id: "youni-inoru",
-    title: "～ように祈る",
+    title: "ようにいのる",
+    description: "Pray that/for, Hope that/for, Keep fingers crossed that",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%84%E3%81%AE%E3%82%8B",
     patterns: [
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "祈る",
-        },
-      ],
-      [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "ように",
-        },
-        {
-          baseForm: "祈る",
-        },
-      ],
-      [
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-        {
-          baseForm: "祈る",
-        },
-      ],
-      [
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
-        {
-          surface: "ように",
-        },
-        {
-          baseForm: "祈る",
-        },
-      ],
+      [{ surface: "よう" }, { surface: "に" }, { baseForm: "祈る" }],
+      [{ surface: "ように" }, { baseForm: "祈る" }],
+      [{ surface: "よう" }, { surface: "に" }, {}, { baseForm: "祈る" }],
+      [{ surface: "ように" }, {}, { baseForm: "祈る" }],
     ],
     tests: [
       "試験に合格するように祈っています。",
@@ -6914,18 +3919,11 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ka-suru",
-    title: "～化する",
-    patterns: [
-      [
-        {
-          surface: "化",
-        },
-        {
-          baseForm: "する",
-          pos: "動詞",
-        },
-      ],
-    ],
+    title: "化する",
+    description:
+      "-ification, -ization, To make something, To change, To become, Transform into",
+    link: "https://bunpro.jp/grammar_points/%E5%8C%96%E3%81%99%E3%82%8B",
+    patterns: [[{ surface: "化" }, { baseForm: "する", pos: "動詞" }]],
     tests: [
       "この物語を映画化する予定だ。",
       "地球の気温が上昇し、温暖化している。",
@@ -6935,32 +3933,13 @@ const GRAMMAR_RULES = [
   },
   {
     id: "you-ni-purpose",
-    title: "～ように",
+    title: "ように",
+    description: "So that, In order to, In such a way that",
+    link: "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB",
     patterns: [
-      [
-        {
-          pos: "動詞",
-          conjugation: "終止形",
-        },
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-      ],
-      [
-        {
-          baseForm: "ない",
-          pos: "助動詞",
-        },
-        {
-          surface: "よう",
-        },
-        {
-          surface: "に",
-        },
-      ],
+      [{ pos: "動詞" }, { surface: "よう" }, { surface: "に" }],
+      [{ baseForm: "ない" }, { surface: "よう" }, { surface: "に" }],
+      [{ pos: "動詞" }, { surface: "ように" }],
     ],
     tests: [
       "忘れないようにメモしました。",
@@ -6972,15 +3951,10 @@ const GRAMMAR_RULES = [
   },
   {
     id: "kashira",
-    title: "～かしら",
-    patterns: [
-      [
-        {
-          surface: "かしら",
-          pos: "助詞",
-        },
-      ],
-    ],
+    title: "かしら",
+    description: "I wonder",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%97%E3%82%89",
+    patterns: [[{ surface: "かしら", pos: "助詞" }]],
     tests: [
       "明日は雨かしら。",
       "彼は本当に来るかしら。",
@@ -6992,34 +3966,12 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ni-mieru",
-    title: "～に見える",
+    title: "にみえる",
+    description: "To look, To seem, To appear",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%BF%E3%81%88%E3%82%8B",
     patterns: [
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "に",
-          pos: "助詞",
-        },
-        {
-          baseForm: "見える",
-          pos: "動詞",
-        },
-      ],
-      [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "に",
-          pos: "助詞",
-        },
-        {
-          baseForm: "見える",
-          pos: "動詞",
-        },
-      ],
+      [{ surface: "に" }, { baseForm: "見える" }],
+      [{ surface: "に" }, { baseForm: "みえる" }],
     ],
     tests: [
       "彼は医者に見える。",
@@ -7032,18 +3984,10 @@ const GRAMMAR_RULES = [
   },
   {
     id: "to-mieru",
-    title: "～とみえる",
+    title: "とみえる",
     patterns: [
-      [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "見える",
-          pos: "動詞",
-        },
-      ],
+      [{ surface: "と" }, { baseForm: "見える" }],
+      [{ surface: "と" }, { baseForm: "みえる" }],
     ],
     tests: [
       "彼はかなり疲れているとみえる。",
@@ -7052,26 +3996,20 @@ const GRAMMAR_RULES = [
       "どうやら彼はそのことを知らなかったとみえる。",
       "試験が難しかったとみえる、みんな元気がない。",
     ],
+    description: "It seems that, It can be deduced, One can conclude that",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%BF%E3%81%88%E3%82%8B",
   },
   {
     id: "ga-mirareru",
-    title: "～がみられる",
+    title: "がみられる",
     patterns: [
       [
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "見る",
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          baseForm: "られる",
-          pos: "助動詞",
-        },
+        { surface: "が" },
+        { baseForm: "見る", conjugation: "未然形" },
+        { baseForm: "られる" },
       ],
+      [{ surface: "が" }, { baseForm: "みる" }, { baseForm: "られる" }],
+      [{ surface: "が" }, { surface: "み" }, { baseForm: "られる" }],
     ],
     tests: [
       "最近、回復の兆しがみられる。",
@@ -7079,46 +4017,25 @@ const GRAMMAR_RULES = [
       "調査の結果、改善の傾向が見られる。",
       "多くの場所で同じ現象がみられました。",
     ],
+    description:
+      "Can see, Can be seen, Can observe, Can be observed, Be evident, Chance to see something",
+    link: "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%BF%E3%82%89%E3%82%8C%E3%82%8B",
   },
   {
     id: "ni-ki-ga-tsuku",
-    title: "～に気がつく",
+    title: "にきがつく",
     patterns: [
       [
-        {
-          surface: "に",
-          pos: "助詞",
-        },
-        {
-          surface: "気",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "つく",
-          pos: "動詞",
-        },
+        { surface: "に", pos: "助詞" },
+        { surface: "気", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "つく", pos: "動詞" },
       ],
       [
-        {
-          surface: "に",
-          pos: "助詞",
-        },
-        {
-          surface: "気",
-          pos: "名詞",
-        },
-        {
-          surface: "が",
-          pos: "助詞",
-        },
-        {
-          baseForm: "付く",
-          pos: "動詞",
-        },
+        { surface: "に", pos: "助詞" },
+        { surface: "気", pos: "名詞" },
+        { surface: "が", pos: "助詞" },
+        { baseForm: "付く", pos: "動詞" },
       ],
     ],
     tests: [
@@ -7127,29 +4044,47 @@ const GRAMMAR_RULES = [
       "忘れ物に気がついた",
       "大切なことに気が付かなかった",
     ],
+    description: "To notice (that), To realize (that)",
+    link: "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8D%E3%81%B0%E3%81%A4%E3%81%8F",
   },
   {
     id: "demo-demo",
-    title: "～でも～でも",
+    title: "〜でも 〜でも",
     patterns: [
       [
         {
-          pos: "名詞",
+          pos: "動詞",
+        },
+        {
+          surface: "て",
+        },
+        {
+          surface: "も",
+          pos: "助詞",
+        },
+      ],
+      [
+        {
+          pos: "動詞",
         },
         {
           surface: "で",
         },
         {
           surface: "も",
+          pos: "助詞",
+        },
+      ],
+      [
+        {
+          pos: "形容詞",
         },
         {
-          pos: "名詞",
-        },
-        {
-          surface: "で",
+          surface: "て",
         },
         {
           surface: "も",
+          pos: "助詞",
         },
       ],
       [
@@ -7161,99 +4096,60 @@ const GRAMMAR_RULES = [
         },
         {
           surface: "も",
+          pos: "助詞",
         },
+      ],
+      [
         {
-          pos: "形状詞",
+          pos: "名詞",
         },
         {
           surface: "で",
         },
         {
           surface: "も",
-        },
-      ],
-      [
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "でも",
-        },
-        {
-          pos: "名詞",
-        },
-        {
-          surface: "でも",
-        },
-      ],
-      [
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "でも",
-        },
-        {
-          pos: "形状詞",
-        },
-        {
-          surface: "でも",
+          pos: "助詞",
         },
       ],
     ],
     tests: [
-      "肉でも魚でも、どちらでもいいですよ。",
+      "肉でも魚でも, どちらでもいいですよ。",
       "男性でも女性でも参加することができます。",
-      "平日でも週末でも、その店は混んでいる。",
-      "不便でも、きれいでも、この家が好きだ。",
+      "平日でも週末でも, その店は混んでいる。",
+      "不便でも, きれいでも, この家が好きだ。",
     ],
+    description: "Whether ~ or, Neither ~ or",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A7%E3%82%82-%E3%81%A7%E3%82%82",
   },
   {
     id: "sore-ni",
     title: "それに",
     patterns: [
+      [{ surface: "それに" }],
       [
-        {
-          surface: "それに",
-        },
-      ],
-      [
-        {
-          baseForm: "それ",
-          pos: "代名詞",
-        },
-        {
-          surface: "に",
-          pos: "助詞",
-        },
+        { baseForm: "それ", pos: "代名詞" },
+        { surface: "に", pos: "助詞" },
       ],
     ],
     tests: [
-      "この店は美味しいし、それに安いです。",
-      "今日はとても疲れました。それに、お腹も空いています。",
-      "彼は背が高いし、それにハンサムだ。",
-      "昨日は宿題がたくさんあった。それに、テスト勉強もしなければならなかった。",
+      "この店は美味しいし, それに安いです。",
+      "今日はとても疲れました。それに, お腹も空いています。",
+      "彼は背が高いし, それにハンサムだ。",
+      "昨日は宿題がたくさんあった。それに, テスト勉強もしなければならなかった。",
     ],
+    description: "And, Besides, Moreover, In addition",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%AB",
   },
   {
     id: "sore-de",
     title: "それで",
+    description: "Because of that, So?, And then?, Therefore, With that",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%A7",
     patterns: [
+      [{ surface: "それで", pos: "接続詞" }],
       [
-        {
-          surface: "それで",
-          pos: "接続詞",
-        },
-      ],
-      [
-        {
-          surface: "それ",
-          pos: "代名詞",
-        },
-        {
-          surface: "で",
-          pos: "助詞",
-        },
+        { surface: "それ", pos: "代名詞" },
+        { surface: "で", pos: "助詞" },
       ],
     ],
     tests: [
@@ -7266,23 +4162,11 @@ const GRAMMAR_RULES = [
   {
     id: "soredemo",
     title: "それでも",
+    description: "But still, And yet, Even so, Nevertheless",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%A7%E3%82%82",
     patterns: [
-      [
-        {
-          surface: "それでも",
-        },
-      ],
-      [
-        {
-          surface: "それ",
-        },
-        {
-          surface: "で",
-        },
-        {
-          surface: "も",
-        },
-      ],
+      [{ surface: "それでも" }],
+      [{ surface: "それ" }, { surface: "で" }, { surface: "も" }],
     ],
     tests: [
       "外はとても寒いです。それでも彼は走ります。",
@@ -7293,31 +4177,19 @@ const GRAMMAR_RULES = [
   },
   {
     id: "tara-dou",
-    title: "～たらどう",
+    title: "たらどう",
+    description: "Why don't you...?, What if you did...?",
+    link: "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89%E3%81%A9%E3%81%86",
     patterns: [
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "たら",
-          pos: "助動詞",
-        },
-        {
-          surface: "どう",
-        },
+        { pos: "動詞" },
+        { surface: "たら", pos: "助動詞" },
+        { surface: "どう" },
       ],
       [
-        {
-          pos: "動詞",
-        },
-        {
-          surface: "だら",
-          pos: "助動詞",
-        },
-        {
-          surface: "どう",
-        },
+        { pos: "動詞" },
+        { surface: "だら", pos: "助動詞" },
+        { surface: "どう" },
       ],
     ],
     tests: [
@@ -7330,52 +4202,23 @@ const GRAMMAR_RULES = [
   },
   {
     id: "to-kangaerarete-iru",
-    title: "～と考えられている",
+    title: "とかんがえられている",
+    description: "Is considered, Is thought of as",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8B%E3%82%93%E3%81%8C%E3%81%88%E3%82%89%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B",
     patterns: [
       [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "考える",
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          baseForm: "られる",
-          pos: "助動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いる",
-        },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "考える", pos: "動詞", conjugation: "未然形" },
+        { baseForm: "られる", pos: "助動詞", conjugation: "連用形" },
+        { surface: "て", pos: "助詞" },
+        { baseForm: "いる" },
       ],
       [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          surface: "かんがえ",
-          pos: "動詞",
-        },
-        {
-          baseForm: "られる",
-          pos: "助動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いる",
-        },
+        { surface: "と", pos: "助詞" },
+        { surface: "かんがえ", pos: "動詞" },
+        { baseForm: "られる", pos: "助動詞", conjugation: "連用形" },
+        { surface: "て", pos: "助詞" },
+        { baseForm: "いる" },
       ],
     ],
     tests: [
@@ -7387,29 +4230,17 @@ const GRAMMAR_RULES = [
   },
   {
     id: "to-sarete-iru",
-    title: "～とされている",
+    title: "とされている",
+    description:
+      "To be considered, To be deemed, Be regarded as, Be accepted as, To be said, To be accredited with",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B",
     patterns: [
       [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "する",
-          conjugation: "未然形",
-        },
-        {
-          baseForm: "れる",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いる",
-          pos: "動詞",
-        },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "する", conjugation: "未然形" },
+        { baseForm: "れる", conjugation: "連用形" },
+        { surface: "て", pos: "助詞" },
+        { baseForm: "いる", pos: "動詞" },
       ],
     ],
     tests: [
@@ -7423,30 +4254,15 @@ const GRAMMAR_RULES = [
   {
     id: "to-iwarete-iru",
     title: "といわれている",
+    description: "It is said that, Is known as",
+    link: "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B",
     patterns: [
       [
-        {
-          surface: "と",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いう",
-          pos: "動詞",
-          conjugation: "未然形",
-        },
-        {
-          baseForm: "れる",
-          pos: "助動詞",
-          conjugation: "連用形",
-        },
-        {
-          surface: "て",
-          pos: "助詞",
-        },
-        {
-          baseForm: "いる",
-          pos: "動詞",
-        },
+        { surface: "と", pos: "助詞" },
+        { baseForm: "いう", pos: "動詞", conjugation: "未然形" },
+        { baseForm: "れる", pos: "助動詞", conjugation: "連用形" },
+        { surface: "て", pos: "助詞" },
+        { baseForm: "いる", pos: "動詞" },
       ],
     ],
     tests: [
@@ -7458,35 +4274,22 @@ const GRAMMAR_RULES = [
   },
   {
     id: "ba-yokatta",
-    title: "～ばよかった",
+    title: "ばよかった",
+    description: "Should have, I wish, It would have been better to",
+    link: "https://bunpro.jp/grammar_points/%E3%81%B0%E3%82%88%E3%81%8B%E3%81%A3%E3%81%9F",
     patterns: [
       [
-        {
-          surfaceEndsWith: "ば",
-        },
-        {
-          baseForm: "良い",
-          surface: "よかっ",
-        },
-        {
-          surface: "た",
-          pos: "助動詞",
-        },
+        { surfaceEndsWith: "ば" },
+        { baseForm: "良い", surface: "よかっ" },
+        { surface: "た" },
       ],
       [
-        {
-          surface: "ば",
-          pos: "助詞",
-        },
-        {
-          baseForm: "良い",
-          surface: "よかっ",
-        },
-        {
-          surface: "た",
-          pos: "助動詞",
-        },
+        { surface: "ば" },
+        { baseForm: "良い", surface: "よかっ" },
+        { surface: "た" },
       ],
+      [{ surface: "ば" }, { surface: "よかっ" }, { surface: "た" }],
+      [{ surface: "ば" }, { baseForm: "いい" }, { surface: "た" }],
     ],
     tests: [
       "もっと早く起きればよかった。",
