@@ -11,6 +11,7 @@
         padding: 0;
         background-color: #f4f4f9;
         color: #333;
+        position: relative;
       }
       h1 {
         color: #2c3e50;
@@ -171,21 +172,18 @@
       .grammar-match {
         background-color: #e3f2fd;
         border-bottom: 2px solid #2196f3;
-        cursor: pointer;
+        cursor: help;
         border-radius: 3px;
+        transition: background-color 0.1s;
       }
       .dict-match {
         background-color: #f1f8e9;
         border-bottom: 2px solid #8bc34a;
-        cursor: pointer;
+        cursor: help;
         border-radius: 3px;
+        transition: background-color 0.1s;
       }
-      .grammar-match:hover {
-        background-color: #bbdefb;
-      }
-      .dict-match:hover {
-        background-color: #dcedc8;
-      }
+      /* Active state for when tooltip is open on this word */
       .active {
         background-color: #ffe0b2 !important;
         border-bottom-color: #ff9800 !important;
@@ -193,7 +191,7 @@
 
       /* Tooltip Styles */
       #grammar-tooltip {
-        position: fixed;
+        position: absolute; /* Moves with scroll */
         z-index: 1000;
         background: white;
         color: #333;
@@ -259,6 +257,9 @@
         width: 100%;
         text-align: center;
         box-sizing: border-box;
+      }
+      #grammar-tooltip a.ext-link:hover {
+        background-color: #34495e;
       }
 
       .status-bar {
@@ -476,17 +477,17 @@
 建物の中はいつもより暗かった。
 私は留学をする予定です。
 ５年間日本語を勉強して、日本語が話せるようになった。
-そのことは全然知りません。</textarea
+そのことは全然知りません。
+</textarea
         >
       </div>
       <div class="panel">
-        <div class="panel-header">Analysis (Click words for details)</div>
+        <div class="panel-header">Analysis (Hover words for details)</div>
         <div id="output-display"></div>
         <div class="status-bar" id="status-bar">Initializing...</div>
       </div>
     </div>
     <div id="grammar-tooltip"><div class="tooltip-content"></div></div>
-
     <script type="module">
       import { GrammarRule } from "./grammar-engine.js";
       import GRAMMAR_RULES from "./grammar-rules.js";
@@ -502,14 +503,100 @@
       const toggleGrammar = document.getElementById("toggle-grammar");
       const toggleFurigana = document.getElementById("toggle-furigana");
 
-      // Buttons
       const btnPaste = document.getElementById("btn-paste");
       const btnClear = document.getElementById("btn-clear");
 
       let state = { sudachi: null, dictDB: null };
       window.state = state;
 
-      // --- Helper Utilities ---
+      const JMDICT_POS_MAP = {
+        動詞: [
+          "v1",
+          "v1-s",
+          "v2a-s",
+          "v2b-k",
+          "v2b-s",
+          "v2d-k",
+          "v2d-s",
+          "v2g-k",
+          "v2g-s",
+          "v2h-k",
+          "v2h-s",
+          "v2k-k",
+          "v2k-s",
+          "v2m-k",
+          "v2m-s",
+          "v2n-s",
+          "v2r-k",
+          "v2r-s",
+          "v2s-s",
+          "v2t-k",
+          "v2t-s",
+          "v2w-s",
+          "v2y-k",
+          "v2y-s",
+          "v2z-s",
+          "v4b",
+          "v4g",
+          "v4h",
+          "v4k",
+          "v4m",
+          "v4n",
+          "v4r",
+          "v4s",
+          "v4t",
+          "v5aru",
+          "v5b",
+          "v5g",
+          "v5k",
+          "v5k-s",
+          "v5m",
+          "v5n",
+          "v5r",
+          "v5r-i",
+          "v5s",
+          "v5t",
+          "v5u",
+          "v5u-s",
+          "v5uru",
+          "vi",
+          "vk",
+          "vn",
+          "vr",
+          "vs",
+          "vs-c",
+          "vs-i",
+          "vs-s",
+          "vt",
+          "vz",
+          "v-unspec",
+        ],
+        助動詞: ["aux", "aux-v", "aux-adj"],
+        助詞: ["prt", "adv-to", "conj"],
+        名詞: [
+          "n",
+          "n-adv",
+          "n-pr",
+          "n-pref",
+          "n-suf",
+          "n-t",
+          "num",
+          "ctr",
+          "adj-no",
+          "adj-pn",
+          "pn",
+          "suf",
+          "pref",
+          "vs",
+          "exp",
+        ],
+        形容詞: ["adj-i", "adj-ix", "adj-kari", "adj-ku", "adj-shiku"],
+        副詞: ["adv", "adv-to", "n-adv"],
+        形状詞: ["adj-na", "adj-nari", "adj-no", "adj-f", "adj-pn", "n"],
+        代名詞: ["pn"],
+        接尾辞: ["suf", "n-suf", "c-suf", "v-suf"],
+      };
+
       async function fetchAndGunzip(url) {
         const response = await fetch(url);
         const ds = new DecompressionStream("gzip");
@@ -559,19 +646,75 @@
           : surface;
       }
 
-      async function searchDictionary(term) {
+      function getPos(token) {
+        const p = token.poses || token.pos;
+        return p && p.length > 0 ? p[0] : "Unk";
+      }
+
+      function searchDictionary(term, sudachiPos) {
         if (!state.dictDB) return null;
         let indices = state.dictDB.index[term];
-
         if (!indices && term.length > 1) {
           indices = state.dictDB.index[term.slice(0, -1)];
         }
-
         if (!indices) return null;
-        return indices.map((idx) => state.dictDB.defs[idx]);
+
+        const entries = indices.map((idx) => state.dictDB.defs[idx]);
+        if (sudachiPos && JMDICT_POS_MAP[sudachiPos]) {
+          const allowedCodes = new Set(JMDICT_POS_MAP[sudachiPos]);
+          const filteredEntries = [];
+          for (const entrySenses of entries) {
+            const validSenses = entrySenses.filter((sense) => {
+              if (!sense.partOfSpeech || sense.partOfSpeech.length === 0)
+                return true;
+              return sense.partOfSpeech.some((code) => allowedCodes.has(code));
+            });
+            if (validSenses.length > 0) filteredEntries.push(validSenses);
+          }
+          return filteredEntries.length > 0 ? filteredEntries : null;
+        }
+        return entries;
       }
 
-      // --- Initialization ---
+      function renderTokenOrGroup(item, activePOS) {
+        let content = "";
+        let pos = "";
+        let dictForm = "";
+        let surface = "";
+
+        if (item.isGroup) {
+          content = item.tokens
+            .map((t) =>
+              generateRuby(t.surface, katakanaToHiragana(t.reading_form)),
+            )
+            .join("");
+          const head = item.baseToken;
+          pos = getPos(head);
+          dictForm = head.dictionary_form;
+          surface = item.surface;
+        } else {
+          content = generateRuby(
+            item.surface,
+            katakanaToHiragana(item.reading_form),
+          );
+          pos = getPos(item);
+          dictForm = item.dictionary_form;
+          surface = item.surface;
+        }
+
+        if (activePOS.has(pos)) {
+          const compatibleEntries = searchDictionary(dictForm, pos);
+          if (compatibleEntries) {
+            return `<span class="dict-match" 
+                           data-type="dict"
+                           data-kanji="${dictForm}"
+                           data-surface="${surface}"
+                           data-pos="${pos}">${content}</span>`;
+          }
+        }
+        return content;
+      }
+
       async function initResources() {
         try {
           statusBar.innerText = "Loading Sudachi...";
@@ -595,7 +738,6 @@
         }
       }
 
-      // --- Core Logic ---
       async function runAnalysis() {
         if (!state.sudachi || !state.dictDB) return;
         const text = inputText.value;
@@ -604,36 +746,35 @@
           return;
         }
 
-        // Get Options
         const activePOS = new Set();
         filterInputs.forEach((input) => {
           if (input.checked) activePOS.add(input.value);
         });
         const isGrammarEnabled = toggleGrammar.checked;
 
-        // 1. Tokenize
-        const tokens = JSON.parse(state.sudachi.tokenize_stringified(text, 0));
+        const rawTokens = JSON.parse(
+          state.sudachi.tokenize_stringified(text, 0),
+        );
 
-        // 2. Scan for Grammar (only if enabled)
+        // --- 1. Identify Grammar Matches ---
         let activeGrammar = [];
         if (isGrammarEnabled) {
           let grammarRanges = [];
           for (const ruleJson of GRAMMAR_RULES) {
             const rule = new GrammarRule(ruleJson);
-            const matches = rule.scan(tokens);
+            const matches = rule.scan(rawTokens);
             matches.forEach((m) => {
               grammarRanges.push({
                 start: m.index,
                 end: m.index + m.length,
                 data: ruleJson,
-                type: "grammar",
               });
             });
           }
-          // Resolve grammar overlaps (longest match first)
           grammarRanges.sort(
             (a, b) => b.end - b.start - (a.end - a.start) || a.start - b.start,
           );
+
           const usedTokens = new Set();
           for (const r of grammarRanges) {
             let conflict = false;
@@ -644,20 +785,43 @@
               for (let i = r.start; i < r.end; i++) usedTokens.add(i);
             }
           }
+
+          // --- 2. Extend Grammar Matches (NEW LOGIC) ---
+          // If a grammar match is followed by Aux/Suffix, include them in the highlight
+          // e.g., "あげ" (Grammar) + "ます" (Aux) -> "あげます" (Grammar Highlight)
+          for (const match of activeGrammar) {
+            let nextIdx = match.end;
+            while (nextIdx < rawTokens.length) {
+              // Stop if the next token is the start of another grammar rule
+              if (activeGrammar.some((other) => other.start === nextIdx)) break;
+
+              const nextToken = rawTokens[nextIdx];
+              const nextPos = getPos(nextToken);
+
+              // Extend if Aux or Suffix
+              if (nextPos === "助動詞" || nextPos === "接尾辞") {
+                match.end++;
+                nextIdx++;
+              } else {
+                break;
+              }
+            }
+          }
         }
 
-        // 3. Render
+        // --- 3. Render Loop ---
         let html = "";
-        for (let i = 0; i < tokens.length; i++) {
-          const gMatch = activeGrammar.find((r) => r.start === i);
+        let i = 0;
 
+        while (i < rawTokens.length) {
+          // A. Grammar Check
+          const gMatch = activeGrammar.find((r) => r.start === i);
           if (gMatch) {
-            // Render Grammar Block
             let blockContent = "";
             for (let j = gMatch.start; j < gMatch.end; j++) {
               blockContent += generateRuby(
-                tokens[j].surface,
-                katakanaToHiragana(tokens[j].reading_form),
+                rawTokens[j].surface,
+                katakanaToHiragana(rawTokens[j].reading_form),
               );
             }
             html += `<span class="grammar-match" 
@@ -665,50 +829,69 @@
                            data-title="${gMatch.data.title}" 
                            data-desc="${gMatch.data.description}" 
                            data-link="${gMatch.data.link || "#"}">${blockContent}</span>`;
-            i = gMatch.end - 1;
-          } else {
-            // Single Token Handling
-            const token = tokens[i];
+            i = gMatch.end;
+            continue;
+          }
 
-            // Handle POS property difference (pos vs poses)
-            const posList = token.poses || token.pos;
-            const pos = posList ? posList[0] : "Unk";
+          // B. Dictionary & Grouping Check
+          const current = rawTokens[i];
+          const pos = getPos(current);
 
-            const content = generateRuby(
-              token.surface,
-              katakanaToHiragana(token.reading_form),
-            );
+          if (pos === "動詞" || pos === "形容詞" || pos === "形状詞") {
+            let groupTokens = [current];
+            let nextIndex = i + 1;
 
-            // Dictionary highlight check
-            if (activePOS.has(pos)) {
-              // Quick check if dict entry exists (optimization)
-              const hasDef =
-                !!state.dictDB.index[token.dictionary_form] ||
-                (token.dictionary_form.length > 1 &&
-                  !!state.dictDB.index[token.dictionary_form.slice(0, -1)]);
+            while (nextIndex < rawTokens.length) {
+              if (activeGrammar.some((r) => r.start === nextIndex)) break;
 
-              if (hasDef) {
-                html += `<span class="dict-match" 
-                               data-type="dict"
-                               data-kanji="${token.dictionary_form}"
-                               data-surface="${token.surface}"
-                               data-pos="${pos}">${content}</span>`;
+              const nextToken = rawTokens[nextIndex];
+              const nextPos = getPos(nextToken);
+
+              if (nextPos === "助動詞" || nextPos === "接尾辞") {
+                groupTokens.push(nextToken);
+                nextIndex++;
               } else {
-                html += content;
+                break;
               }
-            } else {
-              html += content;
             }
+
+            const groupObj = {
+              isGroup: true,
+              tokens: groupTokens,
+              baseToken: current,
+              surface: groupTokens.map((t) => t.surface).join(""),
+            };
+
+            html += renderTokenOrGroup(groupObj, activePOS);
+            i = nextIndex;
+          } else {
+            html += renderTokenOrGroup(current, activePOS);
+            i++;
           }
         }
         outputDisplay.innerHTML = html;
       }
 
-      // --- Tooltip Interaction ---
+      let hoverTimeout;
+      let activeElement = null;
+
       async function showTooltip(el) {
         const type = el.dataset.type;
         tooltip.style.display = "block";
         tooltipContent.innerHTML = "Loading...";
+
+        const rect = el.getBoundingClientRect();
+        const tooltipWidth = 320;
+        let top = window.scrollY + rect.bottom + 5;
+        let left = window.scrollX + rect.left;
+
+        if (left + tooltipWidth > window.innerWidth + window.scrollX) {
+          left = window.innerWidth + window.scrollX - tooltipWidth - 20;
+        }
+        if (left < 10) left = 10;
+
+        tooltip.style.top = `${top}px`;
+        tooltip.style.left = `${left}px`;
 
         if (type === "grammar") {
           tooltipContent.innerHTML = `
@@ -717,81 +900,81 @@
             ${el.dataset.link !== "#" ? `<a class="ext-link" href="${el.dataset.link}" target="_blank">Check Bunpro &rarr;</a>` : ""}
           `;
         } else {
-          // Dictionary Logic
           const kanji = el.dataset.kanji;
           const pos = el.dataset.pos;
-          const entryGroups = await searchDictionary(kanji);
+          const entryGroups = searchDictionary(kanji, pos);
+
+          if (activeElement !== el) return;
 
           if (entryGroups && entryGroups.length > 0) {
             let out = `<h3>${kanji}</h3>`;
-            if (pos) {
-              out += `<div class="pos-badge">${pos}</div>`;
-            }
+            if (pos) out += `<div class="pos-badge">${pos}</div>`;
 
             entryGroups.forEach((senses, index) => {
               out += `<div class="dict-entry-group">`;
-              if (entryGroups.length > 1) {
-                out += `<h4>Entry ${index + 1}</h4>`;
-              }
-
+              if (entryGroups.length > 1) out += `<h4>Entry ${index + 1}</h4>`;
               senses.forEach((sense) => {
                 out += `<div class="entry">
+                  ${sense.partOfSpeech && sense.partOfSpeech.length ? `<span style="color:#2980b9; font-size:0.8em; font-weight:bold;">[${sense.partOfSpeech.join(", ")}]</span><br/>` : ""}
                   ${sense.info && sense.info.length ? `<span style="color:#e67e22; font-size:0.9em;">[${sense.info.join(", ")}]</span><br/>` : ""}
                   ${sense.gloss.join(", ")}
                 </div>`;
               });
               out += `</div>`;
             });
-
             out += `<a class="ext-link" href="${`https://jotoba.de/search/0/${encodeURIComponent(kanji)}`}" target="_blank">View on Jotoba</a>`;
             tooltipContent.innerHTML = out;
           } else {
-            tooltipContent.innerHTML = "No definition found.";
+            tooltipContent.innerHTML =
+              "No definitions found matching this part of speech.";
           }
         }
-
-        // Positioning Logic
-        const rect = el.getBoundingClientRect();
-        const tooltipWidth = 320;
-        let left = rect.left + window.scrollX;
-
-        if (left + tooltipWidth > window.innerWidth) {
-          left = window.innerWidth - tooltipWidth - 10;
-        }
-        if (left < 0) left = 10;
-
-        let top = rect.bottom + window.scrollY + 10;
-        tooltip.style.top = `${top}px`;
-        tooltip.style.left = `${left}px`;
-
-        el.classList.add("active");
       }
 
-      // --- Event Listeners ---
+      function hideTooltip() {
+        tooltip.style.display = "none";
+        if (activeElement) {
+          activeElement.classList.remove("active");
+          activeElement = null;
+        }
+      }
 
-      document.addEventListener("click", (e) => {
+      function scheduleHide() {
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout(hideTooltip, 200);
+      }
+
+      function cancelHide() {
+        if (hoverTimeout) {
+          clearTimeout(hoverTimeout);
+          hoverTimeout = null;
+        }
+      }
+
+      outputDisplay.addEventListener("mouseover", (e) => {
         const match = e.target.closest(".grammar-match, .dict-match");
-        document
-          .querySelectorAll(".active")
-          .forEach((el) => el.classList.remove("active"));
-
         if (match) {
-          e.stopPropagation();
-          showTooltip(match);
-        } else if (!e.target.closest("#grammar-tooltip")) {
-          tooltip.style.display = "none";
+          cancelHide();
+          if (activeElement !== match) {
+            if (activeElement) activeElement.classList.remove("active");
+            activeElement = match;
+            activeElement.classList.add("active");
+            showTooltip(match);
+          }
         }
       });
 
-      document.addEventListener(
-        "scroll",
-        () => {
-          // keep tooltip open but maybe close if necessary
-        },
-        true,
-      );
+      outputDisplay.addEventListener("mouseout", (e) => {
+        const match = e.target.closest(".grammar-match, .dict-match");
+        if (match) {
+          if (e.relatedTarget && match.contains(e.relatedTarget)) return;
+          scheduleHide();
+        }
+      });
 
-      // Paste / Clear
+      tooltip.addEventListener("mouseenter", cancelHide);
+      tooltip.addEventListener("mouseleave", scheduleHide);
+
       btnPaste.addEventListener("click", async () => {
         try {
           const text = await navigator.clipboard.readText();
@@ -807,22 +990,16 @@
         runAnalysis();
       });
 
-      // Filter & Toggles
       const allToggles = [...filterInputs, toggleGrammar];
       allToggles.forEach((input) => {
         input.addEventListener("change", runAnalysis);
       });
 
-      // Furigana Toggle (CSS Class)
       toggleFurigana.addEventListener("change", (e) => {
-        if (e.target.checked) {
-          document.body.classList.remove("hide-furigana");
-        } else {
-          document.body.classList.add("hide-furigana");
-        }
+        if (e.target.checked) document.body.classList.remove("hide-furigana");
+        else document.body.classList.add("hide-furigana");
       });
 
-      // Live Typing
       let timeout;
       inputText.addEventListener("input", () => {
         clearTimeout(timeout);
