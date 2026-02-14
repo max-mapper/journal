@@ -4,271 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Japanese Grammar & Dict Matcher</title>
-    <style>
-      body {
-        font-family: "Helvetica Neue", Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f9;
-        color: #333;
-        position: relative;
-      }
-      h1 {
-        color: #2c3e50;
-        padding: 20px;
-        margin: 0;
-        text-align: center;
-        font-size: 1.5rem;
-      }
-
-      /* Controls Area */
-      .controls-area {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        margin-bottom: 10px;
-      }
-      .button-group {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 15px;
-      }
-      button {
-        padding: 8px 16px;
-        border: 1px solid #ccc;
-        background: white;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
-        color: #444;
-        transition: background 0.2s;
-      }
-      button:hover {
-        background: #e9e9e9;
-      }
-      button.clear-btn {
-        color: #c0392b;
-        border-color: #e74c3c;
-      }
-      button.clear-btn:hover {
-        background: #fce4e4;
-      }
-
-      /* Filter Toggles */
-      .filters-container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .options-row {
-        display: flex;
-        gap: 15px;
-        padding: 10px;
-        background: #e8f4fc;
-        border-radius: 8px;
-        border: 1px solid #d1e3f2;
-      }
-      .filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        background: white;
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
-      .filter-item {
-        display: flex;
-        align-items: center;
-        font-size: 13px;
-        cursor: pointer;
-        user-select: none;
-      }
-      .filter-item input {
-        margin-right: 6px;
-        cursor: pointer;
-      }
-      .filter-item.bold-opt {
-        font-weight: bold;
-        color: #2980b9;
-      }
-
-      /* Main Layout */
-      .container {
-        display: flex;
-        gap: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        height: 70vh;
-      }
-      .panel {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        min-height: 0;
-      }
-      .panel-header {
-        padding: 15px;
-        background: #eee;
-        border-bottom: 1px solid #ddd;
-        font-weight: bold;
-      }
-      textarea {
-        flex: 1;
-        border: none;
-        padding: 15px;
-        font-size: 18px;
-        line-height: 1.6;
-        resize: none;
-        outline: none;
-        font-family: "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
-      }
-      #output-display {
-        flex: 1;
-        padding: 15px;
-        font-size: 22px;
-        line-height: 2;
-        overflow-y: auto;
-        white-space: pre-wrap;
-        font-family: "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
-      }
-
-      /* Responsive Mobile Layout */
-      @media (max-width: 768px) {
-        .container {
-          flex-direction: column;
-          height: auto;
-        }
-        .panel {
-          height: 400px;
-        }
-        h1 {
-          font-size: 1.2rem;
-          padding: 10px;
-        }
-        .options-row {
-          flex-wrap: wrap;
-        }
-      }
-
-      /* Furigana Styling */
-      ruby rt {
-        font-size: 0.5em;
-        color: #666;
-        user-select: none;
-      }
-
-      /* Toggle Furigana Class */
-      body.hide-furigana ruby rt {
-        display: none;
-      }
-
-      /* Highlight Styles */
-      .grammar-match {
-        background-color: #e3f2fd;
-        border-bottom: 2px solid #2196f3;
-        cursor: help;
-        border-radius: 3px;
-        transition: background-color 0.1s;
-      }
-      .dict-match {
-        background-color: #f1f8e9;
-        border-bottom: 2px solid #8bc34a;
-        cursor: help;
-        border-radius: 3px;
-        transition: background-color 0.1s;
-      }
-      /* Active state for when tooltip is open on this word */
-      .active {
-        background-color: #ffe0b2 !important;
-        border-bottom-color: #ff9800 !important;
-      }
-
-      /* Tooltip Styles */
-      #grammar-tooltip {
-        position: absolute; /* Moves with scroll */
-        z-index: 1000;
-        background: white;
-        color: #333;
-        padding: 0;
-        border-radius: 6px;
-        font-size: 14px;
-        width: 320px;
-        max-width: 90vw;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-        display: none;
-        border: 1px solid #ccc;
-        line-height: 1.4;
-        max-height: 50vh;
-        overflow-y: auto;
-      }
-      .tooltip-content {
-        padding: 15px;
-      }
-      #grammar-tooltip h3 {
-        margin: 0 0 5px 0;
-        font-size: 18px;
-        color: #2196f3;
-      }
-      .pos-badge {
-        display: inline-block;
-        background: #eee;
-        color: #555;
-        font-size: 0.75rem;
-        padding: 2px 6px;
-        border-radius: 4px;
-        margin-bottom: 8px;
-        font-weight: bold;
-      }
-      #grammar-tooltip .entry {
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 1px solid #eee;
-      }
-      #grammar-tooltip .entry:last-child {
-        border-bottom: none;
-      }
-      .dict-entry-group {
-        margin-bottom: 12px;
-        padding: 8px;
-        background: #f9f9f9;
-        border-radius: 4px;
-      }
-      .dict-entry-group h4 {
-        margin: 0 0 5px 0;
-        font-size: 12px;
-        color: #666;
-        text-transform: uppercase;
-      }
-      #grammar-tooltip a.ext-link {
-        display: inline-block;
-        background-color: #2c3e50;
-        color: white;
-        padding: 6px 12px;
-        text-decoration: none;
-        border-radius: 4px;
-        font-size: 12px;
-        margin-top: 5px;
-        width: 100%;
-        text-align: center;
-        box-sizing: border-box;
-      }
-      #grammar-tooltip a.ext-link:hover {
-        background-color: #34495e;
-      }
-
-      .status-bar {
-        padding: 10px;
-        background: #2c3e50;
-        color: white;
-        font-size: 14px;
-      }
-    </style>
+    <link rel="stylesheet" href="grammar.css" />
   </head>
   <body>
     <h1>Grammar Analyzer</h1>
@@ -337,149 +73,7 @@
     <div class="container">
       <div class="panel">
         <div class="panel-header">Input Japanese</div>
-        <textarea id="input-text">
-ジュースを友達にあげます。
-明日は雨がふると思います。
-パンを食べました。お腹が空いたからです。
-アメリカから来ました。
-何人ぐらい来ますか。
-友達が私にジュースをくれました。
-日本語の森で働きたいです。
-ここのパソコンは学生だけが使えます。
-大学に行くつもりです。
-これから地球の温度がだんだん高くなっていく。
-今、朝ごはんを食べています。
-先生に聞いてください。
-他の人を傷つけてはいけません。
-仕事は忙しいです。でも、楽しいです。
-帰ってもいいですか。
-ここに来てください。
-宿題を忘れないでください。
-ジュホさんは韓国人じゃないですか。
-大人になりました。
-ゲームをしましょう。
-カフェに行きましょうか。
-テレビを見ませんか。
-授業は4時までです。
-私は友達にジュースをもらいました。
-テストの前に勉強します。
-授業の後で帰りました。
-この漢字の読み方は何ですか。
-たくさん本があります。
-朝9時に起きました。
-映画を見ることが好きです。
-言い間違うことがあります。
-彼は友達をうらぎることはない。
-猫と犬が好きだ。
-お茶と水と、どちらがいいですか。
-ファミリーマートというコンビニを知っていますか。
-タラと言います。
-7時に起きます。
-新宿は東京にある。
-日本に働きに来た。
-これはペンです。
-ゆかさんは先生です。
-今から休憩が始まります。
-昨日4時に帰りました。
-猫はかわいい。
-今日勉強したり、買い物をしたりしました。
-誕生日はいつですか。
-図書館で勉強します。
-ボールを落とした。
-新宿へ行きます。
-誰が関西出身ですか。
-兄弟とよくけんかします。
-これは私のペンだ。
-私も学生です。
-牛乳や卵を買いました。
-1時ごろ会議があります。
-日本に好きな食べ物があまりない。
-魚はぜんぜん好きじゃない。
-本を3冊買います。
-このペンは青い。
-家は郵便局の右にあります。
-彼は背が高いです。
-歌うのが好きです。
-上田くんは卓球が上手だ。
-廊下を静かに歩いた。
-日本とアメリカと、どちらのほうが大きい？
-アメリカは日本より大きいです。
-食べ物の中で、パンが一番おいしいです。
-明日雨がふるでしょう。
-都会はうるさすぎる。
-お金がほしいです。
-水をください。
-家に帰って、シャワーを浴びました。
-学生で、日本に住んでいる。
-まだ家から出ていないです。
-彼はもう帰りました。
-宿題をしなければなりません。
-コーヒーじゃなくてお茶をください。
-日本語を勉強する。
-母がくれた時計は古いです。
-冷蔵庫に何もないです。
-
-鶏肉はあまり好きじゃない。
-仕事が終わったあとで、ジムに行く。
-あなたが行けば、私も行きます。
-雨が降らない場合は泳ぎます。
-二人だけで少し話がしたい。
-雨が降りだした。
-暇だから、ゲームでもしましょう。
-この猫は誰も欲しがる人がいなかった。
-日本語を勉強し始めて、もう四年経った。
-その船は沈むはずがない。
-食べ物が必要です。
-食べる必要がある。
-美味しい晩ごはんが欲しい。
-このゲームは難しいんじゃないか。
-彼が驚くかどうかわかりません。
-漫画があるかもしれません。
-寿司の食べ方を教えてくれませんか。
-有名人じゃないかしら？
-子供みたいです。
-テレビを見ながら晩ごはんを食べます。
-寝ないで勉強をします。
-勉強しなければならない。
-学校に行かなくてもいい。
-日本語を習いたいのなら、この本がいいですよ。
-ちょっと待ちなさい。
-お母さんが帰ってきたことに気がつく。
-この質問には答えにくいです。
-言語の中で日本語が一番難しいと思います。
-ごはんを作るのに一時間かかります。
-この仕事は私がいたします。
-皆が子供のように元気に歌い始めた。
-５メートルおきに木を植えました。
-タバコを止められない。
-妹が部屋にいないらしい。
-今年の暑さは普通ではない。
-母は私に自分の部屋を片付けさせた。
-毎日母に野菜を食べさせられる。
-さすがの彼も妻には勝てなかった。
-箱の中に卵は一個しか残っていない。
-日本に来たばかりです。
-妹はその馬に乗りたがっている。
-寂しかったら電話をください。
-宿題をしたらどうですか。
-あなたのことを話してたところだよ。
-明日事務所に行ってほしい。
-私は今、家で日本語を勉強しているところです。
-このサラダがすごく美味しいよ。食べてみて。
-雨でも行きましょう。
-この文章は重要です。覚えておいてください。
-君に会えてよかった。
-日本語は最も難しい言語だと言われている。
-その辺りはとても賑やかだと聞いた。
-これからパンを焼くところです。
-仕事を続けるのは無理だと思う。
-一日中雨が降り続く。
-建物の中はいつもより暗かった。
-私は留学をする予定です。
-５年間日本語を勉強して、日本語が話せるようになった。
-そのことは全然知りません。
-</textarea
-        >
+        <textarea id="input-text"> </textarea>
       </div>
       <div class="panel">
         <div class="panel-header">Analysis (Hover words for details)</div>
@@ -490,10 +84,18 @@
     <div id="grammar-tooltip"><div class="tooltip-content"></div></div>
     <script type="module">
       import { GrammarRule } from "./grammar-engine.js";
+      import {
+        VerbTenseDetector,
+        POS_LABEL_MAP,
+        JMDICT_POS_MAP,
+        JMDICT_TAG_MAP,
+        SAMPLE_SENTENCES,
+      } from "./conjugations.js";
       import GRAMMAR_RULES from "./grammar-rules.js";
       import { SudachiStateless } from "./sudachi-wasm/sudachi.js";
 
       const inputText = document.getElementById("input-text");
+      inputText.innerHTML = SAMPLE_SENTENCES;
       const outputDisplay = document.getElementById("output-display");
       const statusBar = document.getElementById("status-bar");
       const tooltip = document.getElementById("grammar-tooltip");
@@ -506,96 +108,11 @@
       const btnPaste = document.getElementById("btn-paste");
       const btnClear = document.getElementById("btn-clear");
 
+      // Initialize the VerbTenseDetector
+      const tenseDetector = new VerbTenseDetector();
+      window.tenseDetector = tenseDetector;
       let state = { sudachi: null, dictDB: null };
       window.state = state;
-
-      const JMDICT_POS_MAP = {
-        動詞: [
-          "v1",
-          "v1-s",
-          "v2a-s",
-          "v2b-k",
-          "v2b-s",
-          "v2d-k",
-          "v2d-s",
-          "v2g-k",
-          "v2g-s",
-          "v2h-k",
-          "v2h-s",
-          "v2k-k",
-          "v2k-s",
-          "v2m-k",
-          "v2m-s",
-          "v2n-s",
-          "v2r-k",
-          "v2r-s",
-          "v2s-s",
-          "v2t-k",
-          "v2t-s",
-          "v2w-s",
-          "v2y-k",
-          "v2y-s",
-          "v2z-s",
-          "v4b",
-          "v4g",
-          "v4h",
-          "v4k",
-          "v4m",
-          "v4n",
-          "v4r",
-          "v4s",
-          "v4t",
-          "v5aru",
-          "v5b",
-          "v5g",
-          "v5k",
-          "v5k-s",
-          "v5m",
-          "v5n",
-          "v5r",
-          "v5r-i",
-          "v5s",
-          "v5t",
-          "v5u",
-          "v5u-s",
-          "v5uru",
-          "vi",
-          "vk",
-          "vn",
-          "vr",
-          "vs",
-          "vs-c",
-          "vs-i",
-          "vs-s",
-          "vt",
-          "vz",
-          "v-unspec",
-        ],
-        助動詞: ["aux", "aux-v", "aux-adj"],
-        助詞: ["prt", "adv-to", "conj"],
-        名詞: [
-          "n",
-          "n-adv",
-          "n-pr",
-          "n-pref",
-          "n-suf",
-          "n-t",
-          "num",
-          "ctr",
-          "adj-no",
-          "adj-pn",
-          "pn",
-          "suf",
-          "pref",
-          "vs",
-          "exp",
-        ],
-        形容詞: ["adj-i", "adj-ix", "adj-kari", "adj-ku", "adj-shiku"],
-        副詞: ["adv", "adv-to", "n-adv"],
-        形状詞: ["adj-na", "adj-nari", "adj-no", "adj-f", "adj-pn", "n"],
-        代名詞: ["pn"],
-        接尾辞: ["suf", "n-suf", "c-suf", "v-suf"],
-      };
 
       async function fetchAndGunzip(url) {
         const response = await fetch(url);
@@ -646,9 +163,34 @@
           : surface;
       }
 
+      function getReadingFromSudachi(text) {
+        if (!state.sudachi || !text) return "";
+        try {
+          const raw = state.sudachi.tokenize_stringified(text, 0);
+          const tokens = JSON.parse(raw);
+          return tokens.map((t) => katakanaToHiragana(t.reading_form)).join("");
+        } catch (e) {
+          return "";
+        }
+      }
+
       function getPos(token) {
         const p = token.poses || token.pos;
         return p && p.length > 0 ? p[0] : "Unk";
+      }
+
+      // Helper to determine if a token should be grouped with the preceding Verb/Adj
+      // Includes Auxiliaries, Suffixes, and Conjunctive Particles (て, で, ば).
+      function shouldGroup(token) {
+        const p = token.poses || token.pos;
+        if (!p || p.length === 0) return false;
+        const pos0 = p[0];
+
+        if (pos0 === "助動詞" || pos0 === "接尾辞") return true;
+        // Sudachi structure for Conjunctive Particle: ['助詞', '接続助詞', '*', '*']
+        if (pos0 === "助詞" && p.length > 1 && p[1] === "接続助詞") return true;
+
+        return false;
       }
 
       function searchDictionary(term, sudachiPos) {
@@ -657,7 +199,9 @@
         if (!indices && term.length > 1) {
           indices = state.dictDB.index[term.slice(0, -1)];
         }
-        if (!indices) return null;
+        if (!indices) {
+          return null;
+        }
 
         const entries = indices.map((idx) => state.dictDB.defs[idx]);
         if (sudachiPos && JMDICT_POS_MAP[sudachiPos]) {
@@ -676,11 +220,83 @@
         return entries;
       }
 
+      function generateDictHTML(
+        surface,
+        dictForm,
+        reading,
+        pos,
+        entryGroups,
+        tenseData = null,
+      ) {
+        if (!entryGroups || entryGroups.length === 0) return "";
+
+        let out = `<div class="dict-header-container">`;
+
+        // Left Side: Word (Surface) + Badges
+        out += `<div class="dict-header-left">`;
+        // Title uses Surface form and reading
+        const titleHtml = generateRuby(surface, reading);
+        out += `<h3>${titleHtml}</h3>`;
+
+        // Badges: English POS + Dict Form
+        out += `<div class="badge-container">`;
+
+        const englishPos = POS_LABEL_MAP[pos] || pos;
+        if (englishPos) out += `<span class="pos-badge">${englishPos}</span>`;
+
+        if (dictForm && dictForm !== surface) {
+          out += `<span class="pos-badge dict-ref">Dict: ${dictForm}</span>`;
+        }
+        out += `</div>`; // End Badge Container
+
+        out += `</div>`; // End Left
+
+        // Right Side: Conjugation Info
+        if (tenseData && tenseData.length > 0) {
+          out += `<div class="dict-header-right"><div class="conjugation-group">`;
+          tenseData.forEach((t) => {
+            out += `<div class="conjugation-item">
+                    <span class="conjugation-tag">${t.name}</span>
+                    <span class="conjugation-desc">${t.description}</span>
+                  </div>`;
+          });
+          out += `</div></div>`; // End Right
+        }
+
+        out += `</div>`; // End Container
+
+        // Definitions
+        entryGroups.forEach((senses, index) => {
+          out += `<div class="dict-entry-group">`;
+          if (entryGroups.length > 1) out += `<h4>Entry ${index + 1}</h4>`;
+          senses.forEach((sense) => {
+            const decodedPos =
+              sense.partOfSpeech && sense.partOfSpeech.length
+                ? sense.partOfSpeech
+                    .map((code) => JMDICT_TAG_MAP[code] || code)
+                    .join(", ")
+                : "";
+
+            out += `<div class="entry">
+                ${decodedPos ? `<span class="pos-tag-decoded">[${decodedPos}]</span><br/>` : ""}
+                ${sense.info && sense.info.length ? `<span style="color:#e67e22; font-size:0.9em;">[${sense.info.join(", ")}]</span><br/>` : ""}
+                ${sense.gloss.join(", ")}
+              </div>`;
+          });
+          out += `</div>`;
+        });
+
+        out += `<a class="ext-link" href="${`https://jotoba.de/search/0/${encodeURIComponent(dictForm)}`}" target="_blank">View on Jotoba</a>`;
+        return out;
+      }
+
       function renderTokenOrGroup(item, activePOS) {
         let content = "";
         let pos = "";
         let dictForm = "";
+        let normForm = "";
         let surface = "";
+        let tenseAttr = "";
 
         if (item.isGroup) {
           content = item.tokens
@@ -691,6 +307,7 @@
           const head = item.baseToken;
           pos = getPos(head);
           dictForm = head.dictionary_form;
+          normForm = head.normalized_form;
           surface = item.surface;
         } else {
           content = generateRuby(
@@ -699,17 +316,36 @@
           );
           pos = getPos(item);
           dictForm = item.dictionary_form;
+          normForm = item.normalized_form;
           surface = item.surface;
         }
 
+        if (pos === "動詞") {
+          const matches = tenseDetector.detect(dictForm, surface);
+          if (matches && matches.length > 0) {
+            tenseAttr = `data-tense="${encodeURIComponent(JSON.stringify(matches))}"`;
+          }
+        }
+
         if (activePOS.has(pos)) {
-          const compatibleEntries = searchDictionary(dictForm, pos);
+          let compatibleEntries = searchDictionary(dictForm, pos);
+          let finalForm = dictForm;
+
+          if (!compatibleEntries && normForm && normForm !== dictForm) {
+            const normEntries = searchDictionary(normForm, pos);
+            if (normEntries) {
+              compatibleEntries = normEntries;
+              finalForm = normForm;
+            }
+          }
+
           if (compatibleEntries) {
             return `<span class="dict-match" 
                            data-type="dict"
-                           data-kanji="${dictForm}"
+                           data-kanji="${finalForm}"
                            data-surface="${surface}"
-                           data-pos="${pos}">${content}</span>`;
+                           data-pos="${pos}"
+                           ${tenseAttr}>${content}</span>`;
           }
         }
         return content;
@@ -756,7 +392,6 @@
           state.sudachi.tokenize_stringified(text, 0),
         );
 
-        // --- 1. Identify Grammar Matches ---
         let activeGrammar = [];
         if (isGrammarEnabled) {
           let grammarRanges = [];
@@ -786,20 +421,13 @@
             }
           }
 
-          // --- 2. Extend Grammar Matches (NEW LOGIC) ---
-          // If a grammar match is followed by Aux/Suffix, include them in the highlight
-          // e.g., "あげ" (Grammar) + "ます" (Aux) -> "あげます" (Grammar Highlight)
+          // Extend grammar match to include trailing conjugations
           for (const match of activeGrammar) {
             let nextIdx = match.end;
             while (nextIdx < rawTokens.length) {
-              // Stop if the next token is the start of another grammar rule
               if (activeGrammar.some((other) => other.start === nextIdx)) break;
-
               const nextToken = rawTokens[nextIdx];
-              const nextPos = getPos(nextToken);
-
-              // Extend if Aux or Suffix
-              if (nextPos === "助動詞" || nextPos === "接尾辞") {
+              if (shouldGroup(nextToken)) {
                 match.end++;
                 nextIdx++;
               } else {
@@ -809,59 +437,109 @@
           }
         }
 
-        // --- 3. Render Loop ---
         let html = "";
         let i = 0;
 
         while (i < rawTokens.length) {
-          // A. Grammar Check
           const gMatch = activeGrammar.find((r) => r.start === i);
           if (gMatch) {
             let blockContent = "";
+            let innerWords = [];
+            let seenInner = new Set();
+
             for (let j = gMatch.start; j < gMatch.end; j++) {
+              const t = rawTokens[j];
+              const tPos = getPos(t);
+
               blockContent += generateRuby(
-                rawTokens[j].surface,
-                katakanaToHiragana(rawTokens[j].reading_form),
+                t.surface,
+                katakanaToHiragana(t.reading_form),
               );
+
+              // -------------------------------------------------------------
+              // LOGIC UPDATE:
+              // Inside a grammar match, the surface form of a content word
+              // is extended to the end of the match.
+              // e.g. "食べています": "食べ" (Verb) -> surface becomes "食べています"
+              // -------------------------------------------------------------
+
+              if (
+                ["動詞", "形容詞", "形状詞", "名詞"].includes(tPos) &&
+                t.dictionary_form
+              ) {
+                let compoundSurface = t.surface;
+                // Accumulate all remaining surfaces in the grammar match
+                for (let k = j + 1; k < gMatch.end; k++) {
+                  compoundSurface += rawTokens[k].surface;
+                }
+
+                let validForm = t.dictionary_form;
+                if (!searchDictionary(validForm, tPos) && t.normalized_form) {
+                  if (searchDictionary(t.normalized_form, tPos)) {
+                    validForm = t.normalized_form;
+                  }
+                }
+
+                // Check for conjugation on this EXTENDED token group
+                let tenseMatches = [];
+                if (tPos === "動詞") {
+                  tenseMatches = tenseDetector.detect(
+                    validForm,
+                    compoundSurface,
+                  );
+                  console.log(validForm, compoundSurface, tenseMatches);
+                }
+
+                if (!seenInner.has(validForm)) {
+                  seenInner.add(validForm);
+                  innerWords.push({
+                    kanji: validForm, // Dictionary form
+                    surface: compoundSurface, // FULL Extended Surface form
+                    pos: tPos,
+                    tense: tenseMatches,
+                  });
+                }
+              }
             }
+
+            const innerJson =
+              innerWords.length > 0
+                ? encodeURIComponent(JSON.stringify(innerWords))
+                : "";
+
             html += `<span class="grammar-match" 
                            data-type="grammar"
                            data-title="${gMatch.data.title}" 
                            data-desc="${gMatch.data.description}" 
-                           data-link="${gMatch.data.link || "#"}">${blockContent}</span>`;
+                           data-link="${gMatch.data.link || "#"}"
+                           data-inner-defs="${innerJson}">${blockContent}</span>`;
             i = gMatch.end;
             continue;
           }
 
-          // B. Dictionary & Grouping Check
+          // Standard Token Rendering
           const current = rawTokens[i];
           const pos = getPos(current);
 
           if (pos === "動詞" || pos === "形容詞" || pos === "形状詞") {
             let groupTokens = [current];
             let nextIndex = i + 1;
-
             while (nextIndex < rawTokens.length) {
               if (activeGrammar.some((r) => r.start === nextIndex)) break;
-
               const nextToken = rawTokens[nextIndex];
-              const nextPos = getPos(nextToken);
-
-              if (nextPos === "助動詞" || nextPos === "接尾辞") {
+              if (shouldGroup(nextToken)) {
                 groupTokens.push(nextToken);
                 nextIndex++;
               } else {
                 break;
               }
             }
-
             const groupObj = {
               isGroup: true,
               tokens: groupTokens,
               baseToken: current,
               surface: groupTokens.map((t) => t.surface).join(""),
             };
-
             html += renderTokenOrGroup(groupObj, activePOS);
             i = nextIndex;
           } else {
@@ -894,40 +572,89 @@
         tooltip.style.left = `${left}px`;
 
         if (type === "grammar") {
-          tooltipContent.innerHTML = `
-            <h3>${el.dataset.title}</h3>
-            <p>${el.dataset.desc}</p>
-            ${el.dataset.link !== "#" ? `<a class="ext-link" href="${el.dataset.link}" target="_blank">Check Bunpro &rarr;</a>` : ""}
+          let content = `
+            <div class="grammar-section">
+                <h3>${el.dataset.title}</h3>
+                <p>${el.dataset.desc}</p>
+                ${el.dataset.link !== "#" ? `<a class="ext-link" href="${el.dataset.link}" target="_blank">Check Bunpro &rarr;</a>` : ""}
+            </div>
           `;
+
+          if (el.dataset.innerDefs) {
+            try {
+              const innerDefs = JSON.parse(
+                decodeURIComponent(el.dataset.innerDefs),
+              );
+              let hasDict = false;
+
+              for (const word of innerDefs) {
+                const entryGroups = searchDictionary(word.kanji, word.pos);
+                if (entryGroups) {
+                  if (!hasDict) {
+                    content += `<div class="embedded-dict-header">Words in this pattern:</div>`;
+                    hasDict = true;
+                  }
+
+                  // Get reading for the Surface form.
+                  // Since word.surface is now the full grammar string (e.g. "食べています"),
+                  // this will generate the correct reading for the whole string.
+                  const reading = getReadingFromSudachi(
+                    word.surface || word.kanji,
+                  );
+
+                  content += `<div class="embedded-dict-section">`;
+                  content += generateDictHTML(
+                    word.surface || word.kanji,
+                    word.kanji,
+                    reading,
+                    word.pos,
+                    entryGroups,
+                    word.tense,
+                  );
+                  content += `</div>`;
+                }
+              }
+            } catch (e) {
+              console.error("Failed to parse inner defs", e);
+            }
+          }
+
+          tooltipContent.innerHTML = content;
         } else {
-          const kanji = el.dataset.kanji;
+          // Standard Dictionary Match
+          const dictForm = el.dataset.kanji;
+          const surface = el.dataset.surface;
           const pos = el.dataset.pos;
-          const entryGroups = searchDictionary(kanji, pos);
+          const entryGroups = searchDictionary(dictForm, pos);
 
           if (activeElement !== el) return;
 
-          if (entryGroups && entryGroups.length > 0) {
-            let out = `<h3>${kanji}</h3>`;
-            if (pos) out += `<div class="pos-badge">${pos}</div>`;
+          let contentHtml = "";
+          let tenseData = null;
 
-            entryGroups.forEach((senses, index) => {
-              out += `<div class="dict-entry-group">`;
-              if (entryGroups.length > 1) out += `<h4>Entry ${index + 1}</h4>`;
-              senses.forEach((sense) => {
-                out += `<div class="entry">
-                  ${sense.partOfSpeech && sense.partOfSpeech.length ? `<span style="color:#2980b9; font-size:0.8em; font-weight:bold;">[${sense.partOfSpeech.join(", ")}]</span><br/>` : ""}
-                  ${sense.info && sense.info.length ? `<span style="color:#e67e22; font-size:0.9em;">[${sense.info.join(", ")}]</span><br/>` : ""}
-                  ${sense.gloss.join(", ")}
-                </div>`;
-              });
-              out += `</div>`;
-            });
-            out += `<a class="ext-link" href="${`https://jotoba.de/search/0/${encodeURIComponent(kanji)}`}" target="_blank">View on Jotoba</a>`;
-            tooltipContent.innerHTML = out;
-          } else {
-            tooltipContent.innerHTML =
-              "No definitions found matching this part of speech.";
+          if (el.dataset.tense) {
+            try {
+              tenseData = JSON.parse(decodeURIComponent(el.dataset.tense));
+            } catch (e) {
+              console.error("Failed to parse tense data", e);
+            }
           }
+
+          if (entryGroups && entryGroups.length > 0) {
+            const reading = getReadingFromSudachi(surface);
+            contentHtml += generateDictHTML(
+              surface,
+              dictForm,
+              reading,
+              pos,
+              entryGroups,
+              tenseData,
+            );
+          } else {
+            contentHtml += "No definitions found matching this part of speech.";
+          }
+
+          tooltipContent.innerHTML = contentHtml;
         }
       }
 

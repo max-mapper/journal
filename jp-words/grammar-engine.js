@@ -146,6 +146,7 @@ class GrammarRule {
     return matches;
   }
 }
+
 async function runGrammarEngineCheck(sudachi, GRAMMAR_RULES) {
   console.log("Starting Grammar Engine Self-Test...\n");
   const successLogs = [];
