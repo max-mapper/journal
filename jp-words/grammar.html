@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Japanese Grammar Matcher Demo</title>
+    <title>Japanese Grammar & Dict Matcher</title>
     <style>
       body {
         font-family: "Helvetica Neue", Arial, sans-serif;
@@ -12,23 +12,20 @@
         background-color: #f4f4f9;
         color: #333;
       }
-
       h1 {
         color: #2c3e50;
         padding: 20px;
         margin: 0;
         text-align: center;
       }
-
       .container {
         display: flex;
         gap: 20px;
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
-        height: 80vh; /* Default desktop height */
+        height: 80vh;
       }
-
       .panel {
         flex: 1;
         display: flex;
@@ -36,17 +33,15 @@
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden; /* Keeps header/footer contained */
-        min-height: 0; /* Important for flex child scrolling */
+        overflow: hidden;
+        min-height: 0;
       }
-
       .panel-header {
         padding: 15px;
         background: #eee;
         border-bottom: 1px solid #ddd;
         font-weight: bold;
       }
-
       textarea {
         flex: 1;
         border: none;
@@ -56,70 +51,72 @@
         resize: none;
         outline: none;
         font-family: "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
-        min-height: 200px;
       }
-
       #output-display {
         flex: 1;
         padding: 15px;
-        font-size: 18px;
-        line-height: 1.6;
+        font-size: 22px;
+        line-height: 2;
         overflow-y: auto;
-        white-space: pre-wrap; /* Preserve newlines */
+        white-space: pre-wrap;
         font-family: "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
-        min-height: 200px;
       }
 
-      /* Grammar Highlight Styles */
+      /* Furigana Styling */
+      ruby rt {
+        font-size: 0.5em;
+        color: #666;
+      }
+
+      /* Highlight Styles */
       .grammar-match {
         background-color: #e3f2fd;
         border-bottom: 2px solid #2196f3;
         cursor: pointer;
         border-radius: 3px;
-        transition: background 0.2s;
       }
-
+      .dict-match {
+        background-color: #f1f8e9;
+        border-bottom: 2px solid #8bc34a;
+        cursor: pointer;
+        border-radius: 3px;
+      }
       .grammar-match:hover {
         background-color: #bbdefb;
       }
-
-      .grammar-match.active {
-        background-color: #ffe0b2;
-        border-bottom-color: #ff9800;
+      .dict-match:hover {
+        background-color: #dcedc8;
+      }
+      .active {
+        background-color: #ffe0b2 !important;
+        border-bottom-color: #ff9800 !important;
       }
 
-      /* Floating Tooltip Styles */
+      /* Tooltip Styles */
       #grammar-tooltip {
         position: absolute;
-        z-index: 1000; /* Sit on top of everything */
+        z-index: 1000;
         background: white;
         color: #333;
         padding: 15px;
         border-radius: 6px;
         font-size: 14px;
-        max-width: 300px;
+        max-width: 320px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        display: none; /* Hidden by default */
+        display: none;
         border: 1px solid #ddd;
         line-height: 1.4;
       }
-
-      #grammar-tooltip.visible {
-        display: block;
-        /* animation: fadeIn 0.15s ease-out; */
-      }
-
       #grammar-tooltip h3 {
         margin: 0 0 8px 0;
         font-size: 16px;
         color: #2196f3;
       }
-
-      #grammar-tooltip p {
-        margin: 0 0 10px 0;
-        color: #555;
+      #grammar-tooltip .entry {
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
       }
-
       #grammar-tooltip a {
         display: inline-block;
         background-color: #2c3e50;
@@ -128,41 +125,7 @@
         text-decoration: none;
         border-radius: 4px;
         font-size: 12px;
-        font-weight: bold;
-      }
-
-      #grammar-tooltip a:hover {
-        background-color: #34495e;
-      }
-
-      /* Little arrow for the tooltip (CSS Triangle) */
-      #grammar-tooltip::before {
-        content: "";
-        position: absolute;
-        bottom: 100%; /* Top of tooltip */
-        left: 50%;
-        margin-left: -8px;
-        border-width: 8px;
-        border-style: solid;
-        border-color: transparent transparent white transparent;
-      }
-
-      /* Adjust arrow if tooltip is positioned above */
-      #grammar-tooltip.position-top::before {
-        bottom: auto;
-        top: 100%;
-        border-color: white transparent transparent transparent;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(5px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        margin-top: 5px;
       }
 
       .status-bar {
@@ -171,42 +134,14 @@
         color: white;
         font-size: 14px;
       }
-
-      /* Mobile Responsive Styles */
-      @media (max-width: 768px) {
-        .container {
-          flex-direction: column;
-          height: auto;
-          padding: 10px;
-        }
-
-        .panel {
-          height: auto;
-          max-height: none;
-        }
-
-        textarea {
-          min-height: 150px;
-        }
-
-        #output-display {
-          min-height: 200px;
-          max-height: 400px; /* Allow scroll on mobile */
-        }
-      }
     </style>
   </head>
   <body>
-    <h1>🇯🇵 Grammar Analyzer</h1>
-
+    <h1>Grammar Analyzer</h1>
     <div class="container">
-      <!-- Input Section -->
       <div class="panel">
-        <div class="panel-header">Input Japanese Text</div>
-        <textarea
-          id="input-text"
-          placeholder="ここに日本語を入力してください..."
-        >
+        <div class="panel-header">Input Japanese</div>
+        <textarea id="input-text">
 ジュースを友達にあげます。
 明日は雨がふると思います。
 パンを食べました。お腹が空いたからです。
@@ -346,303 +281,251 @@
 建物の中はいつもより暗かった。
 私は留学をする予定です。
 ５年間日本語を勉強して、日本語が話せるようになった。
-そのことは全然知りません。
-            </textarea
+そのことは全然知りません。</textarea
         >
       </div>
-
-      <!-- Output Section -->
       <div class="panel">
-        <div class="panel-header">Analyzed Output</div>
+        <div class="panel-header">Analysis (Click words for details)</div>
         <div id="output-display"></div>
-        <div class="status-bar" id="status-bar">Ready</div>
+        <div class="status-bar" id="status-bar">Initializing...</div>
       </div>
     </div>
-
-    <!-- The Floating Tooltip Container -->
     <div id="grammar-tooltip"></div>
 
     <script type="module">
       import { GrammarRule } from "./grammar-engine.js";
       import GRAMMAR_RULES from "./grammar-rules.js";
-      import {
-        SudachiStateless,
-        TokenizeMode,
-      } from "./sudachi-wasm/sudachi.js";
+      import { SudachiStateless } from "./sudachi-wasm/sudachi.js";
 
       const inputText = document.getElementById("input-text");
       const outputDisplay = document.getElementById("output-display");
       const statusBar = document.getElementById("status-bar");
       const tooltip = document.getElementById("grammar-tooltip");
 
-      // --- App State ---
-      const state = (window.state = {
-        sudachi: null,
-      });
+      let state = { sudachi: null, dictDB: null };
 
-      // --- Helpers: Dictionary & Parsing ---
+      // --- Helper Utilities ---
       async function fetchAndGunzip(url) {
         const response = await fetch(url);
-        if (!response.body) throw new Error("No response body");
         const ds = new DecompressionStream("gzip");
         const stream = response.body.pipeThrough(ds);
         return await new Response(stream).blob();
       }
 
-      async function initSudachi() {
-        console.log("init sudachi");
+      function katakanaToHiragana(src) {
+        return src.replace(/[\u30a1-\u30f6]/g, (m) =>
+          String.fromCharCode(m.charCodeAt(0) - 0x60),
+        );
+      }
+
+      function generateRuby(surface, reading) {
+        if (!reading || surface === reading || !/[\u4e00-\u9faf]/.test(surface))
+          return surface;
+
+        let sEnd = surface.length,
+          rEnd = reading.length;
+        while (
+          sEnd > 0 &&
+          rEnd > 0 &&
+          surface[sEnd - 1] === reading[rEnd - 1]
+        ) {
+          sEnd--;
+          rEnd--;
+        }
+
+        let sStart = 0,
+          rStart = 0;
+        while (
+          sStart < sEnd &&
+          rStart < rEnd &&
+          surface[sStart] === reading[rStart]
+        ) {
+          sStart++;
+          rStart++;
+        }
+
+        const prefix = surface.substring(0, sStart);
+        const suffix = surface.substring(sEnd);
+        const coreS = surface.substring(sStart, sEnd);
+        const coreR = reading.substring(rStart, rEnd);
+
+        return coreS
+          ? `${prefix}<ruby>${coreS}<rt>${coreR}</rt></ruby>${suffix}`
+          : surface;
+      }
+
+      async function searchDictionary(term) {
+        if (!state.dictDB) return null;
+        let idx = state.dictDB.index[term];
+        if (!idx && term.length > 1) {
+          // Basic stem logic for dictionary lookups
+          idx = state.dictDB.index[term.slice(0, -1)];
+        }
+        return idx ? state.dictDB.defs[idx[0]] : null;
+      }
+
+      // --- Initialization ---
+      async function initResources() {
         try {
-          statusBar.innerText = "Downloading dictionary...";
-          let dictBlob = await fetchAndGunzip(
+          statusBar.innerText = "Loading Sudachi...";
+          const dictBlob = await fetchAndGunzip(
             "sudachi-wasm/resources/system.dic.gz",
           );
-          const buffer = await dictBlob.arrayBuffer();
-          const uint8Array = new Uint8Array(buffer);
-
           state.sudachi = new SudachiStateless();
-          await state.sudachi.initialize_from_bytes(uint8Array);
-          statusBar.innerText = "Dictionary loaded";
+          await state.sudachi.initialize_from_bytes(
+            new Uint8Array(await dictBlob.arrayBuffer()),
+          );
+
+          statusBar.innerText = "Loading Dictionary...";
+          const jpDictBlob = await fetchAndGunzip("jpdict.json.gz");
+          state.dictDB = JSON.parse(await jpDictBlob.text());
+
+          statusBar.innerText = "Ready";
+          runAnalysis();
         } catch (err) {
-          statusBar.innerText = "Dict error: " + err.message;
-          console.error(err);
+          statusBar.innerText = "Error: " + err.message;
         }
       }
 
-      function mapTokensToCharOffsets(tokens, text) {
-        let charIndex = 0;
-        let byteIndex = 0;
-        let tokenIdx = 0;
-
-        while (charIndex < text.length && tokenIdx < tokens.length) {
-          const token = tokens[tokenIdx];
-          if (byteIndex === token.begin) {
-            token.charStart = charIndex;
-            token.charEnd = charIndex + token.surface.length;
-            const tokenByteLen = token.end - token.begin;
-            byteIndex += tokenByteLen;
-            charIndex += token.surface.length;
-            tokenIdx++;
-            continue;
-          }
-          const codePoint = text.codePointAt(charIndex);
-          let charBytes = 1;
-          if (codePoint > 0x7f) {
-            if (codePoint <= 0x7ff) charBytes = 2;
-            else if (codePoint <= 0xffff) charBytes = 3;
-            else charBytes = 4;
-          }
-          byteIndex += charBytes;
-          charIndex += codePoint > 0xffff ? 2 : 1;
-        }
-      }
-
-      // --- 2. Main Analysis Logic ---
+      // --- Core Logic ---
       async function runAnalysis() {
-        if (!state.sudachi) await initSudachi();
-        if (!state.sudachi) return;
-
+        if (!state.sudachi || !state.dictDB) return;
         const text = inputText.value;
-        outputDisplay.innerHTML = "";
-
-        // Clear any open tooltip when re-analyzing
-        hideTooltip();
-
-        let uniqueRanges = 0;
-        const startTime = performance.now();
-
-        // A. Tokenize
-        const rawJson = state.sudachi.tokenize_stringified(text, 0);
-        const tokens = JSON.parse(rawJson);
-
-        // B. Fix Offsets
-        mapTokensToCharOffsets(tokens, text);
-
-        // C. Scan with Grammar Engine
-        let allMatches = [];
-
-        for (const ruleJson of GRAMMAR_RULES) {
-          let rule = new GrammarRule(ruleJson);
-          let results = rule.scan(tokens);
-
-          let ranges = results
-            .map((m) => {
-              const startToken = tokens[m.index];
-              const endToken = tokens[m.index + m.length - 1];
-              if (typeof startToken.charStart === "undefined") return null;
-
-              return {
-                start: startToken.charStart,
-                end: endToken.charEnd,
-                ruleId: m.ruleId,
-                // Extract detailed info from the rule definition
-                title: ruleJson.title || "Grammar Rule",
-                description:
-                  ruleJson.description || "No description available.",
-                link: ruleJson.link || "#",
-              };
-            })
-            .filter((r) => r !== null);
-
-          allMatches.push(...ranges);
-        }
-        // D. Filter Overlaps
-        const rangeCount = resolveOverlaps(allMatches);
-        // E. Render
-        let html = renderHighlightedText(text, rangeCount);
-        uniqueRanges += rangeCount.length;
-        outputDisplay.innerHTML = html + (text.trim() ? "。" : "");
-
-        const duration = (performance.now() - startTime).toFixed(2);
-        statusBar.textContent = `Found ${uniqueRanges} matches in ${duration}ms`;
-      }
-
-      function resolveOverlaps(ranges) {
-        if (ranges.length === 0) return [];
-        ranges.sort((a, b) => {
-          if (a.start !== b.start) return a.start - b.start;
-          return b.end - b.start - (a.end - a.start);
-        });
-
-        const result = [];
-        let lastEnd = -1;
-        for (const r of ranges) {
-          if (r.start >= lastEnd) {
-            result.push(r);
-            lastEnd = r.end;
-          }
-        }
-        return result;
-      }
-
-      function renderHighlightedText(text, ranges) {
-        let html = "";
-        let cursor = 0;
-        const esc = (s) =>
-          s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-        for (const r of ranges) {
-          if (r.start > cursor) {
-            html += esc(text.substring(cursor, r.start));
-          }
-
-          const matchText = text.substring(r.start, r.end);
-          // Embed data attributes for the tooltip
-          html += `<span class="grammar-match"
-                        data-title="${esc(r.title)}"
-                        data-desc="${esc(r.description)}"
-                        data-link="${esc(r.link)}">${esc(matchText)}</span>`;
-
-          cursor = r.end;
-        }
-
-        if (cursor < text.length) {
-          html += esc(text.substring(cursor));
-        }
-        return html;
-      }
-
-      // --- Tooltip Logic ---
-
-      let activeElement = null;
-
-      function showTooltip(element) {
-        const title = element.dataset.title;
-        const desc = element.dataset.desc;
-        const link = element.dataset.link;
-
-        // Build HTML
-        tooltip.innerHTML = `
-          <h3>${title}</h3>
-          <p>${desc}</p>
-          ${link && link !== "#" ? `<a href="${link}" target="_blank" rel="noopener noreferrer">Check on Bunpro &rarr;</a>` : ""}
-        `;
-
-        // Calculate Position
-        const rect = element.getBoundingClientRect();
-        const scrollX = window.scrollX || window.pageXOffset;
-        const scrollY = window.scrollY || window.pageYOffset;
-
-        tooltip.classList.remove("visible", "position-top");
-        tooltip.style.display = "block"; // make it block to calculate dimension
-
-        // Default: Bottom Center
-        let top = rect.bottom + scrollY + 10;
-        let left = rect.left + scrollX + rect.width / 2;
-
-        // Check collision with right edge of screen
-        const tooltipWidth = 300; // max-width roughly
-        if (left + tooltipWidth / 2 > window.innerWidth) {
-          // shifting logic could go here, but CSS transform handles centering usually.
-          // simple clamp:
-          // left = Math.min(left, window.innerWidth - (tooltipWidth/2) - 10);
-        }
-
-        tooltip.style.top = `${top}px`;
-        tooltip.style.left = `${left}px`;
-        tooltip.style.transform = "translateX(-50%)"; // Center horizontally
-
-        // If off screen bottom, flip to top?
-        // (Simplified check)
-        // if (top + tooltip.offsetHeight > document.body.offsetHeight) {
-        //   top = rect.top + scrollY - tooltip.offsetHeight - 10;
-        //   tooltip.classList.add('position-top');
-        //   tooltip.style.top = `${top}px`;
-        // }
-
-        tooltip.classList.add("visible");
-
-        // Highlight active word
-        if (activeElement) activeElement.classList.remove("active");
-        element.classList.add("active");
-        activeElement = element;
-      }
-
-      function hideTooltip() {
-        tooltip.classList.remove("visible");
-        tooltip.style.display = "none";
-        if (activeElement) {
-          activeElement.classList.remove("active");
-          activeElement = null;
-        }
-      }
-
-      // Event Delegation
-      document.addEventListener("click", (e) => {
-        const match = e.target.closest(".grammar-match");
-        const insideTooltip = e.target.closest("#grammar-tooltip");
-
-        // 1. Clicked inside the tooltip (e.g. the link)
-        if (insideTooltip) {
-          return; // Do nothing, let link work
-        }
-
-        // 2. Clicked a grammar word
-        if (match) {
-          e.stopPropagation(); // prevent document click from closing it immediately
-
-          if (activeElement === match) {
-            // Toggle off if clicking the same one
-            hideTooltip();
-          } else {
-            // Open new one
-            showTooltip(match);
-          }
+        if (!text.trim()) {
+          outputDisplay.innerHTML = "";
           return;
         }
 
-        // 3. Clicked anywhere else (background)
-        hideTooltip();
+        // 1. Tokenize
+        const tokens = JSON.parse(state.sudachi.tokenize_stringified(text, 0));
+
+        // 2. Scan for Grammar
+        let grammarRanges = [];
+        for (const ruleJson of GRAMMAR_RULES) {
+          const rule = new GrammarRule(ruleJson);
+          const matches = rule.scan(tokens);
+          matches.forEach((m) => {
+            grammarRanges.push({
+              start: m.index,
+              end: m.index + m.length,
+              data: ruleJson,
+              type: "grammar",
+            });
+          });
+        }
+
+        // Resolve grammar overlaps (longest match first)
+        grammarRanges.sort(
+          (a, b) => b.end - b.start - (a.end - a.start) || a.start - b.start,
+        );
+        const activeGrammar = [];
+        const usedTokens = new Set();
+        for (const r of grammarRanges) {
+          let conflict = false;
+          for (let i = r.start; i < r.end; i++)
+            if (usedTokens.has(i)) conflict = true;
+          if (!conflict) {
+            activeGrammar.push(r);
+            for (let i = r.start; i < r.end; i++) usedTokens.add(i);
+          }
+        }
+
+        // 3. Render
+        let html = "";
+        for (let i = 0; i < tokens.length; i++) {
+          const gMatch = activeGrammar.find((r) => r.start === i);
+
+          if (gMatch) {
+            // Render Grammar Block
+            let blockContent = "";
+            for (let j = gMatch.start; j < gMatch.end; j++) {
+              blockContent += generateRuby(
+                tokens[j].surface,
+                katakanaToHiragana(tokens[j].reading_form),
+              );
+            }
+            html += `<span class="grammar-match" 
+                           data-type="grammar"
+                           data-title="${gMatch.data.title}" 
+                           data-desc="${gMatch.data.description}" 
+                           data-link="${gMatch.data.link || "#"}">${blockContent}</span>`;
+            i = gMatch.end - 1;
+          } else {
+            // Check Dictionary for single token
+            const token = tokens[i];
+            const dictDef = await searchDictionary(token.dictionary_form);
+            const content = generateRuby(
+              token.surface,
+              katakanaToHiragana(token.reading_form),
+            );
+
+            if (dictDef) {
+              html += `<span class="dict-match" 
+                             data-type="dict"
+                             data-kanji="${token.dictionary_form}"
+                             data-surface="${token.surface}">${content}</span>`;
+            } else {
+              html += content;
+            }
+          }
+        }
+        outputDisplay.innerHTML = html;
+      }
+
+      // --- Tooltip Interaction ---
+      async function showTooltip(el) {
+        console.log("hi");
+        const type = el.dataset.type;
+        tooltip.style.display = "block";
+        tooltip.innerHTML = "Loading...";
+
+        if (type === "grammar") {
+          tooltip.innerHTML = `
+            <h3>${el.dataset.title}</h3>
+            <p>${el.dataset.desc}</p>
+            ${el.dataset.link !== "#" ? `<a href="${el.dataset.link}" target="_blank">Check Bunpro &rarr;</a>` : ""}
+          `;
+        } else {
+          const kanji = el.dataset.kanji;
+          const defs = await searchDictionary(kanji);
+          console.log("defs", defs);
+          if (defs) {
+            let out = `<h3>${kanji}</h3>`;
+            defs.forEach((g) => {
+              out += `<div class="entry">${g.info && g.info.length ? `<i>${g.info}</i><br/>` : ""}${g.gloss.join(", ")}
+                </div>`;
+            });
+            out += `<a href="${`https://jotoba.de/search/0/${encodeURIComponent(kanji)}`}" target="_blank">View on Jotoba</a>`;
+            tooltip.innerHTML = out;
+          }
+        }
+
+        const rect = el.getBoundingClientRect();
+        tooltip.style.top = `${rect.bottom + window.scrollY + 10}px`;
+        tooltip.style.left = `${Math.min(rect.left + window.scrollX, window.innerWidth - 320)}px`;
+
+        el.classList.add("active");
+      }
+
+      document.addEventListener("click", (e) => {
+        const match = e.target.closest(".grammar-match, .dict-match");
+        document
+          .querySelectorAll(".active")
+          .forEach((el) => el.classList.remove("active"));
+        if (match) {
+          showTooltip(match);
+        } else if (!e.target.closest("#grammar-tooltip")) {
+          tooltip.style.display = "none";
+        }
       });
 
-      // --- Event Listeners ---
       let timeout;
       inputText.addEventListener("input", () => {
         clearTimeout(timeout);
-        timeout = setTimeout(runAnalysis, 300);
+        timeout = setTimeout(runAnalysis, 400);
       });
 
-      // Initial run
-      runAnalysis();
+      initResources();
     </script>
   </body>
 </html>

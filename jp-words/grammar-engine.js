@@ -198,4 +198,71 @@ async function runGrammarEngineCheck(sudachi, GRAMMAR_RULES) {
   return totalMatches;
 }
 
+/**
+ * Converts a single Kagome token object into a Sudachi-compatible token object.
+ * @param {Object} k - The Kagome token object.
+ * @returns {Object} - The Sudachi-formatted token object.
+ */
+function convertKagomeToSudachi(k) {
+  // Na-Adjectives (丁寧):
+  //   Kagome: pos: "名詞,形容動詞語幹,*,*"
+  //   Mapped: poses[0] becomes "形状詞". This ensures your pos: "形状詞" grammar rules trigger.
+  //   Conjugation (連用形, 未然形):
+  // Kagome (IPADIC): Usually does not include the conjugation form ("連用形") in the 4-part pos string provided in your example. It is often a 7th or 9th field in full MeCab/Kagome output.
+  //   Sudachi: Includes it at poses[5].
+  //   Limitation: If your Kagome WASM dictionary only returns 4 POS parts (as shown in your JSON), the conjugation constraint in your schema will fail because the data isn't there. You may need to update your Kagome dictionary config to return Full features.
+  // Token Splitting (話し方):
+  //   Kagome: Sees 話し方 as one Noun.
+  //   Sudachi: Sees 話し (Verb) + 方 (Suffix).
+  //   Impact: Your kata-method example rule (which looks for a Verb + Suffix) will not trigger on Kagome output because Kagome didn't split the word. To fix this, you would need to write a specific Kagome-style rule for 話し方 as a single noun.
+  // Char Offsets:
+  //   Kagome provides word_position. Sudachi apps usually expect begin/end or charStart/charEnd. The function above calculates charEnd by adding the surface length to the start position.
+  //   1. Split Kagome's comma-separated POS string
+  const kPos = k.pos.split(",");
+
+  /**
+   * 2. Map POS Tags to align with your Reference Values.
+   * Kagome (IPADIC) and Sudachi use different naming conventions.
+   */
+  let pos1 = kPos[0] || "*";
+  let pos2 = kPos[1] || "*";
+
+  // Example Mapping: Kagome's '形容動詞語幹' is Sudachi's '形状詞'
+  if (pos2 === "形容動詞語幹") {
+    pos1 = "形状詞";
+    pos2 = "一般";
+  }
+  // Kagome's '代名詞' is often index 1 under '名詞'
+  if (pos1 === "名詞" && pos2 === "代名詞") {
+    pos1 = "代名詞";
+    pos2 = "一般";
+  }
+
+  // 3. Construct the 6-part 'poses' array Sudachi expects
+  // Index 4: Conjugation Type, Index 5: Conjugation Form
+  // Note: Standard Kagome/IPADIC doesn't always provide these in the POS string.
+  const poses = [
+    pos1, // [0] Part of speech
+    pos2, // [1] Sub-type 1
+    kPos[2] || "*", // [2] Sub-type 2
+    kPos[3] || "*", // [3] Sub-type 3
+    "*", // [4] Conjugation Type (e.g. 五段-カ行)
+    "*", // [5] Conjugation Form (e.g. 連用形)
+  ];
+
+  // 4. Return the Sudachi format
+  return {
+    surface: k.surface_form,
+    poses: poses,
+    normalized_form: k.base_form || k.surface_form,
+    reading_form: k.reading || "",
+    dictionary_form: k.base_form || k.surface_form,
+    word_id: k.word_id,
+    oov: k.word_type === "UNKNOWN",
+    // Character offsets
+    charStart: k.word_position,
+    charEnd: k.word_position + k.surface_form.length,
+  };
+}
+
 export { GrammarRule, runGrammarEngineCheck };
