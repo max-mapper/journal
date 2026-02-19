@@ -1,0 +1,91 @@
+grammarPointName,sentence1,sentence2,sentence1English,sentence2English,englishGrammarPointMeaning
+1. ～みたい,お姫様みたいです！,店は閉まっているみたいです。,You look like a princess!,Looks like the shop is closed.,looks like ~
+2. ～そう,嬉しそうです。,葉っぱが木から落ちそうです。,They look happy.,The leaf looks like it'll fall from the tree.,looks like ~
+3. ～だそう,たけしさんは明日休むつもりだそうです。,田中さんは仕事をやめるそうです。,Apparently Takeshi won't be here tomorrow.,I heard Mr. Tanaka is quitting.,I heard ~ / Apparently ~
+4. ～よう,今日の天気は夏のようです。,上田くんが遅れているようです。,It feels like summer today.,It seems that Ueda is running late.,seems like ~
+5. ～はず,今週の月曜日は休みのはずです。,,This Monday is supposed to be a day off.,,should be ~ / supposed to be ~
+6. ～かもしれない,渋滞でアインさんが遅れるかもしれないです。,,Ahn will probably be late because of traffic.,,probably ~ / might ~
+7. あげる,花を彼女にあげる。,,I will give flowers to my girlfriend.,,give (I give to someone)
+8. くれる,彼氏が私に花をくれた。,,My boyfriend gave me flowers.,,give (someone gives to me)
+9. もらう,（私は）彼氏に花をもらった。,,I received flowers from my boyfriend.,,receive
+10. ～てあげる,妻に料理してあげる。,,I'll cook for my wife.,,do for (someone)
+11. ～てくれる,妻が料理してくれる。,,My wife cooks for me.,,do for (me)
+12. ～てくれてありがとう,料理してくれてありがとう。,,Thank you for cooking for me.,,thank you for doing for (me)
+13. ～てもらう,母に料理してもらった。,,I got my mom to cook for me.,,ask to do for (me) / get someone to do for (me)
+14. ～て (cause),かぜをひいて休みます。,,I'm staying home because I caught a cold.,,because ~ (natural consequence)
+15. ～ても,試験に落ちてもあきらめません。,,"Even if I fail the exam, I won't give up.",,even if ~
+16. ～なくてもいい,靴をぬがなくてもいいです。,,There's no need to take off your shoes.,,there's no need to ~
+17. ～ないでください,写真を撮らないでください。,,Please don't take pictures.,,please don't ~
+18. ～てみる,すしを食べてみる？,,Want to try some sushi?,,try ~ (and see how it goes)
+19. ～てすみません,遅れてすみませんでした。,,Sorry for being late.,,sorry for ~
+20. ～てよかった,あなたに出会えてよかった。,,I'm glad I got to meet you.,,I'm glad that ~
+21. ～てしまう,ケーキを全部一人で食べてしまいました。,,"Unfortunately, I ate the whole cake by myself.",,regrettably ~ / completely ~
+22. ～ておく,クッキーを作るから、オーブンをつけておく。,,"I'm going to make cookies, so I'll turn the oven on in advance.",,do ~ in advance
+23. ～てある,机の上に本がおいてあります。,,A book has been placed on the desk.,,~ has been done (and stays that way)
+24. transitive & intransitive,ボールを落とした。,ボールが落ちた。,I dropped the ball.,The ball fell.,Transitive vs Intransitive verbs
+25. transitive & intransitive ている,窓を開けている。,窓が開いている。,I'm opening the window.,The window is open.,Action in progress vs State of being
+26. ～たり、～たりする,週末はゲームをしたり、本を読んだりする。,,"On the weekends I play games, read books, and such.",,do things like ~ and ~
+27. ～し、～し,あの店は安いし、おいしいし、好きです。,,I like that restaurant because it's cheap and delicious.,,because ~ and ~ (listing reasons)
+28. ～など,ゆか先生はベトナム、アメリカなど、いろんな国に行ったことがあります。,,"Yuka-sensei has been to many different countries such as Vietnam, the US, etc.",,~ etc. (listing a few examples)
+29. ～てほしい,皿を洗ってほしい。,,I want you to do the dishes.,,I want you to ~
+30. ～やすい,この問題は解きやすいです。,,This problem is easy to solve.,,It's easy to ~
+31. ～にくい,この問題は解きにくいです。,,This problem is hard to solve.,,It's hard to ~
+32. ～すぎる,このワンピースは高すぎる。,,This dress is too expensive.,,it's too ~
+33. ～方,自転車の乗り方を教えてください。,,Please teach me how to ride a bike.,,how to ~ / way of doing ~
+34. ～ことになる,来週出張することになった。,,It was decided that I'll be going on a business trip next week.,,it ended up that ~ / it was decided that ~
+35. ～ことにする,カフェで昼ご飯を食べることにした。,,We decided to eat lunch at the cafe.,,I / we decided that ~ (active decision)
+36. ～ことにしている,毎日走ることにしている。,,I make a habit of going running every day.,,I make a habit of ~
+37. ～ようにする,明日遅刻しないようにしてください。,,Please try not to be late tomorrow.,,make an effort to ~ / try to ~
+38. ～ようになる,もっと野菜を食べるようになった。,日本語が話せるようになった。,I've come to eat more vegetables than I used to.,I've become able to speak Japanese.,I've come to ~ / I've become able to ~
+39. ～にする,お茶とジュースとどっちがいい？,ジュースにする。,Do you want tea or juice?,I'll have juice.,decide on ~
+40. adj する,静かにしてください。,音楽を大きくした。,Please be quiet.,I made the music louder.,be ~ / make it ~
+41. ～ので,財布をなくしたので、買い物ができません。,,I can't go shopping because I lost my wallet.,,because ~ (formal/objective)
+42. ～んです,どうして来なかったの？,ちょっとお願いがあるんです。,Why didn't you show up?,I have a bit of a favor to ask.,show emphasis / soften expressions
+43. ～のに,ケーキを作ったのに誰も食べてくれない。,ケーキを作るのに時間がかかる。,"Even though I made a cake, no one would eat it.",I takes time to make a cake.,even though ~ / in order to ~
+44. ～まで・～までに,会議は3時までです。,宿題は明日までに出してください。,The meeting is until three.,Please submit your assignment by tomorrow.,until ~ / by ~ (deadline)
+45. ～より,バスケよりサッカーが好きです。,,I like soccer more than basketball.,,more than ~
+46. ～ほど～ない,私の日本語はネイティブほどではない。,,My Japanese is not as good as a native speaker's.,,not as much as ~
+47. まだ～ていない,宿題はまだやっていない。,,I haven't done my homework yet.,,haven't ~ yet
+48. もう～た,宿題はもうやった。,,I already did my homework.,,already did ~
+49. には,彼女には特別な能力があります。,,She has a special ability (that most people don't have).,,express a special quality (in/to/for X)
+50. Number も,家にゲームは200個もある。,,I have as many as 200 games at my house.,,as many as ~ (emphasizing a large number)
+51. しかない,本は2冊しかない。,病気だから、休むしかない。,I only have two books.,"I'm sick, so all I can do is rest.",only ~ / ~ is all there is
+52. question word でも,どこでもいいから食べに行きましょう。,,"Anywhere is fine, so let's go eat.",,"any- (anywhere, anyone, etc.)"
+53. question word も,ここには誰も住んでいない。,,Nobody lives here.,,"no- (nobody, nowhere, nothing)"
+54. ～ながら,音楽を聴きながら勉強します。,,I listen to music while studying.,,do ~ while doing ~
+55. ～間に,シャワーを浴びている間に電話が鳴りました。,,The phone rang while I was in the shower.,,while doing ~ something happens
+56. Noun ばかり,甘い物ばかり食べています。,,I only eat sweets.,,only ~ (nothing but)
+57. ～中,授業中は集中できない。,,I can't focus during class.,,during ~ / in the middle of ~
+58. ～まま,電気をつけたまま出かけた。,,I left the lights on when I went out.,,leaving something in a certain state
+59. ～ないで,眠らないで一晩中ゲームをしていた。,,I played games all night without going to sleep.,,do ~ without doing ~
+60. 前,試合が始まる前に練習しましょう。,,Let's practice before the match starts.,,before ~
+61. 後,働いた後でリラックスしたい。,,I want to relax after work.,,after ~
+62. ～てから,結果がわかってから連絡する。,,I'll contact you as soon as I get the results.,,just after ~ / as soon as ~
+63. ～時,学生の時よく遊びました。,旅行から帰ってきた時、眠りたい。,When I was a student I spent lots of time playing.,"When we get back from our trip, I want to sleep.",when ~ then ~
+64. ～たら,困ったら助けるよ。,,"If you have trouble, then I'll help you.",,if ~ then ~
+65. ～たらどうですか,先生に聞いたらどうですか。,,How about you ask the teacher?,,how about ~ / maybe you should ~
+66. ～ば,ペンがなければ貸すよ。,,I'll lend you a pen if you don't have one.,,if (a condition is true) then ~
+67. ～ばよかった,もっと勉強すればよかった。,,I should have studied more.,,I should have ~ (regret)
+68. ～なら,英語なら読めるよ。,暇なら手伝ってくれる？,If it's in English I can read it.,"If you're free, could you help me?",if (something is the case) then ~
+69. ～と,ボタンを押すと音が鳴る。,,When you press the button a sound plays.,,"when ~ happens, ~ happens (inevitable)"
+70. ～といい,試験に合格できるといいね。,,I hope you pass the test.,,I hope that ~ happens
+71. modifying nouns,昨日買ったかばんがかわいい。,満足できる人生を手に入れたい。,The bag I bought yesterday is cute.,I want to lead a life I can be satisfied with.,~ noun (relative clauses)
+72. ～という・～って,明日の会議を延期するという話をした。,上田くんって何歳？,We spoke about postponing tomorrow's meeting.,"About Ueda, how old is he?",about ~ / characterized by ~
+73. embedded questions,授業は何時から始まるかわかる？,彼が来るかどうか知りません。,Do you know what time class starts?,I don't know whether he'll come or not.,embedded questions (what/whether)
+74. ～を知らない,机の上にあった書類を知りませんか。,,Have you seen the documents that were on the desk?,,have you seen ~? / do you know where ~ is?
+75. potential form,日本語が読める？,日本語を読むことができます。,Can you read Japanese?,I can read Japanese.,can ~ / able to ~
+76. 見える・見られる,くもっているから太陽が見えない。,美術館で絵が見られる。,I can't see the sun because it's cloudy.,You can see paintings at the art museum.,can see (naturally vs ability)
+77. 聞こえる・聞ける,電車の音が聞こえた。,あの曲はラジオで聞ける。,I could hear the sound of the train.,You can hear that song on the radio.,can hear (naturally vs ability)
+78. volitional form,ご飯を食べに行こう。,勉強しようか。,Let's go eat.,Shall we study?,Let's ~ / Shall we ~
+79. volitional と思っている,大学に進学しようと思っています。,本でも読もうと思う。,I'm planning to go to college.,I think I'll read a book or something.,I'm planning to ~ / I think I'll ~
+80. passive form,先生に褒められた。,壁に文字が書かれた。,I was praised by my teacher.,Letters were written on the wall.,~ was acted on by ~ / ~ was done
+81. causative form,娘を早めに寝かせた。,娘に家に友達を招待させた。,I made my daughter go to bed early.,I let my daughter invite her friends over.,~ made ~ do ~ / ~ let ~ do ~
+"82. causative てくれる, etc.",私に話を聞かせてくれませんか。,私にやらせてください！,Would you let me hear your story?,Please let me do it!,let ~ do ~ (requesting permission)
+83. causative passive,親に勉強をさせられた。,彼女は友達に文句を聞かせられた。,I was forced to study by my parent.,She was forced to listen to her friend's complaints.,~ was made to do ~ by ~
+84. 敬語 special verbs,,,,,"honorific/humble verbs (iru/kuru/iku -> irassharu, etc.)"
+85. 敬語 special forms,社長が取引先と話していらっしゃいます。,上司はお帰りになりました。,The CEO is speaking with our trading partners.,The boss went home.,"honorific forms (~te irassharu, o~ni naru)"
+86. お/ご～ください,少々お待ちください。,,Please wait for a moment.,,please ~ (polite)
+87. ～ていただく,この資料を確認していただけませんか。,,Could you please check these for me?,,please do (for me) (humble request)
+88. ～てくださる,上司が資料を確認してくださいました。,,My boss checked the documents for me.,,someone did (for me) (honorific)
+89. よろしいでしょうか,お時間はよろしいでしょうか。,,Do you have time?,,Is ~ all right? (polite)
+90. いかがでしょうか,明日でいかがでしょうか。,飲み物はいかがでしょうか。,Is tomorrow all right?,Would you like something to drink?,Is ~ all right? / Would you like ~? (polite)

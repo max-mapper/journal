@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japanese Kanji Handwriting Test</title>
+    <!-- Load Hanzi Writer library -->
+    <script src="hanzi-writer.js"></script>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+      .controls {
+        margin-bottom: 1.5rem;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+      input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        width: 60px;
+        text-align: center;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+        background-color: #007bff;
+        color: white;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      button.secondary {
+        background-color: #6c757d;
+      }
+      button.secondary:hover {
+        background-color: #545b62;
+      }
+      #character-target {
+        margin: 0 auto;
+        border: 1px solid #eee;
+        background-color: #fff;
+        /* Optional: Add a grid background image or CSS grid lines here */
+        background-image:
+          linear-gradient(0deg, transparent 49%, #eee 50%, transparent 51%),
+          linear-gradient(90deg, transparent 49%, #eee 50%, transparent 51%);
+        background-size: 100% 100%;
+      }
+      .status-msg {
+        margin-top: 15px;
+        font-weight: bold;
+        min-height: 24px;
+        color: #555;
+      }
+      .quiz-stats {
+        margin-top: 10px;
+        font-size: 0.9em;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Kanji Write Test</h1>
+
+      <div class="controls">
+        <input
+          type="text"
+          id="kanji-input"
+          value="私"
+          maxlength="1"
+          placeholder="字"
+        />
+        <button onclick="loadChar()">Load</button>
+        <button class="secondary" onclick="animateChar()">Animate</button>
+        <button class="secondary" onclick="startQuiz()">Quiz</button>
+      </div>
+
+      <!-- The container where the writer will be rendered -->
+      <div id="character-target"></div>
+
+      <div class="status-msg" id="status-text"></div>
+      <div class="quiz-stats" id="quiz-stats"></div>
+    </div>
+
+    <script>
+      let writer = null;
+
+      // Custom data loader to fetch Japanese specific stroke data
+      // Source: https://www.npmjs.com/package/kanji-writer-data-jp
+      const japaneseCharDataLoader = (char, onComplete, onError) => {
+        fetch(
+          `https://cdn.jsdelivr.net/npm/kanji-writer-data-jp@latest/${char}.json`,
+        )
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error("Character not found in Japanese database");
+            }
+            return res.json();
+          })
+          .then(onComplete)
+          .catch(onError);
+      };
+
+      function loadChar() {
+        const char = document.getElementById("kanji-input").value;
+        const targetDiv = document.getElementById("character-target");
+        const statusText = document.getElementById("status-text");
+
+        if (!char) return;
+
+        // Clear previous content
+        targetDiv.innerHTML = "";
+        statusText.textContent = "Loading...";
+        statusText.style.color = "#555";
+        document.getElementById("quiz-stats").textContent = "";
+
+        try {
+          writer = HanziWriter.create("character-target", char, {
+            width: 300,
+            height: 300,
+            padding: 5,
+            showOutline: true,
+            drawingFadeDuration: 9999999999,
+            drawingWidth: 20,
+            strokeAnimationSpeed: 1,
+            delayBetweenStrokes: 0,
+            strokeColor: "#f9db6d",
+            highlightColor: "#f75b43",
+            outlineColor: "#dee0e4",
+            drawingColor: "#0a121f",
+            charDataLoader: japaneseCharDataLoader, // Use the Japanese data loader
+            onLoadCharDataError: (error) => {
+              statusText.textContent =
+                "Error: Character not supported or not found.";
+              statusText.style.color = "red";
+            },
+            onLoadCharDataSuccess: () => {
+              statusText.textContent = "Loaded! Click Quiz to practice.";
+            },
+          });
+        } catch (e) {
+          statusText.textContent = "Error initializing writer.";
+        }
+      }
+
+      function animateChar() {
+        if (writer) {
+          writer.animateCharacter();
+        }
+      }
+
+      function startQuiz() {
+        if (!writer) return;
+
+        const statusText = document.getElementById("status-text");
+        const statsText = document.getElementById("quiz-stats");
+
+        statusText.textContent = "Draw the character!";
+        statusText.style.color = "#007bff";
+        statsText.textContent = "";
+
+        writer.quiz({
+          onMistake: function (strokeData) {
+            statusText.textContent =
+              "Oh no! Mistake on stroke " + (strokeData.strokeNum + 1);
+            statusText.style.color = "red";
+          },
+          onCorrectStroke: function (strokeData) {
+            statusText.textContent =
+              "Good! " + strokeData.strokesRemaining + " strokes remaining.";
+            statusText.style.color = "green";
+          },
+          onComplete: function (summaryData) {
+            statusText.textContent = "Quiz Complete!";
+            statusText.style.color = "#28a745";
+            statsText.textContent = `Total Mistakes: ${summaryData.totalMistakes}`;
+          },
+        });
+      }
+
+      // Load default character on page load
+      window.onload = loadChar;
+    </script>
+  </body>
+</html>
