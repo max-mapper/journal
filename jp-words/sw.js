@@ -8,12 +8,13 @@ const CACHE_NAME = "sudachi-cache-v1";
 const ASSETS_TO_CACHE = [
   "./grammar", // The main page
   "./grammar.html",
+  "./grammar.css",
   "./grammar-engine.js",
   "./conjugations.js",
   "./grammar-rules.js",
   "./sudachi-wasm/sudachi.js",
-  "./sudachi-wasm/resources/system.dic.gz", // 40MB
-  "./jpdict.json.gz", // 1MB
+  "./sudachi-wasm/resources/system.dic.gz", // ~40MB
+  "./jmdict.json.gz", // ~4MB
 ];
 
 // 1. INSTALL: Cache files and skip waiting

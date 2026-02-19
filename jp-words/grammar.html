@@ -343,7 +343,18 @@
         }
 
         if (pos === "動詞") {
-          const matches = tenseDetector.detect(dictForm, surface);
+          let matches;
+          try {
+            matches = tenseDetector.detect(dictForm, surface);
+          } catch (e) {
+            console.error(
+              "Could not detect tenses of",
+              dictForm,
+              surface,
+              item,
+              e,
+            );
+          }
           if (matches && matches.length > 0) {
             tenseAttr = `data-tense="${encodeURIComponent(JSON.stringify(matches))}"`;
           }
@@ -392,8 +403,9 @@
           );
 
           statusBar.innerText = "Loading Dictionary...";
-          const jpDictBlob = await fetchAndGunzip("jpdict.json.gz");
-          state.dictDB = JSON.parse(await jpDictBlob.text());
+
+          const jmDictBlob = await fetchAndGunzip("jmdict.json.gz");
+          state.dictDB = JSON.parse(await jmDictBlob.text());
 
           statusBar.innerText = "Ready (Offline Capable)";
           runAnalysis();
@@ -404,6 +416,9 @@
       }
 
       async function runAnalysis() {
+        // SETTINGS: Maximum number of tokens to try combining (e.g., 4)
+        const COMPOUND_LOOKAHEAD_LIMIT = 8;
+
         if (!state.sudachi || !state.dictDB) return;
         const text = inputText.value;
         if (!text.trim()) {
@@ -470,6 +485,7 @@
         let i = 0;
 
         while (i < rawTokens.length) {
+          // 1. Check for Grammar Matches (Existing Logic)
           const gMatch = activeGrammar.find((r) => r.start === i);
           if (gMatch) {
             let blockContent = "";
@@ -485,19 +501,11 @@
                 katakanaToHiragana(t.reading_form),
               );
 
-              // -------------------------------------------------------------
-              // LOGIC UPDATE:
-              // Inside a grammar match, the surface form of a content word
-              // is extended to the end of the match.
-              // e.g. "食べています": "食べ" (Verb) -> surface becomes "食べています"
-              // -------------------------------------------------------------
-
               if (
                 ["動詞", "形容詞", "形状詞", "名詞"].includes(tPos) &&
                 t.dictionary_form
               ) {
                 let compoundSurface = t.surface;
-                // Accumulate all remaining surfaces in the grammar match
                 for (let k = j + 1; k < gMatch.end; k++) {
                   compoundSurface += rawTokens[k].surface;
                 }
@@ -509,7 +517,6 @@
                   }
                 }
 
-                // Check for conjugation on this EXTENDED token group
                 let tenseMatches = [];
                 if (tPos === "動詞") {
                   tenseMatches = tenseDetector.detect(
@@ -521,8 +528,8 @@
                 if (!seenInner.has(validForm)) {
                   seenInner.add(validForm);
                   innerWords.push({
-                    kanji: validForm, // Dictionary form
-                    surface: compoundSurface, // FULL Extended Surface form
+                    kanji: validForm,
+                    surface: compoundSurface,
                     pos: tPos,
                     tense: tenseMatches,
                   });
@@ -545,7 +552,64 @@
             continue;
           }
 
-          // Standard Token Rendering
+          // 2. Check for Dictionary Compounds (UPDATED LOGIC)
+          // Look ahead to see if multiple tokens form a valid dictionary word (e.g. こ + ばこ = こばこ)
+          let bestCompound = null;
+          let maxLen = 0;
+
+          for (
+            let len = 2;
+            len <= COMPOUND_LOOKAHEAD_LIMIT && i + len <= rawTokens.length;
+            len++
+          ) {
+            // Ensure we don't overlap into a known grammar rule
+            let overlap = false;
+            for (let k = 0; k < len; k++) {
+              if (activeGrammar.some((r) => r.start === i + k)) {
+                overlap = true;
+                break;
+              }
+            }
+            if (overlap) break;
+
+            const slice = rawTokens.slice(i, i + len);
+            const combinedSurface = slice.map((t) => t.surface).join("");
+
+            // STRICT MATCH CHECK:
+            // We use state.dictDB.index directly instead of searchDictionary().
+            // searchDictionary() has a fallback that strips the last character if no match is found,
+            // which causes "Word" + "," -> "Word," to match as "Word".
+            // We only want to group tokens if they EXACTLY match a dictionary entry.
+            if (state.dictDB.index[combinedSurface]) {
+              bestCompound = {
+                slice: slice,
+                surface: combinedSurface,
+              };
+              maxLen = len;
+            }
+          }
+
+          if (bestCompound) {
+            // Create a synthetic group object for the compound
+            const groupObj = {
+              isGroup: true,
+              tokens: bestCompound.slice,
+              baseToken: {
+                ...bestCompound.slice[0],
+                dictionary_form: bestCompound.surface,
+                normalized_form: bestCompound.surface,
+                // Force POS to Noun for these compounds (usually safe for prefix/suffix compounds)
+                poses: ["名詞", "一般", "*", "*", "*", "*"],
+              },
+              surface: bestCompound.surface,
+            };
+
+            html += renderTokenOrGroup(groupObj, activePOS);
+            i += maxLen;
+            continue;
+          }
+
+          // 3. Standard Token Rendering (Existing Logic)
           const current = rawTokens[i];
           const pos = getPos(current);
 

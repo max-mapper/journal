@@ -1,14 +1,14 @@
 var fs = require("fs");
-var dict = require("./jmdict-eng-common-3.6.2.json");
+var dict = require("./jmdict-eng-3.6.2.json");
 
 var simple = { index: {}, defs: [] };
 for (var x of dict.words) {
   var keys = [];
   for (var kanji of x.kanji) {
-    if (kanji.common) keys.push(kanji.text);
+    keys.push(kanji.text);
   }
   for (var kana of x.kana) {
-    if (kana.common) keys.push(kana.text);
+    keys.push(kana.text);
   }
   var val = x.sense.map((s) => {
     return {
@@ -28,4 +28,4 @@ for (var x of dict.words) {
   }
 }
 
-fs.writeFileSync("./jpdict.json", JSON.stringify(simple));
+fs.writeFileSync("./jmdict.json", JSON.stringify(simple));

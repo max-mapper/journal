@@ -168,14 +168,14 @@ body.hide-furigana ruby rt {
 
 /* Highlight Styles */
 .grammar-match {
-  background-color: #e3f2fd;
+  /* background-color: #e3f2fd; */
   border-bottom: 2px solid #2196f3;
   cursor: help;
   border-radius: 3px;
   transition: background-color 0.1s;
 }
 .dict-match {
-  background-color: #f1f8e9;
+  /* background-color: #f1f8e9; */
   border-bottom: 2px solid #8bc34a;
   cursor: help;
   border-radius: 3px;
