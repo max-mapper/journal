@@ -94,6 +94,21 @@
       import GRAMMAR_RULES from "./grammar-rules.js";
       import { SudachiStateless } from "./sudachi-wasm/sudachi.js";
 
+      // 1. Register the Service Worker
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("./sw.js")
+          .then((registration) => {
+            console.log(
+              "Service Worker Registered with scope:",
+              registration.scope,
+            );
+          })
+          .catch((error) => {
+            console.error("Service Worker registration failed:", error);
+          });
+      }
+
       const inputText = document.getElementById("input-text");
       inputText.innerHTML = SAMPLE_SENTENCES;
       const outputDisplay = document.getElementById("output-display");
@@ -115,7 +130,14 @@
       window.state = state;
 
       async function fetchAndGunzip(url) {
+        // This fetch hits the Service Worker cache first
         const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+        }
+
+        // DecompressionStream handles the unzipping
         const ds = new DecompressionStream("gzip");
         const stream = response.body.pipeThrough(ds);
         return await new Response(stream).blob();
@@ -354,10 +376,17 @@
       async function initResources() {
         try {
           statusBar.innerText = "Loading Sudachi...";
+
+          // The fetch here will now be intercepted by the Service Worker.
+          // If the file is in the cache, it loads from disk instantly.
           const dictBlob = await fetchAndGunzip(
             "sudachi-wasm/resources/system.dic.gz",
           );
+
           state.sudachi = new SudachiStateless();
+
+          // Note: We decompress on the fly every time to save disk space
+          // (storing 40MB gz is better than storing ~150MB raw in cache).
           await state.sudachi.initialize_from_bytes(
             new Uint8Array(await dictBlob.arrayBuffer()),
           );
@@ -366,7 +395,7 @@
           const jpDictBlob = await fetchAndGunzip("jpdict.json.gz");
           state.dictDB = JSON.parse(await jpDictBlob.text());
 
-          statusBar.innerText = "Ready";
+          statusBar.innerText = "Ready (Offline Capable)";
           runAnalysis();
         } catch (err) {
           statusBar.innerText = "Error: " + err.message;
