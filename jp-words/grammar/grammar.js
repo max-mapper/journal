@@ -15,7 +15,7 @@ if ("serviceWorker" in navigator) {
 }
 
 const inputText = document.getElementById("input-text");
-inputText.innerHTML = "この";
+inputText.innerHTML = SAMPLE_SENTENCES;
 const outputDisplay = document.getElementById("output-display");
 const statusBar = document.getElementById("status-bar");
 const tooltip = document.getElementById("grammar-tooltip");

@@ -52,7 +52,6 @@ export class IyakuMatcher {
     if (!this.sudachi || !text) return "";
     try {
       const raw = this.sudachi.tokenize_stringified(text, 0);
-      console.log("raw", text, raw);
       const tokens = JSON.parse(raw);
       return tokens
         .map((t) => this.katakanaToHiragana(t.reading_form))
@@ -124,7 +123,6 @@ export class IyakuMatcher {
     if (!this.sudachi || !this.dictDB || !text.trim()) return [];
 
     const rawTokens = JSON.parse(this.sudachi.tokenize_stringified(text, 0));
-    console.log("raw", rawTokens);
     let activeGrammar = [];
 
     if (isGrammarEnabled) {
