@@ -77,7 +77,18 @@ interface TokenConstraint {
 }
 ```
 
-You can also add a wildcard by adding an empty object `{}` into the pattern array.
+You can also add a wildcard by adding an empty object `{}` into the pattern array, e.g. 
+
+```
+// "と～と、どちらが"
+[
+  { surface: "と", pos: "助詞" },
+  {},
+  { surface: "と", pos: "助詞" },
+  { baseForm: "どちら" },
+  { surface: "が" },
+]
+```
 
 ---
 

@@ -60,13 +60,14 @@ export interface TokenMorpheme {
 export class SudachiStateful {
   free(): void;
   [Symbol.dispose](): void;
-  constructor();
   /**
-   * Initializes the tokenizer with the given dictionary file url. If not given, the default one is used.
+   * Tokenizes the input string using the defined mode from TokenizeMode at initialization.
+   * If a mode is provided, that mode will be used temporarily until the end of the function execution.
    * 
-   * Returns an error object `{ error: string, details: string }` if initialization fails.
+   * Returns an array of morpheme objects on success, or an error object `{ error: string, details: string }` on failure.
    */
-  initialize_browser(mode: TokenizeMode, debug?: boolean | null, dict_url?: string | null): Promise<void>;
+  tokenize_raw(input: string, mode?: TokenizeMode | null): TokenMorpheme[];
+  is_initialized(): boolean;
   /**
    * Initializes the tokenizer with the given dictionary file path. If not given, the default one is used.
    * 
@@ -76,10 +77,11 @@ export class SudachiStateful {
    */
   initialize_node(read_file_func: Function, mode: TokenizeMode, debug?: boolean | null, dict_path?: string | null): Promise<void>;
   /**
-   * Initializes the tokenizer with the given bytes.
+   * Initializes the tokenizer with the given dictionary file url. If not given, the default one is used.
+   * 
    * Returns an error object `{ error: string, details: string }` if initialization fails.
    */
-  initialize_from_bytes(dict_bytes: Uint8Array, mode: TokenizeMode, debug?: boolean | null): void;
+  initialize_browser(mode: TokenizeMode, debug?: boolean | null, dict_url?: string | null): Promise<void>;
   /**
    * Tokenizes the input string using the defined mode from TokenizeMode at initialization.
    * If a mode is provided, that mode will be used temporarily until the end of the function execution.
@@ -88,17 +90,15 @@ export class SudachiStateful {
    */
   tokenize_stringified(input: string, mode?: TokenizeMode | null): string;
   /**
-   * Tokenizes the input string using the defined mode from TokenizeMode at initialization.
-   * If a mode is provided, that mode will be used temporarily until the end of the function execution.
-   * 
-   * Returns an array of morpheme objects on success, or an error object `{ error: string, details: string }` on failure.
+   * Initializes the tokenizer with the given bytes.
+   * Returns an error object `{ error: string, details: string }` if initialization fails.
    */
-  tokenize_raw(input: string, mode?: TokenizeMode | null): TokenMorpheme[];
+  initialize_from_bytes(dict_bytes: Uint8Array, mode: TokenizeMode, debug?: boolean | null): void;
+  constructor();
   /**
    * Resets the tokenizer, uninitializing it.
    */
   reset(): void;
-  is_initialized(): boolean;
   /**
    * SplitMode of the tokenizer.
    */
@@ -116,13 +116,13 @@ export class SudachiStateful {
 export class SudachiStateless {
   free(): void;
   [Symbol.dispose](): void;
-  constructor();
   /**
-   * Initializes the tokenizer with the given dictionary file url. If not given, the default one is used.
+   * Tokenizes the input string using the specified mode from TokenizeMode.
    * 
-   * Returns an error object `{ error: string, details: string }` if initialization fails.
+   * Returns an array of morpheme objects on success, or an error object `{ error: string, details: string }` on failure.
    */
-  initialize_browser(dict_url?: string | null): Promise<void>;
+  tokenize_raw(input: string, mode: TokenizeMode, enable_debug?: boolean | null): TokenMorpheme[];
+  is_initialized(): boolean;
   /**
    * Initializes the tokenizer with the given dictionary file path. If not given, the default one is used.
    * 
@@ -132,10 +132,11 @@ export class SudachiStateless {
    */
   initialize_node(read_file_func: Function, dict_path?: string | null): Promise<void>;
   /**
-   * Initializes the tokenizer with the given bytes.
+   * Initializes the tokenizer with the given dictionary file url. If not given, the default one is used.
+   * 
    * Returns an error object `{ error: string, details: string }` if initialization fails.
    */
-  initialize_from_bytes(dict_bytes: Uint8Array): void;
+  initialize_browser(dict_url?: string | null): Promise<void>;
   /**
    * Tokenizes the input string using the specified mode from TokenizeMode.
    * 
@@ -143,45 +144,44 @@ export class SudachiStateless {
    */
   tokenize_stringified(input: string, mode: TokenizeMode, enable_debug?: boolean | null): string;
   /**
-   * Tokenizes the input string using the specified mode from TokenizeMode.
-   * 
-   * Returns an array of morpheme objects on success, or an error object `{ error: string, details: string }` on failure.
+   * Initializes the tokenizer with the given bytes.
+   * Returns an error object `{ error: string, details: string }` if initialization fails.
    */
-  tokenize_raw(input: string, mode: TokenizeMode, enable_debug?: boolean | null): TokenMorpheme[];
+  initialize_from_bytes(dict_bytes: Uint8Array): void;
+  constructor();
   /**
    * Resets the tokenizer, uninitializing it.
    */
   reset(): void;
-  is_initialized(): boolean;
 }
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly main: () => void;
-  readonly __wbg_sudachistateless_free: (a: number, b: number) => void;
-  readonly sudachistateless_new: () => number;
-  readonly sudachistateless_initialize_browser: (a: number, b: number, c: number) => any;
-  readonly sudachistateless_initialize_node: (a: number, b: any, c: number, d: number) => any;
-  readonly sudachistateless_initialize_from_bytes: (a: number, b: number, c: number) => [number, number];
-  readonly sudachistateless_tokenize_stringified: (a: number, b: number, c: number, d: number, e: number) => [number, number, number, number];
-  readonly sudachistateless_tokenize_raw: (a: number, b: number, c: number, d: number, e: number) => [number, number, number, number];
-  readonly sudachistateless_reset: (a: number) => void;
-  readonly sudachistateless_is_initialized: (a: number) => number;
   readonly __wbg_sudachistateful_free: (a: number, b: number) => void;
-  readonly sudachistateful_new: () => number;
+  readonly __wbg_sudachistateless_free: (a: number, b: number) => void;
+  readonly main: () => void;
+  readonly sudachistateful_debug: (a: number) => [number, number, number];
   readonly sudachistateful_initialize_browser: (a: number, b: number, c: number, d: number, e: number) => any;
-  readonly sudachistateful_initialize_node: (a: number, b: any, c: number, d: number, e: number, f: number) => any;
   readonly sudachistateful_initialize_from_bytes: (a: number, b: number, c: number, d: number, e: number) => [number, number];
-  readonly sudachistateful_tokenize_stringified: (a: number, b: number, c: number, d: number) => [number, number, number, number];
-  readonly sudachistateful_tokenize_raw: (a: number, b: number, c: number, d: number) => [number, number, number, number];
-  readonly sudachistateful_reset: (a: number) => void;
+  readonly sudachistateful_initialize_node: (a: number, b: any, c: number, d: number, e: number, f: number) => any;
   readonly sudachistateful_is_initialized: (a: number) => number;
   readonly sudachistateful_mode: (a: number) => [number, number, number];
-  readonly sudachistateful_set_mode: (a: number, b: number) => [number, number];
-  readonly sudachistateful_debug: (a: number) => [number, number, number];
+  readonly sudachistateful_new: () => number;
+  readonly sudachistateful_reset: (a: number) => void;
   readonly sudachistateful_set_debug: (a: number, b: number) => [number, number];
+  readonly sudachistateful_set_mode: (a: number, b: number) => [number, number];
+  readonly sudachistateful_tokenize_raw: (a: number, b: number, c: number, d: number) => [number, number, number, number];
+  readonly sudachistateful_tokenize_stringified: (a: number, b: number, c: number, d: number) => [number, number, number, number];
+  readonly sudachistateless_initialize_browser: (a: number, b: number, c: number) => any;
+  readonly sudachistateless_initialize_from_bytes: (a: number, b: number, c: number) => [number, number];
+  readonly sudachistateless_initialize_node: (a: number, b: any, c: number, d: number) => any;
+  readonly sudachistateless_is_initialized: (a: number) => number;
+  readonly sudachistateless_new: () => number;
+  readonly sudachistateless_reset: (a: number) => void;
+  readonly sudachistateless_tokenize_raw: (a: number, b: number, c: number, d: number, e: number) => [number, number, number, number];
+  readonly sudachistateless_tokenize_stringified: (a: number, b: number, c: number, d: number, e: number) => [number, number, number, number];
   readonly __wbindgen_malloc: (a: number, b: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
   readonly __externref_table_alloc: () => number;
@@ -191,8 +191,8 @@ export interface InitOutput {
   readonly __wbindgen_export_6: WebAssembly.Table;
   readonly __externref_table_dealloc: (a: number) => void;
   readonly __externref_drop_slice: (a: number, b: number) => void;
-  readonly closure311_externref_shim: (a: number, b: number, c: any) => void;
-  readonly closure329_externref_shim: (a: number, b: number, c: any, d: any) => void;
+  readonly closure310_externref_shim: (a: number, b: number, c: any) => void;
+  readonly closure325_externref_shim: (a: number, b: number, c: any, d: any) => void;
   readonly __wbindgen_start: () => void;
 }
 

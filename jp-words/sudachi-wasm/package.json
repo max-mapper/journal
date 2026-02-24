@@ -5,7 +5,7 @@
     "Benjas333 <seston30+npm@gmail.com>"
   ],
   "description": "Modern WebAssembly distribution of sudachi.rs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
