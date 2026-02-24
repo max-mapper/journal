@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japanese Grammar & Dict Matcher</title>
+    <link rel="stylesheet" href="grammar.css" />
+  </head>
+  <body>
+    <h1>Grammar Analyzer</h1>
+
+    <div class="controls-area">
+      <div class="button-group">
+        <button id="btn-paste">📋 Paste from Clipboard</button>
+        <button id="btn-clear" class="clear-btn">❌ Clear</button>
+      </div>
+
+      <div class="filters-container">
+        <!-- Main Options -->
+        <div class="options-row">
+          <label class="filter-item bold-opt"
+            ><input type="checkbox" id="toggle-grammar" checked /> Highlight
+            Grammar</label
+          >
+          <label class="filter-item bold-opt"
+            ><input type="checkbox" id="toggle-furigana" checked /> Show
+            Furigana</label
+          >
+        </div>
+
+        <!-- POS Filters -->
+        <div class="filters">
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="動詞" />
+            Verb (動詞)</label
+          >
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="助動詞" />
+            Aux. Verb (助動詞)</label
+          >
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="助詞" />
+            Particle (助詞)</label
+          >
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="名詞" />
+            Noun (名詞)</label
+          >
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="形容詞" />
+            Adjective (形容詞)</label
+          >
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="連体詞" />
+            Pre-Noun Adj (連体詞)</label
+          >
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="副詞" />
+            Adverb (副詞)</label
+          >
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="形状詞" />
+            Na-Adj (形状詞)</label
+          >
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="代名詞" />
+            Pronoun (代名詞)</label
+          >
+          <label class="filter-item"
+            ><input type="checkbox" class="pos-filter" checked value="接尾辞" />
+            Suffix (接尾辞)</label
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="panel">
+        <div class="panel-header">Input Japanese</div>
+        <textarea id="input-text"> </textarea>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Analysis (Hover words for details)</div>
+        <div id="output-display"></div>
+        <div class="status-bar" id="status-bar">Initializing...</div>
+      </div>
+    </div>
+    <div id="grammar-tooltip"><div class="tooltip-content"></div></div>
+    <script type="module" src="grammar.js"></script>
+  </body>
+</html>

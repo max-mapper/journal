@@ -1,0 +1,368 @@
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  position: relative;
+}
+h1 {
+  color: #2c3e50;
+  padding: 20px;
+  margin: 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* Controls Area */
+.controls-area {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #444;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #e9e9e9;
+}
+button.clear-btn {
+  color: #c0392b;
+  border-color: #e74c3c;
+}
+button.clear-btn:hover {
+  background: #fce4e4;
+}
+
+/* Filter Toggles */
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.options-row {
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  background: #e8f4fc;
+  border-radius: 8px;
+  border: 1px solid #d1e3f2;
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.filter-item {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+}
+.filter-item input {
+  margin-right: 6px;
+  cursor: pointer;
+}
+.filter-item.bold-opt {
+  font-weight: bold;
+  color: #2980b9;
+}
+
+/* Main Layout */
+.container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto 500px auto;
+  padding: 20px;
+  height: 70vh;
+}
+.panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 0;
+}
+.panel-header {
+  padding: 15px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+textarea {
+  flex: 1;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  font-family: "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+}
+#output-display {
+  flex: 1;
+  padding: 15px;
+  font-size: 22px;
+  line-height: 2;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-family: "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+}
+
+/* Responsive Mobile Layout */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+  .panel {
+    height: 400px;
+  }
+  h1 {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+  .options-row {
+    flex-wrap: wrap;
+  }
+}
+
+/* Furigana Styling */
+ruby rt {
+  font-size: 0.5em;
+  color: #666;
+  user-select: none;
+}
+
+/* Toggle Furigana Class: Hides Main View Furigana */
+body.hide-furigana ruby rt {
+  display: none;
+}
+
+/* Force Furigana inside Tooltips regardless of global setting */
+#grammar-tooltip ruby rt {
+  display: ruby-text !important;
+}
+
+/* Highlight Styles */
+.grammar-match {
+  /* background-color: #e3f2fd; */
+  border-bottom: 2px solid #2196f3;
+  cursor: help;
+  border-radius: 3px;
+  transition: background-color 0.1s;
+}
+.dict-match {
+  /* background-color: #f1f8e9; */
+  border-bottom: 2px solid #8bc34a;
+  cursor: help;
+  border-radius: 3px;
+  transition: background-color 0.1s;
+}
+/* Active state for when tooltip is open on this word */
+.active {
+  background-color: #ffe0b2 !important;
+  border-bottom-color: #ff9800 !important;
+}
+
+/* Tooltip Styles */
+#grammar-tooltip {
+  position: absolute; /* Moves with scroll */
+  z-index: 1000;
+  background: white;
+  color: #333;
+  padding: 0;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  display: none;
+  border: 1px solid #ccc;
+  line-height: 1.4;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.tooltip-content {
+  padding: 15px;
+}
+.tooltip-content h3 {
+  margin: 0 0 0 0;
+  font-size: 22px;
+  color: black;
+  font-weight: normal;
+}
+.tooltip-content h3 rt {
+  font-size: 12px;
+  color: #5c5c5c;
+}
+.tooltip-content p {
+  margin: 5px 0 5px 0;
+}
+
+#grammar-tooltip .entry {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+#grammar-tooltip .entry:last-child {
+  border-bottom: none;
+}
+.dict-entry-group {
+  margin-bottom: 12px;
+  padding: 8px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+.dict-entry-group h4 {
+  margin: 0 0 5px 0;
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+}
+#grammar-tooltip a.ext-link {
+  display: inline-block;
+  background-color: #2c3e50;
+  color: white;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+#grammar-tooltip a.ext-link:hover {
+  background-color: #34495e;
+}
+
+.grammar-section {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+.embedded-dict-section {
+  margin-top: 10px;
+}
+.embedded-dict-header {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.status-bar {
+  padding: 10px;
+  background: #2c3e50;
+  color: white;
+  font-size: 14px;
+}
+
+/* New styles for the split header layout */
+.dict-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.dict-header-left {
+  flex: 1;
+  min-width: 0; /* Prevents text overflow issues */
+}
+
+.dict-header-left h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.4em;
+  line-height: 1.2;
+  color: #2c3e50;
+}
+
+.dict-header-right {
+  flex: 0 0 auto;
+  max-width: 50%;
+  background-color: #f0f7ff;
+  border: 1px solid #cce5ff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.85rem;
+}
+
+.conjugation-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.conjugation-item {
+  line-height: 1.3;
+}
+
+.conjugation-tag {
+  font-weight: 700;
+  color: #0056b3;
+  display: block;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.conjugation-desc {
+  color: #444;
+}
+
+/* Updated Badge Styles */
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.pos-badge {
+  display: inline-block;
+  background: #eee;
+  color: #555;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75em;
+}
+
+.pos-badge.dict-ref {
+  background: #e3f2fd;
+  color: #0d47a1;
+  border: 1px solid #bbdefb;
+}
+
+.pos-tag-decoded {
+  color: #2980b9;
+  font-size: 0.8em;
+}

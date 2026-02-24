@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IyakuMatcher Integration Tests</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        background: #f9f9fb;
+        color: #333;
+      }
+      h1,
+      h2 {
+        color: #2c3e50;
+        border-bottom: 2px solid #eaeaea;
+        padding-bottom: 0.5rem;
+      }
+      .card {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border: 1px solid #eaeaea;
+      }
+      .test-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+        border-left: 5px solid #ccc;
+        background: #fafafa;
+      }
+      .pass {
+        border-left-color: #27ae60;
+        background: #eafaf1;
+      }
+      .fail {
+        border-left-color: #e74c3c;
+        background: #fdedec;
+      }
+      .status {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+      .pass .status {
+        color: #27ae60;
+      }
+      .fail .status {
+        color: #e74c3c;
+      }
+
+      pre {
+        background: #2d3436;
+        color: #dfe6e9;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+        font-size: 0.85rem;
+      }
+      .diff {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .diff > div {
+        flex: 1;
+        overflow: hidden;
+      }
+      details {
+        margin-top: 1rem;
+        cursor: pointer;
+      }
+      summary {
+        font-weight: bold;
+        outline: none;
+      }
+
+      .scratchpad-inputs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      input[type="text"] {
+        flex: 1;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+      button {
+        padding: 0.5rem 1rem;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button:hover {
+        background: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>IyakuMatcher Integration Tests</h1>
+
+    <div class="card">
+      <h2>Test Suite</h2>
+      <div id="loading">Initializing dictionaries and running tests...</div>
+      <div id="test-results"></div>
+    </div>
+
+    <div class="card">
+      <h2>Scratchpad (Generate New Tests)</h2>
+      <p>
+        Type a sentence to see the JSON output. You can use this to generate the
+        expected output for new test cases.
+      </p>
+      <div class="scratchpad-inputs">
+        <textarea type="text" id="scratchpad-input"></textarea>
+        <button id="scratchpad-btn">Match</button>
+      </div>
+      <pre id="scratchpad-output">// Output will appear here...</pre>
+    </div>
+
+    <script type="module">
+      // IMPORTANT: Change this import to point to the actual file where your class is located
+      import { IyakuMatcher } from "./iyaku-matcher.js";
+      import { testCases } from "./matcher-tests.js";
+      // --- Helper: Deep Equality Check ---
+      function deepEqual(obj1, obj2) {
+        if (obj1 === obj2) return true;
+        if (
+          typeof obj1 !== "object" ||
+          obj1 === null ||
+          typeof obj2 !== "object" ||
+          obj2 === null
+        ) {
+          return false;
+        }
+        const keys1 = Object.keys(obj1);
+        const keys2 = Object.keys(obj2);
+        if (keys1.length !== keys2.length) return false;
+
+        for (let key of keys1) {
+          if (!keys2.includes(key) || !deepEqual(obj1[key], obj2[key])) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      // --- Test Data ---
+      const activePOS = null;
+
+      // --- Main Test Runner ---
+      async function runTests() {
+        const resultsContainer = document.getElementById("test-results");
+        const loading = document.getElementById("loading");
+
+        try {
+          const matcher = new IyakuMatcher();
+
+          // Initialize the matcher (assuming resources are where your class expects them)
+          await matcher.initialize();
+          loading.style.display = "none";
+
+          // Run automated tests
+          let resultsHtml = "";
+          testCases.forEach((test, index) => {
+            const actual = matcher.match(test.input, test.options);
+            const passed = deepEqual(actual, test.expected);
+
+            resultsHtml += `
+            <div class="test-item ${passed ? "pass" : "fail"}">
+              <div class="status">${passed ? "✅ PASS" : "❌ FAIL"} : ${test.input}</div>
+              ${
+                !passed
+                  ? `
+                <details>
+                  <summary>View Difference</summary>
+                  <div class="diff">
+                    <div>
+                      <strong>Expected:</strong>
+                      <pre>${JSON.stringify(test.expected, null, 2)}</pre>
+                    </div>
+                    <div>
+                      <strong>Actual:</strong>
+                      <pre>${JSON.stringify(actual, null, 2)}</pre>
+                    </div>
+                  </div>
+                </details>
+              `
+                  : ""
+              }
+            </div>
+          `;
+          });
+
+          resultsContainer.innerHTML = resultsHtml;
+
+          // Setup Scratchpad
+          const scratchInput = document.getElementById("scratchpad-input");
+          const scratchBtn = document.getElementById("scratchpad-btn");
+          const scratchOutput = document.getElementById("scratchpad-output");
+
+          scratchBtn.addEventListener("click", () => {
+            const inputText = scratchInput.value;
+            if (!inputText.trim()) return;
+            var lines = inputText.split("\n");
+            let results = [];
+            for (const line of lines) {
+              try {
+                console.log("match", [line]);
+                const result = matcher.match(line);
+                results.push({ input: line, expected: result });
+              } catch (err) {
+                scratchOutput.textContent = `Error running match:\n${err.message}`;
+              }
+            }
+            scratchOutput.textContent = JSON.stringify(results, null, 2);
+          });
+        } catch (err) {
+          loading.innerHTML = `<div style="color:red; font-weight:bold;">Failed to initialize: ${err.message}. <br>Make sure you are running this via a local server (http://localhost...) so fetch() and modules work.</div>`;
+          console.error(err);
+        }
+      }
+
+      // Execute test runner
+      runTests();
+    </script>
+  </body>
+</html>
