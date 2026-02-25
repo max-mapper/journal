@@ -1,7 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-const ai = new GoogleGenAI({
-  apiKey: process.argv["GOOGLE_GEMINI_KEY"],
-});
+const ai = new GoogleGenAI({});
 
 // var defaultModel = "gemini-3-pro-preview";
 var defaultModel = "gemini-3-flash-preview";

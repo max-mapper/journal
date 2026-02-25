@@ -1,7 +1,6 @@
 import { GrammarRule } from "./grammar-engine.js";
 import { JMDICT_POS_MAP } from "./mappings.js";
 import { VerbTenseDetector } from "./tense-detector.js";
-import { GRAMMAR_RULES } from "./grammar-rules.js";
 import { SudachiStateless } from "../sudachi-wasm/sudachi.js";
 
 // =====================================================================
@@ -13,7 +12,7 @@ export class IyakuMatcher {
     this.tenseDetector = new VerbTenseDetector();
     this.sudachi = null;
     this.dictDB = null;
-    this.COMPOUND_LOOKAHEAD_LIMIT = 8; // havent tested perf impact
+    this.COMPOUND_LOOKAHEAD_LIMIT = 2; // havent tested perf impact
   }
 
   /**
@@ -31,6 +30,24 @@ export class IyakuMatcher {
 
     const jmDictBlob = await this._fetchAndGunzip(jmdictUrl);
     this.dictDB = JSON.parse(await jmDictBlob.text());
+
+    var n5Rules = await this.fetchJsonData("n5-grammar-rules.json");
+    var n4Rules = await this.fetchJsonData("n4-grammar-rules.json");
+    var n3Rules = await this.fetchJsonData("n3-grammar-rules.json");
+    this.rules = [...n5Rules]; //, ...n4Rules, ...n3Rules]; //
+  }
+
+  async fetchJsonData(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const jsonData = await response.json();
+      return jsonData;
+    } catch (error) {
+      console.error("Error fetching or parsing data:", error);
+    }
   }
 
   async _fetchAndGunzip(url) {
@@ -127,7 +144,7 @@ export class IyakuMatcher {
 
     if (isGrammarEnabled) {
       let grammarRanges = [];
-      for (const ruleJson of GRAMMAR_RULES) {
+      for (const ruleJson of this.rules) {
         const rule = new GrammarRule(ruleJson);
         const matches = rule.scan(rawTokens);
         matches.forEach((m) => {
@@ -138,6 +155,7 @@ export class IyakuMatcher {
           });
         });
       }
+      console.log(grammarRanges);
       grammarRanges.sort(
         (a, b) => b.end - b.start - (a.end - a.start) || a.start - b.start,
       );

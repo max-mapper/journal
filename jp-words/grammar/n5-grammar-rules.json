@@ -1,0 +1,4523 @@
+[
+  {
+    "id": "da-noun",
+    "title": "だ",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["学生{だ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0",
+    "description": "To be, Is"
+  },
+  {
+    "id": "da-naadj",
+    "title": "だ",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["静か{だ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0",
+    "description": "To be, Is"
+  },
+  {
+    "id": "desu-noun",
+    "title": "です",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "baseForm": "です",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["学生{です}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%99",
+    "description": "To be, Is"
+  },
+  {
+    "id": "desu-naadj",
+    "title": "です",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "baseForm": "です",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["静か{です}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%99",
+    "description": "To be, Is"
+  },
+  {
+    "id": "wa",
+    "title": "は",
+    "patterns": [
+      [
+        {
+          "surface": "は",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["私{は}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AF",
+    "description": "As for... (Highlights sentence topic)"
+  },
+  {
+    "id": "wa-pronoun",
+    "title": "は",
+    "patterns": [
+      [
+        {
+          "pos": "代名詞"
+        },
+        {
+          "surface": "は",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["これ{は}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AF",
+    "description": "As for... (Highlights sentence topic)"
+  },
+  {
+    "id": "mo",
+    "title": "も",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞"
+        },
+        {
+          "surface": "も",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["私{も}", "これ{も}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%82",
+    "description": "Also, Too, As well, Even, Either, Neither"
+  },
+  {
+    "id": "kore",
+    "title": "これ",
+    "patterns": [
+      [
+        {
+          "surface": "これ",
+          "pos": "代名詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{これ}は本です"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%82%8C",
+    "description": "This"
+  },
+  {
+    "id": "sore",
+    "title": "それ",
+    "patterns": [
+      [
+        {
+          "surface": "それ",
+          "pos": "代名詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{それ}は本です"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C",
+    "description": "That"
+  },
+  {
+    "id": "are",
+    "title": "あれ",
+    "patterns": [
+      [
+        {
+          "surface": "あれ",
+          "pos": "代名詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{あれ}は本です"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%82%8C",
+    "description": "That (over there)"
+  },
+  {
+    "id": "ii",
+    "title": "いい",
+    "patterns": [
+      [
+        {
+          "surface": "いい",
+          "pos": "形容詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["天気が{いい}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%84",
+    "description": "い-Adjective meaning 'good'"
+  },
+  {
+    "id": "yokunai",
+    "title": "よくない",
+    "patterns": [
+      [
+        {
+          "surface": "よく",
+          "pos": "形容詞",
+          "match": "start"
+        },
+        {
+          "surface": "ない",
+          "pos": "形容詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["天気が{よくない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%84",
+    "description": "い-Adjective meaning 'good'"
+  },
+  {
+    "id": "yokatta",
+    "title": "よかった",
+    "patterns": [
+      [
+        {
+          "surface": "よかっ",
+          "pos": "形容詞",
+          "match": "start"
+        },
+        {
+          "surface": "た",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["天気が{よかった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%84",
+    "description": "い-Adjective meaning 'good'"
+  },
+  {
+    "id": "yokunakatta",
+    "title": "よくなかった",
+    "patterns": [
+      [
+        {
+          "surface": "よく",
+          "pos": "形容詞",
+          "match": "start"
+        },
+        {
+          "surface": "なかっ",
+          "pos": "形容詞"
+        },
+        {
+          "surface": "た",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["天気が{よくなかった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%84%E3%81%84",
+    "description": "い-Adjective meaning 'good'"
+  },
+  {
+    "id": "no-particle",
+    "title": "の",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞|接尾辞"
+        },
+        {
+          "surface": "の",
+          "pos": "助詞",
+          "match": "exact"
+        },
+        {
+          "pos": "名詞|代名詞"
+        }
+      ]
+    ],
+    "tests": ["私{の}本", "田中さん{の}車"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE",
+    "description": "Indicates possession"
+  },
+  {
+    "id": "i-adjective",
+    "title": "い-Adjectives",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "終止形-一般",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["その猫は{大きい}", "とても{おいしい}です"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%84-adjectives",
+    "description": "Adjectives ending in い"
+  },
+  {
+    "id": "na-adjective-da",
+    "title": "だ",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["その町は{静かだ}", "勉強が{大変だ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA-adjectives",
+    "description": "Adjectives that are also nouns"
+  },
+  {
+    "id": "na-adjective-na",
+    "title": "な",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞|名詞",
+          "match": "start"
+        },
+        {
+          "surface": "な",
+          "pos": "助動詞",
+          "match": "end"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["{静かな}人ですね", "それは{便利な}道具だ"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA-adjectives",
+    "description": "Adjectives that are also nouns"
+  },
+  {
+    "id": "ka",
+    "title": "か",
+    "patterns": [
+      [
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["学校に行く{か}", "元気です{か}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B",
+    "description": "Question marking particle"
+  },
+  {
+    "id": "ga",
+    "title": "が",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["猫{が}", "学生{が}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C",
+    "description": "Subject marking particle, Identification particle"
+  },
+  {
+    "id": "ga-pronoun",
+    "title": "が",
+    "patterns": [
+      [
+        {
+          "pos": "代名詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["私{が}", "これ{が}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C",
+    "description": "Subject marking particle, Identification particle"
+  },
+  {
+    "id": "yo",
+    "title": "よ",
+    "patterns": [
+      [
+        {
+          "surface": "よ",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{よ}", "だめだ{よ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%88",
+    "description": "Emphasis (Sentence ending particle)"
+  },
+  {
+    "id": "ne",
+    "title": "ね",
+    "patterns": [
+      [
+        {
+          "surface": "ね",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{ね}", "いいです{ね}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AD",
+    "description": "Isn't it?, Right? (Sentence ending particle)"
+  },
+  {
+    "id": "ru-verb",
+    "title": "る-Verb",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "終止形",
+          "surfaceEndsWith": "る",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{食べる}", "{見る}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%8B-Verbs",
+    "description": "る + ます (Ichidan Verbs)"
+  },
+  {
+    "id": "u-verb",
+    "title": "う-Verb",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "終止形",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{座る}", "{歩く}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%86-Verbs",
+    "description": "う + ます (Godan Verbs)"
+  },
+  {
+    "id": "wo",
+    "title": "を",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "を",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["ご飯{を}食べる"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%92",
+    "description": "Object marking particle"
+  },
+  {
+    "id": "masu",
+    "title": "～ます",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "baseForm": "ます",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["食べ{ます}", "歌い{ます}"],
+    "link": "https://bunpro.jp/grammar_points/polite-verb-endings",
+    "description": "Polite Verb Endings"
+  },
+  {
+    "id": "ru-verb-nai",
+    "title": "～ない (Ru-verb)",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "未然形"
+        },
+        {
+          "surface": "ない",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["食べ{ない}", "見{ない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%8Bverb-%E3%81%AA%E3%81%84",
+    "description": "Will/Does/Do (not)"
+  },
+  {
+    "id": "u-verb-nai",
+    "title": "～ない (U-verb)",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "未然形"
+        },
+        {
+          "surface": "ない",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["歌わ{ない}", "歩か{ない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%86verb--%E3%81%AA%E3%81%84",
+    "description": "Will/Does/Do (not)"
+  },
+  {
+    "id": "to-noun",
+    "title": "と",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "と",
+          "pos": "助詞",
+          "match": "exact"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["犬{と}猫"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A8-and",
+    "description": "And"
+  },
+  {
+    "id": "koko",
+    "title": "ここ",
+    "patterns": [
+      [
+        {
+          "surface": "ここ",
+          "pos": "代名詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{ここ}はどこですか"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%93",
+    "description": "Here, This place"
+  },
+  {
+    "id": "soko",
+    "title": "そこ",
+    "patterns": [
+      [
+        {
+          "surface": "そこ",
+          "pos": "代名詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{そこ}に行きます"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%93",
+    "description": "There, That place"
+  },
+  {
+    "id": "asoko",
+    "title": "あそこ",
+    "patterns": [
+      [
+        {
+          "surface": "あそこ",
+          "pos": "代名詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{あそこ}にあります"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%9D%E3%81%93",
+    "description": "Over there"
+  },
+  {
+    "id": "de-place",
+    "title": "で",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "で",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["学校{で}勉強する"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A7",
+    "description": "At, In"
+  },
+  {
+    "id": "ni-particle",
+    "title": "に",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "に",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["学校{に}行く"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AB",
+    "description": "In, At, To, For, On"
+  },
+  {
+    "id": "ka-verb",
+    "title": "か〜か",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行く{か戻るか}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B-or",
+    "description": "Or"
+  },
+  {
+    "id": "ka-iadj",
+    "title": "か〜か",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["高い{か安いか}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B-or",
+    "description": "Or"
+  },
+  {
+    "id": "ka-naadj",
+    "title": "か〜か",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{か賑やかか}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B-or",
+    "description": "Or"
+  },
+  {
+    "id": "ka-noun",
+    "title": "か〜か",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["猫{か犬か}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B-or",
+    "description": "Or"
+  },
+  {
+    "id": "to-noun-verb",
+    "title": "と",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "と",
+          "pos": "助詞",
+          "match": "exact"
+        },
+        {
+          "pos": "動詞"
+        }
+      ]
+    ],
+    "tests": ["友達{と}行く"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A8-with",
+    "description": "With"
+  },
+  {
+    "id": "deshou-noun",
+    "title": "でしょう",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "でしょう",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["雨{でしょう}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%97%E3%82%87%E3%81%86",
+    "description": "Right?, Probably, Isn't it?"
+  },
+  {
+    "id": "deshou-verb",
+    "title": "でしょう",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "でしょう",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{でしょう}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%97%E3%82%87%E3%81%86",
+    "description": "Right?, Probably, Isn't it?"
+  },
+  {
+    "id": "deshou-adj",
+    "title": "でしょう",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "でしょう",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["高い{でしょう}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%97%E3%82%87%E3%81%86",
+    "description": "Right?, Probably, Isn't it?"
+  },
+  {
+    "id": "darou-verb",
+    "title": "だろう",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "だろう",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{だろう}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%8D%E3%81%86",
+    "description": "Right?, Probably, Isn't it?"
+  },
+  {
+    "id": "darou-adj",
+    "title": "だろう",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "だろう",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["高い{だろう}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%8D%E3%81%86",
+    "description": "Right?, Probably, Isn't it?"
+  },
+  {
+    "id": "darou-noun",
+    "title": "だろう",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "だろう",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["雨{だろう}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%8D%E3%81%86",
+    "description": "Right?, Probably, Isn't it?"
+  },
+  {
+    "id": "ga-aru",
+    "title": "がある",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "ある",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["本{がある}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%82%E3%82%8B",
+    "description": "To be, There is"
+  },
+  {
+    "id": "ga-iru",
+    "title": "がいる",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "いる",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["猫{がいる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%84%E3%82%8B",
+    "description": "To be, There is,  To remain (in a state)"
+  },
+  {
+    "id": "kono",
+    "title": "この",
+    "patterns": [
+      [
+        {
+          "surface": "この",
+          "pos": "連体詞",
+          "match": "exact"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["{この}本"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%AE",
+    "description": "This"
+  },
+  {
+    "id": "sono",
+    "title": "その",
+    "patterns": [
+      [
+        {
+          "surface": "その",
+          "pos": "連体詞",
+          "match": "exact"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["{その}本"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%AE",
+    "description": "That"
+  },
+  {
+    "id": "ano",
+    "title": "あの",
+    "patterns": [
+      [
+        {
+          "surface": "あの",
+          "pos": "連体詞",
+          "match": "exact"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["{あの}本"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%AE",
+    "description": "That (over there)"
+  },
+  {
+    "id": "ndesu-verb",
+    "title": "んだ",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "ん",
+          "match": "start"
+        },
+        {
+          "baseForm": "だ",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行く{んだ}"],
+    "link": "https://bunpro.jp/grammar_points/-%E3%82%93%E3%81%A7%E3%81%99-%E3%81%AE%E3%81%A7%E3%81%99",
+    "description": "Explanatory, Emphasis, The fact is"
+  },
+  {
+    "id": "ndesu-iadj",
+    "title": "んだ",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "ん",
+          "match": "start"
+        },
+        {
+          "baseForm": "だ",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["高い{んだ}"],
+    "link": "https://bunpro.jp/grammar_points/-%E3%82%93%E3%81%A7%E3%81%99-%E3%81%AE%E3%81%A7%E3%81%99",
+    "description": "Explanatory, Emphasis, The fact is"
+  },
+  {
+    "id": "ndesu-naadj",
+    "title": "なんだ",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "な",
+          "match": "start"
+        },
+        {
+          "surface": "ん"
+        },
+        {
+          "baseForm": "だ",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{なんだ}"],
+    "link": "https://bunpro.jp/grammar_points/-%E3%82%93%E3%81%A7%E3%81%99-%E3%81%AE%E3%81%A7%E3%81%99",
+    "description": "Explanatory, Emphasis, The fact is"
+  },
+  {
+    "id": "ndesu-noun",
+    "title": "なんだ",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "な",
+          "match": "start"
+        },
+        {
+          "surface": "ん"
+        },
+        {
+          "baseForm": "だ",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{なんだ}"],
+    "link": "https://bunpro.jp/grammar_points/-%E3%82%93%E3%81%A7%E3%81%99-%E3%81%AE%E3%81%A7%E3%81%99",
+    "description": "Explanatory, Emphasis, The fact is"
+  },
+  {
+    "id": "iadj-past",
+    "title": "い-Adjective (Past)",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "surface": "た",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{高かった}"],
+    "link": "https://bunpro.jp/grammar_points/past-tense-%E3%81%84-adjectives",
+    "description": "Was, Were (Past tense)"
+  },
+  {
+    "id": "no-nominalizer",
+    "title": "の",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "の",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["食べる{の}が好き"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AF",
+    "description": "Verb nominalizer, The one who..., That which..."
+  },
+  {
+    "id": "iadj-noun",
+    "title": "い-Adjective + Noun",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "連体形-一般|連体形",
+          "match": "start"
+        },
+        {
+          "pos": "名詞|代名詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{可愛い猫}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%84-adjective-noun",
+    "description": "Describing a noun"
+  },
+  {
+    "id": "naadj-noun",
+    "title": "な-Adjective + Noun",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞",
+          "match": "start"
+        },
+        {
+          "surface": "な"
+        },
+        {
+          "pos": "名詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{静かな夜}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA-adjective-noun",
+    "description": "Describing a noun"
+  },
+  {
+    "id": "he-iku",
+    "title": "へ行く",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "へ",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "行く",
+          "conjugation": "any",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学校{へ行く}", "日本{へ行った}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%B8%E3%81%84%E3%81%8F",
+    "description": "To go to, To head toward"
+  },
+  {
+    "id": "ni-iku",
+    "title": "に行く",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "に",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "行く",
+          "conjugation": "any",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学校{に行く}", "買い物{に行った}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%B8%E3%81%84%E3%81%8F",
+    "description": "To go to, To head toward"
+  },
+  {
+    "id": "suru",
+    "title": "する",
+    "patterns": [
+      [
+        {
+          "baseForm": "する",
+          "pos": "動詞",
+          "conjugation": "any",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["勉強{する}", "テニスを{した}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%82%8B",
+    "description": "To do, To make into"
+  },
+  {
+    "id": "kuru",
+    "title": "くる",
+    "patterns": [
+      [
+        {
+          "baseForm": "来る|くる",
+          "pos": "動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["友達が{くる}", "明日、父が{来ます}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%8B",
+    "description": "To come"
+  },
+  {
+    "id": "ru-verb-past",
+    "title": "た",
+    "matchAllConjugations": false,
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形",
+          "surfaceEndsWith": "べ|き|し|み|い",
+          "match": true
+        },
+        {
+          "surface": "た",
+          "pos": "助動詞",
+          "match": true
+        }
+      ]
+    ],
+    "tests": ["朝ごはんを{食べた}", "{起きた}ばかりです"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%8B-verb-past",
+    "description": "る - Verbs (Past tense)"
+  },
+  {
+    "id": "ru-verb-past-mi",
+    "title": "た",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "surface": "見|み",
+          "match": "start"
+        },
+        {
+          "surface": "た",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{見た}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%8B-verb-past",
+    "description": "る - Verbs (Past tense)"
+  },
+  {
+    "id": "u-verb-past",
+    "title": "た",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "surface": "た",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{買った}", "{歩いた}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%86-verb-past",
+    "description": "う - Verbs (Past tense)"
+  },
+  {
+    "id": "u-verb-past-da",
+    "title": "だ",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "surface": "だ",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{飲んだ}", "{泳いだ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%86-verb-past",
+    "description": "う - Verbs (Past tense)"
+  },
+  {
+    "id": "ga-suki",
+    "title": "が好き",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "好き",
+          "pos": "形状詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["犬{が好きだ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8D",
+    "description": "Like, Fond of"
+  },
+  {
+    "id": "ga-kirai",
+    "title": "が嫌い",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "嫌い",
+          "pos": "名詞|形状詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["虫{が嫌い}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89%E3%81%84",
+    "description": "Dislike, Not fond of"
+  },
+  {
+    "id": "kirai-na",
+    "title": "嫌いな",
+    "patterns": [
+      [
+        {
+          "baseForm": "嫌い",
+          "pos": "名詞|形状詞",
+          "match": "start"
+        },
+        {
+          "surface": "な",
+          "pos": "助詞|助動詞",
+          "match": "end"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["{嫌いな}食べ物", "{嫌いな}人"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8D%E3%82%89%E3%81%84",
+    "description": "Dislike, Not fond of"
+  },
+  {
+    "id": "no-ga-suki",
+    "title": "のが好き",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "の",
+          "match": "start"
+        },
+        {
+          "surface": "が"
+        },
+        {
+          "baseForm": "好き"
+        },
+        {
+          "baseForm": "だ|です",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["食べる{のが好きだ}", "泳ぐ{のが好きです}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%99%E3%81%8D",
+    "description": "Like doing, Love doing"
+  },
+  {
+    "id": "ga-aru-noun",
+    "title": "がある",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "が",
+          "match": "start"
+        },
+        {
+          "baseForm": "ある",
+          "match": "end"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["時間{がある}時", "自信{がある}人"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%82%E3%82%8B-noun",
+    "description": "Noun (B) that has Noun (A), Noun (B) with Noun (A)"
+  },
+  {
+    "id": "no-aru-noun",
+    "title": "のある",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "の",
+          "match": "start"
+        },
+        {
+          "baseForm": "ある",
+          "match": "end"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["時間{のある}時", "勇気{のある}行動"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%82%E3%82%8B-noun",
+    "description": "Noun (B) that has Noun (A), Noun (B) with Noun (A)"
+  },
+  {
+    "id": "iadj-kunai",
+    "title": "くない",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "baseForm": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{高くない}", "{美味しくない}"],
+    "link": "https://bunpro.jp/grammar_points/negative-%E3%81%84-adjectives",
+    "description": "Not (Adjective)"
+  },
+  {
+    "id": "de",
+    "title": "で",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞"
+        },
+        {
+          "surface": "で",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["車{で}行く"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A7-by",
+    "description": "With, By (using)"
+  },
+  {
+    "id": "node-verb",
+    "title": "ので",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "の",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "surface": "で",
+          "pos": "助詞|助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行く{ので}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A7",
+    "description": "Because, So, Since, The reason being"
+  },
+  {
+    "id": "node-iadj",
+    "title": "ので",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "の",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "surface": "で",
+          "pos": "助詞|助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["高い{ので}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A7",
+    "description": "Because, So, Since, The reason being"
+  },
+  {
+    "id": "node-naadj",
+    "title": "なので",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|形状詞"
+        },
+        {
+          "surface": "な",
+          "match": "start"
+        },
+        {
+          "surface": "の",
+          "pos": "助詞"
+        },
+        {
+          "surface": "で",
+          "pos": "助詞|助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{なので}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A7",
+    "description": "Because, So, Since, The reason being"
+  },
+  {
+    "id": "node-noun",
+    "title": "なので",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞"
+        },
+        {
+          "surface": "な",
+          "match": "start"
+        },
+        {
+          "surface": "の",
+          "pos": "助詞"
+        },
+        {
+          "surface": "で",
+          "pos": "助詞|助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{なので}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A7",
+    "description": "Because, So, Since, The reason being"
+  },
+  {
+    "id": "kara-verb",
+    "title": "から",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "から",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{から}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89-because",
+    "description": "Because, Since"
+  },
+  {
+    "id": "kara-iadj",
+    "title": "から",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "から",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["高い{から}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89-because",
+    "description": "Because, Since"
+  },
+  {
+    "id": "kara-naadj",
+    "title": "だから",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "から",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{だから}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89-because",
+    "description": "Because, Since"
+  },
+  {
+    "id": "kara-noun",
+    "title": "だから",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "から",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{だから}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89-because",
+    "description": "Because, Since"
+  },
+  {
+    "id": "kara-origin",
+    "title": "から",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "から",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["日本{から}来た"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%89",
+    "description": "From"
+  },
+  {
+    "id": "kedo-verb",
+    "title": "けど",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "けど",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{けど}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A9-%E3%81%A0%E3%81%91%E3%81%A9",
+    "description": "But, However"
+  },
+  {
+    "id": "kedo-iadj",
+    "title": "けど",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "けど",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["高い{けど}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A9-%E3%81%A0%E3%81%91%E3%81%A9",
+    "description": "But, However"
+  },
+  {
+    "id": "kedo-naadj",
+    "title": "だけど",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "けど",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{だけど}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A9-%E3%81%A0%E3%81%91%E3%81%A9",
+    "description": "But, However"
+  },
+  {
+    "id": "kedo-noun",
+    "title": "だけど",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "けど",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{だけど}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A9-%E3%81%A0%E3%81%91%E3%81%A9",
+    "description": "But, However"
+  },
+  {
+    "id": "ga-verb",
+    "title": "が",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{が}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C-but",
+    "description": "But, However"
+  },
+  {
+    "id": "ga-iadj",
+    "title": "が",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["高い{が}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C-but",
+    "description": "But, However"
+  },
+  {
+    "id": "ga-naadj",
+    "title": "だが",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{だが}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C-but",
+    "description": "But, However"
+  },
+  {
+    "id": "ga-noun",
+    "title": "だが",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{だが}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8C-but",
+    "description": "But, However"
+  },
+  {
+    "id": "ru-verb-nakatta",
+    "title": "なかった",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "未然形",
+          "surfaceEndsWith": "べ"
+        },
+        {
+          "surface": "なかっ",
+          "match": "start"
+        },
+        {
+          "surface": "た",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["食べ{なかった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%8B-verb-neg-past",
+    "description": "る - Verbs (Negative-past tense)"
+  },
+  {
+    "id": "u-verb-nakatta",
+    "title": "なかった",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "未然形"
+        },
+        {
+          "surface": "なかっ",
+          "match": "start"
+        },
+        {
+          "surface": "た",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["歌わ{なかった}", "歩か{なかった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%86-verb-neg-past",
+    "description": "う - Verbs (Negative-past tense)"
+  },
+  {
+    "id": "verb-te",
+    "title": "て",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "て",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["食べ{て}", "見{て}", "歩い{て}"],
+    "link": "https://bunpro.jp/grammar_points/verb-%E3%81%A6",
+    "description": "And, Then (Linking events)"
+  },
+  {
+    "id": "verb-de",
+    "title": "で",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "で",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["泳い{で}", "飲ん{で}"],
+    "link": "https://bunpro.jp/grammar_points/verb-%E3%81%A6",
+    "description": "And, Then (Linking events)"
+  },
+  {
+    "id": "te-iru",
+    "title": "ている",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "て",
+          "match": "start"
+        },
+        {
+          "baseForm": "いる",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["食べ{ている}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%96%E3%81%84%E3%82%8B1",
+    "description": "Is, Am, Are (~ing)"
+  },
+  {
+    "id": "te-ru",
+    "title": "てる",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "てる|でる",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["食べ{てる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%96%E3%81%84%E3%82%8B1",
+    "description": "Is, Am, Are (~ing) [Colloquial]"
+  },
+  {
+    "id": "he",
+    "title": "へ",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "へ",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["学校{へ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%B8",
+    "description": "To, Toward"
+  },
+  {
+    "id": "ni-iku-verb",
+    "title": "に行く",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "に",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "行く",
+          "conjugation": "any",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["食べ{に行く}"],
+    "link": "https://bunpro.jp/grammar_points/verb-%E3%81%AB%E3%81%84%E3%81%8F",
+    "description": "To go ~, To go in order to ~"
+  },
+  {
+    "id": "dare",
+    "title": "だれ",
+    "patterns": [
+      [
+        {
+          "surface": "だれ",
+          "pos": "代名詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{だれ}ですか"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%8C",
+    "description": "Who"
+  },
+  {
+    "id": "naze",
+    "title": "なぜ",
+    "patterns": [
+      [
+        {
+          "surface": "なぜ",
+          "pos": "副詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{なぜ}ですか"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%9C",
+    "description": "Why"
+  },
+  {
+    "id": "doushite",
+    "title": "どうして",
+    "patterns": [
+      [
+        {
+          "surface": "どう",
+          "match": "start"
+        },
+        {
+          "surface": "し"
+        },
+        {
+          "surface": "て",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{どうして}ですか"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%86%E3%81%97%E3%81%A6",
+    "description": "Why"
+  },
+  {
+    "id": "nande",
+    "title": "なんで",
+    "patterns": [
+      [
+        {
+          "surface": "なん",
+          "match": "start"
+        },
+        {
+          "surface": "で",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{なんで}ですか"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%93%E3%81%A7",
+    "description": "Why"
+  },
+  {
+    "id": "iadj-predicate",
+    "title": "い-Adjective (Predicate)",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "終止形|終止形-一般",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["犬が{可愛い}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%84-adjective-predicate",
+    "description": "い-Adjective (Predicate)"
+  },
+  {
+    "id": "naadj-predicate",
+    "title": "な-Adjective だ",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["犬が{静かだ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA-adjective-predicate",
+    "description": "な-Adjective (Predicate)"
+  },
+  {
+    "id": "datta-noun",
+    "title": "だった",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "baseForm": "だ",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "surface": "た",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{だった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%A3%E3%81%9F-%E3%81%A7%E3%81%97%E3%81%9F",
+    "description": "Was, Were (Past tense)"
+  },
+  {
+    "id": "datta-naadj",
+    "title": "だった",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "baseForm": "だ",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "surface": "た",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{だった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%A3%E3%81%9F-%E3%81%A7%E3%81%97%E3%81%9F",
+    "description": "Was, Were (Past tense)"
+  },
+  {
+    "id": "ja-nai-naadj",
+    "title": "じゃない",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "じゃ",
+          "match": "start"
+        },
+        {
+          "baseForm": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{じゃない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%84",
+    "description": "Is not, Isn't"
+  },
+  {
+    "id": "ja-nai-noun",
+    "title": "じゃない",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "じゃ",
+          "match": "start"
+        },
+        {
+          "baseForm": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{じゃない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%84",
+    "description": "Is not, Isn't"
+  },
+  {
+    "id": "ja-nakatta-naadj",
+    "title": "じゃなかった",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "じゃ",
+          "match": "start"
+        },
+        {
+          "surface": "なかっ"
+        },
+        {
+          "surface": "た",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{じゃなかった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F",
+    "description": "Was not, Wasn't"
+  },
+  {
+    "id": "ja-nakatta-noun",
+    "title": "じゃなかった",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "じゃ",
+          "match": "start"
+        },
+        {
+          "surface": "なかっ"
+        },
+        {
+          "surface": "た",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{じゃなかった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F",
+    "description": "Was not, Wasn't"
+  },
+  {
+    "id": "iadj-kunakatta",
+    "title": "くなかった",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "surface": "なかっ"
+        },
+        {
+          "surface": "た",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{高くなかった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%84-Adjective-%E3%81%8F%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F",
+    "description": "Was not, Wasn't (Adjective)"
+  },
+  {
+    "id": "to-quote-verb",
+    "title": "と",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "と",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "言う",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行く{と言う}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A8",
+    "description": "Quotation"
+  },
+  {
+    "id": "to-quote-iadj",
+    "title": "と",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "と",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "思う",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["高い{と思う}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A8",
+    "description": "Quotation"
+  },
+  {
+    "id": "to-quote-naadj",
+    "title": "だと",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "と",
+          "pos": "助詞"
+        },
+        {
+          "baseForm": "思う",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{だと思う}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A8",
+    "description": "Quotation"
+  },
+  {
+    "id": "to-quote-noun",
+    "title": "だと",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "と",
+          "pos": "助詞"
+        },
+        {
+          "baseForm": "思う",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{だと思う}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A8",
+    "description": "Quotation"
+  },
+  {
+    "id": "tte-quote",
+    "title": "って",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "って",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{って}言う"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%A6",
+    "description": "Casual quotation"
+  },
+  {
+    "id": "tte-quote-noun",
+    "title": "って",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞|接尾辞"
+        },
+        {
+          "surface": "って",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["これ{って}何", "田中さん{って}誰？"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%A6",
+    "description": "Casual quotation"
+  },
+  {
+    "id": "verb-nonpast",
+    "title": "Verbs (Non-past)",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "終止形",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{食べる}", "{洗う}"],
+    "link": "https://bunpro.jp/grammar_points/verb-non-past",
+    "description": "(Non-past)"
+  },
+  {
+    "id": "ta-noun",
+    "title": "た＋Noun",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "た",
+          "pos": "助動詞",
+          "match": "exact"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["食べ{た}りんご"],
+    "link": "https://bunpro.jp/grammar_points/verb-%E3%81%9F-noun",
+    "description": "Verb modified noun, Relative clause"
+  },
+  {
+    "id": "te-iru-noun",
+    "title": "ている＋Noun",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "て",
+          "match": "start"
+        },
+        {
+          "baseForm": "いる",
+          "pos": "動詞",
+          "match": "end"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["食べ{ている}りんご"],
+    "link": "https://bunpro.jp/grammar_points/verb-%E3%81%9F-noun",
+    "description": "Verb modified noun, Relative clause"
+  },
+  {
+    "id": "no-pronoun",
+    "title": "の",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞"
+        },
+        {
+          "surface": "の",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["私{の}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE-noun-ommission",
+    "description": "Possessive use (Noun omission)"
+  },
+  {
+    "id": "na-verb",
+    "title": "な",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "終止形"
+        },
+        {
+          "surface": "な",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{な}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA",
+    "description": "Do not, Don't (Prohibitive)"
+  },
+  {
+    "id": "dake-verb",
+    "title": "だけ",
+    "patterns": [
+      [
+        {
+          "pos": "動詞|助動詞"
+        },
+        {
+          "surface": "だけ",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行く{だけ}", "食べた{だけ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91",
+    "description": "Only, Just"
+  },
+  {
+    "id": "dake-iadj",
+    "title": "だけ",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "だけ",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["高い{だけ}", "おいしい{だけ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91",
+    "description": "Only, Just"
+  },
+  {
+    "id": "dake-naadj",
+    "title": "なだけ",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "な",
+          "match": "start"
+        },
+        {
+          "surface": "だけ",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{なだけ}", "綺麗{なだけ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91",
+    "description": "Only, Just"
+  },
+  {
+    "id": "dake-noun",
+    "title": "だけ",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞"
+        },
+        {
+          "surface": "だけ",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["学生{だけ}", "これ{だけ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91",
+    "description": "Only, Just"
+  },
+  {
+    "id": "dore",
+    "title": "どれ",
+    "patterns": [
+      [
+        {
+          "surface": "どれ",
+          "pos": "代名詞|感動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{どれ}ですか", "ペンは{どれ}？"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%82%8C",
+    "description": "Which (of three or more)"
+  },
+  {
+    "id": "doko",
+    "title": "どこ",
+    "patterns": [
+      [
+        {
+          "surface": "どこ",
+          "pos": "代名詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["ここは{どこ}ですか"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%93",
+    "description": "Where"
+  },
+  {
+    "id": "dono",
+    "title": "どの",
+    "patterns": [
+      [
+        {
+          "surface": "どの",
+          "pos": "連体詞",
+          "match": "exact"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["{どの}本ですか"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%AE",
+    "description": "Which (of three or more), What (kind)"
+  },
+  {
+    "id": "te-iru-2",
+    "title": "ている",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形-一般|連用形-五段|連用形-撥音便"
+        },
+        {
+          "surface": "て|で",
+          "match": "start"
+        },
+        {
+          "baseForm": "いる",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["勉強し{ている}", "本を読ん{でいる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B2",
+    "description": "State of being, Has (have) done"
+  },
+  {
+    "id": "te-ru-2",
+    "title": "てる",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "てる|でる",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["勉強し{てる}", "遊ん{でる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B2",
+    "description": "State of being, Has (have) done"
+  },
+  {
+    "id": "te-kara",
+    "title": "てから",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形-一般|連用形-五段|連用形-撥音便"
+        },
+        {
+          "surface": "て|で",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "surface": "から",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["食べ{てから}", "お酒を飲ん{でから}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8B%E3%82%89",
+    "description": "To do something in advance"
+  },
+  {
+    "id": "te-b",
+    "title": "て",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "て",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["朝起き{て}", "宿題を終え{て}、遊びに行った。"],
+    "link": "https://bunpro.jp/grammar_points/verb-%E3%81%A6-b",
+    "description": "And, And then, After that (sequence)"
+  },
+  {
+    "id": "mou",
+    "title": "もう",
+    "patterns": [
+      [
+        {
+          "surface": "もう",
+          "pos": "副詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{もう}食べた", "{もう}行かない"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%86",
+    "description": "Already, Anymore"
+  },
+  {
+    "id": "mada",
+    "title": "まだ",
+    "patterns": [
+      [
+        {
+          "surface": "まだ",
+          "pos": "副詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{まだ}食べている", "{まだ}時間がある"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A0",
+    "description": "Still"
+  },
+  {
+    "id": "mada-te-inai",
+    "title": "まだ〜ていない",
+    "patterns": [
+      [
+        {
+          "surface": "まだ",
+          "match": "start"
+        },
+        {
+          "wildcard": true
+        },
+        {
+          "surface": "て"
+        },
+        {
+          "baseForm": "いる",
+          "conjugation": "未然形"
+        },
+        {
+          "surface": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{まだ食べていない}", "昼ご飯を{まだ食べていない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A0-%E3%81%A6%E3%81%84%E3%81%BE%E3%81%9B%E3%82%93",
+    "description": "Still haven't done (something)"
+  },
+  {
+    "id": "mada-te-imasen",
+    "title": "まだ〜ていません",
+    "patterns": [
+      [
+        {
+          "surface": "まだ",
+          "match": "start"
+        },
+        {
+          "wildcard": true
+        },
+        {
+          "surface": "て"
+        },
+        {
+          "baseForm": "いる",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "ませ"
+        },
+        {
+          "surface": "ん",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{まだ食べていません}", "宿題は{まだ終わっていません}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A0-%E3%81%A6%E3%81%84%E3%81%BE%E3%81%9B%E3%82%93",
+    "description": "Still haven't done (something)"
+  },
+  {
+    "id": "temo-ii-iadj",
+    "title": "てもいい",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "て",
+          "match": "start"
+        },
+        {
+          "surface": "も"
+        },
+        {
+          "baseForm": "いい",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["高く{てもいい}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E3%81%84%E3%81%84",
+    "description": "It is alright/fine/okay even if, Can/may, ~ is also okay"
+  },
+  {
+    "id": "demo-ii-naadj",
+    "title": "でもいい",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "で",
+          "match": "start"
+        },
+        {
+          "surface": "も"
+        },
+        {
+          "baseForm": "いい",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{でもいい}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E3%81%84%E3%81%84",
+    "description": "It is alright/fine/okay even if, Can/may, ~ is also okay"
+  },
+  {
+    "id": "demo-ii-noun",
+    "title": "でもいい",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "で",
+          "match": "start"
+        },
+        {
+          "surface": "も"
+        },
+        {
+          "baseForm": "いい",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{でもいい}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E3%81%84%E3%81%84",
+    "description": "It is alright/fine/okay even if, Can/may, ~ is also okay"
+  },
+  {
+    "id": "tai",
+    "title": "たい",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "baseForm": "たい",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["食べ{たい}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%84",
+    "description": "Want to do"
+  },
+  {
+    "id": "taku-nai",
+    "title": "たくない",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "たく",
+          "match": "start"
+        },
+        {
+          "surface": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["食べ{たくない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%84",
+    "description": "Do not want to do"
+  },
+  {
+    "id": "takatta",
+    "title": "たかった",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "たかっ",
+          "match": "start"
+        },
+        {
+          "surface": "た",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["寿司が食べ{たかった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%84",
+    "description": "Want to do"
+  },
+  {
+    "id": "taku-nakatta",
+    "title": "たくなかった",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "たく",
+          "match": "start"
+        },
+        {
+          "surface": "なかっ"
+        },
+        {
+          "surface": "た",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学校に行き{たくなかった}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%84",
+    "description": "Want to do"
+  },
+  {
+    "id": "tari-tari-suru",
+    "title": "たり〜たりする",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "たり|だり",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "wildcard": true
+        },
+        {
+          "surface": "たり|だり",
+          "pos": "助詞"
+        },
+        {
+          "baseForm": "する",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["週末はテレビを見{たり本を読んだりする}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%8A-%E3%81%9F%E3%82%8A%E3%81%99%E3%82%8B",
+    "description": "Things like ~ and ~"
+  },
+  {
+    "id": "kekkou",
+    "title": "けっこう",
+    "patterns": [
+      [
+        {
+          "surface": "けっこう",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["この料理は{けっこう}辛い"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A3%E3%81%93%E3%81%86",
+    "description": "Quite, A lot, Fairly, Rather"
+  },
+  {
+    "id": "kekkou-da",
+    "title": "けっこうだ",
+    "patterns": [
+      [
+        {
+          "surface": "けっこう",
+          "match": "start"
+        },
+        {
+          "baseForm": "だ|です",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["いいえ、もう{けっこうです}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%81%A3%E3%81%93%E3%81%86",
+    "description": "Quite, A lot, Fairly, Rather"
+  },
+  {
+    "id": "takusan",
+    "title": "たくさん",
+    "patterns": [
+      [
+        {
+          "surface": "たくさん",
+          "pos": "副詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["{たくさん}食べる", "昨日、本を{たくさん}買った"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%8F%E3%81%95%E3%82%93",
+    "description": "Many, A lot of, Plenty, Enough"
+  },
+  {
+    "id": "takusan-no",
+    "title": "たくさんの",
+    "patterns": [
+      [
+        {
+          "surface": "たくさん",
+          "pos": "名詞|形状詞",
+          "match": "start"
+        },
+        {
+          "surface": "の",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{たくさんの}人", "{たくさんの}お金があります"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%8F%E3%81%95%E3%82%93",
+    "description": "Many, A lot of, Plenty, Enough"
+  },
+  {
+    "id": "mae-ni-verb",
+    "title": "前に",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "前",
+          "pos": "名詞",
+          "match": "start"
+        },
+        {
+          "surface": "に",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行く{前に}電話して", "食べる{前に}手を洗います"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%88%E3%81%AB",
+    "description": "Before, In front of"
+  },
+  {
+    "id": "mae-ni-noun",
+    "title": "の前に",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "の",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "surface": "前",
+          "pos": "名詞"
+        },
+        {
+          "surface": "に",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["授業{の前に}", "テスト{の前に}勉強する"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%88%E3%81%AB",
+    "description": "Before, In front of"
+  },
+  {
+    "id": "kurai",
+    "title": "くらい",
+    "patterns": [
+      [
+        {
+          "surface": "くらい|ぐらい",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["3時間{くらい}", "1000円{ぐらい}持っています"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%89%E3%81%841",
+    "description": "About, Approximately"
+  },
+  {
+    "id": "gurai",
+    "title": "ぐらい",
+    "patterns": [
+      [
+        {
+          "surface": "ぐらい",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["3時間{ぐらい}", "これ{ぐらい}の大きさ"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%89%E3%81%841",
+    "description": "About, Approximately"
+  },
+  {
+    "id": "made-noun",
+    "title": "まで",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞"
+        },
+        {
+          "surface": "まで",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["東京{まで}", "明日{まで}"],
+    "link": "https://bunpro.jp/grammar_points/noun-%E3%81%BE%E3%81%A7",
+    "description": "Until, Till, To (but no further than)"
+  },
+  {
+    "id": "made-verb",
+    "title": "まで",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "まで",
+          "pos": "助詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["終わる{まで}", "帰る{まで}"],
+    "link": "https://bunpro.jp/grammar_points/v-%E3%81%BE%E3%81%A7",
+    "description": "Until (something) happens"
+  },
+  {
+    "id": "sugiru-verb",
+    "title": "すぎる",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "baseForm": "すぎる",
+          "pos": "動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["食べ{すぎる}", "言い{すぎる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8E%E3%82%8B",
+    "description": "Too much, Very"
+  },
+  {
+    "id": "sugiru-iadj",
+    "title": "すぎる",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "語幹"
+        },
+        {
+          "baseForm": "すぎる",
+          "pos": "動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["高{すぎる}", "大き{すぎる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8E%E3%82%8B",
+    "description": "Too much, Very"
+  },
+  {
+    "id": "sugiru-naadj",
+    "title": "すぎる",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "baseForm": "すぎる",
+          "pos": "動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["静か{すぎる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8E%E3%82%8B",
+    "description": "Too much, Very"
+  },
+  {
+    "id": "nasugiru",
+    "title": "なすぎる",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "未然形"
+        },
+        {
+          "surface": "な",
+          "match": "start"
+        },
+        {
+          "baseForm": "すぎる",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["やら{なすぎる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8E%E3%82%8B",
+    "description": "Too much, Very"
+  },
+  {
+    "id": "ni-suru-noun",
+    "title": "にする",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "に",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "する",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["コーヒー{にする}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%99%E3%82%8B",
+    "description": "To decide on, To choose, To make something into, To view something as"
+  },
+  {
+    "id": "ni-naru-naadj",
+    "title": "になる",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|形状詞"
+        },
+        {
+          "surface": "に",
+          "pos": "助詞|助動詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "なる",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{になる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%AA%E3%82%8B-%E3%81%8F%E3%81%AA%E3%82%8B",
+    "description": "To become (Adjective)"
+  },
+  {
+    "id": "ku-naru-iadj",
+    "title": "くなる",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "baseForm": "なる",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{白くなる}", "{高くなる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%AA%E3%82%8B-%E3%81%8F%E3%81%AA%E3%82%8B",
+    "description": "To become (Adjective)"
+  },
+  {
+    "id": "ni-naru-noun",
+    "title": "になる",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "に",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "なる",
+          "pos": "動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["先生{になる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%AA%E3%82%8B-%E3%81%8F%E3%81%AA%E3%82%8B",
+    "description": "To become (Noun-based change)"
+  },
+  {
+    "id": "no-naka-de-ichiban",
+    "title": "の中で一番",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "の",
+          "match": "start"
+        },
+        {
+          "surface": "中"
+        },
+        {
+          "surface": "で"
+        },
+        {
+          "surface": "一番",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["果物{の中で一番}好き"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AA%E3%81%8B%E3%81%A7-%E3%81%8C%E3%81%84%E3%81%A1%E3%81%B0%E3%82%93",
+    "description": "Out of ~, ~ is the best/most ~"
+  },
+  {
+    "id": "yori-no-hou-ga-noun",
+    "title": "より〜の方が",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "より",
+          "match": "start"
+        },
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "の"
+        },
+        {
+          "surface": "方"
+        },
+        {
+          "surface": "が",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["犬{より猫の方が}好き"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%88%E3%82%8A-%E3%81%AE%E3%81%BB%E3%81%86%E3%81%8C",
+    "description": "To be more ~ than ~"
+  },
+  {
+    "id": "nani-ka",
+    "title": "何か",
+    "patterns": [
+      [
+        {
+          "surface": "何",
+          "match": "start"
+        },
+        {
+          "surface": "か",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{何か}食べる"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%AB%E3%81%8B-%E3%81%AA%E3%81%AB%E3%82%82",
+    "description": "Something"
+  },
+  {
+    "id": "nani-mo",
+    "title": "何も",
+    "patterns": [
+      [
+        {
+          "surface": "何",
+          "match": "start"
+        },
+        {
+          "surface": "も",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{何も}ない"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%AB%E3%81%8B-%E3%81%AA%E3%81%AB%E3%82%82",
+    "description": "Nothing (with negative verb)"
+  },
+  {
+    "id": "dare-ka",
+    "title": "誰か",
+    "patterns": [
+      [
+        {
+          "surface": "誰",
+          "pos": "代名詞",
+          "match": "start"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{誰か}いる", "ドアのところに{誰か}いますか？"],
+    "link": "https://bunpro.jp/grammar_points/%E8%AA%B0%E3%81%8B-%E3%81%A9%E3%81%93%E3%81%8B-%E8%AA%B0%E3%82%82-%E3%81%A9%E3%81%93%E3%82%82",
+    "description": "Someone"
+  },
+  {
+    "id": "doko-ka",
+    "title": "どこか",
+    "patterns": [
+      [
+        {
+          "surface": "どこ",
+          "pos": "代名詞",
+          "match": "start"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{どこか}へ行く", "鍵を{どこか}に忘れました。"],
+    "link": "https://bunpro.jp/grammar_points/%E8%AA%B0%E3%81%8B-%E3%81%A9%E3%81%93%E3%81%8B-%E8%AA%B0%E3%82%82-%E3%81%A9%E3%81%93%E3%82%82",
+    "description": "Somewhere"
+  },
+  {
+    "id": "dare-mo",
+    "title": "誰も",
+    "patterns": [
+      [
+        {
+          "surface": "誰",
+          "pos": "代名詞",
+          "match": "start"
+        },
+        {
+          "surface": "も",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{誰も}いない", "その質問には{誰も}答えられなかった。"],
+    "link": "https://bunpro.jp/grammar_points/%E8%AA%B0%E3%81%8B-%E3%81%A9%E3%81%93%E3%81%8B-%E8%AA%B0%E3%82%82-%E3%81%A9%E3%81%93%E3%82%82",
+    "description": "Not anyone (used with negative verb)"
+  },
+  {
+    "id": "doko-mo",
+    "title": "どこも",
+    "patterns": [
+      [
+        {
+          "surface": "どこ",
+          "pos": "代名詞",
+          "match": "start"
+        },
+        {
+          "surface": "も",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{どこも}行かない", "休日は{どこも}人が多いです。"],
+    "link": "https://bunpro.jp/grammar_points/%E8%AA%B0%E3%81%8B-%E3%81%A9%E3%81%93%E3%81%8B-%E8%AA%B0%E3%82%82-%E3%81%A9%E3%81%93%E3%82%82",
+    "description": "Not anywhere (used with negative verb)"
+  },
+  {
+    "id": "mashou",
+    "title": "ましょう",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形-一般"
+        },
+        {
+          "surface": "ましょう",
+          "pos": "助動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行き{ましょう}", "一緒に食べ{ましょう}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%97%E3%82%87%E3%81%86",
+    "description": "Let's, Shall we (Polite volitional)"
+  },
+  {
+    "id": "mashou-ka",
+    "title": "ましょうか",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "ましょう",
+          "match": "start"
+        },
+        {
+          "surface": "か",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行き{ましょうか}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%81%8B",
+    "description": "Shall we, Shall I"
+  },
+  {
+    "id": "masen-ka",
+    "title": "ませんか",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "ませ",
+          "match": "start"
+        },
+        {
+          "surface": "ん"
+        },
+        {
+          "surface": "か",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行き{ませんか}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8B",
+    "description": "Won't you, Would you not, Why don't we"
+  },
+  {
+    "id": "verb-temo-ii",
+    "title": "てもいい",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "て",
+          "match": "start"
+        },
+        {
+          "surface": "も"
+        },
+        {
+          "baseForm": "いい",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["食べ{てもいい}"],
+    "link": "https://bunpro.jp/grammar_points/verb-%E3%81%A6%E3%82%82%E3%81%84%E3%81%84",
+    "description": "It's okay to, It's alright to, Can/may"
+  },
+  {
+    "id": "te-kudasai",
+    "title": "てください",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "て",
+          "match": "start"
+        },
+        {
+          "surface": "ください",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["見{てください}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84",
+    "description": "Please do (Polite request)"
+  },
+  {
+    "id": "naide-kudasai",
+    "title": "ないでください",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "ない",
+          "match": "start"
+        },
+        {
+          "surface": "で"
+        },
+        {
+          "surface": "ください",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["見{ないでください}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84",
+    "description": "Please don't (Polite request)"
+  },
+  {
+    "id": "te-wa-ikenai",
+    "title": "てはいけない",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "ては|では",
+          "match": "start"
+        },
+        {
+          "surface": "いけ"
+        },
+        {
+          "surface": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["食べ{てはいけない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84",
+    "description": "Must not, May not"
+  },
+  {
+    "id": "nakutewa-ikenai",
+    "title": "なくてはいけない",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "なく",
+          "match": "start"
+        },
+        {
+          "surface": "て"
+        },
+        {
+          "surface": "は"
+        },
+        {
+          "surface": "いけ"
+        },
+        {
+          "surface": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行か{なくてはいけない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84",
+    "description": "Must do, Have to do"
+  },
+  {
+    "id": "nakucha-ikenai",
+    "title": "なくちゃいけない",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "なく",
+          "match": "start"
+        },
+        {
+          "surface": "ちゃ"
+        },
+        {
+          "surface": "いけ"
+        },
+        {
+          "surface": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行か{なくちゃいけない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84",
+    "description": "Must do, Have to do"
+  },
+  {
+    "id": "nakutewa-naranai",
+    "title": "なくてはならない",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "なく",
+          "match": "start"
+        },
+        {
+          "surface": "て"
+        },
+        {
+          "surface": "は"
+        },
+        {
+          "surface": "なら"
+        },
+        {
+          "surface": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行か{なくてはならない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84",
+    "description": "Must do, Have to do"
+  },
+  {
+    "id": "nakucha-naranai",
+    "title": "なくちゃならない",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "なく",
+          "match": "start"
+        },
+        {
+          "surface": "ちゃ"
+        },
+        {
+          "surface": "なら"
+        },
+        {
+          "surface": "ない",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行か{なくちゃならない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84",
+    "description": "Must do, Have to do"
+  },
+  {
+    "id": "ta-hou-ga-ii",
+    "title": "たほうがいい",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "た|だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "方|ほう",
+          "pos": "名詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞"
+        },
+        {
+          "baseForm": "いい|よい",
+          "pos": "形容詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["寝{たほうがいい}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84",
+    "description": "It'd be better to, Should do"
+  },
+  {
+    "id": "nai-hou-ga-ii",
+    "title": "ないほうがいい",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "ない",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "方|ほう",
+          "pos": "名詞"
+        },
+        {
+          "surface": "が",
+          "pos": "助詞"
+        },
+        {
+          "baseForm": "いい|よい",
+          "pos": "形容詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行か{ないほうがいい}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84",
+    "description": "It'd be better not to, Shouldn't do"
+  },
+  {
+    "id": "nakya",
+    "title": "なきゃ",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "未然形"
+        },
+        {
+          "surface": "なきゃ",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["行か{なきゃ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A1%E3%82%83-%E3%81%AA%E3%81%8D%E3%82%83",
+    "description": "Must do, Have to do"
+  },
+  {
+    "id": "nakucha",
+    "title": "なくちゃ",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "なく",
+          "match": "start"
+        },
+        {
+          "surface": "ちゃ",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行か{なくちゃ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A1%E3%82%83-%E3%81%AA%E3%81%8D%E3%82%83",
+    "description": "Must do, Have to do"
+  },
+  {
+    "id": "ya",
+    "title": "や",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "や",
+          "pos": "助詞",
+          "match": "exact"
+        },
+        {
+          "pos": "名詞"
+        }
+      ]
+    ],
+    "tests": ["犬{や}猫"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%84",
+    "description": "Things like, And the like"
+  },
+  {
+    "id": "ta-koto-ga-aru",
+    "title": "たことがある",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "た",
+          "match": "start"
+        },
+        {
+          "surface": "こと"
+        },
+        {
+          "surface": "が"
+        },
+        {
+          "baseForm": "ある",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行っ{たことがある}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B",
+    "description": "Have done before"
+  },
+  {
+    "id": "te-iru-state",
+    "title": "ている",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "連用形"
+        },
+        {
+          "surface": "て",
+          "match": "start"
+        },
+        {
+          "baseForm": "いる",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["結婚し{ている}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B3",
+    "description": "Has/have done, Is ~ing (Repetition)"
+  },
+  {
+    "id": "te-ru-state",
+    "title": "てる",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "てる|でる",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["結婚し{てる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%82%8B3",
+    "description": "Has/have done, Is ~ing (Repetition)"
+  },
+  {
+    "id": "kute-iadj",
+    "title": "くて",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "surface": "て",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{安くて}"],
+    "link": "https://bunpro.jp/grammar_points/adjective-%E3%81%A6-noun-%E3%81%A7",
+    "description": "And... (Conjunctive)"
+  },
+  {
+    "id": "de-naadj",
+    "title": "で",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "で",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["静か{で}"],
+    "link": "https://bunpro.jp/grammar_points/adjective-%E3%81%A6-noun-%E3%81%A7",
+    "description": "And... (Conjunctive)"
+  },
+  {
+    "id": "de-noun",
+    "title": "で",
+    "patterns": [
+      [
+        {
+          "pos": "名詞"
+        },
+        {
+          "surface": "で",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["学生{で}"],
+    "link": "https://bunpro.jp/grammar_points/adjective-%E3%81%A6-noun-%E3%81%A7",
+    "description": "And... (Conjunctive)"
+  },
+  {
+    "id": "kute-b",
+    "title": "くて",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞",
+          "conjugation": "連用形",
+          "match": "start"
+        },
+        {
+          "surface": "て",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["{安くて}美味しい"],
+    "link": "https://bunpro.jp/grammar_points/adjective-%E3%81%A6-b",
+    "description": "And..., Both and (Conjunctive)"
+  },
+  {
+    "id": "de-b",
+    "title": "で",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "で",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["静か{で}綺麗"],
+    "link": "https://bunpro.jp/grammar_points/adjective-%E3%81%A6-b",
+    "description": "And..., Both and (Conjunctive)"
+  },
+  {
+    "id": "no-ga-heta",
+    "title": "のが下手",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "の",
+          "match": "start"
+        },
+        {
+          "surface": "が"
+        },
+        {
+          "baseForm": "下手",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["歌う{のが下手}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%B8%E3%81%9F",
+    "description": "To be bad at, Poor at, Unskillful"
+  },
+  {
+    "id": "no-ga-jouzu",
+    "title": "のが上手",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "の",
+          "match": "start"
+        },
+        {
+          "surface": "が"
+        },
+        {
+          "baseForm": "上手",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["歌う{のが上手}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%9じょようず",
+    "description": "To be good at, Proficient"
+  },
+  {
+    "id": "na-no-wa",
+    "title": "なのは",
+    "patterns": [
+      [
+        {
+          "pos": "形状詞"
+        },
+        {
+          "surface": "な",
+          "match": "start"
+        },
+        {
+          "surface": "の"
+        },
+        {
+          "surface": "は",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["静か{なのは}"],
+    "link": "https://bunpro.jp/grammar_points/adjective-%E3%81%AE-%E3%81%AF",
+    "description": "The 'one' that... (Indefinite pronoun, Adjective nominalization)"
+  },
+  {
+    "id": "no-wa",
+    "title": "のは",
+    "patterns": [
+      [
+        {
+          "pos": "形容詞"
+        },
+        {
+          "surface": "の",
+          "match": "start"
+        },
+        {
+          "surface": "は",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["高い{のは}"],
+    "link": "https://bunpro.jp/grammar_points/adjective-%E3%81%AE-%E3%81%AF",
+    "description": "The 'one' that... (Indefinite pronoun, Adjective nominalization)"
+  },
+  {
+    "id": "ageru",
+    "title": "あげる",
+    "patterns": [
+      [
+        {
+          "baseForm": "あげる",
+          "pos": "動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["プレゼントを{あげる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%92%E3%82%8B",
+    "description": "To give (away), To present, To provide"
+  },
+  {
+    "id": "kureru",
+    "title": "くれる",
+    "patterns": [
+      [
+        {
+          "baseForm": "くれる",
+          "pos": "動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["プレゼントを{くれる}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%82%8C%E3%82%8B",
+    "description": "To give (me), To be given"
+  },
+  {
+    "id": "morau",
+    "title": "もらう",
+    "patterns": [
+      [
+        {
+          "baseForm": "もらう",
+          "pos": "動詞",
+          "match": "exact"
+        }
+      ]
+    ],
+    "tests": ["プレゼントを{もらう}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%82%82%E3%82%89%E3%81%86",
+    "description": "To receive, To get, To obtain"
+  },
+  {
+    "id": "keredomo",
+    "title": "けれども",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "けれど",
+          "pos": "助詞",
+          "match": "start"
+        },
+        {
+          "surface": "も",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行く{けれども}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%82%8C%E3%81%A9%E3%82%82",
+    "description": "But, Although"
+  },
+  {
+    "id": "da-keredomo",
+    "title": "だけれども",
+    "patterns": [
+      [
+        {
+          "pos": "名詞|代名詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "けれど",
+          "pos": "助詞"
+        },
+        {
+          "surface": "も",
+          "pos": "助詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["学生{だけれども}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%91%E3%82%8C%E3%81%A9%E3%82%82",
+    "description": "But, Although"
+  },
+  {
+    "id": "tsumori-da",
+    "title": "つもりだ",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "つもり",
+          "pos": "名詞",
+          "match": "start"
+        },
+        {
+          "baseForm": "だ|です",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行く{つもりだ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%82%82%E3%82%8A%E3%81%A0",
+    "description": "To plan to, To intend to"
+  },
+  {
+    "id": "nai-tsumori-da",
+    "title": "ないつもりだ",
+    "patterns": [
+      [
+        {
+          "pos": "動詞",
+          "conjugation": "未然形"
+        },
+        {
+          "surface": "ない",
+          "pos": "助動詞",
+          "match": "start"
+        },
+        {
+          "surface": "つもり",
+          "pos": "名詞"
+        },
+        {
+          "baseForm": "だ",
+          "pos": "助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行か{ないつもりだ}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%82%82%E3%82%8A%E3%81%A0",
+    "description": "To plan to, To intend to"
+  },
+  {
+    "id": "tsumori-wa-nai",
+    "title": "つもりはない",
+    "patterns": [
+      [
+        {
+          "pos": "動詞"
+        },
+        {
+          "surface": "つもり",
+          "pos": "名詞",
+          "match": "start"
+        },
+        {
+          "surface": "は",
+          "pos": "助詞"
+        },
+        {
+          "baseForm": "ない",
+          "pos": "形容詞|助動詞",
+          "match": "end"
+        }
+      ]
+    ],
+    "tests": ["行く{つもりはない}"],
+    "link": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%82%82%E3%82%8A%E3%81%A0",
+    "description": "To plan to, To intend to"
+  }
+]

@@ -14,9 +14,9 @@
       import {
         SudachiStateless,
         TokenizeMode,
-      } from "./sudachi-wasm/sudachi.js";
-      import GRAMMAR_RULES from "./grammar-rules.js";
-      import { runGrammarEngineCheck } from "./grammar-engine.js"; // The file above
+      } from "../sudachi-wasm/sudachi.js";
+
+      import { runGrammarEngineCheck } from "./grammar-engine.js";
 
       console.timeEnd("import");
       const outputEl = document.getElementById("output");
@@ -27,6 +27,28 @@
       });
 
       // --- Helpers: Dictionary & Parsing ---
+
+      async function fetchJsonData(url) {
+        try {
+          // 1. Fetch the resource from the URL. The fetch() method returns a Promise that resolves to a Response object.
+          const response = await fetch(url);
+
+          // Check if the request was successful
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          // 2. Parse the response body as JSON. response.json() also returns a Promise, resolving to a JavaScript object.
+          const jsonData = await response.json();
+
+          // 3. Work with the parsed JavaScript object
+          return jsonData;
+        } catch (error) {
+          // Handle any errors that occurred during the fetch or parsing process
+          console.error("Error fetching or parsing data:", error);
+        }
+      }
+
       async function fetchAndGunzip(url) {
         const response = await fetch(url);
         if (!response.body) throw new Error("No response body");
@@ -41,7 +63,7 @@
         try {
           outputEl.innerText = "Downloading dictionary...";
           let dictBlob = await fetchAndGunzip(
-            "sudachi-wasm/resources/system.dic.gz",
+            "../sudachi-wasm/resources/system.dic.gz",
           );
           const buffer = await dictBlob.arrayBuffer();
           const uint8Array = new Uint8Array(buffer);
@@ -57,6 +79,10 @@
       async function init() {
         await initSudachi();
 
+        var n5Rules = await fetchJsonData("n5-grammar-rules.json");
+        var n4Rules = await fetchJsonData("n4-grammar-rules.json");
+        var n3Rules = await fetchJsonData("n3-grammar-rules.json");
+        var rules = [...n5Rules, ...n4Rules, ...n3Rules];
         try {
           outputEl.textContent = "Sudachi Loaded. Running Tests...\n";
 
@@ -68,7 +94,7 @@
           };
 
           // 3. Run the engine
-          await runGrammarEngineCheck(state.sudachi, GRAMMAR_RULES);
+          await runGrammarEngineCheck(state.sudachi, rules);
         } catch (e) {
           outputEl.textContent = "Error: " + e.message;
           console.error(e);

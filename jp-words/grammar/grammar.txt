@@ -1,0 +1,438 @@
+### **Grammar Rule Schema**
+
+Each entry in the `GRAMMAR_RULES` array is an object representing a single grammar point.
+
+```typescript
+interface GrammarRule {
+  /**
+   * Unique identifier for the grammar rule.
+   * Format: Kebab-case string.
+   * Example: "te-iru", "ni-suru", "koto-ga-dekiru"
+   */
+  id: string;
+
+  /**
+   * Human-readable title of the grammar point.
+   * Format: Japanese grammar structure, often starting with ～.
+   * Example: "～ている", "～ないで／ずに"
+   */
+  title: string;
+
+    /**
+   * default: true
+   * disables the on-by-default conjugation: "any" for all patterns in this rule
+   */
+  matchAllConjugations: boolean;
+
+  /**
+   * A list of token sequences that define the grammar pattern.
+   * If ANY of these sequences match the input text, the rule is triggered.
+   */
+  patterns: TokenConstraint[][];
+
+  /**
+   * A list of example sentences that should match this rule.
+   * Used for verification and testing. The portion of the test that should be matched by this pattern should be wrapped in curly braces {}. Only one segment can be matched per test (i.e. you can do "わたし{は}" but not "{わ}たし{は}").
+   */
+  tests: string[];
+}
+```
+
+---
+
+### **Token Constraint Schema**
+
+Each array inside `patterns` represents a sequence of tokens (words/morphemes) that must appear in order. Each object in that sequence describes the constraints for a single token. All properties are optional; if multiple properties are provided, **all must match** for that token.
+
+**OR Logic (`|`):** All string properties (`surface`, `baseForm`, `pos`, etc.) support the pipe operator `|` to represent an "OR" match. For example, `pos: "名詞|代名詞"` will match if the token is EITHER a Noun OR a Pronoun. "形状詞|名詞" can be used for "na-adjectives". 
+
+```typescript
+interface TokenConstraint {
+  /**
+   * The exact surface form of the token as it appears in the text.
+   * Example: "て", "ない", "ます", "だけ|しか"
+   */
+  surface?: string;
+
+  /**
+   * The dictionary (base) form of the word.
+   * Example: "いる" (matches いる, いない, います), "食べる|飲む"
+   */
+  baseForm?: string;
+
+  /**
+   * The Part of Speech (POS) of the token.
+   * Matches the Sudachi POS tag system.
+   * Example: "動詞" (Verb), "名詞|代名詞" (Noun or Pronoun)
+   */
+  pos?: string;
+
+ /**
+   * The conjugation form of the token.
+   * Example: "連用形" (Continuative/Stem form), "未然形" (Imperfective/Negative base)
+   * Special value: "any". If set to "any" (enabled by default), the engine will match any conjugation form 
+   * of the word, AND it will greedily consume all subsequent tokens that are part of 
+   * the grammatical conjugation tail (Auxiliary Verbs, Conjunctive Particles (接続助詞), 
+   * Suffixes, and Non-independent Verbs/Adjectives). This is extremely useful for 
+   * matching a verb and all of its trailing conjugations (e.g., matching "行った", 
+   * "行かせて", or "行きたくない" using just baseForm: "行く", conjugation: "any").
+   */
+  conjugation?: string;
+
+  /**
+   * Matches if the surface form ends with this string.
+   * Example: "方" (matches "話し方", "書き方"), "ます|ましょう"
+   */
+  surfaceEndsWith?: string;
+
+  /**
+   * Wildcard behavior. Searches up to 8 morphemes ahead (configurable) to satisfy 
+   * the NEXT constraint in the pattern sequence. Useful for skipping arbitrary 
+   * adjectives or intermediate words (e.g., "A と B と、どちらが").
+   */
+  wildcard?: boolean;
+
+  /**
+   * Flags the boundaries of the target match.
+   * Instead of marking every middle element, you must mark exactly one "start" and 
+   * exactly one "end". The engine will extract the contiguous text between them.
+   * - "start": The beginning of the matched text.
+   * - "end": The end of the matched text.
+   * - "exact": Use this if the target match is only a single token long.
+   */
+  match?: "start" | "end" | "exact";
+}
+```
+
+---
+
+### **Example Rules**
+
+#### **Example 1: Single Token Matching (`match: "exact"`)**
+
+If you only want to extract a single token, use `"exact"`. The engine will require a Noun/Pronoun before and after "の" to validate the pattern, but `.scan()` will extract *only* "の" as the primary match.
+
+```javascript
+{
+  "id": "no-particle",
+  "title": "の",
+  "patterns": [[
+      { "pos": "名詞|代名詞" },
+      { "surface": "の", "pos": "助詞", "match": "exact" },
+      { "pos": "名詞|代名詞" }
+    ]
+  ],
+  "tests":["私{の}本", "車{の}鍵"],
+  "link": "https://bunpro.jp/grammar_points/%E3%81%AE",
+  "description": "Indicates possession"
+}
+```
+
+#### **Example 2: Contiguous Ranges and Wildcards (`match: "start"` & `match: "end"`)**
+
+Using `"start"` and `"end"` to extract a contiguous string, and `wildcard: true` to skip an arbitrary word (e.g., "みかん", or even "大きなみかん"). 
+
+```javascript
+{
+  "id": "to-to-dochira-ga",
+  "title": "～と～と、どちらが",
+  "patterns": [[
+      { "pos": "名詞|代名詞" },
+      { "surface": "と", "pos": "助詞", "match": "start" },
+      { "wildcard": true },
+      { "surface": "と", "pos": "助詞" },
+      { "baseForm": "どちら" },
+      { "surface": "が", "pos": "助詞", "match": "end" }
+    ]
+  ],
+  "tests":["りんご{とみかんと、どちらが}好きですか？"]
+}
+```
+
+#### **Example 3: Verb Conjugations and Endings (`conjugation: "any"`)**
+
+When you want to match a verb along with whatever conjugated ending follows it (e.g., matching "行く", "行った", "行かないで", "行きたかった"), use `conjugation: "any"`. The engine will automatically absorb the trailing auxiliary verbs, non-case particles, and suffixes into the match.
+
+Note: this behavior is enabled by default (set matchAllConjugations to false to disable)
+
+```javascript
+{
+  "id": "he-iku",
+  "title": "へ行く",
+  "patterns": [[
+      { "pos": "名詞" },
+      { "surface": "へ", "pos": "助詞", "match": "start" },
+      { "baseForm": "行く", "pos": "動詞", "conjugation": "any", "match": "end" }
+    ]
+  ],
+  "tests":["学校{へ行く}", "日本{へ行った}", "宇宙{へ行きたくない}"],
+  "link": "https://bunpro.jp/grammar_points/%E3%81%B8%E3%81%84%E3%81%8F",
+  "description": "To go to, To head toward"
+}
+```
+
+#### ** Example 4: Disabling auto-conjugation
+
+This test specifically requires the conjugation ending た. setting matchAllConjugations to false is required so the verb rule does not "consume" the た.
+
+```
+{
+  "id": "ru-verb-past",
+  "title": "た",
+  "matchAllConjugations": false,
+  "patterns": [
+    [
+      {
+        "pos": "動詞",
+        "conjugation": "連用形",
+        "surfaceEndsWith": "べ|き|し|み|い",
+        "match": true
+      },
+      {
+        "surface": "た",
+        "pos": "助動詞",
+        "match": true
+      }
+    ]
+  ],
+  "tests": ["朝ごはんを{食べた}", "{起きた}ばかりです"],
+  "link": "https://bunpro.jp/grammar_points/%E3%82%8B-verb-past",
+  "description": "る - Verbs (Past tense)"
+}
+  ```
+
+### Summary Checklist: Pitfalls in Sudachi Grammar Matching
+
+1. **The Multi-Token (Splitting) Check**
+   * **The Pitfall:** Assuming a grammatical unit is one token when Sudachi splits it into two or three.
+   * **Fail:** Using `{"surface": "ので"}` to match "ので".
+   * **Fix:** Use two tokens: `[{"surface": "の"}, {"surface": "で"}]`.
+   * **Examples:**
+     * **なんで:** Split into `なん` (代名詞) + `で` (助詞).
+     * **ないで:** Split into `ない` (助動詞) + `で` (助詞).
+     * **なくちゃ:** Often split into `なく` (助動詞) + `ちゃ` (助詞).
+
+2. **The POS Ambiguity Check**
+   * **The Pitfall:** Textbook parts of speech (like Na-Adjectives) are often tagged as Nouns or Adjectival Nouns in Sudachi.
+   * **Fail:** `{"pos": "形状詞"}` failing to match "便利" or "嫌い".
+   * **Fix:** Use OR logic: `{"pos": "形状詞|名詞"}`.
+   * **Examples:**
+     * **Pronouns:** "私" or "これ" are often `代名詞`. Use `{"pos": "名詞|代名詞"}`.
+     * **Adverbs vs. Nouns:** "たくさん" can be `名詞` or `形状詞` depending on context.
+
+3. **The "Modifying" Conjugation Check**
+   * **The Pitfall:** Using `終止形` (Terminal) when the verb is actually modifying a noun.
+   * **Fail:** Matching "行く" in "行くつもり" with `{"conjugation": "終止形"}`.
+   * **Fix:** Use `{"conjugation": "連体形"}` or `{"conjugation": "連体形-一般|終止形-一般"}`.
+   * **Note:** In Japanese, a verb before a noun is technically in the "Noun-Modifying" form, and Sudachi is strict about this distinction.
+
+4. **The Surface vs. BaseForm Check**
+   * **The Pitfall:** Matching against a specific Kanji or Hiragana string when the text uses the other.
+   * **Fail:** `{"surface": "方"}` failing to match "寝たほうがいい" (hiragana).
+   * **Fix:** Use `{"surface": "方|ほう"}` or match the `baseForm`.
+   * **Examples:**
+     * **くる vs 来る:** Always allow both or use the `baseForm: "来る"`.
+     * **～てる:** In "遊んでる", "でる" might be a single token. In "食べてる", it is "て" + "る". Use `surface: "てる|でる"` or split them based on the specific analyzer output.
+
+# Sudachi Part of Speech system
+
+- posの０番目は「品詞名」 (The 0th element of pos is "Part of Speech Name")
+- posの１番目は「区分１」 (The 1st element of pos is "Category 1")
+- posの２番目は「区分２」 (The 2nd element of pos is "Category 2")
+- pos de ３番目は「区分３」 (The 3rd element of pos is "Category 3")
+- posの４番目は「活用の種類」 (The 4th element of pos is "Conjugation Type")
+- posの５番目は「活用形」 (The 5th element of pos is "Conjugated Form")
+
+### 形容詞 (Adjectives)
+- posの０番目は「形容詞」 (The 0th element of pos is "Adjective")
+- posの１番目は「一般」と「非自立可能」に分かれていた。 (The 1st element was divided into "General" and "Non-independent.")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は活用の種類が入っていた。活用の種類として「形容詞」「文語形容詞-ク」「文語形容詞-シク」が入っていた。他にあるかは不明。 (The 4th element contained conjugation types. Types included "Adjective," "Classical Adjective-Ku," and "Classical Adjective-Shiku." It's unknown if others exist.)
+- posの５番目は動詞や助動詞と同じような活用形が入っていた。 (The 5th element contained conjugated forms similar to verbs and auxiliary verbs.)
+
+### 助動詞 (Auxiliary Verbs)
+- posの０番目は「助動詞」 (The 0th element of pos is "Auxiliary Verb")
+- posの１番目は「*」が入っていた。 (The 1st element contained "*")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「下一段-タ行」「五段-ワア行」「助動詞-タ」「文語下二段-ラ行」「文語助動詞-ズ」のような活用の種類が入っていた。 (The 4th element contained conjugation types like "Lower Monograde-Ta row," "Godan-Wa/A row," "Auxiliary Verb-Ta," "Classical Lower Bigrade-Ra row," and "Classical Auxiliary Verb-Zu.")
+- posの５番目は「未然形-一般」「命令形」「仮定形-融合」「意志推量形」「已然形-一般」「語幹-一般」のような活用形が入っていた。 (The 5th element contained conjugated forms like "Irrealis-General," "Imperative," "Hypothetical-Fused," "Volitional," "Realis-General," and "Stem-General.")
+
+### 接尾辞 (Suffixes)
+- posの０番目は「接尾辞」 (The 0th element of pos is "Suffix")
+- posの１番目は「名詞的」「形状詞的」「形容詞的」「動詞的」に分かれていた。 (The 1st element was divided into "Noun-like," "Adjectival Noun-like," "Adjective-like," and "Verb-like.")
+
+#### 形容詞的接尾辞・動詞的接尾辞 (Adjective-like Suffixes / Verb-like Suffixes)
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた. (The 3rd element contained "*")
+- posの４番目は活用の種類が入っていた。活用の種類として「形容詞」「下一段-ナ行」「五段-マ行」「五段-ラ行」「上一段-マ行」が入っていた。他にあるかは不明。 (The 4th element contained conjugation types. Types included "Adjective," "Lower Monograde-Na row," "Godan-Ma row," "Godan-Ra row," and "Upper Monograde-Ma row." It's unknown if others exist.)
+なお、確認した限りでは形容詞的接尾辞の活用の種類は「形容詞」、動詞的接尾辞の活用の種類は「下一段-ナ行」「五段-マ行」「五段-ラ行」「上一段-マ行」になっていた。 (As far as I could confirm, the conjugation type for adjective-like suffixes was "Adjective," while verb-like suffixes were "Lower Monograde-Na row," "Godan-Ma row," "Godan-Ra row," and "Upper Monograde-Ma row.")
+- posの５番目は動詞や助動詞と同じような活用形が入っていた。「意志推量形」は見当たってないが…… (The 5th element contained conjugated forms similar to verbs and auxiliary verbs. I haven't seen the "Volitional" form yet, though...)
+
+### 動詞 (Verbs)
+- posの０番目は「動詞」 (The 0th element of pos is "Verb")
+- pos１番目は２つに分かれていたっぽい。動詞は「一般」と「非自立可能」に分かれているらしい。 (The 1st element seemed to be divided into two. Verbs appear to be categorized as "General" or "Non-independent.")
+「非自立可能」な動詞は「終わる」「ある」「なる」「やる」「くださる」とかそういったものらしい。 ("Non-independent" verbs seem to be things like "owaru," "aru," "naru," "yaru," "kudasaru," etc.)
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「下一段-ア行」のような活用の種類が入っていた。 (The 4th element contained conjugation types like "Lower Monograde-A row.")
+- posの５番目は「連用形-一般」「終止形-撥音便」「仮定形-融合」「意志推量形」のような活用形が入っていた。 (The 5th element contained conjugated forms like "Continuative-General," "Terminal-Euphonic Change," "Hypothetical-Fused," and "Volitional.")
+
+## 活用しない（もしくは活用が確認されなかった）品詞 (Parts of Speech that do not conjugate (or conjugation was not confirmed))
+
+なお、今回形態素解析を行った際に空白が入っていない文章を使っているため、もしかしたらposの０番目が「空白」となっている品詞があるかもしれない。 (Note: Since I used text without spaces for this morphological analysis, there might be parts of speech where the 0th element of pos is "space.")
+
+### BOS/EOS (BOS/EOS)
+これは私が設定した気がする。 (I feel like I set this one myself.)
+- posの０番目は「BOS/EOS」 (The 0th element of pos is "BOS/EOS")
+- posの１番目は「BOS」または「EOS」が入っている。 (The 1st element contains "BOS" or "EOS.")
+- posの２番目は「*」が入っている。 (The 2nd element contains "*")
+- posの３番目は「*」が入っている。 (The 3rd element contains "*")
+- posの４番目は「*」が入っている。 (The 4th element contains "*")
+- posの５番目は「*」が入っている。 (The 5th element contains "*")
+
+### 感動詞 (Interjections)
+- posの０番目は「感動詞」 (The 0th element of pos is "Interjection")
+- posの１番目は「一般」または「フィラー」が入っていた。 (The 1st element contained "General" or "Filler.")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+### 記号 (Symbols)
+- posの０番目は「記号」 (The 0th element of pos is "Symbol")
+- posの１番目は「一般」または「文字」が入っていた。 (The 1st element contained "General" or "Character.")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+#### pos[1]：一般 の例 (Examples of pos[1]: General)
+- 「っ」 (Small "tsu")
+- 「ゃ」 (Small "ya")
+- 「O」\*1 (Uppercase "O")
+- 「ヴ」\*2 ("Vu")
+- 「ゅ」\*3 (Small "yu")
+- 「ゆ」\*4 ("Yu")
+
+何をもって一般としているのかは分からなかった。 (I didn't understand the criteria for what is considered "General.")
+
+#### pos[1]：文字 の例 (Examples of pos[1]: Character)
+- 「￥」 (Yen sign)
+- 「Ω」\*5 (Omega)
+- 「Τ」\*6 (Tau)
+- 「オメガ」 (Omega in Katakana)
+- 「しゅ」\*7 ("Shu")
+
+何をもって文字としているかは分からなかった。 (I didn't understand the criteria for what is considered "Character.")
+
+### 形状詞 (Adjectival Nouns / Keijoushi)
+- posの０番目は「形状詞」 (The 0th element of pos is "Adjectival Noun")
+- posの１番目は「一般」「タリ」「助動詞語幹」が入っていた。 (The 1st element contained "General," "Tari," and "Auxiliary Verb Stem.")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+特に「タリ」に区分されているものは形容動詞に似ているようなそうでもないような…… (The ones categorized as "Tari" specifically seem somewhat similar to adjectival verbs, but then again maybe not...)
+
+### 助詞 (Particles)
+- posの０番目は「助詞」 (The 0th element of pos is "Particle")
+- posの１番目は「格助詞」「係助詞」「終助詞」「準体助詞」「接続助詞」「副助詞」が入っていた。 (The 1st element contained "Case particle," "Binding particle," "Sentence-ending particle," "Quasi-body particle," "Conjunctive particle," and "Adverbial particle.")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+### 接続詞 (Conjunctions)
+- posの０番目は「接続詞」 (The 0th element of pos is "Conjunction")
+- posの１番目は「*」が入っていた。 (The 1st element contained "*")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+### 接頭辞 (Prefixes)
+- posの０番目は「接頭辞」 (The 0th element of pos is "Prefix")
+- posの１番目は「*」が入っていた。 (The 1st element contained "*")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた. (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+### 接尾辞 (Suffixes)
+- posの０番目は「接尾辞」 (The 0th element of pos is "Suffix")
+- posの１番目は「名詞的」「形状詞的」「形容詞的」「動詞的」に分かれていた。 (The 1st element was divided into "Noun-like," "Adjectival Noun-like," "Adjective-like," and "Verb-like.")
+
+#### 名詞的接尾辞 (Noun-like Suffixes)
+- posの２番目は「一般」「副詞可能」「助数詞」「サ変可能」が入っていた。 (The 2nd element contained "General," "Adverbial possible," "Counter," and "Suru-irregular possible.")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた. (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+#### 形状詞的接尾辞 (Adjectival Noun-like Suffixes)
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+### 代名詞 (Pronouns)
+- posの０番目は「代名詞」 (The 0th element of pos is "Pronoun")
+- posの１番目は「*」が入っていた。 (The 1st element contained "*")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+### 副詞 (Adverbs)
+- posの０番目は「副詞」 (The 0th element of pos is "Adverb")
+- posの１番目は「*」が入っていた。 (The 1st element contained "*")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+### 補助記号 (Supplementary Symbols)
+- posの０番目は「補助記号」 (The 0th element of pos is "Supplementary Symbol")
+- posの１番目は「一般」「読点」「句点」「括弧開」「括弧閉」「ＡＡ」が入っていた。\*8 (The 1st element contained "General," "Comma," "Period," "Open bracket," "Close bracket," and "AA.")
+「ＡＡ」以外ではposの２番目は「*」が入っていた。 (For everything except "AA," the 2nd element of pos contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+#### ＡＡ (ASCII Art / AA)
+「ＡＡ」ではposの２番目は「顔文字」または「一般」が入っていた。 (For "AA," the 2nd element of pos contained "Emoticon" or "General.")
+
+ＡＡに含まれていた単語は以下のもの。 (The words included in AA were as follows:)
+- 「＾＾」：顔文字 (Emoticon)
+- 「(´・ω・`)」：顔文字 (Emoticon)
+- 「^^」：顔文字 (Emoticon)
+- 「(´・ω・｀)」：顔文字 (Emoticon)
+- 「^q^」：顔文字 (Emoticon)
+- 「orz」：一般\*9 (General)
+
+### 名詞 (Nouns)
+- posの０番目は「名詞」 (The 0th element of pos is "Noun")
+- posの１番目は「固有名詞」「助動詞語幹」「数詞」「普通名詞」が入っていた。 (The 1st element contained "Proper noun," "Auxiliary verb stem," "Numeral," and "Common noun.")
+
+#### 固有名詞 (Proper Nouns)
+- posの２番目は「一般」「人名」「地名」が入っていた。 (The 2nd element contained "General," "Person's name," and "Place name.")
+「人名」の場合、posの３番目は「一般」「姓」「名」が入っていた。 (In the case of "Person's name," the 3rd element contained "General," "Surname," and "Given name.")
+「地名」の場合、posの３番目は「一般」「国」が入っていた。\*10 (In the case of "Place name," the 3rd element contained "General" and "Country.")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- pos de ５番目は「*」が入っていた。 (The 5th element contains "*")
+
+#### 助動詞語幹・数詞 (Auxiliary Verb Stem / Numeral)
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
+
+### 連体詞 (Adnominals / Rentanshi)
+- posの０番目は「連体詞」 (The 0th element of pos is "Adnominal")
+- posの１番目は「*」が入っていた。 (The 1st element contained "*")
+- posの２番目は「*」が入っていた。 (The 2nd element contained "*")
+- posの３番目は「*」が入っていた。 (The 3rd element contained "*")
+- posの４番目は「*」が入っていた。 (The 4th element contains "*")
+- posの５番目は「*」が入っていた。 (The 5th element contains "*")
