@@ -34,7 +34,7 @@ export class IyakuMatcher {
     var n5Rules = await this.fetchJsonData("n5-grammar-rules.json");
     var n4Rules = await this.fetchJsonData("n4-grammar-rules.json");
     var n3Rules = await this.fetchJsonData("n3-grammar-rules.json");
-    this.rules = [...n5Rules]; //, ...n4Rules, ...n3Rules]; //
+    this.rules = [...n4Rules, ...n3Rules];
   }
 
   async fetchJsonData(url) {

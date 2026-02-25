@@ -506,42 +506,6 @@
     "description": "Was done to ~ by ~, Done without consent, Done to one's dismay"
   },
   {
-    "id": "transitive-intransitive",
-    "title": "他動詞・自動詞",
-    "patterns": [
-      [
-        {
-          "surface": "を",
-          "pos": "助詞",
-          "match": "start"
-        },
-        {
-          "pos": "動詞",
-          "match": "end"
-        }
-      ],
-      [
-        {
-          "surface": "が",
-          "pos": "助詞",
-          "match": "start"
-        },
-        {
-          "pos": "動詞",
-          "match": "end"
-        }
-      ]
-    ],
-    "tests": [
-      "ペン{を落とす}",
-      "ペン{が落ちる}",
-      "ドア{を開ける}",
-      "ドア{が閉まる}"
-    ],
-    "link": "https://bunpro.jp/grammar_points/transitive-intransitive-verbs",
-    "description": "Done through action vs. occurring on its own"
-  },
-  {
     "id": "naosu",
     "title": "なおす",
     "patterns": [
