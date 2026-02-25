@@ -256,35 +256,91 @@ async function showTooltip(el) {
   if (!el.dataset.blocks) return;
   const overlappingBlocks = JSON.parse(decodeURIComponent(el.dataset.blocks));
 
-  // Group blocks by their text to avoid duplicate tabs
-  const groupedBlocks = [];
+  // Flatten normal blocks and "innerWords" into a unified items array
+  const extractedItems = [];
   overlappingBlocks.forEach((block) => {
-    const text =
-      block.type === "grammar"
-        ? block.tokens.map((t) => t.surface).join("")
-        : block.surface;
-
-    let existingGroup = groupedBlocks.find((g) => g.text === text);
-    if (!existingGroup) {
-      existingGroup = {
+    if (block.type === "grammar") {
+      const text = block.tokens.map((t) => t.surface).join("");
+      extractedItems.push({
         text: text,
-        blocks: [],
+        type: "grammar",
+        block: block,
         startIndex: block.startIndex,
         endIndex: block.endIndex,
-      };
-      groupedBlocks.push(existingGroup);
+      });
+
+      // Extract inner words to elevate them to the top-level tabs
+      if (block.innerWords && block.innerWords.length > 0) {
+        block.innerWords.forEach((word) => {
+          const innerText = word.surface || word.kanji;
+          const syntheticWordBlock = {
+            type: "word",
+            dictForm: word.kanji,
+            surface: innerText,
+            pos: word.pos,
+            tense: word.tense,
+            startIndex: block.startIndex,
+            endIndex: block.endIndex,
+          };
+          extractedItems.push({
+            text: innerText,
+            type: "word",
+            block: syntheticWordBlock,
+            startIndex: block.startIndex,
+            endIndex: block.endIndex,
+          });
+        });
+      }
+    } else if (block.type === "word") {
+      extractedItems.push({
+        text: block.surface,
+        type: "word",
+        block: block,
+        startIndex: block.startIndex,
+        endIndex: block.endIndex,
+      });
     }
-    existingGroup.blocks.push(block);
+  });
+
+  // Group items by their text to avoid duplicate tabs
+  const groupedItems = [];
+  extractedItems.forEach((item) => {
+    let existingGroup = groupedItems.find((g) => g.text === item.text);
+    if (!existingGroup) {
+      existingGroup = {
+        text: item.text,
+        items: [],
+        startIndex: item.startIndex,
+        endIndex: item.endIndex,
+      };
+      groupedItems.push(existingGroup);
+    }
+
+    // Prevent duplicate dictionary or grammar entries within the same tab
+    const isDuplicate = existingGroup.items.some((existingItem) => {
+      if (existingItem.type !== item.type) return false;
+      if (item.type === "word") {
+        return existingItem.block.dictForm === item.block.dictForm;
+      } else {
+        return existingItem.block.ruleData.id === item.block.ruleData.id;
+      }
+    });
+
+    if (!isDuplicate) {
+      existingGroup.items.push(item);
+    }
+
+    // Expand highlight range if this item covers more
     existingGroup.startIndex = Math.min(
       existingGroup.startIndex,
-      block.startIndex,
+      item.startIndex,
     );
-    existingGroup.endIndex = Math.max(existingGroup.endIndex, block.endIndex);
+    existingGroup.endIndex = Math.max(existingGroup.endIndex, item.endIndex);
   });
 
   // 1. Build Tab Navigation Header
   let headerHtml = `<div class="tooltip-tabs" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">`;
-  groupedBlocks.forEach((group, idx) => {
+  groupedItems.forEach((group, idx) => {
     // Default to the first tab being active
     const bg = idx === 0 ? "#3498db" : "#ecf0f1";
     const color = idx === 0 ? "#fff" : "#2c3e50";
@@ -301,16 +357,18 @@ async function showTooltip(el) {
 
   // 2. Build Tab Content Panels
   let panelsHtml = `<div class="tooltip-panels">`;
-  groupedBlocks.forEach((group, idx) => {
+  groupedItems.forEach((group, idx) => {
     panelsHtml += `<div class="tab-panel" id="tab-panel-${idx}" data-start="${group.startIndex}" data-end="${group.endIndex}" style="display: ${idx === 0 ? "block" : "none"};">`;
 
-    group.blocks.forEach((block, blockIdx) => {
+    group.items.forEach((item, itemIdx) => {
       // Separator if a single tab contains multiple results (e.g. Dict + Grammar)
-      if (blockIdx > 0) {
+      if (itemIdx > 0) {
         panelsHtml += `<hr style="border: 0; border-top: 1px dashed #ccc; margin: 15px 0;" />`;
       }
 
-      if (block.type === "grammar") {
+      const block = item.block;
+
+      if (item.type === "grammar") {
         panelsHtml += `
           <div class="grammar-section">
             <h3 style="color: #2ecc71; margin-top: 0; margin-bottom: 5px;">
@@ -320,31 +378,8 @@ async function showTooltip(el) {
             ${block.ruleData.link !== "#" ? `<a class="ext-link" href="${block.ruleData.link}" target="_blank">Check Bunpro &rarr;</a>` : ""}
           </div>
         `;
-
-        if (block.innerWords && block.innerWords.length > 0) {
-          let hasDict = false;
-          for (const word of block.innerWords) {
-            const entryGroups = matcher.searchDictionary(word.kanji, word.pos);
-            if (entryGroups) {
-              if (!hasDict) {
-                panelsHtml += `<div class="embedded-dict-header" style="font-weight: bold; margin-top: 12px; margin-bottom: 8px; border-top: 1px solid #eee; padding-top: 8px;">Words in this pattern:</div>`;
-                hasDict = true;
-              }
-              const reading = matcher.getReading(word.surface || word.kanji);
-              panelsHtml += `<div class="embedded-dict-section" style="margin-bottom: 8px;">`;
-              panelsHtml += generateDictHTML(
-                word.surface || word.kanji,
-                word.kanji,
-                reading,
-                word.pos,
-                entryGroups,
-                word.tense,
-              );
-              panelsHtml += `</div>`;
-            }
-          }
-        }
-      } else if (block.type === "word") {
+        // Inner words have been hoisted to their own tabs; no need to render here.
+      } else if (item.type === "word") {
         const dictForm = block.dictForm;
         const surface = block.surface;
         const pos = block.pos;
@@ -382,8 +417,8 @@ async function showTooltip(el) {
   tooltipContent.innerHTML = headerHtml + panelsHtml;
 
   // Initial highlight for the first tab
-  if (groupedBlocks.length > 0) {
-    highlightRange(groupedBlocks[0].startIndex, groupedBlocks[0].endIndex);
+  if (groupedItems.length > 0) {
+    highlightRange(groupedItems[0].startIndex, groupedItems[0].endIndex);
   }
 
   // 3. Attach Event Listeners to Tabs
