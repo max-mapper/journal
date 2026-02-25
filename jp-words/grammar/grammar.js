@@ -71,42 +71,71 @@ function generateRuby(surface, reading) {
     : surface;
 }
 
-function renderBlocksToHTML(blocks) {
+function renderOverlappingBlocksToHTML(blocks) {
+  // First, figure out the total length of the tokens array from the blocks
+  let maxIndex = 0;
+  for (const b of blocks) {
+    if (b.endIndex > maxIndex) maxIndex = b.endIndex;
+  }
+
+  // Reconstruct the base tokens
+  const baseTokens = new Array(maxIndex);
+  for (const b of blocks) {
+    for (let i = 0; i < b.endIndex - b.startIndex; i++) {
+      baseTokens[b.startIndex + i] = b.tokens[i];
+    }
+  }
+
+  // Pre-filter just to matching blocks and assign a unique ID so we can group identical overlaps
+  const matchBlocks = blocks.filter(
+    (b) => b.type === "grammar" || (b.type === "word" && b.isMatch),
+  );
+  matchBlocks.forEach((b, i) => (b._id = i));
+
+  const tokenGroups = [];
+  let currentGroup = null;
+
+  // Group adjacent tokens logically if they exactly share the same matching blocks
+  for (let i = 0; i < baseTokens.length; i++) {
+    const token = baseTokens[i];
+    if (!token) continue;
+
+    const overlapping = matchBlocks.filter(
+      (b) => i >= b.startIndex && i < b.endIndex,
+    );
+    const overlappingIds = overlapping.map((b) => b._id).join(",");
+
+    if (currentGroup && currentGroup.overlappingIds === overlappingIds) {
+      currentGroup.tokens.push(token);
+      currentGroup.endIndex = i + 1;
+    } else {
+      currentGroup = {
+        tokens: [token],
+        overlapping,
+        overlappingIds,
+        startIndex: i,
+        endIndex: i + 1,
+      };
+      tokenGroups.push(currentGroup);
+    }
+  }
+
+  // Finally, render HTML
   let html = "";
-  for (const block of blocks) {
-    if (block.type === "grammar") {
-      const content = block.tokens
-        .map((t) => generateRuby(t.surface, t.reading))
-        .join("");
-      const innerJson =
-        block.innerWords.length > 0
-          ? encodeURIComponent(JSON.stringify(block.innerWords))
-          : "";
+  for (const group of tokenGroups) {
+    const content = group.tokens
+      .map((t) => generateRuby(t.surface, t.reading))
+      .join("");
 
-      html += `<span class="grammar-match" 
-                     data-type="grammar"
-                     data-title="${block.ruleData.title}" 
-                     data-desc="${block.ruleData.description}" 
-                     data-link="${block.ruleData.link || "#"}"
-                     data-inner-defs="${innerJson}">${content}</span>`;
-    } else if (block.type === "word") {
-      const content = block.tokens
-        .map((t) => generateRuby(t.surface, t.reading))
-        .join("");
-      if (block.isMatch) {
-        const tenseAttr = block.tense
-          ? `data-tense="${encodeURIComponent(JSON.stringify(block.tense))}"`
-          : "";
-
-        html += `<span class="dict-match" 
-                       data-type="dict"
-                       data-kanji="${block.dictForm}"
-                       data-surface="${block.surface}"
-                       data-pos="${block.pos}"
-                       ${tenseAttr}>${content}</span>`;
-      } else {
-        html += content;
-      }
+    if (group.overlapping.length > 0) {
+      const blocksJson = encodeURIComponent(JSON.stringify(group.overlapping));
+      html += `<span class="sentence-token overlapping-match" 
+                     data-start="${group.startIndex}"
+                     data-end="${group.endIndex}"
+                     data-blocks="${blocksJson}"
+                     style="text-decoration: underline; text-decoration-color: blue; text-decoration-thickness: 2px; text-underline-offset: 3px; cursor: pointer;">${content}</span>`;
+    } else {
+      html += `<span class="sentence-token" data-start="${group.startIndex}" data-end="${group.endIndex}">${content}</span>`;
     }
   }
   return html;
@@ -125,8 +154,8 @@ function runAnalysis() {
   });
 
   const isGrammarEnabled = toggleGrammar.checked;
-  const blocks = matcher.match(text, { activePOS, isGrammarEnabled });
-  outputDisplay.innerHTML = renderBlocksToHTML(blocks);
+  const blocks = matcher.matchAll(text, { activePOS, isGrammarEnabled });
+  outputDisplay.innerHTML = renderOverlappingBlocksToHTML(blocks);
 }
 
 function generateDictHTML(
@@ -141,7 +170,8 @@ function generateDictHTML(
   let out = `<div class="dict-header-container"><div class="dict-header-left">`;
   const titleHtml = generateRuby(surface, reading);
 
-  out += `<h3>${titleHtml}</h3><div class="badge-container">`;
+  out += `<h3 style="margin-top: 0;">${titleHtml}</h3>`;
+  out += `<div class="badge-container">`;
   const englishPos = POS_LABEL_MAP[pos] || pos;
   if (englishPos) out += `<span class="pos-badge">${englishPos}</span>`;
   if (dictForm && dictForm !== surface) {
@@ -187,8 +217,28 @@ function generateDictHTML(
 let hoverTimeout;
 let activeElement = null;
 
+function highlightRange(start, end) {
+  const spans = outputDisplay.querySelectorAll(".sentence-token");
+  spans.forEach((span) => {
+    const spanStart = parseInt(span.dataset.start);
+    const spanEnd = parseInt(span.dataset.end);
+    if (spanStart >= start && spanEnd <= end) {
+      span.style.backgroundColor = "rgba(46, 204, 113, 0.4)"; // Light green highlight
+      span.style.borderRadius = "3px";
+    } else {
+      span.style.backgroundColor = "";
+    }
+  });
+}
+
+function clearHighlight() {
+  const spans = outputDisplay.querySelectorAll(".sentence-token");
+  spans.forEach((span) => {
+    span.style.backgroundColor = "";
+  });
+}
+
 async function showTooltip(el) {
-  const type = el.dataset.type;
   tooltip.style.display = "block";
   tooltipContent.innerHTML = "Loading...";
 
@@ -203,83 +253,171 @@ async function showTooltip(el) {
   tooltip.style.top = `${top}px`;
   tooltip.style.left = `${left}px`;
 
-  if (type === "grammar") {
-    let content = `
-      <div class="grammar-section">
-        <h3>${el.dataset.title}</h3>
-        <p>${el.dataset.desc}</p>
-        ${el.dataset.link !== "#" ? `<a class="ext-link" href="${el.dataset.link}" target="_blank">Check Bunpro &rarr;</a>` : ""}
-      </div>
-    `;
+  if (!el.dataset.blocks) return;
+  const overlappingBlocks = JSON.parse(decodeURIComponent(el.dataset.blocks));
 
-    if (el.dataset.innerDefs) {
-      try {
-        const innerDefs = JSON.parse(decodeURIComponent(el.dataset.innerDefs));
-        let hasDict = false;
-        for (const word of innerDefs) {
-          const entryGroups = matcher.searchDictionary(word.kanji, word.pos);
-          if (entryGroups) {
-            if (!hasDict) {
-              content += `<div class="embedded-dict-header">Words in this pattern:</div>`;
-              hasDict = true;
+  // Group blocks by their text to avoid duplicate tabs
+  const groupedBlocks = [];
+  overlappingBlocks.forEach((block) => {
+    const text =
+      block.type === "grammar"
+        ? block.tokens.map((t) => t.surface).join("")
+        : block.surface;
+
+    let existingGroup = groupedBlocks.find((g) => g.text === text);
+    if (!existingGroup) {
+      existingGroup = {
+        text: text,
+        blocks: [],
+        startIndex: block.startIndex,
+        endIndex: block.endIndex,
+      };
+      groupedBlocks.push(existingGroup);
+    }
+    existingGroup.blocks.push(block);
+    existingGroup.startIndex = Math.min(
+      existingGroup.startIndex,
+      block.startIndex,
+    );
+    existingGroup.endIndex = Math.max(existingGroup.endIndex, block.endIndex);
+  });
+
+  // 1. Build Tab Navigation Header
+  let headerHtml = `<div class="tooltip-tabs" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">`;
+  groupedBlocks.forEach((group, idx) => {
+    // Default to the first tab being active
+    const bg = idx === 0 ? "#3498db" : "#ecf0f1";
+    const color = idx === 0 ? "#fff" : "#2c3e50";
+    const border = idx === 0 ? "#2980b9" : "#bdc3c7";
+
+    headerHtml += `<button class="tab-btn" data-idx="${idx}" 
+      style="cursor: pointer; padding: 4px 10px; border: 1px solid ${border}; border-radius: 12px; 
+             background-color: ${bg}; color: ${color}; font-size: 0.85em; font-weight: 600; 
+             transition: all 0.2s ease;">
+      ${group.text}
+    </button>`;
+  });
+  headerHtml += `</div>`;
+
+  // 2. Build Tab Content Panels
+  let panelsHtml = `<div class="tooltip-panels">`;
+  groupedBlocks.forEach((group, idx) => {
+    panelsHtml += `<div class="tab-panel" id="tab-panel-${idx}" data-start="${group.startIndex}" data-end="${group.endIndex}" style="display: ${idx === 0 ? "block" : "none"};">`;
+
+    group.blocks.forEach((block, blockIdx) => {
+      // Separator if a single tab contains multiple results (e.g. Dict + Grammar)
+      if (blockIdx > 0) {
+        panelsHtml += `<hr style="border: 0; border-top: 1px dashed #ccc; margin: 15px 0;" />`;
+      }
+
+      if (block.type === "grammar") {
+        panelsHtml += `
+          <div class="grammar-section">
+            <h3 style="color: #2ecc71; margin-top: 0; margin-bottom: 5px;">
+              ${block.ruleData.title} <span style="font-size: 0.6em; color: #7f8c8d; font-weight: normal; vertical-align: middle;">(Grammar)</span>
+            </h3>
+            <p style="margin: 0 0 10px 0;">${block.ruleData.description}</p>
+            ${block.ruleData.link !== "#" ? `<a class="ext-link" href="${block.ruleData.link}" target="_blank">Check Bunpro &rarr;</a>` : ""}
+          </div>
+        `;
+
+        if (block.innerWords && block.innerWords.length > 0) {
+          let hasDict = false;
+          for (const word of block.innerWords) {
+            const entryGroups = matcher.searchDictionary(word.kanji, word.pos);
+            if (entryGroups) {
+              if (!hasDict) {
+                panelsHtml += `<div class="embedded-dict-header" style="font-weight: bold; margin-top: 12px; margin-bottom: 8px; border-top: 1px solid #eee; padding-top: 8px;">Words in this pattern:</div>`;
+                hasDict = true;
+              }
+              const reading = matcher.getReading(word.surface || word.kanji);
+              panelsHtml += `<div class="embedded-dict-section" style="margin-bottom: 8px;">`;
+              panelsHtml += generateDictHTML(
+                word.surface || word.kanji,
+                word.kanji,
+                reading,
+                word.pos,
+                entryGroups,
+                word.tense,
+              );
+              panelsHtml += `</div>`;
             }
-
-            const reading = matcher.getReading(word.surface || word.kanji);
-            console.log(
-              "Words in this pattern getReading",
-              word.surface || word.kanji,
-              { word, reading },
-            );
-            content += `<div class="embedded-dict-section">`;
-            content += generateDictHTML(
-              word.surface || word.kanji,
-              word.kanji,
-              reading,
-              word.pos,
-              entryGroups,
-              word.tense,
-            );
-            content += `</div>`;
           }
         }
-      } catch (e) {
-        console.error("Failed to parse inner defs", e);
+      } else if (block.type === "word") {
+        const dictForm = block.dictForm;
+        const surface = block.surface;
+        const pos = block.pos;
+        const entryGroups = matcher.searchDictionary(dictForm, pos);
+
+        let tenseData = null;
+        if (block.tense) {
+          tenseData = block.tense;
+        }
+
+        if (entryGroups && entryGroups.length > 0) {
+          const reading = matcher.getReading(surface);
+          panelsHtml += generateDictHTML(
+            surface,
+            dictForm,
+            reading,
+            pos,
+            entryGroups,
+            tenseData,
+          );
+        } else {
+          panelsHtml += `
+            <div class="dict-header-container">
+              <h3 style="color: #3498db; margin-top: 0;">${surface}</h3>
+            </div>
+            <p>No definitions found matching this part of speech.</p>`;
+        }
       }
-    }
-    tooltipContent.innerHTML = content;
-  } else {
-    const dictForm = el.dataset.kanji;
-    const surface = el.dataset.surface;
-    const pos = el.dataset.pos;
-    const entryGroups = matcher.searchDictionary(dictForm, pos);
+    });
 
-    if (activeElement !== el) return;
-    let contentHtml = "";
-    let tenseData = null;
+    panelsHtml += `</div>`;
+  });
+  panelsHtml += `</div>`;
 
-    if (el.dataset.tense) {
-      try {
-        tenseData = JSON.parse(decodeURIComponent(el.dataset.tense));
-      } catch (e) {
-        console.error("Failed to parse tense data", e);
-      }
-    }
+  tooltipContent.innerHTML = headerHtml + panelsHtml;
 
-    if (entryGroups && entryGroups.length > 0) {
-      const reading = matcher.getReading(surface);
-      contentHtml += generateDictHTML(
-        surface,
-        dictForm,
-        reading,
-        pos,
-        entryGroups,
-        tenseData,
-      );
-    } else {
-      contentHtml += "No definitions found matching this part of speech.";
-    }
-    tooltipContent.innerHTML = contentHtml;
+  // Initial highlight for the first tab
+  if (groupedBlocks.length > 0) {
+    highlightRange(groupedBlocks[0].startIndex, groupedBlocks[0].endIndex);
   }
+
+  // 3. Attach Event Listeners to Tabs
+  const tabBtns = tooltipContent.querySelectorAll(".tab-btn");
+  const panels = tooltipContent.querySelectorAll(".tab-panel");
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const idx = parseInt(e.target.dataset.idx);
+
+      // Update Tab Styling
+      tabBtns.forEach((b, i) => {
+        if (i === idx) {
+          b.style.backgroundColor = "#3498db";
+          b.style.color = "#fff";
+          b.style.borderColor = "#2980b9";
+        } else {
+          b.style.backgroundColor = "#ecf0f1";
+          b.style.color = "#2c3e50";
+          b.style.borderColor = "#bdc3c7";
+        }
+      });
+
+      // Update Panel Visibility
+      panels.forEach((p, i) => {
+        p.style.display = i === idx ? "block" : "none";
+      });
+
+      // Update Highlight Range
+      const start = parseInt(panels[idx].dataset.start);
+      const end = parseInt(panels[idx].dataset.end);
+      highlightRange(start, end);
+    });
+  });
 }
 
 function hideTooltip() {
@@ -288,6 +426,7 @@ function hideTooltip() {
     activeElement.classList.remove("active");
     activeElement = null;
   }
+  clearHighlight();
 }
 
 function scheduleHide() {
@@ -303,7 +442,7 @@ function cancelHide() {
 }
 
 outputDisplay.addEventListener("mouseover", (e) => {
-  const match = e.target.closest(".grammar-match, .dict-match");
+  const match = e.target.closest(".overlapping-match");
   if (match) {
     cancelHide();
     if (activeElement !== match) {
@@ -316,7 +455,7 @@ outputDisplay.addEventListener("mouseover", (e) => {
 });
 
 outputDisplay.addEventListener("mouseout", (e) => {
-  const match = e.target.closest(".grammar-match, .dict-match");
+  const match = e.target.closest(".overlapping-match");
   if (match) {
     if (e.relatedTarget && match.contains(e.relatedTarget)) return;
     scheduleHide();

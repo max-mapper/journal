@@ -333,6 +333,199 @@ export class IyakuMatcher {
     return resultBlocks;
   }
 
+  /**
+   * Accepts raw text and outputs an array of ALL matching structured blocks
+   * (Grammar rules, Dictionary compounds, and Base words), preserving overlaps.
+   */
+  matchAll(text, options = {}) {
+    const {
+      activePOS = new Set([
+        "動詞",
+        "助動詞",
+        "助詞",
+        "名詞",
+        "形容詞",
+        "副詞",
+        "形状詞",
+        "代名詞",
+        "接尾辞",
+        "連体詞",
+      ]),
+      isGrammarEnabled = true,
+    } = options;
+    if (!this.sudachi || !this.dictDB || !text.trim()) return [];
+
+    const rawTokens = JSON.parse(this.sudachi.tokenize_stringified(text, 0));
+    let allMatches = [];
+
+    // 1. Process All Grammar Matches (No Conflict Filtering)
+    if (isGrammarEnabled) {
+      let grammarRanges = [];
+      for (const ruleJson of this.rules) {
+        const rule = new GrammarRule(ruleJson);
+        const matches = rule.scan(rawTokens);
+        matches.forEach((m) => {
+          grammarRanges.push({
+            start: m.index,
+            end: m.index + m.length,
+            data: ruleJson,
+          });
+        });
+      }
+
+      // Extend grammar matches to include trailing conjugations
+      for (const match of grammarRanges) {
+        let nextIdx = match.end;
+        while (nextIdx < rawTokens.length) {
+          const nextToken = rawTokens[nextIdx];
+          if (this.shouldGroup(nextToken)) {
+            match.end++;
+            nextIdx++;
+          } else {
+            break;
+          }
+        }
+      }
+
+      // Build Grammar Blocks
+      for (const gMatch of grammarRanges) {
+        let innerWords = [];
+        let seenInner = new Set();
+        let blockTokens = [];
+
+        for (let j = gMatch.start; j < gMatch.end; j++) {
+          const t = rawTokens[j];
+          const tPos = this.getPos(t);
+
+          blockTokens.push({
+            surface: t.surface,
+            reading: this.katakanaToHiragana(t.reading_form),
+          });
+
+          if (
+            ["動詞", "形容詞", "形状詞", "名詞"].includes(tPos) &&
+            t.dictionary_form
+          ) {
+            let compoundSurface = t.surface;
+            for (let k = j + 1; k < gMatch.end; k++) {
+              compoundSurface += rawTokens[k].surface;
+            }
+
+            let validForm = t.dictionary_form;
+            if (!this.searchDictionary(validForm, tPos) && t.normalized_form) {
+              if (this.searchDictionary(t.normalized_form, tPos)) {
+                validForm = t.normalized_form;
+              }
+            }
+
+            let tenseMatches = [];
+            if (tPos === "動詞") {
+              tenseMatches = this.tenseDetector.detect(
+                validForm,
+                compoundSurface,
+              );
+            }
+
+            if (!seenInner.has(validForm)) {
+              seenInner.add(validForm);
+              innerWords.push({
+                kanji: validForm,
+                surface: compoundSurface,
+                pos: tPos,
+                tense: tenseMatches,
+              });
+            }
+          }
+        }
+
+        allMatches.push({
+          type: "grammar",
+          startIndex: gMatch.start,
+          endIndex: gMatch.end,
+          ruleData: gMatch.data,
+          tokens: blockTokens,
+          innerWords: innerWords,
+        });
+      }
+    }
+
+    // 2. Check Every Index for Dictionary Compounds and Words
+    for (let i = 0; i < rawTokens.length; i++) {
+      const startPos = this.getPos(rawTokens[i]);
+
+      // Check for dictionary compounds starting at this index
+      if (!["動詞", "形容詞", "形状詞", "助動詞", "助詞"].includes(startPos)) {
+        for (
+          let len = 2;
+          len <= this.COMPOUND_LOOKAHEAD_LIMIT && i + len <= rawTokens.length;
+          len++
+        ) {
+          const slice = rawTokens.slice(i, i + len);
+          const combinedSurface = slice.map((t) => t.surface).join("");
+
+          if (this.dictDB.index[combinedSurface]) {
+            const groupObj = {
+              isGroup: true,
+              tokens: slice,
+              baseToken: {
+                ...slice[0],
+                dictionary_form: combinedSurface,
+                normalized_form: combinedSurface,
+                poses: ["名詞", "一般", "*", "*", "*", "*"],
+              },
+              surface: combinedSurface,
+            };
+            const processed = this._processTokenOrGroup(groupObj, activePOS);
+            processed.startIndex = i;
+            processed.endIndex = i + len;
+            allMatches.push(processed);
+          }
+        }
+      }
+
+      // Check for Verb/Adj grouping or Single token at this index
+      const current = rawTokens[i];
+
+      if (["動詞", "形容詞", "形状詞"].includes(startPos)) {
+        let groupTokens = [current];
+        let nextIndex = i + 1;
+        while (nextIndex < rawTokens.length) {
+          const nextToken = rawTokens[nextIndex];
+          if (this.shouldGroup(nextToken)) {
+            groupTokens.push(nextToken);
+            nextIndex++;
+          } else {
+            break;
+          }
+        }
+        const groupObj = {
+          isGroup: true,
+          tokens: groupTokens,
+          baseToken: current,
+          surface: groupTokens.map((t) => t.surface).join(""),
+        };
+        const processed = this._processTokenOrGroup(groupObj, activePOS);
+        processed.startIndex = i;
+        processed.endIndex = nextIndex;
+        allMatches.push(processed);
+      } else {
+        const processed = this._processTokenOrGroup(current, activePOS);
+        processed.startIndex = i;
+        processed.endIndex = i + 1;
+        allMatches.push(processed);
+      }
+    }
+
+    // Sort by start index (asc), then by range length (desc)
+    allMatches.sort(
+      (a, b) =>
+        a.startIndex - b.startIndex ||
+        b.endIndex - b.startIndex - (a.endIndex - a.startIndex),
+    );
+
+    return allMatches;
+  }
+
   _processTokenOrGroup(item, activePOS) {
     let tokensData = [];
     let pos = "";
