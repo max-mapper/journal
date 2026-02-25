@@ -155,7 +155,6 @@ export class IyakuMatcher {
           });
         });
       }
-      console.log(grammarRanges);
       grammarRanges.sort(
         (a, b) => b.end - b.start - (a.end - a.start) || a.start - b.start,
       );
