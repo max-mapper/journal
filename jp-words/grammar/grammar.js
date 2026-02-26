@@ -382,11 +382,47 @@ async function showTooltip(el) {
     existingGroup.endIndex = Math.max(existingGroup.endIndex, item.endIndex);
   });
 
+  // Sort deterministically based on appearance order in the string
+  groupedItems.sort((a, b) => {
+    if (a.startIndex !== b.startIndex) return a.startIndex - b.startIndex;
+    // Tie-breaker: longer matches show up first
+    return b.endIndex - a.endIndex;
+  });
+
+  // Find which tab maps best to the exact morpheme hovered
+  const hoverStart = parseInt(el.dataset.start);
+  const hoverEnd = parseInt(el.dataset.end);
+  let activeTabIndex = 0;
+
+  let bestMatchIdx = groupedItems.findIndex(
+    (g) => g.startIndex === hoverStart && g.endIndex === hoverEnd,
+  );
+  if (bestMatchIdx !== -1) {
+    activeTabIndex = bestMatchIdx;
+  } else {
+    // Fallback 1: match start index
+    bestMatchIdx = groupedItems.findIndex((g) => g.startIndex === hoverStart);
+    if (bestMatchIdx !== -1) {
+      activeTabIndex = bestMatchIdx;
+    } else {
+      // Fallback 2: match enclosing bounds
+      bestMatchIdx = groupedItems.findIndex(
+        (g) => g.startIndex <= hoverStart && g.endIndex >= hoverEnd,
+      );
+      if (bestMatchIdx !== -1) {
+        activeTabIndex = bestMatchIdx;
+      }
+    }
+  }
+
   // 1. Build Tab Navigation Header
   let headerHtml = `<div class="tooltip-tabs">`;
   groupedItems.forEach((group, idx) => {
-    const activeClass = idx === 0 ? "active" : "";
-    headerHtml += `<button class="tab-btn ${activeClass}" data-idx="${idx}">
+    const activeClass = idx === activeTabIndex ? "active" : "";
+    const isGrammar = group.items.some((item) => item.type === "grammar");
+    const typeClass = isGrammar ? "grammar" : "dictionary";
+
+    headerHtml += `<button class="tab-btn ${typeClass} ${activeClass}" data-idx="${idx}">
       ${group.text}
     </button>`;
   });
@@ -395,7 +431,7 @@ async function showTooltip(el) {
   // 2. Build Tab Content Panels
   let panelsHtml = `<div class="tooltip-panels">`;
   groupedItems.forEach((group, idx) => {
-    const activeClass = idx === 0 ? "active" : "";
+    const activeClass = idx === activeTabIndex ? "active" : "";
     panelsHtml += `<div class="tab-panel ${activeClass}" id="tab-panel-${idx}" data-start="${group.startIndex}" data-end="${group.endIndex}">`;
 
     group.items.forEach((item, itemIdx) => {
@@ -453,9 +489,12 @@ async function showTooltip(el) {
 
   tooltipContent.innerHTML = headerHtml + panelsHtml;
 
-  // Initial highlight for the first tab
+  // Initial highlight for the hovered tab
   if (groupedItems.length > 0) {
-    highlightRange(groupedItems[0].startIndex, groupedItems[0].endIndex);
+    highlightRange(
+      groupedItems[activeTabIndex].startIndex,
+      groupedItems[activeTabIndex].endIndex,
+    );
   }
 
   // 3. Attach Event Listeners to Tabs
