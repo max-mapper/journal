@@ -31,6 +31,9 @@ const btnClear = document.getElementById("btn-clear");
 const matcher = new IyakuMatcher();
 window.matcher = matcher;
 
+// Store the latest analysis in memory to avoid heavy DOM serialization
+let currentAnalysisBlocks = [];
+
 async function initResources() {
   try {
     statusBar.innerText = "Loading dictionaries...";
@@ -128,12 +131,9 @@ function renderOverlappingBlocksToHTML(blocks) {
       .join("");
 
     if (group.overlapping.length > 0) {
-      const blocksJson = encodeURIComponent(JSON.stringify(group.overlapping));
       html += `<span class="sentence-token overlapping-match" 
                      data-start="${group.startIndex}"
-                     data-end="${group.endIndex}"
-                     data-blocks="${blocksJson}"
-                     style="text-decoration: underline; text-decoration-color: blue; text-decoration-thickness: 2px; text-underline-offset: 3px; cursor: pointer;">${content}</span>`;
+                     data-end="${group.endIndex}">${content}</span>`;
     } else {
       html += `<span class="sentence-token" data-start="${group.startIndex}" data-end="${group.endIndex}">${content}</span>`;
     }
@@ -154,8 +154,15 @@ function runAnalysis() {
   });
 
   const isGrammarEnabled = toggleGrammar.checked;
-  const blocks = matcher.matchAll(text, { activePOS, isGrammarEnabled });
-  outputDisplay.innerHTML = renderOverlappingBlocksToHTML(blocks);
+
+  // Store results globally to bypass placing heavy JSON strings into the DOM
+  currentAnalysisBlocks = matcher.matchAll(text, {
+    activePOS,
+    isGrammarEnabled,
+  });
+  outputDisplay.innerHTML = renderOverlappingBlocksToHTML(
+    currentAnalysisBlocks,
+  );
 }
 
 function generateDictHTML(
@@ -170,13 +177,10 @@ function generateDictHTML(
   let out = `<div class="dict-header-container"><div class="dict-header-left">`;
   const titleHtml = generateRuby(surface, reading);
 
-  out += `<h3 style="margin-top: 0;">${titleHtml}</h3>`;
+  out += `<h3 class="dict-header-title">${titleHtml}</h3>`;
   out += `<div class="badge-container">`;
   const englishPos = POS_LABEL_MAP[pos] || pos;
   if (englishPos) out += `<span class="pos-badge">${englishPos}</span>`;
-  if (dictForm && dictForm !== surface) {
-    out += `<span class="pos-badge dict-ref">Dict: ${dictForm}</span>`;
-  }
   out += `</div></div>`;
 
   if (tenseData && tenseData.length > 0) {
@@ -203,7 +207,7 @@ function generateDictHTML(
           : "";
       out += `<div class="entry">
                 ${decodedPos ? `<span class="pos-tag-decoded">[${decodedPos}]</span><br/>` : ""}
-                ${sense.info && sense.info.length ? `<span style="color:#e67e22; font-size:0.9em;">[${sense.info.join(", ")}]</span><br/>` : ""}
+                ${sense.info && sense.info.length ? `<span class="dict-sense-info">[${sense.info.join(", ")}]</span><br/>` : ""}
                 ${sense.gloss.join(", ")}
               </div>`;
     });
@@ -223,10 +227,9 @@ function highlightRange(start, end) {
     const spanStart = parseInt(span.dataset.start);
     const spanEnd = parseInt(span.dataset.end);
     if (spanStart >= start && spanEnd <= end) {
-      span.style.backgroundColor = "rgba(46, 204, 113, 0.4)"; // Light green highlight
-      span.style.borderRadius = "3px";
+      span.classList.add("highlighted-token");
     } else {
-      span.style.backgroundColor = "";
+      span.classList.remove("highlighted-token");
     }
   });
 }
@@ -234,12 +237,12 @@ function highlightRange(start, end) {
 function clearHighlight() {
   const spans = outputDisplay.querySelectorAll(".sentence-token");
   spans.forEach((span) => {
-    span.style.backgroundColor = "";
+    span.classList.remove("highlighted-token");
   });
 }
 
 async function showTooltip(el) {
-  tooltip.style.display = "block";
+  tooltip.classList.add("visible");
   tooltipContent.innerHTML = "Loading...";
 
   const rect = el.getBoundingClientRect();
@@ -250,14 +253,55 @@ async function showTooltip(el) {
     left = window.innerWidth + window.scrollX - tooltipWidth - 20;
   }
   if (left < 10) left = 10;
+
+  // Dynamic coordinates must remain handled by JS
   tooltip.style.top = `${top}px`;
   tooltip.style.left = `${left}px`;
 
-  if (!el.dataset.blocks) return;
-  const overlappingBlocks = JSON.parse(decodeURIComponent(el.dataset.blocks));
+  // Start with the hovered element's boundaries
+  let minStart = parseInt(el.dataset.start);
+  let maxEnd = parseInt(el.dataset.end);
+
+  // Filter only matching blocks from our in-memory cache
+  const matchBlocks = currentAnalysisBlocks.filter(
+    (b) => b.type === "grammar" || (b.type === "word" && b.isMatch),
+  );
+
+  let changed = true;
+  const connectedBlocks = new Set();
+
+  // Find the complete connected component of overlapping blocks directly from memory
+  while (changed) {
+    changed = false;
+    for (const block of matchBlocks) {
+      if (connectedBlocks.has(block)) continue;
+
+      // If the block overlaps with our current continuous chunk
+      if (block.startIndex < maxEnd && block.endIndex > minStart) {
+        connectedBlocks.add(block);
+
+        // Expand chunk bounds if necessary
+        if (block.startIndex < minStart) {
+          minStart = block.startIndex;
+          changed = true;
+        }
+        if (block.endIndex > maxEnd) {
+          maxEnd = block.endIndex;
+          changed = true;
+        }
+      }
+    }
+  }
+
+  if (connectedBlocks.size === 0) {
+    hideTooltip();
+    return;
+  }
+
+  const overlappingBlocks = Array.from(connectedBlocks);
+  const extractedItems = [];
 
   // Flatten normal blocks and "innerWords" into a unified items array
-  const extractedItems = [];
   overlappingBlocks.forEach((block) => {
     if (block.type === "grammar") {
       const text = block.tokens.map((t) => t.surface).join("");
@@ -339,17 +383,10 @@ async function showTooltip(el) {
   });
 
   // 1. Build Tab Navigation Header
-  let headerHtml = `<div class="tooltip-tabs" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">`;
+  let headerHtml = `<div class="tooltip-tabs">`;
   groupedItems.forEach((group, idx) => {
-    // Default to the first tab being active
-    const bg = idx === 0 ? "#3498db" : "#ecf0f1";
-    const color = idx === 0 ? "#fff" : "#2c3e50";
-    const border = idx === 0 ? "#2980b9" : "#bdc3c7";
-
-    headerHtml += `<button class="tab-btn" data-idx="${idx}" 
-      style="cursor: pointer; padding: 4px 10px; border: 1px solid ${border}; border-radius: 12px; 
-             background-color: ${bg}; color: ${color}; font-size: 0.85em; font-weight: 600; 
-             transition: all 0.2s ease;">
+    const activeClass = idx === 0 ? "active" : "";
+    headerHtml += `<button class="tab-btn ${activeClass}" data-idx="${idx}">
       ${group.text}
     </button>`;
   });
@@ -358,12 +395,13 @@ async function showTooltip(el) {
   // 2. Build Tab Content Panels
   let panelsHtml = `<div class="tooltip-panels">`;
   groupedItems.forEach((group, idx) => {
-    panelsHtml += `<div class="tab-panel" id="tab-panel-${idx}" data-start="${group.startIndex}" data-end="${group.endIndex}" style="display: ${idx === 0 ? "block" : "none"};">`;
+    const activeClass = idx === 0 ? "active" : "";
+    panelsHtml += `<div class="tab-panel ${activeClass}" id="tab-panel-${idx}" data-start="${group.startIndex}" data-end="${group.endIndex}">`;
 
     group.items.forEach((item, itemIdx) => {
       // Separator if a single tab contains multiple results (e.g. Dict + Grammar)
       if (itemIdx > 0) {
-        panelsHtml += `<hr style="border: 0; border-top: 1px dashed #ccc; margin: 15px 0;" />`;
+        panelsHtml += `<hr class="panel-separator" />`;
       }
 
       const block = item.block;
@@ -371,17 +409,16 @@ async function showTooltip(el) {
       if (item.type === "grammar") {
         panelsHtml += `
           <div class="grammar-section">
-            <h3 style="color: #2ecc71; margin-top: 0; margin-bottom: 5px;">
-              ${block.ruleData.title} <span style="font-size: 0.6em; color: #7f8c8d; font-weight: normal; vertical-align: middle;">(Grammar)</span>
+            <h3 class="grammar-title">
+              ${block.ruleData.title} <span class="grammar-badge">(Grammar)</span>
             </h3>
-            <p style="margin: 0 0 10px 0;">${block.ruleData.description}</p>
+            <p class="grammar-desc">${block.ruleData.description}</p>
             ${block.ruleData.link !== "#" ? `<a class="ext-link" href="${block.ruleData.link}" target="_blank">Check Bunpro &rarr;</a>` : ""}
           </div>
         `;
         // Inner words have been hoisted to their own tabs; no need to render here.
       } else if (item.type === "word") {
         const dictForm = block.dictForm;
-        const surface = block.surface;
         const pos = block.pos;
         const entryGroups = matcher.searchDictionary(dictForm, pos);
 
@@ -391,11 +428,11 @@ async function showTooltip(el) {
         }
 
         if (entryGroups && entryGroups.length > 0) {
-          const reading = matcher.getReading(surface);
+          const dictReading = matcher.getReading(dictForm);
           panelsHtml += generateDictHTML(
-            surface,
+            dictForm, // Using the dictForm in the header display
             dictForm,
-            reading,
+            dictReading, // Reading of dictForm
             pos,
             entryGroups,
             tenseData,
@@ -403,7 +440,7 @@ async function showTooltip(el) {
         } else {
           panelsHtml += `
             <div class="dict-header-container">
-              <h3 style="color: #3498db; margin-top: 0;">${surface}</h3>
+              <h3 class="dict-fallback-title">${dictForm}</h3>
             </div>
             <p>No definitions found matching this part of speech.</p>`;
         }
@@ -429,22 +466,16 @@ async function showTooltip(el) {
     btn.addEventListener("click", (e) => {
       const idx = parseInt(e.target.dataset.idx);
 
-      // Update Tab Styling
+      // Update Tab Styling via Classes
       tabBtns.forEach((b, i) => {
-        if (i === idx) {
-          b.style.backgroundColor = "#3498db";
-          b.style.color = "#fff";
-          b.style.borderColor = "#2980b9";
-        } else {
-          b.style.backgroundColor = "#ecf0f1";
-          b.style.color = "#2c3e50";
-          b.style.borderColor = "#bdc3c7";
-        }
+        if (i === idx) b.classList.add("active");
+        else b.classList.remove("active");
       });
 
-      // Update Panel Visibility
+      // Update Panel Visibility via Classes
       panels.forEach((p, i) => {
-        p.style.display = i === idx ? "block" : "none";
+        if (i === idx) p.classList.add("active");
+        else p.classList.remove("active");
       });
 
       // Update Highlight Range
@@ -456,7 +487,7 @@ async function showTooltip(el) {
 }
 
 function hideTooltip() {
-  tooltip.style.display = "none";
+  tooltip.classList.remove("visible");
   if (activeElement) {
     activeElement.classList.remove("active");
     activeElement = null;

@@ -181,10 +181,13 @@ body.hide-furigana ruby rt {
   border-radius: 3px;
   transition: background-color 0.1s;
 }
+
 /* Active state for when tooltip is open on this word */
-.active {
-  background-color: #ffe0b2 !important;
-  border-bottom-color: #ff9800 !important;
+.overlapping-match.active {
+  text-decoration: underline;
+  text-decoration-color: #ff9800;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 /* Tooltip Styles */
@@ -204,7 +207,13 @@ body.hide-furigana ruby rt {
   line-height: 1.4;
   max-height: 50vh;
   overflow-y: auto;
+  display: none;
 }
+
+#grammar-tooltip.visible {
+  display: block;
+}
+
 .tooltip-content {
   padding: 15px;
 }
@@ -365,4 +374,91 @@ body.hide-furigana ruby rt {
 .pos-tag-decoded {
   color: #2980b9;
   font-size: 0.8em;
+}
+
+/* Tokens and Highlights */
+.overlapping-match {
+  border-bottom: 1px solid #2980b9;
+  cursor: pointer;
+}
+
+.highlighted-token {
+  background-color: #d2eeff;
+  border-radius: 3px;
+}
+
+/* Dictionary Header */
+.dict-header-title {
+  margin-top: 0;
+}
+
+.dict-fallback-title {
+  color: #3498db;
+  margin-top: 0;
+}
+
+.dict-sense-info {
+  color: #e67e22;
+  font-size: 0.9em;
+}
+
+/* Tooltip Tabs */
+.tooltip-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.tab-btn {
+  cursor: pointer;
+  padding: 4px 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 12px;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+  background-color: #3498db;
+  color: #fff;
+  border-color: #2980b9;
+}
+
+/* Tooltip Panels */
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.panel-separator {
+  border: 0;
+  border-top: 1px dashed #ccc;
+  margin: 15px 0;
+}
+
+/* Grammar Section */
+.grammar-title {
+  color: #2ecc71;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.grammar-badge {
+  font-size: 0.6em;
+  color: #7f8c8d;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+.grammar-desc {
+  margin: 0 0 10px 0;
 }
