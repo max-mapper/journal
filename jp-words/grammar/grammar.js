@@ -156,7 +156,7 @@ async function showTooltip(el) {
   const panels = tooltipContent.querySelectorAll(".tab-panel");
 
   tabBtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
+    btn.addEventListener("mouseenter", (e) => {
       const idx = parseInt(e.target.dataset.idx);
 
       tabBtns.forEach((b, i) => b.classList.toggle("active", i === idx));

@@ -13,16 +13,19 @@ const NETWORK_FIRST_ASSETS = [
   "./sample-sentences.js",
   "./iyaku-matcher.js",
   "./mappings.js",
+  "./ui-utils.js",
   "./grammar.js",
   "./grammar.css",
   "./grammar-engine.js",
-  "./grammar-rules.js",
+  "./n3-grammar-rules.json",
+  "./n4-grammar-rules.json",
+  "./n5-grammar-rules.json",
 ];
 
 // 3. Cache-First Files (Heavy assets and stable code)
 const CACHE_FIRST_ASSETS = [
-  "../sudachi-wasm/sudachi.js",
-  "../sudachi-wasm/resources/system.dic.gz", // ~40MB
+  "./sudachi.js",
+  "./system.dic.gz", // ~40MB
   "./jmdict.json.gz", // ~4MB
 ];
 

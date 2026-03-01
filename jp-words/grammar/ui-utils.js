@@ -53,14 +53,15 @@ export async function fetchGzip(url) {
 export function generateDictHTML(
   surface,
   dictForm,
-  reading,
+  dictReading,
+  surfaceReading,
   pos,
   entryGroups,
   tenseData = null,
 ) {
   if (!entryGroups || entryGroups.length === 0) return "";
   let out = `<div class="dict-header-container"><div class="dict-header-left">`;
-  const titleHtml = generateRuby(surface, reading);
+  const titleHtml = generateRuby(dictForm, dictReading);
 
   out += `<h3 class="dict-header-title">${titleHtml}</h3>`;
   out += `<div class="badge-container">`;
@@ -69,7 +70,11 @@ export function generateDictHTML(
   out += `</div></div>`;
 
   if (tenseData && tenseData.length > 0) {
-    out += `<div class="dict-header-right"><div class="conjugation-group">`;
+    const surfaceTitleHtml = generateRuby(surface, surfaceReading);
+
+    out += `<div class="dict-header-right">
+    <h3 class="dict-header-title">${surfaceTitleHtml}</h3>
+    <div class="conjugation-group">`;
     tenseData.forEach((t) => {
       out += `<div class="conjugation-item">
                 <span class="conjugation-tag">${t.name}</span>
@@ -223,6 +228,7 @@ export function buildTooltipData(
             dictForm: word.kanji,
             surface: innerText,
             pos: word.pos,
+            posArray: word.posArray,
             tense: word.tense,
             startIndex: block.startIndex,
             endIndex: block.endIndex,
@@ -278,26 +284,40 @@ export function buildTooltipData(
     existingGroup.endIndex = Math.max(existingGroup.endIndex, item.endIndex);
   });
 
+  // Sort logically: Priority to earlier start indexes, then longer spans
   groupedItems.sort((a, b) => {
     if (a.startIndex !== b.startIndex) return a.startIndex - b.startIndex;
     return b.endIndex - a.endIndex;
   });
 
   let activeTabIndex = 0;
-  let bestMatchIdx = groupedItems.findIndex(
-    (g) => g.startIndex === hoverStart && g.endIndex === hoverEnd,
-  );
+
+  // 1. Longest match starting exactly at the hovered token
+  // Because the array is sorted by startIndex ASC, then endIndex DESC (longest first),
+  // finding the first one that matches the hover start will inherently find the longest.
+  let bestMatchIdx = groupedItems.findIndex((g) => g.startIndex === hoverStart);
+
   if (bestMatchIdx !== -1) {
     activeTabIndex = bestMatchIdx;
   } else {
-    bestMatchIdx = groupedItems.findIndex((g) => g.startIndex === hoverStart);
-    if (bestMatchIdx !== -1) {
-      activeTabIndex = bestMatchIdx;
-    } else {
-      bestMatchIdx = groupedItems.findIndex(
-        (g) => g.startIndex <= hoverStart && g.endIndex >= hoverEnd,
-      );
-      if (bestMatchIdx !== -1) activeTabIndex = bestMatchIdx;
+    // 2. If hovering over a middle element, default to the shortest encompassing match.
+    // This allows the user to drill down easily into smaller tokens inside of a larger structure.
+    let shortestEncompassingIdx = -1;
+    let minLength = Infinity;
+
+    for (let i = 0; i < groupedItems.length; i++) {
+      const g = groupedItems[i];
+      if (g.startIndex <= hoverStart && g.endIndex >= hoverEnd) {
+        const length = g.endIndex - g.startIndex;
+        if (length < minLength) {
+          minLength = length;
+          shortestEncompassingIdx = i;
+        }
+      }
+    }
+
+    if (shortestEncompassingIdx !== -1) {
+      activeTabIndex = shortestEncompassingIdx;
     }
   }
 
@@ -319,32 +339,41 @@ export function buildTooltipData(
     panelsHtml += `<div class="tab-panel ${activeClass}" id="tab-panel-${idx}" data-start="${group.startIndex}" data-end="${group.endIndex}">`;
 
     group.items.forEach((item, itemIdx) => {
-      if (itemIdx > 0) panelsHtml += `<hr class="panel-separator" />`;
+      if (itemIdx > 1) panelsHtml += `<hr class="panel-separator" />`;
       const block = item.block;
 
       if (item.type === "grammar") {
         panelsHtml += `
           <div class="grammar-section">
             <h3 class="grammar-title">
-              ${block.ruleData.title} <span class="grammar-badge">(Grammar)</span>
+              ${block.ruleData.title}
+              <span class="badge-container">
+                <span class="pos-badge">
+                  ${block.ruleData.link !== "#" ? `<a href="${block.ruleData.link}" target="_blank">Grammar Point</a>` : "(Grammar Point)"}
+                </span>
+              </span>
             </h3>
             <p class="grammar-desc">${block.ruleData.description}</p>
-            ${block.ruleData.link !== "#" ? `<a class="ext-link" href="${block.ruleData.link}" target="_blank">Check Bunpro &rarr;</a>` : ""}
+            
           </div>
         `;
       } else if (item.type === "word") {
+        const surface = block.surface;
         const dictForm = block.dictForm;
         const pos = block.pos;
-        const entryGroups = matcher.searchDictionary(dictForm, pos);
+        const posArray = block.posArray || [pos];
+        const entryGroups = matcher.searchDictionary(dictForm, posArray);
 
         let tenseData = block.tense ? block.tense : null;
 
         if (entryGroups && entryGroups.length > 0) {
           const dictReading = matcher.getReading(dictForm);
+          const surfaceReading = matcher.getReading(surface);
           panelsHtml += generateDictHTML(
-            dictForm,
+            surface,
             dictForm,
             dictReading,
+            surfaceReading,
             pos,
             entryGroups,
             tenseData,

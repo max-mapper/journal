@@ -53,16 +53,61 @@ export class IyakuMatcher {
     return p && p.length > 0 ? p[0] : "Unk";
   }
 
-  shouldGroup(token) {
-    const p = token.poses || token.pos;
-    if (!p || p.length === 0) return false;
-    const pos0 = p[0];
-    if (pos0 === "助動詞" || pos0 === "接尾辞") return true;
-    if (pos0 === "助詞" && p.length > 1 && p[1] === "接続助詞") return true;
-    return false;
+  getStrictTags(poses) {
+    if (!poses || poses.length === 0) return null;
+    const pos0 = poses[0];
+    const pos1 = poses.length > 1 ? poses[1] : "*";
+    const pos2 = poses.length > 2 ? poses[2] : "*";
+
+    const strictCodes = new Set();
+
+    // 動詞 / 形容詞 - 非自立可能 (Auxiliaries: ていく, てみる, ている, ない)
+    if (pos1 === "非自立可能") {
+      if (pos0 === "動詞") strictCodes.add("aux-v").add("aux");
+      if (pos0 === "形容詞") strictCodes.add("aux-adj").add("aux");
+    }
+
+    // 接尾辞 (Suffixes: 〜すぎる, 〜たち, etc.)
+    if (pos0 === "接尾辞") {
+      strictCodes.add("suf");
+      if (pos1 === "動詞的") strictCodes.add("v-suf");
+      if (pos1 === "名詞的") strictCodes.add("n-suf");
+      if (pos1 === "形容詞的") strictCodes.add("aux-adj");
+      if (pos2 === "助数詞") strictCodes.add("ctr");
+    }
+
+    // 名詞 - 特定のカテゴリ (Nouns)
+    if (pos0 === "名詞") {
+      if (pos1 === "数詞") strictCodes.add("num");
+      if (pos1 === "普通名詞" && pos2 === "副詞可能") strictCodes.add("n-adv");
+      if (pos1 === "固有名詞") strictCodes.add("n-pr");
+      if (pos1 === "代名詞") strictCodes.add("pn");
+    }
+
+    // 副詞
+    if (pos0 === "副詞") strictCodes.add("adv").add("adv-to").add("n-adv");
+
+    // 形状詞 (Na-adjectives)
+    if (pos0 === "形状詞")
+      strictCodes.add("adj-na").add("adj-nari").add("adj-no").add("adj-pn");
+
+    // 連体詞 (Pre-noun adjectivals)
+    if (pos0 === "連体詞") strictCodes.add("adj-pn");
+
+    // その他の品詞
+    if (pos0 === "代名詞") strictCodes.add("pn");
+    if (pos0 === "助詞") strictCodes.add("prt");
+    if (pos0 === "助動詞") strictCodes.add("aux").add("aux-v").add("aux-adj");
+
+    return strictCodes;
   }
 
-  searchDictionary(term, sudachiPos) {
+  searchDictionary(term, poses) {
+    try {
+      throw new Error("foo");
+    } catch (e) {
+      console.log("searchDictionary", term, poses, e);
+    }
     if (!this.dictDB) return null;
     let indices = this.dictDB.index[term];
     if (!indices && term.length > 1) {
@@ -71,20 +116,71 @@ export class IyakuMatcher {
     if (!indices) return null;
 
     const entries = indices.map((idx) => this.dictDB.defs[idx]);
-    if (sudachiPos && JMDICT_POS_MAP[sudachiPos]) {
-      const allowedCodes = new Set(JMDICT_POS_MAP[sudachiPos]);
-      const filteredEntries = [];
+
+    let posArray = Array.isArray(poses) ? poses : [poses];
+    let pos0 = posArray[0];
+
+    if (pos0 && JMDICT_POS_MAP[pos0]) {
+      const allowedCodes = new Set(JMDICT_POS_MAP[pos0]);
+      const strictCodes = this.getStrictTags(posArray);
+      let filteredEntries = [];
+      let strictFilteredEntries = [];
+
       for (const entrySenses of entries) {
-        const validSenses = entrySenses.filter((sense) => {
-          if (!sense.partOfSpeech || sense.partOfSpeech.length === 0)
-            return true;
-          return sense.partOfSpeech.some((code) => allowedCodes.has(code));
-        });
+        let validSenses = [];
+        let strictSenses = [];
+        let currentPos = [];
+
+        for (const sense of entrySenses) {
+          // Carry forward POS tags, as JMDict definitions often leave them blank
+          // on subsequent senses when they belong to the same grammatical grouping.
+          if (sense.partOfSpeech && sense.partOfSpeech.length > 0) {
+            currentPos = sense.partOfSpeech;
+          }
+
+          const isAllowed =
+            currentPos.length === 0 ||
+            currentPos.some((code) => allowedCodes.has(code));
+          if (isAllowed) {
+            validSenses.push(sense);
+          }
+
+          if (strictCodes && strictCodes.size > 0) {
+            const isStrictAllowed =
+              currentPos.length > 0 &&
+              currentPos.some((code) => strictCodes.has(code));
+            if (isStrictAllowed) {
+              strictSenses.push(sense);
+            }
+          }
+        }
+
         if (validSenses.length > 0) filteredEntries.push(validSenses);
+        if (strictSenses.length > 0) strictFilteredEntries.push(strictSenses);
       }
+
+      // Strongly prefer specific matched mappings (e.g. aux-v),
+      // but gracefully fallback to all allowed valid mappings if none exist.
+      if (
+        strictCodes &&
+        strictCodes.size > 0 &&
+        strictFilteredEntries.length > 0
+      ) {
+        return strictFilteredEntries;
+      }
+
       return filteredEntries.length > 0 ? filteredEntries : null;
     }
     return entries;
+  }
+
+  shouldGroup(token) {
+    const p = token.poses || token.pos;
+    if (!p || p.length === 0) return false;
+    const pos0 = p[0];
+    if (pos0 === "助動詞" || pos0 === "接尾辞") return true;
+    if (pos0 === "助詞" && p.length > 1 && p[1] === "接続助詞") return true;
+    return false;
   }
 
   /**
@@ -170,6 +266,7 @@ export class IyakuMatcher {
 
         for (let j = gMatch.start; j < gMatch.end; j++) {
           const t = rawTokens[j];
+          const tPosArray = t.poses || t.pos;
           const tPos = this.getPos(t);
 
           blockTokens.push({
@@ -187,8 +284,11 @@ export class IyakuMatcher {
             }
 
             let validForm = t.dictionary_form;
-            if (!this.searchDictionary(validForm, tPos) && t.normalized_form) {
-              if (this.searchDictionary(t.normalized_form, tPos)) {
+            if (
+              !this.searchDictionary(validForm, tPosArray) &&
+              t.normalized_form
+            ) {
+              if (this.searchDictionary(t.normalized_form, tPosArray)) {
                 validForm = t.normalized_form;
               }
             }
@@ -207,6 +307,7 @@ export class IyakuMatcher {
                 kanji: validForm,
                 surface: compoundSurface,
                 pos: tPos,
+                posArray: tPosArray,
                 tense: tenseMatches,
               });
             }
@@ -227,12 +328,12 @@ export class IyakuMatcher {
       let bestCompound = null;
       let maxLen = 0;
       const startPos = this.getPos(rawTokens[i]);
-      if (!["動詞", "形容詞", "形状詞", "助動詞", "助詞"].includes(startPos)) {
-        for (
-          let len = 2;
-          len <= this.COMPOUND_LOOKAHEAD_LIMIT && i + len <= rawTokens.length;
-          len++
-        ) {
+
+      // Allow compound building unless starting token is an auxiliary
+      if (!["助動詞", "助詞"].includes(startPos)) {
+        for (let len = this.COMPOUND_LOOKAHEAD_LIMIT; len >= 2; len--) {
+          if (i + len > rawTokens.length) continue;
+
           let overlap = false;
           for (let k = 0; k < len; k++) {
             if (activeGrammar.some((r) => r.start === i + k)) {
@@ -240,64 +341,113 @@ export class IyakuMatcher {
               break;
             }
           }
-          if (overlap) break;
+          if (overlap) continue;
 
           const slice = rawTokens.slice(i, i + len);
           const combinedSurface = slice.map((t) => t.surface).join("");
 
-          if (this.dictDB.index[combinedSurface]) {
-            bestCompound = { slice, surface: combinedSurface };
+          // Synthesize correct dictionary forms (e.g., 飛び + 出す = 飛び出す)
+          const combinedDictForm =
+            slice
+              .slice(0, -1)
+              .map((t) => t.surface)
+              .join("") + slice[slice.length - 1].dictionary_form;
+          const combinedNormForm =
+            slice
+              .slice(0, -1)
+              .map((t) => t.surface)
+              .join("") + slice[slice.length - 1].normalized_form;
+
+          if (this.dictDB.index[combinedDictForm]) {
+            bestCompound = {
+              slice,
+              surface: combinedSurface,
+              dictForm: combinedDictForm,
+              normForm: combinedNormForm,
+            };
             maxLen = len;
+            break;
+          } else if (this.dictDB.index[combinedNormForm]) {
+            bestCompound = {
+              slice,
+              surface: combinedSurface,
+              dictForm: combinedNormForm,
+              normForm: combinedNormForm,
+            };
+            maxLen = len;
+            break;
+          } else if (this.dictDB.index[combinedSurface]) {
+            bestCompound = {
+              slice,
+              surface: combinedSurface,
+              dictForm: combinedSurface,
+              normForm: combinedSurface,
+            };
+            maxLen = len;
+            break;
           }
         }
       }
 
+      // 3. Setup Base Word Details
+      let baseTokens = [];
+      let basePos = "";
+      let baseDictForm = "";
+      let baseNormForm = "";
+      let baseSurface = "";
+      let nextIndex = i;
+
       if (bestCompound) {
-        const groupObj = {
-          isGroup: true,
-          tokens: bestCompound.slice,
-          baseToken: {
-            ...bestCompound.slice[0],
-            dictionary_form: bestCompound.surface,
-            normalized_form: bestCompound.surface,
-            poses: ["名詞", "一般", "*", "*", "*", "*"],
-          },
-          surface: bestCompound.surface,
-        };
-        resultBlocks.push(this._processTokenOrGroup(groupObj, activePOS));
-        i += maxLen;
-        continue;
+        baseTokens = bestCompound.slice;
+        basePos = this.getPos(baseTokens[baseTokens.length - 1]);
+        baseDictForm = bestCompound.dictForm;
+        baseNormForm = bestCompound.normForm;
+        baseSurface = bestCompound.surface;
+        nextIndex = i + maxLen;
+      } else {
+        const current = rawTokens[i];
+        baseTokens = [current];
+        basePos = this.getPos(current);
+        baseDictForm = current.dictionary_form;
+        baseNormForm = current.normalized_form;
+        baseSurface = current.surface;
+        nextIndex = i + 1;
       }
 
-      // 3. Verb/Adj grouping
-      const current = rawTokens[i];
-      const pos = this.getPos(current);
+      // 4. Group Traling Conjugations / Auxiliary items
+      let groupTokens = [...baseTokens];
+      let groupedSurface = baseSurface;
 
-      if (["動詞", "形容詞", "形状詞"].includes(pos)) {
-        let groupTokens = [current];
-        let nextIndex = i + 1;
+      if (["動詞", "形容詞", "形状詞"].includes(basePos)) {
         while (nextIndex < rawTokens.length) {
           if (activeGrammar.some((r) => r.start === nextIndex)) break;
           const nextToken = rawTokens[nextIndex];
           if (this.shouldGroup(nextToken)) {
             groupTokens.push(nextToken);
+            groupedSurface += nextToken.surface;
             nextIndex++;
           } else {
             break;
           }
         }
-        const groupObj = {
-          isGroup: true,
-          tokens: groupTokens,
-          baseToken: current,
-          surface: groupTokens.map((t) => t.surface).join(""),
-        };
-        resultBlocks.push(this._processTokenOrGroup(groupObj, activePOS));
-        i = nextIndex;
-      } else {
-        resultBlocks.push(this._processTokenOrGroup(current, activePOS));
-        i++;
       }
+
+      const groupObj = {
+        isGroup: true,
+        tokens: groupTokens,
+        baseToken: {
+          ...baseTokens[0],
+          dictionary_form: baseDictForm,
+          normalized_form: baseNormForm,
+          poses:
+            baseTokens[baseTokens.length - 1].poses ||
+            baseTokens[baseTokens.length - 1].pos,
+        },
+        surface: groupedSurface,
+      };
+
+      resultBlocks.push(this._processTokenOrGroup(groupObj, activePOS));
+      i = nextIndex;
     }
 
     return resultBlocks;
@@ -365,6 +515,7 @@ export class IyakuMatcher {
 
         for (let j = gMatch.start; j < gMatch.end; j++) {
           const t = rawTokens[j];
+          const tPosArray = t.poses || t.pos;
           const tPos = this.getPos(t);
 
           blockTokens.push({
@@ -382,8 +533,11 @@ export class IyakuMatcher {
             }
 
             let validForm = t.dictionary_form;
-            if (!this.searchDictionary(validForm, tPos) && t.normalized_form) {
-              if (this.searchDictionary(t.normalized_form, tPos)) {
+            if (
+              !this.searchDictionary(validForm, tPosArray) &&
+              t.normalized_form
+            ) {
+              if (this.searchDictionary(t.normalized_form, tPosArray)) {
                 validForm = t.normalized_form;
               }
             }
@@ -402,6 +556,7 @@ export class IyakuMatcher {
                 kanji: validForm,
                 surface: compoundSurface,
                 pos: tPos,
+                posArray: tPosArray,
                 tense: tenseMatches,
               });
             }
@@ -424,66 +579,110 @@ export class IyakuMatcher {
       const startPos = this.getPos(rawTokens[i]);
 
       // Check for dictionary compounds starting at this index
-      if (!["動詞", "形容詞", "形状詞", "助動詞", "助詞"].includes(startPos)) {
-        for (
-          let len = 2;
-          len <= this.COMPOUND_LOOKAHEAD_LIMIT && i + len <= rawTokens.length;
-          len++
-        ) {
+      if (!["助動詞", "助詞"].includes(startPos)) {
+        for (let len = this.COMPOUND_LOOKAHEAD_LIMIT; len >= 2; len--) {
+          if (i + len > rawTokens.length) continue;
+
           const slice = rawTokens.slice(i, i + len);
           const combinedSurface = slice.map((t) => t.surface).join("");
+          const combinedDictForm =
+            slice
+              .slice(0, -1)
+              .map((t) => t.surface)
+              .join("") + slice[slice.length - 1].dictionary_form;
+          const combinedNormForm =
+            slice
+              .slice(0, -1)
+              .map((t) => t.surface)
+              .join("") + slice[slice.length - 1].normalized_form;
 
-          if (this.dictDB.index[combinedSurface]) {
+          let matchedDictForm = null;
+          let matchedNormForm = null;
+
+          if (this.dictDB.index[combinedDictForm]) {
+            matchedDictForm = combinedDictForm;
+            matchedNormForm = combinedNormForm;
+          } else if (this.dictDB.index[combinedNormForm]) {
+            matchedDictForm = combinedNormForm;
+            matchedNormForm = combinedNormForm;
+          } else if (this.dictDB.index[combinedSurface]) {
+            matchedDictForm = combinedSurface;
+            matchedNormForm = combinedSurface;
+          }
+
+          if (matchedDictForm) {
+            let baseTokens = slice;
+            let basePos = this.getPos(baseTokens[baseTokens.length - 1]);
+            let nextIndex = i + len;
+            let groupTokens = [...baseTokens];
+            let groupedSurface = combinedSurface;
+
+            if (["動詞", "形容詞", "形状詞"].includes(basePos)) {
+              while (nextIndex < rawTokens.length) {
+                const nextToken = rawTokens[nextIndex];
+                if (this.shouldGroup(nextToken)) {
+                  groupTokens.push(nextToken);
+                  groupedSurface += nextToken.surface;
+                  nextIndex++;
+                } else {
+                  break;
+                }
+              }
+            }
+
             const groupObj = {
               isGroup: true,
-              tokens: slice,
+              tokens: groupTokens,
               baseToken: {
-                ...slice[0],
-                dictionary_form: combinedSurface,
-                normalized_form: combinedSurface,
-                poses: ["名詞", "一般", "*", "*", "*", "*"],
+                ...baseTokens[0],
+                dictionary_form: matchedDictForm,
+                normalized_form: matchedNormForm,
+                poses:
+                  baseTokens[baseTokens.length - 1].poses ||
+                  baseTokens[baseTokens.length - 1].pos,
               },
-              surface: combinedSurface,
+              surface: groupedSurface,
             };
+
             const processed = this._processTokenOrGroup(groupObj, activePOS);
             processed.startIndex = i;
-            processed.endIndex = i + len;
+            processed.endIndex = nextIndex;
             allMatches.push(processed);
           }
         }
       }
 
-      // Check for Verb/Adj grouping or Single token at this index
+      // Check for Single token at this index + grouping
       const current = rawTokens[i];
+      let basePos = this.getPos(current);
+      let groupTokens = [current];
+      let groupedSurface = current.surface;
+      let nextIndex = i + 1;
 
-      if (["動詞", "形容詞", "形状詞"].includes(startPos)) {
-        let groupTokens = [current];
-        let nextIndex = i + 1;
+      if (["動詞", "形容詞", "形状詞"].includes(basePos)) {
         while (nextIndex < rawTokens.length) {
           const nextToken = rawTokens[nextIndex];
           if (this.shouldGroup(nextToken)) {
             groupTokens.push(nextToken);
+            groupedSurface += nextToken.surface;
             nextIndex++;
           } else {
             break;
           }
         }
-        const groupObj = {
-          isGroup: true,
-          tokens: groupTokens,
-          baseToken: current,
-          surface: groupTokens.map((t) => t.surface).join(""),
-        };
-        const processed = this._processTokenOrGroup(groupObj, activePOS);
-        processed.startIndex = i;
-        processed.endIndex = nextIndex;
-        allMatches.push(processed);
-      } else {
-        const processed = this._processTokenOrGroup(current, activePOS);
-        processed.startIndex = i;
-        processed.endIndex = i + 1;
-        allMatches.push(processed);
       }
+
+      const groupObj = {
+        isGroup: true,
+        tokens: groupTokens,
+        baseToken: current,
+        surface: groupedSurface,
+      };
+
+      const processed = this._processTokenOrGroup(groupObj, activePOS);
+      processed.startIndex = i;
+      processed.endIndex = nextIndex;
+      allMatches.push(processed);
     }
 
     // Sort by start index (asc), then by range length (desc)
@@ -499,6 +698,7 @@ export class IyakuMatcher {
   _processTokenOrGroup(item, activePOS) {
     let tokensData = [];
     let pos = "";
+    let posArray = [];
     let dictForm = "";
     let normForm = "";
     let surface = "";
@@ -511,6 +711,7 @@ export class IyakuMatcher {
       }));
       const head = item.baseToken;
       pos = this.getPos(head);
+      posArray = head.poses || head.pos || [pos];
       dictForm = head.dictionary_form;
       normForm = head.normalized_form;
       surface = item.surface;
@@ -522,6 +723,7 @@ export class IyakuMatcher {
         },
       ];
       pos = this.getPos(item);
+      posArray = item.poses || item.pos || [pos];
       dictForm = item.dictionary_form;
       normForm = item.normalized_form;
       surface = item.surface;
@@ -540,9 +742,9 @@ export class IyakuMatcher {
     let finalForm = dictForm;
 
     if (activePOS.has(pos)) {
-      let compatibleEntries = this.searchDictionary(dictForm, pos);
+      let compatibleEntries = this.searchDictionary(dictForm, posArray);
       if (!compatibleEntries && normForm && normForm !== dictForm) {
-        const normEntries = this.searchDictionary(normForm, pos);
+        const normEntries = this.searchDictionary(normForm, posArray);
         if (normEntries) {
           compatibleEntries = normEntries;
           finalForm = normForm;
@@ -557,6 +759,7 @@ export class IyakuMatcher {
       surface,
       tokens: tokensData,
       pos,
+      posArray,
       dictForm: finalForm,
       tense: tenseData,
     };
