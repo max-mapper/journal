@@ -2,7 +2,7 @@
 // 1. Core Matching Engine
 // ==========================================
 
-let DEFAULT_WILDCARD_MAX = 8;
+let DEFAULT_WILDCARD_MAX = 2;
 
 /**
  * Determines if a token is part of a grammatical conjugation tail
@@ -10,61 +10,93 @@ let DEFAULT_WILDCARD_MAX = 8;
  */
 function _isConjugationTail(token) {
   if (!token) return false;
-  const pos0 = token.poses[0];
-  const pos1 = token.poses[1];
+  const poses = token.poses;
+  const pos0 = poses[0];
 
-  if (pos0 === "助動詞") return true;
-  if (pos0 === "接尾辞") return true;
-  if (pos0 === "動詞" && pos1 === "非自立可能") return true;
-  if (pos0 === "形容詞" && pos1 === "非自立可能") return true;
-  if (pos0 === "形状詞" && pos1 === "助動詞語幹") return true;
-  if (pos0 === "形状詞" && pos1 === "タリ") return true;
-  if (pos0 === "助詞" && pos1 === "接続助詞") return true; // Fixed: Exclude sentence-enders
+  if (pos0 === "助動詞" || pos0 === "接尾辞") return true;
+
+  const pos1 = poses[1];
+  if (pos1 === "非自立可能" && (pos0 === "動詞" || pos0 === "形容詞"))
+    return true;
+  if (pos0 === "形状詞" && (pos1 === "助動詞語幹" || pos1 === "タリ"))
+    return true;
+  if (pos0 === "助詞" && pos1 === "接続助詞") return true;
 
   return false;
 }
 
 /**
 Represents a single constraint on a specific token.
-e.g., "Must be a Verb" or "Surface form must be 'いる'"
+Pre-compiles conditions to avoid expensive array allocations during matching.
 */
 class TokenConstraint {
   constructor(config, matchAllConjugations = true) {
-    this.surface = config.surface; // Exact text match
-    this.surfaceEndsWith = config.surfaceEndsWith; // Suffix text match
-    this.pos = config.pos; // Main POS
-    this.posDetail = config.posDetail; // Sub POS
-    this.conjugation = config.conjugation; // Inflection type
-    this.baseForm = config.baseForm; // Dictionary form
-    this.wildcard = config.wildcard; // Matches anything
-    this.match = config.match; // Flags this token as part of the extracted target
-
-    // Store rule-level setting to apply dynamically during matching
+    this.wildcard = config.wildcard;
+    this.match = config.match;
     this.matchAllConjugations = matchAllConjugations;
+
+    // Pre-parse the constraints for rapid lookup
+    this.surface = this._parseConstraint(config.surface);
+    this.surfaceEndsWith = this._parseConstraint(config.surfaceEndsWith);
+    this.pos = this._parseConstraint(config.pos);
+    this.posDetail = this._parseConstraint(config.posDetail);
+    this.baseForm = this._parseConstraint(config.baseForm);
+
+    // Conjugation needs special handling
+    this.conjugationRaw = config.conjugation;
+    this.conjugation = this._parseConstraint(config.conjugation);
+    this.isConjugationAny = config.conjugation === "any";
+
+    // Cache boolean locally for rapid tail-consumption check
+    this.canConsumeTail =
+      this.isConjugationAny ||
+      (this.conjugationRaw === undefined && this.matchAllConjugations);
   }
 
-  /**
-   * Helper function to check if a token value matches a constraint.
-   * Evaluates the pipe `|` operator for "OR" logic.
-   */
-  _checkValue(constraintValue, tokenValue, isEndsWith = false) {
-    if (!constraintValue) return true;
-    const options = constraintValue.split("|");
-    if (isEndsWith) {
-      return options.some((opt) => tokenValue.endsWith(opt));
+  _parseConstraint(value) {
+    if (!value) return null;
+    if (value === "any") return "any";
+    const parts = value.split("|");
+    if (parts.length === 1) return parts[0]; // Fast path for singular requirement
+    return parts; // Returns array for multiple valid options
+  }
+
+  _checkValue(constraint, tokenValue, isEndsWith = false) {
+    if (!constraint) return true;
+    if (!tokenValue) return false;
+
+    if (Array.isArray(constraint)) {
+      if (isEndsWith) {
+        for (let i = 0; i < constraint.length; i++) {
+          if (tokenValue.endsWith(constraint[i])) return true;
+        }
+        return false;
+      }
+      return constraint.includes(tokenValue);
+    } else {
+      if (isEndsWith) {
+        return tokenValue.endsWith(constraint);
+      }
+      return constraint === tokenValue;
     }
-    return options.includes(tokenValue);
   }
 
   check(token) {
     if (!token) return false;
     if (this.wildcard) return true;
 
-    // Sudachi-wasm output structure keys
-    const posArray = token.poses; //[POS, Sub1, Sub2, Sub3, ConjType, ConjForm]
+    const posArray = token.poses;
 
-    // 1. Surface Check
+    // Ordered by likely failure rate to short-circuit faster
+    if (this.pos && !this._checkValue(this.pos, posArray[0])) return false;
+    if (this.posDetail && !this._checkValue(this.posDetail, posArray[1]))
+      return false;
     if (this.surface && !this._checkValue(this.surface, token.surface))
+      return false;
+    if (
+      this.baseForm &&
+      !this._checkValue(this.baseForm, token.dictionary_form)
+    )
       return false;
     if (
       this.surfaceEndsWith &&
@@ -72,28 +104,28 @@ class TokenConstraint {
     )
       return false;
 
-    // 2. Base Form Check
-    if (
-      this.baseForm &&
-      !this._checkValue(this.baseForm, token.dictionary_form)
-    )
-      return false;
-
-    // 3. POS Check (Index 0 - Main Category)
-    if (this.pos && !this._checkValue(this.pos, posArray[0])) return false;
-
-    // 4. POS Detail Check (Index 1 - Sub Category)
-    if (this.posDetail && !this._checkValue(this.posDetail, posArray[1]))
-      return false;
-
-    // 5. Conjugation Form Check
-    // If conjugation is "any" (or bypasses due to being undefined), skip filtering.
-    if (this.conjugation && this.conjugation !== "any") {
-      const options = this.conjugation.split("|");
-      const matched = options.some(
-        (opt) => posArray[5].includes(opt) || posArray[4].includes(opt),
-      );
-      if (!matched) return false;
+    // Conjugation check (only evaluates if explicitly required)
+    if (this.conjugationRaw && !this.isConjugationAny) {
+      const pos4 = posArray[4] || "";
+      const pos5 = posArray[5] || "";
+      if (Array.isArray(this.conjugation)) {
+        let matched = false;
+        for (let i = 0; i < this.conjugation.length; i++) {
+          const opt = this.conjugation[i];
+          if (pos5.includes(opt) || pos4.includes(opt)) {
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) return false;
+      } else {
+        if (
+          !pos5.includes(this.conjugation) &&
+          !pos4.includes(this.conjugation)
+        ) {
+          return false;
+        }
+      }
     }
 
     return true;
@@ -112,32 +144,39 @@ class Pattern {
 
   matchesAt(tokens, startIndex) {
     let currentTokenIndex = startIndex;
-    let matchFlaggedIndices = [];
+    let matchFlaggedStart = -1;
+    let matchFlaggedEnd = -1;
+
+    // Zero-allocation flag recording
+    const recordMatch = (idx) => {
+      if (matchFlaggedStart === -1) matchFlaggedStart = idx;
+      matchFlaggedEnd = idx;
+    };
 
     for (let i = 0; i < this.constraints.length; i++) {
-      // If we ran out of tokens before satisfying constraints
       if (currentTokenIndex >= tokens.length) return null;
 
-      let matched = false;
       const constraint = this.constraints[i];
 
+      // WILDCARD LOGIC
       if (constraint.wildcard) {
         let maxWildcard =
           typeof constraint.wildcard === "number"
             ? constraint.wildcard
             : DEFAULT_WILDCARD_MAX;
         let consumed = 0;
+        let matched = false;
         const nextConstraint = this.constraints[i + 1];
 
         while (currentTokenIndex < tokens.length && consumed < maxWildcard) {
           if (constraint.match) {
-            matchFlaggedIndices.push(currentTokenIndex);
+            recordMatch(currentTokenIndex);
           }
           currentTokenIndex++;
           consumed++;
           matched = true;
 
-          // Non-greedy lookahead: stop consuming if the next valid token matches the next rule
+          // Non-greedy lookahead
           if (nextConstraint) {
             let peekIndex = currentTokenIndex;
             while (
@@ -159,146 +198,90 @@ class Pattern {
         continue;
       }
 
-      // Try to match the current constraint, skipping punctuation if necessary
-      // NOTE: We do not skip punctuation for the very first constraint to ensure
-      // the match index returned by 'scan' is accurate to the start of the phrase.
-      if (i === 0) {
-        if (this.constraints[i].check(tokens[currentTokenIndex])) {
-          if (this.constraints[i].match)
-            matchFlaggedIndices.push(currentTokenIndex);
-          matched = true;
+      // STANDARD TOKEN LOGIC
+      let constraintMatched = false;
 
-          // Determine if we should greedily consume conjugation tails
-          let consumeTail = false;
-          if (this.constraints[i].conjugation === "any") {
-            consumeTail = true;
-          } else if (
-            this.constraints[i].conjugation === undefined &&
-            this.constraints[i].matchAllConjugations
-          ) {
-            // Apply by default ONLY to "relevant cases" (parts of speech that actually conjugate)
-            const pos0 = tokens[currentTokenIndex].poses[0];
-            if (
-              pos0 === "動詞" ||
-              pos0 === "形容詞" ||
-              pos0 === "助動詞" ||
-              pos0 === "形状詞" ||
-              pos0 === "接尾辞"
-            ) {
-              consumeTail = true;
-            }
-          }
-
-          if (consumeTail) {
+      // Handle Punctuation bypass safely evaluating exactly 1 check per token.
+      if (i > 0) {
+        while (currentTokenIndex < tokens.length) {
+          constraintMatched = constraint.check(tokens[currentTokenIndex]);
+          if (constraintMatched) break;
+          if (tokens[currentTokenIndex].poses[0] === "補助記号") {
             currentTokenIndex++;
-            while (
-              currentTokenIndex < tokens.length &&
-              _isConjugationTail(tokens[currentTokenIndex])
-            ) {
-              // Non-greedy tail lookahead: stop eating the tail if the next token belongs to the next rule
-              const nextConstraint = this.constraints[i + 1];
-              if (nextConstraint && !nextConstraint.wildcard) {
-                let peekIndex = currentTokenIndex;
-                while (
-                  peekIndex < tokens.length &&
-                  tokens[peekIndex].poses[0] === "補助記号"
-                ) {
-                  peekIndex++;
-                }
-                if (
-                  peekIndex < tokens.length &&
-                  nextConstraint.check(tokens[peekIndex])
-                ) {
-                  break;
-                }
-              }
-
-              if (this.constraints[i].match) {
-                // Flag tail elements to be part of the match as well
-                matchFlaggedIndices.push(currentTokenIndex);
-              }
-              currentTokenIndex++;
-            }
           } else {
-            currentTokenIndex++;
+            break;
           }
         }
       } else {
-        // For subsequent constraints, allow skipping "Auxiliary Symbols" (Punctuation)
-        while (currentTokenIndex < tokens.length) {
-          if (this.constraints[i].check(tokens[currentTokenIndex])) {
-            if (this.constraints[i].match)
-              matchFlaggedIndices.push(currentTokenIndex);
-            matched = true;
+        if (currentTokenIndex < tokens.length) {
+          constraintMatched = constraint.check(tokens[currentTokenIndex]);
+        }
+      }
 
-            let consumeTail = false;
-            if (this.constraints[i].conjugation === "any") {
-              consumeTail = true;
-            } else if (
-              this.constraints[i].conjugation === undefined &&
-              this.constraints[i].matchAllConjugations
-            ) {
-              const pos0 = tokens[currentTokenIndex].poses[0];
-              if (
-                pos0 === "動詞" ||
-                pos0 === "形容詞" ||
-                pos0 === "助動詞" ||
-                pos0 === "形状詞" ||
-                pos0 === "接尾辞"
-              ) {
-                consumeTail = true;
-              }
-            }
+      if (!constraintMatched) return null;
 
-            if (consumeTail) {
-              currentTokenIndex++;
-              while (
-                currentTokenIndex < tokens.length &&
-                _isConjugationTail(tokens[currentTokenIndex])
-              ) {
-                const nextConstraint = this.constraints[i + 1];
-                if (nextConstraint && !nextConstraint.wildcard) {
-                  let peekIndex = currentTokenIndex;
-                  while (
-                    peekIndex < tokens.length &&
-                    tokens[peekIndex].poses[0] === "補助記号"
-                  ) {
-                    peekIndex++;
-                  }
-                  if (
-                    peekIndex < tokens.length &&
-                    nextConstraint.check(tokens[peekIndex])
-                  ) {
-                    break;
-                  }
-                }
+      if (constraint.match) {
+        recordMatch(currentTokenIndex);
+      }
 
-                if (this.constraints[i].match) {
-                  matchFlaggedIndices.push(currentTokenIndex);
-                }
-                currentTokenIndex++;
-              }
-            } else {
-              currentTokenIndex++;
-            }
-            break;
-          } else if (tokens[currentTokenIndex].poses[0] === "補助記号") {
-            // Skip punctuation/symbols (comma, quotes, etc)
-            currentTokenIndex++;
-          } else {
-            // Token is not punctuation and does not match constraint
-            break;
+      // Determine Tail logic requirement
+      let consumeTail = false;
+      if (constraint.canConsumeTail) {
+        if (constraint.isConjugationAny) {
+          consumeTail = true;
+        } else {
+          const pos0 = tokens[currentTokenIndex].poses[0];
+          if (
+            pos0 === "動詞" ||
+            pos0 === "形容詞" ||
+            pos0 === "助動詞" ||
+            pos0 === "形状詞" ||
+            pos0 === "接尾辞"
+          ) {
+            consumeTail = true;
           }
         }
       }
 
-      if (!matched) return null;
+      currentTokenIndex++;
+
+      // TAIL CONSUMPTION
+      if (consumeTail) {
+        while (
+          currentTokenIndex < tokens.length &&
+          _isConjugationTail(tokens[currentTokenIndex])
+        ) {
+          // Non-greedy tail lookahead
+          const nextConstraint = this.constraints[i + 1];
+          if (nextConstraint && !nextConstraint.wildcard) {
+            let peekIndex = currentTokenIndex;
+            while (
+              peekIndex < tokens.length &&
+              tokens[peekIndex].poses[0] === "補助記号"
+            ) {
+              peekIndex++;
+            }
+            if (
+              peekIndex < tokens.length &&
+              nextConstraint.check(tokens[peekIndex])
+            ) {
+              break;
+            }
+          }
+
+          if (constraint.match) {
+            recordMatch(currentTokenIndex);
+          }
+          currentTokenIndex++;
+        }
+      }
     }
 
     return {
       fullStartIndex: startIndex,
       fullEndIndex: currentTokenIndex, // Exclusive end index
-      matchFlaggedIndices: matchFlaggedIndices,
+      matchFlaggedStart,
+      matchFlaggedEnd,
     };
   }
 }
@@ -309,7 +292,6 @@ The high-level Grammar Rule object.
 class GrammarRule {
   constructor(ruleJson) {
     this.id = ruleJson.id;
-    // Enabled by default, can be disabled per-rule
     this.matchAllConjugations = ruleJson.matchAllConjugations !== false;
     this.patterns = ruleJson.patterns.map(
       (p) => new Pattern(p, this.matchAllConjugations),
@@ -322,43 +304,50 @@ class GrammarRule {
 
   scan(tokens) {
     const matches = [];
-    for (let i = 0; i < tokens.length; i++) {
-      for (let pattern of this.patterns) {
+    const tokensLen = tokens.length;
+    const patternsLen = this.patterns.length;
+
+    for (let i = 0; i < tokensLen; i++) {
+      for (let p = 0; p < patternsLen; p++) {
+        const pattern = this.patterns[p];
         const matchResult = pattern.matchesAt(tokens, i);
 
         if (matchResult) {
-          const fullTokens = tokens.slice(
-            matchResult.fullStartIndex,
-            matchResult.fullEndIndex,
-          );
-          const fullText = fullTokens.map((t) => t.surface).join("");
+          // Replaced .map() & .slice() with ultra-fast V8 string concats
+          let fullText = "";
+          for (
+            let j = matchResult.fullStartIndex;
+            j < matchResult.fullEndIndex;
+            j++
+          ) {
+            fullText += tokens[j].surface;
+          }
 
-          let targetTokens = [];
           let targetStartIndex = -1;
+          let targetEndIndex = -1;
 
-          if (matchResult.matchFlaggedIndices.length > 0) {
-            // Extract tokens between the first and last `match: true` flags (inclusive)
-            targetStartIndex = matchResult.matchFlaggedIndices[0];
-            const targetEndIndex =
-              matchResult.matchFlaggedIndices[
-                matchResult.matchFlaggedIndices.length - 1
-              ] + 1;
-            targetTokens = tokens.slice(targetStartIndex, targetEndIndex);
+          if (matchResult.matchFlaggedStart !== -1) {
+            targetStartIndex = matchResult.matchFlaggedStart;
+            targetEndIndex = matchResult.matchFlaggedEnd + 1;
           } else {
-            // Fallback: If no match: true specified, treat the whole matched pattern as the target
             targetStartIndex = matchResult.fullStartIndex;
-            targetTokens = fullTokens;
+            targetEndIndex = matchResult.fullEndIndex;
+          }
+
+          let targetText = "";
+          for (let j = targetStartIndex; j < targetEndIndex; j++) {
+            targetText += tokens[j].surface;
           }
 
           matches.push({
             ruleId: this.id,
             index: targetStartIndex, // Index of the specific targeted tokens
-            length: targetTokens.length,
-            text: targetTokens.map((t) => t.surface).join(""), // The specific targeted text
+            length: targetEndIndex - targetStartIndex,
+            text: targetText, // The specific targeted text
 
             // Full context of the entire pattern matched
             fullIndex: matchResult.fullStartIndex,
-            fullLength: fullTokens.length,
+            fullLength: matchResult.fullEndIndex - matchResult.fullStartIndex,
             fullText: fullText,
 
             title: this.title,
@@ -384,23 +373,21 @@ async function runGrammarEngineCheck(sudachi, GRAMMAR_RULES) {
     const rule = new GrammarRule(ruleJson);
 
     for (const sentenceRaw of rule.tests) {
-      // Extract the expected target string inside curly braces {}
       const expectedTargetMatch = sentenceRaw.match(/\{(.*?)\}/);
       const expectedText = expectedTargetMatch ? expectedTargetMatch[1] : null;
 
-      // Clean the sentence for Sudachi parsing
       const sentence = sentenceRaw.replaceAll(/\{|\}/g, "");
       const rawJson = sudachi.tokenize_stringified(sentence, 0); // Mode A
       const tokens = JSON.parse(rawJson);
 
       const results = rule.scan(tokens);
       const tokenDump = tokens
-        .map((t) => `${t.surface}(${t.poses[0]}:${t.poses[5]})`)
+        .map((t) => `${t.surface}(${t.poses[0]}:${t.poses[5] || ""})`)
         .join(" | ");
+
       if (results.length > 0) {
         const firstMatch = results[0];
 
-        // Check if the extracted text accurately matches what was inside the {} brackets
         if (expectedText && firstMatch.text !== expectedText) {
           failureLogs.push(
             `❌ [${rule.title}] FAIL: "${sentence}" -> Matched text was "${firstMatch.text}" but expected "${expectedText}".\n   Tokens: ${tokenDump}\n   Patterns: ${JSON.stringify(ruleJson.patterns)}`,
@@ -433,7 +420,6 @@ async function runGrammarEngineCheck(sudachi, GRAMMAR_RULES) {
     }
   }
 
-  // 1. Print all Successes
   console.log("\n------ SUCCESS REPORT ------");
   if (successLogs.length > 0) {
     successLogs.forEach((log) => console.log(log));
@@ -441,7 +427,6 @@ async function runGrammarEngineCheck(sudachi, GRAMMAR_RULES) {
     console.log("No successes recorded.");
   }
 
-  // 2. Print all Failures
   console.log("\n------ FAILURE REPORT ------");
   if (failureLogs.length > 0) {
     failureLogs.forEach((log) => console.log(log));
@@ -449,13 +434,12 @@ async function runGrammarEngineCheck(sudachi, GRAMMAR_RULES) {
     console.log("No failures recorded.");
   }
 
-  // 3. Final Summary
   console.log("\n------ SUMMARY ------");
   console.log(`Total Rules Checked: ${GRAMMAR_RULES.length}`);
   console.log(`Total Tests Passed:  ${totalMatches}`);
   console.log(`Total Tests Failed:  ${failureLogs.length}`);
 
-  console.log(failureData);
+  if (failureData.length > 0) console.log(failureData);
 
   return totalMatches;
 }

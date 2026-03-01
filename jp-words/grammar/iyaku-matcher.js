@@ -1,7 +1,7 @@
 import { GrammarRule } from "./grammar-engine.js";
 import { JMDICT_POS_MAP } from "./mappings.js";
 import { VerbTenseDetector } from "./tense-detector.js";
-import { SudachiStateless } from "../sudachi-wasm/sudachi.js";
+import { SudachiStateless } from "./sudachi.js";
 
 // =====================================================================
 // CORE LOGIC: Data processing, Dictionary Matching, and Grammar Engine
@@ -18,45 +18,15 @@ export class IyakuMatcher {
   /**
    * Loads dictionary and tokenization resources.
    */
-  async initialize(
-    sudachiUrl = "../sudachi-wasm/resources/system.dic.gz",
-    jmdictUrl = "jmdict.json.gz",
-  ) {
-    const dictBlob = await this._fetchAndGunzip(sudachiUrl);
+  async initialize({ rules, sudachiDictBlob, jmdictBlob }) {
     this.sudachi = new SudachiStateless();
     await this.sudachi.initialize_from_bytes(
-      new Uint8Array(await dictBlob.arrayBuffer()),
+      new Uint8Array(await sudachiDictBlob.arrayBuffer()),
     );
 
-    const jmDictBlob = await this._fetchAndGunzip(jmdictUrl);
-    this.dictDB = JSON.parse(await jmDictBlob.text());
+    this.dictDB = JSON.parse(await jmdictBlob.text());
 
-    var n5Rules = await this.fetchJsonData("n5-grammar-rules.json");
-    var n4Rules = await this.fetchJsonData("n4-grammar-rules.json");
-    var n3Rules = await this.fetchJsonData("n3-grammar-rules.json");
-    this.rules = [...n4Rules, ...n3Rules];
-  }
-
-  async fetchJsonData(url) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const jsonData = await response.json();
-      return jsonData;
-    } catch (error) {
-      console.error("Error fetching or parsing data:", error);
-    }
-  }
-
-  async _fetchAndGunzip(url) {
-    const response = await fetch(url);
-    if (!response.ok)
-      throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
-    const ds = new DecompressionStream("gzip");
-    const stream = response.body.pipeThrough(ds);
-    return await new Response(stream).blob();
+    this.rules = rules;
   }
 
   katakanaToHiragana(src) {
