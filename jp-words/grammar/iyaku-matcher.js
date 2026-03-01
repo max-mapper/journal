@@ -103,11 +103,6 @@ export class IyakuMatcher {
   }
 
   searchDictionary(term, poses) {
-    try {
-      throw new Error("foo");
-    } catch (e) {
-      console.log("searchDictionary", term, poses, e);
-    }
     if (!this.dictDB) return null;
     let indices = this.dictDB.index[term];
     if (!indices && term.length > 1) {
