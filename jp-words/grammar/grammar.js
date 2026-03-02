@@ -35,7 +35,7 @@ inputText.innerHTML = SAMPLE_SENTENCES;
 var n5Rules = await fetchJson("n5-grammar-rules.json");
 var n4Rules = await fetchJson("n4-grammar-rules.json");
 var n3Rules = await fetchJson("n3-grammar-rules.json");
-var rules = [...n4Rules, ...n3Rules];
+var rules = [...n5Rules, ...n4Rules, ...n3Rules];
 var sudachiUrl = "system.dic.gz";
 var jmdictUrl = "jmdict.json.gz";
 
