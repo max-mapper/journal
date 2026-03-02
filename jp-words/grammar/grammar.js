@@ -35,7 +35,7 @@ inputText.innerHTML = SAMPLE_SENTENCES;
 var n5Rules = await fetchJson("n5-grammar-rules.json");
 var n4Rules = await fetchJson("n4-grammar-rules.json");
 var n3Rules = await fetchJson("n3-grammar-rules.json");
-var rules = [...n5Rules, ...n4Rules, ...n3Rules];
+var rules = [...n4Rules, ...n3Rules];
 var sudachiUrl = "system.dic.gz";
 var jmdictUrl = "jmdict.json.gz";
 
@@ -91,15 +91,22 @@ function runAnalysis() {
 let hoverTimeout;
 let activeElement = null;
 
-function highlightRange(start, end) {
+function highlightRange(start, end, fullStart = start, fullEnd = end) {
   const spans = outputDisplay.querySelectorAll(".sentence-token");
   spans.forEach((span) => {
     const spanStart = parseInt(span.dataset.start);
     const spanEnd = parseInt(span.dataset.end);
+
+    // Clear previous highlights
+    span.classList.remove("highlighted-token", "highlighted-full-token");
+
+    // Primary highlight takes precedence
     if (spanStart >= start && spanEnd <= end) {
       span.classList.add("highlighted-token");
-    } else {
-      span.classList.remove("highlighted-token");
+    }
+    // Apply secondary full context highlight to remaining tokens
+    else if (spanStart >= fullStart && spanEnd <= fullEnd) {
+      span.classList.add("highlighted-full-token");
     }
   });
 }
@@ -107,7 +114,7 @@ function highlightRange(start, end) {
 function clearHighlight() {
   const spans = outputDisplay.querySelectorAll(".sentence-token");
   spans.forEach((span) => {
-    span.classList.remove("highlighted-token");
+    span.classList.remove("highlighted-token", "highlighted-full-token");
   });
 }
 
@@ -145,9 +152,12 @@ async function showTooltip(el) {
   tooltipContent.innerHTML = html;
 
   if (groupedItems.length > 0) {
+    const activeItem = groupedItems[activeTabIndex];
     highlightRange(
-      groupedItems[activeTabIndex].startIndex,
-      groupedItems[activeTabIndex].endIndex,
+      activeItem.startIndex,
+      activeItem.endIndex,
+      activeItem.fullStartIndex ?? activeItem.startIndex,
+      activeItem.fullEndIndex ?? activeItem.endIndex,
     );
   }
 
@@ -162,9 +172,14 @@ async function showTooltip(el) {
       tabBtns.forEach((b, i) => b.classList.toggle("active", i === idx));
       panels.forEach((p, i) => p.classList.toggle("active", i === idx));
 
-      const start = parseInt(panels[idx].dataset.start);
-      const end = parseInt(panels[idx].dataset.end);
-      highlightRange(start, end);
+      // Extract accurate values directly from the logical array instead of just DOM attributes
+      const item = groupedItems[idx];
+      highlightRange(
+        item.startIndex,
+        item.endIndex,
+        item.fullStartIndex ?? item.startIndex,
+        item.fullEndIndex ?? item.endIndex,
+      );
     });
   });
 }
@@ -180,7 +195,7 @@ function hideTooltip() {
 
 function scheduleHide() {
   if (hoverTimeout) clearTimeout(hoverTimeout);
-  hoverTimeout = setTimeout(hideTooltip, 200);
+  hoverTimeout = setTimeout(hideTooltip, 200000);
 }
 
 function cancelHide() {

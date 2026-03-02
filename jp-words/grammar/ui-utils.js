@@ -112,12 +112,16 @@ export function buildAnnotatedHTML(blocks, overlapClass, baseClass) {
   let maxIndex = 0;
   for (const b of blocks) {
     if (b.endIndex > maxIndex) maxIndex = b.endIndex;
+    if (b.fullEndIndex !== undefined && b.fullEndIndex > maxIndex)
+      maxIndex = b.fullEndIndex;
   }
 
   const baseTokens = new Array(maxIndex);
   for (const b of blocks) {
     for (let i = 0; i < b.endIndex - b.startIndex; i++) {
-      baseTokens[b.startIndex + i] = b.tokens[i];
+      if (b.tokens && b.tokens[i]) {
+        baseTokens[b.startIndex + i] = b.tokens[i];
+      }
     }
   }
 
@@ -138,14 +142,26 @@ export function buildAnnotatedHTML(blocks, overlapClass, baseClass) {
     );
     const overlappingIds = overlapping.map((b) => b._id).join(",");
 
-    if (currentGroup && currentGroup.overlappingIds === overlappingIds) {
+    const fullOverlapping = matchBlocks.filter(
+      (b) =>
+        b.fullStartIndex !== undefined &&
+        b.fullEndIndex !== undefined &&
+        i >= b.fullStartIndex &&
+        i < b.fullEndIndex,
+    );
+    const fullOverlappingIds = fullOverlapping.map((b) => b._id).join(",");
+
+    const groupKey = overlappingIds + "|" + fullOverlappingIds;
+
+    if (currentGroup && currentGroup.groupKey === groupKey) {
       currentGroup.tokens.push(token);
       currentGroup.endIndex = i + 1;
     } else {
       currentGroup = {
         tokens: [token],
         overlapping,
-        overlappingIds,
+        fullOverlapping,
+        groupKey,
         startIndex: i,
         endIndex: i + 1,
       };
@@ -159,10 +175,23 @@ export function buildAnnotatedHTML(blocks, overlapClass, baseClass) {
       .map((t) => generateRuby(t.surface, t.reading))
       .join("");
 
-    if (group.overlapping.length > 0) {
-      html += `<span class="${overlapClass}" data-start="${group.startIndex}" data-end="${group.endIndex}">${content}</span>`;
+    const allRelevantBlocks = [
+      ...group.overlapping,
+      ...(group.fullOverlapping || []),
+    ];
+    let fullStart = group.startIndex;
+    let fullEnd = group.endIndex;
+
+    if (allRelevantBlocks.length > 0) {
+      fullStart = Math.min(
+        ...allRelevantBlocks.map((b) => b.fullStartIndex ?? b.startIndex),
+      );
+      fullEnd = Math.max(
+        ...allRelevantBlocks.map((b) => b.fullEndIndex ?? b.endIndex),
+      );
+      html += `<span class="${overlapClass}" data-start="${group.startIndex}" data-end="${group.endIndex}" data-full-start="${fullStart}" data-full-end="${fullEnd}">${content}</span>`;
     } else {
-      html += `<span class="${baseClass}" data-start="${group.startIndex}" data-end="${group.endIndex}">${content}</span>`;
+      html += `<span class="${baseClass}" data-start="${group.startIndex}" data-end="${group.endIndex}" data-full-start="${fullStart}" data-full-end="${fullEnd}">${content}</span>`;
     }
   }
   return html;
@@ -188,14 +217,18 @@ export function buildTooltipData(
     changed = false;
     for (const block of matchBlocks) {
       if (connectedBlocks.has(block)) continue;
-      if (block.startIndex < maxEnd && block.endIndex > minStart) {
+
+      const bStart = block.fullStartIndex ?? block.startIndex;
+      const bEnd = block.fullEndIndex ?? block.endIndex;
+
+      if (bStart < maxEnd && bEnd > minStart) {
         connectedBlocks.add(block);
-        if (block.startIndex < minStart) {
-          minStart = block.startIndex;
+        if (bStart < minStart) {
+          minStart = bStart;
           changed = true;
         }
-        if (block.endIndex > maxEnd) {
-          maxEnd = block.endIndex;
+        if (bEnd > maxEnd) {
+          maxEnd = bEnd;
           changed = true;
         }
       }
@@ -218,6 +251,8 @@ export function buildTooltipData(
         block: block,
         startIndex: block.startIndex,
         endIndex: block.endIndex,
+        fullStartIndex: block.fullStartIndex ?? block.startIndex,
+        fullEndIndex: block.fullEndIndex ?? block.endIndex,
       });
 
       if (block.innerWords && block.innerWords.length > 0) {
@@ -232,6 +267,8 @@ export function buildTooltipData(
             tense: word.tense,
             startIndex: block.startIndex,
             endIndex: block.endIndex,
+            fullStartIndex: block.fullStartIndex ?? block.startIndex,
+            fullEndIndex: block.fullEndIndex ?? block.endIndex,
           };
           extractedItems.push({
             text: innerText,
@@ -239,6 +276,8 @@ export function buildTooltipData(
             block: syntheticWordBlock,
             startIndex: block.startIndex,
             endIndex: block.endIndex,
+            fullStartIndex: syntheticWordBlock.fullStartIndex,
+            fullEndIndex: syntheticWordBlock.fullEndIndex,
           });
         });
       }
@@ -249,6 +288,8 @@ export function buildTooltipData(
         block: block,
         startIndex: block.startIndex,
         endIndex: block.endIndex,
+        fullStartIndex: block.fullStartIndex ?? block.startIndex,
+        fullEndIndex: block.fullEndIndex ?? block.endIndex,
       });
     }
   });
@@ -262,6 +303,8 @@ export function buildTooltipData(
         items: [],
         startIndex: item.startIndex,
         endIndex: item.endIndex,
+        fullStartIndex: item.fullStartIndex,
+        fullEndIndex: item.fullEndIndex,
       };
       groupedItems.push(existingGroup);
     }
@@ -282,6 +325,14 @@ export function buildTooltipData(
       item.startIndex,
     );
     existingGroup.endIndex = Math.max(existingGroup.endIndex, item.endIndex);
+    existingGroup.fullStartIndex = Math.min(
+      existingGroup.fullStartIndex,
+      item.fullStartIndex,
+    );
+    existingGroup.fullEndIndex = Math.max(
+      existingGroup.fullEndIndex,
+      item.fullEndIndex,
+    );
   });
 
   // Sort logically: Priority to earlier start indexes, then longer spans
@@ -292,23 +343,23 @@ export function buildTooltipData(
 
   let activeTabIndex = 0;
 
-  // 1. Longest match starting exactly at the hovered token
-  // Because the array is sorted by startIndex ASC, then endIndex DESC (longest first),
-  // finding the first one that matches the hover start will inherently find the longest.
-  let bestMatchIdx = groupedItems.findIndex((g) => g.startIndex === hoverStart);
+  let bestMatchIdx = groupedItems.findIndex(
+    (g) => (g.fullStartIndex ?? g.startIndex) === hoverStart,
+  );
 
   if (bestMatchIdx !== -1) {
     activeTabIndex = bestMatchIdx;
   } else {
-    // 2. If hovering over a middle element, default to the shortest encompassing match.
-    // This allows the user to drill down easily into smaller tokens inside of a larger structure.
     let shortestEncompassingIdx = -1;
     let minLength = Infinity;
 
     for (let i = 0; i < groupedItems.length; i++) {
       const g = groupedItems[i];
-      if (g.startIndex <= hoverStart && g.endIndex >= hoverEnd) {
-        const length = g.endIndex - g.startIndex;
+      const gStart = g.fullStartIndex ?? g.startIndex;
+      const gEnd = g.fullEndIndex ?? g.endIndex;
+
+      if (gStart <= hoverStart && gEnd >= hoverEnd) {
+        const length = gEnd - gStart;
         if (length < minLength) {
           minLength = length;
           shortestEncompassingIdx = i;
@@ -336,7 +387,7 @@ export function buildTooltipData(
   let panelsHtml = `<div class="tooltip-panels">`;
   groupedItems.forEach((group, idx) => {
     const activeClass = idx === activeTabIndex ? "active" : "";
-    panelsHtml += `<div class="tab-panel ${activeClass}" id="tab-panel-${idx}" data-start="${group.startIndex}" data-end="${group.endIndex}">`;
+    panelsHtml += `<div class="tab-panel ${activeClass}" id="tab-panel-${idx}" data-start="${group.startIndex}" data-end="${group.endIndex}" data-full-start="${group.fullStartIndex}" data-full-end="${group.fullEndIndex}">`;
 
     group.items.forEach((item, itemIdx) => {
       if (itemIdx > 1) panelsHtml += `<hr class="panel-separator" />`;

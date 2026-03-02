@@ -398,6 +398,11 @@ body.hide-furigana ruby rt {
   border-radius: 3px;
 }
 
+.highlighted-full-token {
+  background-color: #f6ffe0;
+  border-radius: 3px;
+}
+
 /* Dictionary Header */
 .dict-header-title {
   margin-top: 0;

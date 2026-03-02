@@ -179,276 +179,6 @@ export class IyakuMatcher {
   }
 
   /**
-   * Accepts raw text and outputs an array of structured blocks (Pure JS Objects)
-   * free of any UI/DOM logic.
-   */
-  match(text, options = {}) {
-    const {
-      activePOS = new Set([
-        "動詞",
-        "助動詞",
-        "助詞",
-        "名詞",
-        "形容詞",
-        "副詞",
-        "形状詞",
-        "代名詞",
-        "接尾辞",
-        "連体詞",
-      ]),
-      isGrammarEnabled = true,
-    } = options;
-    if (!this.sudachi || !this.dictDB || !text.trim()) return [];
-
-    const rawTokens = JSON.parse(this.sudachi.tokenize_stringified(text, 0));
-    let activeGrammar = [];
-
-    if (isGrammarEnabled) {
-      let grammarRanges = [];
-      for (const ruleJson of this.rules) {
-        const rule = new GrammarRule(ruleJson);
-        const matches = rule.scan(rawTokens);
-        matches.forEach((m) => {
-          grammarRanges.push({
-            start: m.index,
-            end: m.index + m.length,
-            data: ruleJson,
-          });
-        });
-      }
-      grammarRanges.sort(
-        (a, b) => b.end - b.start - (a.end - a.start) || a.start - b.start,
-      );
-
-      const usedTokens = new Set();
-      for (const r of grammarRanges) {
-        let conflict = false;
-        for (let i = r.start; i < r.end; i++) {
-          if (usedTokens.has(i)) conflict = true;
-        }
-        if (!conflict) {
-          activeGrammar.push(r);
-          for (let i = r.start; i < r.end; i++) usedTokens.add(i);
-        }
-      }
-
-      // Extend grammar match to include trailing conjugations
-      for (const match of activeGrammar) {
-        let nextIdx = match.end;
-        while (nextIdx < rawTokens.length) {
-          if (activeGrammar.some((other) => other.start === nextIdx)) break;
-          const nextToken = rawTokens[nextIdx];
-          if (this.shouldGroup(nextToken)) {
-            match.end++;
-            nextIdx++;
-          } else {
-            break;
-          }
-        }
-      }
-    }
-
-    const resultBlocks = [];
-    let i = 0;
-
-    while (i < rawTokens.length) {
-      // 1. Check Grammar Matches
-      const gMatch = activeGrammar.find((r) => r.start === i);
-      if (gMatch) {
-        let innerWords = [];
-        let seenInner = new Set();
-        let blockTokens = [];
-
-        for (let j = gMatch.start; j < gMatch.end; j++) {
-          const t = rawTokens[j];
-          const tPosArray = t.poses || t.pos;
-          const tPos = this.getPos(t);
-
-          blockTokens.push({
-            surface: t.surface,
-            reading: this.katakanaToHiragana(t.reading_form),
-          });
-
-          if (
-            ["動詞", "形容詞", "形状詞", "名詞"].includes(tPos) &&
-            t.dictionary_form
-          ) {
-            let compoundSurface = t.surface;
-            for (let k = j + 1; k < gMatch.end; k++) {
-              compoundSurface += rawTokens[k].surface;
-            }
-
-            let validForm = t.dictionary_form;
-            if (
-              !this.searchDictionary(validForm, tPosArray) &&
-              t.normalized_form
-            ) {
-              if (this.searchDictionary(t.normalized_form, tPosArray)) {
-                validForm = t.normalized_form;
-              }
-            }
-
-            let tenseMatches = [];
-            if (tPos === "動詞") {
-              tenseMatches = this.tenseDetector.detect(
-                validForm,
-                compoundSurface,
-              );
-            }
-
-            if (!seenInner.has(validForm)) {
-              seenInner.add(validForm);
-              innerWords.push({
-                kanji: validForm,
-                surface: compoundSurface,
-                pos: tPos,
-                posArray: tPosArray,
-                tense: tenseMatches,
-              });
-            }
-          }
-        }
-
-        resultBlocks.push({
-          type: "grammar",
-          ruleData: gMatch.data,
-          tokens: blockTokens,
-          innerWords: innerWords,
-        });
-        i = gMatch.end;
-        continue;
-      }
-
-      // 2. Check Dictionary Compounds
-      let bestCompound = null;
-      let maxLen = 0;
-      const startPos = this.getPos(rawTokens[i]);
-
-      // Allow compound building unless starting token is an auxiliary
-      if (!["助動詞", "助詞"].includes(startPos)) {
-        for (let len = this.COMPOUND_LOOKAHEAD_LIMIT; len >= 2; len--) {
-          if (i + len > rawTokens.length) continue;
-
-          let overlap = false;
-          for (let k = 0; k < len; k++) {
-            if (activeGrammar.some((r) => r.start === i + k)) {
-              overlap = true;
-              break;
-            }
-          }
-          if (overlap) continue;
-
-          const slice = rawTokens.slice(i, i + len);
-          const combinedSurface = slice.map((t) => t.surface).join("");
-
-          // Synthesize correct dictionary forms (e.g., 飛び + 出す = 飛び出す)
-          const combinedDictForm =
-            slice
-              .slice(0, -1)
-              .map((t) => t.surface)
-              .join("") + slice[slice.length - 1].dictionary_form;
-          const combinedNormForm =
-            slice
-              .slice(0, -1)
-              .map((t) => t.surface)
-              .join("") + slice[slice.length - 1].normalized_form;
-
-          if (this.dictDB.index[combinedDictForm]) {
-            bestCompound = {
-              slice,
-              surface: combinedSurface,
-              dictForm: combinedDictForm,
-              normForm: combinedNormForm,
-            };
-            maxLen = len;
-            break;
-          } else if (this.dictDB.index[combinedNormForm]) {
-            bestCompound = {
-              slice,
-              surface: combinedSurface,
-              dictForm: combinedNormForm,
-              normForm: combinedNormForm,
-            };
-            maxLen = len;
-            break;
-          } else if (this.dictDB.index[combinedSurface]) {
-            bestCompound = {
-              slice,
-              surface: combinedSurface,
-              dictForm: combinedSurface,
-              normForm: combinedSurface,
-            };
-            maxLen = len;
-            break;
-          }
-        }
-      }
-
-      // 3. Setup Base Word Details
-      let baseTokens = [];
-      let basePos = "";
-      let baseDictForm = "";
-      let baseNormForm = "";
-      let baseSurface = "";
-      let nextIndex = i;
-
-      if (bestCompound) {
-        baseTokens = bestCompound.slice;
-        basePos = this.getPos(baseTokens[baseTokens.length - 1]);
-        baseDictForm = bestCompound.dictForm;
-        baseNormForm = bestCompound.normForm;
-        baseSurface = bestCompound.surface;
-        nextIndex = i + maxLen;
-      } else {
-        const current = rawTokens[i];
-        baseTokens = [current];
-        basePos = this.getPos(current);
-        baseDictForm = current.dictionary_form;
-        baseNormForm = current.normalized_form;
-        baseSurface = current.surface;
-        nextIndex = i + 1;
-      }
-
-      // 4. Group Traling Conjugations / Auxiliary items
-      let groupTokens = [...baseTokens];
-      let groupedSurface = baseSurface;
-
-      if (["動詞", "形容詞", "形状詞"].includes(basePos)) {
-        while (nextIndex < rawTokens.length) {
-          if (activeGrammar.some((r) => r.start === nextIndex)) break;
-          const nextToken = rawTokens[nextIndex];
-          if (this.shouldGroup(nextToken)) {
-            groupTokens.push(nextToken);
-            groupedSurface += nextToken.surface;
-            nextIndex++;
-          } else {
-            break;
-          }
-        }
-      }
-
-      const groupObj = {
-        isGroup: true,
-        tokens: groupTokens,
-        baseToken: {
-          ...baseTokens[0],
-          dictionary_form: baseDictForm,
-          normalized_form: baseNormForm,
-          poses:
-            baseTokens[baseTokens.length - 1].poses ||
-            baseTokens[baseTokens.length - 1].pos,
-        },
-        surface: groupedSurface,
-      };
-
-      resultBlocks.push(this._processTokenOrGroup(groupObj, activePOS));
-      i = nextIndex;
-    }
-
-    return resultBlocks;
-  }
-
-  /**
    * Accepts raw text and outputs an array of ALL matching structured blocks
    * (Grammar rules, Dictionary compounds, and Base words), preserving overlaps.
    */
@@ -473,7 +203,7 @@ export class IyakuMatcher {
     const rawTokens = JSON.parse(this.sudachi.tokenize_stringified(text, 0));
     let allMatches = [];
 
-    // 1. Process All Grammar Matches (No Conflict Filtering)
+    // 1. Process All Grammar Matches
     if (isGrammarEnabled) {
       let grammarRanges = [];
       for (const ruleJson of this.rules) {
@@ -483,6 +213,9 @@ export class IyakuMatcher {
           grammarRanges.push({
             start: m.index,
             end: m.index + m.length,
+            fullStart: m.fullIndex,
+            fullEnd: m.fullIndex + m.fullLength,
+            fullText: m.fullText,
             data: ruleJson,
           });
         });
@@ -499,6 +232,10 @@ export class IyakuMatcher {
           } else {
             break;
           }
+        }
+        // Ensure fullEnd encompasses the newly extended targeted end
+        if (match.fullEnd !== undefined && match.fullEnd < match.end) {
+          match.fullEnd = match.end;
         }
       }
 
@@ -562,6 +299,9 @@ export class IyakuMatcher {
           type: "grammar",
           startIndex: gMatch.start,
           endIndex: gMatch.end,
+          fullStartIndex: gMatch.fullStart,
+          fullEndIndex: gMatch.fullEnd,
+          fullText: gMatch.fullText,
           ruleData: gMatch.data,
           tokens: blockTokens,
           innerWords: innerWords,
