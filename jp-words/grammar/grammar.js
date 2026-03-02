@@ -195,7 +195,7 @@ function hideTooltip() {
 
 function scheduleHide() {
   if (hoverTimeout) clearTimeout(hoverTimeout);
-  hoverTimeout = setTimeout(hideTooltip, 200000);
+  hoverTimeout = setTimeout(hideTooltip, 200);
 }
 
 function cancelHide() {
