@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Japanese OCR Book Reader</title>
+    <!-- Include Panzoom Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
     <style>
       /* Apply border-box globally to prevent padding from expanding widths */
       * {
@@ -61,26 +63,22 @@
         max-width: 1200px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background-color: white;
-      }
-
-      #bookImage {
-        width: 100%;
-        height: auto;
-        display: block;
+        overflow: hidden; /* Prevent zoomed SVG from spilling outside container */
       }
 
       #overlaySvg {
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
-        height: 100%;
-        z-index: 10;
+        height: auto;
+        display: block;
+        cursor: move;
+        user-select: none;
+        touch-action: none;
+        transform-origin: 50% 50%;
       }
 
       .bbox-rect {
         fill: transparent;
-        stroke: #28a745;
+        stroke: rgba(0, 0, 0, 0);
         stroke-width: 1px;
         cursor: pointer;
         -webkit-tap-highlight-color: transparent; /* Remove mobile blue tap flash */
@@ -201,9 +199,40 @@
       <span class="shortcut-hint">(Use Left / Right arrow keys)</span>
     </div>
 
+    <!-- Replaced separate image and svg layers with a single svg combining both -->
     <div class="reader-wrapper">
-      <img id="bookImage" alt="Book Page" />
-      <svg id="overlaySvg" xmlns="http://www.w3.org/2000/svg"></svg>
+      <svg id="overlaySvg" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern
+            id="bg-pattern"
+            patternUnits="userSpaceOnUse"
+            width="100%"
+            height="100%"
+            x="0"
+            y="0"
+          >
+            <image
+              id="bookImagePattern"
+              href=""
+              x="0"
+              y="0"
+              width="100%"
+              height="100%"
+            ></image>
+          </pattern>
+        </defs>
+        <g fill="none" class="img">
+          <rect
+            id="bg-rect"
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+            fill="url(#bg-pattern)"
+          ></rect>
+        </g>
+        <g id="bboxesGroup" class="bboxes"></g>
+      </svg>
     </div>
 
     <div class="text-panels">
@@ -219,13 +248,14 @@
       const MIN_PAGE = 1;
       const MAX_PAGE = 84;
       let currentPage = 1;
+      let panzoomInstance = null; // Hold Panzoom globally
 
       // DOM Elements
       const btnBack = document.getElementById("btnBack");
       const btnNext = document.getElementById("btnNext");
       const pageIndicator = document.getElementById("pageIndicator");
-      const bookImage = document.getElementById("bookImage");
       const overlaySvg = document.getElementById("overlaySvg");
+      const bboxesGroup = document.getElementById("bboxesGroup");
       const fullTextDisplay = document.getElementById("fullText");
       const tooltip = document.getElementById("tooltip");
 
@@ -282,15 +312,22 @@
         btnNext.disabled = pageNum >= MAX_PAGE;
         fullTextDisplay.innerText = "Loading...";
 
-        overlaySvg.innerHTML = "";
+        bboxesGroup.innerHTML = "";
         tooltip.classList.remove("visible");
+
+        // Reset Panzoom scale and position safely on page load
+        if (panzoomInstance) {
+          panzoomInstance.reset();
+        }
 
         const fileBase = `out-${padNumber(pageNum)}`;
         const imgPath = `input/${fileBase}.jpg`;
         const jsonPath = `output/${fileBase}.json`;
 
         try {
-          bookImage.src = imgPath;
+          const bookImagePattern = document.getElementById("bookImagePattern");
+          bookImagePattern.setAttribute("href", imgPath);
+
           const response = await fetch(jsonPath);
           if (!response.ok) throw new Error(`Could not find ${jsonPath}`);
           const data = await response.json();
@@ -299,7 +336,7 @@
         } catch (error) {
           console.error(error);
           fullTextDisplay.innerText = `Error loading page data: ${error.message}`;
-          overlaySvg.innerHTML = "";
+          bboxesGroup.innerHTML = "";
         }
       }
 
@@ -392,7 +429,7 @@
             }, GRACE_PERIOD_MS);
           });
 
-          overlaySvg.appendChild(rect);
+          bboxesGroup.appendChild(rect);
         });
 
         fullTextDisplay.innerText = fullPageTextAccumulator.join("　");
@@ -415,7 +452,33 @@
         }
       });
 
-      // Init
+      // Init Panzoom on the single overlaySvg element
+      panzoomInstance = Panzoom(overlaySvg, {
+        minScale: 1,
+        maxScale: 2,
+        setTransform: (elem, { scale, x, y }) => {
+          // Clamp bounds
+          if (y < -250) y = -250;
+          if (y > 250) y = 250;
+          if (x < -150) x = -150;
+          if (x > 150) x = 150;
+
+          // In case the instance is somehow not initialized yet when this is first called
+          if (panzoomInstance) {
+            panzoomInstance.setStyle(
+              "transform",
+              `scale(${scale}) translate(${x}px, ${y}px)`,
+            );
+          } else {
+            elem.style.transform = `scale(${scale}) translate(${x}px, ${y}px)`;
+          }
+        },
+      });
+
+      // Enable wheel zooming
+      overlaySvg.addEventListener("wheel", panzoomInstance.zoomWithWheel);
+
+      // Load initial page
       loadPage(currentPage);
     </script>
   </body>
