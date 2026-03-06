@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Japanese OCR Book Reader</title>
     <style>
+      /* Apply border-box globally to prevent padding from expanding widths */
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         font-family: "Noto Sans JP", sans-serif, Arial;
         background-color: #f4f4f9;
@@ -14,12 +19,15 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow-x: hidden; /* Prevent horizontal scroll completely */
       }
 
       .controls {
         margin-bottom: 20px;
         display: flex;
         align-items: center;
+        justify-content: center;
+        flex-wrap: wrap; /* Allows wrapping on small screens */
         gap: 15px;
       }
 
@@ -45,7 +53,6 @@
       .shortcut-hint {
         font-size: 12px;
         color: #777;
-        margin-left: 10px;
       }
 
       .reader-wrapper {
@@ -76,12 +83,21 @@
         stroke: #28a745;
         stroke-width: 1px;
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent; /* Remove mobile blue tap flash */
         transition:
           stroke-width 0.1s,
           stroke 0.1s;
       }
 
-      .bbox-rect:hover {
+      @media (hover: hover) {
+        .bbox-rect:hover {
+          stroke: #dc3545;
+          stroke-width: 3px;
+        }
+      }
+
+      /* Keep box thick if it's currently selected on mobile */
+      .bbox-rect.active-tap {
         stroke: #dc3545;
         stroke-width: 3px;
       }
@@ -126,12 +142,14 @@
         font-weight: bold;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 
-        /* Crucial changes for interacting with the tooltip */
+        /* Mobile-friendly multi-line handling */
+        white-space: pre-wrap; /* Allows text to break into new lines */
+        word-break: break-all; /* Best for wrapping Japanese characters */
+        max-width: 90vw; /* Keeps it strictly inside the viewport horizontally */
+
         pointer-events: auto;
         cursor: text;
-
         z-index: 1000;
-        white-space: nowrap;
 
         /* Hidden state */
         opacity: 0;
@@ -151,6 +169,27 @@
       .tooltip::selection {
         background-color: #007bff;
         color: white;
+      }
+
+      /* Responsive Adjustments for Mobile */
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+        .controls {
+          gap: 10px;
+        }
+        .shortcut-hint {
+          display: none; /* Hide shortcut hint to save space on mobile */
+        }
+        .tooltip {
+          font-size: 16px;
+          padding: 10px 14px;
+          max-width: 95vw;
+        }
+        #fullText {
+          font-size: 16px;
+        }
       }
     </style>
   </head>
@@ -194,16 +233,28 @@
       const GRACE_PERIOD_MS = 300; // Time allowed to move mouse into tooltip
 
       // --- Tooltip self-interaction events ---
-      // If mouse enters the tooltip, cancel the hiding timeout
       tooltip.addEventListener("mouseenter", () => {
         clearTimeout(hideTooltipTimeout);
       });
 
-      // If mouse leaves the tooltip, start the hiding timeout
       tooltip.addEventListener("mouseleave", () => {
         hideTooltipTimeout = setTimeout(() => {
           tooltip.classList.remove("visible");
         }, GRACE_PERIOD_MS);
+      });
+
+      // Global dismiss for touch/mobile devices
+      document.addEventListener("click", (e) => {
+        // Hide tooltip if user clicks outside of bounding boxes and outside the tooltip
+        if (
+          !e.target.closest(".tooltip") &&
+          !e.target.classList.contains("bbox-rect")
+        ) {
+          tooltip.classList.remove("visible");
+          document
+            .querySelectorAll(".bbox-rect")
+            .forEach((el) => el.classList.remove("active-tap"));
+        }
       });
 
       // Helper to format numbers
@@ -260,6 +311,43 @@
         let fullPageTextAccumulator = [];
         const contents = data.contents[0];
 
+        // Centralized function to position tooltip (works for clicks and mouseenter)
+        const showTooltip = (e, text, rectElement) => {
+          clearTimeout(hideTooltipTimeout);
+
+          document
+            .querySelectorAll(".bbox-rect")
+            .forEach((el) => el.classList.remove("active-tap"));
+          rectElement.classList.add("active-tap");
+
+          tooltip.innerText = text;
+          tooltip.classList.add("visible");
+
+          const offset = 15;
+          let x = e.clientX + offset;
+          let y = e.clientY + offset;
+
+          const tw = tooltip.offsetWidth;
+          const th = tooltip.offsetHeight;
+
+          // Keep within right edge (flip to the left of the cursor)
+          if (x + tw > window.innerWidth - offset) {
+            x = e.clientX - tw - offset;
+          }
+
+          // Keep within bottom edge (flip to above the cursor)
+          if (y + th > window.innerHeight - offset) {
+            y = e.clientY - th - offset;
+          }
+
+          // Ultimate boundaries: strictly prevent negative coordinates pushing tooltip off-screen top/left
+          x = Math.max(offset, x);
+          y = Math.max(offset, y);
+
+          tooltip.style.left = `${x}px`;
+          tooltip.style.top = `${y}px`;
+        };
+
         contents.forEach((item) => {
           fullPageTextAccumulator.push(item.text);
 
@@ -285,42 +373,24 @@
 
           // --- BOUNDING BOX EVENTS ---
 
-          rect.addEventListener("mouseenter", (e) => {
-            // Cancel any ongoing hide process
-            clearTimeout(hideTooltipTimeout);
+          // Desktop Hover
+          rect.addEventListener("mouseenter", (e) =>
+            showTooltip(e, item.text, rect),
+          );
 
-            tooltip.innerText = item.text;
-
-            // Show it first so we can measure its true width/height
-            tooltip.classList.add("visible");
-
-            // Calculate position based on mouse entry coordinates
-            const offset = 15;
-            let x = e.clientX + offset;
-            let y = e.clientY + offset;
-
-            // Keep within right edge
-            if (x + tooltip.offsetWidth > window.innerWidth - offset) {
-              x = e.clientX - tooltip.offsetWidth - offset;
-            }
-
-            // Keep within bottom edge
-            if (y + tooltip.offsetHeight > window.innerHeight - offset) {
-              y = e.clientY - tooltip.offsetHeight - offset;
-            }
-
-            tooltip.style.left = `${Math.max(offset, x)}px`;
-            tooltip.style.top = `${Math.max(offset, y)}px`;
+          // Mobile Tap Support
+          rect.addEventListener("click", (e) => {
+            e.stopPropagation(); // Don't let global document click hide it instantly
+            showTooltip(e, item.text, rect);
           });
 
+          // Mouse Leave
           rect.addEventListener("mouseleave", () => {
-            // Start the grace period when leaving the bounding box
+            rect.classList.remove("active-tap");
             hideTooltipTimeout = setTimeout(() => {
               tooltip.classList.remove("visible");
             }, GRACE_PERIOD_MS);
           });
-
-          // NOTE: mousemove is intentionally removed so the tooltip remains static
 
           overlaySvg.appendChild(rect);
         });
