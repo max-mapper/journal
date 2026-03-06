@@ -1,0 +1,662 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1655,
+            188
+          ],
+          [
+            1655,
+            1059
+          ],
+          [
+            1684,
+            188
+          ],
+          [
+            1684,
+            1059
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "むかし、川ぎしのあしはらのなかに、一わのすずめがすをかけて、たまご",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            1611,
+            160
+          ],
+          [
+            1611,
+            1062
+          ],
+          [
+            1638,
+            160
+          ],
+          [
+            1638,
+            1062
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "をそだてていた。そして、すにはいって歌をうたっていると、その歌をきき",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            1571,
+            160
+          ],
+          [
+            1571,
+            569
+          ],
+          [
+            1594,
+            160
+          ],
+          [
+            1594,
+            569
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "つけて、一ぴきのさるがでてきて、",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            1523,
+            166
+          ],
+          [
+            1523,
+            1065
+          ],
+          [
+            1548,
+            166
+          ],
+          [
+            1548,
+            1065
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "「すずめどん、すずめどん。おらも歌うまくなるように、たまごをつるつるつる",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            1477,
+            152
+          ],
+          [
+            1477,
+            474
+          ],
+          [
+            1503,
+            152
+          ],
+          [
+            1503,
+            474
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "のみてえが、 一つくれろ。」",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1430,
+            173
+          ],
+          [
+            1430,
+            1068
+          ],
+          [
+            1458,
+            173
+          ],
+          [
+            1458,
+            1068
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "すずめは、「かわいくって、くれられねえ。」とことわると、さるは、あし",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1386,
+            148
+          ],
+          [
+            1386,
+            346
+          ],
+          [
+            1407,
+            148
+          ],
+          [
+            1407,
+            346
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "にすがりついて、",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            1338,
+            160
+          ],
+          [
+            1338,
+            659
+          ],
+          [
+            1361,
+            160
+          ],
+          [
+            1361,
+            659
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「くれなけりゃ、すをひっくりかえすぞ。」",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1290,
+            144
+          ],
+          [
+            1290,
+            672
+          ],
+          [
+            1313,
+            144
+          ],
+          [
+            1313,
+            672
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "といって、ゆさゆさ、あしをふるいだした。",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1239,
+            168
+          ],
+          [
+            1239,
+            1069
+          ],
+          [
+            1268,
+            168
+          ],
+          [
+            1268,
+            1069
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "すずめは、すをひっくりかえされてはならないから、しかたなく、「これ一",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1188,
+            146
+          ],
+          [
+            1188,
+            828
+          ],
+          [
+            1215,
+            146
+          ],
+          [
+            1215,
+            828
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "つくれてやる。」と、たまごを一つさるにくれてやった。",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1138,
+            170
+          ],
+          [
+            1138,
+            1070
+          ],
+          [
+            1166,
+            170
+          ],
+          [
+            1166,
+            1070
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "すると、さるは、とちゅうまでいって、ぺろっと、たまごをのんで、また",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1088,
+            146
+          ],
+          [
+            1088,
+            370
+          ],
+          [
+            1110,
+            146
+          ],
+          [
+            1110,
+            370
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "ひっかえしてきた。",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            770,
+            174
+          ],
+          [
+            770,
+            1054
+          ],
+          [
+            798,
+            174
+          ],
+          [
+            798,
+            1054
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "「すずめどん、すずめどん。いま一つくれろ。くれねえと、すをひっくりか",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            722,
+            160
+          ],
+          [
+            722,
+            258
+          ],
+          [
+            746,
+            160
+          ],
+          [
+            746,
+            258
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "えすぞ。」",
+        "isTextline": "true",
+        "confidence": 0.884
+      },
+      {
+        "boundingBox": [
+          [
+            675,
+            161
+          ],
+          [
+            675,
+            1054
+          ],
+          [
+            701,
+            161
+          ],
+          [
+            701,
+            1054
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "といって、またゆさゆさと、あしをふるった。すずめは、しかたなく、また",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            626,
+            161
+          ],
+          [
+            626,
+            482
+          ],
+          [
+            652,
+            161
+          ],
+          [
+            652,
+            482
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "たまごを一つくれてやった。",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            580,
+            181
+          ],
+          [
+            580,
+            1057
+          ],
+          [
+            607,
+            181
+          ],
+          [
+            607,
+            1057
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "すると、さるはまたとちゅうまでいって、ぺろっとたまごをのんで、あし",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            531,
+            160
+          ],
+          [
+            531,
+            403
+          ],
+          [
+            553,
+            160
+          ],
+          [
+            553,
+            403
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "はらへもどってきた。",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            482,
+            171
+          ],
+          [
+            482,
+            790
+          ],
+          [
+            509,
+            171
+          ],
+          [
+            509,
+            790
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "「すずめどん、すずめどん。たまごまた一つくれろ。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            433,
+            170
+          ],
+          [
+            433,
+            656
+          ],
+          [
+            459,
+            170
+          ],
+          [
+            459,
+            656
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "「もう二つもやったから、くれられねえ。」",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            386,
+            171
+          ],
+          [
+            386,
+            655
+          ],
+          [
+            410,
+            171
+          ],
+          [
+            410,
+            655
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "「それじゃ、すをぶっくりかえしてやる。」",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            336,
+            184
+          ],
+          [
+            336,
+            1056
+          ],
+          [
+            363,
+            184
+          ],
+          [
+            363,
+            1056
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "こういって、さるは、あしをどさどさとゆすって、すをおとすと、のこり",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            289,
+            160
+          ],
+          [
+            289,
+            721
+          ],
+          [
+            315,
+            160
+          ],
+          [
+            315,
+            721
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "のたまごもみなのんで、山へかえってしまった。",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            240,
+            182
+          ],
+          [
+            240,
+            1056
+          ],
+          [
+            265,
+            182
+          ],
+          [
+            265,
+            1056
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "すずめは、バタバタとびまわりながら、つん、つんとないていたが、やが",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            192,
+            160
+          ],
+          [
+            192,
+            1068
+          ],
+          [
+            219,
+            160
+          ],
+          [
+            219,
+            1068
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "て、あっちの田へとんでったり、こっちの田へとんでったり、ほうぼうから、",
+        "isTextline": "true",
+        "confidence": 0.914
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1882,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-57.jpg",
+    "img_name": "out-57.jpg"
+  }
+}

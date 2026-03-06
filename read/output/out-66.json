@@ -1,0 +1,362 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1791,
+            73
+          ],
+          [
+            1791,
+            1177
+          ],
+          [
+            1809,
+            73
+          ],
+          [
+            1809,
+            1177
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "Comple the the the the the the the the the the the the the the the the the the the and the the the",
+        "isTextline": "true",
+        "confidence": 0.368
+      },
+      {
+        "boundingBox": [
+          [
+            1612,
+            187
+          ],
+          [
+            1612,
+            988
+          ],
+          [
+            1636,
+            187
+          ],
+          [
+            1636,
+            988
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "「そーら、こぞうめ、なわをそこへゆわえつけて、にげやがったか。」",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1568,
+            174
+          ],
+          [
+            1568,
+            765
+          ],
+          [
+            1594,
+            174
+          ],
+          [
+            1594,
+            765
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "と、山んばは、けっそうかえておいかけていった。",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1523,
+            200
+          ],
+          [
+            1523,
+            1067
+          ],
+          [
+            1547,
+            200
+          ],
+          [
+            1547,
+            1067
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "いっぽうこぞうは、だいぶにげて、そっとふりむくと、しらがをふりみだ",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1477,
+            168
+          ],
+          [
+            1477,
+            1057
+          ],
+          [
+            1502,
+            168
+          ],
+          [
+            1502,
+            1057
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "した山んばが、のんのんとはしってくるのがみえた。そして、「まて、まて、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1430,
+            169
+          ],
+          [
+            1430,
+            833
+          ],
+          [
+            1455,
+            169
+          ],
+          [
+            1455,
+            833
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "こぞう。」と、いまにもおいつきそうにちかづいてきた。",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1383,
+            196
+          ],
+          [
+            1383,
+            658
+          ],
+          [
+            1407,
+            196
+          ],
+          [
+            1407,
+            658
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "こぞうは、また一まいおふだをだして、",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1337,
+            179
+          ],
+          [
+            1337,
+            364
+          ],
+          [
+            1365,
+            179
+          ],
+          [
+            1365,
+            364
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「大川、でろ!」",
+        "isTextline": "true",
+        "confidence": 0.84
+      },
+      {
+        "boundingBox": [
+          [
+            1290,
+            164
+          ],
+          [
+            1290,
+            416
+          ],
+          [
+            1312,
+            164
+          ],
+          [
+            1312,
+            416
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "と、うしろへなげた。",
+        "isTextline": "true",
+        "confidence": 0.906
+      },
+      {
+        "boundingBox": [
+          [
+            1239,
+            189
+          ],
+          [
+            1239,
+            658
+          ],
+          [
+            1265,
+            189
+          ],
+          [
+            1265,
+            658
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "すると、うしろに、大きな川ができた。",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1192,
+            191
+          ],
+          [
+            1192,
+            1079
+          ],
+          [
+            1219,
+            191
+          ],
+          [
+            1219,
+            1079
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "山んばは、ごびごびと水をのみのみ、わしわしと川をわたらなければなら",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1144,
+            166
+          ],
+          [
+            1144,
+            280
+          ],
+          [
+            1165,
+            166
+          ],
+          [
+            1165,
+            280
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "なかった。",
+        "isTextline": "true",
+        "confidence": 0.908
+      },
+      {
+        "boundingBox": [
+          [
+            1093,
+            194
+          ],
+          [
+            1093,
+            1077
+          ],
+          [
+            1124,
+            194
+          ],
+          [
+            1124,
+            1077
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "こぞうは、 いまのうちにと、 はしりにはしったが、 またふりむくと、 川を",
+        "isTextline": "true",
+        "confidence": 0.91
+      },
+      {
+        "boundingBox": [
+          [
+            1046,
+            172
+          ],
+          [
+            1046,
+            1075
+          ],
+          [
+            1072,
+            172
+          ],
+          [
+            1072,
+            1075
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "こえた山んばが、「まて、まて、こぞう。」と、すぐにもおいつきそうに、ちか",
+        "isTextline": "true",
+        "confidence": 0.923
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1826,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-66.jpg",
+    "img_name": "out-66.jpg"
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1637,
+            172
+          ],
+          [
+            1637,
+            1074
+          ],
+          [
+            1661,
+            172
+          ],
+          [
+            1661,
+            1074
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "ににげていった。なかには、うろたえて、じざいかぎのはしにひっかかって、",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1592,
+            172
+          ],
+          [
+            1592,
+            743
+          ],
+          [
+            1616,
+            172
+          ],
+          [
+            1616,
+            743
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "いくらにげようにも、うごかれないおにもいた。",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            1547,
+            194
+          ],
+          [
+            1547,
+            1070
+          ],
+          [
+            1574,
+            194
+          ],
+          [
+            1574,
+            1070
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "じいさんは、わらいたくなるところを、じっとこらえて、すっかりおにど",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1501,
+            163
+          ],
+          [
+            1501,
+            743
+          ],
+          [
+            1529,
+            163
+          ],
+          [
+            1529,
+            743
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "もがいなくなるのをまった。すると、じぞうが、",
+        "isTextline": "true",
+        "confidence": 0.941
+      },
+      {
+        "boundingBox": [
+          [
+            1455,
+            176
+          ],
+          [
+            1455,
+            570
+          ],
+          [
+            1478,
+            176
+          ],
+          [
+            1478,
+            570
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「じいさ、じいさ。おりてこい。」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1409,
+            161
+          ],
+          [
+            1409,
+            1080
+          ],
+          [
+            1438,
+            161
+          ],
+          [
+            1438,
+            1080
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "とよぶので、もったいながりながら、じぞうのあたまからかたへ、かたから",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            1365,
+            160
+          ],
+          [
+            1365,
+            471
+          ],
+          [
+            1386,
+            160
+          ],
+          [
+            1386,
+            471
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "ひざへとつたっておりて、",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1319,
+            173
+          ],
+          [
+            1319,
+            1081
+          ],
+          [
+            1343,
+            173
+          ],
+          [
+            1343,
+            1081
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「おにどもがのこしてったぜに金を、みんなさらって、ばあさんにもってい",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1271,
+            156
+          ],
+          [
+            1271,
+            206
+          ],
+          [
+            1292,
+            156
+          ],
+          [
+            1292,
+            206
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "け。」",
+        "isTextline": "true",
+        "confidence": 0.89
+      },
+      {
+        "boundingBox": [
+          [
+            1222,
+            158
+          ],
+          [
+            1222,
+            1087
+          ],
+          [
+            1246,
+            158
+          ],
+          [
+            1246,
+            1087
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "といわれるとおりに、じぶんのきものをぬいで、おにどものぜに金を、ジャ",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1174,
+            160
+          ],
+          [
+            1174,
+            1077
+          ],
+          [
+            1198,
+            160
+          ],
+          [
+            1198,
+            1077
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "ラン、ポランとつつみこむと、じぞうにれいをいって、あなからもどった。",
+        "isTextline": "true",
+        "confidence": 0.938
+      },
+      {
+        "boundingBox": [
+          [
+            1124,
+            187
+          ],
+          [
+            1124,
+            1088
+          ],
+          [
+            1150,
+            187
+          ],
+          [
+            1150,
+            1088
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "じいさんが、ばあさんと、ぜに金をますにいれて、はかっていると、その",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1076,
+            161
+          ],
+          [
+            1076,
+            940
+          ],
+          [
+            1101,
+            161
+          ],
+          [
+            1101,
+            940
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "音をききつけて、となりのずるいばあさんが、火もらいにきて、",
+        "isTextline": "true",
+        "confidence": 0.918
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1842,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-45.jpg",
+    "img_name": "out-45.jpg"
+  }
+}

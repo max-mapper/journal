@@ -1,0 +1,437 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1609,
+            195
+          ],
+          [
+            1609,
+            1053
+          ],
+          [
+            1636,
+            195
+          ],
+          [
+            1636,
+            1053
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "じいさんは、ねずみたちの話をきいてかえると、またばあさんに、山でみ",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1567,
+            166
+          ],
+          [
+            1567,
+            1057
+          ],
+          [
+            1593,
+            166
+          ],
+          [
+            1593,
+            1057
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "ききしたことをはなして、そのばんも、もちをついて、二ひきぶん、とだな",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1525,
+            166
+          ],
+          [
+            1525,
+            1047
+          ],
+          [
+            1550,
+            166
+          ],
+          [
+            1550,
+            1047
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "のなかにいれておいた。ばあさんは、そのそばに、赤いふんどしを二すじ、",
+        "isTextline": "true",
+        "confidence": 0.938
+      },
+      {
+        "boundingBox": [
+          [
+            1485,
+            164
+          ],
+          [
+            1485,
+            335
+          ],
+          [
+            1505,
+            164
+          ],
+          [
+            1505,
+            335
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "そえておいた。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1437,
+            189
+          ],
+          [
+            1437,
+            629
+          ],
+          [
+            1458,
+            189
+          ],
+          [
+            1458,
+            629
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "あくるあさ、じいさんとばあさんは、",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1391,
+            174
+          ],
+          [
+            1391,
+            753
+          ],
+          [
+            1415,
+            174
+          ],
+          [
+            1415,
+            753
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「きのうは、だいぶごそごそしていたども……。」",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1345,
+            160
+          ],
+          [
+            1345,
+            1073
+          ],
+          [
+            1368,
+            160
+          ],
+          [
+            1368,
+            1073
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "といいながら、とだなをあけてみると、もちとふんどしはなくて、そのかわ",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1298,
+            158
+          ],
+          [
+            1298,
+            659
+          ],
+          [
+            1322,
+            158
+          ],
+          [
+            1322,
+            659
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "りに、ぜに金が山のようにおいてあった。",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1249,
+            186
+          ],
+          [
+            1249,
+            982
+          ],
+          [
+            1274,
+            186
+          ],
+          [
+            1274,
+            982
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "それから、 山へでかけていくと、 いつもより声たかく、",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1203,
+            216
+          ],
+          [
+            1203,
+            510
+          ],
+          [
+            1225,
+            216
+          ],
+          [
+            1225,
+            510
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "デンカショ、デンカショ",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1150,
+            162
+          ],
+          [
+            1150,
+            1078
+          ],
+          [
+            1175,
+            162
+          ],
+          [
+            1175,
+            1078
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "と、かけ声がきこえてきた。木のまからそっとのぞくと、二ひきのねずみは、",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1101,
+            165
+          ],
+          [
+            1101,
+            1075
+          ],
+          [
+            1125,
+            165
+          ],
+          [
+            1125,
+            1075
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "おなじように赤いふんどしをしめて、げんきにかけ声をかけてとりくんでい",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1053,
+            169
+          ],
+          [
+            1053,
+            1077
+          ],
+          [
+            1078,
+            169
+          ],
+          [
+            1078,
+            1077
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "たが、じいさんとこのねずみも、長者どんのねずみも、どっちもひくことな",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            756,
+            178
+          ],
+          [
+            756,
+            683
+          ],
+          [
+            779,
+            178
+          ],
+          [
+            779,
+            683
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "く、いくらとっても、しょうぶがつかない。",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            705,
+            201
+          ],
+          [
+            705,
+            1062
+          ],
+          [
+            729,
+            201
+          ],
+          [
+            729,
+            1062
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "じいさんもばあさんも、また、あしたも、すもうをみせてもらうべ、とい",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            657,
+            177
+          ],
+          [
+            657,
+            1068
+          ],
+          [
+            683,
+            177
+          ],
+          [
+            683,
+            1068
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "ってかえったが、長者どんのねずみが、まい日もってくるぜに金で、ずいぶ",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            607,
+            171
+          ],
+          [
+            607,
+            575
+          ],
+          [
+            634,
+            171
+          ],
+          [
+            634,
+            575
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "んな金もちになったということだ。",
+        "isTextline": "true",
+        "confidence": 0.92
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1822,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-30.jpg",
+    "img_name": "out-30.jpg"
+  }
+}

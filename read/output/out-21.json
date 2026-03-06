@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1599,
+            174
+          ],
+          [
+            1599,
+            817
+          ],
+          [
+            1623,
+            174
+          ],
+          [
+            1623,
+            817
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "たちまちのうちに、どこかへみえなくなってしまった。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1552,
+            185
+          ],
+          [
+            1552,
+            1061
+          ],
+          [
+            1583,
+            185
+          ],
+          [
+            1583,
+            1061
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "「しかたねえ。家にかえれば、ほんもののおかたがいるから、また、えすが",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1516,
+            170
+          ],
+          [
+            1516,
+            547
+          ],
+          [
+            1538,
+            170
+          ],
+          [
+            1538,
+            547
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "たをかいてもらえばよかろう。」",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            1466,
+            193
+          ],
+          [
+            1466,
+            1062
+          ],
+          [
+            1496,
+            193
+          ],
+          [
+            1496,
+            1062
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "彦はそうおもって、家にかえり、花にはなすと、花は、まゆねをよせて、",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1422,
+            179
+          ],
+          [
+            1422,
+            1073
+          ],
+          [
+            1449,
+            179
+          ],
+          [
+            1449,
+            1073
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「あに、それはこまったことになったなあ。だれかのところにおちて、おれ",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1379,
+            168
+          ],
+          [
+            1379,
+            762
+          ],
+          [
+            1403,
+            168
+          ],
+          [
+            1403,
+            762
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "がみつけられて、つれていかれたら、どうする。」",
+        "isTextline": "true",
+        "confidence": 0.94
+      },
+      {
+        "boundingBox": [
+          [
+            1332,
+            166
+          ],
+          [
+            1332,
+            905
+          ],
+          [
+            1358,
+            166
+          ],
+          [
+            1358,
+            905
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "といったから、彦はにわかにしんぱいになった。すると花は、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1284,
+            179
+          ],
+          [
+            1284,
+            843
+          ],
+          [
+            1308,
+            179
+          ],
+          [
+            1308,
+            843
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「いやいや、そんなことはあるめえ。だいじょうぶだ。」",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1234,
+            167
+          ],
+          [
+            1234,
+            421
+          ],
+          [
+            1260,
+            167
+          ],
+          [
+            1260,
+            421
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "といって、わらった。",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1185,
+            194
+          ],
+          [
+            1185,
+            1087
+          ],
+          [
+            1211,
+            194
+          ],
+          [
+            1211,
+            1087
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "ところが、つむじ風のさらったえすがたは、たこのように空をまって、と",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            1133,
+            171
+          ],
+          [
+            1133,
+            1086
+          ],
+          [
+            1169,
+            171
+          ],
+          [
+            1169,
+            1086
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "おくお城のにわにおちた。とのさんは、そのえすがたをみるなり、この世の",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1085,
+            174
+          ],
+          [
+            1085,
+            914
+          ],
+          [
+            1115,
+            174
+          ],
+          [
+            1115,
+            914
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "なかで、またとない美しいあねさんに、こころをうばわれて、",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1038,
+            190
+          ],
+          [
+            1038,
+            978
+          ],
+          [
+            1067,
+            190
+          ],
+          [
+            1067,
+            978
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「いますぐ、ここにかかれたきれいなあねをごてんにつれてこい。」",
+        "isTextline": "true",
+        "confidence": 0.928
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1775,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-21.jpg",
+    "img_name": "out-21.jpg"
+  }
+}

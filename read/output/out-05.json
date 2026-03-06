@@ -1,0 +1,487 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1625,
+            808
+          ],
+          [
+            1625,
+            941
+          ],
+          [
+            1643,
+            808
+          ],
+          [
+            1643,
+            941
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "作者紹介●瀬田貞二",
+        "isTextline": "true",
+        "confidence": 0.806
+      },
+      {
+        "boundingBox": [
+          [
+            1602,
+            814
+          ],
+          [
+            1602,
+            1036
+          ],
+          [
+            1618,
+            814
+          ],
+          [
+            1618,
+            1036
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "一九一六年、東京生まれ。東京大",
+        "isTextline": "true",
+        "confidence": 0.878
+      },
+      {
+        "boundingBox": [
+          [
+            1578,
+            811
+          ],
+          [
+            1578,
+            1036
+          ],
+          [
+            1594,
+            811
+          ],
+          [
+            1594,
+            1036
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "学国文科卒。現在、青山学院女子",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            1554,
+            813
+          ],
+          [
+            1554,
+            1037
+          ],
+          [
+            1571,
+            813
+          ],
+          [
+            1571,
+            1037
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "短大教授。児童文学の評論・翻訳",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1531,
+            814
+          ],
+          [
+            1531,
+            1037
+          ],
+          [
+            1547,
+            814
+          ],
+          [
+            1547,
+            1037
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "創作などにはば広く活躍、多数の",
+        "isTextline": "true",
+        "confidence": 0.898
+      },
+      {
+        "boundingBox": [
+          [
+            1508,
+            814
+          ],
+          [
+            1508,
+            942
+          ],
+          [
+            1524,
+            814
+          ],
+          [
+            1524,
+            942
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "著書・訳書がある。",
+        "isTextline": "true",
+        "confidence": 0.897
+      },
+      {
+        "boundingBox": [
+          [
+            1465,
+            816
+          ],
+          [
+            1465,
+            953
+          ],
+          [
+            1484,
+            816
+          ],
+          [
+            1484,
+            953
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "画家紹介●瀬川康男",
+        "isTextline": "true",
+        "confidence": 0.764
+      },
+      {
+        "boundingBox": [
+          [
+            1440,
+            823
+          ],
+          [
+            1440,
+            1049
+          ],
+          [
+            1457,
+            823
+          ],
+          [
+            1457,
+            1049
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "一九三二年、愛知県生まれ。中学",
+        "isTextline": "true",
+        "confidence": 0.898
+      },
+      {
+        "boundingBox": [
+          [
+            1415,
+            819
+          ],
+          [
+            1415,
+            1050
+          ],
+          [
+            1431,
+            819
+          ],
+          [
+            1431,
+            1050
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "時代から日本画を学ぶ。一九六七",
+        "isTextline": "true",
+        "confidence": 0.903
+      },
+      {
+        "boundingBox": [
+          [
+            1390,
+            820
+          ],
+          [
+            1390,
+            1052
+          ],
+          [
+            1407,
+            820
+          ],
+          [
+            1407,
+            1052
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "年「ふしぎなたけのこ」で国際絵本",
+        "isTextline": "true",
+        "confidence": 0.888
+      },
+      {
+        "boundingBox": [
+          [
+            1366,
+            821
+          ],
+          [
+            1366,
+            1045
+          ],
+          [
+            1382,
+            821
+          ],
+          [
+            1382,
+            1045
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "作家展グランプリを受賞。以後、",
+        "isTextline": "true",
+        "confidence": 0.903
+      },
+      {
+        "boundingBox": [
+          [
+            1340,
+            822
+          ],
+          [
+            1340,
+            1047
+          ],
+          [
+            1356,
+            822
+          ],
+          [
+            1356,
+            1047
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "意欲的に絵本に取りくんでいる。",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            1295,
+            822
+          ],
+          [
+            1295,
+            964
+          ],
+          [
+            1315,
+            822
+          ],
+          [
+            1315,
+            964
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "画家紹介●梶山俊夫",
+        "isTextline": "true",
+        "confidence": 0.815
+      },
+      {
+        "boundingBox": [
+          [
+            1269,
+            828
+          ],
+          [
+            1269,
+            1061
+          ],
+          [
+            1286,
+            828
+          ],
+          [
+            1286,
+            1061
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "一九三五年、東京生まれ。武蔵野",
+        "isTextline": "true",
+        "confidence": 0.908
+      },
+      {
+        "boundingBox": [
+          [
+            1243,
+            826
+          ],
+          [
+            1243,
+            1060
+          ],
+          [
+            1260,
+            826
+          ],
+          [
+            1260,
+            1060
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "美大中退、日大芸術学部卒。デザ",
+        "isTextline": "true",
+        "confidence": 0.906
+      },
+      {
+        "boundingBox": [
+          [
+            1216,
+            827
+          ],
+          [
+            1216,
+            1064
+          ],
+          [
+            1232,
+            827
+          ],
+          [
+            1232,
+            1064
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "イン関係から絵本や挿絵の方へは",
+        "isTextline": "true",
+        "confidence": 0.9
+      },
+      {
+        "boundingBox": [
+          [
+            1191,
+            830
+          ],
+          [
+            1191,
+            1064
+          ],
+          [
+            1206,
+            830
+          ],
+          [
+            1206,
+            1064
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "いる。主なものに「ごろはちだいみ",
+        "isTextline": "true",
+        "confidence": 0.899
+      },
+      {
+        "boundingBox": [
+          [
+            1163,
+            829
+          ],
+          [
+            1163,
+            1065
+          ],
+          [
+            1179,
+            829
+          ],
+          [
+            1179,
+            1065
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "ょうじん」(福音館)その他がある。",
+        "isTextline": "true",
+        "confidence": 0.909
+      },
+      {
+        "boundingBox": [
+          [
+            1110,
+            829
+          ],
+          [
+            1110,
+            939
+          ],
+          [
+            1126,
+            829
+          ],
+          [
+            1126,
+            939
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "装丁●辻村益朗",
+        "isTextline": "true",
+        "confidence": 0.755
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1787,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-05.jpg",
+    "img_name": "out-05.jpg"
+  }
+}

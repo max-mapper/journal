@@ -1,0 +1,37 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            268,
+            255
+          ],
+          [
+            268,
+            855
+          ],
+          [
+            687,
+            255
+          ],
+          [
+            687,
+            855
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",
+        "isTextline": "true",
+        "confidence": 0.941
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1880,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-56.jpg",
+    "img_name": "out-56.jpg"
+  }
+}

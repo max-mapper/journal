@@ -1,0 +1,212 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            829,
+            141
+          ],
+          [
+            829,
+            167
+          ],
+          [
+            843,
+            141
+          ],
+          [
+            843,
+            167
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "ず",
+        "isTextline": "true",
+        "confidence": 0
+      },
+      {
+        "boundingBox": [
+          [
+            774,
+            186
+          ],
+          [
+            774,
+            404
+          ],
+          [
+            794,
+            186
+          ],
+          [
+            794,
+            404
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "とうたったそうだ。",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            675,
+            205
+          ],
+          [
+            675,
+            504
+          ],
+          [
+            699,
+            205
+          ],
+          [
+            699,
+            504
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "おわかは、家にかえって、",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            626,
+            188
+          ],
+          [
+            626,
+            622
+          ],
+          [
+            651,
+            188
+          ],
+          [
+            651,
+            622
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "「じいさ、じいさ。いまかえったで。」",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            576,
+            186
+          ],
+          [
+            576,
+            739
+          ],
+          [
+            601,
+            186
+          ],
+          [
+            601,
+            739
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「ようきた、ようきた。さるどんはどうした?」",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            524,
+            187
+          ],
+          [
+            524,
+            595
+          ],
+          [
+            553,
+            187
+          ],
+          [
+            553,
+            595
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「川へながれて、死んでしもうた。」",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            478,
+            194
+          ],
+          [
+            478,
+            1067
+          ],
+          [
+            508,
+            194
+          ],
+          [
+            508,
+            1067
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "そして、おわかは、よい一生をすごしたということ。これで、いちゃポー",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            431,
+            170
+          ],
+          [
+            431,
+            307
+          ],
+          [
+            452,
+            170
+          ],
+          [
+            452,
+            307
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "ンとさけた。",
+        "isTextline": "true",
+        "confidence": 0.914
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1801,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-37.jpg",
+    "img_name": "out-37.jpg"
+  }
+}

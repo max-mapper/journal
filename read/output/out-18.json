@@ -1,0 +1,37 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            398,
+            218
+          ],
+          [
+            398,
+            912
+          ],
+          [
+            526,
+            218
+          ],
+          [
+            526,
+            912
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "えす外たあねさん",
+        "isTextline": "true",
+        "confidence": 0.58
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1739,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-18.jpg",
+    "img_name": "out-18.jpg"
+  }
+}

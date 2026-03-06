@@ -1,0 +1,112 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            95,
+            96
+          ],
+          [
+            95,
+            1140
+          ],
+          [
+            845,
+            96
+          ],
+          [
+            845,
+            1140
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "(23",
+        "isTextline": "true",
+        "confidence": 0.954
+      },
+      {
+        "boundingBox": [
+          [
+            959,
+            93
+          ],
+          [
+            959,
+            1156
+          ],
+          [
+            1673,
+            93
+          ],
+          [
+            1673,
+            1156
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "(1.",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            985,
+            1120
+          ],
+          [
+            985,
+            1136
+          ],
+          [
+            1005,
+            1120
+          ],
+          [
+            1005,
+            1136
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "と",
+        "isTextline": "true",
+        "confidence": 0.674
+      },
+      {
+        "boundingBox": [
+          [
+            108,
+            1096
+          ],
+          [
+            108,
+            1111
+          ],
+          [
+            125,
+            1096
+          ],
+          [
+            125,
+            1111
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "る",
+        "isTextline": "true",
+        "confidence": 0.472
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1732,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-09.jpg",
+    "img_name": "out-09.jpg"
+  }
+}

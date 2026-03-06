@@ -1,0 +1,37 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            148,
+            144
+          ],
+          [
+            148,
+            1071
+          ],
+          [
+            801,
+            144
+          ],
+          [
+            801,
+            1071
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "the and and and and and and and and and and and and and and",
+        "isTextline": "true",
+        "confidence": 0.947
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1827,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-41.jpg",
+    "img_name": "out-41.jpg"
+  }
+}

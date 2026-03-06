@@ -1,0 +1,662 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1641,
+            166
+          ],
+          [
+            1641,
+            909
+          ],
+          [
+            1669,
+            166
+          ],
+          [
+            1669,
+            909
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "と、こぞうはしっかりかんがえてみた。そして、おきあがって、",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1596,
+            175
+          ],
+          [
+            1596,
+            1006
+          ],
+          [
+            1629,
+            175
+          ],
+          [
+            1629,
+            1006
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "「ばっさ、ばっさ、おれ、はらがやめるから、べんじょさやってけろ。」",
+        "isTextline": "true",
+        "confidence": 0.941
+      },
+      {
+        "boundingBox": [
+          [
+            1564,
+            161
+          ],
+          [
+            1564,
+            328
+          ],
+          [
+            1584,
+            161
+          ],
+          [
+            1584,
+            328
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "と、たのむと、",
+        "isTextline": "true",
+        "confidence": 0.904
+      },
+      {
+        "boundingBox": [
+          [
+            1510,
+            170
+          ],
+          [
+            1510,
+            665
+          ],
+          [
+            1542,
+            170
+          ],
+          [
+            1542,
+            665
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "「なーに、かまわねえから、そこでしろ。」",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1465,
+            170
+          ],
+          [
+            1465,
+            665
+          ],
+          [
+            1499,
+            170
+          ],
+          [
+            1499,
+            665
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「べんじょでなけりゃ、おら、できねえ。」",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1426,
+            181
+          ],
+          [
+            1426,
+            487
+          ],
+          [
+            1461,
+            181
+          ],
+          [
+            1461,
+            487
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "山んばは、しかたなくて、",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1372,
+            165
+          ],
+          [
+            1372,
+            636
+          ],
+          [
+            1407,
+            165
+          ],
+          [
+            1407,
+            636
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「そいだら、こしへなわつけてやろう。」",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1329,
+            151
+          ],
+          [
+            1329,
+            1070
+          ],
+          [
+            1357,
+            151
+          ],
+          [
+            1357,
+            1070
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "と、こぞうのこしへなわをしばりつけ、そのはじを手ににぎって、こぞうを",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1287,
+            150
+          ],
+          [
+            1287,
+            324
+          ],
+          [
+            1308,
+            150
+          ],
+          [
+            1308,
+            324
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "そとへだした。",
+        "isTextline": "true",
+        "confidence": 0.909
+      },
+      {
+        "boundingBox": [
+          [
+            1232,
+            180
+          ],
+          [
+            1232,
+            1071
+          ],
+          [
+            1260,
+            180
+          ],
+          [
+            1260,
+            1071
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "こぞうは、そとのべんじょへはいると、いそいでこしのなわをといて、は",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1183,
+            150
+          ],
+          [
+            1183,
+            1072
+          ],
+          [
+            1210,
+            150
+          ],
+          [
+            1210,
+            1072
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "しらへしばりつけ、そのむすびめに、おしょうからもらった、おまもりふだ",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1137,
+            152
+          ],
+          [
+            1137,
+            378
+          ],
+          [
+            1158,
+            152
+          ],
+          [
+            1158,
+            378
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "を一まいはさむと、",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            1085,
+            169
+          ],
+          [
+            1085,
+            1069
+          ],
+          [
+            1110,
+            169
+          ],
+          [
+            1110,
+            1069
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「おふだ、おふだ。たのむから、おれがだいぶにげのびるまで、まだだって、",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            766,
+            168
+          ],
+          [
+            766,
+            318
+          ],
+          [
+            790,
+            168
+          ],
+          [
+            790,
+            318
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "いってけれ。」",
+        "isTextline": "true",
+        "confidence": 0.91
+      },
+      {
+        "boundingBox": [
+          [
+            719,
+            164
+          ],
+          [
+            719,
+            649
+          ],
+          [
+            745,
+            164
+          ],
+          [
+            745,
+            649
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "とたのんで、わらわらと、にげていった。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            668,
+            187
+          ],
+          [
+            668,
+            515
+          ],
+          [
+            697,
+            187
+          ],
+          [
+            697,
+            515
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "山んばは、 へやのなかから、",
+        "isTextline": "true",
+        "confidence": 0.903
+      },
+      {
+        "boundingBox": [
+          [
+            618,
+            175
+          ],
+          [
+            618,
+            504
+          ],
+          [
+            643,
+            175
+          ],
+          [
+            643,
+            504
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "「こぞう、こぞう、いいか。」",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            569,
+            163
+          ],
+          [
+            569,
+            515
+          ],
+          [
+            595,
+            163
+          ],
+          [
+            595,
+            515
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "と、なわをひくと、おふだが、",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            521,
+            175
+          ],
+          [
+            521,
+            637
+          ],
+          [
+            551,
+            175
+          ],
+          [
+            551,
+            637
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "「まだでるうんこ、さいづちごろしょ。」",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            475,
+            162
+          ],
+          [
+            475,
+            542
+          ],
+          [
+            500,
+            162
+          ],
+          [
+            500,
+            542
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "といった。 またいいかげんして、",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            428,
+            179
+          ],
+          [
+            428,
+            504
+          ],
+          [
+            451,
+            179
+          ],
+          [
+            451,
+            504
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "「こぞう、こぞう、いいか。」",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            383,
+            165
+          ],
+          [
+            383,
+            276
+          ],
+          [
+            402,
+            165
+          ],
+          [
+            402,
+            276
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "ときくと、",
+        "isTextline": "true",
+        "confidence": 0.872
+      },
+      {
+        "boundingBox": [
+          [
+            334,
+            180
+          ],
+          [
+            334,
+            636
+          ],
+          [
+            360,
+            180
+          ],
+          [
+            360,
+            636
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "「まだでるうんこ、さいづちごろしょ。」",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            287,
+            196
+          ],
+          [
+            287,
+            860
+          ],
+          [
+            315,
+            196
+          ],
+          [
+            315,
+            860
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "いくらまっても、「まだだ、まだだ。」というものだから、",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            239,
+            178
+          ],
+          [
+            239,
+            505
+          ],
+          [
+            262,
+            178
+          ],
+          [
+            262,
+            505
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "「えい、いいかげんにしろ。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            192,
+            170
+          ],
+          [
+            192,
+            1050
+          ],
+          [
+            223,
+            170
+          ],
+          [
+            223,
+            1050
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "と、山んばが、きつーんとひっぱると、べんじょが、がらがらとくずれおちた。",
+        "isTextline": "true",
+        "confidence": 0.904
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1871,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-65.jpg",
+    "img_name": "out-65.jpg"
+  }
+}

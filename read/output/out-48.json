@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1615,
+            172
+          ],
+          [
+            1615,
+            1058
+          ],
+          [
+            1641,
+            172
+          ],
+          [
+            1641,
+            1058
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "のさきに、はなのあなをひっかけて、ぷらさがったものもあったから、ごう",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1578,
+            168
+          ],
+          [
+            1578,
+            498
+          ],
+          [
+            1598,
+            168
+          ],
+          [
+            1598,
+            498
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "よくじいさんが、おもわず、",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            1533,
+            197
+          ],
+          [
+            1533,
+            482
+          ],
+          [
+            1554,
+            197
+          ],
+          [
+            1554,
+            482
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "エヘッエヘッエヘッ",
+        "isTextline": "true",
+        "confidence": 0.912
+      },
+      {
+        "boundingBox": [
+          [
+            1484,
+            166
+          ],
+          [
+            1484,
+            1071
+          ],
+          [
+            1511,
+            166
+          ],
+          [
+            1511,
+            1071
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "と、大わらいをしてしまった。そして、はりから手をすべらせて、おにども",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            1440,
+            163
+          ],
+          [
+            1440,
+            1072
+          ],
+          [
+            1463,
+            163
+          ],
+          [
+            1463,
+            1072
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "のさわぐまんなかへ、ドスンとおちてしまったから、おにどもがよってたか",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1395,
+            164
+          ],
+          [
+            1395,
+            1060
+          ],
+          [
+            1418,
+            164
+          ],
+          [
+            1418,
+            1060
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "って、じいさんをうつやら、けるやら、なぐるやら。ごうよくじいさんは、",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1349,
+            159
+          ],
+          [
+            1349,
+            1059
+          ],
+          [
+            1374,
+            159
+          ],
+          [
+            1374,
+            1059
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "血だるまになって、やっとのおもいで、ねずみあなから、なきなき土間へ、",
+        "isTextline": "true",
+        "confidence": 0.907
+      },
+      {
+        "boundingBox": [
+          [
+            1302,
+            157
+          ],
+          [
+            1302,
+            1078
+          ],
+          [
+            1326,
+            157
+          ],
+          [
+            1326,
+            1078
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "はいあがったが、家でまっていたずるいばあさんは、じいさんが赤いこそで",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1254,
+            156
+          ],
+          [
+            1254,
+            1081
+          ],
+          [
+            1279,
+            156
+          ],
+          [
+            1279,
+            1081
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "をきて、歌うたってかえってきたらしいと、よろこんでかけよったところが、",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            1205,
+            155
+          ],
+          [
+            1205,
+            1081
+          ],
+          [
+            1228,
+            155
+          ],
+          [
+            1228,
+            1081
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "そんなありさまで、すっかりたまげて、ひっくりかえってしまった。どんど",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1157,
+            156
+          ],
+          [
+            1157,
+            490
+          ],
+          [
+            1178,
+            156
+          ],
+          [
+            1178,
+            490
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "んからから、さんしょのみ。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            358,
+            750
+          ],
+          [
+            358,
+            1107
+          ],
+          [
+            548,
+            750
+          ],
+          [
+            548,
+            1107
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "for to to to to to to the",
+        "isTextline": "true",
+        "confidence": 0.333
+      },
+      {
+        "boundingBox": [
+          [
+            15,
+            1111
+          ],
+          [
+            15,
+            1217
+          ],
+          [
+            21,
+            1111
+          ],
+          [
+            21,
+            1217
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "20,00000000",
+        "isTextline": "true",
+        "confidence": 0.273
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1841,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-48.jpg",
+    "img_name": "out-48.jpg"
+  }
+}

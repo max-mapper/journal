@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            748,
+            169
+          ],
+          [
+            748,
+            1051
+          ],
+          [
+            774,
+            169
+          ],
+          [
+            774,
+            1051
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "らく。そして、わかいふうふのすることなすこと、つぼにあたって、まず、",
+        "isTextline": "true",
+        "confidence": 0.938
+      },
+      {
+        "boundingBox": [
+          [
+            701,
+            166
+          ],
+          [
+            701,
+            1069
+          ],
+          [
+            728,
+            166
+          ],
+          [
+            728,
+            1069
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "四方から風がふきこむように、かほうがあつまって、しばらくのうちにくら",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            652,
+            167
+          ],
+          [
+            652,
+            1070
+          ],
+          [
+            680,
+            167
+          ],
+          [
+            680,
+            1070
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "ができ、くらしはぐんとらくになった。年とったふたおやは、これも水神さ",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            603,
+            164
+          ],
+          [
+            603,
+            789
+          ],
+          [
+            628,
+            164
+          ],
+          [
+            628,
+            789
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "まのおかげと、日ごとにしんじんをかかさなかった。",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            554,
+            190
+          ],
+          [
+            554,
+            1074
+          ],
+          [
+            583,
+            190
+          ],
+          [
+            583,
+            1074
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "そのうちに月日がたって、ゆかが長者どんの里がえりをする日を、村のち",
+        "isTextline": "true",
+        "confidence": 0.892
+      },
+      {
+        "boundingBox": [
+          [
+            506,
+            166
+          ],
+          [
+            506,
+            603
+          ],
+          [
+            530,
+            166
+          ],
+          [
+            530,
+            603
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "んじゅさまの春まつりのことにした。",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            459,
+            193
+          ],
+          [
+            459,
+            1071
+          ],
+          [
+            487,
+            193
+          ],
+          [
+            487,
+            1071
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "その日は、まことにうららかな日よりで、ゆかは、長もちから、きれいな",
+        "isTextline": "true",
+        "confidence": 0.903
+      },
+      {
+        "boundingBox": [
+          [
+            411,
+            169
+          ],
+          [
+            411,
+            870
+          ],
+          [
+            439,
+            169
+          ],
+          [
+            439,
+            870
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "いしょうをだして、花のようにきかざり、つぶにむかって、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            364,
+            180
+          ],
+          [
+            364,
+            1071
+          ],
+          [
+            394,
+            180
+          ],
+          [
+            394,
+            1071
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「おまえさまはどうなさる。かみにさしていこうか、おびにはさんでいこう",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            316,
+            169
+          ],
+          [
+            316,
+            217
+          ],
+          [
+            337,
+            169
+          ],
+          [
+            337,
+            217
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "か。」",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            272,
+            183
+          ],
+          [
+            272,
+            805
+          ],
+          [
+            300,
+            183
+          ],
+          [
+            300,
+            805
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「てんきがいいから、 おまえのかみにのっていこう。」",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            227,
+            174
+          ],
+          [
+            227,
+            1065
+          ],
+          [
+            260,
+            174
+          ],
+          [
+            260,
+            1065
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "というので、ゆかは、つぶをしまおりの上にすえて、ぬのごとあたまにのせ",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            184,
+            175
+          ],
+          [
+            184,
+            525
+          ],
+          [
+            207,
+            175
+          ],
+          [
+            207,
+            525
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "て、ちんじゅさまにでかけた。",
+        "isTextline": "true",
+        "confidence": 0.921
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1838,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-74.jpg",
+    "img_name": "out-74.jpg"
+  }
+}

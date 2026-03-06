@@ -1,0 +1,662 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1658,
+            200
+          ],
+          [
+            1658,
+            1051
+          ],
+          [
+            1689,
+            200
+          ],
+          [
+            1689,
+            1051
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "むかし、さるとひきがえるがおって、ある日、うら山の竹やぶのなかで、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1615,
+            172
+          ],
+          [
+            1615,
+            1070
+          ],
+          [
+            1648,
+            172
+          ],
+          [
+            1648,
+            1070
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "であった。すると、ちょうど、さとの家から、ペンポンペンポンと、もちを",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1576,
+            171
+          ],
+          [
+            1576,
+            447
+          ],
+          [
+            1606,
+            171
+          ],
+          [
+            1606,
+            447
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "つく音がきこえてきた。",
+        "isTextline": "true",
+        "confidence": 0.912
+      },
+      {
+        "boundingBox": [
+          [
+            1533,
+            194
+          ],
+          [
+            1533,
+            390
+          ],
+          [
+            1557,
+            194
+          ],
+          [
+            1557,
+            390
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "そこで、さるが、",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1482,
+            177
+          ],
+          [
+            1482,
+            730
+          ],
+          [
+            1513,
+            177
+          ],
+          [
+            1513,
+            730
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「ひきどの、ひきどの。もちたべたくないか。」",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1439,
+            163
+          ],
+          [
+            1439,
+            469
+          ],
+          [
+            1464,
+            163
+          ],
+          [
+            1464,
+            469
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "ときいた。ひきがえるは、",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1388,
+            175
+          ],
+          [
+            1388,
+            594
+          ],
+          [
+            1421,
+            175
+          ],
+          [
+            1421,
+            594
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「なんとかして、たべたいもんだ。」",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1343,
+            160
+          ],
+          [
+            1343,
+            1066
+          ],
+          [
+            1368,
+            160
+          ],
+          [
+            1368,
+            1066
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "とこたえた。そして、ふたりでそうだんして、ひきがえるが、こういった。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1294,
+            170
+          ],
+          [
+            1294,
+            1081
+          ],
+          [
+            1321,
+            170
+          ],
+          [
+            1321,
+            1081
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「さるどの、さるどの。おれ、あそこの家のにわの川へはいって、あかんぼ",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1245,
+            160
+          ],
+          [
+            1245,
+            1080
+          ],
+          [
+            1271,
+            160
+          ],
+          [
+            1271,
+            1080
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "のなきまねをする。そうすれば、家の人たちが、そら、あかんぼが川へおち",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            1196,
+            159
+          ],
+          [
+            1196,
+            1066
+          ],
+          [
+            1222,
+            159
+          ],
+          [
+            1222,
+            1066
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "たといって、もちつきをやめて、みんなにわにとびだすにちがいないから、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1147,
+            158
+          ],
+          [
+            1147,
+            1067
+          ],
+          [
+            1173,
+            158
+          ],
+          [
+            1173,
+            1067
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "そのまに、さるどの、うすをしょって、この竹やぶまで、にげたらよかろう。」",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1098,
+            189
+          ],
+          [
+            1098,
+            955
+          ],
+          [
+            1123,
+            189
+          ],
+          [
+            1123,
+            955
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "それがいいということになって、ふたりは、やぶをおりてきた。",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            778,
+            196
+          ],
+          [
+            778,
+            1054
+          ],
+          [
+            803,
+            196
+          ],
+          [
+            803,
+            1054
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "そして、 さるがうら口のまどの下にかくれていると、 ひきは、 にわの川へ",
+        "isTextline": "true",
+        "confidence": 0.902
+      },
+      {
+        "boundingBox": [
+          [
+            731,
+            170
+          ],
+          [
+            731,
+            1050
+          ],
+          [
+            759,
+            170
+          ],
+          [
+            759,
+            1050
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "どぶんと、音をたててとびこんで、ギャア、ギャアとなきたてた。すると、",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            685,
+            167
+          ],
+          [
+            685,
+            570
+          ],
+          [
+            715,
+            167
+          ],
+          [
+            715,
+            570
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "家の人たちは、 みんなおどろいて、",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            630,
+            179
+          ],
+          [
+            630,
+            743
+          ],
+          [
+            661,
+            179
+          ],
+          [
+            661,
+            743
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "「そら、たいへんだ。あかんぼが、川へおちた。」",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            584,
+            166
+          ],
+          [
+            584,
+            807
+          ],
+          [
+            613,
+            166
+          ],
+          [
+            613,
+            807
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "と、もちつきをやめて、大あわてでにわにとびだした。",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            533,
+            191
+          ],
+          [
+            533,
+            1051
+          ],
+          [
+            562,
+            191
+          ],
+          [
+            562,
+            1051
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "そのまに、さるは、まどからしのびこんで、もちのはいっているうすを、",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            490,
+            165
+          ],
+          [
+            490,
+            675
+          ],
+          [
+            517,
+            165
+          ],
+          [
+            517,
+            675
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "しょって、うら山の竹やぶににげていった。",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            438,
+            192
+          ],
+          [
+            438,
+            994
+          ],
+          [
+            468,
+            192
+          ],
+          [
+            468,
+            994
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "ひきがえるが、竹やぶにもどってくると、さるは、ひとしあんして、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            388,
+            180
+          ],
+          [
+            388,
+            1061
+          ],
+          [
+            421,
+            180
+          ],
+          [
+            421,
+            1061
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "「ひきどの、ひきどの。このままくっては、げいがない。どうだろう。あの",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            340,
+            164
+          ],
+          [
+            340,
+            1062
+          ],
+          [
+            374,
+            164
+          ],
+          [
+            374,
+            1062
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "山のてっぺんまで、うすをしょいあげて、うすごところがりおとして、おれ",
+        "isTextline": "true",
+        "confidence": 0.887
+      },
+      {
+        "boundingBox": [
+          [
+            295,
+            164
+          ],
+          [
+            295,
+            1063
+          ],
+          [
+            320,
+            164
+          ],
+          [
+            320,
+            1063
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "たちがそのあとをおっかけて、ひろったもんがちで、もちをくうことにしよ",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            246,
+            159
+          ],
+          [
+            246,
+            356
+          ],
+          [
+            270,
+            159
+          ],
+          [
+            270,
+            356
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "うじゃないか。」",
+        "isTextline": "true",
+        "confidence": 0.9
+      },
+      {
+        "boundingBox": [
+          [
+            198,
+            190
+          ],
+          [
+            198,
+            434
+          ],
+          [
+            223,
+            190
+          ],
+          [
+            223,
+            434
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "ひきは、手をあげて、",
+        "isTextline": "true",
+        "confidence": 0.924
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1874,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-53.jpg",
+    "img_name": "out-53.jpg"
+  }
+}

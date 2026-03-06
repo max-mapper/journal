@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            742,
+            188
+          ],
+          [
+            742,
+            538
+          ],
+          [
+            765,
+            188
+          ],
+          [
+            765,
+            538
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "よも吉は、すっかり感心して、",
+        "isTextline": "true",
+        "confidence": 0.889
+      },
+      {
+        "boundingBox": [
+          [
+            693,
+            172
+          ],
+          [
+            693,
+            1040
+          ],
+          [
+            717,
+            172
+          ],
+          [
+            717,
+            1040
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "「まい日まい日、くろうして木びきしているよりか、こんな家にすんだら、",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            645,
+            157
+          ],
+          [
+            645,
+            1055
+          ],
+          [
+            671,
+            157
+          ],
+          [
+            671,
+            1055
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "なんぼかよかろう。」とおもっていると、二のぜん、三のぜんで、ごちそうが",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            599,
+            157
+          ],
+          [
+            599,
+            854
+          ],
+          [
+            622,
+            157
+          ],
+          [
+            622,
+            854
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "だされた。いよいよ、おいとましようとすると、むすめが、",
+        "isTextline": "true",
+        "confidence": 0.938
+      },
+      {
+        "boundingBox": [
+          [
+            551,
+            170
+          ],
+          [
+            551,
+            604
+          ],
+          [
+            573,
+            170
+          ],
+          [
+            573,
+            604
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「なんなら、とまっても、よがすと。」",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            503,
+            155
+          ],
+          [
+            503,
+            428
+          ],
+          [
+            529,
+            155
+          ],
+          [
+            529,
+            428
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "というので、よも吉も、",
+        "isTextline": "true",
+        "confidence": 0.886
+      },
+      {
+        "boundingBox": [
+          [
+            454,
+            167
+          ],
+          [
+            454,
+            710
+          ],
+          [
+            478,
+            167
+          ],
+          [
+            478,
+            710
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「それでは、ひとばん、やっかいになります。」",
+        "isTextline": "true",
+        "confidence": 0.941
+      },
+      {
+        "boundingBox": [
+          [
+            408,
+            154
+          ],
+          [
+            408,
+            588
+          ],
+          [
+            430,
+            154
+          ],
+          [
+            430,
+            588
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "といって、そのばんとめてもらった。",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            360,
+            186
+          ],
+          [
+            360,
+            1054
+          ],
+          [
+            385,
+            186
+          ],
+          [
+            385,
+            1054
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "そして、四つのへやをおとずれて、四季のうつりをながめるのが、あんま",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            312,
+            154
+          ],
+          [
+            312,
+            1053
+          ],
+          [
+            338,
+            154
+          ],
+          [
+            338,
+            1053
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "りたのしいので、つぎのばんも、そのつぎのばんも、とまってしまい、やが",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            265,
+            154
+          ],
+          [
+            265,
+            1054
+          ],
+          [
+            290,
+            154
+          ],
+          [
+            290,
+            1054
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "ては、 家へかえるのもわすれて、 ながいこととまっているうちに、 とうとう",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            219,
+            155
+          ],
+          [
+            219,
+            801
+          ],
+          [
+            243,
+            155
+          ],
+          [
+            243,
+            801
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "むすめのむこになって、たちまち三年たってしまった。",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            172,
+            183
+          ],
+          [
+            172,
+            1050
+          ],
+          [
+            196,
+            183
+          ],
+          [
+            196,
+            1050
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "そのうち、むすめがぽっこり死んでしまって、よも吉は、なくなくねんぶ",
+        "isTextline": "true",
+        "confidence": 0.924
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1781,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-16.jpg",
+    "img_name": "out-16.jpg"
+  }
+}

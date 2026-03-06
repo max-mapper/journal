@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1634,
+            172
+          ],
+          [
+            1634,
+            1062
+          ],
+          [
+            1662,
+            172
+          ],
+          [
+            1662,
+            1062
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "そして、つぎの日になっても、そのつぎの日になっても、かえさない。あく",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1590,
+            172
+          ],
+          [
+            1590,
+            1064
+          ],
+          [
+            1617,
+            172
+          ],
+          [
+            1617,
+            1064
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "る月になってもかえさないでいた。それでも、だれももんくをいってくるも",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1544,
+            171
+          ],
+          [
+            1544,
+            1028
+          ],
+          [
+            1573,
+            171
+          ],
+          [
+            1573,
+            1028
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "のがないから、「やれ、もうかった。」と、よくさんは、ほくほくしていた。",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1501,
+            195
+          ],
+          [
+            1501,
+            1067
+          ],
+          [
+            1526,
+            195
+          ],
+          [
+            1526,
+            1067
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "ところが、そのうち、村のものがいくらねがっても、ほらあなからは、な",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1457,
+            168
+          ],
+          [
+            1457,
+            390
+          ],
+          [
+            1479,
+            168
+          ],
+          [
+            1479,
+            390
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "にもでなくなった。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1409,
+            178
+          ],
+          [
+            1409,
+            1072
+          ],
+          [
+            1433,
+            178
+          ],
+          [
+            1433,
+            1072
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「こらふしぎじゃないか。いつもあのようにかしてくださるのに、こんどは",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1364,
+            167
+          ],
+          [
+            1364,
+            406
+          ],
+          [
+            1386,
+            167
+          ],
+          [
+            1386,
+            406
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "いっこうでないぞ。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1315,
+            177
+          ],
+          [
+            1315,
+            942
+          ],
+          [
+            1338,
+            177
+          ],
+          [
+            1338,
+            942
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「こらだれか、ほらあなさまを、おこらしたものがあるんだな。」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1266,
+            164
+          ],
+          [
+            1266,
+            1077
+          ],
+          [
+            1293,
+            164
+          ],
+          [
+            1293,
+            1077
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "と、村の人たちは、うわさをしあった。そんなうわさをきいても、よくさん",
+        "isTextline": "true",
+        "confidence": 0.904
+      },
+      {
+        "boundingBox": [
+          [
+            1219,
+            165
+          ],
+          [
+            1219,
+            606
+          ],
+          [
+            1242,
+            165
+          ],
+          [
+            1242,
+            606
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "は、しらんかおをしておしとおした。",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1170,
+            192
+          ],
+          [
+            1170,
+            1077
+          ],
+          [
+            1194,
+            192
+          ],
+          [
+            1194,
+            1077
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "そのうちに、よくさんのうちに、男の子が生まれた。はじめての子ではあ",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1122,
+            166
+          ],
+          [
+            1122,
+            1075
+          ],
+          [
+            1146,
+            166
+          ],
+          [
+            1146,
+            1075
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "るし、まるまるとふとってかわいいから、よくさんふうふは、大よろこびだ",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1073,
+            174
+          ],
+          [
+            1073,
+            1063
+          ],
+          [
+            1098,
+            174
+          ],
+          [
+            1098,
+            1063
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "った。けれどもその子は、三つになっても、五つになっても、あるけない。",
+        "isTextline": "true",
+        "confidence": 0.927
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1858,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-50.jpg",
+    "img_name": "out-50.jpg"
+  }
+}

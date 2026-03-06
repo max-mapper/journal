@@ -1,0 +1,862 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1070,
+            148
+          ],
+          [
+            1070,
+            200
+          ],
+          [
+            1534,
+            148
+          ],
+          [
+            1534,
+            200
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "愛蔵版・世界の童話(全10巻)",
+        "isTextline": "true",
+        "confidence": 0.88
+      },
+      {
+        "boundingBox": [
+          [
+            1169,
+            215
+          ],
+          [
+            1169,
+            240
+          ],
+          [
+            1420,
+            215
+          ],
+          [
+            1420,
+            240
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "●小学1.2.3年生向●",
+        "isTextline": "true",
+        "confidence": 0.798
+      },
+      {
+        "boundingBox": [
+          [
+            1081,
+            252
+          ],
+          [
+            1081,
+            281
+          ],
+          [
+            1566,
+            252
+          ],
+          [
+            1566,
+            281
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "どの本も,幼年期に一度は読ませたい名作童話ばかり,一流の",
+        "isTextline": "true",
+        "confidence": 0.613
+      },
+      {
+        "boundingBox": [
+          [
+            1077,
+            278
+          ],
+          [
+            1077,
+            307
+          ],
+          [
+            1554,
+            278
+          ],
+          [
+            1554,
+            307
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "訳者と画家が,心をこめて訳し描いた香り高い受蔵本です。",
+        "isTextline": "true",
+        "confidence": 0.657
+      },
+      {
+        "boundingBox": [
+          [
+            1580,
+            345
+          ],
+          [
+            1580,
+            692
+          ],
+          [
+            1608,
+            345
+          ],
+          [
+            1608,
+            692
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "1イソツプどうわ",
+        "isTextline": "true",
+        "confidence": 0.891
+      },
+      {
+        "boundingBox": [
+          [
+            1551,
+            471
+          ],
+          [
+            1551,
+            690
+          ],
+          [
+            1570,
+            471
+          ],
+          [
+            1570,
+            690
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "小出正吾・文/三好碩也・絵",
+        "isTextline": "true",
+        "confidence": 0.657
+      },
+      {
+        "boundingBox": [
+          [
+            1516,
+            342
+          ],
+          [
+            1516,
+            691
+          ],
+          [
+            1553,
+            342
+          ],
+          [
+            1553,
+            691
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "2グリムどうわ",
+        "isTextline": "true",
+        "confidence": 0.745
+      },
+      {
+        "boundingBox": [
+          [
+            1492,
+            489
+          ],
+          [
+            1492,
+            689
+          ],
+          [
+            1509,
+            489
+          ],
+          [
+            1509,
+            689
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "大塚勇三・文/丸木俊・絵",
+        "isTextline": "true",
+        "confidence": 0.613
+      },
+      {
+        "boundingBox": [
+          [
+            1457,
+            341
+          ],
+          [
+            1457,
+            693
+          ],
+          [
+            1486,
+            341
+          ],
+          [
+            1486,
+            693
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "3アンデルセンどうわ",
+        "isTextline": "true",
+        "confidence": 0.843
+      },
+      {
+        "boundingBox": [
+          [
+            1430,
+            472
+          ],
+          [
+            1430,
+            689
+          ],
+          [
+            1449,
+            472
+          ],
+          [
+            1449,
+            689
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "大畑末吉・文/堀内誠一・絵",
+        "isTextline": "true",
+        "confidence": 0.69
+      },
+      {
+        "boundingBox": [
+          [
+            1393,
+            340
+          ],
+          [
+            1393,
+            692
+          ],
+          [
+            1425,
+            340
+          ],
+          [
+            1425,
+            692
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "4日本のむかし話",
+        "isTextline": "true",
+        "confidence": 0.818
+      },
+      {
+        "boundingBox": [
+          [
+            1367,
+            457
+          ],
+          [
+            1367,
+            690
+          ],
+          [
+            1388,
+            457
+          ],
+          [
+            1388,
+            690
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "瀬田貞二・文/瀬川・梶山・絵",
+        "isTextline": "true",
+        "confidence": 0.687
+      },
+      {
+        "boundingBox": [
+          [
+            1331,
+            338
+          ],
+          [
+            1331,
+            691
+          ],
+          [
+            1362,
+            338
+          ],
+          [
+            1362,
+            691
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "5世界のむかし話",
+        "isTextline": "true",
+        "confidence": 0.883
+      },
+      {
+        "boundingBox": [
+          [
+            1305,
+            466
+          ],
+          [
+            1305,
+            689
+          ],
+          [
+            1324,
+            466
+          ],
+          [
+            1324,
+            689
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "瀬田貞二・文/太田大八・絵",
+        "isTextline": "true",
+        "confidence": 0.746
+      },
+      {
+        "boundingBox": [
+          [
+            1268,
+            335
+          ],
+          [
+            1268,
+            691
+          ],
+          [
+            1301,
+            335
+          ],
+          [
+            1301,
+            691
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "6アラビアン・ナイト",
+        "isTextline": "true",
+        "confidence": 0.837
+      },
+      {
+        "boundingBox": [
+          [
+            1241,
+            492
+          ],
+          [
+            1241,
+            690
+          ],
+          [
+            1259,
+            492
+          ],
+          [
+            1259,
+            690
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "中川正文・文/未定",
+        "isTextline": "true",
+        "confidence": 0.728
+      },
+      {
+        "boundingBox": [
+          [
+            1204,
+            334
+          ],
+          [
+            1204,
+            690
+          ],
+          [
+            1235,
+            334
+          ],
+          [
+            1235,
+            690
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "7ながぐつをはいたねこ",
+        "isTextline": "true",
+        "confidence": 0.873
+      },
+      {
+        "boundingBox": [
+          [
+            1176,
+            482
+          ],
+          [
+            1176,
+            690
+          ],
+          [
+            1196,
+            482
+          ],
+          [
+            1196,
+            690
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "辻昶・文/中川宗弥・絵",
+        "isTextline": "true",
+        "confidence": 0.688
+      },
+      {
+        "boundingBox": [
+          [
+            1137,
+            333
+          ],
+          [
+            1137,
+            691
+          ],
+          [
+            1168,
+            333
+          ],
+          [
+            1168,
+            691
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "8うさぎどんきつねどん",
+        "isTextline": "true",
+        "confidence": 0.858
+      },
+      {
+        "boundingBox": [
+          [
+            1109,
+            445
+          ],
+          [
+            1109,
+            689
+          ],
+          [
+            1128,
+            445
+          ],
+          [
+            1128,
+            689
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "八波直則・文/山内ふじ江・絵",
+        "isTextline": "true",
+        "confidence": 0.789
+      },
+      {
+        "boundingBox": [
+          [
+            1069,
+            333
+          ],
+          [
+            1069,
+            691
+          ],
+          [
+            1100,
+            333
+          ],
+          [
+            1100,
+            691
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "9せむしの小うま",
+        "isTextline": "true",
+        "confidence": 0.859
+      },
+      {
+        "boundingBox": [
+          [
+            1041,
+            461
+          ],
+          [
+            1041,
+            689
+          ],
+          [
+            1061,
+            461
+          ],
+          [
+            1061,
+            689
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "内田莉莎子・文/丸木俊・絵",
+        "isTextline": "true",
+        "confidence": 0.681
+      },
+      {
+        "boundingBox": [
+          [
+            994,
+            334
+          ],
+          [
+            994,
+            689
+          ],
+          [
+            1027,
+            334
+          ],
+          [
+            1027,
+            689
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "10ライオンのめがぬ",
+        "isTextline": "true",
+        "confidence": 0.867
+      },
+      {
+        "boundingBox": [
+          [
+            969,
+            501
+          ],
+          [
+            969,
+            688
+          ],
+          [
+            989,
+            501
+          ],
+          [
+            989,
+            688
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "辻 ・文/清水崑・絵",
+        "isTextline": "true",
+        "confidence": 0.666
+      },
+      {
+        "boundingBox": [
+          [
+            1354,
+            964
+          ],
+          [
+            1354,
+            986
+          ],
+          [
+            1586,
+            964
+          ],
+          [
+            1586,
+            986
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "愛蔵版・世界の童話(4)106p24cm",
+        "isTextline": "true",
+        "confidence": 0.721
+      },
+      {
+        "boundingBox": [
+          [
+            965,
+            976
+          ],
+          [
+            965,
+            997
+          ],
+          [
+            1187,
+            976
+          ],
+          [
+            1187,
+            997
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "NDC908日本のむかし話",
+        "isTextline": "true",
+        "confidence": 0.345
+      },
+      {
+        "boundingBox": [
+          [
+            962,
+            981
+          ],
+          [
+            962,
+            1018
+          ],
+          [
+            1591,
+            981
+          ],
+          [
+            1591,
+            1018
+          ]
+        ],
+        "id": 26,
+        "isVertical": "true",
+        "text": "◎1971作老瀬田貞二画家瀬川康男・梶山俊大兄行人古岡秀人編集人石井祐夫",
+        "isTextline": "true",
+        "confidence": 0.855
+      },
+      {
+        "boundingBox": [
+          [
+            963,
+            1003
+          ],
+          [
+            963,
+            1038
+          ],
+          [
+            1588,
+            1003
+          ],
+          [
+            1588,
+            1038
+          ]
+        ],
+        "id": 27,
+        "isVertical": "true",
+        "text": "印刷所株式会社精興社製本所大口製本印刷株式会社発行所株式会社学習研究社",
+        "isTextline": "true",
+        "confidence": 0.464
+      },
+      {
+        "boundingBox": [
+          [
+            963,
+            1019
+          ],
+          [
+            963,
+            1048
+          ],
+          [
+            1587,
+            1019
+          ],
+          [
+            1587,
+            1048
+          ]
+        ],
+        "id": 28,
+        "isVertical": "true",
+        "text": "印刷所株式会社精興社製本所大口製本印刷株株式式化発行",
+        "isTextline": "true",
+        "confidence": 0.779
+      },
+      {
+        "boundingBox": [
+          [
+            964,
+            1009
+          ],
+          [
+            964,
+            1041
+          ],
+          [
+            1589,
+            1009
+          ],
+          [
+            1589,
+            1041
+          ]
+        ],
+        "id": 29,
+        "isVertical": "true",
+        "text": "印刷所株式会社精興社製本所大口製本印刷株式会社発行所株式会社学著研究研究4-1002",
+        "isTextline": "true",
+        "confidence": 0.291
+      },
+      {
+        "boundingBox": [
+          [
+            962,
+            1030
+          ],
+          [
+            962,
+            1061
+          ],
+          [
+            1403,
+            1030
+          ],
+          [
+            1403,
+            1061
+          ]
+        ],
+        "id": 30,
+        "isVertical": "true",
+        "text": "東京都大田区上池台4-40-5振替東京142930145",
+        "isTextline": "true",
+        "confidence": 0.438
+      },
+      {
+        "boundingBox": [
+          [
+            964,
+            1055
+          ],
+          [
+            964,
+            1095
+          ],
+          [
+            1582,
+            1055
+          ],
+          [
+            1582,
+            1095
+          ]
+        ],
+        "id": 31,
+        "isVertical": "true",
+        "text": "この本に関するお問い合わせ,製本上のくえなどがありましたら,下記あて文書または電話である.84～11111111111111111111111111111111111 たら,下4-1111111111",
+        "isTextline": "true",
+        "confidence": 0.829
+      },
+      {
+        "boundingBox": [
+          [
+            964,
+            1072
+          ],
+          [
+            964,
+            1111
+          ],
+          [
+            1576,
+            1072
+          ],
+          [
+            1576,
+            1111
+          ]
+        ],
+        "id": 32,
+        "isVertical": "true",
+        "text": "この水に関するお問い合わせ、梨本上のミスなどがありましたスービス課)児童図書係電話(03,734-11111",
+        "isTextline": "true",
+        "confidence": 0.745
+      },
+      {
+        "boundingBox": [
+          [
+            964,
+            1123
+          ],
+          [
+            964,
+            1135
+          ],
+          [
+            1006,
+            1123
+          ],
+          [
+            1006,
+            1135
+          ]
+        ],
+        "id": 33,
+        "isVertical": "true",
+        "text": "460.",
+        "isTextline": "true",
+        "confidence": 0.442
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1811,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-83.jpg",
+    "img_name": "out-83.jpg"
+  }
+}

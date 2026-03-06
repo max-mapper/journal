@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1626,
+            202
+          ],
+          [
+            1626,
+            1041
+          ],
+          [
+            1656,
+            202
+          ],
+          [
+            1656,
+            1041
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "すると、ごてんのなかで、人形のように、じっとすわっていたおかたが、",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1588,
+            176
+          ],
+          [
+            1588,
+            687
+          ],
+          [
+            1615,
+            176
+          ],
+          [
+            1615,
+            687
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "その声をききつけて、にこにことわらった。",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1544,
+            186
+          ],
+          [
+            1544,
+            569
+          ],
+          [
+            1574,
+            186
+          ],
+          [
+            1574,
+            569
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "「ほりゃ、わらった、わらった。」",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1498,
+            170
+          ],
+          [
+            1498,
+            1068
+          ],
+          [
+            1529,
+            170
+          ],
+          [
+            1529,
+            1068
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "と、とのさんは、大よろこびで、くりうりの彦をにわによびこんで、うり声",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1453,
+            168
+          ],
+          [
+            1453,
+            1071
+          ],
+          [
+            1484,
+            168
+          ],
+          [
+            1484,
+            1071
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "をふれさせると、おかたは、ろうかへかけよって、花のさくようにえみこぼ",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            1409,
+            166
+          ],
+          [
+            1409,
+            1071
+          ],
+          [
+            1440,
+            166
+          ],
+          [
+            1440,
+            1071
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "れたものだから、とのさんは、くりうりのすがたが、おかたの気にいったの",
+        "isTextline": "true",
+        "confidence": 0.943
+      },
+      {
+        "boundingBox": [
+          [
+            1371,
+            166
+          ],
+          [
+            1371,
+            334
+          ],
+          [
+            1394,
+            166
+          ],
+          [
+            1394,
+            334
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "だとおもった。",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1317,
+            179
+          ],
+          [
+            1317,
+            1026
+          ],
+          [
+            1347,
+            179
+          ],
+          [
+            1347,
+            1026
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「これ、くりうり、そんなにおもしろいものなら、おれにも、させろ。」",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            1271,
+            165
+          ],
+          [
+            1271,
+            1065
+          ],
+          [
+            1296,
+            165
+          ],
+          [
+            1296,
+            1065
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "と、とのさんは、彦のきものをきて、ぼてざるをかついで、にわをひとまわり、",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1222,
+            178
+          ],
+          [
+            1222,
+            434
+          ],
+          [
+            1245,
+            178
+          ],
+          [
+            1245,
+            434
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "「くりこ、くりこお。」",
+        "isTextline": "true",
+        "confidence": 0.908
+      },
+      {
+        "boundingBox": [
+          [
+            1173,
+            166
+          ],
+          [
+            1173,
+            365
+          ],
+          [
+            1196,
+            166
+          ],
+          [
+            1196,
+            365
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "とふれまわった。",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1123,
+            194
+          ],
+          [
+            1123,
+            1081
+          ],
+          [
+            1151,
+            194
+          ],
+          [
+            1151,
+            1081
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "それをみて、花は、手をうち、こしをまげて大わらいにわらいくずれたか",
+        "isTextline": "true",
+        "confidence": 0.907
+      },
+      {
+        "boundingBox": [
+          [
+            1074,
+            171
+          ],
+          [
+            1074,
+            1079
+          ],
+          [
+            1102,
+            171
+          ],
+          [
+            1102,
+            1079
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "ら、とのさんはすっかりいい気になって、そのまま門のそとへ、ふれあるい",
+        "isTextline": "true",
+        "confidence": 0.926
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1821,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-26.jpg",
+    "img_name": "out-26.jpg"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            849,
+            121
+          ],
+          [
+            849,
+            143
+          ],
+          [
+            872,
+            121
+          ],
+          [
+            872,
+            143
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "25",
+        "isTextline": "true",
+        "confidence": 0
+      },
+      {
+        "boundingBox": [
+          [
+            790,
+            181
+          ],
+          [
+            790,
+            872
+          ],
+          [
+            814,
+            181
+          ],
+          [
+            814,
+            872
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "「どこもここも、いてえとこだ。こんなとこにいられねえ。」",
+        "isTextline": "true",
+        "confidence": 0.903
+      },
+      {
+        "boundingBox": [
+          [
+            742,
+            170
+          ],
+          [
+            742,
+            1074
+          ],
+          [
+            771,
+            170
+          ],
+          [
+            771,
+            1074
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "とおもって、入り口の大戸をくぐって、にげようとすると、ふみこんだ下に、",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            693,
+            171
+          ],
+          [
+            693,
+            1076
+          ],
+          [
+            719,
+            171
+          ],
+          [
+            719,
+            1076
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "べったりとまっていた、牛のくそをふんづけて、ずるんとすべった。そして、",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            643,
+            166
+          ],
+          [
+            643,
+            1077
+          ],
+          [
+            671,
+            166
+          ],
+          [
+            671,
+            1077
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "あおむけにころんだところへ、のきさきから石うすが、ドテンとおちてきて、",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            593,
+            167
+          ],
+          [
+            593,
+            1078
+          ],
+          [
+            625,
+            167
+          ],
+          [
+            625,
+            1078
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "さるは、ぺちゃんこになって、死んだそうだ。それで、話は、どんぴんばらり。",
+        "isTextline": "true",
+        "confidence": 0.935
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1827,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-61.jpg",
+    "img_name": "out-61.jpg"
+  }
+}

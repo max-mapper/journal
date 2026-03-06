@@ -1,0 +1,112 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            99,
+            103
+          ],
+          [
+            99,
+            1148
+          ],
+          [
+            835,
+            103
+          ],
+          [
+            835,
+            1148
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "(20",
+        "isTextline": "true",
+        "confidence": 0.944
+      },
+      {
+        "boundingBox": [
+          [
+            962,
+            88
+          ],
+          [
+            962,
+            1157
+          ],
+          [
+            1681,
+            88
+          ],
+          [
+            1681,
+            1157
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "isTextline": "true",
+        "confidence": 0.942
+      },
+      {
+        "boundingBox": [
+          [
+            797,
+            1114
+          ],
+          [
+            797,
+            1130
+          ],
+          [
+            815,
+            1114
+          ],
+          [
+            815,
+            1130
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "す。",
+        "isTextline": "true",
+        "confidence": 0.5
+      },
+      {
+        "boundingBox": [
+          [
+            1651,
+            1083
+          ],
+          [
+            1651,
+            1098
+          ],
+          [
+            1665,
+            1083
+          ],
+          [
+            1665,
+            1098
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "3",
+        "isTextline": "true",
+        "confidence": 0.389
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1786,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-12.jpg",
+    "img_name": "out-12.jpg"
+  }
+}

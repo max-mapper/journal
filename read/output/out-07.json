@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            742,
+            259
+          ],
+          [
+            742,
+            618
+          ],
+          [
+            766,
+            259
+          ],
+          [
+            766,
+            618
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "あっちのしかもこっちへこい",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            694,
+            257
+          ],
+          [
+            694,
+            619
+          ],
+          [
+            719,
+            257
+          ],
+          [
+            719,
+            619
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "こっちのしかもこっちへこい",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            646,
+            173
+          ],
+          [
+            646,
+            1063
+          ],
+          [
+            670,
+            173
+          ],
+          [
+            670,
+            1063
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "と、よばわるもんだから、じいさんも、いっしょになってとなえていると、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            597,
+            170
+          ],
+          [
+            597,
+            1074
+          ],
+          [
+            623,
+            170
+          ],
+          [
+            623,
+            1074
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "あっちの山からも、こっちの山からも、しかが、ぶんぐりぶんぐりと、はせ",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            550,
+            168
+          ],
+          [
+            550,
+            1075
+          ],
+          [
+            574,
+            168
+          ],
+          [
+            574,
+            1075
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "あつまってきた。そこで、じいさんがまさかりでうつ、しろがかむ。とんだ",
+        "isTextline": "true",
+        "confidence": 0.941
+      },
+      {
+        "boundingBox": [
+          [
+            502,
+            169
+          ],
+          [
+            502,
+            577
+          ],
+          [
+            526,
+            169
+          ],
+          [
+            526,
+            577
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "どっさり、しかがとれてしまった。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            454,
+            195
+          ],
+          [
+            454,
+            1070
+          ],
+          [
+            477,
+            195
+          ],
+          [
+            477,
+            1070
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "こうして、しろにしかをもたせてかえると、つのはつの、かわはかわ、に",
+        "isTextline": "true",
+        "confidence": 0.94
+      },
+      {
+        "boundingBox": [
+          [
+            406,
+            167
+          ],
+          [
+            406,
+            1079
+          ],
+          [
+            428,
+            167
+          ],
+          [
+            428,
+            1079
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "くはにくで、それぞれたかくうれさはけ、じいさんとばあさんはよろこんで、",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            360,
+            168
+          ],
+          [
+            360,
+            733
+          ],
+          [
+            383,
+            168
+          ],
+          [
+            383,
+            733
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "のこりのにくで、しかじるをこしらえてたべた。",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            314,
+            192
+          ],
+          [
+            314,
+            650
+          ],
+          [
+            337,
+            192
+          ],
+          [
+            337,
+            650
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "すると、となりのよくばりばあさんが、",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            267,
+            184
+          ],
+          [
+            267,
+            812
+          ],
+          [
+            290,
+            184
+          ],
+          [
+            290,
+            812
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「火を一つくれまいか、つんつくりん」とやってきた。",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            221,
+            182
+          ],
+          [
+            221,
+            772
+          ],
+          [
+            249,
+            182
+          ],
+          [
+            249,
+            772
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "「火もあげようが、あがってしかじるくっとくれ。」",
+        "isTextline": "true",
+        "confidence": 0.912
+      },
+      {
+        "boundingBox": [
+          [
+            174,
+            181
+          ],
+          [
+            174,
+            1074
+          ],
+          [
+            201,
+            181
+          ],
+          [
+            201,
+            1074
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「あやや、しかじるとは、ごうぎなこった。どうして、しかをとってきた?」",
+        "isTextline": "true",
+        "confidence": 0.919
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1766,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-07.jpg",
+    "img_name": "out-07.jpg"
+  }
+}

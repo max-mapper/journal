@@ -1,0 +1,362 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1626,
+            173
+          ],
+          [
+            1626,
+            501
+          ],
+          [
+            1647,
+            173
+          ],
+          [
+            1647,
+            501
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "と、ざしきへあげてくれた。",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1582,
+            199
+          ],
+          [
+            1582,
+            1051
+          ],
+          [
+            1607,
+            199
+          ],
+          [
+            1607,
+            1051
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "そして、夕めしになって、ねどこにねせてもらったが、夜なかになって、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1542,
+            225
+          ],
+          [
+            1542,
+            676
+          ],
+          [
+            1563,
+            225
+          ],
+          [
+            1563,
+            676
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "ギシ、ギシ、ギシ、グツ、グツ、グツ",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1496,
+            169
+          ],
+          [
+            1496,
+            475
+          ],
+          [
+            1520,
+            169
+          ],
+          [
+            1520,
+            475
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "と、音がするものだから、",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1450,
+            179
+          ],
+          [
+            1450,
+            544
+          ],
+          [
+            1474,
+            179
+          ],
+          [
+            1474,
+            544
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「なんだ、へんな音がするど。」",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1403,
+            165
+          ],
+          [
+            1403,
+            1078
+          ],
+          [
+            1429,
+            165
+          ],
+          [
+            1429,
+            1078
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "と、こぞうは目をさまして、ふとんの上から、そっとくびをのばして、いた",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1359,
+            166
+          ],
+          [
+            1359,
+            422
+          ],
+          [
+            1381,
+            166
+          ],
+          [
+            1381,
+            422
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "の間をのぞいてみた。",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            1311,
+            188
+          ],
+          [
+            1311,
+            1085
+          ],
+          [
+            1335,
+            188
+          ],
+          [
+            1335,
+            1085
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "すると、いろりの上には、大きななべがかかって、グツグツと、なにかが",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1263,
+            164
+          ],
+          [
+            1263,
+            803
+          ],
+          [
+            1287,
+            164
+          ],
+          [
+            1287,
+            803
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "にえているし、ばあさんは、しらがをふりみだして、",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1214,
+            177
+          ],
+          [
+            1214,
+            1089
+          ],
+          [
+            1240,
+            177
+          ],
+          [
+            1240,
+            1089
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "「あずきァ、あずきァ、はやくにえろ、こぞうのあたまを、つけてくおう。」",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1163,
+            166
+          ],
+          [
+            1163,
+            1049
+          ],
+          [
+            1192,
+            166
+          ],
+          [
+            1192,
+            1049
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "といいながら、ギシギシと、でばぼうちょうをといでいるところだった。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1113,
+            180
+          ],
+          [
+            1113,
+            1078
+          ],
+          [
+            1144,
+            180
+          ],
+          [
+            1144,
+            1078
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "「いや、こりゃたいへんなとこへとまったこった。ここは山んばの家だぞ。",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1067,
+            172
+          ],
+          [
+            1067,
+            569
+          ],
+          [
+            1088,
+            172
+          ],
+          [
+            1088,
+            569
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "どうして、にげだしてくりょう。",
+        "isTextline": "true",
+        "confidence": 0.902
+      },
+      {
+        "boundingBox": [
+          [
+            138,
+            455
+          ],
+          [
+            138,
+            851
+          ],
+          [
+            869,
+            455
+          ],
+          [
+            869,
+            851
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "Stater and and and the the and the the the the the the the the the the the the the and the the the",
+        "isTextline": "true",
+        "confidence": 0.426
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1849,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-64.jpg",
+    "img_name": "out-64.jpg"
+  }
+}

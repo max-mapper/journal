@@ -1,0 +1,712 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1564,
+            196
+          ],
+          [
+            1564,
+            1030
+          ],
+          [
+            1591,
+            196
+          ],
+          [
+            1591,
+            1030
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "むかしむかし、ある村に、よも吉と太一という、ふたりの木こりがいた。",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1524,
+            194
+          ],
+          [
+            1524,
+            1045
+          ],
+          [
+            1553,
+            194
+          ],
+          [
+            1553,
+            1045
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "ある日のこと、ふたりで木をきっていると、よも吉が、のどがかわいてか",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1482,
+            165
+          ],
+          [
+            1482,
+            1049
+          ],
+          [
+            1509,
+            165
+          ],
+          [
+            1509,
+            1049
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "わいてたまらなくなって、さわのほうへおりていった。そして、水をのもう",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            1442,
+            297
+          ],
+          [
+            1442,
+            912
+          ],
+          [
+            1468,
+            297
+          ],
+          [
+            1468,
+            912
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "川上から、 まき絵のおわんと、 はしがながれてきた。",
+        "isTextline": "true",
+        "confidence": 0.894
+      },
+      {
+        "boundingBox": [
+          [
+            1403,
+            189
+          ],
+          [
+            1403,
+            413
+          ],
+          [
+            1425,
+            189
+          ],
+          [
+            1425,
+            413
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "それで、よも吉は、",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            1356,
+            180
+          ],
+          [
+            1356,
+            614
+          ],
+          [
+            1382,
+            180
+          ],
+          [
+            1382,
+            614
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "川上に、だれかすんでんのかなあ。」",
+        "isTextline": "true",
+        "confidence": 0.91
+      },
+      {
+        "boundingBox": [
+          [
+            1310,
+            159
+          ],
+          [
+            1310,
+            1059
+          ],
+          [
+            1335,
+            159
+          ],
+          [
+            1335,
+            1059
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "とおもって、そのおわんとはしをひろって、すぐにさわづたいに川をのぼっ",
+        "isTextline": "true",
+        "confidence": 0.912
+      },
+      {
+        "boundingBox": [
+          [
+            1265,
+            159
+          ],
+          [
+            1265,
+            275
+          ],
+          [
+            1285,
+            159
+          ],
+          [
+            1285,
+            275
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "ていった。",
+        "isTextline": "true",
+        "confidence": 0.909
+      },
+      {
+        "boundingBox": [
+          [
+            1214,
+            186
+          ],
+          [
+            1214,
+            1071
+          ],
+          [
+            1246,
+            186
+          ],
+          [
+            1246,
+            1071
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "すると、みたこともない、りっぱなやしきがあって、門から美しいむすめ",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1164,
+            163
+          ],
+          [
+            1164,
+            1005
+          ],
+          [
+            1197,
+            163
+          ],
+          [
+            1197,
+            1005
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "がでてきたので、あのおわんとはしをさしだしたところが、むすめは、",
+        "isTextline": "true",
+        "confidence": 0.942
+      },
+      {
+        "boundingBox": [
+          [
+            1117,
+            175
+          ],
+          [
+            1117,
+            1077
+          ],
+          [
+            1149,
+            175
+          ],
+          [
+            1149,
+            1077
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「どうも、ありがとうございます。さっきあらいものをしたときに、うっか",
+        "isTextline": "true",
+        "confidence": 0.942
+      },
+      {
+        "boundingBox": [
+          [
+            1065,
+            165
+          ],
+          [
+            1065,
+            1077
+          ],
+          [
+            1100,
+            165
+          ],
+          [
+            1100,
+            1077
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "りながしてしまったとね。ま、ちょっとあがって、おちゃをのんでいきなせ。」",
+        "isTextline": "true",
+        "confidence": 0.941
+      },
+      {
+        "boundingBox": [
+          [
+            1017,
+            169
+          ],
+          [
+            1017,
+            1077
+          ],
+          [
+            1050,
+            169
+          ],
+          [
+            1050,
+            1077
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "というもので、よも吉は、おそるおそる、わらじをぬいで、そのやしきへあ",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            964,
+            1108
+          ],
+          [
+            964,
+            1136
+          ],
+          [
+            983,
+            1108
+          ],
+          [
+            983,
+            1136
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "の",
+        "isTextline": "true",
+        "confidence": 0
+      },
+      {
+        "boundingBox": [
+          [
+            737,
+            172
+          ],
+          [
+            737,
+            259
+          ],
+          [
+            757,
+            172
+          ],
+          [
+            757,
+            259
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "がった。",
+        "isTextline": "true",
+        "confidence": 0.906
+      },
+      {
+        "boundingBox": [
+          [
+            684,
+            192
+          ],
+          [
+            684,
+            1048
+          ],
+          [
+            709,
+            192
+          ],
+          [
+            709,
+            1048
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "すると、りっぱなざしきにとおされたので、よも吉は、たまげていると、",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            641,
+            166
+          ],
+          [
+            641,
+            277
+          ],
+          [
+            663,
+            166
+          ],
+          [
+            663,
+            277
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "むすめが、",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            586,
+            177
+          ],
+          [
+            586,
+            931
+          ],
+          [
+            614,
+            177
+          ],
+          [
+            614,
+            931
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "「おらのうちには、春、夏、秋、冬の四季の間があるんですと。」",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            538,
+            161
+          ],
+          [
+            538,
+            622
+          ],
+          [
+            564,
+            161
+          ],
+          [
+            564,
+            622
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "といって、つぎのへやをあけてみせた。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            489,
+            187
+          ],
+          [
+            489,
+            1063
+          ],
+          [
+            514,
+            187
+          ],
+          [
+            514,
+            1063
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "ひろいへやのなかには、 いちめんなの花がさき、 まわりにさくらや、 やま",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            442,
+            160
+          ],
+          [
+            442,
+            727
+          ],
+          [
+            466,
+            160
+          ],
+          [
+            466,
+            727
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "ぶきがさきみちて、 ちょうがとびまわっていた。",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            394,
+            188
+          ],
+          [
+            394,
+            1060
+          ],
+          [
+            418,
+            188
+          ],
+          [
+            418,
+            1060
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "つぎのへやには、山ゆりやほたるぶくろがいっぱいさいて、せみがミンミ",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            349,
+            162
+          ],
+          [
+            349,
+            406
+          ],
+          [
+            369,
+            162
+          ],
+          [
+            369,
+            406
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "ンなきしきっていた。",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            299,
+            186
+          ],
+          [
+            299,
+            1054
+          ],
+          [
+            324,
+            186
+          ],
+          [
+            324,
+            1054
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "そのつぎのへやは、ききょうやおみなえしがさきみだれて、とんぽがすい",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            255,
+            159
+          ],
+          [
+            255,
+            405
+          ],
+          [
+            276,
+            159
+          ],
+          [
+            276,
+            405
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "すいとびかっていた。",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            208,
+            186
+          ],
+          [
+            208,
+            1051
+          ],
+          [
+            233,
+            186
+          ],
+          [
+            233,
+            1051
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "さいごのへやは、 木の葉がぜんぶおちかれて、 ひろい林は、 わたぼうしの",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            166,
+            162
+          ],
+          [
+            166,
+            459
+          ],
+          [
+            188,
+            162
+          ],
+          [
+            188,
+            459
+          ]
+        ],
+        "id": 26,
+        "isVertical": "true",
+        "text": "ように雪をかぶっていた。",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            1,
+            33
+          ],
+          [
+            1,
+            166
+          ],
+          [
+            12,
+            33
+          ],
+          [
+            12,
+            166
+          ]
+        ],
+        "id": 27,
+        "isVertical": "true",
+        "text": "....................................................................................................",
+        "isTextline": "true",
+        "confidence": 0
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1765,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-15.jpg",
+    "img_name": "out-15.jpg"
+  }
+}

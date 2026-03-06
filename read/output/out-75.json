@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1564,
+            194
+          ],
+          [
+            1564,
+            1060
+          ],
+          [
+            1593,
+            194
+          ],
+          [
+            1593,
+            1060
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "道みち、ふたりがなかよくはなしながら、ゆかがくびをあちこちへふりむ",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1520,
+            171
+          ],
+          [
+            1520,
+            1063
+          ],
+          [
+            1546,
+            171
+          ],
+          [
+            1546,
+            1063
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "けて、ひとりわらいするものだから、ゆきあう人たちは、きれいなあねさん",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1476,
+            172
+          ],
+          [
+            1476,
+            1068
+          ],
+          [
+            1500,
+            172
+          ],
+          [
+            1500,
+            1068
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "が、うかれているのをみて、ようきのせいか、すこしおかしいぞと、目ひき",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1430,
+            172
+          ],
+          [
+            1430,
+            1080
+          ],
+          [
+            1454,
+            172
+          ],
+          [
+            1454,
+            1080
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "そでひきをした。そのうちに、ちんじゅさまの一のとりいのほうまでくると、",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1388,
+            173
+          ],
+          [
+            1388,
+            256
+          ],
+          [
+            1409,
+            173
+          ],
+          [
+            1409,
+            256
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "つぶは、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1336,
+            184
+          ],
+          [
+            1336,
+            1072
+          ],
+          [
+            1361,
+            184
+          ],
+          [
+            1361,
+            1072
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「おゆか、おゆか。おれをここでおろしてくれ。あちらの田のあぜの水神さ",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1288,
+            172
+          ],
+          [
+            1288,
+            1064
+          ],
+          [
+            1318,
+            172
+          ],
+          [
+            1318,
+            1064
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "まのほこらのわきにおいてくれ。あまりいい日よりだから、おれはここで、",
+        "isTextline": "true",
+        "confidence": 0.878
+      },
+      {
+        "boundingBox": [
+          [
+            1239,
+            173
+          ],
+          [
+            1239,
+            1052
+          ],
+          [
+            1268,
+            173
+          ],
+          [
+            1268,
+            1052
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "ひとねむりするから、おまえだけ、おどうへいっておがんできてくれろ。」",
+        "isTextline": "true",
+        "confidence": 0.944
+      },
+      {
+        "boundingBox": [
+          [
+            1192,
+            174
+          ],
+          [
+            1192,
+            288
+          ],
+          [
+            1213,
+            174
+          ],
+          [
+            1213,
+            288
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "といった。",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1140,
+            190
+          ],
+          [
+            1140,
+            1081
+          ],
+          [
+            1172,
+            190
+          ],
+          [
+            1172,
+            1081
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "「それじゃ、田のなかへころがりこまんよう、すずめ、からすにつつかれん",
+        "isTextline": "true",
+        "confidence": 0.94
+      },
+      {
+        "boundingBox": [
+          [
+            1089,
+            178
+          ],
+          [
+            1089,
+            840
+          ],
+          [
+            1119,
+            178
+          ],
+          [
+            1119,
+            840
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "ようにきをつけてな。ここでおがんで、里にいくから。」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1040,
+            184
+          ],
+          [
+            1040,
+            1081
+          ],
+          [
+            1076,
+            184
+          ],
+          [
+            1076,
+            1081
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "と、つぶをぬのごとほこらのまえの草において、ちんじゅさまのさかをのぼ",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            994,
+            189
+          ],
+          [
+            994,
+            323
+          ],
+          [
+            1014,
+            189
+          ],
+          [
+            1014,
+            323
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "っていった。",
+        "isTextline": "true",
+        "confidence": 0.916
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1784,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-75.jpg",
+    "img_name": "out-75.jpg"
+  }
+}

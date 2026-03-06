@@ -1,0 +1,587 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1561,
+            204
+          ],
+          [
+            1561,
+            554
+          ],
+          [
+            1618,
+            204
+          ],
+          [
+            1618,
+            554
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "まのいいりよう",
+        "isTextline": "true",
+        "confidence": 0.649
+      },
+      {
+        "boundingBox": [
+          [
+            1388,
+            166
+          ],
+          [
+            1388,
+            790
+          ],
+          [
+            1410,
+            166
+          ],
+          [
+            1410,
+            790
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "むかし、あるところに、りょうしとむすこがあった。",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1341,
+            165
+          ],
+          [
+            1341,
+            818
+          ],
+          [
+            1365,
+            165
+          ],
+          [
+            1365,
+            818
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "あるあさ、りょうしはむすこの七つのいわいのために、",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1293,
+            165
+          ],
+          [
+            1293,
+            634
+          ],
+          [
+            1317,
+            165
+          ],
+          [
+            1317,
+            634
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "山のもんでも、なにかとってこようと、",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            1245,
+            167
+          ],
+          [
+            1245,
+            741
+          ],
+          [
+            1270,
+            167
+          ],
+          [
+            1270,
+            741
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "なげしにかけた、てっぽうを、おろそうとした。",
+        "isTextline": "true",
+        "confidence": 0.91
+      },
+      {
+        "boundingBox": [
+          [
+            1195,
+            169
+          ],
+          [
+            1195,
+            836
+          ],
+          [
+            1222,
+            169
+          ],
+          [
+            1222,
+            836
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "ところが、うっかり、とりはずして、てっぽうがおちて",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1146,
+            171
+          ],
+          [
+            1146,
+            663
+          ],
+          [
+            1170,
+            171
+          ],
+          [
+            1170,
+            663
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "下にあった石うすに、ガチンとぶつかり、",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            1097,
+            176
+          ],
+          [
+            1097,
+            639
+          ],
+          [
+            1122,
+            176
+          ],
+          [
+            1122,
+            639
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "つつが、へのじに、まがってしまった。",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1050,
+            191
+          ],
+          [
+            1050,
+            662
+          ],
+          [
+            1075,
+            191
+          ],
+          [
+            1075,
+            662
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「おとっつあ、きょうは、げんがわりい。",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            759,
+            186
+          ],
+          [
+            759,
+            862
+          ],
+          [
+            784,
+            186
+          ],
+          [
+            784,
+            862
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "あさみ(よあけのりょう)に、どうぞ、いかねえでくれろ。」",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            711,
+            185
+          ],
+          [
+            711,
+            638
+          ],
+          [
+            738,
+            185
+          ],
+          [
+            738,
+            638
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "むすこは、おやじをひきとめたけれど、",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            665,
+            179
+          ],
+          [
+            665,
+            692
+          ],
+          [
+            691,
+            179
+          ],
+          [
+            691,
+            692
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "りょうしは、すたすたと、でかけていった。",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            616,
+            190
+          ],
+          [
+            616,
+            718
+          ],
+          [
+            644,
+            190
+          ],
+          [
+            644,
+            718
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「なんの、うすにあたればこそ、大あたりよ。",
+        "isTextline": "true",
+        "confidence": 0.902
+      },
+      {
+        "boundingBox": [
+          [
+            568,
+            177
+          ],
+          [
+            568,
+            731
+          ],
+          [
+            595,
+            177
+          ],
+          [
+            595,
+            731
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "まってろ、七つのいわいをもってきてやるで。」",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            470,
+            171
+          ],
+          [
+            470,
+            660
+          ],
+          [
+            497,
+            171
+          ],
+          [
+            497,
+            660
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "まだくらいうちに、山の池にきてみれば、",
+        "isTextline": "true",
+        "confidence": 0.906
+      },
+      {
+        "boundingBox": [
+          [
+            423,
+            171
+          ],
+          [
+            423,
+            637
+          ],
+          [
+            448,
+            171
+          ],
+          [
+            448,
+            637
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "かもが十三ば、かたまっておりていた。",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            376,
+            171
+          ],
+          [
+            376,
+            657
+          ],
+          [
+            402,
+            171
+          ],
+          [
+            402,
+            657
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "十二わは、ぎしゃぎしゃと、水にうかび、",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            328,
+            178
+          ],
+          [
+            328,
+            659
+          ],
+          [
+            355,
+            178
+          ],
+          [
+            355,
+            659
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "一わだけ、きしちかくに、ねむっていた。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            282,
+            183
+          ],
+          [
+            282,
+            630
+          ],
+          [
+            307,
+            183
+          ],
+          [
+            307,
+            630
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "「しめた、かりばだいみょう神」と、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            237,
+            170
+          ],
+          [
+            237,
+            602
+          ],
+          [
+            260,
+            170
+          ],
+          [
+            260,
+            602
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "りょうしは、てっぽうをかたにあて、",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            193,
+            170
+          ],
+          [
+            193,
+            602
+          ],
+          [
+            214,
+            170
+          ],
+          [
+            214,
+            602
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "まがったつつを、かもたちにむけて、",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            812,
+            1106
+          ],
+          [
+            812,
+            1127
+          ],
+          [
+            839,
+            1106
+          ],
+          [
+            839,
+            1127
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "d",
+        "isTextline": "true",
+        "confidence": 0
+      },
+      {
+        "boundingBox": [
+          [
+            1343,
+            1154
+          ],
+          [
+            1343,
+            1171
+          ],
+          [
+            1381,
+            1154
+          ],
+          [
+            1381,
+            1171
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "(70 ",
+        "isTextline": "true",
+        "confidence": 0
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1819,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-38.jpg",
+    "img_name": "out-38.jpg"
+  }
+}

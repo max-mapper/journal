@@ -1,0 +1,412 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1584,
+            193
+          ],
+          [
+            1584,
+            1060
+          ],
+          [
+            1609,
+            193
+          ],
+          [
+            1609,
+            1060
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "むかしむかしあるところに、彦というわかいものがあって、すこしあたま",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1544,
+            166
+          ],
+          [
+            1544,
+            897
+          ],
+          [
+            1566,
+            166
+          ],
+          [
+            1566,
+            897
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "はたりないが、ひとのいい、かせぎてのひとりものであった。",
+        "isTextline": "true",
+        "confidence": 0.908
+      },
+      {
+        "boundingBox": [
+          [
+            1496,
+            193
+          ],
+          [
+            1496,
+            1067
+          ],
+          [
+            1527,
+            193
+          ],
+          [
+            1527,
+            1067
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "ある日の夕がた、彦が田をうっていると、竹のつえをついて、かさをかぶ",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            1456,
+            169
+          ],
+          [
+            1456,
+            607
+          ],
+          [
+            1483,
+            169
+          ],
+          [
+            1483,
+            607
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "った、美しいあねさんがきかかって、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1404,
+            180
+          ],
+          [
+            1404,
+            1071
+          ],
+          [
+            1435,
+            180
+          ],
+          [
+            1435,
+            1071
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「もうしもうし、おれはたびのものだが、どうかひとばんとめてもらえまい",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1365,
+            165
+          ],
+          [
+            1365,
+            213
+          ],
+          [
+            1389,
+            165
+          ],
+          [
+            1389,
+            213
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "か。」",
+        "isTextline": "true",
+        "confidence": 0.904
+      },
+      {
+        "boundingBox": [
+          [
+            1316,
+            165
+          ],
+          [
+            1316,
+            392
+          ],
+          [
+            1341,
+            165
+          ],
+          [
+            1341,
+            392
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "とたのんだ。彦は、",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1266,
+            178
+          ],
+          [
+            1266,
+            1099
+          ],
+          [
+            1292,
+            178
+          ],
+          [
+            1292,
+            1099
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「とめてやるのはたやすいが、おれは、びんぼうで、なにもくわせられねえ。",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1216,
+            168
+          ],
+          [
+            1216,
+            872
+          ],
+          [
+            1240,
+            168
+          ],
+          [
+            1240,
+            872
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "それでよければ、あそこの一けん家だから、さきにいけ。」",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1167,
+            172
+          ],
+          [
+            1167,
+            424
+          ],
+          [
+            1189,
+            172
+          ],
+          [
+            1189,
+            424
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "と、おしえてやった。",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1116,
+            201
+          ],
+          [
+            1116,
+            1088
+          ],
+          [
+            1142,
+            201
+          ],
+          [
+            1142,
+            1088
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "しばらくしてかえってみると、 たびのあねさんが、 家のなかをきれいにそ",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1067,
+            179
+          ],
+          [
+            1067,
+            747
+          ],
+          [
+            1093,
+            179
+          ],
+          [
+            1093,
+            747
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "うじして、夕めしの用いをすませてまっていて、",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1018,
+            198
+          ],
+          [
+            1018,
+            709
+          ],
+          [
+            1044,
+            198
+          ],
+          [
+            1044,
+            709
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「あに、あに、足あらって、めしくいなせ。」",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            964,
+            142
+          ],
+          [
+            964,
+            168
+          ],
+          [
+            986,
+            142
+          ],
+          [
+            986,
+            168
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "96",
+        "isTextline": "true",
+        "confidence": 0.276
+      },
+      {
+        "boundingBox": [
+          [
+            952,
+            1116
+          ],
+          [
+            952,
+            1136
+          ],
+          [
+            971,
+            1116
+          ],
+          [
+            971,
+            1136
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "30",
+        "isTextline": "true",
+        "confidence": 0
+      },
+      {
+        "boundingBox": [
+          [
+            181,
+            812
+          ],
+          [
+            181,
+            973
+          ],
+          [
+            364,
+            812
+          ],
+          [
+            364,
+            973
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "さん",
+        "isTextline": "true",
+        "confidence": 0
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1770,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-19.jpg",
+    "img_name": "out-19.jpg"
+  }
+}

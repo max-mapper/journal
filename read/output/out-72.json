@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1614,
+            203
+          ],
+          [
+            1614,
+            1067
+          ],
+          [
+            1640,
+            203
+          ],
+          [
+            1640,
+            1067
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "そのうちに、つぶのさしずで、たわらは馬からおろして、くらへつみ、馬",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1570,
+            176
+          ],
+          [
+            1570,
+            1067
+          ],
+          [
+            1592,
+            176
+          ],
+          [
+            1592,
+            1067
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "には、かいばをやって、その日のやくめがぶじにすむと、こんどは、つぶが",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1525,
+            173
+          ],
+          [
+            1525,
+            1069
+          ],
+          [
+            1550,
+            173
+          ],
+          [
+            1550,
+            1069
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "やしきにつれこまれて、ごちそうになった。二のぜん、三のぜんがはこばれ",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1480,
+            172
+          ],
+          [
+            1480,
+            1057
+          ],
+          [
+            1503,
+            172
+          ],
+          [
+            1503,
+            1057
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "てくる。すると、めしわんのめしがなくなり、しるわんのしるがなくなり、",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1435,
+            170
+          ],
+          [
+            1435,
+            928
+          ],
+          [
+            1457,
+            170
+          ],
+          [
+            1457,
+            928
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "さらのさかながなくなるというふうに、つぶがみないただいて、",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            1387,
+            181
+          ],
+          [
+            1387,
+            735
+          ],
+          [
+            1412,
+            181
+          ],
+          [
+            1412,
+            735
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「もうけっこうです。 どうぞおゆをくだされ。」",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1339,
+            169
+          ],
+          [
+            1339,
+            1078
+          ],
+          [
+            1366,
+            169
+          ],
+          [
+            1366,
+            1078
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "というふうだから、長者どんがすっかりきもをつぶして、「かねがね、つぶ",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1291,
+            169
+          ],
+          [
+            1291,
+            1080
+          ],
+          [
+            1316,
+            169
+          ],
+          [
+            1316,
+            1080
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "のむすこは水神さまのもうし子だときいていたが、これほどふしぎなものと",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1243,
+            168
+          ],
+          [
+            1243,
+            1082
+          ],
+          [
+            1269,
+            168
+          ],
+          [
+            1269,
+            1082
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "は、おもわなかった。これは、ひょっとすると、よほどえらい人かもしれん。」",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1195,
+            169
+          ],
+          [
+            1195,
+            421
+          ],
+          [
+            1219,
+            169
+          ],
+          [
+            1219,
+            421
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "とおもった。それで、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1144,
+            186
+          ],
+          [
+            1144,
+            1082
+          ],
+          [
+            1171,
+            186
+          ],
+          [
+            1171,
+            1082
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「つぷどん、つぶどん。きようのおまえのはたらきには、ほんにかんしんし",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            1095,
+            174
+          ],
+          [
+            1095,
+            1081
+          ],
+          [
+            1125,
+            174
+          ],
+          [
+            1125,
+            1081
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "た。おれのところに、ふたりむすめがいるが、どちらかおまえのよめにやろ",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1044,
+            174
+          ],
+          [
+            1044,
+            224
+          ],
+          [
+            1066,
+            174
+          ],
+          [
+            1066,
+            224
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "う。」",
+        "isTextline": "true",
+        "confidence": 0.87
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1848,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-72.jpg",
+    "img_name": "out-72.jpg"
+  }
+}

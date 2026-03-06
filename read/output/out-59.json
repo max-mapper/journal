@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1608,
+            191
+          ],
+          [
+            1608,
+            414
+          ],
+          [
+            1640,
+            191
+          ],
+          [
+            1640,
+            414
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "「三国一の力もち。」",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1561,
+            190
+          ],
+          [
+            1561,
+            546
+          ],
+          [
+            1594,
+            190
+          ],
+          [
+            1594,
+            546
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "「一つくれれば、すけもうす。」",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1519,
+            177
+          ],
+          [
+            1519,
+            744
+          ],
+          [
+            1543,
+            177
+          ],
+          [
+            1543,
+            744
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "と、これももち一つもらって、けらいになった。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1473,
+            200
+          ],
+          [
+            1473,
+            902
+          ],
+          [
+            1497,
+            200
+          ],
+          [
+            1497,
+            902
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "また、すこしいくと、ガサガサとさわがにが、はいだして、",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1426,
+            186
+          ],
+          [
+            1426,
+            682
+          ],
+          [
+            1452,
+            186
+          ],
+          [
+            1452,
+            682
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「すずめどん、すずめどん、どこへいく。」",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1381,
+            184
+          ],
+          [
+            1381,
+            549
+          ],
+          [
+            1408,
+            184
+          ],
+          [
+            1408,
+            549
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「さるの山家へ、あだうちに。」",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1333,
+            184
+          ],
+          [
+            1333,
+            657
+          ],
+          [
+            1360,
+            184
+          ],
+          [
+            1360,
+            657
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「せなかへしょったは、なんでござる。」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1288,
+            183
+          ],
+          [
+            1288,
+            411
+          ],
+          [
+            1321,
+            183
+          ],
+          [
+            1321,
+            411
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「三国一の力もち。」",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1239,
+            185
+          ],
+          [
+            1239,
+            549
+          ],
+          [
+            1273,
+            185
+          ],
+          [
+            1273,
+            549
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「一つくれれば、すけもうす。」",
+        "isTextline": "true",
+        "confidence": 0.898
+      },
+      {
+        "boundingBox": [
+          [
+            1191,
+            169
+          ],
+          [
+            1191,
+            723
+          ],
+          [
+            1215,
+            169
+          ],
+          [
+            1215,
+            723
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "と、かにももちをもらって、けらいになった。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1141,
+            196
+          ],
+          [
+            1141,
+            1073
+          ],
+          [
+            1170,
+            196
+          ],
+          [
+            1170,
+            1073
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "また、すこしいくと、ピッタピッタと、牛のくそがやってきて、これも、",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1090,
+            170
+          ],
+          [
+            1090,
+            562
+          ],
+          [
+            1115,
+            170
+          ],
+          [
+            1115,
+            562
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "もちをもらってけらいになった。",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1041,
+            198
+          ],
+          [
+            1041,
+            1072
+          ],
+          [
+            1076,
+            198
+          ],
+          [
+            1076,
+            1072
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "それからまた、すこしいくと、ゴロンゴロンと、石うすがころんできて、",
+        "isTextline": "true",
+        "confidence": 0.931
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1833,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-59.jpg",
+    "img_name": "out-59.jpg"
+  }
+}

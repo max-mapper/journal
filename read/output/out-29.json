@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1615,
+            180
+          ],
+          [
+            1615,
+            1050
+          ],
+          [
+            1648,
+            180
+          ],
+          [
+            1648,
+            1050
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "「どっこい、どっこい。」と、そっと声がけして、気をいれているうちに、じ",
+        "isTextline": "true",
+        "confidence": 0.899
+      },
+      {
+        "boundingBox": [
+          [
+            1573,
+            169
+          ],
+          [
+            1573,
+            1039
+          ],
+          [
+            1599,
+            169
+          ],
+          [
+            1599,
+            1039
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "いさんとこのねずみが、えっ!と力をだして、長者どんとこのねずみを、",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1533,
+            164
+          ],
+          [
+            1533,
+            494
+          ],
+          [
+            1557,
+            164
+          ],
+          [
+            1557,
+            494
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "すてんと、なげてしまった。",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1488,
+            190
+          ],
+          [
+            1488,
+            650
+          ],
+          [
+            1513,
+            190
+          ],
+          [
+            1513,
+            650
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "そこで、長者どんとこのこえねずみが、",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            1441,
+            176
+          ],
+          [
+            1441,
+            696
+          ],
+          [
+            1469,
+            176
+          ],
+          [
+            1469,
+            696
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「たまげたぞ、力のでるほう、おしえろや。」",
+        "isTextline": "true",
+        "confidence": 0.94
+      },
+      {
+        "boundingBox": [
+          [
+            1397,
+            161
+          ],
+          [
+            1397,
+            786
+          ],
+          [
+            1421,
+            161
+          ],
+          [
+            1421,
+            786
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "とたのんだところが、じいさんとこのやせねずみは、",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1350,
+            174
+          ],
+          [
+            1350,
+            1068
+          ],
+          [
+            1378,
+            174
+          ],
+          [
+            1378,
+            1068
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「そりゃ、わけねえことだ。おら、じいさん、ばあさんから、力もちこさえ",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1303,
+            161
+          ],
+          [
+            1303,
+            910
+          ],
+          [
+            1329,
+            161
+          ],
+          [
+            1329,
+            910
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "てもらって、それをくったから、こんなにつよくなったのさ。」",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1257,
+            171
+          ],
+          [
+            1257,
+            804
+          ],
+          [
+            1285,
+            171
+          ],
+          [
+            1285,
+            804
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「それじゃ、おらもいくから、ごちそうしてくれろ。」",
+        "isTextline": "true",
+        "confidence": 0.94
+      },
+      {
+        "boundingBox": [
+          [
+            1210,
+            174
+          ],
+          [
+            1210,
+            1071
+          ],
+          [
+            1236,
+            174
+          ],
+          [
+            1236,
+            1071
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "「でも、おらとこのじいさんばあさん、ぴんぼうだから、めったにもちなど",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1161,
+            163
+          ],
+          [
+            1161,
+            1073
+          ],
+          [
+            1186,
+            163
+          ],
+          [
+            1186,
+            1073
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "つけねえさ。もし、おめえが長者どんのぜに金でももってきてくれたら、ご",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1109,
+            162
+          ],
+          [
+            1109,
+            401
+          ],
+          [
+            1133,
+            162
+          ],
+          [
+            1133,
+            401
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "ちそうしてやろう。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1061,
+            179
+          ],
+          [
+            1061,
+            457
+          ],
+          [
+            1084,
+            179
+          ],
+          [
+            1084,
+            457
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「そいじゃ、そうする。」",
+        "isTextline": "true",
+        "confidence": 0.916
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1814,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-29.jpg",
+    "img_name": "out-29.jpg"
+  }
+}

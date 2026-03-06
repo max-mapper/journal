@@ -1,0 +1,687 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1590,
+            174
+          ],
+          [
+            1590,
+            1053
+          ],
+          [
+            1614,
+            174
+          ],
+          [
+            1614,
+            1053
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "と、けらいたちにいいわたした。けらいたちは、それから四方八方へちって",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1552,
+            171
+          ],
+          [
+            1552,
+            551
+          ],
+          [
+            1574,
+            171
+          ],
+          [
+            1574,
+            551
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "あたりの村里をさがしまわった。",
+        "isTextline": "true",
+        "confidence": 0.906
+      },
+      {
+        "boundingBox": [
+          [
+            1507,
+            194
+          ],
+          [
+            1507,
+            1060
+          ],
+          [
+            1534,
+            194
+          ],
+          [
+            1534,
+            1060
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "そして七日めに、 彦の家の花をさがしだすと、 けらいたちは、 すぐに花を",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1465,
+            169
+          ],
+          [
+            1465,
+            841
+          ],
+          [
+            1488,
+            169
+          ],
+          [
+            1488,
+            841
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "ごてんにつれていこうとした。花はいずまいをただして、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1420,
+            176
+          ],
+          [
+            1420,
+            1068
+          ],
+          [
+            1443,
+            176
+          ],
+          [
+            1443,
+            1068
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「いくらとのさんでも、なんのつみもないものを、つれていくことはありま",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1375,
+            160
+          ],
+          [
+            1375,
+            1070
+          ],
+          [
+            1398,
+            160
+          ],
+          [
+            1398,
+            1070
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "すめえ。おれのあにに、なんのおちどがあったか、きかしてもらいてえもん",
+        "isTextline": "true",
+        "confidence": 0.939
+      },
+      {
+        "boundingBox": [
+          [
+            1327,
+            161
+          ],
+          [
+            1327,
+            208
+          ],
+          [
+            1350,
+            161
+          ],
+          [
+            1350,
+            208
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "だ。」",
+        "isTextline": "true",
+        "confidence": 0.9
+      },
+      {
+        "boundingBox": [
+          [
+            1282,
+            162
+          ],
+          [
+            1282,
+            1077
+          ],
+          [
+            1305,
+            162
+          ],
+          [
+            1305,
+            1077
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "とくってかかった。そのけんまくにのまれて、けらいたちは、いったんひき",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1233,
+            161
+          ],
+          [
+            1233,
+            603
+          ],
+          [
+            1258,
+            161
+          ],
+          [
+            1258,
+            603
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "さがって、とのさんにもうしあげた。",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1184,
+            186
+          ],
+          [
+            1184,
+            438
+          ],
+          [
+            1206,
+            186
+          ],
+          [
+            1206,
+            438
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "すると、とのさんは、",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1136,
+            176
+          ],
+          [
+            1136,
+            1053
+          ],
+          [
+            1161,
+            176
+          ],
+          [
+            1161,
+            1053
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「よし、それじゃ、彦のやつのできそうにないしごとをいいつけてやれ。」",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1088,
+            165
+          ],
+          [
+            1088,
+            1077
+          ],
+          [
+            1112,
+            165
+          ],
+          [
+            1112,
+            1077
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "と、けらいたちをあつめて、むりなしごとをあんじださせて、そして、彦の",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1042,
+            170
+          ],
+          [
+            1042,
+            281
+          ],
+          [
+            1063,
+            170
+          ],
+          [
+            1063,
+            281
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "ところへ、",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            985,
+            123
+          ],
+          [
+            985,
+            144
+          ],
+          [
+            1006,
+            123
+          ],
+          [
+            1006,
+            144
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": ")",
+        "isTextline": "true",
+        "confidence": 0.286
+      },
+      {
+        "boundingBox": [
+          [
+            743,
+            194
+          ],
+          [
+            743,
+            1067
+          ],
+          [
+            769,
+            194
+          ],
+          [
+            769,
+            1067
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "「彦にやってもらいたいしごとがある。それができねば、おめえのよめをと",
+        "isTextline": "true",
+        "confidence": 0.9
+      },
+      {
+        "boundingBox": [
+          [
+            697,
+            176
+          ],
+          [
+            697,
+            728
+          ],
+          [
+            721,
+            176
+          ],
+          [
+            721,
+            728
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "るぞ。まず、灰なわ千ひろ、もってきてくれ。」",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            647,
+            173
+          ],
+          [
+            647,
+            341
+          ],
+          [
+            670,
+            173
+          ],
+          [
+            670,
+            341
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "といいつけた。",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            599,
+            195
+          ],
+          [
+            599,
+            1075
+          ],
+          [
+            625,
+            195
+          ],
+          [
+            625,
+            1075
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "彦は、こまった、こまったとあたまをかかえていたが、花はいっこうに平",
+        "isTextline": "true",
+        "confidence": 0.906
+      },
+      {
+        "boundingBox": [
+          [
+            552,
+            167
+          ],
+          [
+            552,
+            227
+          ],
+          [
+            575,
+            167
+          ],
+          [
+            575,
+            227
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "気で、",
+        "isTextline": "true",
+        "confidence": 0.877
+      },
+      {
+        "boundingBox": [
+          [
+            502,
+            179
+          ],
+          [
+            502,
+            1071
+          ],
+          [
+            527,
+            179
+          ],
+          [
+            527,
+            1071
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "「あに、あに、ぞうさもねえこった。まず、かためのつなを千ひろなえ。そ",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            454,
+            165
+          ],
+          [
+            454,
+            1069
+          ],
+          [
+            480,
+            165
+          ],
+          [
+            480,
+            1069
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "したら、それをまるくたたんで、火をつけて、みんなもやしてしまったとこ",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            407,
+            168
+          ],
+          [
+            407,
+            675
+          ],
+          [
+            432,
+            168
+          ],
+          [
+            432,
+            675
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "ろへ、水をかければ、灰なわができるよ。」",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            358,
+            166
+          ],
+          [
+            358,
+            1066
+          ],
+          [
+            384,
+            166
+          ],
+          [
+            384,
+            1066
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "とおしえた。彦は、おしえられたとおりにして、つくった灰なわをもってい",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            314,
+            165
+          ],
+          [
+            314,
+            387
+          ],
+          [
+            336,
+            165
+          ],
+          [
+            336,
+            387
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "くと、とのさんは、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            266,
+            179
+          ],
+          [
+            266,
+            512
+          ],
+          [
+            290,
+            179
+          ],
+          [
+            290,
+            512
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "「まず、これはよくできた。」",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            219,
+            168
+          ],
+          [
+            219,
+            1066
+          ],
+          [
+            244,
+            168
+          ],
+          [
+            244,
+            1066
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "と、ほうびを彦にくれたけれども、なんとしても、えすがたのあねさんがほ",
+        "isTextline": "true",
+        "confidence": 0.91
+      },
+      {
+        "boundingBox": [
+          [
+            175,
+            168
+          ],
+          [
+            175,
+            1066
+          ],
+          [
+            199,
+            168
+          ],
+          [
+            199,
+            1066
+          ]
+        ],
+        "id": 26,
+        "isVertical": "true",
+        "text": "しいものだから、四、五日すると、またつかいをだして、一本のおなじふと",
+        "isTextline": "true",
+        "confidence": 0.917
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1767,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-22.jpg",
+    "img_name": "out-22.jpg"
+  }
+}

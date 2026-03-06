@@ -1,0 +1,237 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1602,
+            173
+          ],
+          [
+            1602,
+            286
+          ],
+          [
+            1620,
+            173
+          ],
+          [
+            1620,
+            286
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "ていった。",
+        "isTextline": "true",
+        "confidence": 0.887
+      },
+      {
+        "boundingBox": [
+          [
+            1561,
+            197
+          ],
+          [
+            1561,
+            575
+          ],
+          [
+            1582,
+            197
+          ],
+          [
+            1582,
+            575
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "そのとき、花は、けらいたちに、",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            1513,
+            181
+          ],
+          [
+            1513,
+            982
+          ],
+          [
+            1539,
+            181
+          ],
+          [
+            1539,
+            982
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "「あのくりうりは、ろうぜきものだ。門をしめて、かまいつけるな。」",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            1472,
+            167
+          ],
+          [
+            1472,
+            994
+          ],
+          [
+            1498,
+            167
+          ],
+          [
+            1498,
+            994
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "といって、門ばんに、かたく門をとじさせた。ほんもののとのさんは、",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1433,
+            179
+          ],
+          [
+            1433,
+            458
+          ],
+          [
+            1454,
+            179
+          ],
+          [
+            1454,
+            458
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「おれは、とのさんだ。」",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            1385,
+            163
+          ],
+          [
+            1385,
+            1063
+          ],
+          [
+            1409,
+            163
+          ],
+          [
+            1409,
+            1063
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "とわめいたけれども、くりうりのみなりでは、あいてにされなかった。いっ",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1340,
+            162
+          ],
+          [
+            1340,
+            1073
+          ],
+          [
+            1365,
+            162
+          ],
+          [
+            1365,
+            1073
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "ぽう、彦は、とのさんのいしょうをきて、とのさんのふとんにすわって、花",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            1292,
+            164
+          ],
+          [
+            1292,
+            1072
+          ],
+          [
+            1321,
+            164
+          ],
+          [
+            1321,
+            1072
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "のおかたをそばにおいて、もう、えすがたをかかせることもなく、一生、よ",
+        "isTextline": "true",
+        "confidence": 0.898
+      },
+      {
+        "boundingBox": [
+          [
+            1243,
+            165
+          ],
+          [
+            1243,
+            740
+          ],
+          [
+            1270,
+            165
+          ],
+          [
+            1270,
+            740
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "いとのさんになってくらしたと。いちごさけた。",
+        "isTextline": "true",
+        "confidence": 0.931
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1819,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-27.jpg",
+    "img_name": "out-27.jpg"
+  }
+}

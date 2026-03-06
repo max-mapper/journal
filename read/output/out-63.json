@@ -1,0 +1,662 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1606,
+            197
+          ],
+          [
+            1606,
+            810
+          ],
+          [
+            1633,
+            197
+          ],
+          [
+            1633,
+            810
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "むかし、山ざとの寺に、おしょうと、こぞうがいた。",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1559,
+            193
+          ],
+          [
+            1559,
+            1057
+          ],
+          [
+            1593,
+            193
+          ],
+          [
+            1593,
+            1057
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "春のうらうらとする日に、こぞうは、山へさくらの花をとりにやらせてく",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            1521,
+            166
+          ],
+          [
+            1521,
+            652
+          ],
+          [
+            1544,
+            166
+          ],
+          [
+            1544,
+            652
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "れと、おしょうにたのんだ。おしょうは、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1475,
+            179
+          ],
+          [
+            1475,
+            696
+          ],
+          [
+            1504,
+            179
+          ],
+          [
+            1504,
+            696
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "「山にゃいくな。山にゃ山んばがいっから。」",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1430,
+            164
+          ],
+          [
+            1430,
+            786
+          ],
+          [
+            1452,
+            164
+          ],
+          [
+            1452,
+            786
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "ととめたけれども、あまりこぞうがいきたがるので、",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            1382,
+            174
+          ],
+          [
+            1382,
+            1080
+          ],
+          [
+            1406,
+            174
+          ],
+          [
+            1406,
+            1080
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「そんなら、このまもりふだを三まいやっから、どうにもしかたねえときに、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1334,
+            168
+          ],
+          [
+            1334,
+            400
+          ],
+          [
+            1358,
+            168
+          ],
+          [
+            1358,
+            400
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "一まいずつなげろ。」",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1286,
+            160
+          ],
+          [
+            1286,
+            520
+          ],
+          [
+            1309,
+            160
+          ],
+          [
+            1309,
+            520
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "と、三まいのおふだをくれた。",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1237,
+            189
+          ],
+          [
+            1237,
+            1074
+          ],
+          [
+            1264,
+            189
+          ],
+          [
+            1264,
+            1074
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "こぞうは、山の入り口から花をみながら、だんだんに山おくに、はいって",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1188,
+            161
+          ],
+          [
+            1188,
+            1061
+          ],
+          [
+            1216,
+            161
+          ],
+          [
+            1216,
+            1061
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "いくと、さくらがぱっと、いちめんにさいている谷へでた。それで、つい、",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1138,
+            162
+          ],
+          [
+            1138,
+            1061
+          ],
+          [
+            1166,
+            162
+          ],
+          [
+            1166,
+            1061
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "このえだあのえだと、花のみごとな木をさがして、谷おくへはいるうちに、",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1089,
+            162
+          ],
+          [
+            1089,
+            440
+          ],
+          [
+            1115,
+            162
+          ],
+          [
+            1115,
+            440
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "日がくれかかってきた。",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1043,
+            191
+          ],
+          [
+            1043,
+            679
+          ],
+          [
+            1069,
+            191
+          ],
+          [
+            1069,
+            679
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "すると、その谷のずっとおくのほうから、",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            761,
+            240
+          ],
+          [
+            761,
+            513
+          ],
+          [
+            780,
+            240
+          ],
+          [
+            780,
+            513
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "シャリンコシャラレコ",
+        "isTextline": "true",
+        "confidence": 0.9
+      },
+      {
+        "boundingBox": [
+          [
+            715,
+            263
+          ],
+          [
+            715,
+            593
+          ],
+          [
+            733,
+            263
+          ],
+          [
+            733,
+            593
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "シャラレコシャンシャン",
+        "isTextline": "true",
+        "confidence": 0.897
+      },
+      {
+        "boundingBox": [
+          [
+            664,
+            182
+          ],
+          [
+            664,
+            980
+          ],
+          [
+            690,
+            182
+          ],
+          [
+            690,
+            980
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "と、ばかににぎやかな、まつりばやしのような音が、きこえてきた。",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            616,
+            189
+          ],
+          [
+            616,
+            660
+          ],
+          [
+            641,
+            189
+          ],
+          [
+            641,
+            660
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "「はて、このおくに、家があるのかな?」",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            569,
+            178
+          ],
+          [
+            569,
+            1077
+          ],
+          [
+            594,
+            178
+          ],
+          [
+            594,
+            1077
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "と、こぞうが、音にひかれ、ひかれおくへふみいっていくうちに、とっぷり",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            525,
+            176
+          ],
+          [
+            525,
+            340
+          ],
+          [
+            544,
+            176
+          ],
+          [
+            544,
+            340
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "くらくなった。",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            472,
+            203
+          ],
+          [
+            472,
+            1073
+          ],
+          [
+            497,
+            203
+          ],
+          [
+            497,
+            1073
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "こまった、とおもったとたんに、とおくのほうに、ぽかっと、あかりがつ",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            423,
+            178
+          ],
+          [
+            423,
+            1076
+          ],
+          [
+            450,
+            178
+          ],
+          [
+            450,
+            1076
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "いてみえた。ほっとして、そのあかりのほうへいってみると、山のなかにし",
+        "isTextline": "true",
+        "confidence": 0.91
+      },
+      {
+        "boundingBox": [
+          [
+            378,
+            175
+          ],
+          [
+            378,
+            551
+          ],
+          [
+            403,
+            175
+          ],
+          [
+            403,
+            551
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "ては、大きな一けん家があった。",
+        "isTextline": "true",
+        "confidence": 0.902
+      },
+      {
+        "boundingBox": [
+          [
+            327,
+            187
+          ],
+          [
+            327,
+            1073
+          ],
+          [
+            355,
+            187
+          ],
+          [
+            355,
+            1073
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "「ごめんなさい。道にまよって、おそくなったので、こん夜ひとつ、とめて",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            283,
+            173
+          ],
+          [
+            283,
+            300
+          ],
+          [
+            305,
+            173
+          ],
+          [
+            305,
+            300
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "けなさい。」",
+        "isTextline": "true",
+        "confidence": 0.908
+      },
+      {
+        "boundingBox": [
+          [
+            234,
+            175
+          ],
+          [
+            234,
+            866
+          ],
+          [
+            258,
+            175
+          ],
+          [
+            258,
+            866
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "と、こぞうが声をかけると、年よりのばあさんがでてきて、",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            187,
+            188
+          ],
+          [
+            187,
+            669
+          ],
+          [
+            210,
+            188
+          ],
+          [
+            210,
+            669
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "「そりゃこまったろう。とまれ、とまれ。」",
+        "isTextline": "true",
+        "confidence": 0.917
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1801,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-63.jpg",
+    "img_name": "out-63.jpg"
+  }
+}

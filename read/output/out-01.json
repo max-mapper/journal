@@ -1,0 +1,237 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            9,
+            17
+          ],
+          [
+            9,
+            128
+          ],
+          [
+            481,
+            17
+          ],
+          [
+            481,
+            128
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "日本のもから話",
+        "isTextline": "true",
+        "confidence": 0.873
+      },
+      {
+        "boundingBox": [
+          [
+            21,
+            125
+          ],
+          [
+            21,
+            173
+          ],
+          [
+            480,
+            125
+          ],
+          [
+            480,
+            173
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "津田貞二ネぶん濱田康男水桜山俊夫*え",
+        "isTextline": "true",
+        "confidence": 0.624
+      },
+      {
+        "boundingBox": [
+          [
+            917,
+            30
+          ],
+          [
+            917,
+            402
+          ],
+          [
+            989,
+            30
+          ],
+          [
+            989,
+            402
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "日本のむかし話",
+        "isTextline": "true",
+        "confidence": 0.545
+      },
+      {
+        "boundingBox": [
+          [
+            1642,
+            28
+          ],
+          [
+            1642,
+            53
+          ],
+          [
+            1850,
+            28
+          ],
+          [
+            1850,
+            53
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "愛蔵版……世界の童話",
+        "isTextline": "true",
+        "confidence": 0.653
+      },
+      {
+        "boundingBox": [
+          [
+            1703,
+            70
+          ],
+          [
+            1703,
+            91
+          ],
+          [
+            1849,
+            70
+          ],
+          [
+            1849,
+            91
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "学習研究社",
+        "isTextline": "true",
+        "confidence": 0.492
+      },
+      {
+        "boundingBox": [
+          [
+            1729,
+            96
+          ],
+          [
+            1729,
+            111
+          ],
+          [
+            1848,
+            96
+          ],
+          [
+            1848,
+            111
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "3397-639264-1002",
+        "isTextline": "true",
+        "confidence": 0.563
+      },
+      {
+        "boundingBox": [
+          [
+            942,
+            1032
+          ],
+          [
+            942,
+            1109
+          ],
+          [
+            976,
+            1032
+          ],
+          [
+            976,
+            1109
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "明せ",
+        "isTextline": "true",
+        "confidence": 0.471
+      },
+      {
+        "boundingBox": [
+          [
+            1313,
+            974
+          ],
+          [
+            1313,
+            993
+          ],
+          [
+            1560,
+            974
+          ],
+          [
+            1560,
+            993
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "井の頭コミュニティ・センター図書室",
+        "isTextline": "true",
+        "confidence": 0.326
+      },
+      {
+        "boundingBox": [
+          [
+            1368,
+            993
+          ],
+          [
+            1368,
+            1007
+          ],
+          [
+            1498,
+            993
+          ],
+          [
+            1498,
+            1007
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "TEL0422-44-7321",
+        "isTextline": "true",
+        "confidence": 0.354
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1865,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-01.jpg",
+    "img_name": "out-01.jpg"
+  }
+}

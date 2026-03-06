@@ -1,0 +1,62 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            392,
+            663
+          ],
+          [
+            392,
+            985
+          ],
+          [
+            512,
+            663
+          ],
+          [
+            512,
+            985
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "あふだ",
+        "isTextline": "true",
+        "confidence": 0.297
+      },
+      {
+        "boundingBox": [
+          [
+            3,
+            780
+          ],
+          [
+            3,
+            1212
+          ],
+          [
+            14,
+            780
+          ],
+          [
+            14,
+            1212
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",
+        "isTextline": "true",
+        "confidence": 0.42
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1867,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-62.jpg",
+    "img_name": "out-62.jpg"
+  }
+}

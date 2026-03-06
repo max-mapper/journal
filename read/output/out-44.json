@@ -1,0 +1,662 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1617,
+            166
+          ],
+          [
+            1617,
+            1052
+          ],
+          [
+            1647,
+            166
+          ],
+          [
+            1647,
+            1052
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "そしたら、おにどもがわらわらとあつまってくる。そして、おにどもがばく",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1576,
+            163
+          ],
+          [
+            1576,
+            1055
+          ],
+          [
+            1603,
+            163
+          ],
+          [
+            1603,
+            1055
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "ちをうつから、いいあんばいをみはからって、夜あけのにわとりのなきまね",
+        "isTextline": "true",
+        "confidence": 0.938
+      },
+      {
+        "boundingBox": [
+          [
+            1538,
+            163
+          ],
+          [
+            1538,
+            644
+          ],
+          [
+            1561,
+            163
+          ],
+          [
+            1561,
+            644
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "してみろ。ぜに金が手どりしだいじゃ。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1494,
+            192
+          ],
+          [
+            1494,
+            606
+          ],
+          [
+            1515,
+            192
+          ],
+          [
+            1515,
+            606
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "こう、じぞうは、おしえてくれた。",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            1443,
+            190
+          ],
+          [
+            1443,
+            1070
+          ],
+          [
+            1469,
+            190
+          ],
+          [
+            1469,
+            1070
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "じいさんは、じぞうにおれいをいって、はりの上でまつうちに、やがて夜",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1398,
+            162
+          ],
+          [
+            1398,
+            1073
+          ],
+          [
+            1423,
+            162
+          ],
+          [
+            1423,
+            1073
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "になって、そとから、おおぜいのおにどもが、おどうのなかへあつまってき",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1354,
+            159
+          ],
+          [
+            1354,
+            1075
+          ],
+          [
+            1376,
+            159
+          ],
+          [
+            1376,
+            1075
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "て、 じざいかぎのかかっている、 いろりをかこんで、 みんなして、 ビッタク",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1307,
+            162
+          ],
+          [
+            1307,
+            690
+          ],
+          [
+            1329,
+            162
+          ],
+          [
+            1329,
+            690
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "タ、ビッタクタと、ばくちをうちはじめた。",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1258,
+            190
+          ],
+          [
+            1258,
+            1081
+          ],
+          [
+            1283,
+            190
+          ],
+          [
+            1283,
+            1081
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "じいさんは、しばらくみていたが、ころあいをみて、りょうのももをパタ",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1210,
+            165
+          ],
+          [
+            1210,
+            418
+          ],
+          [
+            1230,
+            165
+          ],
+          [
+            1230,
+            418
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "パタとたたきながら、",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1162,
+            195
+          ],
+          [
+            1162,
+            350
+          ],
+          [
+            1178,
+            195
+          ],
+          [
+            1178,
+            350
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "ケケロウ……",
+        "isTextline": "true",
+        "confidence": 0.871
+      },
+      {
+        "boundingBox": [
+          [
+            1111,
+            169
+          ],
+          [
+            1111,
+            746
+          ],
+          [
+            1135,
+            169
+          ],
+          [
+            1135,
+            746
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "と、にわとりのなき声をさけぶと、おにどもは、",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1061,
+            186
+          ],
+          [
+            1061,
+            519
+          ],
+          [
+            1087,
+            186
+          ],
+          [
+            1087,
+            519
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「ありゃ、もう一ばんどり。」",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            763,
+            179
+          ],
+          [
+            763,
+            1062
+          ],
+          [
+            787,
+            179
+          ],
+          [
+            787,
+            1062
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "といって、むちゅうになって、ぜに金をつみあげて、ピッタクタとうちつづ",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            721,
+            174
+          ],
+          [
+            721,
+            236
+          ],
+          [
+            741,
+            174
+          ],
+          [
+            741,
+            236
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "けた。",
+        "isTextline": "true",
+        "confidence": 0.908
+      },
+      {
+        "boundingBox": [
+          [
+            669,
+            200
+          ],
+          [
+            669,
+            814
+          ],
+          [
+            690,
+            200
+          ],
+          [
+            690,
+            814
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "じいさんは、またしばらくしてから、ももをうって、",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            621,
+            200
+          ],
+          [
+            621,
+            445
+          ],
+          [
+            641,
+            200
+          ],
+          [
+            641,
+            445
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "ケケロウ、ケケロウ、",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            570,
+            170
+          ],
+          [
+            570,
+            604
+          ],
+          [
+            592,
+            170
+          ],
+          [
+            592,
+            604
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "と、なきまねをすると、おにどもは、",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            519,
+            181
+          ],
+          [
+            519,
+            482
+          ],
+          [
+            543,
+            181
+          ],
+          [
+            543,
+            482
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "「はや、もう二ばんどり。」",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            473,
+            166
+          ],
+          [
+            473,
+            1067
+          ],
+          [
+            497,
+            166
+          ],
+          [
+            497,
+            1067
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "といって、もうみさかいもなくぜに金をはっては、あわてくさって、ピッタ",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            424,
+            166
+          ],
+          [
+            424,
+            414
+          ],
+          [
+            446,
+            166
+          ],
+          [
+            446,
+            414
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "クタとうちつづけた。",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            376,
+            191
+          ],
+          [
+            376,
+            785
+          ],
+          [
+            402,
+            191
+          ],
+          [
+            402,
+            785
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "そこでじいさんが、もうよかろうと、大きな声で、",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            328,
+            193
+          ],
+          [
+            328,
+            588
+          ],
+          [
+            352,
+            193
+          ],
+          [
+            352,
+            588
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "ケケロ、ケケロ、ケケロヤエ……",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            281,
+            162
+          ],
+          [
+            281,
+            677
+          ],
+          [
+            303,
+            162
+          ],
+          [
+            303,
+            677
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "となきたてると、おにどもは、いっせいに、",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            232,
+            176
+          ],
+          [
+            232,
+            626
+          ],
+          [
+            257,
+            176
+          ],
+          [
+            257,
+            626
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "「こりゃ、三ばんどり。夜があけた!」",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            185,
+            162
+          ],
+          [
+            185,
+            1063
+          ],
+          [
+            210,
+            162
+          ],
+          [
+            210,
+            1063
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "とよばわるなり、ぜに金をそのままそこに、ぶっちらかしたまま、われさき",
+        "isTextline": "true",
+        "confidence": 0.92
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1837,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-44.jpg",
+    "img_name": "out-44.jpg"
+  }
+}

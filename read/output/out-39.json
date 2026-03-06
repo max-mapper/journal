@@ -1,0 +1,662 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1592,
+            172
+          ],
+          [
+            1592,
+            628
+          ],
+          [
+            1614,
+            172
+          ],
+          [
+            1614,
+            628
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "なむ!ドカン!と ぷっぱなした。",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1545,
+            172
+          ],
+          [
+            1545,
+            837
+          ],
+          [
+            1572,
+            172
+          ],
+          [
+            1572,
+            837
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "たまは、ちどりがけに、ぎしゃぎしゃととんでいって、",
+        "isTextline": "true",
+        "confidence": 0.902
+      },
+      {
+        "boundingBox": [
+          [
+            1505,
+            171
+          ],
+          [
+            1505,
+            658
+          ],
+          [
+            1526,
+            171
+          ],
+          [
+            1526,
+            658
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "十二わのかもぜんぶにめいちゅうした。",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            1459,
+            171
+          ],
+          [
+            1459,
+            710
+          ],
+          [
+            1482,
+            171
+          ],
+          [
+            1482,
+            710
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "どころか、たまは、きしの岩にぶっつかって、",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1414,
+            169
+          ],
+          [
+            1414,
+            739
+          ],
+          [
+            1436,
+            169
+          ],
+          [
+            1436,
+            739
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "さいごの一わに、はねかえってきずをおわせた。",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1368,
+            169
+          ],
+          [
+            1368,
+            715
+          ],
+          [
+            1393,
+            169
+          ],
+          [
+            1393,
+            715
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "かもは、死にきれずに、ばたばた、さわいで、",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1323,
+            168
+          ],
+          [
+            1323,
+            607
+          ],
+          [
+            1349,
+            168
+          ],
+          [
+            1349,
+            607
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "水をはばたいて、あばれまわるので、",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            1275,
+            170
+          ],
+          [
+            1275,
+            622
+          ],
+          [
+            1299,
+            170
+          ],
+          [
+            1299,
+            622
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "りょうしは、てっぽうをおいて、池に",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1229,
+            172
+          ],
+          [
+            1229,
+            530
+          ],
+          [
+            1251,
+            172
+          ],
+          [
+            1251,
+            530
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "がわがわと、はいっていった。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1179,
+            173
+          ],
+          [
+            1179,
+            800
+          ],
+          [
+            1203,
+            173
+          ],
+          [
+            1203,
+            800
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "なにしろ、もんぺにはばき(草をあんだすねまき)で、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1129,
+            176
+          ],
+          [
+            1129,
+            397
+          ],
+          [
+            1151,
+            176
+          ],
+          [
+            1151,
+            397
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "はやくわたれない。",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1080,
+            179
+          ],
+          [
+            1080,
+            776
+          ],
+          [
+            1105,
+            179
+          ],
+          [
+            1105,
+            776
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "ようやくよってみれば、かもはいよいよさわいだ。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1032,
+            184
+          ],
+          [
+            1032,
+            589
+          ],
+          [
+            1055,
+            184
+          ],
+          [
+            1055,
+            589
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "くびをつかむと、つよいはばたき、",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            748,
+            193
+          ],
+          [
+            748,
+            667
+          ],
+          [
+            772,
+            193
+          ],
+          [
+            772,
+            667
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "とたんに、ぴしゃんと大きな音がして、",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            701,
+            189
+          ],
+          [
+            701,
+            693
+          ],
+          [
+            727,
+            189
+          ],
+          [
+            727,
+            693
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "でっかいこいが、たまげておどりあがって、",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            655,
+            183
+          ],
+          [
+            655,
+            616
+          ],
+          [
+            679,
+            183
+          ],
+          [
+            679,
+            616
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "きしのやぶのなかに、とんでおちた。",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            608,
+            182
+          ],
+          [
+            608,
+            588
+          ],
+          [
+            631,
+            182
+          ],
+          [
+            631,
+            588
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "こんどは、こいをつかまえようと、",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            560,
+            179
+          ],
+          [
+            560,
+            613
+          ],
+          [
+            583,
+            179
+          ],
+          [
+            583,
+            613
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "りょうしは、池からあがるつもりで、",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            511,
+            177
+          ],
+          [
+            511,
+            561
+          ],
+          [
+            535,
+            177
+          ],
+          [
+            535,
+            561
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "きしの木のねをひっつかんだ。",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            461,
+            177
+          ],
+          [
+            461,
+            586
+          ],
+          [
+            487,
+            177
+          ],
+          [
+            487,
+            586
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "ところが、木のねとおもったのは、",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            409,
+            174
+          ],
+          [
+            409,
+            796
+          ],
+          [
+            439,
+            174
+          ],
+          [
+            439,
+            796
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "山うさぎのうしろ足で、うさぎは、くるしまぎれに、",
+        "isTextline": "true",
+        "confidence": 0.907
+      },
+      {
+        "boundingBox": [
+          [
+            365,
+            174
+          ],
+          [
+            365,
+            637
+          ],
+          [
+            388,
+            174
+          ],
+          [
+            388,
+            637
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "やたらにまえ足で、あがくものだから、",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            316,
+            171
+          ],
+          [
+            316,
+            690
+          ],
+          [
+            341,
+            171
+          ],
+          [
+            341,
+            690
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "山いもが、二十五ほんほったててあった。",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            221,
+            170
+          ],
+          [
+            221,
+            633
+          ],
+          [
+            243,
+            170
+          ],
+          [
+            243,
+            633
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "りょうしは、ようやくやぶのなかで、",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            175,
+            171
+          ],
+          [
+            175,
+            606
+          ],
+          [
+            196,
+            171
+          ],
+          [
+            196,
+            606
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "はねあがったこいをみつけたが、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1318,
+            1163
+          ],
+          [
+            1318,
+            1181
+          ],
+          [
+            1354,
+            1163
+          ],
+          [
+            1354,
+            1181
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "(72 ",
+        "isTextline": "true",
+        "confidence": 0
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1794,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-39.jpg",
+    "img_name": "out-39.jpg"
+  }
+}

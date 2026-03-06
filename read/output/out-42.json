@@ -1,0 +1,662 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1619,
+            212
+          ],
+          [
+            1619,
+            1063
+          ],
+          [
+            1650,
+            212
+          ],
+          [
+            1650,
+            1063
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "むかしむかし、びんぼうなじいさんとばあさんがあった。ある日、じいさ",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1579,
+            186
+          ],
+          [
+            1579,
+            952
+          ],
+          [
+            1608,
+            186
+          ],
+          [
+            1608,
+            952
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "んが、あさはやくおきて、土間をはくと、まめを一つぶひろった。",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            1538,
+            223
+          ],
+          [
+            1538,
+            722
+          ],
+          [
+            1564,
+            223
+          ],
+          [
+            1564,
+            722
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "「ばあさ、ばあさ。まめこ一つみつけたが、",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1495,
+            236
+          ],
+          [
+            1495,
+            670
+          ],
+          [
+            1518,
+            236
+          ],
+          [
+            1518,
+            670
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "はたけにまいて、千つぶにしようか、",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1449,
+            234
+          ],
+          [
+            1449,
+            660
+          ],
+          [
+            1470,
+            234
+          ],
+          [
+            1470,
+            660
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "うすでたいて、きなこにしようか。」",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1402,
+            179
+          ],
+          [
+            1402,
+            1079
+          ],
+          [
+            1425,
+            179
+          ],
+          [
+            1425,
+            1079
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "と、ばあさんにそうだんしていると、まめがぼろっと、じいさんのゆびのま",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1356,
+            180
+          ],
+          [
+            1356,
+            834
+          ],
+          [
+            1380,
+            180
+          ],
+          [
+            1380,
+            834
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "たからこぼれおちて、ころころと、ころがっていった。",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1311,
+            206
+          ],
+          [
+            1311,
+            348
+          ],
+          [
+            1330,
+            206
+          ],
+          [
+            1330,
+            348
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "じいさんは、",
+        "isTextline": "true",
+        "confidence": 0.885
+      },
+      {
+        "boundingBox": [
+          [
+            1262,
+            193
+          ],
+          [
+            1262,
+            689
+          ],
+          [
+            1284,
+            193
+          ],
+          [
+            1284,
+            689
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「まめこや、まめこ。どこまで、ころぶ。」",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1213,
+            182
+          ],
+          [
+            1213,
+            433
+          ],
+          [
+            1234,
+            182
+          ],
+          [
+            1234,
+            433
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "とおいかけていくと、",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1164,
+            196
+          ],
+          [
+            1164,
+            771
+          ],
+          [
+            1188,
+            196
+          ],
+          [
+            1188,
+            771
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「おくのおくの、じぞうどうへ、コロンコロン。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1115,
+            186
+          ],
+          [
+            1115,
+            1102
+          ],
+          [
+            1140,
+            186
+          ],
+          [
+            1140,
+            1102
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "と、土間をころがって、土間のすみのねずみあなへ、ポロンと、おっこった。",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            1068,
+            218
+          ],
+          [
+            1068,
+            1081
+          ],
+          [
+            1089,
+            218
+          ],
+          [
+            1089,
+            1081
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "じいさんは、ばあさんからなたをとってもらって、ねずみあなをほじくっ",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            760,
+            187
+          ],
+          [
+            760,
+            1029
+          ],
+          [
+            782,
+            187
+          ],
+          [
+            782,
+            1029
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "て、あなのなかへはいっていくと、まめこが、さかをころがっていった。",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            711,
+            193
+          ],
+          [
+            711,
+            681
+          ],
+          [
+            736,
+            193
+          ],
+          [
+            736,
+            681
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "「まめこや、まめこ。どこまで、ころぶ。」",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            664,
+            190
+          ],
+          [
+            664,
+            757
+          ],
+          [
+            688,
+            190
+          ],
+          [
+            688,
+            757
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "「おくのおくの、じぞうどうへ、コロンコロン。」",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            616,
+            202
+          ],
+          [
+            616,
+            1073
+          ],
+          [
+            639,
+            202
+          ],
+          [
+            639,
+            1073
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "こうしておっかけていくと、あなはひろくなり、おくのほうがあかるくな",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            568,
+            175
+          ],
+          [
+            568,
+            1072
+          ],
+          [
+            592,
+            175
+          ],
+          [
+            592,
+            1072
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "って、石じぞうがひとり、ゆっくりとしたおどうのなかにたっていた。まめ",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            521,
+            170
+          ],
+          [
+            521,
+            662
+          ],
+          [
+            543,
+            170
+          ],
+          [
+            543,
+            662
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "こは、そこでふっつりとみえなくなった。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            471,
+            181
+          ],
+          [
+            471,
+            927
+          ],
+          [
+            496,
+            181
+          ],
+          [
+            496,
+            927
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "「じぞうさま、じぞうさま。おれのまめこ、みなかったすか?」",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            424,
+            178
+          ],
+          [
+            424,
+            701
+          ],
+          [
+            448,
+            178
+          ],
+          [
+            448,
+            701
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "「みたったども、おれがひらって、くった。」",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            378,
+            178
+          ],
+          [
+            378,
+            771
+          ],
+          [
+            401,
+            178
+          ],
+          [
+            401,
+            771
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "「それなら、よかった。おれはこれで、かえるべ。」",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            330,
+            178
+          ],
+          [
+            330,
+            1063
+          ],
+          [
+            355,
+            178
+          ],
+          [
+            355,
+            1063
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "「じいさ、じいさ。ちょっとまて。おめえのまめこなら、わるかった。そい",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            283,
+            163
+          ],
+          [
+            283,
+            1054
+          ],
+          [
+            309,
+            163
+          ],
+          [
+            309,
+            1054
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "じゃ、そのかわりにいいこと、おしえてやるから、まず、おれのひざの上へ、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            238,
+            162
+          ],
+          [
+            238,
+            267
+          ],
+          [
+            261,
+            162
+          ],
+          [
+            261,
+            267
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "あがれ。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            193,
+            175
+          ],
+          [
+            193,
+            880
+          ],
+          [
+            216,
+            175
+          ],
+          [
+            216,
+            880
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "「いいや、なして、なして、もったいなくてあがられねえ。」",
+        "isTextline": "true",
+        "confidence": 0.919
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1836,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-42.jpg",
+    "img_name": "out-42.jpg"
+  }
+}

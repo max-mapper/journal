@@ -1,0 +1,662 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1596,
+            185
+          ],
+          [
+            1596,
+            827
+          ],
+          [
+            1632,
+            185
+          ],
+          [
+            1632,
+            827
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "「いいとも、じいさのいうことなら、なんでもきくで。」",
+        "isTextline": "true",
+        "confidence": 0.938
+      },
+      {
+        "boundingBox": [
+          [
+            1555,
+            183
+          ],
+          [
+            1555,
+            902
+          ],
+          [
+            1593,
+            183
+          ],
+          [
+            1593,
+            902
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "「それじゃ、耳取山のさるのところへ、よめにいってくれや。」",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1512,
+            180
+          ],
+          [
+            1512,
+            1059
+          ],
+          [
+            1549,
+            180
+          ],
+          [
+            1549,
+            1059
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "「なに、ばかじいさ。さるのとこなんか、よめにいくもの、だれがいる。こ",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1483,
+            166
+          ],
+          [
+            1483,
+            348
+          ],
+          [
+            1504,
+            166
+          ],
+          [
+            1504,
+            348
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "のばかじいさ。」",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1430,
+            189
+          ],
+          [
+            1430,
+            925
+          ],
+          [
+            1459,
+            189
+          ],
+          [
+            1459,
+            925
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "そういって、あねは、戸をぴしりとしめて、いってしまった。",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            1392,
+            189
+          ],
+          [
+            1392,
+            493
+          ],
+          [
+            1414,
+            189
+          ],
+          [
+            1414,
+            493
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "こんどは、 なかのあねが、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1337,
+            171
+          ],
+          [
+            1337,
+            970
+          ],
+          [
+            1368,
+            171
+          ],
+          [
+            1368,
+            970
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「じいさ、じいさ。どうしたい?ゆでもちゃでも、やろうかい。」",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1289,
+            172
+          ],
+          [
+            1289,
+            1002
+          ],
+          [
+            1319,
+            172
+          ],
+          [
+            1319,
+            1002
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「いやいや、ゆもちゃもいらねが、おらのいうこと、きいてくれや。」",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1243,
+            172
+          ],
+          [
+            1243,
+            835
+          ],
+          [
+            1270,
+            172
+          ],
+          [
+            1270,
+            835
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「いいとも、じいさのいうことなら、なんでもきくで。」",
+        "isTextline": "true",
+        "confidence": 0.942
+      },
+      {
+        "boundingBox": [
+          [
+            1194,
+            173
+          ],
+          [
+            1194,
+            916
+          ],
+          [
+            1220,
+            173
+          ],
+          [
+            1220,
+            916
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "「それじゃ、耳取山のさるのところへ、よめにいってくれや。」",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1144,
+            175
+          ],
+          [
+            1144,
+            1095
+          ],
+          [
+            1169,
+            175
+          ],
+          [
+            1169,
+            1095
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「なに、へんてこじいさ。さるのとこなんか、よめにいくもの、だれがいる。",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1095,
+            167
+          ],
+          [
+            1095,
+            430
+          ],
+          [
+            1118,
+            167
+          ],
+          [
+            1118,
+            430
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "このへんてこじいさ。」",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            1050,
+            194
+          ],
+          [
+            1050,
+            925
+          ],
+          [
+            1072,
+            194
+          ],
+          [
+            1072,
+            925
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "そういって、これも、戸をびしりとしめて、いってしまった。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            769,
+            207
+          ],
+          [
+            769,
+            713
+          ],
+          [
+            790,
+            207
+          ],
+          [
+            790,
+            713
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "すると、こんどは、すえむすめのおわかが、",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            717,
+            192
+          ],
+          [
+            717,
+            969
+          ],
+          [
+            744,
+            192
+          ],
+          [
+            744,
+            969
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "「じいさ、じいさ。どうしたい?ゆでもちゃでも、やろうかい。」",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            669,
+            189
+          ],
+          [
+            669,
+            993
+          ],
+          [
+            696,
+            189
+          ],
+          [
+            696,
+            993
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "「いやいや、ゆもちゃもいらねが、おらのいうこと、きいてくれや。」",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            620,
+            186
+          ],
+          [
+            620,
+            834
+          ],
+          [
+            647,
+            186
+          ],
+          [
+            647,
+            834
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "「いいとも、じいさのいうことなら、なんでもきくで。」",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            573,
+            198
+          ],
+          [
+            573,
+            1058
+          ],
+          [
+            598,
+            198
+          ],
+          [
+            598,
+            1058
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "じいさんは、むすめは、もうこれひとりしかいないか、こんどだめなら、",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            530,
+            172
+          ],
+          [
+            530,
+            444
+          ],
+          [
+            548,
+            172
+          ],
+          [
+            548,
+            444
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "どうしようとおもって、",
+        "isTextline": "true",
+        "confidence": 0.902
+      },
+      {
+        "boundingBox": [
+          [
+            476,
+            182
+          ],
+          [
+            476,
+            1068
+          ],
+          [
+            502,
+            182
+          ],
+          [
+            502,
+            1068
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "「おわか、どうかひとつ、耳取山のさるのところへ、よめにいってくれまい",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            431,
+            169
+          ],
+          [
+            431,
+            216
+          ],
+          [
+            453,
+            169
+          ],
+          [
+            453,
+            216
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "か。」",
+        "isTextline": "true",
+        "confidence": 0.893
+      },
+      {
+        "boundingBox": [
+          [
+            385,
+            193
+          ],
+          [
+            385,
+            414
+          ],
+          [
+            406,
+            193
+          ],
+          [
+            406,
+            414
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "すると、おわかは、",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            337,
+            181
+          ],
+          [
+            337,
+            484
+          ],
+          [
+            359,
+            181
+          ],
+          [
+            359,
+            484
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "「はあ、ゆくで、ゆくで。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            288,
+            169
+          ],
+          [
+            288,
+            1051
+          ],
+          [
+            311,
+            169
+          ],
+          [
+            311,
+            1051
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "と、さっそくしょうちしたので、ねていたじいさんは、くるくるとおきて、",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            243,
+            170
+          ],
+          [
+            243,
+            786
+          ],
+          [
+            264,
+            170
+          ],
+          [
+            264,
+            786
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "らくらくとなって、おひつのごはんをたんとたべた。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            197,
+            195
+          ],
+          [
+            197,
+            1061
+          ],
+          [
+            220,
+            195
+          ],
+          [
+            220,
+            1061
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "さて、その日になると、耳取山のさるは、さるざけもって、こざるどもに",
+        "isTextline": "true",
+        "confidence": 0.922
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1790,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-34.jpg",
+    "img_name": "out-34.jpg"
+  }
+}

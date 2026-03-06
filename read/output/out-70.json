@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            759,
+            187
+          ],
+          [
+            759,
+            1066
+          ],
+          [
+            782,
+            187
+          ],
+          [
+            782,
+            1066
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "「このままで馬をひいていくことはかなわねえが、たわらのあいだにのせて",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            711,
+            170
+          ],
+          [
+            711,
+            641
+          ],
+          [
+            735,
+            170
+          ],
+          [
+            735,
+            641
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "くれさえすれば、らくにひいてゆくで。」",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            664,
+            194
+          ],
+          [
+            664,
+            1054
+          ],
+          [
+            688,
+            194
+          ],
+          [
+            688,
+            1054
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "なにしろ、水神さまのもうし子が、はじめてしゃべったことじゃあるし、",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            614,
+            169
+          ],
+          [
+            614,
+            1054
+          ],
+          [
+            640,
+            169
+          ],
+          [
+            640,
+            1054
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "いうことにどうりがあるので、おやじさんは、馬三とうに米だわらをつけ、",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            565,
+            170
+          ],
+          [
+            565,
+            1067
+          ],
+          [
+            592,
+            170
+          ],
+          [
+            592,
+            1067
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "いわれるとおりに、神だなのおわんのなかのつぶをつまんできて、たわらの",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            520,
+            166
+          ],
+          [
+            520,
+            545
+          ],
+          [
+            544,
+            166
+          ],
+          [
+            544,
+            545
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "あいだにのせてやると、つぶは、",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            468,
+            178
+          ],
+          [
+            468,
+            1042
+          ],
+          [
+            497,
+            178
+          ],
+          [
+            497,
+            1042
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「そいじゃ、とうもかかも、いってくるで。はい、どうどう、しっしっ。」",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            424,
+            167
+          ],
+          [
+            424,
+            945
+          ],
+          [
+            449,
+            167
+          ],
+          [
+            449,
+            945
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "と、なれた馬かたのように馬をあやつって、家の門をでていった。",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            377,
+            192
+          ],
+          [
+            377,
+            1065
+          ],
+          [
+            401,
+            192
+          ],
+          [
+            401,
+            1065
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "おやじさんは、だすにはだしてやったものの、むすこのことがしんぱいで",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            330,
+            164
+          ],
+          [
+            330,
+            1067
+          ],
+          [
+            355,
+            164
+          ],
+          [
+            355,
+            1067
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "ならなくなって、 そのあとをみえがくれについていくと、 馬たちは、 水たま",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            284,
+            167
+          ],
+          [
+            284,
+            410
+          ],
+          [
+            305,
+            167
+          ],
+          [
+            305,
+            410
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "や、はしにかかると、",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            236,
+            181
+          ],
+          [
+            236,
+            373
+          ],
+          [
+            258,
+            181
+          ],
+          [
+            258,
+            373
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "「はあい、はい。」",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            188,
+            170
+          ],
+          [
+            188,
+            1057
+          ],
+          [
+            217,
+            170
+          ],
+          [
+            217,
+            1057
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "という声につれて、こころえたようにすすんでいった。そのうちに、ききほ",
+        "isTextline": "true",
+        "confidence": 0.905
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1854,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-70.jpg",
+    "img_name": "out-70.jpg"
+  }
+}

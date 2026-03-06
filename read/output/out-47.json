@@ -1,0 +1,362 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            739,
+            207
+          ],
+          [
+            739,
+            1059
+          ],
+          [
+            768,
+            207
+          ],
+          [
+            768,
+            1059
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "ごうよくじいさんは、それをみるなり、とてもまちきれずに、手をパンパ",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            704,
+            176
+          ],
+          [
+            704,
+            312
+          ],
+          [
+            722,
+            176
+          ],
+          [
+            722,
+            312
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "ンたたくと、",
+        "isTextline": "true",
+        "confidence": 0.906
+      },
+      {
+        "boundingBox": [
+          [
+            651,
+            183
+          ],
+          [
+            651,
+            444
+          ],
+          [
+            677,
+            183
+          ],
+          [
+            677,
+            444
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "「ハァ、一ばんどり!」",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            595,
+            168
+          ],
+          [
+            595,
+            1052
+          ],
+          [
+            626,
+            168
+          ],
+          [
+            626,
+            1052
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "とどなった。おにどもはびっくりして、風にふかれたようなかおになった。",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            549,
+            165
+          ],
+          [
+            549,
+            866
+          ],
+          [
+            576,
+            165
+          ],
+          [
+            576,
+            866
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "となりのじいさんは、ここだとおもって、つづけて大声で、",
+        "isTextline": "true",
+        "confidence": 0.944
+      },
+      {
+        "boundingBox": [
+          [
+            504,
+            176
+          ],
+          [
+            504,
+            441
+          ],
+          [
+            529,
+            176
+          ],
+          [
+            529,
+            441
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「ハァ、二ばんどり!」",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            450,
+            162
+          ],
+          [
+            450,
+            1060
+          ],
+          [
+            478,
+            162
+          ],
+          [
+            478,
+            1060
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "とどなった。おにどもはみなたちあがって、火をかぶったようなかおになっ",
+        "isTextline": "true",
+        "confidence": 0.946
+      },
+      {
+        "boundingBox": [
+          [
+            402,
+            160
+          ],
+          [
+            402,
+            1063
+          ],
+          [
+            429,
+            160
+          ],
+          [
+            429,
+            1063
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "たから、となりのじいさんは、ますますしめたとおもって、声をはりあげて、",
+        "isTextline": "true",
+        "confidence": 0.943
+      },
+      {
+        "boundingBox": [
+          [
+            358,
+            174
+          ],
+          [
+            358,
+            413
+          ],
+          [
+            383,
+            174
+          ],
+          [
+            383,
+            413
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「三ばんどりーっ!」",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            311,
+            160
+          ],
+          [
+            311,
+            571
+          ],
+          [
+            332,
+            160
+          ],
+          [
+            332,
+            571
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "とどなった。すると、おにどもは、",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            262,
+            173
+          ],
+          [
+            262,
+            1053
+          ],
+          [
+            285,
+            173
+          ],
+          [
+            285,
+            1053
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「それ、つかめえろ。きのう、にせなきでおれたちのぜに金をさらっていっ",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            215,
+            159
+          ],
+          [
+            215,
+            584
+          ],
+          [
+            238,
+            159
+          ],
+          [
+            238,
+            584
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "たやつが、こんやも、きているぞ。」",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            169,
+            160
+          ],
+          [
+            169,
+            1054
+          ],
+          [
+            192,
+            160
+          ],
+          [
+            192,
+            1054
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "とわめきながら、おどうのなかを、はしりさわいで、なかには、じざいかぎ",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            800,
+            1099
+          ],
+          [
+            800,
+            1118
+          ],
+          [
+            819,
+            1099
+          ],
+          [
+            819,
+            1118
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "や",
+        "isTextline": "true",
+        "confidence": 0
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1747,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-47.jpg",
+    "img_name": "out-47.jpg"
+  }
+}

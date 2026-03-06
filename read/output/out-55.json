@@ -1,0 +1,162 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            747,
+            170
+          ],
+          [
+            747,
+            267
+          ],
+          [
+            770,
+            170
+          ],
+          [
+            770,
+            267
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "かって。」",
+        "isTextline": "true",
+        "confidence": 0.909
+      },
+      {
+        "boundingBox": [
+          [
+            701,
+            193
+          ],
+          [
+            701,
+            355
+          ],
+          [
+            722,
+            193
+          ],
+          [
+            722,
+            355
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "さるは、また、",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            652,
+            179
+          ],
+          [
+            652,
+            1010
+          ],
+          [
+            686,
+            179
+          ],
+          [
+            686,
+            1010
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "「そーれ、あっちからたれてくるから、あっちからくったらどうだね。」",
+        "isTextline": "true",
+        "confidence": 0.94
+      },
+      {
+        "boundingBox": [
+          [
+            604,
+            178
+          ],
+          [
+            604,
+            767
+          ],
+          [
+            632,
+            178
+          ],
+          [
+            632,
+            767
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "「なあに、どっちからくおうと、ひきのすきすき。」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            555,
+            166
+          ],
+          [
+            555,
+            998
+          ],
+          [
+            589,
+            166
+          ],
+          [
+            589,
+            998
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "と、ひきがえるはこたえて、ゲロリゲロリ、もちをくってしまったと。",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            506,
+            165
+          ],
+          [
+            506,
+            329
+          ],
+          [
+            529,
+            165
+          ],
+          [
+            529,
+            329
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "そればっかり。",
+        "isTextline": "true",
+        "confidence": 0.925
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1821,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-55.jpg",
+    "img_name": "out-55.jpg"
+  }
+}

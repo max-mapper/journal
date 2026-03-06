@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1635,
+            171
+          ],
+          [
+            1635,
+            1063
+          ],
+          [
+            1659,
+            171
+          ],
+          [
+            1659,
+            1063
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "をふった。こうして、りょう手にたわらをひとつずつ、かるがるとかかえる",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1594,
+            171
+          ],
+          [
+            1594,
+            636
+          ],
+          [
+            1615,
+            171
+          ],
+          [
+            1615,
+            636
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "と、そとへごんごんとあるいていった。",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1547,
+            180
+          ],
+          [
+            1547,
+            610
+          ],
+          [
+            1572,
+            180
+          ],
+          [
+            1572,
+            610
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "「おや、どこへいくつもりだろう?」",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1503,
+            193
+          ],
+          [
+            1503,
+            1057
+          ],
+          [
+            1526,
+            193
+          ],
+          [
+            1526,
+            1057
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "よくさんとかみさんは、その子のあとへついていった。するとむすこは、",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1457,
+            162
+          ],
+          [
+            1457,
+            1075
+          ],
+          [
+            1482,
+            162
+          ],
+          [
+            1482,
+            1075
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "ずんずんずんずん、山のほうへむかっていった。そして、山のほらあなさま",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1411,
+            165
+          ],
+          [
+            1411,
+            1077
+          ],
+          [
+            1435,
+            165
+          ],
+          [
+            1435,
+            1077
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "めがけて、わきめもふらず、あるいていって、ほらあなのなかへ、ごんごん",
+        "isTextline": "true",
+        "confidence": 0.94
+      },
+      {
+        "boundingBox": [
+          [
+            1365,
+            162
+          ],
+          [
+            1365,
+            448
+          ],
+          [
+            1387,
+            162
+          ],
+          [
+            1387,
+            448
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "と、はいってしまった。",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1316,
+            191
+          ],
+          [
+            1316,
+            1075
+          ],
+          [
+            1340,
+            191
+          ],
+          [
+            1340,
+            1075
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "いや、よくさんとかみさんのおどろいたこと。けれども、ふたりともおっ",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1266,
+            160
+          ],
+          [
+            1266,
+            1070
+          ],
+          [
+            1291,
+            160
+          ],
+          [
+            1291,
+            1070
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "かなくて、あなへ、はいられず、ぶるぶるふるえて、かおをみあわせていた。",
+        "isTextline": "true",
+        "confidence": 0.946
+      },
+      {
+        "boundingBox": [
+          [
+            1218,
+            159
+          ],
+          [
+            1218,
+            828
+          ],
+          [
+            1244,
+            159
+          ],
+          [
+            1244,
+            828
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "すると、あなのなかから、のぶとい声がきこえてきた。",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1168,
+            174
+          ],
+          [
+            1168,
+            1085
+          ],
+          [
+            1197,
+            174
+          ],
+          [
+            1197,
+            1085
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「おう、もってきたな。米二ひょうもってきたな。これでもとは、とれた。」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1119,
+            190
+          ],
+          [
+            1119,
+            1082
+          ],
+          [
+            1148,
+            190
+          ],
+          [
+            1148,
+            1082
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "よくさんとかみさんは、あおくなって、とんでにげかえった。そればっか",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1074,
+            164
+          ],
+          [
+            1074,
+            197
+          ],
+          [
+            1091,
+            164
+          ],
+          [
+            1091,
+            197
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "り。",
+        "isTextline": "true",
+        "confidence": 0.835
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1867,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-52.jpg",
+    "img_name": "out-52.jpg"
+  }
+}

@@ -1,0 +1,687 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1599,
+            174
+          ],
+          [
+            1599,
+            986
+          ],
+          [
+            1630,
+            174
+          ],
+          [
+            1630,
+            986
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "むかし、あるところに、三人のむすめをもった、じいさんがあった。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1558,
+            171
+          ],
+          [
+            1558,
+            1053
+          ],
+          [
+            1587,
+            171
+          ],
+          [
+            1587,
+            1053
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "あるとき、とおくはなれた山のはたけへ、あさの草とりにいった。道はと",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1516,
+            142
+          ],
+          [
+            1516,
+            1043
+          ],
+          [
+            1545,
+            142
+          ],
+          [
+            1545,
+            1043
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "おいし、日はあついし、山のはたけへついたとき、じいさんは、すっかり、",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1479,
+            141
+          ],
+          [
+            1479,
+            288
+          ],
+          [
+            1500,
+            141
+          ],
+          [
+            1500,
+            288
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "くたびれて、",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            1427,
+            155
+          ],
+          [
+            1427,
+            1070
+          ],
+          [
+            1454,
+            155
+          ],
+          [
+            1454,
+            1070
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「やれやれ、なんぎなこった。だれか、このはたけの草をとってくれるもん",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1381,
+            140
+          ],
+          [
+            1381,
+            1075
+          ],
+          [
+            1407,
+            140
+          ],
+          [
+            1407,
+            1075
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "があれば、おら三人のむすめっこ、もってるが、どれでもひとり、すきなも",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1333,
+            141
+          ],
+          [
+            1333,
+            419
+          ],
+          [
+            1356,
+            141
+          ],
+          [
+            1356,
+            419
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "んよめにやるが……。",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1282,
+            141
+          ],
+          [
+            1282,
+            902
+          ],
+          [
+            1307,
+            141
+          ],
+          [
+            1307,
+            902
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "と、ついひとりごとをいった。そして、いってしまってから、",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1231,
+            157
+          ],
+          [
+            1231,
+            1073
+          ],
+          [
+            1257,
+            157
+          ],
+          [
+            1257,
+            1073
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「あやや、こんなこといって、耳取山のさるにきこえたら、おおごとだぞ。",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            1177,
+            146
+          ],
+          [
+            1177,
+            395
+          ],
+          [
+            1203,
+            146
+          ],
+          [
+            1203,
+            395
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "はやく、草とっか。」",
+        "isTextline": "true",
+        "confidence": 0.898
+      },
+      {
+        "boundingBox": [
+          [
+            1128,
+            149
+          ],
+          [
+            1128,
+            436
+          ],
+          [
+            1152,
+            149
+          ],
+          [
+            1152,
+            436
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "と、草をとりはじめた。",
+        "isTextline": "true",
+        "confidence": 0.889
+      },
+      {
+        "boundingBox": [
+          [
+            1081,
+            179
+          ],
+          [
+            1081,
+            1092
+          ],
+          [
+            1104,
+            179
+          ],
+          [
+            1104,
+            1092
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "ところが、とるがとるがとっても、はたけいちめんの草は、なかなかとり",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1032,
+            161
+          ],
+          [
+            1032,
+            633
+          ],
+          [
+            1057,
+            161
+          ],
+          [
+            1057,
+            633
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "きれない。そこで、じいさんは、また、",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            976,
+            116
+          ],
+          [
+            976,
+            138
+          ],
+          [
+            994,
+            116
+          ],
+          [
+            994,
+            138
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "96",
+        "isTextline": "true",
+        "confidence": 0.308
+      },
+      {
+        "boundingBox": [
+          [
+            743,
+            188
+          ],
+          [
+            743,
+            1067
+          ],
+          [
+            772,
+            188
+          ],
+          [
+            772,
+            1067
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "「やれやれ、なんぎなこった。だれかこのはたけの草、とってくれるもんが",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            693,
+            172
+          ],
+          [
+            693,
+            1069
+          ],
+          [
+            725,
+            172
+          ],
+          [
+            725,
+            1069
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "あれば、おらのむすめっこ、すきなもんをひとり、よめにやるが……ああ。」",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            655,
+            171
+          ],
+          [
+            655,
+            653
+          ],
+          [
+            676,
+            171
+          ],
+          [
+            676,
+            653
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "と、あくぴまじりに、こぼしてしまった。",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            601,
+            193
+          ],
+          [
+            601,
+            1069
+          ],
+          [
+            629,
+            193
+          ],
+          [
+            629,
+            1069
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "すると、やぶのなかから、ガサンガサンと、大きなさるが、でてきて、こ",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            559,
+            171
+          ],
+          [
+            559,
+            333
+          ],
+          [
+            579,
+            171
+          ],
+          [
+            579,
+            333
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "わいかおして、",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            506,
+            179
+          ],
+          [
+            506,
+            761
+          ],
+          [
+            533,
+            179
+          ],
+          [
+            533,
+            761
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "「じいさ、じいさ。おめえ、いま、なにいった?」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            459,
+            180
+          ],
+          [
+            459,
+            481
+          ],
+          [
+            485,
+            180
+          ],
+          [
+            485,
+            481
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "「おう、なにもいわんぞ。」",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            410,
+            179
+          ],
+          [
+            410,
+            962
+          ],
+          [
+            437,
+            179
+          ],
+          [
+            437,
+            962
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "「いいや、いった。うそいうと、このつめで、ひっかきころすぞ。」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            364,
+            178
+          ],
+          [
+            364,
+            1064
+          ],
+          [
+            389,
+            178
+          ],
+          [
+            389,
+            1064
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "「そいじゃ、しかたねえ。おら、あんまりなんぎなもんで、おらのかわりに",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            316,
+            164
+          ],
+          [
+            316,
+            985
+          ],
+          [
+            342,
+            164
+          ],
+          [
+            342,
+            985
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "草とってくれれば、むすめっこひとり、よめにやると、そういった。」",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            270,
+            182
+          ],
+          [
+            270,
+            693
+          ],
+          [
+            293,
+            182
+          ],
+          [
+            293,
+            693
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "「ほんとに、むすめっこ、よめにくれるか。」",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            222,
+            179
+          ],
+          [
+            222,
+            372
+          ],
+          [
+            244,
+            179
+          ],
+          [
+            244,
+            372
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "「ほんとだとも。」",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            177,
+            179
+          ],
+          [
+            177,
+            663
+          ],
+          [
+            201,
+            179
+          ],
+          [
+            201,
+            663
+          ]
+        ],
+        "id": 26,
+        "isVertical": "true",
+        "text": "「そいじゃ、おらが、草とりしてやるで。」",
+        "isTextline": "true",
+        "confidence": 0.93
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1782,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-32.jpg",
+    "img_name": "out-32.jpg"
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1593,
+            192
+          ],
+          [
+            1593,
+            1043
+          ],
+          [
+            1619,
+            192
+          ],
+          [
+            1619,
+            1043
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "そういって、さるは、いきもつかずに、はたけの草をせっせととって、み",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1554,
+            165
+          ],
+          [
+            1554,
+            732
+          ],
+          [
+            1578,
+            165
+          ],
+          [
+            1578,
+            732
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "るまに、なめたように、きれいにしてしまった。",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1513,
+            179
+          ],
+          [
+            1513,
+            1053
+          ],
+          [
+            1537,
+            179
+          ],
+          [
+            1537,
+            1053
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "そら、じいさ、草とりしたで。いつ、むすめっこ、もらいにいったらよか",
+        "isTextline": "true",
+        "confidence": 0.906
+      },
+      {
+        "boundingBox": [
+          [
+            1473,
+            162
+          ],
+          [
+            1473,
+            280
+          ],
+          [
+            1492,
+            162
+          ],
+          [
+            1492,
+            280
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "ろうな?」",
+        "isTextline": "true",
+        "confidence": 0.892
+      },
+      {
+        "boundingBox": [
+          [
+            1426,
+            189
+          ],
+          [
+            1426,
+            894
+          ],
+          [
+            1451,
+            189
+          ],
+          [
+            1451,
+            894
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "さるにいわれて、じいさんは、しかたなく、日ぎめをした。",
+        "isTextline": "true",
+        "confidence": 0.868
+      },
+      {
+        "boundingBox": [
+          [
+            1382,
+            187
+          ],
+          [
+            1382,
+            468
+          ],
+          [
+            1403,
+            187
+          ],
+          [
+            1403,
+            468
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "それから、じいさんは、",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1336,
+            173
+          ],
+          [
+            1336,
+            887
+          ],
+          [
+            1360,
+            173
+          ],
+          [
+            1360,
+            887
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「あいや、こりゃおおごとになった。こりゃこまったぞい。」",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1289,
+            158
+          ],
+          [
+            1289,
+            1075
+          ],
+          [
+            1315,
+            158
+          ],
+          [
+            1315,
+            1075
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "と、ふといいきをついて、家にかえると、せつながって、うなりながらとこ",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1241,
+            162
+          ],
+          [
+            1241,
+            443
+          ],
+          [
+            1262,
+            162
+          ],
+          [
+            1262,
+            443
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "のなかへねてしまった。",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1191,
+            188
+          ],
+          [
+            1191,
+            469
+          ],
+          [
+            1214,
+            188
+          ],
+          [
+            1214,
+            469
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "すると、うえのあねが、",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1141,
+            177
+          ],
+          [
+            1141,
+            974
+          ],
+          [
+            1168,
+            177
+          ],
+          [
+            1168,
+            974
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "「じいさ、じいさ。どうしたい?ゆでもちゃでも、やろうかい。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1091,
+            169
+          ],
+          [
+            1091,
+            418
+          ],
+          [
+            1112,
+            169
+          ],
+          [
+            1112,
+            418
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "と、いってきたから、",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1042,
+            185
+          ],
+          [
+            1042,
+            973
+          ],
+          [
+            1068,
+            185
+          ],
+          [
+            1068,
+            973
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「いやいや、ゆもちゃもいらねが、おらのいうこときいてくれや。」",
+        "isTextline": "true",
+        "confidence": 0.92
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1798,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-33.jpg",
+    "img_name": "out-33.jpg"
+  }
+}

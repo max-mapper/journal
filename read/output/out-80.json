@@ -1,0 +1,612 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1630,
+            193
+          ],
+          [
+            1630,
+            1051
+          ],
+          [
+            1658,
+            193
+          ],
+          [
+            1658,
+            1051
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "「ああ、あつくて、あつくて、この家にはいられねえ。とてもいられねえ。",
+        "isTextline": "true",
+        "confidence": 0.912
+      },
+      {
+        "boundingBox": [
+          [
+            1592,
+            179
+          ],
+          [
+            1592,
+            492
+          ],
+          [
+            1614,
+            179
+          ],
+          [
+            1614,
+            492
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "ひっこしだ、ひっこしだ。」",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1545,
+            177
+          ],
+          [
+            1545,
+            954
+          ],
+          [
+            1571,
+            177
+          ],
+          [
+            1571,
+            954
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "と、ぞろぞろ、ぞろぞろとでてきて、戸口からでていこうとした。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1503,
+            202
+          ],
+          [
+            1503,
+            532
+          ],
+          [
+            1525,
+            202
+          ],
+          [
+            1525,
+            532
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "じいさんは、びっくりして、",
+        "isTextline": "true",
+        "confidence": 0.912
+      },
+      {
+        "boundingBox": [
+          [
+            1456,
+            186
+          ],
+          [
+            1456,
+            708
+          ],
+          [
+            1480,
+            186
+          ],
+          [
+            1480,
+            708
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「おめえたちゃ、だれだ。ひとの家にいて。」",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1413,
+            173
+          ],
+          [
+            1413,
+            286
+          ],
+          [
+            1432,
+            173
+          ],
+          [
+            1432,
+            286
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "ときくと、",
+        "isTextline": "true",
+        "confidence": 0.892
+      },
+      {
+        "boundingBox": [
+          [
+            1362,
+            184
+          ],
+          [
+            1362,
+            1079
+          ],
+          [
+            1388,
+            184
+          ],
+          [
+            1388,
+            1079
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「おらたちゃ、びんぼう神というもんだ。この家では、これまで、こんなに",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            1315,
+            169
+          ],
+          [
+            1315,
+            1083
+          ],
+          [
+            1340,
+            169
+          ],
+          [
+            1340,
+            1083
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "大火をたいたことがなかったから、おらたちゃ、きらくにくらしてきたけれ",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1267,
+            171
+          ],
+          [
+            1267,
+            1084
+          ],
+          [
+            1295,
+            171
+          ],
+          [
+            1295,
+            1084
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "ども、こん夜ばかりは、どうしてもあつくて、あつくて、おまけにぱっとあ",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1218,
+            171
+          ],
+          [
+            1218,
+            953
+          ],
+          [
+            1248,
+            171
+          ],
+          [
+            1248,
+            953
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "かるくなって、いどころがねえ。それでおいとまするところだ。」",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1172,
+            171
+          ],
+          [
+            1172,
+            588
+          ],
+          [
+            1196,
+            171
+          ],
+          [
+            1196,
+            588
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "といって、小人たちはあつまって、",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            1124,
+            186
+          ],
+          [
+            1124,
+            1083
+          ],
+          [
+            1150,
+            186
+          ],
+          [
+            1150,
+            1083
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "「ながながとおせわになったから、なにかごおんがえししていかなけりゃい",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1076,
+            173
+          ],
+          [
+            1076,
+            306
+          ],
+          [
+            1100,
+            173
+          ],
+          [
+            1100,
+            306
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "けないぞ。」",
+        "isTextline": "true",
+        "confidence": 0.908
+      },
+      {
+        "boundingBox": [
+          [
+            756,
+            180
+          ],
+          [
+            756,
+            397
+          ],
+          [
+            779,
+            180
+          ],
+          [
+            779,
+            397
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "「なにがよかろう。」",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            708,
+            180
+          ],
+          [
+            708,
+            1052
+          ],
+          [
+            735,
+            180
+          ],
+          [
+            735,
+            1052
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "「こん夜は、年こしだから、米やさかなのでてくる、うすをおいていけば、",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            662,
+            168
+          ],
+          [
+            662,
+            293
+          ],
+          [
+            684,
+            168
+          ],
+          [
+            684,
+            293
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "よかろう。」",
+        "isTextline": "true",
+        "confidence": 0.904
+      },
+      {
+        "boundingBox": [
+          [
+            613,
+            194
+          ],
+          [
+            613,
+            1065
+          ],
+          [
+            638,
+            194
+          ],
+          [
+            638,
+            1065
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "こう、そうだんして、土間にどこからか、大きなうすをもちだすと、その",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            565,
+            168
+          ],
+          [
+            565,
+            1068
+          ],
+          [
+            591,
+            168
+          ],
+          [
+            591,
+            1068
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "うすのなかに、米やたいをやまもりにして、そしてぞろぞろでていってしま",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            525,
+            176
+          ],
+          [
+            525,
+            227
+          ],
+          [
+            545,
+            176
+          ],
+          [
+            545,
+            227
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "った。",
+        "isTextline": "true",
+        "confidence": 0.899
+      },
+      {
+        "boundingBox": [
+          [
+            470,
+            198
+          ],
+          [
+            470,
+            1064
+          ],
+          [
+            496,
+            198
+          ],
+          [
+            496,
+            1064
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "じいさんとばあさんは、すっかりよろこんで、それで、りっぱな年をむか",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            423,
+            173
+          ],
+          [
+            423,
+            1065
+          ],
+          [
+            449,
+            173
+          ],
+          [
+            449,
+            1065
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "えたけれども、ふしぎなことに、びんぼう神のくれたうすからは、いつまで",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            377,
+            174
+          ],
+          [
+            377,
+            1059
+          ],
+          [
+            404,
+            174
+          ],
+          [
+            404,
+            1059
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "も米やさかながでて、この家は、それからさき、ずっと、とみさかえたとい",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            332,
+            173
+          ],
+          [
+            332,
+            468
+          ],
+          [
+            356,
+            173
+          ],
+          [
+            356,
+            468
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "うはなし。どっとはらい。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            4,
+            140
+          ],
+          [
+            4,
+            1135
+          ],
+          [
+            21,
+            140
+          ],
+          [
+            21,
+            1135
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -",
+        "isTextline": "true",
+        "confidence": 0
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1849,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-80.jpg",
+    "img_name": "out-80.jpg"
+  }
+}

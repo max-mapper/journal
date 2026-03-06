@@ -1,0 +1,362 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1582,
+            178
+          ],
+          [
+            1582,
+            1062
+          ],
+          [
+            1608,
+            178
+          ],
+          [
+            1608,
+            1062
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "っつり、つぶのからがさけて、人のすがたになった。おゆか、おまえは、お",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            1542,
+            172
+          ],
+          [
+            1542,
+            543
+          ],
+          [
+            1564,
+            172
+          ],
+          [
+            1564,
+            543
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "れのほんのおかた(つま)だぞ。」",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1489,
+            198
+          ],
+          [
+            1489,
+            1069
+          ],
+          [
+            1518,
+            198
+          ],
+          [
+            1518,
+            1069
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "ゆかとあにとは、手をとりあって、よろこびあい、そのまま、里の長者ど",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            1450,
+            171
+          ],
+          [
+            1450,
+            712
+          ],
+          [
+            1472,
+            171
+          ],
+          [
+            1472,
+            712
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "んのところにいった。長者どんのやしきでは、",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1399,
+            182
+          ],
+          [
+            1399,
+            1070
+          ],
+          [
+            1427,
+            182
+          ],
+          [
+            1427,
+            1070
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "「やはり、水神さまのもうし子じゃ。むこどんもゆかも、にあいじゃ、にあ",
+        "isTextline": "true",
+        "confidence": 0.935
+      },
+      {
+        "boundingBox": [
+          [
+            1356,
+            172
+          ],
+          [
+            1356,
+            272
+          ],
+          [
+            1379,
+            172
+          ],
+          [
+            1379,
+            272
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "いじゃ。」",
+        "isTextline": "true",
+        "confidence": 0.893
+      },
+      {
+        "boundingBox": [
+          [
+            1305,
+            168
+          ],
+          [
+            1305,
+            1073
+          ],
+          [
+            1331,
+            168
+          ],
+          [
+            1331,
+            1073
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "と、うかれたって、さっそく、つぶむすこのふたおやをまねくと、そろって",
+        "isTextline": "true",
+        "confidence": 0.938
+      },
+      {
+        "boundingBox": [
+          [
+            1261,
+            169
+          ],
+          [
+            1261,
+            583
+          ],
+          [
+            1281,
+            169
+          ],
+          [
+            1281,
+            583
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "さかんないわいのえんをもうけた。",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1209,
+            195
+          ],
+          [
+            1209,
+            1075
+          ],
+          [
+            1234,
+            195
+          ],
+          [
+            1234,
+            1075
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "そののち、つぶむすこのふうふは、長者どんのやしきをゆずられ、町へあ",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1161,
+            171
+          ],
+          [
+            1161,
+            1077
+          ],
+          [
+            1185,
+            171
+          ],
+          [
+            1185,
+            1077
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "きないのみせをかまえれば、それもはんじょうして、あたりにならびない長",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1114,
+            170
+          ],
+          [
+            1114,
+            1075
+          ],
+          [
+            1138,
+            170
+          ],
+          [
+            1138,
+            1075
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "者となったから、人びとはみな、つぶの長者とよんで、たたえないものはな",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1064,
+            174
+          ],
+          [
+            1064,
+            611
+          ],
+          [
+            1087,
+            174
+          ],
+          [
+            1087,
+            611
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "かったという。めでたし、めでたし。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            469,
+            139
+          ],
+          [
+            469,
+            445
+          ],
+          [
+            596,
+            139
+          ],
+          [
+            596,
+            445
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "年のもの",
+        "isTextline": "true",
+        "confidence": 0.616
+      },
+      {
+        "boundingBox": [
+          [
+            385,
+            138
+          ],
+          [
+            385,
+            465
+          ],
+          [
+            493,
+            138
+          ],
+          [
+            493,
+            465
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "たき",
+        "isTextline": "true",
+        "confidence": 0.731
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1821,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-77.jpg",
+    "img_name": "out-77.jpg"
+  }
+}

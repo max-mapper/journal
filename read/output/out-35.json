@@ -1,0 +1,337 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1590,
+            169
+          ],
+          [
+            1590,
+            1040
+          ],
+          [
+            1615,
+            169
+          ],
+          [
+            1615,
+            1040
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "手車させて、よめむかえにきた。じいさんは、おわかをおくっていったが、",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            1546,
+            167
+          ],
+          [
+            1546,
+            764
+          ],
+          [
+            1573,
+            167
+          ],
+          [
+            1573,
+            764
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "谷川のところで、なきわかれして、家にかえった。",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1503,
+            195
+          ],
+          [
+            1503,
+            1060
+          ],
+          [
+            1529,
+            195
+          ],
+          [
+            1529,
+            1060
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "そのうち、春がきて、おわかは、じいさんのところへ、里がえりすること",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1462,
+            168
+          ],
+          [
+            1462,
+            284
+          ],
+          [
+            1481,
+            168
+          ],
+          [
+            1481,
+            284
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "になった。",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            1418,
+            194
+          ],
+          [
+            1418,
+            282
+          ],
+          [
+            1437,
+            194
+          ],
+          [
+            1437,
+            282
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "さるが、",
+        "isTextline": "true",
+        "confidence": 0.909
+      },
+      {
+        "boundingBox": [
+          [
+            1368,
+            181
+          ],
+          [
+            1368,
+            611
+          ],
+          [
+            1391,
+            181
+          ],
+          [
+            1391,
+            611
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「さとのじいさは、なにがすきだ?」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1322,
+            180
+          ],
+          [
+            1322,
+            890
+          ],
+          [
+            1347,
+            180
+          ],
+          [
+            1347,
+            890
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「じいさは、もちがいちばんすきだから、もちついてけれ。」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1275,
+            194
+          ],
+          [
+            1275,
+            663
+          ],
+          [
+            1297,
+            194
+          ],
+          [
+            1297,
+            663
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "そこで、さるが、もちをたんとついて、",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1225,
+            181
+          ],
+          [
+            1225,
+            854
+          ],
+          [
+            1250,
+            181
+          ],
+          [
+            1250,
+            854
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「このもちを、はこにいれるか、ほうの葉にくるむか?」",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1176,
+            183
+          ],
+          [
+            1176,
+            1082
+          ],
+          [
+            1204,
+            183
+          ],
+          [
+            1204,
+            1082
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "「はこにいれれば、木ゞくさい。ほうの葉にくるめば、あおくさい。そのう",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1126,
+            171
+          ],
+          [
+            1126,
+            521
+          ],
+          [
+            1150,
+            171
+          ],
+          [
+            1150,
+            521
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "すごと、おぶってってけれ。」",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1078,
+            200
+          ],
+          [
+            1078,
+            1082
+          ],
+          [
+            1104,
+            200
+          ],
+          [
+            1104,
+            1082
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "そこでさるは、 もちをうすごとおぶって、 よめのさきにたって、 へんぐら",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1027,
+            179
+          ],
+          [
+            1027,
+            507
+          ],
+          [
+            1053,
+            179
+          ],
+          [
+            1053,
+            507
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "たんぐら、山をおりてきた。",
+        "isTextline": "true",
+        "confidence": 0.919
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1798,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-35.jpg",
+    "img_name": "out-35.jpg"
+  }
+}

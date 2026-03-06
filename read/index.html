@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Japanese OCR Book Reader</title>
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif, Arial;
+        background-color: #f4f4f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .controls {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        transition: background 0.2s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      .shortcut-hint {
+        font-size: 12px;
+        color: #777;
+        margin-left: 10px;
+      }
+
+      .reader-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: white;
+      }
+
+      #bookImage {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      #overlaySvg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+      }
+
+      .bbox-rect {
+        fill: transparent;
+        stroke: #28a745;
+        stroke-width: 1px;
+        cursor: pointer;
+        transition:
+          stroke-width 0.1s,
+          stroke 0.1s;
+      }
+
+      .bbox-rect:hover {
+        stroke: #dc3545;
+        stroke-width: 3px;
+      }
+
+      .text-panels {
+        width: 100%;
+        max-width: 1200px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .panel {
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid #007bff;
+      }
+
+      .panel h3 {
+        margin-top: 0;
+        font-size: 14px;
+        color: #666;
+      }
+
+      #fullText {
+        font-size: 18px;
+        line-height: 1.8;
+        white-space: pre-wrap;
+      }
+
+      /* Tooltip Styles */
+      .tooltip {
+        position: fixed;
+        background-color: rgba(30, 30, 30, 0.95);
+        color: #fff;
+        padding: 12px 16px;
+        border-radius: 6px;
+        font-size: 20px;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+        /* Crucial changes for interacting with the tooltip */
+        pointer-events: auto;
+        cursor: text;
+
+        z-index: 1000;
+        white-space: nowrap;
+
+        /* Hidden state */
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.2s ease,
+          visibility 0.2s ease;
+      }
+
+      /* Visible state */
+      .tooltip.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Highlight styling when selecting text inside the tooltip */
+      .tooltip::selection {
+        background-color: #007bff;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+      <button id="btnBack">← Back</button>
+      <strong id="pageIndicator">Page 1</strong>
+      <button id="btnNext">Next →</button>
+      <span class="shortcut-hint">(Use Left / Right arrow keys)</span>
+    </div>
+
+    <div class="reader-wrapper">
+      <img id="bookImage" alt="Book Page" />
+      <svg id="overlaySvg" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+
+    <div class="text-panels">
+      <div class="panel">
+        <h3>FULL PAGE TEXT</h3>
+        <div id="fullText">Loading...</div>
+      </div>
+    </div>
+
+    <div id="tooltip" class="tooltip"></div>
+
+    <script>
+      const MIN_PAGE = 1;
+      const MAX_PAGE = 84;
+      let currentPage = 1;
+
+      // DOM Elements
+      const btnBack = document.getElementById("btnBack");
+      const btnNext = document.getElementById("btnNext");
+      const pageIndicator = document.getElementById("pageIndicator");
+      const bookImage = document.getElementById("bookImage");
+      const overlaySvg = document.getElementById("overlaySvg");
+      const fullTextDisplay = document.getElementById("fullText");
+      const tooltip = document.getElementById("tooltip");
+
+      let hideTooltipTimeout;
+      const GRACE_PERIOD_MS = 300; // Time allowed to move mouse into tooltip
+
+      // --- Tooltip self-interaction events ---
+      // If mouse enters the tooltip, cancel the hiding timeout
+      tooltip.addEventListener("mouseenter", () => {
+        clearTimeout(hideTooltipTimeout);
+      });
+
+      // If mouse leaves the tooltip, start the hiding timeout
+      tooltip.addEventListener("mouseleave", () => {
+        hideTooltipTimeout = setTimeout(() => {
+          tooltip.classList.remove("visible");
+        }, GRACE_PERIOD_MS);
+      });
+
+      // Helper to format numbers
+      function padNumber(num) {
+        return num.toString().padStart(2, "0");
+      }
+
+      function goNext() {
+        if (currentPage < MAX_PAGE) {
+          currentPage++;
+          loadPage(currentPage);
+        }
+      }
+
+      function goBack() {
+        if (currentPage > MIN_PAGE) {
+          currentPage--;
+          loadPage(currentPage);
+        }
+      }
+
+      async function loadPage(pageNum) {
+        pageIndicator.innerText = `Page ${pageNum}`;
+        btnBack.disabled = pageNum <= MIN_PAGE;
+        btnNext.disabled = pageNum >= MAX_PAGE;
+        fullTextDisplay.innerText = "Loading...";
+
+        overlaySvg.innerHTML = "";
+        tooltip.classList.remove("visible");
+
+        const fileBase = `out-${padNumber(pageNum)}`;
+        const imgPath = `input/${fileBase}.jpg`;
+        const jsonPath = `output/${fileBase}.json`;
+
+        try {
+          bookImage.src = imgPath;
+          const response = await fetch(jsonPath);
+          if (!response.ok) throw new Error(`Could not find ${jsonPath}`);
+          const data = await response.json();
+
+          renderOverlayAndText(data);
+        } catch (error) {
+          console.error(error);
+          fullTextDisplay.innerText = `Error loading page data: ${error.message}`;
+          overlaySvg.innerHTML = "";
+        }
+      }
+
+      function renderOverlayAndText(data) {
+        const imgW = data.imginfo.img_width;
+        const imgH = data.imginfo.img_height;
+        overlaySvg.setAttribute("viewBox", `0 0 ${imgW} ${imgH}`);
+
+        let fullPageTextAccumulator = [];
+        const contents = data.contents[0];
+
+        contents.forEach((item) => {
+          fullPageTextAccumulator.push(item.text);
+
+          const xs = item.boundingBox.map((pt) => pt[0]);
+          const ys = item.boundingBox.map((pt) => pt[1]);
+          const minX = Math.min(...xs);
+          const maxX = Math.max(...xs);
+          const minY = Math.min(...ys);
+          const maxY = Math.max(...ys);
+
+          const width = maxX - minX;
+          const height = maxY - minY;
+
+          const rect = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "rect",
+          );
+          rect.setAttribute("x", minX);
+          rect.setAttribute("y", minY);
+          rect.setAttribute("width", width);
+          rect.setAttribute("height", height);
+          rect.setAttribute("class", "bbox-rect");
+
+          // --- BOUNDING BOX EVENTS ---
+
+          rect.addEventListener("mouseenter", (e) => {
+            // Cancel any ongoing hide process
+            clearTimeout(hideTooltipTimeout);
+
+            tooltip.innerText = item.text;
+
+            // Show it first so we can measure its true width/height
+            tooltip.classList.add("visible");
+
+            // Calculate position based on mouse entry coordinates
+            const offset = 15;
+            let x = e.clientX + offset;
+            let y = e.clientY + offset;
+
+            // Keep within right edge
+            if (x + tooltip.offsetWidth > window.innerWidth - offset) {
+              x = e.clientX - tooltip.offsetWidth - offset;
+            }
+
+            // Keep within bottom edge
+            if (y + tooltip.offsetHeight > window.innerHeight - offset) {
+              y = e.clientY - tooltip.offsetHeight - offset;
+            }
+
+            tooltip.style.left = `${Math.max(offset, x)}px`;
+            tooltip.style.top = `${Math.max(offset, y)}px`;
+          });
+
+          rect.addEventListener("mouseleave", () => {
+            // Start the grace period when leaving the bounding box
+            hideTooltipTimeout = setTimeout(() => {
+              tooltip.classList.remove("visible");
+            }, GRACE_PERIOD_MS);
+          });
+
+          // NOTE: mousemove is intentionally removed so the tooltip remains static
+
+          overlaySvg.appendChild(rect);
+        });
+
+        fullTextDisplay.innerText = fullPageTextAccumulator.join("　");
+      }
+
+      // --- KEYBOARD & BUTTON LISTENERS ---
+      btnNext.addEventListener("click", goNext);
+      btnBack.addEventListener("click", goBack);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")
+          return;
+
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          goNext();
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          goBack();
+        }
+      });
+
+      // Init
+      loadPage(currentPage);
+    </script>
+  </body>
+</html>

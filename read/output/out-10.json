@@ -1,0 +1,712 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1579,
+            188
+          ],
+          [
+            1579,
+            789
+          ],
+          [
+            1599,
+            188
+          ],
+          [
+            1599,
+            789
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "というので、じいさんは、なくなくさがしにいった。",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1537,
+            211
+          ],
+          [
+            1537,
+            1059
+          ],
+          [
+            1559,
+            211
+          ],
+          [
+            1559,
+            1059
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "おそわったところから、まつのえだをとってきて、じいさんがだいじに庭",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            1497,
+            183
+          ],
+          [
+            1497,
+            1061
+          ],
+          [
+            1519,
+            183
+          ],
+          [
+            1519,
+            1061
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "にうえたところが、つぎの日には、すっくりと大きなまつになって、なにや",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1457,
+            181
+          ],
+          [
+            1457,
+            585
+          ],
+          [
+            1484,
+            181
+          ],
+          [
+            1484,
+            585
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "ら白い鳥が、そのえだにとまって、",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1413,
+            261
+          ],
+          [
+            1413,
+            623
+          ],
+          [
+            1437,
+            261
+          ],
+          [
+            1437,
+            623
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "じいさ木をきってうすにせい",
+        "isTextline": "true",
+        "confidence": 0.906
+      },
+      {
+        "boundingBox": [
+          [
+            1370,
+            260
+          ],
+          [
+            1370,
+            624
+          ],
+          [
+            1393,
+            260
+          ],
+          [
+            1393,
+            624
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "じいさ木をきってうすにせい",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            1330,
+            178
+          ],
+          [
+            1330,
+            401
+          ],
+          [
+            1350,
+            178
+          ],
+          [
+            1350,
+            401
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "といって、ないた。",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            1280,
+            203
+          ],
+          [
+            1280,
+            1081
+          ],
+          [
+            1305,
+            203
+          ],
+          [
+            1305,
+            1081
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "じいさんは、まつの木をきって、うすにつくって、ばあさんといっしょに",
+        "isTextline": "true",
+        "confidence": 0.917
+      },
+      {
+        "boundingBox": [
+          [
+            1233,
+            173
+          ],
+          [
+            1233,
+            562
+          ],
+          [
+            1258,
+            173
+          ],
+          [
+            1258,
+            562
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "米をついたが、ひとつきすれば、",
+        "isTextline": "true",
+        "confidence": 0.905
+      },
+      {
+        "boundingBox": [
+          [
+            1185,
+            258
+          ],
+          [
+            1185,
+            633
+          ],
+          [
+            1208,
+            258
+          ],
+          [
+            1208,
+            633
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "じいさんのまえには、金おりろ",
+        "isTextline": "true",
+        "confidence": 0.921
+      },
+      {
+        "boundingBox": [
+          [
+            1138,
+            178
+          ],
+          [
+            1138,
+            373
+          ],
+          [
+            1159,
+            178
+          ],
+          [
+            1159,
+            373
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "ふたつきすれば、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1087,
+            261
+          ],
+          [
+            1087,
+            633
+          ],
+          [
+            1110,
+            261
+          ],
+          [
+            1110,
+            633
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "ばあさんのまえには、銀おりろ",
+        "isTextline": "true",
+        "confidence": 0.916
+      },
+      {
+        "boundingBox": [
+          [
+            1038,
+            182
+          ],
+          [
+            1038,
+            1090
+          ],
+          [
+            1073,
+            182
+          ],
+          [
+            1073,
+            1090
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "と、うすがうたって、なかの米がぱらばらふるとみれば、みな、金銀のつぶ",
+        "isTextline": "true",
+        "confidence": 0.9
+      },
+      {
+        "boundingBox": [
+          [
+            749,
+            174
+          ],
+          [
+            749,
+            285
+          ],
+          [
+            769,
+            174
+          ],
+          [
+            769,
+            285
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "であった。",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            695,
+            196
+          ],
+          [
+            695,
+            1060
+          ],
+          [
+            720,
+            196
+          ],
+          [
+            720,
+            1060
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "じいさんとばあさんがよろこんで、ザクザクチリンとひろっていると、と",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            651,
+            167
+          ],
+          [
+            651,
+            385
+          ],
+          [
+            672,
+            167
+          ],
+          [
+            672,
+            385
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "なりのばあさんが、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            599,
+            180
+          ],
+          [
+            599,
+            939
+          ],
+          [
+            625,
+            180
+          ],
+          [
+            625,
+            939
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "「火を一つくれまいか。」とやってきた。そして、このさまをみて、",
+        "isTextline": "true",
+        "confidence": 0.898
+      },
+      {
+        "boundingBox": [
+          [
+            548,
+            179
+          ],
+          [
+            548,
+            1060
+          ],
+          [
+            576,
+            179
+          ],
+          [
+            576,
+            1060
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "「あわわ、こりゃ、たまげてごうぎなこったなあ。どうして、たからをでか",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            505,
+            160
+          ],
+          [
+            505,
+            304
+          ],
+          [
+            526,
+            160
+          ],
+          [
+            526,
+            304
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "したかい?」",
+        "isTextline": "true",
+        "confidence": 0.914
+      },
+      {
+        "boundingBox": [
+          [
+            455,
+            174
+          ],
+          [
+            455,
+            662
+          ],
+          [
+            481,
+            174
+          ],
+          [
+            481,
+            662
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "「なあに、このうすついて、でかしたさ。」",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            408,
+            174
+          ],
+          [
+            408,
+            688
+          ],
+          [
+            434,
+            174
+          ],
+          [
+            434,
+            688
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "「それなら、おれたちにかしてくれんかい。」",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            362,
+            174
+          ],
+          [
+            362,
+            500
+          ],
+          [
+            388,
+            174
+          ],
+          [
+            388,
+            500
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "「ああいいとも、いいとも。」",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            313,
+            160
+          ],
+          [
+            313,
+            805
+          ],
+          [
+            337,
+            160
+          ],
+          [
+            337,
+            805
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "というので、となりのばあさんはうすをかりていった。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            264,
+            185
+          ],
+          [
+            264,
+            1039
+          ],
+          [
+            289,
+            185
+          ],
+          [
+            289,
+            1039
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "となりのじいさんとばあさんは、すぐにそのうすで米をついたところが、",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            224,
+            161
+          ],
+          [
+            224,
+            350
+          ],
+          [
+            244,
+            161
+          ],
+          [
+            244,
+            350
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "ひとつきすれば、",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            177,
+            240
+          ],
+          [
+            177,
+            633
+          ],
+          [
+            197,
+            240
+          ],
+          [
+            197,
+            633
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "じいさんのまえには かわらでろ",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            798,
+            1099
+          ],
+          [
+            798,
+            1118
+          ],
+          [
+            823,
+            1099
+          ],
+          [
+            823,
+            1118
+          ]
+        ],
+        "id": 26,
+        "isVertical": "true",
+        "text": "*",
+        "isTextline": "true",
+        "confidence": 0.315
+      },
+      {
+        "boundingBox": [
+          [
+            116,
+            114
+          ],
+          [
+            116,
+            134
+          ],
+          [
+            135,
+            114
+          ],
+          [
+            135,
+            134
+          ]
+        ],
+        "id": 27,
+        "isVertical": "true",
+        "text": "モ",
+        "isTextline": "true",
+        "confidence": 0
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1766,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-10.jpg",
+    "img_name": "out-10.jpg"
+  }
+}

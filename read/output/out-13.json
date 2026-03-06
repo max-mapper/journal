@@ -1,0 +1,612 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1595,
+            210
+          ],
+          [
+            1595,
+            584
+          ],
+          [
+            1613,
+            210
+          ],
+          [
+            1613,
+            584
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "とのさまは、おおぎをひらいて、",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            1551,
+            194
+          ],
+          [
+            1551,
+            1062
+          ],
+          [
+            1575,
+            194
+          ],
+          [
+            1575,
+            1062
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "「みごと、みごと。ほんに、日本一の花さかじいじゃ。それ、たんとほうび",
+        "isTextline": "true",
+        "confidence": 0.925
+      },
+      {
+        "boundingBox": [
+          [
+            1513,
+            178
+          ],
+          [
+            1513,
+            360
+          ],
+          [
+            1533,
+            178
+          ],
+          [
+            1533,
+            360
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "をくれてやれ。」",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            1471,
+            176
+          ],
+          [
+            1471,
+            692
+          ],
+          [
+            1495,
+            176
+          ],
+          [
+            1495,
+            692
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "と、ごうぎに、大ばん小ばんをくだされた。",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1427,
+            199
+          ],
+          [
+            1427,
+            1071
+          ],
+          [
+            1448,
+            199
+          ],
+          [
+            1448,
+            1071
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "じいさんがうちにかえって、 ばあさんといっしょに、 ほうびのかねをガン",
+        "isTextline": "true",
+        "confidence": 0.932
+      },
+      {
+        "boundingBox": [
+          [
+            1382,
+            173
+          ],
+          [
+            1382,
+            930
+          ],
+          [
+            1405,
+            173
+          ],
+          [
+            1405,
+            930
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "ガラリンとかぞえていると、となりのばあさが火をかりにきて、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            1336,
+            183
+          ],
+          [
+            1336,
+            574
+          ],
+          [
+            1358,
+            183
+          ],
+          [
+            1358,
+            574
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "「どうして、かねもうけたかい。」",
+        "isTextline": "true",
+        "confidence": 0.919
+      },
+      {
+        "boundingBox": [
+          [
+            1290,
+            182
+          ],
+          [
+            1290,
+            574
+          ],
+          [
+            1315,
+            182
+          ],
+          [
+            1315,
+            574
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「この灰をまいて、花さかせた。」",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1242,
+            182
+          ],
+          [
+            1242,
+            680
+          ],
+          [
+            1265,
+            182
+          ],
+          [
+            1265,
+            680
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「それなら、ちょっとかしてくれんかい。」",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            1194,
+            168
+          ],
+          [
+            1194,
+            559
+          ],
+          [
+            1217,
+            168
+          ],
+          [
+            1217,
+            559
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "と、ざるごと灰をかりていった。",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1144,
+            195
+          ],
+          [
+            1144,
+            1091
+          ],
+          [
+            1170,
+            195
+          ],
+          [
+            1170,
+            1091
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "そして、となりのじいさんも、なみ木にのぼってまっていると、とのさま",
+        "isTextline": "true",
+        "confidence": 0.937
+      },
+      {
+        "boundingBox": [
+          [
+            1093,
+            172
+          ],
+          [
+            1093,
+            476
+          ],
+          [
+            1117,
+            172
+          ],
+          [
+            1117,
+            476
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "のぎょうれつがきたから、",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            1044,
+            186
+          ],
+          [
+            1044,
+            1089
+          ],
+          [
+            1073,
+            186
+          ],
+          [
+            1073,
+            1089
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「日本一の花さかじい。」とどなって、灰をやたらにまいたところが、いくら",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            744,
+            188
+          ],
+          [
+            744,
+            1059
+          ],
+          [
+            773,
+            188
+          ],
+          [
+            773,
+            1059
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "まいても、花にならないで、とのさまやおくがたやけらいたちの目や口に、",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            705,
+            185
+          ],
+          [
+            705,
+            378
+          ],
+          [
+            725,
+            185
+          ],
+          [
+            725,
+            378
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "はいるばっかり。",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            650,
+            194
+          ],
+          [
+            650,
+            708
+          ],
+          [
+            680,
+            194
+          ],
+          [
+            680,
+            708
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "「けしからんやつじゃ。ゆるすことならん。」",
+        "isTextline": "true",
+        "confidence": 0.943
+      },
+      {
+        "boundingBox": [
+          [
+            599,
+            181
+          ],
+          [
+            599,
+            1062
+          ],
+          [
+            628,
+            181
+          ],
+          [
+            628,
+            1062
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "と、とのさまがおこって、じいさんは、かたなできりつけられ、ほうぼう、",
+        "isTextline": "true",
+        "confidence": 0.936
+      },
+      {
+        "boundingBox": [
+          [
+            553,
+            178
+          ],
+          [
+            553,
+            799
+          ],
+          [
+            580,
+            178
+          ],
+          [
+            580,
+            799
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "血だるまになって、なきなき、うちにかえってきた。",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            500,
+            202
+          ],
+          [
+            500,
+            1073
+          ],
+          [
+            528,
+            202
+          ],
+          [
+            528,
+            1073
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "となりのばあさんは、やねの上へあがって、じいさんのかえりをまってい",
+        "isTextline": "true",
+        "confidence": 0.927
+      },
+      {
+        "boundingBox": [
+          [
+            462,
+            173
+          ],
+          [
+            462,
+            232
+          ],
+          [
+            482,
+            173
+          ],
+          [
+            482,
+            232
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "たが、",
+        "isTextline": "true",
+        "confidence": 0.913
+      },
+      {
+        "boundingBox": [
+          [
+            408,
+            185
+          ],
+          [
+            408,
+            837
+          ],
+          [
+            435,
+            185
+          ],
+          [
+            435,
+            837
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "「おれのじいさまは、まっかなきものをもらってきた。」",
+        "isTextline": "true",
+        "confidence": 0.941
+      },
+      {
+        "boundingBox": [
+          [
+            357,
+            173
+          ],
+          [
+            357,
+            1072
+          ],
+          [
+            385,
+            173
+          ],
+          [
+            385,
+            1072
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "と、あるだけのきものをこえだめにほうりこんで、むかえてみたらば、じい",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            313,
+            172
+          ],
+          [
+            313,
+            900
+          ],
+          [
+            336,
+            172
+          ],
+          [
+            336,
+            900
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "さんがきられてきたので、こしをぬかしたと。とんとおわり。",
+        "isTextline": "true",
+        "confidence": 0.938
+      },
+      {
+        "boundingBox": [
+          [
+            5,
+            115
+          ],
+          [
+            5,
+            175
+          ],
+          [
+            13,
+            115
+          ],
+          [
+            13,
+            175
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "-",
+        "isTextline": "true",
+        "confidence": 0.376
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1763,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-13.jpg",
+    "img_name": "out-13.jpg"
+  }
+}

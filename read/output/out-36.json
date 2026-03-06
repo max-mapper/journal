@@ -1,0 +1,662 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            1603,
+            190
+          ],
+          [
+            1603,
+            1034
+          ],
+          [
+            1650,
+            190
+          ],
+          [
+            1650,
+            1034
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "谷川へきかかると、ちょうど、さくらの花が、みごとにさいて、下の堪へ",
+        "isTextline": "true",
+        "confidence": 0.897
+      },
+      {
+        "boundingBox": [
+          [
+            1576,
+            164
+          ],
+          [
+            1576,
+            702
+          ],
+          [
+            1603,
+            164
+          ],
+          [
+            1603,
+            702
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "あかあかと、うつっていた。すると、よめは、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            1525,
+            176
+          ],
+          [
+            1525,
+            1049
+          ],
+          [
+            1562,
+            176
+          ],
+          [
+            1562,
+            1049
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "「さるどん、さるどん、はあ、さくらの花が、ぱっぱとさいてるで、おらと",
+        "isTextline": "true",
+        "confidence": 0.91
+      },
+      {
+        "boundingBox": [
+          [
+            1482,
+            163
+          ],
+          [
+            1482,
+            1053
+          ],
+          [
+            1517,
+            163
+          ],
+          [
+            1517,
+            1053
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "このじいさは、この花がだいすきでいられたが、ひとえだもってったら、な",
+        "isTextline": "true",
+        "confidence": 0.931
+      },
+      {
+        "boundingBox": [
+          [
+            1450,
+            161
+          ],
+          [
+            1450,
+            482
+          ],
+          [
+            1473,
+            161
+          ],
+          [
+            1473,
+            482
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "にほどよろこぶだろうか。",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            1405,
+            175
+          ],
+          [
+            1405,
+            508
+          ],
+          [
+            1428,
+            175
+          ],
+          [
+            1428,
+            508
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "「じゃ、おらとってやるで。」",
+        "isTextline": "true",
+        "confidence": 0.897
+      },
+      {
+        "boundingBox": [
+          [
+            1357,
+            160
+          ],
+          [
+            1357,
+            710
+          ],
+          [
+            1381,
+            160
+          ],
+          [
+            1381,
+            710
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "と、さるが、うすをおこうとすると、よめは、",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            1307,
+            172
+          ],
+          [
+            1307,
+            1066
+          ],
+          [
+            1340,
+            172
+          ],
+          [
+            1340,
+            1066
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "「土の上へおけば、土くさい。草の上へおけば、あおくさい。そのうすごと、",
+        "isTextline": "true",
+        "confidence": 0.895
+      },
+      {
+        "boundingBox": [
+          [
+            1263,
+            161
+          ],
+          [
+            1263,
+            513
+          ],
+          [
+            1286,
+            161
+          ],
+          [
+            1286,
+            513
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "おぶってって、とってけれ。」",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            1216,
+            161
+          ],
+          [
+            1216,
+            279
+          ],
+          [
+            1237,
+            161
+          ],
+          [
+            1237,
+            279
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "といった。",
+        "isTextline": "true",
+        "confidence": 0.904
+      },
+      {
+        "boundingBox": [
+          [
+            1164,
+            191
+          ],
+          [
+            1164,
+            1076
+          ],
+          [
+            1188,
+            191
+          ],
+          [
+            1188,
+            1076
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "そこで、さるは、かわいいよめのいうことだから、おもいうすをおぶった",
+        "isTextline": "true",
+        "confidence": 0.933
+      },
+      {
+        "boundingBox": [
+          [
+            1116,
+            169
+          ],
+          [
+            1116,
+            824
+          ],
+          [
+            1139,
+            169
+          ],
+          [
+            1139,
+            824
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "まま、あせをかきかき、さくらの木にのぼっていった。",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            1067,
+            185
+          ],
+          [
+            1067,
+            745
+          ],
+          [
+            1091,
+            185
+          ],
+          [
+            1091,
+            745
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "「どれがいいか?このえだが、よかろうね?」",
+        "isTextline": "true",
+        "confidence": 0.93
+      },
+      {
+        "boundingBox": [
+          [
+            769,
+            198
+          ],
+          [
+            769,
+            942
+          ],
+          [
+            797,
+            198
+          ],
+          [
+            797,
+            942
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "「どれがよかろうって、川へさしでたえだが、いちばんよいの。」",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            727,
+            207
+          ],
+          [
+            727,
+            668
+          ],
+          [
+            748,
+            207
+          ],
+          [
+            748,
+            668
+          ]
+        ],
+        "id": 14,
+        "isVertical": "true",
+        "text": "さるは、もっとさきへのぼっていった。",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            676,
+            191
+          ],
+          [
+            676,
+            533
+          ],
+          [
+            702,
+            191
+          ],
+          [
+            702,
+            533
+          ]
+        ],
+        "id": 15,
+        "isVertical": "true",
+        "text": "「このえだが、よかろうね?」",
+        "isTextline": "true",
+        "confidence": 0.918
+      },
+      {
+        "boundingBox": [
+          [
+            628,
+            189
+          ],
+          [
+            628,
+            598
+          ],
+          [
+            652,
+            189
+          ],
+          [
+            652,
+            598
+          ]
+        ],
+        "id": 16,
+        "isVertical": "true",
+        "text": "「いやいや、まだまださきのえだ。」",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            583,
+            199
+          ],
+          [
+            583,
+            661
+          ],
+          [
+            604,
+            199
+          ],
+          [
+            604,
+            661
+          ]
+        ],
+        "id": 17,
+        "isVertical": "true",
+        "text": "さるは、もっともっとのぼっていった。",
+        "isTextline": "true",
+        "confidence": 0.922
+      },
+      {
+        "boundingBox": [
+          [
+            533,
+            184
+          ],
+          [
+            533,
+            314
+          ],
+          [
+            554,
+            184
+          ],
+          [
+            554,
+            314
+          ]
+        ],
+        "id": 18,
+        "isVertical": "true",
+        "text": "「これか?」",
+        "isTextline": "true",
+        "confidence": 0.902
+      },
+      {
+        "boundingBox": [
+          [
+            485,
+            183
+          ],
+          [
+            485,
+            406
+          ],
+          [
+            508,
+            183
+          ],
+          [
+            508,
+            406
+          ]
+        ],
+        "id": 19,
+        "isVertical": "true",
+        "text": "「ああ、それそれ。」",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            434,
+            197
+          ],
+          [
+            434,
+            1066
+          ],
+          [
+            458,
+            197
+          ],
+          [
+            458,
+            1066
+          ]
+        ],
+        "id": 20,
+        "isVertical": "true",
+        "text": "いちばんさきのさくらのえだを、さるがおろうとしたときに、えだはほそ",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            387,
+            169
+          ],
+          [
+            387,
+            1052
+          ],
+          [
+            411,
+            169
+          ],
+          [
+            411,
+            1052
+          ]
+        ],
+        "id": 21,
+        "isVertical": "true",
+        "text": "いし、うすはおもいし、花ごとえだがばりりとおれて、さるは、ずしんと、",
+        "isTextline": "true",
+        "confidence": 0.92
+      },
+      {
+        "boundingBox": [
+          [
+            337,
+            164
+          ],
+          [
+            337,
+            494
+          ],
+          [
+            362,
+            164
+          ],
+          [
+            362,
+            494
+          ]
+        ],
+        "id": 22,
+        "isVertical": "true",
+        "text": "川のなかへおちてしまった。",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            292,
+            193
+          ],
+          [
+            292,
+            705
+          ],
+          [
+            314,
+            193
+          ],
+          [
+            314,
+            705
+          ]
+        ],
+        "id": 23,
+        "isVertical": "true",
+        "text": "そして、つんぶくかんぶく、ながれながら、",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            245,
+            288
+          ],
+          [
+            245,
+            733
+          ],
+          [
+            267,
+            288
+          ],
+          [
+            267,
+            733
+          ]
+        ],
+        "id": 24,
+        "isVertical": "true",
+        "text": "「さあるのいのちはおしくもないが、",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            197,
+            300
+          ],
+          [
+            197,
+            802
+          ],
+          [
+            218,
+            300
+          ],
+          [
+            218,
+            802
+          ]
+        ],
+        "id": 25,
+        "isVertical": "true",
+        "text": "ああとにのこるおわかかわいかわい。」",
+        "isTextline": "true",
+        "confidence": 0.928
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1828,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-36.jpg",
+    "img_name": "out-36.jpg"
+  }
+}

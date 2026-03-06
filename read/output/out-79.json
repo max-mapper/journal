@@ -1,0 +1,362 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            835,
+            120
+          ],
+          [
+            835,
+            143
+          ],
+          [
+            854,
+            120
+          ],
+          [
+            854,
+            143
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "に",
+        "isTextline": "true",
+        "confidence": 0
+      },
+      {
+        "boundingBox": [
+          [
+            777,
+            173
+          ],
+          [
+            777,
+            454
+          ],
+          [
+            798,
+            173
+          ],
+          [
+            798,
+            454
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "でもくって、ねなさい。」",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            731,
+            172
+          ],
+          [
+            731,
+            439
+          ],
+          [
+            751,
+            172
+          ],
+          [
+            751,
+            439
+          ]
+        ],
+        "id": 2,
+        "isVertical": "true",
+        "text": "というと、じいさんは、",
+        "isTextline": "true",
+        "confidence": 0.915
+      },
+      {
+        "boundingBox": [
+          [
+            682,
+            182
+          ],
+          [
+            682,
+            1070
+          ],
+          [
+            709,
+            182
+          ],
+          [
+            709,
+            1070
+          ]
+        ],
+        "id": 3,
+        "isVertical": "true",
+        "text": "「おめえのおだまを、すみとかえてきたから、せめてこん夜は、どんどと火",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            635,
+            171
+          ],
+          [
+            635,
+            536
+          ],
+          [
+            657,
+            171
+          ],
+          [
+            657,
+            536
+          ]
+        ],
+        "id": 4,
+        "isVertical": "true",
+        "text": "をおこして、あたってねよう。」",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            587,
+            172
+          ],
+          [
+            587,
+            1001
+          ],
+          [
+            610,
+            172
+          ],
+          [
+            610,
+            1001
+          ]
+        ],
+        "id": 5,
+        "isVertical": "true",
+        "text": "といって、いろりにすみをやまもりにして、ごうせいなたき火をした。",
+        "isTextline": "true",
+        "confidence": 0.924
+      },
+      {
+        "boundingBox": [
+          [
+            539,
+            198
+          ],
+          [
+            539,
+            1057
+          ],
+          [
+            563,
+            198
+          ],
+          [
+            563,
+            1057
+          ]
+        ],
+        "id": 6,
+        "isVertical": "true",
+        "text": "じいさんとばあさんは、はらをあたためたり、せなかをあぶったりして、",
+        "isTextline": "true",
+        "confidence": 0.939
+      },
+      {
+        "boundingBox": [
+          [
+            495,
+            172
+          ],
+          [
+            495,
+            655
+          ],
+          [
+            516,
+            172
+          ],
+          [
+            516,
+            655
+          ]
+        ],
+        "id": 7,
+        "isVertical": "true",
+        "text": "すっかりあったまると、らくらくとして、",
+        "isTextline": "true",
+        "confidence": 0.928
+      },
+      {
+        "boundingBox": [
+          [
+            445,
+            186
+          ],
+          [
+            445,
+            990
+          ],
+          [
+            468,
+            186
+          ],
+          [
+            468,
+            990
+          ]
+        ],
+        "id": 8,
+        "isVertical": "true",
+        "text": "「こんなにあったかく年こしをしたこと、なかったな、ばあさんや。」",
+        "isTextline": "true",
+        "confidence": 0.926
+      },
+      {
+        "boundingBox": [
+          [
+            397,
+            188
+          ],
+          [
+            397,
+            486
+          ],
+          [
+            420,
+            188
+          ],
+          [
+            420,
+            486
+          ]
+        ],
+        "id": 9,
+        "isVertical": "true",
+        "text": "「ほんとにな、じいさん。」",
+        "isTextline": "true",
+        "confidence": 0.923
+      },
+      {
+        "boundingBox": [
+          [
+            351,
+            176
+          ],
+          [
+            351,
+            340
+          ],
+          [
+            372,
+            176
+          ],
+          [
+            372,
+            340
+          ]
+        ],
+        "id": 10,
+        "isVertical": "true",
+        "text": "といいあった。",
+        "isTextline": "true",
+        "confidence": 0.911
+      },
+      {
+        "boundingBox": [
+          [
+            302,
+            200
+          ],
+          [
+            302,
+            1075
+          ],
+          [
+            329,
+            200
+          ],
+          [
+            329,
+            1075
+          ]
+        ],
+        "id": 11,
+        "isVertical": "true",
+        "text": "そうしているうちに、家のなかじゅう、ほかほかとして、あかるくなって、",
+        "isTextline": "true",
+        "confidence": 0.934
+      },
+      {
+        "boundingBox": [
+          [
+            252,
+            176
+          ],
+          [
+            252,
+            1056
+          ],
+          [
+            284,
+            176
+          ],
+          [
+            284,
+            1056
+          ]
+        ],
+        "id": 12,
+        "isVertical": "true",
+        "text": "春になったようにはなやいでくると、戸のかげや、ざしきのすみっこから、",
+        "isTextline": "true",
+        "confidence": 0.929
+      },
+      {
+        "boundingBox": [
+          [
+            206,
+            178
+          ],
+          [
+            206,
+            421
+          ],
+          [
+            231,
+            178
+          ],
+          [
+            231,
+            421
+          ]
+        ],
+        "id": 13,
+        "isVertical": "true",
+        "text": "黒っぽい小人たちが、",
+        "isTextline": "true",
+        "confidence": 0.905
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1816,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-79.jpg",
+    "img_name": "out-79.jpg"
+  }
+}

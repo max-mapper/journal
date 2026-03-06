@@ -1,0 +1,62 @@
+{
+  "contents": [
+    [
+      {
+        "boundingBox": [
+          [
+            85,
+            1180
+          ],
+          [
+            85,
+            1197
+          ],
+          [
+            158,
+            1180
+          ],
+          [
+            158,
+            1197
+          ]
+        ],
+        "id": 0,
+        "isVertical": "true",
+        "text": "*b8672*",
+        "isTextline": "true",
+        "confidence": 0.576
+      },
+      {
+        "boundingBox": [
+          [
+            173,
+            1167
+          ],
+          [
+            173,
+            1206
+          ],
+          [
+            377,
+            1167
+          ],
+          [
+            377,
+            1206
+          ]
+        ],
+        "id": 1,
+        "isVertical": "true",
+        "text": "TOTION ING ING ING CON ING ING ING ING ING ING ING ING ING ING ING ING ",
+        "isTextline": "true",
+        "confidence": 0.38
+      }
+    ]
+  ],
+  "imginfo": {
+    "img_width": 1837,
+    "img_height": 1241,
+    "img_path": "/home/max/Documents/jp/nihonnomukashibanashi/input/out-84.jpg",
+    "img_name": "out-84.jpg"
+  }
+}
