@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ocarina Tabs Player</title>
+    <style>
+      /* Import the required Ocarina Font */
+      @font-face {
+        font-family: "Open 12 Hole Ocarina 1";
+        src: url("https://panzi.github.io/ocarina_tabs/Open-12-Hole-Ocarina-1.ttf");
+      }
+
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+      }
+
+      /* Styling for the dynamically generated ocarina tabs */
+      .ocarina-font {
+        font-family: "Open 12 Hole Ocarina 1", monospace;
+        font-size: 40px; /* Default size, adjustable via JS */
+        line-height: 1.5;
+        background: #fcfcfc;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-top: 20px;
+        white-space: nowrap;
+        overflow-x: auto;
+      }
+
+      .note {
+        display: inline-block;
+        transition:
+          color 0.1s,
+          transform 0.1s;
+      }
+
+      /* Highlight class triggered by the requestAnimationFrame loop */
+      .note.playing {
+        color: #ff3333;
+        transform: scale(1.1);
+      }
+
+      /* Divs represent newlines for phrasing */
+      .phrase-row {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .controls {
+        margin: 15px 0;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        background: #eee;
+        padding: 10px;
+        border-radius: 8px;
+        flex-wrap: wrap;
+      }
+
+      .control-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .spacer {
+        color: #ccc;
+        margin: 0 5px;
+      }
+
+      select,
+      button {
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #bbb;
+        background: #fff;
+      }
+
+      select {
+        min-width: 150px;
+      }
+
+      button:hover {
+        background: #e0e0e0;
+      }
+
+      #transposition,
+      #fontSizeDisplay {
+        font-weight: bold;
+        min-width: 110px;
+        text-align: center;
+      }
+
+      #fontSizeDisplay {
+        min-width: 60px;
+      }
+
+      .instructions {
+        font-size: 14px;
+        color: #555;
+        margin-top: 10px;
+      }
+
+      /* ----- PRINT LAYOUT ----- */
+      @media print {
+        /* Hide everything by default */
+        body * {
+          visibility: hidden;
+        }
+
+        /* Make only the ocarina container and its children visible */
+        #ocarinaContainer,
+        #ocarinaContainer * {
+          visibility: visible;
+        }
+
+        /* Reposition the container to the top left of the page */
+        #ocarinaContainer {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          background: white !important;
+          border: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          overflow: visible !important;
+          white-space: normal !important; /* Allow wrapping on paper */
+        }
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+  </head>
+  <body>
+    <h1>Ocarina Tabs Player</h1>
+
+    <midi-player id="player" sound-font visualizer="#myVisualizer">
+    </midi-player>
+
+    <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="songSelect"><strong>Song:</strong></label>
+        <select id="songSelect"></select>
+      </div>
+      <button onclick="window.print()">🖨️ Print Notes</button>
+    </div>
+
+    <div class="controls">
+      <div class="control-group">
+        <button id="fontDown">A-</button>
+        <span id="fontSizeDisplay">40px</span>
+        <button id="fontUp">A+</button>
+      </div>
+      <span class="spacer">|</span>
+      <div class="control-group">
+        <button id="btnDown">Transpose Down</button>
+        <span id="transposition">Transpose: 0</span>
+        <button id="btnUp">Transpose Up</button>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <strong>Shortcuts:</strong> Spacebar (Play/Pause), Left Arrow (Rewind 5s),
+      Right Arrow (Forward 5s)
+    </div>
+
+    <div id="ocarinaContainer" class="ocarina-font">Loading notes...</div>
+
+    <script>
+      // Configuration for songs and their specific default transpositions
+      const songList = [
+        { name: "Zousan", file: "zousan.mid", offset: 0 },
+        { name: "Donguri Korokoro", file: "donguri_korokoro.mid", offset: 0 },
+        { name: "Usagi", file: "usagi.mid", offset: -2 },
+        { name: "Momiji", file: "momiji.mid", offset: -14 },
+        { name: "Koinobori", file: "koinobori.mid", offset: 0 },
+        { name: "Sakura", file: "sakura.mid", offset: 0 },
+        { name: "Okinakuri", file: "okinakuri.mid", offset: 0 },
+        { name: "Akatonbo", file: "akatonbo.mid", offset: 0 },
+        { name: "Medama", file: "medama.mid", offset: 0 },
+        { name: "Tonari no Totoro", file: "tonarinototoro.mid", offset: 0 },
+        { name: "Sanpo", file: "sanpo.mid", offset: 0 },
+      ];
+
+      // Map MIDI pitches (where Middle C = 60) directly to Ocarina font characters
+      const PITCH_TO_CHAR = {
+        60: "D",
+        61: "E",
+        62: "F",
+        63: "G",
+        64: "H",
+        65: "I",
+        66: "J",
+        67: "K",
+        68: "L",
+        69: "M",
+        70: "N",
+        71: "O",
+        72: "P",
+        73: "Q",
+        74: "R",
+        75: "S",
+        76: "T",
+        77: "U",
+      };
+
+      let transposeSteps = 0;
+      let originalNotes = [];
+      let animationId = null;
+      let currentFontSize = 40;
+
+      const player = document.getElementById("player");
+      const container = document.getElementById("ocarinaContainer");
+      const transLabel = document.getElementById("transposition");
+      const songSelect = document.getElementById("songSelect");
+      const fontLabel = document.getElementById("fontSizeDisplay");
+
+      // Initialize Dropdown
+      songList.forEach((song, index) => {
+        let option = document.createElement("option");
+        option.value = index;
+        option.textContent = song.name;
+        songSelect.appendChild(option);
+      });
+
+      // Handle Song Change
+      songSelect.addEventListener("change", (e) => {
+        const selectedSong = songList[e.target.value];
+        container.innerHTML = "Loading notes...";
+        player.noteSequence = null; // Clear out the old sequence so checkLoad waits for the new one
+        player.setAttribute("src", selectedSong.file);
+        checkLoad();
+      });
+
+      // Font Size Controls
+      document.getElementById("fontUp").addEventListener("click", () => {
+        currentFontSize += 4;
+        updateFont();
+      });
+
+      document.getElementById("fontDown").addEventListener("click", () => {
+        currentFontSize = Math.max(16, currentFontSize - 4); // Prevent text from getting completely invisible
+        updateFont();
+      });
+
+      function updateFont() {
+        container.style.fontSize = currentFontSize + "px";
+        fontLabel.textContent = currentFontSize + "px";
+      }
+
+      // Waits for the player to successfully parse the NoteSequence
+      function checkLoad() {
+        if (
+          player.noteSequence &&
+          player.noteSequence.notes &&
+          player.noteSequence.notes.length > 0
+        ) {
+          originalNotes = player.noteSequence.notes.sort(
+            (a, b) => a.startTime - b.startTime,
+          );
+
+          const selectedIndex = songSelect.value;
+          let baseOffset = songList[selectedIndex].offset;
+
+          // Auto-transpose so that the lowest note matches our lowest permitted note constraint: C (60)
+          let minPitch = Math.min(...originalNotes.map((n) => n.pitch));
+          transposeSteps = baseOffset;
+
+          if (minPitch + transposeSteps < 60) {
+            transposeSteps += 60 - (minPitch + transposeSteps);
+          }
+
+          updateLabel();
+          renderOcarinaNotes();
+
+          if (!animationId) {
+            animationId = requestAnimationFrame(updateHighlights);
+          }
+        } else {
+          setTimeout(checkLoad, 100);
+        }
+      }
+
+      function updateLabel() {
+        transLabel.textContent = `Transpose: ${transposeSteps > 0 ? "+" : ""}${transposeSteps}`;
+      }
+
+      // Main render function for creating Ocarina tabs mapping
+      function renderOcarinaNotes() {
+        container.innerHTML = "";
+
+        let currentPhrase = document.createElement("div");
+        currentPhrase.className = "phrase-row";
+        container.appendChild(currentPhrase);
+
+        let notesInCurrentLine = 0;
+
+        originalNotes.forEach((note, index) => {
+          const transposedPitch = note.pitch + transposeSteps;
+          let char = PITCH_TO_CHAR[transposedPitch] || "?";
+
+          const span = document.createElement("span");
+          span.className = "note";
+          span.id = "note-" + index;
+          span.textContent = char;
+
+          currentPhrase.appendChild(span);
+          notesInCurrentLine++;
+
+          // Determine phrase ends by measuring the gap between notes or enforcing a line break
+          let isPhraseEnd = false;
+
+          if (index < originalNotes.length - 1) {
+            let nextNote = originalNotes[index + 1];
+            if (nextNote.startTime - note.endTime > 0.4) {
+              isPhraseEnd = true;
+            } else if (notesInCurrentLine >= 15) {
+              isPhraseEnd = true; // Constraint: Max 10 notes per line
+            }
+          } else {
+            isPhraseEnd = true; // The last note always ends a phrase
+          }
+
+          if (isPhraseEnd) {
+            let hyphen = document.createElement("span");
+            hyphen.textContent = "";
+            currentPhrase.appendChild(hyphen);
+
+            if (index < originalNotes.length - 1) {
+              currentPhrase = document.createElement("div");
+              currentPhrase.className = "phrase-row";
+              container.appendChild(currentPhrase);
+            }
+
+            notesInCurrentLine = 0; // Reset line counter
+          }
+        });
+      }
+
+      // Transpose Actions
+      document.getElementById("btnUp").addEventListener("click", () => {
+        transposeSteps++;
+        updateLabel();
+        renderOcarinaNotes();
+      });
+
+      document.getElementById("btnDown").addEventListener("click", () => {
+        transposeSteps--;
+        updateLabel();
+        renderOcarinaNotes();
+      });
+
+      // Keyboard Shortcuts
+      document.addEventListener("keydown", (e) => {
+        // Don't trigger shortcuts if interacting with inputs/selects
+        if (["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) return;
+
+        if (e.code === "Space") {
+          e.preventDefault();
+          if (player.playing) {
+            player.stop();
+          } else {
+            player.start();
+          }
+        } else if (e.code === "ArrowLeft") {
+          e.preventDefault();
+          player.currentTime = Math.max(0, player.currentTime - 5);
+        } else if (e.code === "ArrowRight") {
+          e.preventDefault();
+          player.currentTime += 5;
+        }
+      });
+
+      // Highlighting Logic
+      function updateHighlights() {
+        if (player.playing) {
+          const currentTime = player.currentTime;
+          originalNotes.forEach((note, index) => {
+            const span = document.getElementById("note-" + index);
+            if (span) {
+              if (currentTime >= note.startTime && currentTime < note.endTime) {
+                span.classList.add("playing");
+              } else {
+                span.classList.remove("playing");
+              }
+            }
+          });
+        } else {
+          document
+            .querySelectorAll(".note.playing")
+            .forEach((el) => el.classList.remove("playing"));
+        }
+        animationId = requestAnimationFrame(updateHighlights);
+      }
+
+      // Load initial song
+      player.setAttribute("src", songList[0].file);
+      checkLoad();
+    </script>
+  </body>
+</html>
