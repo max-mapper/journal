@@ -22,6 +22,19 @@
         margin-bottom: 10px;
       }
 
+      h3 {
+        margin: 15px 0 5px 0;
+        color: #333;
+        font-size: 16px;
+      }
+
+      midi-visualizer {
+        display: block;
+        margin-bottom: 20px;
+        background: #fff;
+        border-radius: 4px;
+      }
+
       /* Styling for the dynamically generated ocarina tabs */
       .ocarina-font {
         font-family: "Open 12 Hole Ocarina 1", monospace;
@@ -146,10 +159,18 @@
   <body>
     <h1>Ocarina Tabs Player</h1>
 
-    <midi-player id="player" sound-font visualizer="#myVisualizer">
+    <midi-player
+      id="player"
+      sound-font
+      visualizer="#myVisualizer, #myStaffVisualizer"
+    >
     </midi-player>
 
+    <h3>Piano Roll</h3>
     <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+
+    <h3>Sheet Music</h3>
+    <midi-visualizer type="staff" id="myStaffVisualizer"></midi-visualizer>
 
     <div class="controls">
       <div class="control-group">
