@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini 3.1 Live Preview - Voice & Function Calling SRS</title>
+    <style>
+      :root {
+        --bg-color: #f4f7f6;
+        --container-bg: #ffffff;
+        --text-color: #333;
+        --primary-btn: #007bff;
+        --stop-btn: #dc3545;
+        --log-bg: #1e1e1e;
+        --log-text: #00ffcc;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+      }
+      .container {
+        background: var(--container-bg);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 800px;
+      }
+      h1 {
+        margin-top: 0;
+        font-size: 1.5rem;
+      }
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+      .btn-record {
+        background-color: var(--primary-btn);
+      }
+      .btn-stop {
+        background-color: var(--stop-btn);
+      }
+
+      .log-container {
+        background: var(--log-bg);
+        color: var(--log-text);
+        height: 450px;
+        overflow-y: auto;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .log-entry {
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #333;
+      }
+      .log-system {
+        color: #aaaaaa;
+      }
+      .log-user {
+        color: #ffcc00;
+      }
+      .log-ai {
+        color: #00ffcc;
+      }
+      .log-transcription {
+        color: #ff6699;
+      }
+      .log-function {
+        color: #ff9900;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Gemini 3.1 Live Voice (SRS Function Calling)</h1>
+
+      <div class="controls">
+        <button class="btn-record" id="recordBtn">Start Study Session</button>
+        <button class="btn-stop" id="stopBtn" disabled>Stop</button>
+      </div>
+
+      <div class="log-container" id="logContainer">
+        <div class="log-entry log-system">
+          [System] Welcome. Click "Start Study Session" to fetch a token and
+          begin.
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const recordBtn = document.getElementById("recordBtn");
+      const stopBtn = document.getElementById("stopBtn");
+      const logContainer = document.getElementById("logContainer");
+
+      let ws = null;
+      let inputAudioContext = null;
+      let outputAudioContext = null;
+      let stream = null;
+      let processor = null;
+      let nextPlayTime = 0;
+
+      let isSetupComplete = false;
+
+      function log(sender, message, cssClass = "log-system") {
+        const div = document.createElement("div");
+        div.className = `log-entry ${cssClass}`;
+        const textMessage =
+          typeof message === "object"
+            ? JSON.stringify(message, null, 2)
+            : message;
+        div.innerHTML = `<strong>[${sender}]</strong><br/>${textMessage}`;
+        logContainer.appendChild(div);
+        logContainer.scrollTop = logContainer.scrollHeight;
+      }
+
+      function arrayBufferToBase64(buffer) {
+        let binary = "";
+        const bytes = new Uint8Array(buffer);
+        const len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+      }
+
+      function base64ToFloat32Array(base64) {
+        const binaryString = window.atob(base64);
+        const len = binaryString.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) bytes[i] = binaryString.charCodeAt(i);
+
+        const int16Array = new Int16Array(bytes.buffer);
+        const float32Array = new Float32Array(int16Array.length);
+        for (let i = 0; i < int16Array.length; i++) {
+          float32Array[i] = int16Array[i] / 32768.0;
+        }
+        return float32Array;
+      }
+
+      async function playAudio(base64Data) {
+        if (!outputAudioContext) return;
+        const float32Data = base64ToFloat32Array(base64Data);
+        const audioBuffer = outputAudioContext.createBuffer(
+          1,
+          float32Data.length,
+          24000,
+        );
+        audioBuffer.getChannelData(0).set(float32Data);
+
+        const source = outputAudioContext.createBufferSource();
+        source.buffer = audioBuffer;
+        source.connect(outputAudioContext.destination);
+
+        const currentTime = outputAudioContext.currentTime;
+        if (currentTime < nextPlayTime) {
+          source.start(nextPlayTime);
+          nextPlayTime += audioBuffer.duration;
+        } else {
+          source.start(currentTime);
+          nextPlayTime = currentTime + audioBuffer.duration;
+        }
+      }
+
+      async function startAudioCapture() {
+        inputAudioContext = new (
+          window.AudioContext || window.webkitAudioContext
+        )({ sampleRate: 16000 });
+        outputAudioContext = new (
+          window.AudioContext || window.webkitAudioContext
+        )({ sampleRate: 24000 });
+        nextPlayTime = 0;
+
+        const workletCode = `
+            class PCMProcessor extends AudioWorkletProcessor {
+                constructor() {
+                    super();
+                    this.bufferSize = 2048; 
+                    this.buffer = new Float32Array(this.bufferSize);
+                    this.framesCount = 0;
+                }
+                process(inputs, outputs, parameters) {
+                    const input = inputs[0];
+                    if (!input || !input[0]) return true;
+                    
+                    const channelData = input[0];
+                    for (let i = 0; i < channelData.length; i++) {
+                        this.buffer[this.framesCount++] = channelData[i];
+                        
+                        if (this.framesCount >= this.bufferSize) {
+                            const pcm16 = new Int16Array(this.bufferSize);
+                            for (let j = 0; j < this.bufferSize; j++) {
+                                let s = Math.max(-1, Math.min(1, this.buffer[j]));
+                                pcm16[j] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+                            }
+                            this.port.postMessage(pcm16.buffer);
+                            this.framesCount = 0;
+                        }
+                    }
+                    return true;
+                }
+            }
+            registerProcessor('pcm-processor', PCMProcessor);
+        `;
+        const blob = new Blob([workletCode], {
+          type: "application/javascript",
+        });
+        const workletUrl = URL.createObjectURL(blob);
+
+        await inputAudioContext.audioWorklet.addModule(workletUrl);
+        stream = await navigator.mediaDevices.getUserMedia({
+          audio: { channelCount: 1, sampleRate: 16000 },
+        });
+
+        const source = inputAudioContext.createMediaStreamSource(stream);
+        processor = new AudioWorkletNode(inputAudioContext, "pcm-processor");
+
+        processor.port.onmessage = (e) => {
+          if (ws && ws.readyState === WebSocket.OPEN && isSetupComplete) {
+            const base64Data = arrayBufferToBase64(e.data);
+
+            ws.send(
+              JSON.stringify({
+                realtimeInput: {
+                  // ✅ NEW FORMAT
+                  audio: {
+                    mimeType: "audio/pcm;rate=16000",
+                    data: base64Data,
+                  },
+                },
+              }),
+            );
+          }
+        };
+
+        source.connect(processor);
+      }
+
+      async function startConnection() {
+        recordBtn.disabled = true;
+        stopBtn.disabled = false;
+        isSetupComplete = false;
+
+        log(
+          "System",
+          "Requesting ephemeral token from server...",
+          "log-system",
+        );
+
+        try {
+          // 1. Get Ephemeral Token
+          const tokenRes = await fetch("/api/token", { method: "POST" });
+          const tokenData = await tokenRes.json();
+          if (!tokenData.token) {
+            throw new Error(
+              "Failed to retrieve token: " + JSON.stringify(tokenData),
+            );
+          }
+
+          log(
+            "System",
+            "Connecting to WebSocket using Ephemeral Token...",
+            "log-system",
+          );
+          await startAudioCapture();
+
+          // 2. Connect to the v1alpha Constrained endpoint using the access_token query parameter
+          const wsUrl = `wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContentConstrained?access_token=${tokenData.token}`;
+          ws = new WebSocket(wsUrl);
+
+          ws.onopen = () => {
+            log(
+              "System",
+              "WebSocket connected. Sending setup message...",
+              "log-system",
+            );
+
+            // 3. Send an empty setup message (Constraints are handled via the token)
+            const setupMessage = {
+              setup: {},
+            };
+            ws.send(JSON.stringify(setupMessage));
+          };
+
+          ws.onmessage = async (event) => {
+            const data =
+              event.data instanceof Blob ? await event.data.text() : event.data;
+            const msg = JSON.parse(data);
+
+            if (msg.setupComplete) {
+              isSetupComplete = true; // Safe to send real-time audio chunks
+              log(
+                "System",
+                "Setup Complete. Starting study session...",
+                "log-system",
+              );
+
+              // 4. Trigger the AI to kick off the flow
+              ws.send(
+                JSON.stringify({
+                  clientContent: {
+                    turns: [
+                      {
+                        role: "user",
+                        parts: [
+                          {
+                            text: "Please start the study session by getting the first question.",
+                          },
+                        ],
+                      },
+                    ],
+                    turnComplete: true,
+                  },
+                }),
+              );
+              return;
+            }
+
+            if (msg.serverContent) {
+              const content = msg.serverContent;
+
+              if (content.modelTurn && content.modelTurn.parts) {
+                content.modelTurn.parts.forEach(async (part) => {
+                  // Play AI Audio
+                  if (
+                    part.inlineData &&
+                    part.inlineData.mimeType.startsWith("audio/pcm")
+                  ) {
+                    playAudio(part.inlineData.data);
+                  }
+
+                  // 5. Intercept Tool Call Execution
+                  if (part.functionCall) {
+                    const callId = part.functionCall.id;
+                    const name = part.functionCall.name;
+                    const args = part.functionCall.args;
+
+                    log(
+                      "AI (Function Call)",
+                      `Calling ${name}(${JSON.stringify(args || {})})`,
+                      "log-function",
+                    );
+
+                    try {
+                      let result = {};
+                      if (name === "get_study_question") {
+                        const res = await fetch("/api/question");
+                        result = await res.json();
+                      } else if (name === "record_answer_correctness") {
+                        const res = await fetch("/api/answer", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify(args),
+                        });
+                        result = await res.json();
+                      }
+
+                      log(
+                        "System (Function Result)",
+                        `Result: ${JSON.stringify(result)}`,
+                        "log-function",
+                      );
+
+                      // 6. Return Data back to Gemini to resume the voice stream
+                      ws.send(
+                        JSON.stringify({
+                          toolResponse: {
+                            functionResponses: [
+                              {
+                                id: callId,
+                                name: name,
+                                response: result,
+                              },
+                            ],
+                          },
+                        }),
+                      );
+                    } catch (err) {
+                      console.error("Function call error:", err);
+                      ws.send(
+                        JSON.stringify({
+                          toolResponse: {
+                            functionResponses: [
+                              {
+                                id: callId,
+                                name: name,
+                                response: { error: err.message },
+                              },
+                            ],
+                          },
+                        }),
+                      );
+                    }
+                  }
+                });
+              }
+
+              // Native Transcriptions (User)
+              if (content.inputTranscription) {
+                const transcriptParts = content.inputTranscription.parts || [];
+                const text = transcriptParts.map((p) => p.text).join("");
+                if (text) log("User (Transcription)", text, "log-user");
+              }
+
+              // Native Transcriptions (AI)
+              if (content.outputTranscription) {
+                const transcriptParts = content.outputTranscription.parts || [];
+                const text = transcriptParts.map((p) => p.text).join("");
+                if (text) log("AI (Transcription)", text, "log-transcription");
+              }
+
+              if (content.interrupted) {
+                log("System", "Model was interrupted by user.", "log-system");
+              }
+            }
+          };
+
+          ws.onerror = (err) => {
+            console.error("WebSocket Error:", err);
+            log(
+              "System",
+              "WebSocket Error occurred. Check console.",
+              "log-system",
+            );
+            stopConnection();
+          };
+
+          ws.onclose = (e) => {
+            console.error("WebSocket Close", e);
+            log(
+              "System",
+              `WebSocket Connection Closed. (Code: ${e.code})`,
+              "log-system",
+            );
+            stopConnection();
+          };
+        } catch (error) {
+          console.error("Connection failed:", error);
+          log(
+            "System",
+            `Initialization failed: ${error.message}`,
+            "log-system",
+          );
+          stopConnection();
+        }
+      }
+
+      function stopConnection() {
+        isSetupComplete = false;
+        if (processor) processor.disconnect();
+        if (stream) stream.getTracks().forEach((t) => t.stop());
+        if (ws && ws.readyState === WebSocket.OPEN) ws.close();
+        if (inputAudioContext && inputAudioContext.state !== "closed")
+          inputAudioContext.close();
+        if (outputAudioContext && outputAudioContext.state !== "closed")
+          outputAudioContext.close();
+
+        recordBtn.disabled = false;
+        stopBtn.disabled = true;
+        log("System", "Study Session stopped.", "log-system");
+      }
+
+      recordBtn.onclick = startConnection;
+      stopBtn.onclick = stopConnection;
+    </script>
+  </body>
+</html>

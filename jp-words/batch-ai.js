@@ -2,7 +2,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 const ai = new GoogleGenAI({});
 
 // var defaultModel = "gemini-3-pro-preview";
-var defaultModel = "gemini-3-flash-preview";
+var defaultModel = "gemini-3.5-flash";
 
 export async function generateContent(
   contents,
