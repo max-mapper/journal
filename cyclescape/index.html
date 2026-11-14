@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#141418">
+<title>CycleScape Japan</title>
+<link rel="stylesheet" href="vendor/maplibre-gl.css">
+<style>
+  :root { --bg: #111; --panel: rgba(20,20,24,.94); --fg: #eee; --muted: #9a9aa3; --accent: #f98c0a; --line: #3a3a44; --sheet-h: 0px; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font: 13px/1.4 system-ui, -apple-system, "Hiragino Sans", sans-serif; }
+  body { position: fixed; inset: 0; overflow: hidden; overscroll-behavior: none; }
+  #map { position: absolute; inset: 0; }
+  #panel { position: absolute; top: 12px; left: 12px; width: 320px; max-width: calc(100vw - 72px); max-height: calc(100vh - 64px); /* clear of the credits line */
+           overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; background: var(--panel); border-radius: 10px;
+           padding: 12px 14px; box-shadow: 0 2px 14px rgba(0,0,0,.45); box-sizing: border-box; z-index: 3; }
+  #panel.collapsed #more, #panel.collapsed #prefs, #panel.collapsed #route-help { display: none; }
+  #handle { display: none; }
+  header { display: flex; align-items: center; gap: 8px; }
+  header h1 { font-size: 15px; margin: 0; flex: 1; }
+  #collapse { padding: 2px 10px; }
+  #status { color: var(--accent); margin: 4px 0 6px; min-height: 1.4em; }
+  label { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; align-items: center; margin: 6px 0; color: var(--muted); }
+  label input[type=range] { grid-column: 1 / -1; width: 100%; }
+  label output { color: var(--fg); font-variant-numeric: tabular-nums; }
+  .row { display: flex; gap: 6px; margin: 8px 0; align-items: center; }
+  .row button, .row select { flex: 1; min-width: 0; }
+  .row .lbl { color: var(--muted); flex: 0 0 72px; }
+  button, select { background: #2a2a31; color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; font: inherit; cursor: pointer; }
+  button:disabled { opacity: .45; cursor: default; }
+  button.on { border-color: var(--accent); color: var(--accent); }
+  button.primary { background: #3a2a14; border-color: var(--accent); color: #ffd9a8; font-weight: 600; }
+  button.primary.on { background: var(--accent); color: #111; }
+  .toolbar { gap: 4px; }
+  .toolbar button, .sum-actions button { flex: 1 1 auto; min-width: max-content; padding: 6px 6px; white-space: nowrap; } /* never clip a label */
+  .toolbar button.icon { flex: 0 0 40px; padding: 6px 0; font-size: 15px; }
+  .toolbar #edit { flex: 1.6; }
+  option:disabled { color: #666; }
+  details { margin-top: 8px; border-top: 1px solid var(--line); padding-top: 6px; }
+  summary { cursor: pointer; color: var(--muted); padding: 4px 0; }
+  #legend { margin-top: 10px; }
+  #legend .bar { height: 8px; border-radius: 4px; background: linear-gradient(90deg,#000004,#1f0c48,#550f6d,#88226a,#ba3655,#e35933,#f98c0a,#fcffa4); }
+  #legend .ends { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; }
+  #route-help { color: var(--muted); font-size: 12px; margin: 0 0 4px; }
+  .hint { color: var(--muted); font-size: 11px; margin: -4px 0 6px; }
+  #summary { background: #1f1f26; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin: 6px 0 8px; }
+  #sum-main { font-size: 17px; font-weight: 650; color: #fff; display: flex; flex-wrap: wrap; gap: 2px 12px; align-items: baseline; }
+  #sum-main .up { color: #ff9e7a; } #sum-main .down { color: #8fd3ff; }
+  #sum-det { color: var(--muted); font-size: 12px; }
+  #profile-chart { margin-top: 6px; touch-action: none; }
+  #profile-chart svg { display: block; width: 100%; height: 84px; cursor: crosshair; }
+  #profile-chart:empty, #profile-readout:empty { display: none; }
+  #profile-readout { font-size: 11px; color: var(--fg); min-height: 1.3em; }
+  .prof-dot { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid #f98c0a; box-shadow: 0 0 0 1px #000a; pointer-events: none; }
+  #sum-sub { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  #sum-warn { display: inline-block; margin-top: 6px; background: #4a1d1d; color: #ffb3a8; border: 1px solid #a33; border-radius: 12px; padding: 2px 8px; font-size: 11px; }
+  #sum-warn[hidden] { display: none; }
+  .sum-actions { margin: 6px 0 0; }
+  #star.on { border-color: #ffd166; color: #ffd166; }
+  #saved { margin: 4px 0 8px; }
+  #saved > summary { color: var(--fg); }
+  #saved .hint { margin: 2px 0 4px; }
+  .saved-item { border: 1px solid var(--line); border-radius: 8px; margin: 6px 0; padding: 2px 4px 4px; }
+  .saved-item.on { border-color: #ffd166; }
+  .saved-item .load { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; width: 100%; background: none; border: 0; padding: 6px 4px; text-align: left; }
+  .saved-item .load small { color: var(--muted); }
+  .saved-acts { display: flex; gap: 4px; }
+  .saved-acts button { flex: 1 1 auto; font-size: 12px; padding: 4px 6px; white-space: nowrap; }
+  .saved-acts button.icon { flex: 0 0 40px; }
+  #prefs { margin-bottom: 4px; }
+  label.busy .ends { grid-column: 1 / -1; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-top: -2px; }
+  #climb-custom[hidden] { display: none; }
+  #grade-legend { display: flex; flex-wrap: wrap; gap: 3px 8px; margin-top: 5px; font-size: 10px; color: var(--muted); align-items: center; }
+  #grade-legend i { display: inline-block; width: 14px; height: 5px; border-radius: 2px; margin-right: 3px; vertical-align: middle; border: 1px solid #fff6; }
+  #grade-legend:empty { display: none; }
+  #progress { height: 3px; background: var(--line); border-radius: 2px; margin: -2px 0 6px; display: none; }
+  #progress > div { height: 100%; width: 0; background: var(--accent); border-radius: 2px; transition: width .15s; }
+  .live-row { display: flex; align-items: center; gap: 8px; margin: -2px 0 6px; }
+  .live-row[hidden] { display: none; }
+  #live-cancel { padding: 2px 10px; font-size: 12px; }
+  #lod-chip { display: inline-block; margin: 0 0 6px; background: #2b2a14; color: #f3e19a; border: 1px solid #7a6a1e; border-radius: 12px; padding: 2px 8px; font-size: 11px; }
+  #lod-chip[hidden] { display: none; }
+  #route-opts { margin: 6px 0 2px; display: grid; gap: 4px; }
+  #route-opts[hidden] { display: none; }
+  #route-opts .opt { display: grid; grid-template-columns: 3.6em 1fr auto; gap: 2px 8px; align-items: baseline; text-align: left;
+    background: #26262c; border: 1px solid #3a3a44; border-radius: 6px; padding: 5px 8px; font-size: 12px; color: var(--fg); cursor: pointer; }
+  #route-opts .opt.on { border-color: #fff; background: #34343c; }
+  #route-opts .opt b { font-size: 12px; }
+  #route-opts .opt .m { color: var(--fg); }
+  #route-opts .opt .c { color: var(--muted); font-size: 11px; }
+  #route-opts .opt .v { grid-column: 2 / 4; color: var(--muted); font-size: 11px; }
+  #route-opts .none { color: var(--muted); font-size: 11px; }
+  .alt-label { background: #111; color: #fff; border: 2px solid #ddd; border-radius: 10px; min-width: 18px; height: 18px; padding: 0 4px;
+    font: 600 11px/14px system-ui; text-align: center; cursor: pointer; box-sizing: border-box; }
+  #best-stats { color: var(--fg); font-size: 11px; margin: 2px 0; }
+  #stats { color: var(--muted); font-size: 11px; margin-top: 8px; }
+  #climb-preview { width: 100%; border-collapse: collapse; font-size: 11px; font-variant-numeric: tabular-nums; margin-top: 4px; }
+  #climb-preview td, #climb-preview th { text-align: center; padding: 1px 2px; }
+  #climb-preview th { color: var(--muted); font-weight: normal; }
+  #climb-help { color: var(--muted); font-size: 11px; margin: 4px 0; }
+  .haz { display: flex; align-items: center; gap: 8px; margin: 4px 0; color: var(--fg); cursor: pointer; }
+  .haz input { margin: 0; width: 18px; height: 18px; }
+  .sw { width: 26px; height: 0; border-top-width: 4px; flex: 0 0 26px; }
+  .sw.tunnel { border-top: 5px dashed #b15cff; }
+  .sw.snowshed { border-top: 4px dotted #d6a4ff; }
+  .sw.steep { border-top: 4px solid #ff4d1a; }
+  .sw.unpaved { border-top: 3px dashed #b0703c; }
+  .sw.bike { border-top: 4px solid #22c55e; }
+  .maplibregl-popup-content { background: #1b1b20; color: var(--fg); padding: 8px 10px; font-size: 12px; border-radius: 8px; }
+  .maplibregl-popup-tip { display: none; }
+  .maplibregl-popup-close-button { color: var(--fg); font-size: 18px; width: 28px; height: 28px; }
+  /* route points: 44 px touch targets with a smaller visible dot */
+  .pt { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: grab; touch-action: none; }
+  .pt > span { display: block; box-sizing: border-box; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #0008, 0 1px 4px #0009; }
+  .pt.start > span { width: 22px; height: 22px; background: #4cc9f0; }
+  .pt.end > span { width: 22px; height: 22px; background: #f72585; }
+  .pt.mid > span { width: 14px; height: 14px; background: #fff; border-color: #222; }
+  .pt.pin > span { width: 24px; height: 24px; background: #ffd166; border-color: #222; color: #111; font: 700 13px/20px system-ui; text-align: center; }
+  .pt.ins { opacity: .85; }
+  .pt.ins > span { width: 18px; height: 18px; background: rgba(20,20,24,.75); border: 1.5px solid #fff; color: #fff; font: 600 14px/15px system-ui; text-align: center; }
+  .pt-menu { display: flex; flex-direction: column; gap: 6px; min-width: 170px; }
+  .pt-menu b { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .pt-menu button { min-height: 44px; text-align: left; padding: 8px 10px; }
+  #confirm { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; z-index: 10; }
+  #confirm[hidden] { display: none; }
+  #confirm .box { background: #1b1b20; border: 1px solid var(--line); border-radius: 12px; padding: 16px; width: min(360px, calc(100vw - 32px)); }
+  #confirm .box p { margin: 0 0 12px; font-size: 14px; }
+  #confirm button { min-height: 44px; }
+
+  /* coarse pointers: everything touch-sized */
+  @media (pointer: coarse) {
+    button, select { min-height: 44px; font-size: 14px; }
+    input[type=range] { height: 32px; }
+    summary { padding: 10px 0; }
+  }
+  /* phones: the panel is a bottom sheet (collapsed = status + route tools + mode) */
+  @media (max-width: 700px) {
+    #panel { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-width: none; max-height: 78vh;
+             border-radius: 14px 14px 0 0; padding: 0 12px calc(10px + env(safe-area-inset-bottom)); }
+    #panel:not(.expanded) #more, #panel:not(.expanded) #prefs, #panel:not(.expanded) #sum-sub,
+    #panel:not(.expanded) .toolbar .ext, #panel:not(.expanded) #grade-legend,
+    #panel:not(.expanded) #profile-chart, #panel:not(.expanded) #profile-readout, #panel:not(.expanded) #route-opts { display: none; }
+    #panel:not(.expanded) #summary { padding: 4px 8px; margin: 4px 0; }
+    header { display: none; }
+    #handle { display: flex; justify-content: center; align-items: center; height: 26px; margin: 0 -12px; cursor: grab; touch-action: none; }
+    #handle > span { width: 42px; height: 5px; border-radius: 3px; background: #666; }
+    #status { margin-top: 0; }
+    .toolbar button { font-size: 13px; padding: 4px 2px; }
+    .maplibregl-ctrl-bottom-left, .maplibregl-ctrl-bottom-right { bottom: var(--sheet-h); }
+    body.sheet-open .maplibregl-ctrl-bottom-right { display: none; } /* expanded sheet: the ⓘ would land on the zoom controls */
+  }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="panel">
+  <div id="handle" title="Show / hide settings"><span></span></div>
+  <header><h1>CycleScape Japan</h1><button id="collapse" title="Collapse panel">–</button></header>
+  <p id="status">Loading…</p>
+  <p id="route-help"></p>
+  <div id="lod-chip" hidden></div>
+  <div class="live-row" id="live-row" hidden><div id="progress" style="flex:1;margin:0"><div></div></div><button id="live-cancel" title="Stop building the live road graph">✕ Cancel</button></div>
+  <div class="row toolbar">
+    <button id="edit" class="primary" title="Draw / edit the route: tap the map to add points (Enter = done)">✏️ Edit route</button>
+    <button id="route-undo" title="Undo the last route edit (Backspace)">↶ Undo</button>
+    <button id="route-part" class="ext" title="Start a new, separate route part (or Shift-click)">＋ Part</button>
+    <button id="route-reverse" class="ext icon" title="Reverse the route (start ↔ end)" aria-label="Reverse route">⇄</button>
+    <button id="clear" class="ext icon" title="Clear the route (Esc); Undo brings it back" aria-label="Clear route">✕</button>
+  </div>
+
+  <div id="summary">
+    <div id="sum-main">No route yet</div>
+    <div id="sum-det"></div>
+    <div id="route-opts" hidden title="Genuinely different route options (≤ 40% shared); tap one to select it"></div>
+    <div id="profile-chart" title="Elevation along the best route; hover / tap to locate on the map"></div>
+    <div id="profile-readout"></div>
+    <div id="grade-legend" title="Steepness along the best route (grades are absolute: up or down)"></div>
+    <div id="sum-sub"></div>
+    <div id="sum-warn" hidden></div>
+    <div class="row sum-actions">
+      <button id="star" disabled title="Save this route in this browser (listed under ★ Saved routes); tap again to remove it">☆ Star</button>
+      <button id="gpx" class="primary" disabled title="Download the selected route as a GPX track with elevation (bike computers, apps)">⬇ GPX</button>
+      <button id="geojson" disabled title="Download the selected route as GeoJSON with elevation and route stats (QGIS, web maps)">⬇ GeoJSON</button>
+    </div>
+  </div>
+
+  <details id="saved" hidden>
+    <summary>★ Saved routes <span id="saved-n"></span></summary>
+    <p class="hint">Saved in this browser only (for this address and port).</p>
+    <div id="saved-list"></div>
+  </details>
+
+  <div id="prefs">
+    <label>Max detour <output id="o-detour-max"></output><input id="detour-max" type="range" min="0" max="105" step="5" value="30"></label>
+    <label class="busy" title="How strongly to avoid busy roads (estimated vehicles/day and truck share)">Avoid busy roads <output id="o-tau"></output>
+      <input id="tau" type="range" min="0.2" max="0.9" step="0.05" value="0.7"><span class="ends"><span>Don't mind</span><span>Strongly avoid</span></span></label>
+    <p class="hint" id="tau-readout"></p>
+    <label class="haz" title="Never route through tunnels (the current map avoids them too)"><input type="checkbox" id="avoid-tunnels" checked> Avoid tunnels</label>
+    <div class="row"><span class="lbl">Rider</span><select id="profile" title="Climbing preference: how much you mind climbs and steep pitches"></select></div>
+    <div id="climb-custom" hidden>
+      <label>Detour to skip 100 m of climbing <output id="o-detour"></output><input id="detour" type="range" min="0" max="3" step="0.1" value="1"></label>
+      <label>Comfortable grade <output id="o-g0"></output><input id="g0" type="range" min="0" max="10" step="0.5" value="1"></label>
+      <label>Steep penalty scale <output id="o-steep"></output><input id="steep" type="range" min="1" max="8" step="0.5" value="3.5"></label>
+    </div>
+    <table id="climb-preview" title="Resistance multiplier by grade for this rider profile"></table>
+    <label class="haz" title="Show the lowest-resistance route (white line) and its alternatives"><input type="checkbox" id="best-on" checked> Show best route</label>
+    <label class="haz" title="Show how current (all good route options) spreads across the corridor, under the white route"><input type="checkbox" id="cur-on"> Show all route options (current flow)</label>
+  </div>
+
+  <div id="more">
+    <details>
+      <summary>Corridor &amp; traffic map</summary>
+      <div class="row">
+        <button id="mode-pair" class="on" title="1 A from start to end: how flow splits between alternative routes">Start → end</button>
+        <button id="mode-omni" title="Every road junction in the corridor sends trips to every other one within the trip radius (Omniscape-style)">Everywhere ↔ everywhere</button>
+      </div>
+      <div class="row" id="show-row" style="display:none">
+        <button id="show-cur" class="on">Cumulative</button>
+        <button id="show-norm" title="Cumulative ÷ flow on the same network with every road equal: where road quality shifts the flow">Normalized</button>
+      </div>
+      <label>Corridor buffer <output id="o-buffer"></output><input id="buffer" type="range" min="0.5" max="50" step="0.5" value="5"></label>
+      <label>Trip radius <output id="o-radius"></output><input id="radius" type="range" min="1" max="30" step="1" value="5"></label>
+      <div id="legend"><div class="bar"></div><div class="ends"><span>less current</span><span>more (safer, well connected)</span></div></div>
+      <div id="stats"></div>
+    </details>
+
+    <details>
+      <summary>Road weights</summary>
+      <label>Unpaved × <output id="o-unpaved"></output><input id="unpaved" type="range" min="0.6" max="2" step="0.05" value="1"></label>
+      <label id="strava-row" title="Strava ride heat is only available for the prebuilt areas">Strava-ridden × <output id="o-strava"></output><input id="strava" type="range" min="0.4" max="1" step="0.05" value="0.8"></label>
+    </details>
+
+    <details id="typepref-box">
+      <summary>Road type preferences</summary>
+      <p class="hint">Your taste in road types, on top of traffic and climbing: ×0.5 prefer … ×3 avoid.</p>
+      <div id="typepref"></div>
+      <label id="bike-sep-row" title="Cost of a road with a dedicated cycleway alongside (OSM), like a road type: the traffic beside it no longer counts. Default x0.8 = same as a cycleway">Cycleway alongside × <output id="o-bike-sep"></output><input id="bike-sep" type="range" min="0.5" max="3" step="0.05" value="0.8"></label>
+      <label id="bike-shared-row" title="Cost of a road with a shared sidewalk/path alongside (OSM footway or path that allows bikes, e.g. 自転車歩行者道): out of traffic but shared with pedestrians and crossed by driveways. Replaces the traffic penalty. Default x1.5">Shared sidewalk alongside × <output id="o-bike-shared"></output><input id="bike-shared" type="range" min="0.5" max="3" step="0.05" value="1.5"></label>
+      <label id="bike-lane-row" title="Share of the road's traffic penalty that still counts on a painted bike lane (OSM)">Painted bike lane: traffic penalty kept <output id="o-bike-lane"></output><input id="bike-lane" type="range" min="0" max="100" step="5" value="50"></label>
+      <div class="row"><button id="typepref-reset">Reset to defaults</button></div>
+    </details>
+
+
+    <details>
+      <summary>Hazards layer</summary>
+      <label class="haz"><input type="checkbox" id="haz-all" checked> Show hazards</label>
+      <label class="haz"><input type="checkbox" data-haz="tunnel" checked><span class="sw tunnel"></span> Tunnels</label>
+      <label class="haz"><input type="checkbox" data-haz="snowshed" checked><span class="sw snowshed"></span> Snow sheds</label>
+      <label class="haz"><input type="checkbox" data-haz="steep"><span class="sw steep"></span> Steep (≥ 8% over 60 m+)</label>
+      <label class="haz"><input type="checkbox" data-haz="unpaved" checked><span class="sw unpaved"></span> Unpaved</label>
+      <label class="haz"><input type="checkbox" id="bike-layer"><span class="sw bike"></span> Bike paths alongside roads (OSM: <span style="color:#22c55e">cycleway</span>, <span style="color:#38bdf8">shared sidewalk</span>, dashed = lane)</label>
+    </details>
+
+    <details>
+      <summary>Data &amp; map</summary>
+      <div class="row"><span class="lbl">Area</span><select id="area" title="Study area"></select></div>
+      <div class="row"><span class="lbl">Road data</span><select id="source" title="Road network source"></select></div>
+      <div class="row"><span class="lbl">Basemap</span><select id="basemap" title="Basemap"></select></div>
+    </details>
+  </div>
+</div>
+<div id="confirm" hidden><div class="box"><p id="confirm-msg"></p>
+  <div class="row"><button id="confirm-no">Cancel</button><button id="confirm-yes" class="primary">Download</button></div></div></div>
+<script src="vendor/maplibre-gl.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
