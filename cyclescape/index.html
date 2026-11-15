@@ -152,6 +152,8 @@
   .saved-acts button.icon { flex: 0 0 40px; }
   #notes-box > summary { color: var(--fg); }
   #notes-box .hint { margin: 2px 0 4px; }
+  #packs-box .hint { margin: 2px 0 2px; }
+  .pack-row { margin: 2px 0; } .pack-row span { flex: 1; } .pack-row button { flex: 0 0 40px; }
   .note-item { display: flex; align-items: center; gap: 4px; border: 1px solid var(--line); border-radius: 8px; margin: 6px 0; padding: 4px 4px 4px 8px; }
   .note-item .what { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; gap: 0 8px; align-items: baseline; }
   .note-item .what small { color: var(--muted); flex-basis: 100%; }
@@ -407,7 +409,8 @@
       <div class="row"><span class="lbl">Road data</span><select id="region" title="Automatic: Japan's own survey maps inside Japan (the most detailed roads, elevation and traffic), OpenStreetMap everywhere else. World: OpenStreetMap everywhere, Japan too">
         <option value="auto">Automatic</option><option value="japan">Japan</option><option value="world">World</option></select></div>
       <div class="row"><span class="lbl">Language</span><select id="lang" title="Language / 言語"><option value="en">English</option><option value="ja">日本語</option></select></div>
-      <div class="row"><span class="lbl" id="tiles-size">Downloaded map data</span><button id="tiles-clear" title="Delete the map tiles kept in this browser; routes download theirs again">Clear downloaded map data</button></div>
+      <div class="row"><span class="lbl" id="tiles-size">Downloaded map data</span><button id="tiles-clear" title="Delete the map tiles and region road data kept in this browser; routes download theirs again">Clear downloaded map data</button></div>
+      <div id="packs-box" hidden><p class="hint">Region road data kept in this browser:</p><div id="packs-list"></div></div>
       <label class="haz" id="pale-row" hidden title="Lay GSI's pale map (roads, names, buildings) over the red relief, blended with multiply"><input type="checkbox" id="pale-on"> GSI Pale on top (multiply)</label>
     </details>
   </div>
