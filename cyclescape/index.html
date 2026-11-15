@@ -20,6 +20,25 @@
   header h1 { font-size: 15px; margin: 0; flex: 1; }
   #collapse { padding: 2px 10px; }
   #status { color: var(--accent); margin: 4px 0 6px; min-height: 1.4em; }
+  /* route planner: From / stops / To, each set by search (GSI) or on the map */
+  #trip { position: relative; }
+  .trip-row { display: flex; align-items: center; gap: 4px; margin: 4px 0; }
+  .trip-dot { flex: 0 0 12px; height: 12px; border-radius: 50%; border: 2px solid #fff; box-sizing: border-box; }
+  .trip-dot.from { background: #4cc9f0; } .trip-dot.to { background: #f72585; }
+  .trip-dot.stop { background: #ffd166; border-color: #222; font: 700 9px/8px system-ui; color: #111; text-align: center; }
+  .trip-in { flex: 1 1 auto; min-width: 0; background: #1f1f26; color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 8px; font: inherit; }
+  .trip-in:focus { outline: none; border-color: var(--accent); }
+  .trip-row button { flex: 0 0 34px; padding: 6px 0; }
+  .trip-row button.on { border-color: var(--accent); color: var(--accent); }
+  #trip-sugg { position: absolute; left: 16px; right: 0; z-index: 5; background: #1b1b20; border: 1px solid var(--line); border-radius: 8px; max-height: 260px; overflow-y: auto; box-shadow: 0 6px 18px #0009; }
+  #trip-sugg[hidden] { display: none; }
+  #trip-sugg button { display: flex; justify-content: space-between; gap: 8px; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid #2a2a31; border-radius: 0; padding: 9px 10px; }
+  #trip-sugg button small { color: var(--muted); white-space: nowrap; }
+  #trip-sugg .none { padding: 9px 10px; color: var(--muted); }
+  body.picking #map canvas { cursor: crosshair; }
+  /* GSI Pale over the red relief: a second map right above the main canvas (markers stay above it), multiplied */
+  #pale-map { position: absolute; inset: 0; mix-blend-mode: multiply; pointer-events: none; }
+  #pale-row[hidden] { display: none; }
   label { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; align-items: center; margin: 6px 0; color: var(--muted); }
   label input[type=range] { grid-column: 1 / -1; width: 100%; }
   label output { color: var(--fg); font-variant-numeric: tabular-nums; }
@@ -139,6 +158,9 @@
   .pt.pin > span { width: 24px; height: 24px; background: #ffd166; border-color: #222; color: #111; font: 700 13px/20px system-ui; text-align: center; }
   .pt.ins { opacity: .85; }
   .pt.ins > span { width: 18px; height: 18px; background: rgba(20,20,24,.75); border: 1.5px solid #fff; color: #fff; font: 600 14px/15px system-ui; text-align: center; }
+  .note-ctl { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+  .note-ctl span { flex-basis: 100%; font-size: 12px; }
+  .note-ctl button { min-height: 36px; padding: 6px 10px; flex: 1; }
   .pt-menu { display: flex; flex-direction: column; gap: 6px; min-width: 170px; }
   .pt-menu b { font-size: 12px; color: var(--muted); font-weight: 500; }
   .pt-menu button { min-height: 44px; text-align: left; padding: 8px 10px; }
@@ -158,10 +180,27 @@
   @media (max-width: 700px) {
     #panel { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-width: none; max-height: 78vh;
              border-radius: 14px 14px 0 0; padding: 0 12px calc(10px + env(safe-area-inset-bottom)); }
+    /* collapsed sheet = the map's: one status line, Edit / Undo, and the route summary with Navigate beside it;
+       hints, details, the export row and saved routes are in the expanded sheet */
     #panel:not(.expanded) #more, #panel:not(.expanded) #prefs, #panel:not(.expanded) #sum-sub,
-    #panel:not(.expanded) .toolbar .ext, #panel:not(.expanded) #route-opts { display: none; }
+    #panel:not(.expanded) #route-opts, body.has-route #panel:not(.expanded) #trip,
+    #panel:not(.expanded) #sum-det, #panel:not(.expanded) #act-row, #panel:not(.expanded) #saved { display: none; }
+    #panel:not(.expanded) #summary { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    #panel:not(.expanded) #sum-main { flex: 1 1 auto; font-size: 15px; }
+    #panel:not(.expanded) #nav-row { margin: 0; flex: 0 0 auto; }
+    #panel:not(.expanded) #nav-row button { min-height: 40px; padding: 4px 10px; }
+    #panel:not(.expanded) #status { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; min-height: 1.2em; margin-bottom: 2px; }
+    #panel:not(.expanded) .toolbar button { min-height: 40px; }
+    .trip-in { font-size: 16px; } /* 16 px: phones don't zoom the page when the field is focused */
+    .trip-row button { min-height: 40px; flex-basis: 40px; }
     /* the strip floats above the sheet; the map stays full screen under both */
-    #strip { bottom: var(--sheet-h); height: 92px; padding: 4px 10px 4px 6px; }
+    #strip { bottom: var(--sheet-h); height: 64px; padding: 3px 10px 3px 6px; }
+    #strip .strip-ctl { flex-direction: row; align-items: center; }
+    #strip .strip-ctl button { height: 40px; }
+    #strip #fly-play { width: 44px; }
+    #strip #fly-speed { width: 36px; }
+    /* flyover: the sheet steps aside so the 3D view gets the screen; Exit 3D brings it back */
+    body.flying #panel { display: none; }
     #grade-legend { display: none; }
     body.sheet-open #strip { display: none; }
     #panel:not(.expanded) #summary { padding: 4px 8px; margin: 4px 0; }
@@ -191,15 +230,17 @@
   <div id="handle" title="Show / hide settings"><span></span></div>
   <header><h1>CycleScape Japan</h1><button id="collapse" title="Collapse panel">–</button></header>
   <p id="status">Loading…</p>
-  <p id="route-help"></p>
   <div id="lod-chip" hidden></div>
   <div class="live-row" id="live-row" hidden><div id="progress" style="flex:1;margin:0"><div></div></div><button id="live-cancel" title="Stop building the live road graph">✕ Cancel</button></div>
-  <div class="row toolbar">
-    <button id="edit" class="primary" title="Draw / edit the route: tap the map to add points (Enter = done)">✏️ Edit route</button>
-    <button id="route-undo" title="Undo the last route edit (Backspace)">↶ Undo</button>
-    <button id="route-part" class="ext" title="Start a new, separate route part (or Shift-click)">＋ Part</button>
-    <button id="route-reverse" class="ext icon" title="Reverse the route (start ↔ end)" aria-label="Reverse route">⇄</button>
-    <button id="clear" class="ext icon" title="Clear the route (Esc); Undo brings it back" aria-label="Clear route">✕</button>
+  <div id="trip">
+    <div id="trip-rows"></div>
+    <div id="trip-sugg" role="listbox" hidden></div>
+    <div class="row toolbar">
+      <button id="trip-add" title="Add a stop the route must pass through, before the destination">＋ Stop</button>
+      <button id="route-reverse" class="icon" title="Swap start and destination" aria-label="Swap start and destination">⇅</button>
+      <button id="route-undo" title="Undo the last change (Backspace)">↶ Undo</button>
+      <button id="clear" class="icon" title="Clear the route (Esc); Undo brings it back" aria-label="Clear route">✕</button>
+    </div>
   </div>
 
   <div id="summary">
@@ -208,10 +249,10 @@
     <div id="route-opts" hidden title="Genuinely different route options (≤ 40% shared); tap one to select it"></div>
     <div id="sum-sub"></div>
     <div id="sum-warn" hidden></div>
-    <div class="row sum-actions">
+    <div class="row sum-actions" id="nav-row">
       <button id="navigate" class="primary" disabled title="Send the selected route to a navigation app for turn-by-turn (Vela, OsmAnd, …): opens your phone's share sheet with the route as a GPX file; where sharing files isn't available, downloads the GPX to open with the app">🧭 Navigate in app</button>
     </div>
-    <div class="row sum-actions">
+    <div class="row sum-actions" id="act-row">
       <button id="star" disabled title="Save this route in this browser (listed under ★ Saved routes); tap again to remove it">☆ Star</button>
       <button id="gpx" disabled title="Download the selected route as a GPX track with elevation (bike computers, apps)">⬇ GPX</button>
       <button id="geojson" disabled title="Download the selected route as GeoJSON with elevation and route stats (QGIS, web maps)">⬇ GeoJSON</button>
@@ -293,6 +334,8 @@
       <div class="row"><span class="lbl">Area</span><select id="area" title="Study area"></select></div>
       <div class="row"><span class="lbl">Road data</span><select id="source" title="Road network source"></select></div>
       <div class="row"><span class="lbl">Basemap</span><select id="basemap" title="Basemap"></select></div>
+      <div class="row"><span class="lbl">Language</span><select id="lang" title="Language / 言語"><option value="en">English</option><option value="ja">日本語</option></select></div>
+      <label class="haz" id="pale-row" hidden title="Lay GSI's pale map (roads, names, buildings) over the red relief, blended with multiply"><input type="checkbox" id="pale-on"> GSI Pale on top (multiply)</label>
     </details>
   </div>
 </div>
