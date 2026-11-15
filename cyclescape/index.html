@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#141418">
-<title>CycleScape Japan</title>
+<title>CycleScape</title>
 <link rel="stylesheet" href="vendor/maplibre-gl.css">
 <style>
   :root { --bg: #111; --panel: rgba(20,20,24,.94); --fg: #eee; --muted: #9a9aa3; --accent: #f98c0a; --line: #3a3a44; --sheet-h: 0px; }
@@ -14,12 +14,33 @@
   #panel { position: absolute; top: 12px; left: 12px; width: 320px; max-width: calc(100vw - 72px); max-height: calc(100vh - 64px - var(--strip-h)); /* clear of the credits line and the strip */
            overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; background: var(--panel); border-radius: 10px;
            padding: 12px 14px; box-shadow: 0 2px 14px rgba(0,0,0,.45); box-sizing: border-box; z-index: 3; }
-  #panel.collapsed #more, #panel.collapsed #prefs, #panel.collapsed #route-help { display: none; }
+  #panel.collapsed #more, #panel.collapsed #prefs, #panel.collapsed #modes, #panel.collapsed #notes-box { display: none; }
   #handle { display: none; }
   header { display: flex; align-items: center; gap: 8px; }
   header h1 { font-size: 15px; margin: 0; flex: 1; }
   #collapse { padding: 2px 10px; }
   #status { color: var(--accent); margin: 4px 0 6px; min-height: 1.4em; }
+  [hidden] { display: none !important; } /* hidden always wins, whatever display a layout rule gives the element */
+  #retry { margin: -2px 0 6px; padding: 3px 10px; }
+  /* keyboard focus: one visible ring everywhere (the planner fields show theirs as the accent border) */
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .trip-in:focus-visible, #map canvas:focus-visible { outline: none; }
+  /* Japan | World and what to compute: the two switches that change what the whole app does */
+  #modes .row { margin: 6px 0 4px; }
+  #modes .hint { margin: 0 0 4px; }
+  #region-hint { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; padding: 4px 8px; background: #2b2a14; border: 1px solid #7a6a1e; border-radius: 8px; color: #f3e19a; font-size: 12px; }
+  #region-hint span { flex: 1; }
+  #region-hint button { padding: 3px 8px; white-space: nowrap; }
+  /* controls that only mean something in one mode; World hides the Japan-only rows */
+  body:not(.omni) .omni-only, body.omni .pair-only, body.omni #trip, body.world .japan-only { display: none; }
+  /* analysis box (Everywhere ↔ everywhere): size and download in the panel, handles on the map */
+  #box-card { background: #1f1f26; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin: 6px 0 8px; }
+  #box-size { font-size: 17px; font-weight: 650; color: #fff; }
+  #box-est { color: var(--muted); font-size: 12px; }
+  #box-card .hint { margin: 4px 0 0; }
+  .pt.box-h > span { width: 16px; height: 16px; border-radius: 3px; background: #ffd166; border-color: #222; }
+  .pt.box-h.move { cursor: move; }
+  .pt.box-h.move > span { width: 34px; height: 22px; border-radius: 11px; color: #111; font: 700 15px/18px system-ui; text-align: center; }
   /* route planner: From / stops / To, each set by search (GSI) or on the map */
   #trip { position: relative; }
   .trip-row { display: flex; align-items: center; gap: 4px; margin: 4px 0; }
@@ -60,10 +81,9 @@
   option:disabled { color: #666; }
   details { margin-top: 8px; border-top: 1px solid var(--line); padding-top: 6px; }
   summary { cursor: pointer; color: var(--muted); padding: 4px 0; }
-  #legend { margin-top: 10px; }
+  #legend { margin: 2px 0 8px; }
   #legend .bar { height: 8px; border-radius: 4px; background: linear-gradient(90deg,#000004,#1f0c48,#550f6d,#88226a,#ba3655,#e35933,#f98c0a,#fcffa4); }
   #legend .ends { display: flex; justify-content: space-between; color: var(--muted); font-size: 11px; }
-  #route-help { color: var(--muted); font-size: 12px; margin: 0 0 4px; }
   .hint { color: var(--muted); font-size: 11px; margin: -4px 0 6px; }
   #summary { background: #1f1f26; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin: 6px 0 8px; }
   #sum-main { font-size: 17px; font-weight: 650; color: #fff; display: flex; flex-wrap: wrap; gap: 2px 12px; align-items: baseline; }
@@ -110,6 +130,12 @@
   .saved-acts { display: flex; gap: 4px; }
   .saved-acts button { flex: 1 1 auto; font-size: 12px; padding: 4px 6px; white-space: nowrap; }
   .saved-acts button.icon { flex: 0 0 40px; }
+  #notes-box > summary { color: var(--fg); }
+  #notes-box .hint { margin: 2px 0 4px; }
+  .note-item { display: flex; align-items: center; gap: 4px; border: 1px solid var(--line); border-radius: 8px; margin: 6px 0; padding: 4px 4px 4px 8px; }
+  .note-item .what { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; gap: 0 8px; align-items: baseline; }
+  .note-item .what small { color: var(--muted); flex-basis: 100%; }
+  .note-item button { flex: 0 0 40px; padding: 4px 0; }
   #prefs { margin-bottom: 4px; }
   label.busy .ends { grid-column: 1 / -1; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-top: -2px; }
   #climb-custom[hidden] { display: none; }
@@ -185,7 +211,8 @@
              border-radius: 14px 14px 0 0; padding: 0 12px calc(10px + env(safe-area-inset-bottom)); }
     /* collapsed sheet = the map's: one status line, the planner tools, and the route summary;
        hints, details, the export row and saved routes are in the expanded sheet */
-    #panel:not(.expanded) #more, #panel:not(.expanded) #prefs, #panel:not(.expanded) #sum-sub,
+    #panel:not(.expanded) #more, #panel:not(.expanded) #prefs, #panel:not(.expanded) #sum-sub, #panel:not(.expanded) #modes,
+    #panel:not(.expanded) #notes-box, #panel:not(.expanded) #box-card .hint, #panel:not(.expanded) #box-card .row,
     #panel:not(.expanded) #route-opts, body.has-route #panel:not(.expanded) #trip,
     #panel:not(.expanded) #sum-det, #panel:not(.expanded) #act-row, #panel:not(.expanded) #saved { display: none; }
     #panel:not(.expanded) #summary { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -205,7 +232,10 @@
     body.flying #panel { display: none; }
     #grade-legend { display: none; }
     body.sheet-open #strip { display: none; }
-    #panel:not(.expanded) #summary { padding: 4px 8px; margin: 4px 0; }
+    #panel:not(.expanded) #summary, #panel:not(.expanded) #box-card { padding: 4px 8px; margin: 4px 0; }
+    body.omni #panel:not(.expanded) #box-card { display: flex; align-items: baseline; gap: 10px; }
+    #panel:not(.expanded) #box-size { font-size: 15px; white-space: nowrap; }
+    #panel:not(.expanded) #box-est { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     header { display: none; }
     #handle { display: flex; justify-content: center; align-items: center; height: 26px; margin: 0 -12px; cursor: grab; touch-action: none; }
     #handle > span { width: 42px; height: 5px; border-radius: 3px; background: #666; }
@@ -221,7 +251,7 @@
 <div id="strip" hidden>
   <div class="strip-ctl">
     <button id="fly-play" title="Fly over the route in 3D (Space)" aria-label="Fly over the route">▶</button>
-    <button id="fly-speed" title="Flyover speed: 1× ≈ 0.5 km of route per second">1×</button>
+    <button id="fly-speed" title="Flyover speed: 1× ≈ 0.5 km of route per second" aria-label="Flyover speed">1×</button>
   </div>
   <div class="strip-main">
     <div class="strip-head"><span id="profile-readout"></span><button id="fly-exit" hidden title="Leave the flyover (Esc)">✕ Exit 3D</button><span id="grade-legend" title="Steepness along the route (grades are absolute: up or down)"></span></div>
@@ -229,9 +259,22 @@
   </div>
 </div>
 <div id="panel">
-  <div id="handle" title="Show / hide settings"><span></span></div>
-  <header><h1>CycleScape Japan</h1><button id="collapse" title="Collapse panel">–</button></header>
-  <p id="status">Loading…</p>
+  <div id="handle" role="button" tabindex="0" title="Show / hide settings" aria-label="Show / hide settings"><span></span></div>
+  <header><h1>CycleScape</h1><button id="collapse" title="Collapse panel" aria-label="Collapse panel" aria-expanded="true">–</button></header>
+  <div id="modes">
+    <div class="row" role="group" aria-label="Region">
+      <button id="region-japan" class="on" aria-pressed="true" title="Japan's own survey maps: the most detailed roads, elevation and traffic, inside Japan only">Japan</button>
+      <button id="region-world" aria-pressed="false" title="OpenStreetMap roads, anywhere in the world (Japan too); traffic is a rough estimate">World</button>
+    </div>
+    <div class="row" role="group" aria-label="What to work out">
+      <button id="mode-pair" class="on" aria-pressed="true" title="The best cycling route from a start to an end, with alternatives">Start → end</button>
+      <button id="mode-omni" aria-pressed="false" title="Rates every road in a box you draw: trips run from every junction to every other one within the trip radius">Everywhere ↔ everywhere</button>
+    </div>
+    <p class="hint" id="mode-hint">Plan a route between two places.</p>
+  </div>
+  <p id="status" role="status" aria-live="polite">Loading…</p>
+  <button id="retry" hidden>↻ Try again</button>
+  <div id="region-hint" hidden><span>This place is outside Japan.</span><button id="region-hint-go">Switch to World</button></div>
   <div id="lod-chip" hidden></div>
   <div class="live-row" id="live-row" hidden><div id="progress" style="flex:1;margin:0"><div></div></div><button id="live-cancel" title="Stop building the live road graph">✕ Cancel</button></div>
   <div id="trip">
@@ -245,7 +288,14 @@
     </div>
   </div>
 
-  <div id="summary">
+  <div id="box-card" class="omni-only">
+    <div id="box-size"></div>
+    <div id="box-est"></div>
+    <p class="hint">Drag a corner to resize the box, or ✥ to move it.</p>
+    <div class="row"><button id="box-view" title="Put the box in the middle of the map you are looking at">Move the box here</button></div>
+  </div>
+
+  <div id="summary" hidden>
     <div id="sum-main">No route yet</div>
     <div id="sum-det"></div>
     <div id="route-opts" hidden title="Genuinely different route options (≤ 40% shared); tap one to select it"></div>
@@ -264,14 +314,22 @@
     <div id="saved-list"></div>
   </details>
 
+  <details id="notes-box" hidden>
+    <summary>Your road notes <span id="notes-n"></span></summary>
+    <p class="hint">Roads you marked to prefer or avoid. Saved in this browser only.</p>
+    <div id="notes-list"></div>
+    <div class="row"><button id="notes-clear">Delete all notes</button></div>
+  </details>
+
   <div id="prefs">
-    <label>Max detour <output id="o-detour-max"></output><input id="detour-max" type="range" min="0" max="105" step="5" value="30"></label>
+    <label class="pair-only">Max detour <output id="o-detour-max"></output><input id="detour-max" type="range" min="0" max="105" step="5" value="30"></label>
     <label class="busy" title="How strongly to avoid busy roads (estimated vehicles/day and truck share)">Avoid busy roads <output id="o-tau"></output>
       <input id="tau" type="range" min="0.2" max="0.9" step="0.05" value="0.7"><span class="ends"><span>Don't mind</span><span>Strongly avoid</span></span></label>
     <p class="hint" id="tau-readout"></p>
-    <label class="busy" title="Route complexity: every turn and junction costs extra (right turns and unsignalised crossings of busy roads most), so the route stays simple unless a twisty one is clearly quieter. 0 = ignore turns">Simple routes <output id="o-turns"></output>
+    <p class="hint" id="traffic-rough" hidden>Traffic here is a rough estimate from the road types.</p>
+    <label class="busy pair-only" title="Route complexity: every turn and junction costs extra (right turns and unsignalised crossings of busy roads most), so the route stays simple unless a twisty one is clearly quieter. 0 = ignore turns">Simple routes <output id="o-turns"></output>
       <input id="turns" type="range" min="0" max="2" step="0.1" value="1"><span class="ends"><span>Ignore turns</span><span>Fewest turns</span></span></label>
-    <label class="haz" title="Never route through tunnels (the current map avoids them too)"><input type="checkbox" id="avoid-tunnels" checked> Avoid tunnels</label>
+    <label class="haz" title="Keeps routes out of tunnels unless there is no other way within the detour limit"><input type="checkbox" id="avoid-tunnels" checked> Avoid tunnels</label>
     <label class="haz" title="Narrow lanes under 3 m, footpaths (徒歩道) and park paths (庭園路). The map data cannot tell which have bollards, steps or no-bike signs. On: used like any quiet road (footpaths cost a bit more). Off: avoided unless there is no other way"><input type="checkbox" id="walkways" checked> Walkways and narrow lanes</label>
     <div class="row"><span class="lbl">Rider</span><select id="profile" title="Climbing preference: how much you mind climbs and steep pitches"></select></div>
     <div id="climb-custom" hidden>
@@ -280,37 +338,31 @@
       <label>Steep penalty scale <output id="o-steep"></output><input id="steep" type="range" min="1" max="8" step="0.5" value="3.5"></label>
     </div>
     <table id="climb-preview" title="Resistance multiplier by grade for this rider profile"></table>
-    <label class="haz" title="Show the lowest-resistance route (white line) and its alternatives"><input type="checkbox" id="best-on" checked> Show best route</label>
-    <label class="haz" title="Show how current (all good route options) spreads across the corridor, under the white route"><input type="checkbox" id="cur-on"> Show all route options (current flow)</label>
+    <label class="haz pair-only" title="Show the lowest-resistance route (white line) and its alternatives"><input type="checkbox" id="best-on" checked> Show best route</label>
+    <label class="haz pair-only"><input type="checkbox" id="cur-on"> Colour the roads good routes use</label>
+    <p class="hint pair-only" style="margin-top:0">Brighter roads carry more of the good ways from start to end.</p>
+    <div id="legend" hidden><div class="bar"></div><div class="ends"><span>few good routes</span><span>many (safer, well connected)</span></div></div>
   </div>
 
   <div id="more">
     <details>
-      <summary>Corridor &amp; traffic map</summary>
-      <div class="row">
-        <button id="mode-pair" class="on" title="1 A from start to end: how flow splits between alternative routes">Start → end</button>
-        <button id="mode-omni" title="Every road junction in the corridor sends trips to every other one within the trip radius (Omniscape-style)">Everywhere ↔ everywhere</button>
+      <summary>Search area</summary>
+      <label class="pair-only">Search width <output id="o-buffer"></output><input id="buffer" type="range" min="0.5" max="50" step="0.5" value="5"></label>
+      <p class="hint pair-only">How far either side of your route to look for roads. Wider finds more options but downloads more.</p>
+      <div class="row omni-only">
+        <button id="show-cur" class="on" aria-pressed="true" title="How many trips use each road">Trips</button>
+        <button id="show-norm" aria-pressed="false" title="Trips ÷ the trips the same roads would get if every road were equally good: where road quality pulls riders in">Road quality effect</button>
       </div>
-      <div class="row" id="show-row" style="display:none">
-        <button id="show-cur" class="on">Cumulative</button>
-        <button id="show-norm" title="Cumulative ÷ flow on the same network with every road equal: where road quality shifts the flow">Normalized</button>
-      </div>
-      <label>Corridor buffer <output id="o-buffer"></output><input id="buffer" type="range" min="0.5" max="50" step="0.5" value="5"></label>
-      <label>Trip radius <output id="o-radius"></output><input id="radius" type="range" min="1" max="30" step="1" value="5"></label>
-      <div id="legend"><div class="bar"></div><div class="ends"><span>less current</span><span>more (safer, well connected)</span></div></div>
+      <label class="omni-only">Trip radius <output id="o-radius"></output><input id="radius" type="range" min="1" max="30" step="1" value="5"></label>
+      <p class="hint omni-only">The longest trip counted, as the crow flies.</p>
       <div id="stats"></div>
-    </details>
-
-    <details>
-      <summary>Road weights</summary>
-      <label>Unpaved × <output id="o-unpaved"></output><input id="unpaved" type="range" min="0.6" max="2" step="0.05" value="1"></label>
-      <label id="strava-row" title="Strava ride heat is only available for the prebuilt areas">Strava-ridden × <output id="o-strava"></output><input id="strava" type="range" min="0.4" max="1" step="0.05" value="0.8"></label>
     </details>
 
     <details id="typepref-box">
       <summary>Road type preferences</summary>
       <p class="hint">Your taste in road types, on top of traffic and climbing: ×0.5 prefer … ×3 avoid.</p>
       <div id="typepref"></div>
+      <label>Unpaved × <output id="o-unpaved"></output><input id="unpaved" type="range" min="0.6" max="2" step="0.05" value="1"></label>
       <label id="bike-sep-row" title="Cost of a road with a dedicated cycleway alongside (OSM), like a road type: the traffic beside it no longer counts. Default x0.8 = same as a cycleway">Cycleway alongside × <output id="o-bike-sep"></output><input id="bike-sep" type="range" min="0.5" max="3" step="0.05" value="0.8"></label>
       <label id="bike-shared-row" title="Cost of a road with a shared sidewalk/path alongside (OSM footway or path that allows bikes, e.g. 自転車歩行者道): out of traffic but shared with pedestrians and crossed by driveways. Replaces the traffic penalty. Default x1.5">Shared sidewalk alongside × <output id="o-bike-shared"></output><input id="bike-shared" type="range" min="0.5" max="3" step="0.05" value="1.5"></label>
       <label id="bike-lane-row" title="Share of the road's traffic penalty that still counts on a painted bike lane (OSM)">Painted bike lane: traffic penalty kept <output id="o-bike-lane"></output><input id="bike-lane" type="range" min="0" max="100" step="5" value="50"></label>
@@ -322,7 +374,7 @@
       <summary>Hazards layer</summary>
       <label class="haz"><input type="checkbox" id="haz-all" checked> Show hazards</label>
       <label class="haz"><input type="checkbox" data-haz="tunnel" checked><span class="sw tunnel"></span> Tunnels</label>
-      <label class="haz"><input type="checkbox" data-haz="snowshed" checked><span class="sw snowshed"></span> Snow sheds</label>
+      <label class="haz japan-only"><input type="checkbox" data-haz="snowshed" checked><span class="sw snowshed"></span> Snow sheds</label>
       <label class="haz"><input type="checkbox" data-haz="steep"><span class="sw steep"></span> Steep (≥ 8% over 60 m+)</label>
       <label class="haz"><input type="checkbox" data-haz="unpaved" checked><span class="sw unpaved"></span> Unpaved</label>
       <label class="haz"><input type="checkbox" id="bike-layer"><span class="sw bike"></span> Bike paths alongside roads (OSM: <span style="color:#22c55e">cycleway</span>, <span style="color:#38bdf8">shared sidewalk</span>, dashed = lane)</label>
@@ -330,15 +382,13 @@
 
     <details>
       <summary>Data &amp; map</summary>
-      <div class="row"><span class="lbl">Area</span><select id="area" title="Study area"></select></div>
-      <div class="row"><span class="lbl">Road data</span><select id="source" title="Road network source"></select></div>
       <div class="row"><span class="lbl">Basemap</span><select id="basemap" title="Basemap"></select></div>
       <div class="row"><span class="lbl">Language</span><select id="lang" title="Language / 言語"><option value="en">English</option><option value="ja">日本語</option></select></div>
       <label class="haz" id="pale-row" hidden title="Lay GSI's pale map (roads, names, buildings) over the red relief, blended with multiply"><input type="checkbox" id="pale-on"> GSI Pale on top (multiply)</label>
     </details>
   </div>
 </div>
-<div id="confirm" hidden><div class="box"><p id="confirm-msg"></p>
+<div id="confirm" hidden role="dialog" aria-modal="true" aria-labelledby="confirm-msg"><div class="box"><p id="confirm-msg"></p>
   <div class="row"><button id="confirm-no">Cancel</button><button id="confirm-yes" class="primary">Download</button></div></div></div>
 <script src="vendor/maplibre-gl.js"></script>
 <script type="module" src="app.js"></script>
