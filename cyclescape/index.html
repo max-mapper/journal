@@ -14,7 +14,7 @@
   #panel { position: absolute; top: 12px; left: 12px; width: 320px; max-width: calc(100vw - 72px); max-height: calc(100vh - 64px - var(--strip-h)); /* clear of the credits line and the strip */
            overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; background: var(--panel); border-radius: 10px;
            padding: 12px 14px; box-shadow: 0 2px 14px rgba(0,0,0,.45); box-sizing: border-box; z-index: 3; }
-  #panel.collapsed #more, #panel.collapsed #prefs, #panel.collapsed #modes, #panel.collapsed #notes-box { display: none; }
+  #panel.collapsed #more, #panel.collapsed #prefs, #panel.collapsed #notes-box { display: none; }
   #handle { display: none; }
   header { display: flex; align-items: center; gap: 8px; }
   header h1 { font-size: 15px; margin: 0; flex: 1; }
@@ -26,11 +26,6 @@
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .trip-in:focus-visible, #map canvas:focus-visible { outline: none; }
   /* Japan | World and what to compute: the two switches that change what the whole app does */
-  #modes .row { margin: 6px 0 4px; }
-  #modes .hint { margin: 0 0 4px; }
-  #region-hint { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; padding: 4px 8px; background: #2b2a14; border: 1px solid #7a6a1e; border-radius: 8px; color: #f3e19a; font-size: 12px; }
-  #region-hint span { flex: 1; }
-  #region-hint button { padding: 3px 8px; white-space: nowrap; }
   /* controls that only mean something in one mode; World hides the Japan-only rows */
   body:not(.omni) .omni-only, body.omni .pair-only, body.omni #trip, body.world .japan-only { display: none; }
   /* analysis box (Everywhere ↔ everywhere): size and download in the panel, handles on the map */
@@ -169,6 +164,7 @@
   #climb-help { color: var(--muted); font-size: 11px; margin: 4px 0; }
   .haz { display: flex; align-items: center; gap: 8px; margin: 4px 0; color: var(--fg); cursor: pointer; }
   .haz input { margin: 0; width: 18px; height: 18px; }
+  .haz.sub { margin-left: 26px; }
   .sw { width: 26px; height: 0; border-top-width: 4px; flex: 0 0 26px; }
   .sw.tunnel { border-top: 5px dashed #b15cff; }
   .sw.snowshed { border-top: 4px dotted #d6a4ff; }
@@ -211,7 +207,7 @@
              border-radius: 14px 14px 0 0; padding: 0 12px calc(10px + env(safe-area-inset-bottom)); }
     /* collapsed sheet = the map's: one status line, the planner tools, and the route summary;
        hints, details, the export row and saved routes are in the expanded sheet */
-    #panel:not(.expanded) #more, #panel:not(.expanded) #prefs, #panel:not(.expanded) #sum-sub, #panel:not(.expanded) #modes,
+    #panel:not(.expanded) #more, #panel:not(.expanded) #prefs, #panel:not(.expanded) #sum-sub,
     #panel:not(.expanded) #notes-box, #panel:not(.expanded) #box-card .hint, #panel:not(.expanded) #box-card .row,
     #panel:not(.expanded) #route-opts, body.has-route #panel:not(.expanded) #trip,
     #panel:not(.expanded) #sum-det, #panel:not(.expanded) #act-row, #panel:not(.expanded) #saved { display: none; }
@@ -261,20 +257,8 @@
 <div id="panel">
   <div id="handle" role="button" tabindex="0" title="Show / hide settings" aria-label="Show / hide settings"><span></span></div>
   <header><h1>CycleScape</h1><button id="collapse" title="Collapse panel" aria-label="Collapse panel" aria-expanded="true">–</button></header>
-  <div id="modes">
-    <div class="row" role="group" aria-label="Region">
-      <button id="region-japan" class="on" aria-pressed="true" title="Japan's own survey maps: the most detailed roads, elevation and traffic, inside Japan only">Japan</button>
-      <button id="region-world" aria-pressed="false" title="OpenStreetMap roads, anywhere in the world (Japan too); traffic is a rough estimate">World</button>
-    </div>
-    <div class="row" role="group" aria-label="What to work out">
-      <button id="mode-pair" class="on" aria-pressed="true" title="The best cycling route from a start to an end, with alternatives">Start → end</button>
-      <button id="mode-omni" aria-pressed="false" title="Rates every road in a box you draw: trips run from every junction to every other one within the trip radius">Everywhere ↔ everywhere</button>
-    </div>
-    <p class="hint" id="mode-hint">Plan a route between two places.</p>
-  </div>
   <p id="status" role="status" aria-live="polite">Loading…</p>
   <button id="retry" hidden>↻ Try again</button>
-  <div id="region-hint" hidden><span>This place is outside Japan.</span><button id="region-hint-go">Switch to World</button></div>
   <div id="lod-chip" hidden></div>
   <div class="live-row" id="live-row" hidden><div id="progress" style="flex:1;margin:0"><div></div></div><button id="live-cancel" title="Stop building the live road graph">✕ Cancel</button></div>
   <div id="trip">
@@ -291,8 +275,9 @@
   <div id="box-card" class="omni-only">
     <div id="box-size"></div>
     <div id="box-est"></div>
-    <p class="hint">Drag a corner to resize the box, or ✥ to move it.</p>
-    <div class="row"><button id="box-view" title="Put the box in the middle of the map you are looking at">Move the box here</button></div>
+    <p class="hint">Rates every road in the box for cycling: how well it links the places around it. Drag a corner to resize the box, or ✥ to move it.</p>
+    <div class="row"><button id="box-view" title="Put the box in the middle of the map you are looking at">Move the box here</button>
+      <button id="mode-pair" title="Leave the area analysis and plan a route from a start to an end">← Back to routes</button></div>
   </div>
 
   <div id="summary" hidden>
@@ -371,18 +356,26 @@
 
 
     <details>
-      <summary>Hazards layer</summary>
-      <label class="haz"><input type="checkbox" id="haz-all" checked> Show hazards</label>
-      <label class="haz"><input type="checkbox" data-haz="tunnel" checked><span class="sw tunnel"></span> Tunnels</label>
-      <label class="haz japan-only"><input type="checkbox" data-haz="snowshed" checked><span class="sw snowshed"></span> Snow sheds</label>
-      <label class="haz"><input type="checkbox" data-haz="steep"><span class="sw steep"></span> Steep (≥ 8% over 60 m+)</label>
-      <label class="haz"><input type="checkbox" data-haz="unpaved" checked><span class="sw unpaved"></span> Unpaved</label>
+      <summary>Map layers</summary>
+      <label class="haz"><input type="checkbox" id="haz-all" checked> Hazards</label>
+      <label class="haz sub"><input type="checkbox" data-haz="tunnel" checked><span class="sw tunnel"></span> Tunnels</label>
+      <label class="haz sub japan-only"><input type="checkbox" data-haz="snowshed" checked><span class="sw snowshed"></span> Snow sheds</label>
+      <label class="haz sub"><input type="checkbox" data-haz="steep"><span class="sw steep"></span> Steep (≥ 8% over 60 m+)</label>
+      <label class="haz"><input type="checkbox" data-layer="unpaved" checked><span class="sw unpaved"></span> Unpaved roads</label>
       <label class="haz"><input type="checkbox" id="bike-layer"><span class="sw bike"></span> Bike paths alongside roads (OSM: <span style="color:#22c55e">cycleway</span>, <span style="color:#38bdf8">shared sidewalk</span>, dashed = lane)</label>
+    </details>
+
+    <details id="area-box" class="pair-only">
+      <summary>Area analysis</summary>
+      <p class="hint">Instead of one route, rate every road in an area you draw: trips run from every junction to every other one nearby.</p>
+      <div class="row"><button id="mode-omni" title="Rates every road in a box you draw: trips run from every junction to every other one within the trip radius">Rate every road in an area</button></div>
     </details>
 
     <details>
       <summary>Data &amp; map</summary>
       <div class="row"><span class="lbl">Basemap</span><select id="basemap" title="Basemap"></select></div>
+      <div class="row"><span class="lbl">Road data</span><select id="region" title="Automatic: Japan's own survey maps inside Japan (the most detailed roads, elevation and traffic), OpenStreetMap everywhere else. World: OpenStreetMap everywhere, Japan too">
+        <option value="auto">Automatic</option><option value="japan">Japan</option><option value="world">World</option></select></div>
       <div class="row"><span class="lbl">Language</span><select id="lang" title="Language / 言語"><option value="en">English</option><option value="ja">日本語</option></select></div>
       <label class="haz" id="pale-row" hidden title="Lay GSI's pale map (roads, names, buildings) over the red relief, blended with multiply"><input type="checkbox" id="pale-on"> GSI Pale on top (multiply)</label>
     </details>
