@@ -264,7 +264,7 @@
   <p id="status" role="status" aria-live="polite">Loading…</p>
   <button id="retry" hidden>↻ Try again</button>
   <div id="lod-chip" hidden></div>
-  <div class="live-row" id="live-row" hidden><div id="progress" style="flex:1;margin:0"><div></div></div><button id="live-cancel" title="Stop building the live road graph">✕ Cancel</button></div>
+  <div class="live-row" id="live-row" hidden><div id="progress" style="flex:1;margin:0"><div></div></div><button id="live-cancel" title="Stop what is being worked out">✕ Cancel</button></div>
   <div id="trip">
     <div id="trip-rows"></div>
     <div id="trip-sugg" role="listbox" hidden></div>
@@ -381,6 +381,7 @@
       <div class="row"><span class="lbl">Road data</span><select id="region" title="Automatic: Japan's own survey maps inside Japan (the most detailed roads, elevation and traffic), OpenStreetMap everywhere else. World: OpenStreetMap everywhere, Japan too">
         <option value="auto">Automatic</option><option value="japan">Japan</option><option value="world">World</option></select></div>
       <div class="row"><span class="lbl">Language</span><select id="lang" title="Language / 言語"><option value="en">English</option><option value="ja">日本語</option></select></div>
+      <div class="row"><span class="lbl" id="tiles-size">Downloaded map data</span><button id="tiles-clear" title="Delete the map tiles kept in this browser; routes download theirs again">Clear downloaded map data</button></div>
       <label class="haz" id="pale-row" hidden title="Lay GSI's pale map (roads, names, buildings) over the red relief, blended with multiply"><input type="checkbox" id="pale-on"> GSI Pale on top (multiply)</label>
     </details>
   </div>
