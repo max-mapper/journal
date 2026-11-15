@@ -232,7 +232,7 @@
     <label class="busy" title="Route complexity: every turn and junction costs extra (right turns and unsignalised crossings of busy roads most), so the route stays simple unless a twisty one is clearly quieter. 0 = ignore turns">Simple routes <output id="o-turns"></output>
       <input id="turns" type="range" min="0" max="2" step="0.1" value="1"><span class="ends"><span>Ignore turns</span><span>Fewest turns</span></span></label>
     <label class="haz" title="Never route through tunnels (the current map avoids them too)"><input type="checkbox" id="avoid-tunnels" checked> Avoid tunnels</label>
-    <label class="haz" title="Narrow lanes under 3 m, footpaths (徒歩道) and park paths (庭園路). The map data cannot tell which have bollards, steps or no-bike signs. On: used at a small extra cost, so a real shortcut still wins. Off: avoided unless there is no other way"><input type="checkbox" id="walkways" checked> Walkways and narrow lanes</label>
+    <label class="haz" title="Narrow lanes under 3 m, footpaths (徒歩道) and park paths (庭園路). The map data cannot tell which have bollards, steps or no-bike signs. On: used like any quiet road (footpaths cost a bit more). Off: avoided unless there is no other way"><input type="checkbox" id="walkways" checked> Walkways and narrow lanes</label>
     <div class="row"><span class="lbl">Rider</span><select id="profile" title="Climbing preference: how much you mind climbs and steep pitches"></select></div>
     <div id="climb-custom" hidden>
       <label>Detour to skip 100 m of climbing <output id="o-detour"></output><input id="detour" type="range" min="0" max="3" step="0.1" value="1"></label>
