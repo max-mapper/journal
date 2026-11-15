@@ -165,6 +165,7 @@
   .haz { display: flex; align-items: center; gap: 8px; margin: 4px 0; color: var(--fg); cursor: pointer; }
   .haz input { margin: 0; width: 18px; height: 18px; }
   .haz.sub { margin-left: 26px; }
+  .maplibregl-popup.hover-tip { pointer-events: none; }
   .sw { width: 26px; height: 0; border-top-width: 4px; flex: 0 0 26px; }
   .sw.tunnel { border-top: 5px dashed #b15cff; }
   .sw.snowshed { border-top: 4px dotted #d6a4ff; }
@@ -299,9 +300,9 @@
     <div id="saved-list"></div>
   </details>
 
-  <details id="notes-box" hidden>
+  <details id="notes-box">
     <summary>Your road notes <span id="notes-n"></span></summary>
-    <p class="hint">Roads you marked to prefer or avoid. Saved in this browser only.</p>
+    <p class="hint" id="notes-hint"></p>
     <div id="notes-list"></div>
     <div class="row"><button id="notes-clear">Delete all notes</button></div>
   </details>
