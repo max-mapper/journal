@@ -11,7 +11,7 @@
   html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font: 13px/1.4 system-ui, -apple-system, "Hiragino Sans", sans-serif; }
   body { position: fixed; inset: 0; overflow: hidden; overscroll-behavior: none; }
   #map { position: absolute; inset: 0; }
-  #panel { position: absolute; top: 12px; left: 12px; width: 320px; max-width: calc(100vw - 72px); max-height: calc(100vh - 64px); /* clear of the credits line */
+  #panel { position: absolute; top: 12px; left: 12px; width: 320px; max-width: calc(100vw - 72px); max-height: calc(100vh - 64px - var(--strip-h)); /* clear of the credits line and the strip */
            overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; background: var(--panel); border-radius: 10px;
            padding: 12px 14px; box-shadow: 0 2px 14px rgba(0,0,0,.45); box-sizing: border-box; z-index: 3; }
   #panel.collapsed #more, #panel.collapsed #prefs, #panel.collapsed #route-help { display: none; }
@@ -47,10 +47,31 @@
   #sum-main { font-size: 17px; font-weight: 650; color: #fff; display: flex; flex-wrap: wrap; gap: 2px 12px; align-items: baseline; }
   #sum-main .up { color: #ff9e7a; } #sum-main .down { color: #8fd3ff; }
   #sum-det { color: var(--muted); font-size: 12px; }
-  #profile-chart { margin-top: 6px; touch-action: none; }
-  #profile-chart svg { display: block; width: 100%; height: 84px; cursor: crosshair; }
-  #profile-chart:empty, #profile-readout:empty { display: none; }
-  #profile-readout { font-size: 11px; color: var(--fg); min-height: 1.3em; }
+  /* map credits: a small ⓘ until opened; opened, a compact panel instead of a full-width strip */
+  .maplibregl-ctrl-attrib.maplibregl-compact { min-height: 22px; opacity: .75; }
+  .maplibregl-ctrl-attrib.maplibregl-compact:hover, .maplibregl-ctrl-attrib.maplibregl-compact-show { opacity: 1; }
+  .maplibregl-ctrl-attrib.maplibregl-compact-show { max-width: min(520px, calc(100vw - 64px)); font-size: 10px; line-height: 1.35; }
+  .maplibregl-ctrl-attrib.maplibregl-compact .maplibregl-ctrl-attrib-button { width: 22px; height: 22px; background-size: 18px; }
+  /* elevation strip under the map (phones: above the bottom sheet) with the flyover controls */
+  /* the strip floats over the map's bottom edge: resizing the WebGL canvas (and its 3D terrain buffers) stalls software rendering */
+  :root { --strip-h: 0px; }
+  .maplibregl-ctrl-bottom-left, .maplibregl-ctrl-bottom-right { bottom: var(--strip-h); }
+  #strip { position: absolute; left: 0; right: 0; bottom: 0; height: 116px; display: flex; gap: 8px; padding: 6px 12px 6px 8px; box-sizing: border-box;
+           background: var(--panel); border-top: 1px solid var(--line); z-index: 2; }
+  #strip[hidden] { display: none; }
+  .strip-ctl { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+  .strip-ctl button { width: 44px; height: 32px; padding: 0; font-size: 13px; }
+  #fly-play { height: 44px; font-size: 18px; }
+  #fly-exit { padding: 2px 10px; min-height: 28px; font-size: 12px; margin-left: auto; white-space: nowrap; }
+  #fly-exit[hidden] { display: none; }
+  #fly-play.on { border-color: var(--accent); color: var(--accent); }
+  .strip-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .strip-head { display: flex; align-items: center; gap: 8px; min-height: 16px; }
+  .strip-head #grade-legend { margin-left: auto; }
+  #fly-exit:not([hidden]) + #grade-legend { margin-left: 0; }
+  #profile-chart { flex: 1; min-height: 0; touch-action: none; }
+  #profile-chart svg { display: block; width: 100%; height: 100%; cursor: crosshair; }
+  #profile-readout { font-size: 11px; color: var(--fg); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .prof-dot { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid #f98c0a; box-shadow: 0 0 0 1px #000a; pointer-events: none; }
   #sum-sub { color: var(--muted); font-size: 12px; margin-top: 2px; }
   #sum-warn { display: inline-block; margin-top: 6px; background: #4a1d1d; color: #ffb3a8; border: 1px solid #a33; border-radius: 12px; padding: 2px 8px; font-size: 11px; }
@@ -70,7 +91,7 @@
   #prefs { margin-bottom: 4px; }
   label.busy .ends { grid-column: 1 / -1; display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-top: -2px; }
   #climb-custom[hidden] { display: none; }
-  #grade-legend { display: flex; flex-wrap: wrap; gap: 3px 8px; margin-top: 5px; font-size: 10px; color: var(--muted); align-items: center; }
+  #grade-legend { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 2px 8px; font-size: 10px; color: var(--muted); align-items: center; }
   #grade-legend i { display: inline-block; width: 14px; height: 5px; border-radius: 2px; margin-right: 3px; vertical-align: middle; border: 1px solid #fff6; }
   #grade-legend:empty { display: none; }
   #progress { height: 3px; background: var(--line); border-radius: 2px; margin: -2px 0 6px; display: none; }
@@ -138,21 +159,34 @@
     #panel { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-width: none; max-height: 78vh;
              border-radius: 14px 14px 0 0; padding: 0 12px calc(10px + env(safe-area-inset-bottom)); }
     #panel:not(.expanded) #more, #panel:not(.expanded) #prefs, #panel:not(.expanded) #sum-sub,
-    #panel:not(.expanded) .toolbar .ext, #panel:not(.expanded) #grade-legend,
-    #panel:not(.expanded) #profile-chart, #panel:not(.expanded) #profile-readout, #panel:not(.expanded) #route-opts { display: none; }
+    #panel:not(.expanded) .toolbar .ext, #panel:not(.expanded) #route-opts { display: none; }
+    /* the strip floats above the sheet; the map stays full screen under both */
+    #strip { bottom: var(--sheet-h); height: 92px; padding: 4px 10px 4px 6px; }
+    #grade-legend { display: none; }
+    body.sheet-open #strip { display: none; }
     #panel:not(.expanded) #summary { padding: 4px 8px; margin: 4px 0; }
     header { display: none; }
     #handle { display: flex; justify-content: center; align-items: center; height: 26px; margin: 0 -12px; cursor: grab; touch-action: none; }
     #handle > span { width: 42px; height: 5px; border-radius: 3px; background: #666; }
     #status { margin-top: 0; }
     .toolbar button { font-size: 13px; padding: 4px 2px; }
-    .maplibregl-ctrl-bottom-left, .maplibregl-ctrl-bottom-right { bottom: var(--sheet-h); }
+    .maplibregl-ctrl-bottom-left, .maplibregl-ctrl-bottom-right { bottom: calc(var(--sheet-h) + var(--strip-h)); }
     body.sheet-open .maplibregl-ctrl-bottom-right { display: none; } /* expanded sheet: the ⓘ would land on the zoom controls */
   }
 </style>
 </head>
 <body>
 <div id="map"></div>
+<div id="strip" hidden>
+  <div class="strip-ctl">
+    <button id="fly-play" title="Fly over the route in 3D (Space)" aria-label="Fly over the route">▶</button>
+    <button id="fly-speed" title="Flyover speed: 1× ≈ 0.5 km of route per second">1×</button>
+  </div>
+  <div class="strip-main">
+    <div class="strip-head"><span id="profile-readout"></span><button id="fly-exit" hidden title="Leave the flyover (Esc)">✕ Exit 3D</button><span id="grade-legend" title="Steepness along the route (grades are absolute: up or down)"></span></div>
+    <div id="profile-chart" title="Elevation along the route: hover / drag to locate on the map (moves the camera during a flyover)"></div>
+  </div>
+</div>
 <div id="panel">
   <div id="handle" title="Show / hide settings"><span></span></div>
   <header><h1>CycleScape Japan</h1><button id="collapse" title="Collapse panel">–</button></header>
@@ -172,14 +206,14 @@
     <div id="sum-main">No route yet</div>
     <div id="sum-det"></div>
     <div id="route-opts" hidden title="Genuinely different route options (≤ 40% shared); tap one to select it"></div>
-    <div id="profile-chart" title="Elevation along the best route; hover / tap to locate on the map"></div>
-    <div id="profile-readout"></div>
-    <div id="grade-legend" title="Steepness along the best route (grades are absolute: up or down)"></div>
     <div id="sum-sub"></div>
     <div id="sum-warn" hidden></div>
     <div class="row sum-actions">
+      <button id="navigate" class="primary" disabled title="Send the selected route to a navigation app for turn-by-turn (Vela, OsmAnd, …): opens your phone's share sheet with the route as a GPX file; where sharing files isn't available, downloads the GPX to open with the app">🧭 Navigate in app</button>
+    </div>
+    <div class="row sum-actions">
       <button id="star" disabled title="Save this route in this browser (listed under ★ Saved routes); tap again to remove it">☆ Star</button>
-      <button id="gpx" class="primary" disabled title="Download the selected route as a GPX track with elevation (bike computers, apps)">⬇ GPX</button>
+      <button id="gpx" disabled title="Download the selected route as a GPX track with elevation (bike computers, apps)">⬇ GPX</button>
       <button id="geojson" disabled title="Download the selected route as GeoJSON with elevation and route stats (QGIS, web maps)">⬇ GeoJSON</button>
     </div>
   </div>
@@ -195,6 +229,8 @@
     <label class="busy" title="How strongly to avoid busy roads (estimated vehicles/day and truck share)">Avoid busy roads <output id="o-tau"></output>
       <input id="tau" type="range" min="0.2" max="0.9" step="0.05" value="0.7"><span class="ends"><span>Don't mind</span><span>Strongly avoid</span></span></label>
     <p class="hint" id="tau-readout"></p>
+    <label class="busy" title="Route complexity: every turn and junction costs extra (right turns and unsignalised crossings of busy roads most), so the route stays simple unless a twisty one is clearly quieter. 0 = ignore turns">Simple routes <output id="o-turns"></output>
+      <input id="turns" type="range" min="0" max="2" step="0.1" value="1"><span class="ends"><span>Ignore turns</span><span>Fewest turns</span></span></label>
     <label class="haz" title="Never route through tunnels (the current map avoids them too)"><input type="checkbox" id="avoid-tunnels" checked> Avoid tunnels</label>
     <div class="row"><span class="lbl">Rider</span><select id="profile" title="Climbing preference: how much you mind climbs and steep pitches"></select></div>
     <div id="climb-custom" hidden>
