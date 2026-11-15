@@ -29,7 +29,10 @@
   .trip-in { flex: 1 1 auto; min-width: 0; background: #1f1f26; color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 8px; font: inherit; }
   .trip-in:focus { outline: none; border-color: var(--accent); }
   .trip-row button { flex: 0 0 34px; padding: 6px 0; }
-  .trip-row button.on { border-color: var(--accent); color: var(--accent); }
+  .trip-me { margin: -2px 0 4px 18px; }
+  .trip-me button.me { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; min-height: 0; font-size: 13px;
+    background: none; border: none; color: var(--accent); cursor: pointer; }
+  .trip-row.active .trip-in { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); } /* the field a map click fills */
   #trip-sugg { position: absolute; left: 16px; right: 0; z-index: 5; background: #1b1b20; border: 1px solid var(--line); border-radius: 8px; max-height: 260px; overflow-y: auto; box-shadow: 0 6px 18px #0009; }
   #trip-sugg[hidden] { display: none; }
   #trip-sugg button { display: flex; justify-content: space-between; gap: 8px; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid #2a2a31; border-radius: 0; padding: 9px 10px; }
@@ -180,19 +183,18 @@
   @media (max-width: 700px) {
     #panel { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-width: none; max-height: 78vh;
              border-radius: 14px 14px 0 0; padding: 0 12px calc(10px + env(safe-area-inset-bottom)); }
-    /* collapsed sheet = the map's: one status line, Edit / Undo, and the route summary with Navigate beside it;
+    /* collapsed sheet = the map's: one status line, the planner tools, and the route summary;
        hints, details, the export row and saved routes are in the expanded sheet */
     #panel:not(.expanded) #more, #panel:not(.expanded) #prefs, #panel:not(.expanded) #sum-sub,
     #panel:not(.expanded) #route-opts, body.has-route #panel:not(.expanded) #trip,
     #panel:not(.expanded) #sum-det, #panel:not(.expanded) #act-row, #panel:not(.expanded) #saved { display: none; }
     #panel:not(.expanded) #summary { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     #panel:not(.expanded) #sum-main { flex: 1 1 auto; font-size: 15px; }
-    #panel:not(.expanded) #nav-row { margin: 0; flex: 0 0 auto; }
-    #panel:not(.expanded) #nav-row button { min-height: 40px; padding: 4px 10px; }
     #panel:not(.expanded) #status { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; min-height: 1.2em; margin-bottom: 2px; }
     #panel:not(.expanded) .toolbar button { min-height: 40px; }
     .trip-in { font-size: 16px; } /* 16 px: phones don't zoom the page when the field is focused */
     .trip-row button { min-height: 40px; flex-basis: 40px; }
+    .trip-me button.me { min-height: 36px; }
     /* the strip floats above the sheet; the map stays full screen under both */
     #strip { bottom: var(--sheet-h); height: 64px; padding: 3px 10px 3px 6px; }
     #strip .strip-ctl { flex-direction: row; align-items: center; }
@@ -249,9 +251,6 @@
     <div id="route-opts" hidden title="Genuinely different route options (≤ 40% shared); tap one to select it"></div>
     <div id="sum-sub"></div>
     <div id="sum-warn" hidden></div>
-    <div class="row sum-actions" id="nav-row">
-      <button id="navigate" class="primary" disabled title="Send the selected route to a navigation app for turn-by-turn (Vela, OsmAnd, …): opens your phone's share sheet with the route as a GPX file; where sharing files isn't available, downloads the GPX to open with the app">🧭 Navigate in app</button>
-    </div>
     <div class="row sum-actions" id="act-row">
       <button id="star" disabled title="Save this route in this browser (listed under ★ Saved routes); tap again to remove it">☆ Star</button>
       <button id="gpx" disabled title="Download the selected route as a GPX track with elevation (bike computers, apps)">⬇ GPX</button>
